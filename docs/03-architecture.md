@@ -49,6 +49,25 @@ PDF ──► [1] ingestão ──► [2] detecção de camada de texto ──�
    - doc escaneado → testar OCR local vs visão (H-02b).
 5. **Arquitetura final** = o que sobreviveu às medições, registrado em `DECISIONS.md`.
 
+## 2.1 Baseline A — o que foi realmente implementado (E-002)
+
+> Experimento, **não** arquitetura final. Sem LLM, OCR, visão, function calling, calendário de feriados ou uso do nome do arquivo.
+
+| Etapa | Módulo | Natureza | Observação |
+|---|---|---|---|
+| Ingestão + SHA-256 | `ingestion.py` | determinística | nome do arquivo só como metadado |
+| Camada de texto | `ingestion.py` | determinística | usável se ≥ 100 caracteres alfanuméricos/página; senão, `NO_USABLE_TEXT_LAYER` e o documento para aqui |
+| Extração de candidatos | `extraction.py` | determinística | rótulos literais, padrões e frases-âncora; cada regra tem `rule_id`; só coleta, não decide |
+| Classificação | `classification.py` | determinística | léxico do domínio sobre o conteúdo **sem o título**; precedência JCP > DIVIDEND; ambíguo → indeterminado |
+| Normalização / resolução | `normalization.py`, `schema.py` | determinística | Decimal da string, datas ISO, `source_label`, ausência tipada por tipo de evento, conflitos preservados como alternativas |
+| Confiança | `confidence.py` | determinística | HIGH/MEDIUM/LOW com motivos (âncora, conflito, derivação, corroboração) |
+| Validação | `validation.py`, `reference.py` | determinística | 17 regras + lookup exato por ISIN (D-012) |
+| Roteamento | `routing.py` | determinística | AUTO_APPROVE só sem motivo bloqueante; nunca REJECT |
+| Audit / saída | `audit.py`, `pipeline.py` | determinística | registro JSON por documento, `exceptions_report.md`, `run_manifest.json` |
+| Avaliação | `src/evaluation/` | fora do pipeline | único código que lê o gabarito (D-014) |
+
+Como rodar: ver `README.md`. Resultados e failure modes: `docs/04-evaluation-log.md` (E-002).
+
 ## 3. Esboço do registro de saída (a validar, não é o schema final)
 
 Ideia de estrutura, para discutir o que o operador precisa ver:

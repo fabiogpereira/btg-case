@@ -1,0 +1,2515 @@
+{
+  "run_id": "20260929T231551Z-d79d833d",
+  "pipeline_version": "baseline-a/0.1.0",
+  "ground_truth_version": "2.0",
+  "extraction": {
+    "event_type_accuracy": {
+      "all_documents": {
+        "correct": 7,
+        "total": 8,
+        "pct": 87.5
+      },
+      "with_text_layer": {
+        "correct": 7,
+        "total": 7,
+        "pct": 100.0
+      }
+    },
+    "fields": {
+      "all_documents": {
+        "value_exact_match": {
+          "correct": 76,
+          "total": 93,
+          "pct": 81.7
+        },
+        "status_match": {
+          "correct": 99,
+          "total": 115,
+          "pct": 86.1
+        }
+      },
+      "with_text_layer": {
+        "value_exact_match": {
+          "correct": 76,
+          "total": 80,
+          "pct": 95.0
+        },
+        "status_match": {
+          "correct": 99,
+          "total": 101,
+          "pct": 98.0
+        }
+      }
+    },
+    "absence_detection": {
+      "declared_pending": {
+        "correct": 1,
+        "total": 1,
+        "pct": 100.0
+      },
+      "not_applicable": {
+        "correct": 17,
+        "total": 18,
+        "pct": 94.4
+      },
+      "not_found": {
+        "correct": 3,
+        "total": 3,
+        "pct": 100.0
+      }
+    },
+    "invented_values": [],
+    "per_field": {
+      "issuer_name": {
+        "value": {
+          "correct": 7,
+          "total": 8,
+          "pct": 87.5
+        },
+        "status": {
+          "correct": 7,
+          "total": 8,
+          "pct": 87.5
+        }
+      },
+      "cnpj": {
+        "value": {
+          "correct": 7,
+          "total": 8,
+          "pct": 87.5
+        },
+        "status": {
+          "correct": 7,
+          "total": 8,
+          "pct": 87.5
+        }
+      },
+      "isin": {
+        "value": {
+          "correct": 7,
+          "total": 8,
+          "pct": 87.5
+        },
+        "status": {
+          "correct": 7,
+          "total": 8,
+          "pct": 87.5
+        }
+      },
+      "ticker": {
+        "value": {
+          "correct": 7,
+          "total": 8,
+          "pct": 87.5
+        },
+        "status": {
+          "correct": 7,
+          "total": 8,
+          "pct": 87.5
+        }
+      },
+      "share_class": {
+        "value": {
+          "correct": 5,
+          "total": 6,
+          "pct": 83.3
+        },
+        "status": {
+          "correct": 7,
+          "total": 8,
+          "pct": 87.5
+        }
+      },
+      "approval_date": {
+        "value": {
+          "correct": 7,
+          "total": 8,
+          "pct": 87.5
+        },
+        "status": {
+          "correct": 7,
+          "total": 8,
+          "pct": 87.5
+        }
+      },
+      "record_date": {
+        "value": {
+          "correct": 7,
+          "total": 8,
+          "pct": 87.5
+        },
+        "status": {
+          "correct": 7,
+          "total": 8,
+          "pct": 87.5
+        }
+      },
+      "ex_date": {
+        "value": {
+          "correct": 6,
+          "total": 8,
+          "pct": 75.0
+        },
+        "status": {
+          "correct": 6,
+          "total": 8,
+          "pct": 75.0
+        }
+      },
+      "payment_date": {
+        "value": {
+          "correct": 4,
+          "total": 5,
+          "pct": 80.0
+        },
+        "status": {
+          "correct": 7,
+          "total": 8,
+          "pct": 87.5
+        }
+      },
+      "gross_amount_per_share": {
+        "value": {
+          "correct": 5,
+          "total": 6,
+          "pct": 83.3
+        },
+        "status": {
+          "correct": 7,
+          "total": 8,
+          "pct": 87.5
+        }
+      },
+      "net_amount_per_share": {
+        "value": {
+          "correct": 3,
+          "total": 4,
+          "pct": 75.0
+        },
+        "status": {
+          "correct": 7,
+          "total": 8,
+          "pct": 87.5
+        }
+      },
+      "withholding_tax": {
+        "value": {
+          "correct": 2,
+          "total": 5,
+          "pct": 40.0
+        },
+        "status": {
+          "correct": 7,
+          "total": 8,
+          "pct": 87.5
+        }
+      },
+      "currency": {
+        "value": {
+          "correct": 5,
+          "total": 6,
+          "pct": 83.3
+        },
+        "status": {
+          "correct": 7,
+          "total": 8,
+          "pct": 87.5
+        }
+      },
+      "ratio": {
+        "value": {
+          "correct": 2,
+          "total": 2,
+          "pct": 100.0
+        },
+        "status": {
+          "correct": 7,
+          "total": 8,
+          "pct": 87.5
+        }
+      },
+      "fraction_adjustment_period": {
+        "value": {
+          "correct": 0,
+          "total": 1,
+          "pct": 0.0
+        },
+        "status": {
+          "correct": 0,
+          "total": 1,
+          "pct": 0.0
+        }
+      },
+      "share_credit_date": {
+        "value": {
+          "correct": 1,
+          "total": 1,
+          "pct": 100.0
+        },
+        "status": {
+          "correct": 1,
+          "total": 1,
+          "pct": 100.0
+        }
+      },
+      "tax_cost_per_share": {
+        "value": {
+          "correct": 1,
+          "total": 1,
+          "pct": 100.0
+        },
+        "status": {
+          "correct": 1,
+          "total": 1,
+          "pct": 100.0
+        }
+      }
+    }
+  },
+  "validation": {
+    "all_documents": {
+      "accuracy": {
+        "correct": 101,
+        "total": 119,
+        "pct": 84.9
+      },
+      "false_negatives": 0,
+      "false_positives": 1,
+      "other_mismatches": 17
+    },
+    "with_text_layer": {
+      "accuracy": {
+        "correct": 101,
+        "total": 104,
+        "pct": 97.1
+      },
+      "false_negatives": 0,
+      "false_positives": 1,
+      "other_mismatches": 2
+    },
+    "mismatches": [
+      {
+        "document": "06_petroquimica_litoral_grupamento.pdf",
+        "rule_id": "REQUIRED_FIELDS_PRESENT",
+        "expected": "PASS",
+        "got": "FAIL",
+        "kind": "false_positive",
+        "text_layer_usable": true
+      },
+      {
+        "document": "06_petroquimica_litoral_grupamento.pdf",
+        "rule_id": "DATE_RECORD_BEFORE_EX",
+        "expected": "PASS",
+        "got": "NOT_EVALUATED",
+        "kind": "other_mismatch",
+        "text_layer_usable": true
+      },
+      {
+        "document": "06_petroquimica_litoral_grupamento.pdf",
+        "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+        "expected": "PASS",
+        "got": "NOT_EVALUATED",
+        "kind": "other_mismatch",
+        "text_layer_usable": true
+      },
+      {
+        "document": "07_telecom_norte_jcp_SCAN.pdf",
+        "rule_id": "REF_ISIN_FOUND",
+        "expected": "PASS",
+        "got": "ABSENT",
+        "kind": "other_mismatch",
+        "text_layer_usable": false
+      },
+      {
+        "document": "07_telecom_norte_jcp_SCAN.pdf",
+        "rule_id": "REF_TICKER_CONSISTENT",
+        "expected": "PASS",
+        "got": "ABSENT",
+        "kind": "other_mismatch",
+        "text_layer_usable": false
+      },
+      {
+        "document": "07_telecom_norte_jcp_SCAN.pdf",
+        "rule_id": "REF_CNPJ_CONSISTENT",
+        "expected": "PASS",
+        "got": "ABSENT",
+        "kind": "other_mismatch",
+        "text_layer_usable": false
+      },
+      {
+        "document": "07_telecom_norte_jcp_SCAN.pdf",
+        "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+        "expected": "PASS",
+        "got": "ABSENT",
+        "kind": "other_mismatch",
+        "text_layer_usable": false
+      },
+      {
+        "document": "07_telecom_norte_jcp_SCAN.pdf",
+        "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+        "expected": "PASS",
+        "got": "ABSENT",
+        "kind": "other_mismatch",
+        "text_layer_usable": false
+      },
+      {
+        "document": "07_telecom_norte_jcp_SCAN.pdf",
+        "rule_id": "REF_ISSUER_ACTIVE",
+        "expected": "PASS",
+        "got": "ABSENT",
+        "kind": "other_mismatch",
+        "text_layer_usable": false
+      },
+      {
+        "document": "07_telecom_norte_jcp_SCAN.pdf",
+        "rule_id": "REQUIRED_FIELDS_PRESENT",
+        "expected": "PASS",
+        "got": "ABSENT",
+        "kind": "other_mismatch",
+        "text_layer_usable": false
+      },
+      {
+        "document": "07_telecom_norte_jcp_SCAN.pdf",
+        "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+        "expected": "PASS",
+        "got": "ABSENT",
+        "kind": "other_mismatch",
+        "text_layer_usable": false
+      },
+      {
+        "document": "07_telecom_norte_jcp_SCAN.pdf",
+        "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+        "expected": "PASS",
+        "got": "ABSENT",
+        "kind": "other_mismatch",
+        "text_layer_usable": false
+      },
+      {
+        "document": "07_telecom_norte_jcp_SCAN.pdf",
+        "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+        "expected": "PASS",
+        "got": "ABSENT",
+        "kind": "other_mismatch",
+        "text_layer_usable": false
+      },
+      {
+        "document": "07_telecom_norte_jcp_SCAN.pdf",
+        "rule_id": "DATE_RECORD_BEFORE_EX",
+        "expected": "PASS",
+        "got": "ABSENT",
+        "kind": "other_mismatch",
+        "text_layer_usable": false
+      },
+      {
+        "document": "07_telecom_norte_jcp_SCAN.pdf",
+        "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+        "expected": "PASS",
+        "got": "ABSENT",
+        "kind": "other_mismatch",
+        "text_layer_usable": false
+      },
+      {
+        "document": "07_telecom_norte_jcp_SCAN.pdf",
+        "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+        "expected": "PASS",
+        "got": "ABSENT",
+        "kind": "other_mismatch",
+        "text_layer_usable": false
+      },
+      {
+        "document": "07_telecom_norte_jcp_SCAN.pdf",
+        "rule_id": "AMOUNT_GROSS_POSITIVE",
+        "expected": "PASS",
+        "got": "ABSENT",
+        "kind": "other_mismatch",
+        "text_layer_usable": false
+      },
+      {
+        "document": "07_telecom_norte_jcp_SCAN.pdf",
+        "rule_id": "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+        "expected": "PASS",
+        "got": "ABSENT",
+        "kind": "other_mismatch",
+        "text_layer_usable": false
+      }
+    ]
+  },
+  "routing": {
+    "defined_expectations": {
+      "correct": 5,
+      "total": 6,
+      "pct": 83.3
+    },
+    "rows": [
+      {
+        "expectation_status": "DEFINED",
+        "expected": "AUTO_APPROVE",
+        "expected_reasons": [],
+        "got": "AUTO_APPROVE",
+        "got_reasons": [],
+        "match": true,
+        "document": "01_energetica_vale_tiete_dividendo.pdf"
+      },
+      {
+        "expectation_status": "DEFINED",
+        "expected": "AUTO_APPROVE",
+        "expected_reasons": [],
+        "got": "AUTO_APPROVE",
+        "got_reasons": [],
+        "match": true,
+        "document": "02_banco_meridional_jcp.pdf"
+      },
+      {
+        "expectation_status": "PROVISIONAL",
+        "expected": "REVIEW_REQUIRED",
+        "expected_reasons": [
+          "CLASSIFICATION_TITLE_CONFLICT"
+        ],
+        "got": "REVIEW_REQUIRED",
+        "got_reasons": [
+          "CLASSIFICATION_TITLE_CONFLICT"
+        ],
+        "match": true,
+        "document": "03_siderurgica_paranaense_proventos.pdf"
+      },
+      {
+        "expectation_status": "DEFINED",
+        "expected": "REVIEW_REQUIRED",
+        "expected_reasons": [
+          "PAYMENT_DATE_PENDING"
+        ],
+        "got": "REVIEW_REQUIRED",
+        "got_reasons": [
+          "PAYMENT_DATE_PENDING"
+        ],
+        "match": true,
+        "document": "04_rede_varejo_jcp_sem_data.pdf"
+      },
+      {
+        "expectation_status": "DEFINED",
+        "expected": "REVIEW_REQUIRED",
+        "expected_reasons": [
+          "DATE_INCONSISTENCY"
+        ],
+        "got": "REVIEW_REQUIRED",
+        "got_reasons": [
+          "DATE_INCONSISTENCY"
+        ],
+        "match": true,
+        "document": "05_aurora_saneamento_dividendo_datas.pdf"
+      },
+      {
+        "expectation_status": "DEFINED",
+        "expected": "AUTO_APPROVE",
+        "expected_reasons": [],
+        "got": "REVIEW_REQUIRED",
+        "got_reasons": [
+          "REQUIRED_FIELD_MISSING"
+        ],
+        "match": false,
+        "document": "06_petroquimica_litoral_grupamento.pdf"
+      },
+      {
+        "expectation_status": "POLICY_DEPENDENT",
+        "expected": null,
+        "expected_reasons": [],
+        "got": "REVIEW_REQUIRED",
+        "got_reasons": [
+          "NO_USABLE_TEXT_LAYER"
+        ],
+        "match": null,
+        "document": "07_telecom_norte_jcp_SCAN.pdf"
+      },
+      {
+        "expectation_status": "DEFINED",
+        "expected": "REVIEW_REQUIRED",
+        "expected_reasons": [
+          "REFERENCE_NOT_FOUND"
+        ],
+        "got": "REVIEW_REQUIRED",
+        "got_reasons": [
+          "REFERENCE_NOT_FOUND"
+        ],
+        "match": true,
+        "document": "08_construtora_horizonte_bonificacao.pdf"
+      }
+    ]
+  },
+  "operational": {
+    "documents_processed": 8,
+    "without_usable_text_layer": 1,
+    "errors": 0,
+    "total_duration_ms": 72.384,
+    "decisions": {
+      "AUTO_APPROVE": 2,
+      "REVIEW_REQUIRED": 6
+    }
+  },
+  "extractor_rule_coverage": {
+    "documents_per_rule": {
+      "approval_date.label_data_aprovacao": [
+        "01_energetica_vale_tiete_dividendo.pdf",
+        "05_aurora_saneamento_dividendo_datas.pdf"
+      ],
+      "approval_date.phrase_meeting": [
+        "01_energetica_vale_tiete_dividendo.pdf",
+        "02_banco_meridional_jcp.pdf",
+        "03_siderurgica_paranaense_proventos.pdf",
+        "04_rede_varejo_jcp_sem_data.pdf",
+        "05_aurora_saneamento_dividendo_datas.pdf",
+        "06_petroquimica_litoral_grupamento.pdf",
+        "08_construtora_horizonte_bonificacao.pdf"
+      ],
+      "cnpj.label_cnpj": [
+        "01_energetica_vale_tiete_dividendo.pdf",
+        "02_banco_meridional_jcp.pdf",
+        "03_siderurgica_paranaense_proventos.pdf",
+        "04_rede_varejo_jcp_sem_data.pdf",
+        "05_aurora_saneamento_dividendo_datas.pdf",
+        "06_petroquimica_litoral_grupamento.pdf",
+        "08_construtora_horizonte_bonificacao.pdf"
+      ],
+      "currency.derived_from_gross_symbol": [
+        "01_energetica_vale_tiete_dividendo.pdf",
+        "02_banco_meridional_jcp.pdf",
+        "03_siderurgica_paranaense_proventos.pdf",
+        "04_rede_varejo_jcp_sem_data.pdf",
+        "05_aurora_saneamento_dividendo_datas.pdf"
+      ],
+      "event.bonus_acoes_bonificadas": [
+        "08_construtora_horizonte_bonificacao.pdf"
+      ],
+      "event.bonus_bonificacao": [
+        "08_construtora_horizonte_bonificacao.pdf"
+      ],
+      "event.dividend_dividendo": [
+        "01_energetica_vale_tiete_dividendo.pdf",
+        "02_banco_meridional_jcp.pdf",
+        "03_siderurgica_paranaense_proventos.pdf",
+        "05_aurora_saneamento_dividendo_datas.pdf"
+      ],
+      "event.jcp_juros_capital_proprio": [
+        "02_banco_meridional_jcp.pdf",
+        "04_rede_varejo_jcp_sem_data.pdf"
+      ],
+      "event.jcp_lei_9249": [
+        "02_banco_meridional_jcp.pdf"
+      ],
+      "event.jcp_remuneracao_capital_proprio": [
+        "03_siderurgica_paranaense_proventos.pdf"
+      ],
+      "event.jcp_sigla": [
+        "02_banco_meridional_jcp.pdf",
+        "04_rede_varejo_jcp_sem_data.pdf"
+      ],
+      "event.reverse_split_grupamento": [
+        "06_petroquimica_litoral_grupamento.pdf"
+      ],
+      "event.reverse_split_inplit": [
+        "06_petroquimica_litoral_grupamento.pdf"
+      ],
+      "ex_date.label_data_ex": [
+        "01_energetica_vale_tiete_dividendo.pdf",
+        "02_banco_meridional_jcp.pdf",
+        "03_siderurgica_paranaense_proventos.pdf",
+        "04_rede_varejo_jcp_sem_data.pdf",
+        "05_aurora_saneamento_dividendo_datas.pdf",
+        "08_construtora_horizonte_bonificacao.pdf"
+      ],
+      "gross.label_valor_bruto": [
+        "01_energetica_vale_tiete_dividendo.pdf",
+        "02_banco_meridional_jcp.pdf",
+        "03_siderurgica_paranaense_proventos.pdf",
+        "04_rede_varejo_jcp_sem_data.pdf",
+        "05_aurora_saneamento_dividendo_datas.pdf"
+      ],
+      "isin.label_isin": [
+        "01_energetica_vale_tiete_dividendo.pdf",
+        "02_banco_meridional_jcp.pdf",
+        "03_siderurgica_paranaense_proventos.pdf",
+        "04_rede_varejo_jcp_sem_data.pdf",
+        "05_aurora_saneamento_dividendo_datas.pdf",
+        "06_petroquimica_litoral_grupamento.pdf",
+        "08_construtora_horizonte_bonificacao.pdf"
+      ],
+      "issuer_name.pattern_company_sa": [
+        "01_energetica_vale_tiete_dividendo.pdf",
+        "02_banco_meridional_jcp.pdf",
+        "03_siderurgica_paranaense_proventos.pdf",
+        "04_rede_varejo_jcp_sem_data.pdf",
+        "05_aurora_saneamento_dividendo_datas.pdf",
+        "06_petroquimica_litoral_grupamento.pdf",
+        "08_construtora_horizonte_bonificacao.pdf"
+      ],
+      "net.label_valor_liquido": [
+        "02_banco_meridional_jcp.pdf",
+        "03_siderurgica_paranaense_proventos.pdf",
+        "04_rede_varejo_jcp_sem_data.pdf"
+      ],
+      "payment_date.label_data_pagamento": [
+        "01_energetica_vale_tiete_dividendo.pdf",
+        "02_banco_meridional_jcp.pdf",
+        "03_siderurgica_paranaense_proventos.pdf",
+        "05_aurora_saneamento_dividendo_datas.pdf"
+      ],
+      "payment_date.label_data_pagamento.pending": [
+        "04_rede_varejo_jcp_sem_data.pdf"
+      ],
+      "ratio.label_proporcao_colon": [
+        "06_petroquimica_litoral_grupamento.pdf"
+      ],
+      "ratio.phrase_bonus_new_per_held": [
+        "08_construtora_horizonte_bonificacao.pdf"
+      ],
+      "ratio.phrase_existing_to_new": [
+        "06_petroquimica_litoral_grupamento.pdf"
+      ],
+      "record_date.label_data_base": [
+        "01_energetica_vale_tiete_dividendo.pdf",
+        "02_banco_meridional_jcp.pdf",
+        "03_siderurgica_paranaense_proventos.pdf",
+        "04_rede_varejo_jcp_sem_data.pdf",
+        "05_aurora_saneamento_dividendo_datas.pdf",
+        "06_petroquimica_litoral_grupamento.pdf",
+        "08_construtora_horizonte_bonificacao.pdf"
+      ],
+      "share_class.phrase_por_acao": [
+        "01_energetica_vale_tiete_dividendo.pdf",
+        "02_banco_meridional_jcp.pdf",
+        "03_siderurgica_paranaense_proventos.pdf",
+        "04_rede_varejo_jcp_sem_data.pdf",
+        "05_aurora_saneamento_dividendo_datas.pdf"
+      ],
+      "share_credit_date.label_credito_acoes": [
+        "08_construtora_horizonte_bonificacao.pdf"
+      ],
+      "tax_cost.label_custo_atribuido": [
+        "08_construtora_horizonte_bonificacao.pdf"
+      ],
+      "ticker.label_codigo_negociacao": [
+        "01_energetica_vale_tiete_dividendo.pdf",
+        "02_banco_meridional_jcp.pdf",
+        "03_siderurgica_paranaense_proventos.pdf",
+        "04_rede_varejo_jcp_sem_data.pdf",
+        "05_aurora_saneamento_dividendo_datas.pdf",
+        "06_petroquimica_litoral_grupamento.pdf",
+        "08_construtora_horizonte_bonificacao.pdf"
+      ],
+      "withholding.label_imposto_renda": [
+        "01_energetica_vale_tiete_dividendo.pdf",
+        "02_banco_meridional_jcp.pdf",
+        "03_siderurgica_paranaense_proventos.pdf"
+      ],
+      "withholding.label_irrf": [
+        "02_banco_meridional_jcp.pdf",
+        "04_rede_varejo_jcp_sem_data.pdf"
+      ]
+    },
+    "single_document_rules": [
+      "event.bonus_acoes_bonificadas",
+      "event.bonus_bonificacao",
+      "event.jcp_lei_9249",
+      "event.jcp_remuneracao_capital_proprio",
+      "event.reverse_split_grupamento",
+      "event.reverse_split_inplit",
+      "payment_date.label_data_pagamento.pending",
+      "ratio.label_proporcao_colon",
+      "ratio.phrase_bonus_new_per_held",
+      "ratio.phrase_existing_to_new",
+      "share_credit_date.label_credito_acoes",
+      "tax_cost.label_custo_atribuido"
+    ],
+    "never_fired": [
+      "cnpj.pattern",
+      "event.split_desdobramento",
+      "isin.pattern",
+      "record_date.label_data_com",
+      "ticker.pattern"
+    ]
+  },
+  "per_document": [
+    {
+      "document": "01_energetica_vale_tiete_dividendo.pdf",
+      "sha256": "e49afdf81d2a1e4a74985e78fa0ea3639633cfa19f5dba633a2b545d115153cb",
+      "text_layer_usable": true,
+      "event_type": {
+        "expected": "DIVIDEND",
+        "got": "DIVIDEND",
+        "match": true
+      },
+      "fields": {
+        "issuer_name": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "Energética Vale do Tietê S.A.",
+          "got_value": "Energética Vale do Tietê S.A.",
+          "value_match": true
+        },
+        "cnpj": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "12.345.678/0001-90",
+          "got_value": "12.345.678/0001-90",
+          "value_match": true
+        },
+        "isin": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "BRTIETACNOR3",
+          "got_value": "BRTIETACNOR3",
+          "value_match": true
+        },
+        "ticker": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "TIET3",
+          "got_value": "TIET3",
+          "value_match": true
+        },
+        "share_class": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "ON",
+          "got_value": "ON",
+          "value_match": true
+        },
+        "approval_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-05-28",
+          "got_value": "2026-05-28",
+          "value_match": true
+        },
+        "record_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-06-12",
+          "got_value": "2026-06-12",
+          "value_match": true
+        },
+        "ex_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-06-15",
+          "got_value": "2026-06-15",
+          "value_match": true
+        },
+        "payment_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-07-03",
+          "got_value": "2026-07-03",
+          "value_match": true
+        },
+        "gross_amount_per_share": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "0.4275000000",
+          "got_value": "0.4275000000",
+          "value_match": true
+        },
+        "net_amount_per_share": {
+          "expected_status": "not_applicable",
+          "got_status": "not_applicable",
+          "status_match": true,
+          "expected_value": null,
+          "got_value": null,
+          "value_match": null
+        },
+        "withholding_tax": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": {
+            "rate": "0.10",
+            "base": "MONTHLY_EXCESS_OVER_BRL_50000_PER_BENEFICIARY"
+          },
+          "got_value": {
+            "rate": "0.10",
+            "base": null
+          },
+          "value_match": false
+        },
+        "currency": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "BRL",
+          "got_value": "BRL",
+          "value_match": true
+        },
+        "ratio": {
+          "expected_status": "not_applicable",
+          "got_status": "not_applicable",
+          "status_match": true,
+          "expected_value": null,
+          "got_value": null,
+          "value_match": null
+        }
+      },
+      "rules": {
+        "REF_ISIN_FOUND": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_TICKER_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_CNPJ_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_ISSUER_NAME_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_SHARE_CLASS_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_ISSUER_ACTIVE": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REQUIRED_FIELDS_PRESENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REQUIRED_FIELDS_NOT_PENDING": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "CLASSIFICATION_TITLE_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_APPROVAL_NOT_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_RECORD_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_SETTLEMENT_NOT_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "AMOUNT_GROSS_POSITIVE": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "AMOUNT_NET_MATCHES_GROSS_AND_TAX": {
+          "expected": "NOT_EVALUATED",
+          "got": "NOT_EVALUATED",
+          "kind": "match"
+        }
+      },
+      "routing": {
+        "expectation_status": "DEFINED",
+        "expected": "AUTO_APPROVE",
+        "expected_reasons": [],
+        "got": "AUTO_APPROVE",
+        "got_reasons": [],
+        "match": true
+      },
+      "extra_rules_not_in_ground_truth": [
+        "CLASSIFICATION_DETERMINED"
+      ]
+    },
+    {
+      "document": "02_banco_meridional_jcp.pdf",
+      "sha256": "64e0787afd32c0d99e5407a5fbc6f5048245ba70826563d0b14205074b970668",
+      "text_layer_usable": true,
+      "event_type": {
+        "expected": "JCP",
+        "got": "JCP",
+        "match": true
+      },
+      "fields": {
+        "issuer_name": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "Banco Meridional do Brasil S.A.",
+          "got_value": "Banco Meridional do Brasil S.A.",
+          "value_match": true
+        },
+        "cnpj": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "60.111.222/0001-55",
+          "got_value": "60.111.222/0001-55",
+          "value_match": true
+        },
+        "isin": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "BRBMRDACNPR7",
+          "got_value": "BRBMRDACNPR7",
+          "value_match": true
+        },
+        "ticker": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "BMRD4",
+          "got_value": "BMRD4",
+          "value_match": true
+        },
+        "share_class": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "PN",
+          "got_value": "PN",
+          "value_match": true
+        },
+        "approval_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-06-02",
+          "got_value": "2026-06-02",
+          "value_match": true
+        },
+        "record_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-06-16",
+          "got_value": "2026-06-16",
+          "value_match": true
+        },
+        "ex_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-06-17",
+          "got_value": "2026-06-17",
+          "value_match": true
+        },
+        "payment_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-08-14",
+          "got_value": "2026-08-14",
+          "value_match": true
+        },
+        "gross_amount_per_share": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "0.1738420000",
+          "got_value": "0.1738420000",
+          "value_match": true
+        },
+        "net_amount_per_share": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "0.1434196500",
+          "got_value": "0.1434196500",
+          "value_match": true
+        },
+        "withholding_tax": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": {
+            "rate": "0.175",
+            "base": "GROSS_AMOUNT"
+          },
+          "got_value": {
+            "rate": "0.175",
+            "base": "GROSS_AMOUNT"
+          },
+          "value_match": true
+        },
+        "currency": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "BRL",
+          "got_value": "BRL",
+          "value_match": true
+        },
+        "ratio": {
+          "expected_status": "not_applicable",
+          "got_status": "not_applicable",
+          "status_match": true,
+          "expected_value": null,
+          "got_value": null,
+          "value_match": null
+        }
+      },
+      "rules": {
+        "REF_ISIN_FOUND": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_TICKER_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_CNPJ_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_ISSUER_NAME_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_SHARE_CLASS_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_ISSUER_ACTIVE": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REQUIRED_FIELDS_PRESENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REQUIRED_FIELDS_NOT_PENDING": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "CLASSIFICATION_TITLE_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_APPROVAL_NOT_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_RECORD_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_SETTLEMENT_NOT_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "AMOUNT_GROSS_POSITIVE": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "AMOUNT_NET_MATCHES_GROSS_AND_TAX": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        }
+      },
+      "routing": {
+        "expectation_status": "DEFINED",
+        "expected": "AUTO_APPROVE",
+        "expected_reasons": [],
+        "got": "AUTO_APPROVE",
+        "got_reasons": [],
+        "match": true
+      },
+      "extra_rules_not_in_ground_truth": [
+        "CLASSIFICATION_DETERMINED"
+      ]
+    },
+    {
+      "document": "03_siderurgica_paranaense_proventos.pdf",
+      "sha256": "a21a294ac3ededbb6fdef195be0edb0572069544e0b73f6fc1918fa77d6b0e85",
+      "text_layer_usable": true,
+      "event_type": {
+        "expected": "JCP",
+        "got": "JCP",
+        "match": true
+      },
+      "fields": {
+        "issuer_name": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "Companhia Siderúrgica Paranaense S.A.",
+          "got_value": "Companhia Siderúrgica Paranaense S.A.",
+          "value_match": true
+        },
+        "cnpj": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "76.543.210/0001-12",
+          "got_value": "76.543.210/0001-12",
+          "value_match": true
+        },
+        "isin": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "BRCSPRACNOR1",
+          "got_value": "BRCSPRACNOR1",
+          "value_match": true
+        },
+        "ticker": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "CSPR3",
+          "got_value": "CSPR3",
+          "value_match": true
+        },
+        "share_class": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "ON",
+          "got_value": "ON",
+          "value_match": true
+        },
+        "approval_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-06-05",
+          "got_value": "2026-06-05",
+          "value_match": true
+        },
+        "record_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-06-19",
+          "got_value": "2026-06-19",
+          "value_match": true
+        },
+        "ex_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-06-22",
+          "got_value": "2026-06-22",
+          "value_match": true
+        },
+        "payment_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-09-11",
+          "got_value": "2026-09-11",
+          "value_match": true
+        },
+        "gross_amount_per_share": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "0.0921500000",
+          "got_value": "0.0921500000",
+          "value_match": true
+        },
+        "net_amount_per_share": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "0.0760237500",
+          "got_value": "0.0760237500",
+          "value_match": true
+        },
+        "withholding_tax": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": {
+            "rate": "0.175",
+            "base": "GROSS_AMOUNT"
+          },
+          "got_value": {
+            "rate": "0.175",
+            "base": null
+          },
+          "value_match": false
+        },
+        "currency": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "BRL",
+          "got_value": "BRL",
+          "value_match": true
+        },
+        "ratio": {
+          "expected_status": "not_applicable",
+          "got_status": "not_applicable",
+          "status_match": true,
+          "expected_value": null,
+          "got_value": null,
+          "value_match": null
+        }
+      },
+      "rules": {
+        "REF_ISIN_FOUND": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_TICKER_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_CNPJ_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_ISSUER_NAME_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_SHARE_CLASS_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_ISSUER_ACTIVE": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REQUIRED_FIELDS_PRESENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REQUIRED_FIELDS_NOT_PENDING": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "CLASSIFICATION_TITLE_CONSISTENT": {
+          "expected": "FAIL",
+          "got": "FAIL",
+          "kind": "match"
+        },
+        "DATE_APPROVAL_NOT_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_RECORD_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_SETTLEMENT_NOT_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "AMOUNT_GROSS_POSITIVE": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "AMOUNT_NET_MATCHES_GROSS_AND_TAX": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        }
+      },
+      "routing": {
+        "expectation_status": "PROVISIONAL",
+        "expected": "REVIEW_REQUIRED",
+        "expected_reasons": [
+          "CLASSIFICATION_TITLE_CONFLICT"
+        ],
+        "got": "REVIEW_REQUIRED",
+        "got_reasons": [
+          "CLASSIFICATION_TITLE_CONFLICT"
+        ],
+        "match": true
+      },
+      "extra_rules_not_in_ground_truth": [
+        "CLASSIFICATION_DETERMINED"
+      ]
+    },
+    {
+      "document": "04_rede_varejo_jcp_sem_data.pdf",
+      "sha256": "37f846a73cb5486b543bb1e580144c8d94eafee4aa7396424637c063a3bfbb83",
+      "text_layer_usable": true,
+      "event_type": {
+        "expected": "JCP",
+        "got": "JCP",
+        "match": true
+      },
+      "fields": {
+        "issuer_name": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "Rede Varejo Brasil S.A.",
+          "got_value": "Rede Varejo Brasil S.A.",
+          "value_match": true
+        },
+        "cnpj": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "08.777.666/0001-33",
+          "got_value": "08.777.666/0001-33",
+          "value_match": true
+        },
+        "isin": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "BRRVBRACNOR9",
+          "got_value": "BRRVBRACNOR9",
+          "value_match": true
+        },
+        "ticker": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "RVBR3",
+          "got_value": "RVBR3",
+          "value_match": true
+        },
+        "share_class": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "ON",
+          "got_value": "ON",
+          "value_match": true
+        },
+        "approval_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-06-09",
+          "got_value": "2026-06-09",
+          "value_match": true
+        },
+        "record_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-06-23",
+          "got_value": "2026-06-23",
+          "value_match": true
+        },
+        "ex_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-06-24",
+          "got_value": "2026-06-24",
+          "value_match": true
+        },
+        "payment_date": {
+          "expected_status": "declared_pending",
+          "got_status": "declared_pending",
+          "status_match": true,
+          "expected_value": null,
+          "got_value": null,
+          "value_match": null
+        },
+        "gross_amount_per_share": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "0.2050000000",
+          "got_value": "0.2050000000",
+          "value_match": true
+        },
+        "net_amount_per_share": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "0.1691250000",
+          "got_value": "0.1691250000",
+          "value_match": true
+        },
+        "withholding_tax": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": {
+            "rate": "0.175",
+            "base": "GROSS_AMOUNT"
+          },
+          "got_value": {
+            "rate": "0.175",
+            "base": "GROSS_AMOUNT"
+          },
+          "value_match": true
+        },
+        "currency": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "BRL",
+          "got_value": "BRL",
+          "value_match": true
+        },
+        "ratio": {
+          "expected_status": "not_applicable",
+          "got_status": "not_applicable",
+          "status_match": true,
+          "expected_value": null,
+          "got_value": null,
+          "value_match": null
+        }
+      },
+      "rules": {
+        "REF_ISIN_FOUND": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_TICKER_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_CNPJ_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_ISSUER_NAME_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_SHARE_CLASS_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_ISSUER_ACTIVE": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REQUIRED_FIELDS_PRESENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REQUIRED_FIELDS_NOT_PENDING": {
+          "expected": "FAIL",
+          "got": "FAIL",
+          "kind": "match"
+        },
+        "CLASSIFICATION_TITLE_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_APPROVAL_NOT_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_RECORD_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_SETTLEMENT_NOT_BEFORE_EX": {
+          "expected": "NOT_EVALUATED",
+          "got": "NOT_EVALUATED",
+          "kind": "match"
+        },
+        "AMOUNT_GROSS_POSITIVE": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "AMOUNT_NET_MATCHES_GROSS_AND_TAX": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        }
+      },
+      "routing": {
+        "expectation_status": "DEFINED",
+        "expected": "REVIEW_REQUIRED",
+        "expected_reasons": [
+          "PAYMENT_DATE_PENDING"
+        ],
+        "got": "REVIEW_REQUIRED",
+        "got_reasons": [
+          "PAYMENT_DATE_PENDING"
+        ],
+        "match": true
+      },
+      "extra_rules_not_in_ground_truth": [
+        "CLASSIFICATION_DETERMINED"
+      ]
+    },
+    {
+      "document": "05_aurora_saneamento_dividendo_datas.pdf",
+      "sha256": "925b6eb09fbcaecf81d3c1d125e041edd1460fed23d6a67bf10f8a6b170e9567",
+      "text_layer_usable": true,
+      "event_type": {
+        "expected": "DIVIDEND",
+        "got": "DIVIDEND",
+        "match": true
+      },
+      "fields": {
+        "issuer_name": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "Aurora Saneamento S.A.",
+          "got_value": "Aurora Saneamento S.A.",
+          "value_match": true
+        },
+        "cnpj": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "22.333.444/0001-77",
+          "got_value": "22.333.444/0001-77",
+          "value_match": true
+        },
+        "isin": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "BRAURSACNOR4",
+          "got_value": "BRAURSACNOR4",
+          "value_match": true
+        },
+        "ticker": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "AURS3",
+          "got_value": "AURS3",
+          "value_match": true
+        },
+        "share_class": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "ON",
+          "got_value": "ON",
+          "value_match": true
+        },
+        "approval_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-06-01",
+          "got_value": "2026-06-01",
+          "value_match": true
+        },
+        "record_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-07-15",
+          "got_value": "2026-07-15",
+          "value_match": true
+        },
+        "ex_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-07-16",
+          "got_value": "2026-07-16",
+          "value_match": true
+        },
+        "payment_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-07-10",
+          "got_value": "2026-07-10",
+          "value_match": true
+        },
+        "gross_amount_per_share": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "0.3100000000",
+          "got_value": "0.3100000000",
+          "value_match": true
+        },
+        "net_amount_per_share": {
+          "expected_status": "not_applicable",
+          "got_status": "not_applicable",
+          "status_match": true,
+          "expected_value": null,
+          "got_value": null,
+          "value_match": null
+        },
+        "withholding_tax": {
+          "expected_status": "not_found",
+          "got_status": "not_found",
+          "status_match": true,
+          "expected_value": null,
+          "got_value": null,
+          "value_match": null
+        },
+        "currency": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "BRL",
+          "got_value": "BRL",
+          "value_match": true
+        },
+        "ratio": {
+          "expected_status": "not_applicable",
+          "got_status": "not_applicable",
+          "status_match": true,
+          "expected_value": null,
+          "got_value": null,
+          "value_match": null
+        }
+      },
+      "rules": {
+        "REF_ISIN_FOUND": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_TICKER_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_CNPJ_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_ISSUER_NAME_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_SHARE_CLASS_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_ISSUER_ACTIVE": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REQUIRED_FIELDS_PRESENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REQUIRED_FIELDS_NOT_PENDING": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "CLASSIFICATION_TITLE_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_APPROVAL_NOT_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_RECORD_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_SETTLEMENT_NOT_BEFORE_EX": {
+          "expected": "FAIL",
+          "got": "FAIL",
+          "kind": "match"
+        },
+        "AMOUNT_GROSS_POSITIVE": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "AMOUNT_NET_MATCHES_GROSS_AND_TAX": {
+          "expected": "NOT_EVALUATED",
+          "got": "NOT_EVALUATED",
+          "kind": "match"
+        }
+      },
+      "routing": {
+        "expectation_status": "DEFINED",
+        "expected": "REVIEW_REQUIRED",
+        "expected_reasons": [
+          "DATE_INCONSISTENCY"
+        ],
+        "got": "REVIEW_REQUIRED",
+        "got_reasons": [
+          "DATE_INCONSISTENCY"
+        ],
+        "match": true
+      },
+      "extra_rules_not_in_ground_truth": [
+        "CLASSIFICATION_DETERMINED"
+      ]
+    },
+    {
+      "document": "06_petroquimica_litoral_grupamento.pdf",
+      "sha256": "147d83f038f6ca94495a5d5248f36a6feedee7ae9a5cebc011d40e1f14d68068",
+      "text_layer_usable": true,
+      "event_type": {
+        "expected": "REVERSE_SPLIT",
+        "got": "REVERSE_SPLIT",
+        "match": true
+      },
+      "fields": {
+        "issuer_name": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "Petroquímica Litoral S.A.",
+          "got_value": "Petroquímica Litoral S.A.",
+          "value_match": true
+        },
+        "cnpj": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "55.666.777/0001-08",
+          "got_value": "55.666.777/0001-08",
+          "value_match": true
+        },
+        "isin": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "BRPQLTACNOR8",
+          "got_value": "BRPQLTACNOR8",
+          "value_match": true
+        },
+        "ticker": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "PQLT3",
+          "got_value": "PQLT3",
+          "value_match": true
+        },
+        "share_class": {
+          "expected_status": "not_found",
+          "got_status": "not_found",
+          "status_match": true,
+          "expected_value": null,
+          "got_value": null,
+          "value_match": null
+        },
+        "approval_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-05-30",
+          "got_value": "2026-05-30",
+          "value_match": true
+        },
+        "record_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-06-26",
+          "got_value": "2026-06-26",
+          "value_match": true
+        },
+        "ex_date": {
+          "expected_status": "found",
+          "got_status": "not_found",
+          "status_match": false,
+          "expected_value": "2026-06-29",
+          "got_value": null,
+          "value_match": false
+        },
+        "payment_date": {
+          "expected_status": "not_applicable",
+          "got_status": "not_applicable",
+          "status_match": true,
+          "expected_value": null,
+          "got_value": null,
+          "value_match": null
+        },
+        "gross_amount_per_share": {
+          "expected_status": "not_applicable",
+          "got_status": "not_applicable",
+          "status_match": true,
+          "expected_value": null,
+          "got_value": null,
+          "value_match": null
+        },
+        "net_amount_per_share": {
+          "expected_status": "not_applicable",
+          "got_status": "not_applicable",
+          "status_match": true,
+          "expected_value": null,
+          "got_value": null,
+          "value_match": null
+        },
+        "withholding_tax": {
+          "expected_status": "not_applicable",
+          "got_status": "not_applicable",
+          "status_match": true,
+          "expected_value": null,
+          "got_value": null,
+          "value_match": null
+        },
+        "currency": {
+          "expected_status": "not_applicable",
+          "got_status": "not_applicable",
+          "status_match": true,
+          "expected_value": null,
+          "got_value": null,
+          "value_match": null
+        },
+        "ratio": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": {
+            "shares_before": "10",
+            "shares_after": "1"
+          },
+          "got_value": {
+            "shares_before": "10",
+            "shares_after": "1"
+          },
+          "value_match": true
+        },
+        "fraction_adjustment_period": {
+          "expected_status": "found",
+          "got_status": "ABSENT",
+          "status_match": false,
+          "expected_value": {
+            "start": "2026-06-29",
+            "end": "2026-07-28"
+          },
+          "got_value": null,
+          "value_match": false
+        }
+      },
+      "rules": {
+        "REF_ISIN_FOUND": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_TICKER_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_CNPJ_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_ISSUER_NAME_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REF_SHARE_CLASS_CONSISTENT": {
+          "expected": "NOT_EVALUATED",
+          "got": "NOT_EVALUATED",
+          "kind": "match"
+        },
+        "REF_ISSUER_ACTIVE": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REQUIRED_FIELDS_PRESENT": {
+          "expected": "PASS",
+          "got": "FAIL",
+          "kind": "false_positive"
+        },
+        "REQUIRED_FIELDS_NOT_PENDING": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "CLASSIFICATION_TITLE_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_APPROVAL_NOT_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_RECORD_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "NOT_EVALUATED",
+          "kind": "other_mismatch"
+        },
+        "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "NOT_EVALUATED",
+          "kind": "other_mismatch"
+        },
+        "DATE_SETTLEMENT_NOT_BEFORE_EX": {
+          "expected": "NOT_EVALUATED",
+          "got": "NOT_EVALUATED",
+          "kind": "match"
+        },
+        "RATIO_POSITIVE": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        }
+      },
+      "routing": {
+        "expectation_status": "DEFINED",
+        "expected": "AUTO_APPROVE",
+        "expected_reasons": [],
+        "got": "REVIEW_REQUIRED",
+        "got_reasons": [
+          "REQUIRED_FIELD_MISSING"
+        ],
+        "match": false
+      },
+      "extra_rules_not_in_ground_truth": [
+        "CLASSIFICATION_DETERMINED"
+      ]
+    },
+    {
+      "document": "07_telecom_norte_jcp_SCAN.pdf",
+      "sha256": "cf4af08dd23f507ae72b852d86827bbee6c3fe2d0e31f96e70bc74ea4238c45f",
+      "text_layer_usable": false,
+      "event_type": {
+        "expected": "JCP",
+        "got": null,
+        "match": false
+      },
+      "fields": {
+        "issuer_name": {
+          "expected_status": "found",
+          "got_status": "ABSENT",
+          "status_match": false,
+          "expected_value": "Telecom Norte Participações S.A.",
+          "got_value": null,
+          "value_match": false
+        },
+        "cnpj": {
+          "expected_status": "found",
+          "got_status": "ABSENT",
+          "status_match": false,
+          "expected_value": "33.222.111/0001-44",
+          "got_value": null,
+          "value_match": false
+        },
+        "isin": {
+          "expected_status": "found",
+          "got_status": "ABSENT",
+          "status_match": false,
+          "expected_value": "BRTLNRACNPR2",
+          "got_value": null,
+          "value_match": false
+        },
+        "ticker": {
+          "expected_status": "found",
+          "got_status": "ABSENT",
+          "status_match": false,
+          "expected_value": "TLNR4",
+          "got_value": null,
+          "value_match": false
+        },
+        "share_class": {
+          "expected_status": "found",
+          "got_status": "ABSENT",
+          "status_match": false,
+          "expected_value": "PN",
+          "got_value": null,
+          "value_match": false
+        },
+        "approval_date": {
+          "expected_status": "found",
+          "got_status": "ABSENT",
+          "status_match": false,
+          "expected_value": "2026-06-06",
+          "got_value": null,
+          "value_match": false
+        },
+        "record_date": {
+          "expected_status": "found",
+          "got_status": "ABSENT",
+          "status_match": false,
+          "expected_value": "2026-06-22",
+          "got_value": null,
+          "value_match": false
+        },
+        "ex_date": {
+          "expected_status": "found",
+          "got_status": "ABSENT",
+          "status_match": false,
+          "expected_value": "2026-06-23",
+          "got_value": null,
+          "value_match": false
+        },
+        "payment_date": {
+          "expected_status": "found",
+          "got_status": "ABSENT",
+          "status_match": false,
+          "expected_value": "2026-08-21",
+          "got_value": null,
+          "value_match": false
+        },
+        "gross_amount_per_share": {
+          "expected_status": "found",
+          "got_status": "ABSENT",
+          "status_match": false,
+          "expected_value": "0.1124300000",
+          "got_value": null,
+          "value_match": false
+        },
+        "net_amount_per_share": {
+          "expected_status": "found",
+          "got_status": "ABSENT",
+          "status_match": false,
+          "expected_value": "0.0927547500",
+          "got_value": null,
+          "value_match": false
+        },
+        "withholding_tax": {
+          "expected_status": "found",
+          "got_status": "ABSENT",
+          "status_match": false,
+          "expected_value": {
+            "rate": "0.175",
+            "base": "GROSS_AMOUNT"
+          },
+          "got_value": null,
+          "value_match": false
+        },
+        "currency": {
+          "expected_status": "found",
+          "got_status": "ABSENT",
+          "status_match": false,
+          "expected_value": "BRL",
+          "got_value": null,
+          "value_match": false
+        },
+        "ratio": {
+          "expected_status": "not_applicable",
+          "got_status": "ABSENT",
+          "status_match": false,
+          "expected_value": null,
+          "got_value": null,
+          "value_match": null
+        }
+      },
+      "rules": {
+        "REF_ISIN_FOUND": {
+          "expected": "PASS",
+          "got": "ABSENT",
+          "kind": "other_mismatch"
+        },
+        "REF_TICKER_CONSISTENT": {
+          "expected": "PASS",
+          "got": "ABSENT",
+          "kind": "other_mismatch"
+        },
+        "REF_CNPJ_CONSISTENT": {
+          "expected": "PASS",
+          "got": "ABSENT",
+          "kind": "other_mismatch"
+        },
+        "REF_ISSUER_NAME_CONSISTENT": {
+          "expected": "PASS",
+          "got": "ABSENT",
+          "kind": "other_mismatch"
+        },
+        "REF_SHARE_CLASS_CONSISTENT": {
+          "expected": "PASS",
+          "got": "ABSENT",
+          "kind": "other_mismatch"
+        },
+        "REF_ISSUER_ACTIVE": {
+          "expected": "PASS",
+          "got": "ABSENT",
+          "kind": "other_mismatch"
+        },
+        "REQUIRED_FIELDS_PRESENT": {
+          "expected": "PASS",
+          "got": "ABSENT",
+          "kind": "other_mismatch"
+        },
+        "REQUIRED_FIELDS_NOT_PENDING": {
+          "expected": "PASS",
+          "got": "ABSENT",
+          "kind": "other_mismatch"
+        },
+        "CLASSIFICATION_TITLE_CONSISTENT": {
+          "expected": "PASS",
+          "got": "ABSENT",
+          "kind": "other_mismatch"
+        },
+        "DATE_APPROVAL_NOT_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "ABSENT",
+          "kind": "other_mismatch"
+        },
+        "DATE_RECORD_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "ABSENT",
+          "kind": "other_mismatch"
+        },
+        "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "ABSENT",
+          "kind": "other_mismatch"
+        },
+        "DATE_SETTLEMENT_NOT_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "ABSENT",
+          "kind": "other_mismatch"
+        },
+        "AMOUNT_GROSS_POSITIVE": {
+          "expected": "PASS",
+          "got": "ABSENT",
+          "kind": "other_mismatch"
+        },
+        "AMOUNT_NET_MATCHES_GROSS_AND_TAX": {
+          "expected": "PASS",
+          "got": "ABSENT",
+          "kind": "other_mismatch"
+        }
+      },
+      "routing": {
+        "expectation_status": "POLICY_DEPENDENT",
+        "expected": null,
+        "expected_reasons": [],
+        "got": "REVIEW_REQUIRED",
+        "got_reasons": [
+          "NO_USABLE_TEXT_LAYER"
+        ],
+        "match": null
+      },
+      "extra_rules_not_in_ground_truth": []
+    },
+    {
+      "document": "08_construtora_horizonte_bonificacao.pdf",
+      "sha256": "a509637f4b258454309e1d21e81beca56701a78624b8a6a6f9a6b0ec9389b0e5",
+      "text_layer_usable": true,
+      "event_type": {
+        "expected": "BONUS_SHARES",
+        "got": "BONUS_SHARES",
+        "match": true
+      },
+      "fields": {
+        "issuer_name": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "Construtora Horizonte S.A.",
+          "got_value": "Construtora Horizonte S.A.",
+          "value_match": true
+        },
+        "cnpj": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "09.888.999/0001-21",
+          "got_value": "09.888.999/0001-21",
+          "value_match": true
+        },
+        "isin": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "BRCNHZACNOR5",
+          "got_value": "BRCNHZACNOR5",
+          "value_match": true
+        },
+        "ticker": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "CNHZ3",
+          "got_value": "CNHZ3",
+          "value_match": true
+        },
+        "share_class": {
+          "expected_status": "not_found",
+          "got_status": "not_found",
+          "status_match": true,
+          "expected_value": null,
+          "got_value": null,
+          "value_match": null
+        },
+        "approval_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-06-04",
+          "got_value": "2026-06-04",
+          "value_match": true
+        },
+        "record_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-06-18",
+          "got_value": "2026-06-18",
+          "value_match": true
+        },
+        "ex_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-06-19",
+          "got_value": "2026-06-19",
+          "value_match": true
+        },
+        "payment_date": {
+          "expected_status": "not_applicable",
+          "got_status": "not_applicable",
+          "status_match": true,
+          "expected_value": null,
+          "got_value": null,
+          "value_match": null
+        },
+        "gross_amount_per_share": {
+          "expected_status": "not_applicable",
+          "got_status": "not_applicable",
+          "status_match": true,
+          "expected_value": null,
+          "got_value": null,
+          "value_match": null
+        },
+        "net_amount_per_share": {
+          "expected_status": "not_applicable",
+          "got_status": "not_applicable",
+          "status_match": true,
+          "expected_value": null,
+          "got_value": null,
+          "value_match": null
+        },
+        "withholding_tax": {
+          "expected_status": "not_applicable",
+          "got_status": "not_applicable",
+          "status_match": true,
+          "expected_value": null,
+          "got_value": null,
+          "value_match": null
+        },
+        "currency": {
+          "expected_status": "not_applicable",
+          "got_status": "not_applicable",
+          "status_match": true,
+          "expected_value": null,
+          "got_value": null,
+          "value_match": null
+        },
+        "ratio": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": {
+            "shares_held": "20",
+            "bonus_shares": "1",
+            "percentage": "0.05"
+          },
+          "got_value": {
+            "shares_held": "20",
+            "bonus_shares": "1",
+            "percentage": "0.05"
+          },
+          "value_match": true
+        },
+        "share_credit_date": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": "2026-06-26",
+          "got_value": "2026-06-26",
+          "value_match": true
+        },
+        "tax_cost_per_share": {
+          "expected_status": "found",
+          "got_status": "found",
+          "status_match": true,
+          "expected_value": {
+            "amount": "7.820000",
+            "currency": "BRL"
+          },
+          "got_value": {
+            "amount": "7.820000",
+            "currency": "BRL"
+          },
+          "value_match": true
+        }
+      },
+      "rules": {
+        "REF_ISIN_FOUND": {
+          "expected": "FAIL",
+          "got": "FAIL",
+          "kind": "match"
+        },
+        "REF_TICKER_CONSISTENT": {
+          "expected": "NOT_EVALUATED",
+          "got": "NOT_EVALUATED",
+          "kind": "match"
+        },
+        "REF_CNPJ_CONSISTENT": {
+          "expected": "NOT_EVALUATED",
+          "got": "NOT_EVALUATED",
+          "kind": "match"
+        },
+        "REF_ISSUER_NAME_CONSISTENT": {
+          "expected": "NOT_EVALUATED",
+          "got": "NOT_EVALUATED",
+          "kind": "match"
+        },
+        "REF_SHARE_CLASS_CONSISTENT": {
+          "expected": "NOT_EVALUATED",
+          "got": "NOT_EVALUATED",
+          "kind": "match"
+        },
+        "REF_ISSUER_ACTIVE": {
+          "expected": "NOT_EVALUATED",
+          "got": "NOT_EVALUATED",
+          "kind": "match"
+        },
+        "REQUIRED_FIELDS_PRESENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "REQUIRED_FIELDS_NOT_PENDING": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "CLASSIFICATION_TITLE_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_APPROVAL_NOT_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_RECORD_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "DATE_SETTLEMENT_NOT_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "RATIO_POSITIVE": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        },
+        "RATIO_PERCENTAGE_CONSISTENT": {
+          "expected": "PASS",
+          "got": "PASS",
+          "kind": "match"
+        }
+      },
+      "routing": {
+        "expectation_status": "DEFINED",
+        "expected": "REVIEW_REQUIRED",
+        "expected_reasons": [
+          "REFERENCE_NOT_FOUND"
+        ],
+        "got": "REVIEW_REQUIRED",
+        "got_reasons": [
+          "REFERENCE_NOT_FOUND"
+        ],
+        "match": true
+      },
+      "extra_rules_not_in_ground_truth": [
+        "CLASSIFICATION_DETERMINED"
+      ]
+    }
+  ]
+}

@@ -28,6 +28,7 @@ Formato:
 - **Evidência:** Instrução do usuário; confirmação do material.
 - **Alternativas consideradas:** Achatar a pasta raiz do zip (`case/documents/...`) — rejeitado para não alterar a estrutura original.
 - **Consequências:** Caminhos com espaços (`Case AI Dev - Envio`, `golden records.csv`) precisam ser tratados no código. Os nomes divergem do enunciado (`documentos/`, `golden_records.csv`).
+- **Adendo (2026-09-29, checkpoint git):** o `core.autocrlf` do ambiente tratava os PDFs do ReportLab (quase ASCII) como texto e converteria fins de linha num clone, alterando os bytes e os SHA-256. O `.gitattributes` marca `case/** -text -diff` e `*.pdf binary`. Verificado: os blobs versionados são byte a byte idênticos aos originais.
 
 ## D-001 — Trabalho orientado por hipóteses, com documentação separada por natureza
 
@@ -155,6 +156,45 @@ Formato:
 - **Tipo:** princípio
 - **Decisão:** Um documento escaneado (ou extraído por qualquer método) não vai para revisão só por causa do método. O roteamento decorre da evidência e da confiança obtidas e do resultado das validações. Quando **nenhum** método disponível consegue extrair o conteúdo (ex.: sem camada de texto e sem fallback), o motivo é `NO_USABLE_TEXT_LAYER`: falha de extração, não "é scan". O roteamento definitivo do doc 07 fica `POLICY_DEPENDENT` até os experimentos de OCR/visão.
 - **Evidência:** Decisão do usuário.
+
+## D-012 — Modelo de resultado de validação e severidade
+
+- **Data:** 2026-09-29
+- **Status:** ACCEPTED (severidades revisáveis conforme a política evoluir)
+- **Tipo:** técnica — arquitetural
+- **Contexto:** A implementação do validation engine (Baseline A) exigiu fixar a semântica dos resultados e quais falhas bloqueiam.
+- **Decisão:**
+  1. O validation engine é separado da extração. Recebe o registro candidato normalizado e devolve, por regra: `rule_id`, `status` (`PASS` | `FAIL` | `NOT_EVALUATED`), `severity` (`ERROR` | `WARNING`), valores observados e mensagem.
+  2. Se falta um dado de que a regra depende (não encontrado, pendente, não aplicável ou sem linha de referência), o resultado é `NOT_EVALUATED` com a dependência nomeada. **Nunca `FAIL`.**
+  3. Grupos de regras que não se aplicam ao tipo de evento (valores para eventos em ações; proporção para eventos em dinheiro) não são executados e ficam listados em `rule_groups_not_applicable`.
+  4. Só `FAIL` com severidade `ERROR` bloqueia a aprovação automática. `WARNING` fica registrado, mas não bloqueia.
+  5. Severidades atuais:
+     - `DATE_EX_NEXT_WEEKDAY_AFTER_RECORD` = `WARNING`, porque sem calendário de feriados (D-006) daria falso alarme após feriados;
+     - `REF_ISSUER_NAME_CONSISTENT` = `WARNING`, porque a grafia da razão social varia legitimamente e a identidade é garantida por ISIN + ticker + CNPJ;
+     - todas as demais = `ERROR`.
+  6. `CLASSIFICATION_TITLE_CONSISTENT` = `ERROR` reflete a política **provisória** do doc 03 (Q-10).
+- **Evidência:** E-002 (nenhum falso negativo de validação; nenhum FAIL indevido por dependência ausente); `tests/test_validation.py`.
+- **Consequências:** O roteamento lê só `status` + `severity`; mudar uma política significa mudar uma severidade, não reescrever a regra.
+
+## D-013 — Campo não suportado pelo extrator é declarado, não reportado como `not_found`
+
+- **Data:** 2026-09-29
+- **Status:** ACCEPTED
+- **Tipo:** princípio de honestidade da saída
+- **Contexto:** O Baseline A não extrai `fraction_adjustment_period`. Reportá-lo como `not_found` afirmaria falsamente que o documento não traz a informação. Da mesma forma, um documento sem camada de texto não foi lido e, portanto, não permite afirmar ausência de nenhum campo.
+- **Decisão:** Campos que o extrator não suporta ficam em `extraction.unsupported_fields` e não aparecem como `not_found`. Documento sem extração possível sai com `fields: {}` e `extraction.status = NOT_POSSIBLE`, sem nenhuma afirmação sobre o conteúdo.
+- **Evidência:** E-002; `tests/test_pipeline.py`.
+
+## D-014 — Avaliação separada do pipeline; artefatos de experimento versionados
+
+- **Data:** 2026-09-29
+- **Status:** ACCEPTED
+- **Tipo:** processo / avaliação
+- **Decisão:**
+  1. O harness de avaliação (`src/evaluation/`) é o único código que lê o gabarito; o pipeline (`src/corporate_actions/`) nunca o lê.
+  2. Runs ad hoc vão para `outputs/runs/` (ignorado pelo git). Runs que sustentam um experimento registrado vão para `outputs/experiments/<E-xxx>/`, versionados junto com o relatório de avaliação.
+  3. As métricas são reportadas por camada (extração, validação, roteamento, operacional), sem métrica única agregada, e separando "todos os documentos" de "documentos com camada de texto".
+- **Evidência:** E-002.
 
 ---
 
