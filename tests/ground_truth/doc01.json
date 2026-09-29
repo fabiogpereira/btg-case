@@ -1,0 +1,249 @@
+{
+  "ground_truth_version": "2.0",
+  "document": {
+    "sha256": "e49afdf81d2a1e4a74985e78fa0ea3639633cfa19f5dba633a2b545d115153cb",
+    "file_name": "01_energetica_vale_tiete_dividendo.pdf",
+    "text_layer": "native",
+    "evidence_source": "pypdf_text_layer"
+  },
+  "document_truth": {
+    "classification": {
+      "event_type": "DIVIDEND",
+      "subtype_as_declared": null,
+      "title_as_declared": "AVISO AOS ACIONISTAS — Pagamento de Dividendos",
+      "title_consistent_with_content": true,
+      "evidence": [
+        "aprovou a distribuição de dividendos referentes ao resultado do exercício social encerrado em 31 de dezembro de 2025",
+        "Tipo de evento Dividendo"
+      ],
+      "traps": [
+        "à alíquota de 10% sobre a parcela que exceder R$ 50.000,00 mensais por beneficiário"
+      ],
+      "source_label": "Tipo de evento"
+    },
+    "fields": {
+      "issuer_name": {
+        "status": "found",
+        "value": "Energética Vale do Tietê S.A.",
+        "raw": "Energética Vale do Tietê S.A.",
+        "source_label": null,
+        "location": "body",
+        "evidence": [
+          "A Energética Vale do Tietê S.A. (“Companhia”)"
+        ]
+      },
+      "cnpj": {
+        "status": "found",
+        "value": "12.345.678/0001-90",
+        "raw": "12.345.678/0001-90",
+        "source_label": "CNPJ/ME nº",
+        "location": "header",
+        "evidence": [
+          "CNPJ/ME nº 12.345.678/0001-90"
+        ]
+      },
+      "isin": {
+        "status": "found",
+        "value": "BRTIETACNOR3",
+        "raw": "BRTIETACNOR3",
+        "source_label": "ISIN",
+        "location": "table",
+        "evidence": [
+          "Código de negociação TIET3 (ISIN BRTIETACNOR3)"
+        ]
+      },
+      "ticker": {
+        "status": "found",
+        "value": "TIET3",
+        "raw": "TIET3",
+        "source_label": "Código de negociação",
+        "location": "table",
+        "evidence": [
+          "Código de negociação TIET3 (ISIN BRTIETACNOR3)"
+        ]
+      },
+      "share_class": {
+        "status": "found",
+        "value": "ON",
+        "raw": "ação ordinária (ON)",
+        "source_label": null,
+        "location": "table",
+        "evidence": [
+          "Valor bruto por ação ordinária (ON)"
+        ]
+      },
+      "approval_date": {
+        "status": "found",
+        "value": "2026-05-28",
+        "raw": "28/05/2026",
+        "source_label": "Data de aprovação (RCA)",
+        "location": "table",
+        "evidence": [
+          "Data de aprovação (RCA) 28/05/2026",
+          "em reunião realizada em 28 de maio de 2026"
+        ],
+        "notes": "approving_body=RCA (Conselho de Administração). Tabela e corpo concordam."
+      },
+      "record_date": {
+        "status": "found",
+        "value": "2026-06-12",
+        "raw": "12/06/2026",
+        "source_label": "Data-base (“data com”)",
+        "location": "table",
+        "evidence": [
+          "Data-base (“data com”) 12/06/2026",
+          "posição acionária final do dia 12 de junho de 2026"
+        ]
+      },
+      "ex_date": {
+        "status": "found",
+        "value": "2026-06-15",
+        "raw": "15/06/2026",
+        "source_label": "Data “ex-dividendos”",
+        "location": "table",
+        "evidence": [
+          "Data “ex-dividendos” 15/06/2026"
+        ]
+      },
+      "payment_date": {
+        "status": "found",
+        "value": "2026-07-03",
+        "raw": "03/07/2026",
+        "source_label": "Data de pagamento",
+        "location": "table",
+        "evidence": [
+          "Data de pagamento 03/07/2026"
+        ]
+      },
+      "gross_amount_per_share": {
+        "status": "found",
+        "value": "0.4275000000",
+        "raw": "R$ 0,4275000000",
+        "source_label": "Valor bruto por ação ordinária (ON)",
+        "location": "table",
+        "evidence": [
+          "Valor bruto por ação ordinária (ON) R$ 0,4275000000"
+        ]
+      },
+      "net_amount_per_share": {
+        "status": "not_applicable",
+        "value": null,
+        "raw": null,
+        "source_label": null,
+        "evidence": [],
+        "notes": "Dividendo: o IR depende do beneficiário (só sobre o excedente de R$ 50 mil/mês). Não existe líquido por ação no nível do emissor; não calcular."
+      },
+      "withholding_tax": {
+        "status": "found",
+        "value": {
+          "rate": "0.10",
+          "base": "MONTHLY_EXCESS_OVER_BRL_50000_PER_BENEFICIARY"
+        },
+        "raw": "10% sobre a parcela que exceder R$ 50.000,00 mensais por beneficiário",
+        "source_label": null,
+        "location": "body",
+        "evidence": [
+          "à alíquota de 10% sobre a parcela que exceder R$ 50.000,00 mensais por beneficiário pagos por esta Companhia"
+        ],
+        "notes": "Alíquota condicional ao beneficiário; não é retenção fixa sobre o bruto."
+      },
+      "currency": {
+        "status": "found",
+        "value": "BRL",
+        "raw": "R$",
+        "source_label": null,
+        "location": "table",
+        "evidence": [
+          "R$ 0,4275000000"
+        ]
+      },
+      "ratio": {
+        "status": "not_applicable",
+        "value": null,
+        "raw": null,
+        "source_label": null,
+        "evidence": []
+      }
+    },
+    "event_specific_fields": {}
+  },
+  "validation_truth": {
+    "reference": {
+      "golden_match": true,
+      "matched_ticker": "TIET3"
+    },
+    "rules": [
+      {
+        "rule_id": "REF_ISIN_FOUND",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_TICKER_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_CNPJ_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_ISSUER_ACTIVE",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REQUIRED_FIELDS_PRESENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_RECORD_BEFORE_EX",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+        "expected": "PASS",
+        "note": "sex 12/06 → seg 15/06"
+      },
+      {
+        "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "AMOUNT_GROSS_POSITIVE",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+        "expected": "NOT_EVALUATED",
+        "note": "sem líquido (not_applicable)"
+      }
+    ]
+  },
+  "routing_expectation": {
+    "expectation_status": "DEFINED",
+    "decision": "AUTO_APPROVE",
+    "reason_codes": [],
+    "acceptable_alternatives": [],
+    "rationale": "Todos os campos obrigatórios presentes com evidência; referência e regras aprovadas.",
+    "policy_refs": []
+  },
+  "open_points": []
+}

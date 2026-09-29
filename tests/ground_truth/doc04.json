@@ -1,0 +1,257 @@
+{
+  "ground_truth_version": "2.0",
+  "document": {
+    "sha256": "37f846a73cb5486b543bb1e580144c8d94eafee4aa7396424637c063a3bfbb83",
+    "file_name": "04_rede_varejo_jcp_sem_data.pdf",
+    "text_layer": "native",
+    "evidence_source": "pypdf_text_layer"
+  },
+  "document_truth": {
+    "classification": {
+      "event_type": "JCP",
+      "subtype_as_declared": null,
+      "title_as_declared": "AVISO AOS ACIONISTAS — Juros sobre o Capital Próprio",
+      "title_consistent_with_content": true,
+      "evidence": [
+        "aprovou o pagamento de Juros sobre o Capital Próprio (JCP), com retenção de IRRF de 17,5% sobre o valor bruto",
+        "Tipo de evento Juros sobre o Capital Próprio (JCP)"
+      ],
+      "traps": [],
+      "source_label": "Tipo de evento"
+    },
+    "fields": {
+      "issuer_name": {
+        "status": "found",
+        "value": "Rede Varejo Brasil S.A.",
+        "raw": "Rede Varejo Brasil S.A.",
+        "source_label": null,
+        "location": "body",
+        "evidence": [
+          "A Rede Varejo Brasil S.A. informa"
+        ]
+      },
+      "cnpj": {
+        "status": "found",
+        "value": "08.777.666/0001-33",
+        "raw": "08.777.666/0001-33",
+        "source_label": "CNPJ/ME nº",
+        "location": "header",
+        "evidence": [
+          "CNPJ/ME nº 08.777.666/0001-33"
+        ]
+      },
+      "isin": {
+        "status": "found",
+        "value": "BRRVBRACNOR9",
+        "raw": "BRRVBRACNOR9",
+        "source_label": "ISIN",
+        "location": "table",
+        "evidence": [
+          "Código de negociação RVBR3 (ISIN BRRVBRACNOR9)"
+        ]
+      },
+      "ticker": {
+        "status": "found",
+        "value": "RVBR3",
+        "raw": "RVBR3",
+        "source_label": "Código de negociação",
+        "location": "table",
+        "evidence": [
+          "Código de negociação RVBR3 (ISIN BRRVBRACNOR9)"
+        ]
+      },
+      "share_class": {
+        "status": "found",
+        "value": "ON",
+        "raw": "ação ON",
+        "source_label": null,
+        "location": "table",
+        "evidence": [
+          "Valor bruto por ação ON"
+        ]
+      },
+      "approval_date": {
+        "status": "found",
+        "value": "2026-06-09",
+        "raw": "09 de junho de 2026",
+        "source_label": null,
+        "location": "body",
+        "evidence": [
+          "o Conselho de Administração, em reunião realizada em 09 de junho de 2026, aprovou o pagamento"
+        ],
+        "notes": "approving_body=RCA. Só no corpo, por extenso."
+      },
+      "record_date": {
+        "status": "found",
+        "value": "2026-06-23",
+        "raw": "23/06/2026",
+        "source_label": "Data-base (“data com”)",
+        "location": "table",
+        "evidence": [
+          "Data-base (“data com”) 23/06/2026",
+          "ao final do dia 23 de junho de 2026 (“data com”)"
+        ]
+      },
+      "ex_date": {
+        "status": "found",
+        "value": "2026-06-24",
+        "raw": "24/06/2026",
+        "source_label": "Data “ex-JCP”",
+        "location": "table",
+        "evidence": [
+          "Data “ex-JCP” 24/06/2026"
+        ]
+      },
+      "payment_date": {
+        "status": "declared_pending",
+        "value": null,
+        "raw": "A definir (vide aviso complementar)",
+        "source_label": "Data de pagamento",
+        "location": "table",
+        "evidence": [
+          "Data de pagamento A definir (vide aviso complementar)",
+          "A data de pagamento será oportunamente definida e divulgada por meio de Aviso aos Acionistas complementar"
+        ],
+        "notes": "D-005: extração bem-sucedida de uma informação explicitamente pendente. Nunca inferir data."
+      },
+      "gross_amount_per_share": {
+        "status": "found",
+        "value": "0.2050000000",
+        "raw": "R$ 0,2050000000",
+        "source_label": "Valor bruto por ação ON",
+        "location": "table",
+        "evidence": [
+          "Valor bruto por ação ON R$ 0,2050000000"
+        ]
+      },
+      "net_amount_per_share": {
+        "status": "found",
+        "value": "0.1691250000",
+        "raw": "R$ 0,1691250000",
+        "source_label": "Valor líquido por ação ON",
+        "location": "table",
+        "evidence": [
+          "Valor líquido por ação ON R$ 0,1691250000"
+        ]
+      },
+      "withholding_tax": {
+        "status": "found",
+        "value": {
+          "rate": "0.175",
+          "base": "GROSS_AMOUNT"
+        },
+        "raw": "17,5%",
+        "source_label": "IRRF na fonte",
+        "location": "table",
+        "evidence": [
+          "IRRF na fonte 17,5%",
+          "com retenção de IRRF de 17,5% sobre o valor bruto"
+        ]
+      },
+      "currency": {
+        "status": "found",
+        "value": "BRL",
+        "raw": "R$",
+        "source_label": null,
+        "location": "table",
+        "evidence": [
+          "R$ 0,2050000000"
+        ]
+      },
+      "ratio": {
+        "status": "not_applicable",
+        "value": null,
+        "raw": null,
+        "source_label": null,
+        "evidence": []
+      }
+    },
+    "event_specific_fields": {}
+  },
+  "validation_truth": {
+    "reference": {
+      "golden_match": true,
+      "matched_ticker": "RVBR3"
+    },
+    "rules": [
+      {
+        "rule_id": "REF_ISIN_FOUND",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_TICKER_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_CNPJ_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_ISSUER_ACTIVE",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REQUIRED_FIELDS_PRESENT",
+        "expected": "PASS",
+        "note": "payment_date é declared_pending, não not_found"
+      },
+      {
+        "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+        "expected": "FAIL",
+        "note": "payment_date declared_pending"
+      },
+      {
+        "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_RECORD_BEFORE_EX",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+        "expected": "PASS",
+        "note": "ter 23/06 → qua 24/06"
+      },
+      {
+        "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+        "expected": "NOT_EVALUATED",
+        "note": "pagamento declared_pending (D-005)"
+      },
+      {
+        "rule_id": "AMOUNT_GROSS_POSITIVE",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+        "expected": "PASS",
+        "note": "0.2050000000 × 0.825 = 0.169125 (exato)"
+      }
+    ]
+  },
+  "routing_expectation": {
+    "expectation_status": "DEFINED",
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "PAYMENT_DATE_PENDING"
+    ],
+    "acceptable_alternatives": [],
+    "rationale": "D-005: extração correta e completa em relação ao documento, mas downstream não pode agendar o pagamento sem o aviso complementar.",
+    "policy_refs": [
+      "D-005"
+    ]
+  },
+  "open_points": []
+}

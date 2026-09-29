@@ -1,0 +1,274 @@
+{
+  "ground_truth_version": "2.0",
+  "document": {
+    "sha256": "a509637f4b258454309e1d21e81beca56701a78624b8a6a6f9a6b0ec9389b0e5",
+    "file_name": "08_construtora_horizonte_bonificacao.pdf",
+    "text_layer": "native",
+    "evidence_source": "pypdf_text_layer"
+  },
+  "document_truth": {
+    "classification": {
+      "event_type": "BONUS_SHARES",
+      "subtype_as_declared": "Bonificação em ações",
+      "title_as_declared": "AVISO AOS ACIONISTAS — Bonificação em Ações",
+      "title_consistent_with_content": true,
+      "evidence": [
+        "aprovou aumento do capital social mediante capitalização de reservas, com a consequente bonificação em ações aos acionistas",
+        "Tipo de evento Bonificação em ações"
+      ],
+      "traps": [
+        "Custo atribuído (base fiscal) R$ 7,820000 por ação"
+      ],
+      "source_label": "Tipo de evento"
+    },
+    "fields": {
+      "issuer_name": {
+        "status": "found",
+        "value": "Construtora Horizonte S.A.",
+        "raw": "Construtora Horizonte S.A.",
+        "source_label": null,
+        "location": "body",
+        "evidence": [
+          "A Construtora Horizonte S.A. comunica"
+        ]
+      },
+      "cnpj": {
+        "status": "found",
+        "value": "09.888.999/0001-21",
+        "raw": "09.888.999/0001-21",
+        "source_label": "CNPJ/ME nº",
+        "location": "header",
+        "evidence": [
+          "CNPJ/ME nº 09.888.999/0001-21"
+        ]
+      },
+      "isin": {
+        "status": "found",
+        "value": "BRCNHZACNOR5",
+        "raw": "BRCNHZACNOR5",
+        "source_label": "ISIN",
+        "location": "table",
+        "evidence": [
+          "Código de negociação CNHZ3 (ISIN BRCNHZACNOR5)"
+        ]
+      },
+      "ticker": {
+        "status": "found",
+        "value": "CNHZ3",
+        "raw": "CNHZ3",
+        "source_label": "Código de negociação",
+        "location": "table",
+        "evidence": [
+          "Código de negociação CNHZ3 (ISIN BRCNHZACNOR5)"
+        ]
+      },
+      "share_class": {
+        "status": "not_found",
+        "value": null,
+        "raw": null,
+        "source_label": null,
+        "evidence": [],
+        "notes": "O aviso não cita a classe. Não inferir pelo sufixo do ticker nem pelo padrão do ISIN."
+      },
+      "approval_date": {
+        "status": "found",
+        "value": "2026-06-04",
+        "raw": "04 de junho de 2026",
+        "source_label": null,
+        "location": "body",
+        "evidence": [
+          "a Assembleia Geral Extraordinária de 04 de junho de 2026 aprovou aumento do capital social"
+        ],
+        "notes": "approving_body=AGE. Corpus Christi (sem pregão B3) — informativo; sem calendário B3 (D-006)."
+      },
+      "record_date": {
+        "status": "found",
+        "value": "2026-06-18",
+        "raw": "18/06/2026",
+        "source_label": "Data-base (“data com”)",
+        "location": "table",
+        "evidence": [
+          "Data-base (“data com”) 18/06/2026",
+          "ao final do dia 18 de junho de 2026 (“data com”)"
+        ]
+      },
+      "ex_date": {
+        "status": "found",
+        "value": "2026-06-19",
+        "raw": "19/06/2026",
+        "source_label": "Data “ex-bonificação”",
+        "location": "table",
+        "evidence": [
+          "Data “ex-bonificação” 19/06/2026"
+        ]
+      },
+      "payment_date": {
+        "status": "not_applicable",
+        "value": null,
+        "raw": null,
+        "source_label": null,
+        "evidence": [],
+        "notes": "Sem pagamento em dinheiro; o crédito das ações está em event_specific_fields.share_credit_date."
+      },
+      "gross_amount_per_share": {
+        "status": "not_applicable",
+        "value": null,
+        "raw": null,
+        "source_label": null,
+        "evidence": [],
+        "notes": "R$ 7,82 é custo fiscal, não valor do provento."
+      },
+      "net_amount_per_share": {
+        "status": "not_applicable",
+        "value": null,
+        "raw": null,
+        "source_label": null,
+        "evidence": []
+      },
+      "withholding_tax": {
+        "status": "not_applicable",
+        "value": null,
+        "raw": null,
+        "source_label": null,
+        "evidence": []
+      },
+      "currency": {
+        "status": "not_applicable",
+        "value": null,
+        "raw": null,
+        "source_label": null,
+        "evidence": [],
+        "notes": "Evento em ações. A moeda do custo atribuído (BRL) fica em tax_cost_per_share."
+      },
+      "ratio": {
+        "status": "found",
+        "value": {
+          "shares_held": "20",
+          "bonus_shares": "1",
+          "percentage": "0.05"
+        },
+        "raw": "1 ação nova para cada 20 ações (5%)",
+        "source_label": "Proporção",
+        "location": "table",
+        "evidence": [
+          "Proporção 1 ação nova para cada 20 ações (5%)",
+          "na proporção de 1 (uma) ação nova para cada 20 (vinte) ações"
+        ]
+      }
+    },
+    "event_specific_fields": {
+      "share_credit_date": {
+        "status": "found",
+        "value": "2026-06-26",
+        "raw": "26/06/2026",
+        "source_label": "Crédito das ações bonificadas",
+        "location": "table",
+        "evidence": [
+          "Crédito das ações bonificadas 26/06/2026"
+        ]
+      },
+      "tax_cost_per_share": {
+        "status": "found",
+        "value": {
+          "amount": "7.820000",
+          "currency": "BRL"
+        },
+        "raw": "R$ 7,820000 por ação",
+        "source_label": "Custo atribuído (base fiscal)",
+        "location": "table",
+        "evidence": [
+          "Custo atribuído (base fiscal) R$ 7,820000 por ação",
+          "O custo unitário atribuído às ações bonificadas, para fins fiscais, é de R$ 7,820000 por ação."
+        ]
+      }
+    }
+  },
+  "validation_truth": {
+    "reference": {
+      "golden_match": false,
+      "matched_ticker": null
+    },
+    "rules": [
+      {
+        "rule_id": "REF_ISIN_FOUND",
+        "expected": "FAIL",
+        "note": "BRCNHZACNOR5 não existe no golden; CNHZ3 e o CNPJ também não"
+      },
+      {
+        "rule_id": "REF_TICKER_CONSISTENT",
+        "expected": "NOT_EVALUATED",
+        "note": "sem linha de referência"
+      },
+      {
+        "rule_id": "REF_CNPJ_CONSISTENT",
+        "expected": "NOT_EVALUATED",
+        "note": "sem linha de referência"
+      },
+      {
+        "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+        "expected": "NOT_EVALUATED",
+        "note": "sem linha de referência"
+      },
+      {
+        "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+        "expected": "NOT_EVALUATED"
+      },
+      {
+        "rule_id": "REF_ISSUER_ACTIVE",
+        "expected": "NOT_EVALUATED"
+      },
+      {
+        "rule_id": "REQUIRED_FIELDS_PRESENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_RECORD_BEFORE_EX",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+        "expected": "PASS",
+        "note": "qui 18/06 → sex 19/06"
+      },
+      {
+        "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+        "expected": "PASS",
+        "note": "usa share_credit_date 26/06 ≥ ex 19/06"
+      },
+      {
+        "rule_id": "RATIO_POSITIVE",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "RATIO_PERCENTAGE_CONSISTENT",
+        "expected": "PASS",
+        "note": "1/20 = 0.05"
+      }
+    ]
+  },
+  "routing_expectation": {
+    "expectation_status": "DEFINED",
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "REFERENCE_NOT_FOUND"
+    ],
+    "acceptable_alternatives": [],
+    "rationale": "D-008: emissor/ativo fora do golden records gera REFERENCE_NOT_FOUND, que bloqueia aprovação automática. A política é REVIEW_REQUIRED e não REJECT: ausência na base de referência não prova que o documento é inválido (a base pode estar desatualizada). Nunca fazer fuzzy match com outro emissor.",
+    "policy_refs": [
+      "D-008"
+    ]
+  },
+  "open_points": []
+}

@@ -1,0 +1,3 @@
+-r requirements.txt
+# Testes automatizados.
+pytest==9.1.1

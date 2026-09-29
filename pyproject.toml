@@ -1,0 +1,10 @@
+[project]
+name = "corporate-actions-extraction"
+version = "0.1.0"
+description = "Technical case — extração, validação e roteamento de avisos de eventos corporativos (Asset Servicing)"
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"

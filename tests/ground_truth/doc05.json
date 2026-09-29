@@ -1,0 +1,250 @@
+{
+  "ground_truth_version": "2.0",
+  "document": {
+    "sha256": "925b6eb09fbcaecf81d3c1d125e041edd1460fed23d6a67bf10f8a6b170e9567",
+    "file_name": "05_aurora_saneamento_dividendo_datas.pdf",
+    "text_layer": "native",
+    "evidence_source": "pypdf_text_layer"
+  },
+  "document_truth": {
+    "classification": {
+      "event_type": "DIVIDEND",
+      "subtype_as_declared": "Dividendo intercalar",
+      "title_as_declared": "AVISO AOS ACIONISTAS — Pagamento de Dividendos Intercalares",
+      "title_consistent_with_content": true,
+      "evidence": [
+        "aprovou a distribuição de dividendos intercalares à conta de reservas de lucros",
+        "Tipo de evento Dividendo intercalar"
+      ],
+      "traps": [],
+      "source_label": "Tipo de evento"
+    },
+    "fields": {
+      "issuer_name": {
+        "status": "found",
+        "value": "Aurora Saneamento S.A.",
+        "raw": "Aurora Saneamento S.A.",
+        "source_label": null,
+        "location": "body",
+        "evidence": [
+          "A Aurora Saneamento S.A. comunica"
+        ]
+      },
+      "cnpj": {
+        "status": "found",
+        "value": "22.333.444/0001-77",
+        "raw": "22.333.444/0001-77",
+        "source_label": "CNPJ/ME nº",
+        "location": "header",
+        "evidence": [
+          "CNPJ/ME nº 22.333.444/0001-77"
+        ]
+      },
+      "isin": {
+        "status": "found",
+        "value": "BRAURSACNOR4",
+        "raw": "BRAURSACNOR4",
+        "source_label": "ISIN",
+        "location": "table",
+        "evidence": [
+          "Código de negociação AURS3 (ISIN BRAURSACNOR4)"
+        ]
+      },
+      "ticker": {
+        "status": "found",
+        "value": "AURS3",
+        "raw": "AURS3",
+        "source_label": "Código de negociação",
+        "location": "table",
+        "evidence": [
+          "Código de negociação AURS3 (ISIN BRAURSACNOR4)"
+        ]
+      },
+      "share_class": {
+        "status": "found",
+        "value": "ON",
+        "raw": "ação ON",
+        "source_label": null,
+        "location": "table",
+        "evidence": [
+          "Valor bruto por ação ON"
+        ]
+      },
+      "approval_date": {
+        "status": "found",
+        "value": "2026-06-01",
+        "raw": "01/06/2026",
+        "source_label": "Data de aprovação (RCA)",
+        "location": "table",
+        "evidence": [
+          "Data de aprovação (RCA) 01/06/2026",
+          "em reunião de 01 de junho de 2026"
+        ],
+        "notes": "approving_body=RCA."
+      },
+      "record_date": {
+        "status": "found",
+        "value": "2026-07-15",
+        "raw": "15/07/2026",
+        "source_label": "Data-base (“data com”)",
+        "location": "table",
+        "evidence": [
+          "Data-base (“data com”) 15/07/2026",
+          "ao final do dia 15 de julho de 2026 (“data com”)"
+        ]
+      },
+      "ex_date": {
+        "status": "found",
+        "value": "2026-07-16",
+        "raw": "16/07/2026",
+        "source_label": "Data “ex-dividendos”",
+        "location": "table",
+        "evidence": [
+          "Data “ex-dividendos” 16/07/2026",
+          "“ex-dividendos” a partir de 16 de julho de 2026"
+        ]
+      },
+      "payment_date": {
+        "status": "found",
+        "value": "2026-07-10",
+        "raw": "10/07/2026",
+        "source_label": "Data de pagamento",
+        "location": "table",
+        "evidence": [
+          "Data de pagamento 10/07/2026",
+          "O crédito aos acionistas ocorrerá na data de pagamento indicada abaixo"
+        ],
+        "notes": "Extraído exatamente como no documento. É ANTERIOR à data com e à data ex; não corrigir. Não é determinável qual data está errada."
+      },
+      "gross_amount_per_share": {
+        "status": "found",
+        "value": "0.3100000000",
+        "raw": "R$ 0,3100000000",
+        "source_label": "Valor bruto por ação ON",
+        "location": "table",
+        "evidence": [
+          "Valor bruto por ação ON R$ 0,3100000000"
+        ]
+      },
+      "net_amount_per_share": {
+        "status": "not_applicable",
+        "value": null,
+        "raw": null,
+        "source_label": null,
+        "evidence": [],
+        "notes": "Dividendo: líquido não definido no nível do emissor."
+      },
+      "withholding_tax": {
+        "status": "not_found",
+        "value": null,
+        "raw": null,
+        "source_label": null,
+        "evidence": [],
+        "notes": "O aviso não menciona tributação. Não é obrigatório para DIVIDEND; não inferir a regra de 2026 citada em outro aviso."
+      },
+      "currency": {
+        "status": "found",
+        "value": "BRL",
+        "raw": "R$",
+        "source_label": null,
+        "location": "table",
+        "evidence": [
+          "R$ 0,3100000000"
+        ]
+      },
+      "ratio": {
+        "status": "not_applicable",
+        "value": null,
+        "raw": null,
+        "source_label": null,
+        "evidence": []
+      }
+    },
+    "event_specific_fields": {}
+  },
+  "validation_truth": {
+    "reference": {
+      "golden_match": true,
+      "matched_ticker": "AURS3"
+    },
+    "rules": [
+      {
+        "rule_id": "REF_ISIN_FOUND",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_TICKER_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_CNPJ_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_ISSUER_ACTIVE",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REQUIRED_FIELDS_PRESENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_RECORD_BEFORE_EX",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+        "expected": "PASS",
+        "note": "qua 15/07 → qui 16/07"
+      },
+      {
+        "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+        "expected": "FAIL",
+        "note": "pagamento 2026-07-10 < ex 2026-07-16 (e < data com 2026-07-15)"
+      },
+      {
+        "rule_id": "AMOUNT_GROSS_POSITIVE",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+        "expected": "NOT_EVALUATED",
+        "note": "sem líquido"
+      }
+    ]
+  },
+  "routing_expectation": {
+    "expectation_status": "DEFINED",
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "DATE_INCONSISTENCY"
+    ],
+    "acceptable_alternatives": [],
+    "rationale": "Todos os campos extraídos com alta confiança, mas o registro é inválido: pagamento antes da data com/ex. Exemplo canônico de campo correto + registro inválido (H-16).",
+    "policy_refs": []
+  },
+  "open_points": [
+    "Não determinável qual das datas (pagamento, data com ou ex) está errada no documento.",
+    "Subtipo: 'intercalares à conta de reservas de lucros' soaria como 'intermediários' pela Lei 6.404/76; mantido como declarado."
+  ]
+}

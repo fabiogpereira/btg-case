@@ -1,0 +1,268 @@
+{
+  "ground_truth_version": "2.0",
+  "document": {
+    "sha256": "a21a294ac3ededbb6fdef195be0edb0572069544e0b73f6fc1918fa77d6b0e85",
+    "file_name": "03_siderurgica_paranaense_proventos.pdf",
+    "text_layer": "native",
+    "evidence_source": "pypdf_text_layer"
+  },
+  "document_truth": {
+    "classification": {
+      "event_type": "JCP",
+      "subtype_as_declared": "Remuneração do capital próprio",
+      "title_as_declared": "AVISO AOS ACIONISTAS — Distribuição de Dividendos",
+      "title_consistent_with_content": false,
+      "evidence": [
+        "aprovou a distribuição de proventos a título de remuneração do capital próprio aos acionistas, calculados sobre as contas do patrimônio líquido e limitados à variação pro rata die da Taxa de Juros de Longo Prazo",
+        "Natureza do provento (conforme corpo do aviso) Remuneração do capital próprio",
+        "retenção de Imposto de Renda na Fonte à alíquota de 17,5%",
+        "Valor líquido por ação ON R$ 0,0760237500"
+      ],
+      "traps": [
+        "AVISO AOS ACIONISTAS — Distribuição de Dividendos",
+        "O montante será imputado ao dividendo mínimo obrigatório do exercício."
+      ],
+      "source_label": "Natureza do provento (conforme corpo do aviso)",
+      "classification_notes": "Event type definitivo: JCP. Classificar como DIVIDEND é incorreto. Há conflito material entre o título ('Distribuição de Dividendos') e o conteúdo. A confiança na classificação pode ser alta (sinais independentes: remuneração do capital próprio, limite TJLP, IRRF 17,5% na fonte, valor líquido); o conflito é uma inconsistência da própria fonte, não incerteza da classificação."
+    },
+    "fields": {
+      "issuer_name": {
+        "status": "found",
+        "value": "Companhia Siderúrgica Paranaense S.A.",
+        "raw": "Companhia Siderúrgica Paranaense S.A.",
+        "source_label": null,
+        "location": "body",
+        "evidence": [
+          "A Companhia Siderúrgica Paranaense S.A. comunica"
+        ]
+      },
+      "cnpj": {
+        "status": "found",
+        "value": "76.543.210/0001-12",
+        "raw": "76.543.210/0001-12",
+        "source_label": "CNPJ/ME nº",
+        "location": "header",
+        "evidence": [
+          "CNPJ/ME nº 76.543.210/0001-12"
+        ]
+      },
+      "isin": {
+        "status": "found",
+        "value": "BRCSPRACNOR1",
+        "raw": "BRCSPRACNOR1",
+        "source_label": "ISIN",
+        "location": "table",
+        "evidence": [
+          "Código de negociação CSPR3 (ISIN BRCSPRACNOR1)"
+        ]
+      },
+      "ticker": {
+        "status": "found",
+        "value": "CSPR3",
+        "raw": "CSPR3",
+        "source_label": "Código de negociação",
+        "location": "table",
+        "evidence": [
+          "Código de negociação CSPR3 (ISIN BRCSPRACNOR1)"
+        ]
+      },
+      "share_class": {
+        "status": "found",
+        "value": "ON",
+        "raw": "ação ON",
+        "source_label": null,
+        "location": "table",
+        "evidence": [
+          "Valor bruto por ação ON"
+        ]
+      },
+      "approval_date": {
+        "status": "found",
+        "value": "2026-06-05",
+        "raw": "05 de junho de 2026",
+        "source_label": null,
+        "location": "body",
+        "evidence": [
+          "deliberação do Conselho de Administração, em reunião de 05 de junho de 2026"
+        ],
+        "notes": "approving_body=RCA. Só no corpo, por extenso."
+      },
+      "record_date": {
+        "status": "found",
+        "value": "2026-06-19",
+        "raw": "19/06/2026",
+        "source_label": "Data-base (“data com”)",
+        "location": "table",
+        "evidence": [
+          "Data-base (“data com”) 19/06/2026",
+          "detentores de ações ao final do pregão de 19 de junho de 2026"
+        ]
+      },
+      "ex_date": {
+        "status": "found",
+        "value": "2026-06-22",
+        "raw": "22/06/2026",
+        "source_label": "Data “ex”",
+        "location": "table",
+        "evidence": [
+          "Data “ex” 22/06/2026"
+        ]
+      },
+      "payment_date": {
+        "status": "found",
+        "value": "2026-09-11",
+        "raw": "11/09/2026",
+        "source_label": "Data de pagamento",
+        "location": "table",
+        "evidence": [
+          "Data de pagamento 11/09/2026"
+        ]
+      },
+      "gross_amount_per_share": {
+        "status": "found",
+        "value": "0.0921500000",
+        "raw": "R$ 0,0921500000",
+        "source_label": "Valor bruto por ação ON",
+        "location": "table",
+        "evidence": [
+          "Valor bruto por ação ON R$ 0,0921500000"
+        ]
+      },
+      "net_amount_per_share": {
+        "status": "found",
+        "value": "0.0760237500",
+        "raw": "R$ 0,0760237500",
+        "source_label": "Valor líquido por ação ON",
+        "location": "table",
+        "evidence": [
+          "Valor líquido por ação ON R$ 0,0760237500"
+        ]
+      },
+      "withholding_tax": {
+        "status": "found",
+        "value": {
+          "rate": "0.175",
+          "base": "GROSS_AMOUNT"
+        },
+        "raw": "17,5%",
+        "source_label": "Imposto de Renda Retido na Fonte",
+        "location": "table",
+        "evidence": [
+          "Imposto de Renda Retido na Fonte 17,5%",
+          "retenção de Imposto de Renda na Fonte à alíquota de 17,5%"
+        ],
+        "notes": "A base 'valor bruto' não é dita literalmente no corpo; é inferida da relação bruto/líquido da tabela (0,09215 × 0,825 = 0,07602375)."
+      },
+      "currency": {
+        "status": "found",
+        "value": "BRL",
+        "raw": "R$",
+        "source_label": null,
+        "location": "table",
+        "evidence": [
+          "R$ 0,0921500000"
+        ]
+      },
+      "ratio": {
+        "status": "not_applicable",
+        "value": null,
+        "raw": null,
+        "source_label": null,
+        "evidence": []
+      }
+    },
+    "event_specific_fields": {}
+  },
+  "validation_truth": {
+    "reference": {
+      "golden_match": true,
+      "matched_ticker": "CSPR3"
+    },
+    "rules": [
+      {
+        "rule_id": "REF_ISIN_FOUND",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_TICKER_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_CNPJ_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_ISSUER_ACTIVE",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REQUIRED_FIELDS_PRESENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+        "expected": "FAIL",
+        "note": "título 'Distribuição de Dividendos' × conteúdo de JCP"
+      },
+      {
+        "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_RECORD_BEFORE_EX",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+        "expected": "PASS",
+        "note": "sex 19/06 → seg 22/06"
+      },
+      {
+        "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "AMOUNT_GROSS_POSITIVE",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+        "expected": "PASS",
+        "note": "0.0921500000 × 0.825 = 0.07602375 (exato)"
+      }
+    ]
+  },
+  "routing_expectation": {
+    "expectation_status": "PROVISIONAL",
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "CLASSIFICATION_TITLE_CONFLICT"
+    ],
+    "acceptable_alternatives": [
+      {
+        "decision": "AUTO_APPROVE",
+        "condition": "se a política (Q-10) aceitar aprovar com alerta quando a classificação é corroborada por sinais determinísticos independentes (IRRF 17,5% na fonte, valor líquido, TJLP) e o próprio aviso resolve o conflito ('conforme corpo do aviso')"
+      }
+    ],
+    "rationale": "Política provisória. A classificação JCP pode ter confiança alta e mesmo assim o registro exigir revisão, porque a própria fonte é inconsistente justamente na dimensão que define o tratamento tributário. Qualquer que seja a política final, classificar como DIVIDEND é erro.",
+    "policy_refs": [
+      "Q-10",
+      "OD-08"
+    ]
+  },
+  "open_points": [
+    "Q-10: política de roteamento para conflito título × corpo com classificação corroborada."
+  ]
+}

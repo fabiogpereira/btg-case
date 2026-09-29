@@ -1,0 +1,278 @@
+{
+  "ground_truth_version": "2.0",
+  "document": {
+    "sha256": "cf4af08dd23f507ae72b852d86827bbee6c3fe2d0e31f96e70bc74ea4238c45f",
+    "file_name": "07_telecom_norte_jcp_SCAN.pdf",
+    "text_layer": "none",
+    "evidence_source": "human_visual_transcription",
+    "transcription_file": "transcriptions/doc07_visual_transcription.txt",
+    "notes": "Página única com imagem JPEG 1654×2339, sem camada de texto. Transcrição humana por leitura visual. A quantidade de caracteres de preenchimento (pontilhados/vírgulas) nas linhas da tabela é aproximada; por isso as evidências da tabela evitam incluir esses caracteres."
+  },
+  "document_truth": {
+    "classification": {
+      "event_type": "JCP",
+      "subtype_as_declared": null,
+      "title_as_declared": "AVISO AOS ACIONISTAS Juros sobre o Capital Próprio (JCP)",
+      "title_consistent_with_content": true,
+      "evidence": [
+        "aprovou o crédito de Juros sobre o Capital Próprio (JCP), nos termos do art. 9º da Lei nº 9.249/95",
+        "à alíquota de 17,5% sobre o valor bruto"
+      ],
+      "traps": [],
+      "source_label": "Tipo de evento"
+    },
+    "fields": {
+      "issuer_name": {
+        "status": "found",
+        "value": "Telecom Norte Participações S.A.",
+        "raw": "Telecom Norte Participações S.A.",
+        "source_label": null,
+        "location": "body",
+        "evidence": [
+          "A Telecom Norte Participações S.A. comunica"
+        ]
+      },
+      "cnpj": {
+        "status": "found",
+        "value": "33.222.111/0001-44",
+        "raw": "33.222.111/0001-44",
+        "source_label": "CNPJ/ME nº",
+        "location": "header",
+        "evidence": [
+          "CNPJ/ME nº 33.222.111/0001-44"
+        ]
+      },
+      "isin": {
+        "status": "found",
+        "value": "BRTLNRACNPR2",
+        "raw": "BRTLNRACNPR2",
+        "source_label": "ISIN",
+        "location": "table",
+        "evidence": [
+          "TLNR4 (ISIN BRTLNRACNPR2)"
+        ]
+      },
+      "ticker": {
+        "status": "found",
+        "value": "TLNR4",
+        "raw": "TLNR4",
+        "source_label": "Código de negociação",
+        "location": "table",
+        "evidence": [
+          "TLNR4 (ISIN BRTLNRACNPR2)"
+        ]
+      },
+      "share_class": {
+        "status": "found",
+        "value": "PN",
+        "raw": "ação PN",
+        "source_label": null,
+        "location": "table",
+        "evidence": [
+          "Valor bruto por ação PN"
+        ]
+      },
+      "approval_date": {
+        "status": "found",
+        "value": "2026-06-06",
+        "raw": "06 de junho de 2026",
+        "source_label": null,
+        "location": "body",
+        "evidence": [
+          "Conselho de Administração, em reunião realizada em 06 de junho de 2026"
+        ],
+        "notes": "approving_body=RCA. Só no corpo. Sábado — informativo, nenhuma regra aplicada. Sem checagem cruzada possível (erro de leitura passaria)."
+      },
+      "record_date": {
+        "status": "found",
+        "value": "2026-06-22",
+        "raw": "22/06/2026",
+        "source_label": "Data-base (data com)",
+        "location": "table",
+        "evidence": [
+          "Data-base (data com)",
+          "22/06/2026",
+          "ao final do dia 22 de junho de 2026 (data com)"
+        ],
+        "notes": "Corpo e tabela concordam (checagem cruzada de leitura)."
+      },
+      "ex_date": {
+        "status": "found",
+        "value": "2026-06-23",
+        "raw": "23/06/2026",
+        "source_label": "Data ex-JCP",
+        "location": "table",
+        "evidence": [
+          "Data ex-JCP",
+          "23/06/2026",
+          "negociadas ex-JCP a partir de 23 de junho de 2026"
+        ],
+        "notes": "Corpo e tabela concordam."
+      },
+      "payment_date": {
+        "status": "found",
+        "value": "2026-08-21",
+        "raw": "21/08/2026",
+        "source_label": "Data de pagamento",
+        "location": "table",
+        "evidence": [
+          "Data de pagamento",
+          "21/08/2026"
+        ],
+        "notes": "Aparece só na tabela; sem checagem cruzada de leitura."
+      },
+      "gross_amount_per_share": {
+        "status": "found",
+        "value": "0.1124300000",
+        "raw": "R$ 0,1124300000",
+        "source_label": "Valor bruto por ação PN",
+        "location": "table",
+        "evidence": [
+          "Valor bruto por ação PN",
+          "R$ 0,1124300000"
+        ]
+      },
+      "net_amount_per_share": {
+        "status": "found",
+        "value": "0.0927547500",
+        "raw": "R$ 0,0927547500",
+        "source_label": "Valor líquido por ação PN",
+        "location": "table",
+        "evidence": [
+          "Valor líquido por ação PN",
+          "R$ 0,0927547500"
+        ]
+      },
+      "withholding_tax": {
+        "status": "found",
+        "value": {
+          "rate": "0.175",
+          "base": "GROSS_AMOUNT"
+        },
+        "raw": "17,5%",
+        "source_label": "IRRF na fonte",
+        "location": "table",
+        "evidence": [
+          "IRRF na fonte",
+          "17,5%",
+          "(IRRF) à alíquota de 17,5% sobre o valor bruto"
+        ]
+      },
+      "currency": {
+        "status": "found",
+        "value": "BRL",
+        "raw": "R$",
+        "source_label": null,
+        "location": "table",
+        "evidence": [
+          "R$ 0,1124300000"
+        ]
+      },
+      "ratio": {
+        "status": "not_applicable",
+        "value": null,
+        "raw": null,
+        "source_label": null,
+        "evidence": []
+      }
+    },
+    "event_specific_fields": {}
+  },
+  "validation_truth": {
+    "reference": {
+      "golden_match": true,
+      "matched_ticker": "TLNR4"
+    },
+    "rules": [
+      {
+        "rule_id": "REF_ISIN_FOUND",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_TICKER_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_CNPJ_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_ISSUER_ACTIVE",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REQUIRED_FIELDS_PRESENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_RECORD_BEFORE_EX",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+        "expected": "PASS",
+        "note": "seg 22/06 → ter 23/06"
+      },
+      {
+        "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "AMOUNT_GROSS_POSITIVE",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+        "expected": "PASS",
+        "note": "0.1124300000 × 0.825 = 0.09275475 (exato) — funciona como checksum da leitura dos dois valores"
+      }
+    ]
+  },
+  "routing_expectation": {
+    "expectation_status": "POLICY_DEPENDENT",
+    "decision": null,
+    "reason_codes": [],
+    "content_valid": true,
+    "acceptable_alternatives": [
+      {
+        "decision": "AUTO_APPROVE",
+        "condition": "se a extração pelo fallback (OCR/visão, a testar) produzir todos os campos obrigatórios com evidência e as checagens objetivas passarem, segundo a política de confiança a definir"
+      },
+      {
+        "decision": "REVIEW_REQUIRED",
+        "condition": "somente por motivo de confiança/evidência da extração (ex.: LOW_EXTRACTION_CONFIDENCE, NO_USABLE_TEXT_LAYER quando não há fallback) — nunca pelo simples fato de ser escaneado"
+      }
+    ],
+    "rationale": "O conteúdo esperado é válido: referência exata, datas coerentes, bruto/líquido fecham. Escaneado, por si só, NÃO é motivo para revisão. O roteamento definitivo depende dos experimentos futuros de OCR/visão e da confiança/evidência obtida.",
+    "policy_refs": [
+      "Q-11",
+      "OD-03",
+      "OD-12",
+      "D-011"
+    ]
+  },
+  "open_points": [
+    "Roteamento POLICY_DEPENDENT até os experimentos de OCR/visão (H-02b) e a política de confiança (H-17).",
+    "Transcrição feita por leitura humana; não verificável contra camada de texto."
+  ]
+}

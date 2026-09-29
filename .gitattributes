@@ -1,0 +1,4 @@
+# case/ é source of truth: bytes preservados exatamente (sem conversão de fim de linha),
+# para que os SHA-256 registrados continuem válidos em qualquer clone.
+case/** -text -diff
+*.pdf binary

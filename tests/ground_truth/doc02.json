@@ -1,0 +1,252 @@
+{
+  "ground_truth_version": "2.0",
+  "document": {
+    "sha256": "64e0787afd32c0d99e5407a5fbc6f5048245ba70826563d0b14205074b970668",
+    "file_name": "02_banco_meridional_jcp.pdf",
+    "text_layer": "native",
+    "evidence_source": "pypdf_text_layer"
+  },
+  "document_truth": {
+    "classification": {
+      "event_type": "JCP",
+      "subtype_as_declared": null,
+      "title_as_declared": "AVISO AOS ACIONISTAS — Juros sobre o Capital Próprio (JCP)",
+      "title_consistent_with_content": true,
+      "evidence": [
+        "aprovou o crédito de Juros sobre o Capital Próprio (JCP)",
+        "nos termos do art. 9º da Lei nº 9.249/95",
+        "Tipo de evento Juros sobre o Capital Próprio (JCP)"
+      ],
+      "traps": [
+        "O JCP será imputado aos dividendos obrigatórios do exercício de 2026."
+      ],
+      "source_label": "Tipo de evento"
+    },
+    "fields": {
+      "issuer_name": {
+        "status": "found",
+        "value": "Banco Meridional do Brasil S.A.",
+        "raw": "Banco Meridional do Brasil S.A.",
+        "source_label": null,
+        "location": "body",
+        "evidence": [
+          "O Banco Meridional do Brasil S.A. (“Banco”)"
+        ]
+      },
+      "cnpj": {
+        "status": "found",
+        "value": "60.111.222/0001-55",
+        "raw": "60.111.222/0001-55",
+        "source_label": "CNPJ/ME nº",
+        "location": "header",
+        "evidence": [
+          "CNPJ/ME nº 60.111.222/0001-55"
+        ]
+      },
+      "isin": {
+        "status": "found",
+        "value": "BRBMRDACNPR7",
+        "raw": "BRBMRDACNPR7",
+        "source_label": "ISIN",
+        "location": "table",
+        "evidence": [
+          "Código de negociação BMRD4 (ISIN BRBMRDACNPR7)"
+        ]
+      },
+      "ticker": {
+        "status": "found",
+        "value": "BMRD4",
+        "raw": "BMRD4",
+        "source_label": "Código de negociação",
+        "location": "table",
+        "evidence": [
+          "Código de negociação BMRD4 (ISIN BRBMRDACNPR7)"
+        ]
+      },
+      "share_class": {
+        "status": "found",
+        "value": "PN",
+        "raw": "ação preferencial (PN)",
+        "source_label": null,
+        "location": "table",
+        "evidence": [
+          "Valor bruto por ação preferencial (PN)"
+        ]
+      },
+      "approval_date": {
+        "status": "found",
+        "value": "2026-06-02",
+        "raw": "02 de junho de 2026",
+        "source_label": null,
+        "location": "body",
+        "evidence": [
+          "o Conselho de Administração, em reunião realizada em 02 de junho de 2026, aprovou o crédito"
+        ],
+        "notes": "approving_body=RCA. Só no corpo, por extenso; a tabela não tem linha de aprovação."
+      },
+      "record_date": {
+        "status": "found",
+        "value": "2026-06-16",
+        "raw": "16/06/2026",
+        "source_label": "Data-base (“data com”)",
+        "location": "table",
+        "evidence": [
+          "Data-base (“data com”) 16/06/2026",
+          "ao final do dia 16 de junho de 2026 (“data com”)"
+        ]
+      },
+      "ex_date": {
+        "status": "found",
+        "value": "2026-06-17",
+        "raw": "17/06/2026",
+        "source_label": "Data “ex-JCP”",
+        "location": "table",
+        "evidence": [
+          "Data “ex-JCP” 17/06/2026"
+        ]
+      },
+      "payment_date": {
+        "status": "found",
+        "value": "2026-08-14",
+        "raw": "14/08/2026",
+        "source_label": "Data de pagamento",
+        "location": "table",
+        "evidence": [
+          "Data de pagamento 14/08/2026"
+        ]
+      },
+      "gross_amount_per_share": {
+        "status": "found",
+        "value": "0.1738420000",
+        "raw": "R$ 0,1738420000",
+        "source_label": "Valor bruto por ação preferencial (PN)",
+        "location": "table",
+        "evidence": [
+          "Valor bruto por ação preferencial (PN) R$ 0,1738420000"
+        ]
+      },
+      "net_amount_per_share": {
+        "status": "found",
+        "value": "0.1434196500",
+        "raw": "R$ 0,1434196500",
+        "source_label": "Valor líquido por ação (PN)",
+        "location": "table",
+        "evidence": [
+          "Valor líquido por ação (PN) R$ 0,1434196500"
+        ]
+      },
+      "withholding_tax": {
+        "status": "found",
+        "value": {
+          "rate": "0.175",
+          "base": "GROSS_AMOUNT"
+        },
+        "raw": "17,5%",
+        "source_label": "IRRF na fonte",
+        "location": "table",
+        "evidence": [
+          "IRRF na fonte 17,5%",
+          "Sobre o valor bruto incidirá Imposto de Renda Retido na Fonte (IRRF) à alíquota de 17,5%"
+        ],
+        "notes": "Ressalva no corpo: acionistas comprovadamente imunes ou isentos."
+      },
+      "currency": {
+        "status": "found",
+        "value": "BRL",
+        "raw": "R$",
+        "source_label": null,
+        "location": "table",
+        "evidence": [
+          "R$ 0,1738420000"
+        ]
+      },
+      "ratio": {
+        "status": "not_applicable",
+        "value": null,
+        "raw": null,
+        "source_label": null,
+        "evidence": []
+      }
+    },
+    "event_specific_fields": {}
+  },
+  "validation_truth": {
+    "reference": {
+      "golden_match": true,
+      "matched_ticker": "BMRD4"
+    },
+    "rules": [
+      {
+        "rule_id": "REF_ISIN_FOUND",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_TICKER_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_CNPJ_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_ISSUER_ACTIVE",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REQUIRED_FIELDS_PRESENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_RECORD_BEFORE_EX",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+        "expected": "PASS",
+        "note": "ter 16/06 → qua 17/06"
+      },
+      {
+        "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "AMOUNT_GROSS_POSITIVE",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+        "expected": "PASS",
+        "note": "0.1738420000 × 0.825 = 0.14341965 (exato)"
+      }
+    ]
+  },
+  "routing_expectation": {
+    "expectation_status": "DEFINED",
+    "decision": "AUTO_APPROVE",
+    "reason_codes": [],
+    "acceptable_alternatives": [],
+    "rationale": "JCP inequívoco; todos os campos com evidência; referência e regras aprovadas.",
+    "policy_refs": []
+  },
+  "open_points": []
+}

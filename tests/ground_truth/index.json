@@ -1,0 +1,39 @@
+{
+  "ground_truth_version": "2.0",
+  "case_documents_dir": "case/Case AI Dev - Envio/documents",
+  "golden_records_path": "case/Case AI Dev - Envio/golden_records/golden records.csv",
+  "documents": [
+    {
+      "sha256": "e49afdf81d2a1e4a74985e78fa0ea3639633cfa19f5dba633a2b545d115153cb",
+      "ground_truth_file": "doc01.json"
+    },
+    {
+      "sha256": "64e0787afd32c0d99e5407a5fbc6f5048245ba70826563d0b14205074b970668",
+      "ground_truth_file": "doc02.json"
+    },
+    {
+      "sha256": "a21a294ac3ededbb6fdef195be0edb0572069544e0b73f6fc1918fa77d6b0e85",
+      "ground_truth_file": "doc03.json"
+    },
+    {
+      "sha256": "37f846a73cb5486b543bb1e580144c8d94eafee4aa7396424637c063a3bfbb83",
+      "ground_truth_file": "doc04.json"
+    },
+    {
+      "sha256": "925b6eb09fbcaecf81d3c1d125e041edd1460fed23d6a67bf10f8a6b170e9567",
+      "ground_truth_file": "doc05.json"
+    },
+    {
+      "sha256": "147d83f038f6ca94495a5d5248f36a6feedee7ae9a5cebc011d40e1f14d68068",
+      "ground_truth_file": "doc06.json"
+    },
+    {
+      "sha256": "cf4af08dd23f507ae72b852d86827bbee6c3fe2d0e31f96e70bc74ea4238c45f",
+      "ground_truth_file": "doc07.json"
+    },
+    {
+      "sha256": "a509637f4b258454309e1d21e81beca56701a78624b8a6a6f9a6b0ec9389b0e5",
+      "ground_truth_file": "doc08.json"
+    }
+  ]
+}

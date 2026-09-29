@@ -1,0 +1,254 @@
+{
+  "ground_truth_version": "2.0",
+  "document": {
+    "sha256": "147d83f038f6ca94495a5d5248f36a6feedee7ae9a5cebc011d40e1f14d68068",
+    "file_name": "06_petroquimica_litoral_grupamento.pdf",
+    "text_layer": "native",
+    "evidence_source": "pypdf_text_layer"
+  },
+  "document_truth": {
+    "classification": {
+      "event_type": "REVERSE_SPLIT",
+      "subtype_as_declared": "Grupamento de ações (inplit)",
+      "title_as_declared": "AVISO AOS ACIONISTAS — Grupamento de Ações (Inplit)",
+      "title_consistent_with_content": true,
+      "evidence": [
+        "aprovou o grupamento da totalidade das ações representativas do capital social, na proporção de 10 (dez) ações existentes para 1 (uma) ação, sem modificação do valor do capital social",
+        "Tipo de evento Grupamento de ações (inplit)"
+      ],
+      "traps": [
+        "Grupamento de Ações (Inplit)"
+      ],
+      "source_label": "Tipo de evento"
+    },
+    "fields": {
+      "issuer_name": {
+        "status": "found",
+        "value": "Petroquímica Litoral S.A.",
+        "raw": "Petroquímica Litoral S.A.",
+        "source_label": null,
+        "location": "body",
+        "evidence": [
+          "A Petroquímica Litoral S.A. comunica"
+        ]
+      },
+      "cnpj": {
+        "status": "found",
+        "value": "55.666.777/0001-08",
+        "raw": "55.666.777/0001-08",
+        "source_label": "CNPJ/ME nº",
+        "location": "header",
+        "evidence": [
+          "CNPJ/ME nº 55.666.777/0001-08"
+        ]
+      },
+      "isin": {
+        "status": "found",
+        "value": "BRPQLTACNOR8",
+        "raw": "BRPQLTACNOR8",
+        "source_label": "ISIN",
+        "location": "table",
+        "evidence": [
+          "Código de negociação PQLT3 (ISIN BRPQLTACNOR8)"
+        ]
+      },
+      "ticker": {
+        "status": "found",
+        "value": "PQLT3",
+        "raw": "PQLT3",
+        "source_label": "Código de negociação",
+        "location": "table",
+        "evidence": [
+          "Código de negociação PQLT3 (ISIN BRPQLTACNOR8)"
+        ]
+      },
+      "share_class": {
+        "status": "not_found",
+        "value": null,
+        "raw": null,
+        "source_label": null,
+        "evidence": [],
+        "notes": "O aviso diz 'totalidade das ações' sem citar classe. O golden records diz ON, mas isso entra só na checagem de referência, sem preencher o campo extraído."
+      },
+      "approval_date": {
+        "status": "found",
+        "value": "2026-05-30",
+        "raw": "30 de maio de 2026",
+        "source_label": null,
+        "location": "body",
+        "evidence": [
+          "a Assembleia Geral Extraordinária realizada em 30 de maio de 2026 aprovou o grupamento"
+        ],
+        "notes": "approving_body=AGE. Sábado — informativo, nenhuma regra aplicada."
+      },
+      "record_date": {
+        "status": "found",
+        "value": "2026-06-26",
+        "raw": "26/06/2026",
+        "source_label": "Data-base do grupamento",
+        "location": "table",
+        "evidence": [
+          "Data-base do grupamento 26/06/2026",
+          "será a do final do pregão de 26 de junho de 2026 (data-base do grupamento)"
+        ],
+        "notes": "Mapeamento funcional: última posição considerada antes do grupamento."
+      },
+      "ex_date": {
+        "status": "found",
+        "value": "2026-06-29",
+        "raw": "29/06/2026",
+        "source_label": "Início da negociação grupada",
+        "location": "table",
+        "evidence": [
+          "Início da negociação grupada 29/06/2026",
+          "A partir de 29 de junho de 2026, as ações passarão a ser negociadas já grupadas."
+        ],
+        "notes": "Mapeamento funcional: primeiro dia de negociação com o evento aplicado."
+      },
+      "payment_date": {
+        "status": "not_applicable",
+        "value": null,
+        "raw": null,
+        "source_label": null,
+        "evidence": [],
+        "notes": "Evento não-caixa."
+      },
+      "gross_amount_per_share": {
+        "status": "not_applicable",
+        "value": null,
+        "raw": null,
+        "source_label": null,
+        "evidence": []
+      },
+      "net_amount_per_share": {
+        "status": "not_applicable",
+        "value": null,
+        "raw": null,
+        "source_label": null,
+        "evidence": []
+      },
+      "withholding_tax": {
+        "status": "not_applicable",
+        "value": null,
+        "raw": null,
+        "source_label": null,
+        "evidence": []
+      },
+      "currency": {
+        "status": "not_applicable",
+        "value": null,
+        "raw": null,
+        "source_label": null,
+        "evidence": [],
+        "notes": "Evento não-caixa: não inventar BRL."
+      },
+      "ratio": {
+        "status": "found",
+        "value": {
+          "shares_before": "10",
+          "shares_after": "1"
+        },
+        "raw": "10:1 (dez para uma)",
+        "source_label": "Proporção",
+        "location": "table",
+        "evidence": [
+          "Proporção 10:1 (dez para uma)",
+          "na proporção de 10 (dez) ações existentes para 1 (uma) ação"
+        ]
+      }
+    },
+    "event_specific_fields": {
+      "fraction_adjustment_period": {
+        "status": "found",
+        "value": {
+          "start": "2026-06-29",
+          "end": "2026-07-28"
+        },
+        "raw": "29/06/2026 a 28/07/2026",
+        "source_label": "Período de ajuste de frações",
+        "location": "table",
+        "evidence": [
+          "Período de ajuste de frações 29/06/2026 a 28/07/2026"
+        ]
+      }
+    }
+  },
+  "validation_truth": {
+    "reference": {
+      "golden_match": true,
+      "matched_ticker": "PQLT3"
+    },
+    "rules": [
+      {
+        "rule_id": "REF_ISIN_FOUND",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_TICKER_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_CNPJ_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+        "expected": "NOT_EVALUATED",
+        "note": "documento não informa a classe"
+      },
+      {
+        "rule_id": "REF_ISSUER_ACTIVE",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REQUIRED_FIELDS_PRESENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_RECORD_BEFORE_EX",
+        "expected": "PASS"
+      },
+      {
+        "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+        "expected": "PASS",
+        "note": "sex 26/06 → seg 29/06"
+      },
+      {
+        "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+        "expected": "NOT_EVALUATED",
+        "note": "sem pagamento/crédito"
+      },
+      {
+        "rule_id": "RATIO_POSITIVE",
+        "expected": "PASS"
+      }
+    ]
+  },
+  "routing_expectation": {
+    "expectation_status": "DEFINED",
+    "decision": "AUTO_APPROVE",
+    "reason_codes": [],
+    "acceptable_alternatives": [],
+    "rationale": "Grupamento inequívoco; proporção e datas com evidência; referência aprovada. Campos monetários corretamente not_applicable.",
+    "policy_refs": []
+  },
+  "open_points": [
+    "Mapeamento 'Data-base do grupamento' → record_date e 'Início da negociação grupada' → ex_date é interpretação funcional."
+  ]
+}
