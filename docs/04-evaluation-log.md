@@ -1850,3 +1850,46 @@ Todos atendidos → **"PRONTO PARA INTEGRAÇÃO FINAL"**.
   - Replay da J em `tests/test_e010_regression.py`: 43 registros + as duas avaliações do doc 07 com vision.
 - **Regressão K × J (replay, quatro conjuntos):** idêntica em campos, roteamento, identidade, bindings e validações. 0 inseguras, 0 bindings errados, 0 aprovações com identidade errada, 0 omissões aprovadas.
 - **Run final:** os 8 PDFs do case com a solução final (caches novos; LLM semântico e vision reais) e avaliação em `evaluation/e011.py`.
+
+### Resultado do run final (solução K, 8 PDFs do case, run `20260930T035437Z-e2c12604`, caches novos)
+
+| Documento | Percepção | OCR | Vision | LLM semântico | Roteamento | Motivos | Latência | Custo (US$) |
+|---|---|---|---|---|---|---|---|---|
+| 01 Energética (dividendo) | NATIVE_TEXT | não | não | não | AUTO_APPROVE | — | 56 ms | 0 |
+| 02 Banco Meridional (JCP) | NATIVE_TEXT | não | não | não | AUTO_APPROVE | — | 21 ms | 0 |
+| 03 Siderúrgica (título × JCP) | NATIVE_TEXT | não | não | não | REVIEW | `CLASSIFICATION_TITLE_CONFLICT` | 18 ms | 0 |
+| 04 Rede Varejo (pagamento a definir) | NATIVE_TEXT | não | não | não | REVIEW | `PAYMENT_DATE_PENDING` | 20 ms | 0 |
+| 05 Aurora (datas incoerentes) | NATIVE_TEXT | não | não | não | REVIEW | `DATE_INCONSISTENCY` | 14 ms | 0 |
+| 06 Petroquímica (grupamento) | NATIVE_TEXT | não | não | **sim** (`REQUIRED_DATE_ROLE_UNMAPPED`; 2 chamadas, 1 tool call) | REVIEW | `REQUIRED_FIELD_MISSING`, `MATERIAL_INFORMATION_NOT_REPRESENTED` | 14,0 s | 0,07412 |
+| 07 Telecom Norte (scan) | **VISION_FALLBACK** | sim | **sim** | não | AUTO_APPROVE | — | 12,0 s | 0,04538 |
+| 08 Construtora (fora da base) | NATIVE_TEXT | não | não | não | REVIEW | `REFERENCE_NOT_FOUND` | 16 ms | 0 |
+
+**Doc 07, caminho completo auditado:**
+1. `NO_USABLE_TEXT_LAYER`.
+2. OCR local (3,7 s).
+3. Sondagem: `REQUIRED_TICKER_MISSING_AFTER_OCR`.
+4. Vision, com percepção nova completa (API 7,7 s; 5.541 + 707 tokens).
+5. Pipeline J/K: 13/13 campos iguais ao gabarito, as 17 validações PASS, identidade `ISIN_EXACT`.
+6. AUTO_APPROVE.
+
+- A aprovação cumpre exatamente a condição de AUTO_APPROVE aceita pelo gabarito para o doc 07 (expectativa `POLICY_DEPENDENT`: "todos os campos obrigatórios com evidência e checagens objetivas aprovadas").
+- O avaliador herdado do E-006 rotula o caso como "false approval" porque trata expectativa não definida como revisão. É um artefato de rótulo, fora da métrica de segurança; a métrica enhanced não o conta.
+
+**Agregado (lote do case; não é distribuição de produção):**
+- Percepção: 87,5% nativo (7/8), 12,5% OCR (1/8), 12,5% vision fallback (1/8).
+- LLM semântico: 12,5% (1/8).
+- **Custo total US$ 0,1195**, média de US$ 0,0149 por documento: percepção 0,0454, semântica 0,0741.
+- Latência total 26,2 s. Documentos nativos sem LLM: 14–56 ms.
+- Revisão 5/8.
+- Roteamento contra expectativas DEFINED: 5/6. O false review é o doc 06, variação conhecida do LLM (valor fora da citação).
+
+**Segurança:** 0 aprovações inseguras (enhanced), 0 omissões materiais aprovadas, 0 alucinações aprovadas, 0 bindings errados (em qualquer roteamento), 0 aprovações com identidade errada, 0 contradições aprovadas. Toda aprovação teve os validadores obrigatórios executados.
+
+**Critérios de conclusão (seção 18):** 1–7, 9 e 10 verificados no run e nos testes. 11: suíte completa passando. 8: testes de falha de OCR, de vision e de saída inutilizável → revisão. 12: qualitativo.
+
+### Limitações e failure modes novos (registrados)
+
+1. **A autodeclaração de incerteza do vision não é estável.** Nesta terceira chamada (o run final), o vision **não** marcou o ISIN como incerto, enquanto as execuções 1 e 2 do E-010 marcaram. O texto só difere em espaços em volta de "|" (irrelevante após normalização), e os campos e o roteamento são os mesmos. A estabilidade de *valores* se manteve em 3/3 chamadas; a de *incerteza declarada*, não. Consequência: a política J protege quando há declaração, mas a ausência de declaração não garante leitura segura. A segurança de fundo continua sendo a validação determinística (referência exata, aritmética, ordem de datas).
+2. **Critério de chamada do vision baseado em ausência:** um documento escaneado que *legitimamente* não tem um campo obrigatório chama o vision à toa. O custo é um desperdício, mas o resultado é fail-safe.
+3. **O rótulo de roteamento do avaliador herdado** para expectativas `POLICY_DEPENDENT` (acima).
+4. As limitações de E-008 a E-010 continuam valendo: um único scan, e limpo; o OCR não declara incerteza; leitura errada com confiança só é pega por validação; a corroboração entre identificadores vem da mesma passada do modelo; D-030.

@@ -1,0 +1,260 @@
+{
+  "per_document": [
+    {
+      "document": "01_energetica_vale_tiete_dividendo.pdf",
+      "perception_path": "NATIVE_TEXT",
+      "perception_decision": null,
+      "ocr_called": false,
+      "vision_called": false,
+      "semantic_llm_called": false,
+      "semantic_triggers": [],
+      "tool_calls": 0,
+      "decision": "AUTO_APPROVE",
+      "reason_codes": [],
+      "latency_ms": 56,
+      "cost_usd": {
+        "perception": "0",
+        "semantic_llm": "0",
+        "total": "0"
+      },
+      "uncertainty": {},
+      "mandatory_validations_executed": true,
+      "errors": []
+    },
+    {
+      "document": "02_banco_meridional_jcp.pdf",
+      "perception_path": "NATIVE_TEXT",
+      "perception_decision": null,
+      "ocr_called": false,
+      "vision_called": false,
+      "semantic_llm_called": false,
+      "semantic_triggers": [],
+      "tool_calls": 0,
+      "decision": "AUTO_APPROVE",
+      "reason_codes": [],
+      "latency_ms": 21,
+      "cost_usd": {
+        "perception": "0",
+        "semantic_llm": "0",
+        "total": "0"
+      },
+      "uncertainty": {},
+      "mandatory_validations_executed": true,
+      "errors": []
+    },
+    {
+      "document": "03_siderurgica_paranaense_proventos.pdf",
+      "perception_path": "NATIVE_TEXT",
+      "perception_decision": null,
+      "ocr_called": false,
+      "vision_called": false,
+      "semantic_llm_called": false,
+      "semantic_triggers": [],
+      "tool_calls": 0,
+      "decision": "REVIEW_REQUIRED",
+      "reason_codes": [
+        "CLASSIFICATION_TITLE_CONFLICT"
+      ],
+      "latency_ms": 18,
+      "cost_usd": {
+        "perception": "0",
+        "semantic_llm": "0",
+        "total": "0"
+      },
+      "uncertainty": {},
+      "mandatory_validations_executed": true,
+      "errors": []
+    },
+    {
+      "document": "04_rede_varejo_jcp_sem_data.pdf",
+      "perception_path": "NATIVE_TEXT",
+      "perception_decision": null,
+      "ocr_called": false,
+      "vision_called": false,
+      "semantic_llm_called": false,
+      "semantic_triggers": [],
+      "tool_calls": 0,
+      "decision": "REVIEW_REQUIRED",
+      "reason_codes": [
+        "PAYMENT_DATE_PENDING"
+      ],
+      "latency_ms": 20,
+      "cost_usd": {
+        "perception": "0",
+        "semantic_llm": "0",
+        "total": "0"
+      },
+      "uncertainty": {},
+      "mandatory_validations_executed": true,
+      "errors": []
+    },
+    {
+      "document": "05_aurora_saneamento_dividendo_datas.pdf",
+      "perception_path": "NATIVE_TEXT",
+      "perception_decision": null,
+      "ocr_called": false,
+      "vision_called": false,
+      "semantic_llm_called": false,
+      "semantic_triggers": [],
+      "tool_calls": 0,
+      "decision": "REVIEW_REQUIRED",
+      "reason_codes": [
+        "DATE_INCONSISTENCY"
+      ],
+      "latency_ms": 14,
+      "cost_usd": {
+        "perception": "0",
+        "semantic_llm": "0",
+        "total": "0"
+      },
+      "uncertainty": {},
+      "mandatory_validations_executed": true,
+      "errors": []
+    },
+    {
+      "document": "06_petroquimica_litoral_grupamento.pdf",
+      "perception_path": "NATIVE_TEXT",
+      "perception_decision": null,
+      "ocr_called": false,
+      "vision_called": false,
+      "semantic_llm_called": true,
+      "semantic_triggers": [
+        "REQUIRED_DATE_ROLE_UNMAPPED"
+      ],
+      "tool_calls": 1,
+      "decision": "REVIEW_REQUIRED",
+      "reason_codes": [
+        "REQUIRED_FIELD_MISSING",
+        "MATERIAL_INFORMATION_NOT_REPRESENTED"
+      ],
+      "latency_ms": 14011,
+      "cost_usd": {
+        "perception": "0",
+        "semantic_llm": "0.07412",
+        "total": "0.07412"
+      },
+      "uncertainty": {},
+      "mandatory_validations_executed": true,
+      "errors": []
+    },
+    {
+      "document": "07_telecom_norte_jcp_SCAN.pdf",
+      "perception_path": "VISION_FALLBACK",
+      "perception_decision": {
+        "ocr_probe_reasons": [
+          "REQUIRED_TICKER_MISSING_AFTER_OCR"
+        ],
+        "ocr_probe_routing": [
+          "REQUIRED_FIELD_MISSING"
+        ],
+        "fallback_reasons": [
+          "REQUIRED_TICKER_MISSING_AFTER_OCR"
+        ]
+      },
+      "ocr_called": true,
+      "vision_called": true,
+      "semantic_llm_called": false,
+      "semantic_triggers": [],
+      "tool_calls": 0,
+      "decision": "AUTO_APPROVE",
+      "reason_codes": [],
+      "latency_ms": 12033,
+      "cost_usd": {
+        "perception": "0.04538",
+        "semantic_llm": "0",
+        "total": "0.04538"
+      },
+      "uncertainty": {},
+      "mandatory_validations_executed": true,
+      "errors": []
+    },
+    {
+      "document": "08_construtora_horizonte_bonificacao.pdf",
+      "perception_path": "NATIVE_TEXT",
+      "perception_decision": null,
+      "ocr_called": false,
+      "vision_called": false,
+      "semantic_llm_called": false,
+      "semantic_triggers": [],
+      "tool_calls": 0,
+      "decision": "REVIEW_REQUIRED",
+      "reason_codes": [
+        "REFERENCE_NOT_FOUND"
+      ],
+      "latency_ms": 16,
+      "cost_usd": {
+        "perception": "0",
+        "semantic_llm": "0",
+        "total": "0"
+      },
+      "uncertainty": {},
+      "mandatory_validations_executed": true,
+      "errors": []
+    }
+  ],
+  "aggregate": {
+    "documents": 8,
+    "native_pct": 87.5,
+    "ocr_pct": 12.5,
+    "vision_fallback_pct": 12.5,
+    "semantic_llm_pct": 12.5,
+    "total_cost_usd": "0.11950",
+    "avg_cost_per_document_usd": "0.0149375",
+    "cost_by_role_usd": {
+      "perception": "0.04538",
+      "semantic_llm": "0.07412"
+    },
+    "total_latency_ms": 26189,
+    "review_rate": "5/8",
+    "note": "lote fornecido pelo case; não é distribuição de produção"
+  },
+  "safety": {
+    "unsafe_auto_approvals_enhanced": [],
+    "material_omissions_approved": [],
+    "hallucinations_approved": [],
+    "unresolved_ambiguity_approved": [],
+    "validation_failures_approved": [],
+    "contradictions_approved": [],
+    "other_expected_review_approved": [],
+    "wrong_identity_approvals": [],
+    "wrong_bindings_approved": {},
+    "false_approvals": [
+      "07_telecom_norte_jcp_SCAN.pdf"
+    ],
+    "wrong_bindings_any_routing": {},
+    "routing_vs_ground_truth": {
+      "accuracy_defined": {
+        "correct": 5,
+        "total": 6
+      },
+      "accuracy_all": {
+        "correct": 6,
+        "total": 8
+      },
+      "false_approvals": [
+        "07_telecom_norte_jcp_SCAN.pdf"
+      ],
+      "false_reviews": [
+        "06_petroquimica_litoral_grupamento.pdf"
+      ],
+      "review_rate": {
+        "correct": 5,
+        "total": 8
+      },
+      "correct_auto_approvals": [
+        "01_energetica_vale_tiete_dividendo.pdf",
+        "02_banco_meridional_jcp.pdf"
+      ]
+    }
+  },
+  "checks": {
+    "1_end_to_end_all_8": true,
+    "2_doc07_ocr_then_vision_audited": true,
+    "3_unsafe_zero": true,
+    "4_wrong_bindings_zero": true,
+    "5_wrong_identity_approval_zero": true,
+    "6_material_omissions_approved_zero": true,
+    "7_approvals_only_with_mandatory_validations": true,
+    "10_cost_and_latency_recorded": true
+  }
+}
