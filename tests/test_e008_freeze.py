@@ -18,7 +18,8 @@ def text_sha(p: Path) -> str:
 # Evolução a partir do E-009 (variante I: juiz com pontilhado em binding_v2.py, parâmetro judge_fn). O comportamento
 # congelado da H é garantido por tests/test_e008_regression.py (replay dos registros oficiais da regressão do E-008).
 EVOLVABLE = {"src/corporate_actions/pipeline.py", "src/corporate_actions/__main__.py",
-             "src/corporate_actions/binding_v2.py"}
+             "src/corporate_actions/binding_v2.py",
+             "tests/test_e006_freeze.py"}   # E-010: só a lista de módulos adicionados após o E-006 (uncertainty.py)
 
 
 @pytest.mark.parametrize("path", sorted(set(FREEZE["files"]) - EVOLVABLE))

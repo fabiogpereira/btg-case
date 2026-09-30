@@ -1,4 +1,4 @@
-"""CLI: python -m corporate_actions [--variant A|B|C|D|E|F|G|H|I] [--documents DIR] [--golden CSV] [--out DIR]
+"""CLI: python -m corporate_actions [--variant A|B|C|D|E|F|G|H|I|J] [--documents DIR] [--golden CSV] [--out DIR]
 
 Variantes C, D, E e F leem LLM_PROVIDER / LLM_MODEL / LLM_EFFORT / chave do provedor do ambiente ou do .env.
 """
@@ -15,7 +15,7 @@ CASE = ROOT / "case" / "Case AI Dev - Envio"
 
 def main():
     parser = argparse.ArgumentParser(description="Extração de avisos de eventos corporativos (variantes A/B/C do E-003; D do E-004; E do E-005; F do E-006)")
-    parser.add_argument("--variant", choices=["A", "B", "C", "D", "E", "F", "G", "H", "I"], default="A")
+    parser.add_argument("--variant", choices=["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"], default="A")
     parser.add_argument("--documents", type=Path, default=CASE / "documents")
     parser.add_argument("--golden", type=Path, default=CASE / "golden_records" / "golden records.csv")
     parser.add_argument("--out", type=Path, default=None, help="default: outputs/runs/<run_id>")
@@ -25,7 +25,7 @@ def main():
     run_id = new_run_id()
     out = args.out or ROOT / "outputs" / "runs" / run_id
     ctx = None
-    if args.variant in ("C", "D", "E", "F", "G", "H", "I"):
+    if args.variant in ("C", "D", "E", "F", "G", "H", "I", "J"):
         from .llm.cache import ResponseCache
         from .llm.config import llm_config_from_env
         from .llm.registry import get_provider

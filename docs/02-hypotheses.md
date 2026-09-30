@@ -431,3 +431,17 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
   - OCR local: 10/11 (ticker ausente, fail-safe), US$ 0, 3,7 s.
   - Regra pré-registrada: VISION. Pelos critérios da seção 7: OCR local + vision como fallback secundário.
 - **Status:** SUPPORTED (1 documento, 1 amostra; estabilidade do vision não medida)
+
+## O. Estabilidade do vision e incerteza crítica (E-010)
+
+### H-39 — A leitura do vision do doc 07 é estável entre execuções independentes
+- **Hypothesis:** Com a mesma configuração congelada, uma segunda execução produz os mesmos valores em todos os campos críticos, sem erro de dígito e com o mesmo roteamento.
+- **How to test:** 2ª execução com cache novo; comparação run 1 × run 2 (E-010).
+- **Observed result:** (pendente)
+- **Status:** OPEN
+
+### H-40 — Corroboração independente permite aceitar incerteza crítica sem ignorá-la
+- **Hypothesis:** Bloquear todo campo crítico incerto sem corroboração independente, e aceitar só os corroborados por fonte determinística independente, mantém 0 aprovações inseguras e evita revisões desnecessárias quando a corroboração existe.
+- **How to test:** `tests/test_uncertainty_j.py`, regressão J × I e as duas transcrições do doc 07 sob a J (E-010).
+- **Observed result:** (pendente)
+- **Status:** OPEN

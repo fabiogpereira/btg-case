@@ -454,6 +454,24 @@ Formato:
   - Sem combinação, voto, ensemble ou correção cruzada; golden records nunca corrigem leitura.
   - Uma execução oficial. A regra de decisão está pré-registrada em `evaluation/e009.py`.
 
+## D-035 — Variante J (`candidate_pre_integration`): política de incerteza crítica da percepção
+
+- **Data:** 2026-09-30
+- **Status:** ACCEPTED (implementação; vale como candidata pré-integração se a regressão do E-010 passar)
+- **Tipo:** política de roteamento (única mudança autorizada no roteamento)
+- **Decisão:** J = I + `uncertainty.py`. Quando a percepção declara tokens incertos (hoje só o vision declara), cada campo cujo **valor** é sobreposto por um token incerto com conteúdo alfanumérico é marcado `vision_uncertain`.
+  - **Campo crítico** (identificadores, tipo de evento, datas materiais, valores, tributação, proporção, obrigatórios do tipo) incerto só segue com corroboração determinística independente e exata. Fontes aceitas:
+    - linha única da base encontrada por **outro** identificador não incerto;
+    - para ISIN, a linha pelo próprio ISIN mais a concordância de outro identificador não incerto;
+    - para bruto, líquido ou alíquota, a relação aritmética exata quando só um dos três é incerto.
+  - Datas, proporção e tipo de evento não têm fonte independente.
+  - Não corrigem nada: confiança do modelo, normalização do próprio valor, linha encontrada pelo próprio campo (circular).
+  - **Bloqueios:** `CRITICAL_FIELD_UNCERTAIN_UNCORROBORATED`, `CRITICAL_FIELD_UNCERTAIN_CONFLICT`, `UNCERTAIN_TOKEN_UNLOCATED`.
+  - **Gate:** `PERCEPTION_UNCERTAINTY` (recomposto com `_decide`).
+  - **Auditoria:** `record.perception_uncertainty`.
+- **Limitação documentada:** a corroboração aritmética usa valores da mesma leitura e só vale supondo erros independentes em tokens diferentes.
+- **Garantias:** a I é verificada por replay (`tests/test_e009_regression.py`). Texto nativo e OCR local não declaram incerteza, então a J é idêntica à I neles.
+
 ---
 
 ## Decisões deliberadamente adiadas (não são decisões)

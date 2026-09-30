@@ -1761,3 +1761,26 @@ python -m evaluation.e009 compare --out outputs/experiments/E-009_ocr_vs_vision/
 3. **Regra de decisão do E-009 com definição de segurança mais estrita que a estrutura de decisão pedida** (acima). É lição de pré-registro: separar "erro de percepção" de "erro com consequência".
 4. **Governança:** com vision, a imagem do documento é enviada a um serviço externo. Custo (~US$ 0,05 por página) e latência (~10 s) valem para cada scan que passar por vision.
 5. **Um documento, uma execução por braço:** não estabelece taxa de erro de nenhuma das duas percepções (D-030).
+
+## E-010 — Estabilidade do vision e política de incerteza crítica (pré-registro)
+
+- **Checkpoint anterior:** tag `pre-e010` → `3ba1ea2`.
+- **Política (D-035):** variante J = I + `uncertainty.py`. Detalhes na docstring do módulo e em D-035.
+- **Testes:** 13 em `tests/test_uncertainty_j.py`, com aviso sintético e percepção falsa:
+  - ISIN incerto corroborado pela base + outro identificador;
+  - ticker incerto corroborado pela linha do ISIN;
+  - data incerta → revisão;
+  - token não crítico → não bloqueia;
+  - um valor incerto corroborado pela aritmética;
+  - dois valores incertos → revisão;
+  - corroboração circular rejeitada (identidade de nível 2 encontrada pelo próprio ticker, CNPJ com duas classes);
+  - conflito → revisão;
+  - tipo de evento incerto → revisão;
+  - preenchimento ignorado;
+  - token numérico não localizável → revisão;
+  - percepção sem canal de incerteza → não avaliada;
+  - a I ignorando a incerteza (o problema do E-009).
+- **Replay da I:** 43 registros em `tests/test_e009_regression.py`.
+- **Bug encontrado e corrigido antes do congelamento:** sinais da classificação são dicionários, não `Evidence`. O teste pegou o erro, que era fail-safe (`PROCESSING_ERROR` → revisão).
+- **Ordem do protocolo:** política implementada, testada, regressada e congelada **antes** da 2ª execução do vision, para não desenhá-la olhando o resultado.
+- **Avaliação e critério de prontidão:** docstring de `src/evaluation/e010.py` (R1–R5 e decisão).
