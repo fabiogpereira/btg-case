@@ -402,5 +402,10 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
 - **Why it matters:** O doc 07 é o único documento do case sem camada de texto. Desde o E-002, vai para revisão por falta de extração, não por falta de confiança no conteúdo.
 - **How to test:** E-008 parte 2 (`evaluation/e008_ocr.py`, pré-registrado): comparação campo a campo com o gabarito v2.1 (transcrição visual humana) e tokens críticos como escritos.
 - **Expected signal:** Critérios 1–7 do avaliador; nenhum gatilho de vision.
-- **Observed result:** (pendente)
-- **Status:** OPEN
+- **Observed result:** (E-008, execução válida única)
+  - Doc 07 processado ponta a ponta por `OCR_LOCAL`, com 95,9% de similaridade de caracteres; todos os números financeiros exatos; 9/11 campos críticos exatos; 0 valores errados.
+  - 0 inseguras; 0 bindings errados; identidade `ISIN_EXACT` correta; custo US$ 0; OCR em 3,3 s.
+  - Revisão por dois campos obrigatórios ausentes: ticker (erro de OCR 4 → A com confiança 84, contido pela estrutura) e data de pagamento (binding rejeita pontilhado de tabela como fim de frase).
+  - Dois gatilhos pré-registrados de vision dispararam.
+- **Decision:** OCR local seguro (fail-safe) mas não suficiente para aprovar o doc 07. Pela regra pré-registrada, testar vision (comparativo). Correção do pontilhado no binding é independente e precisa de autorização.
+- **Status:** MODIFIED (seguro e barato; recuperação incompleta; 1 documento — sem taxa de erro)

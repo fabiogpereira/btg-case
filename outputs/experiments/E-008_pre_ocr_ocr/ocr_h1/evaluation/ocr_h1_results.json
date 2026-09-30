@@ -1,0 +1,496 @@
+{
+  "document": {
+    "file_name": "07_telecom_norte_jcp_SCAN.pdf",
+    "sha256": "cf4af08dd23f507ae72b852d86827bbee6c3fe2d0e31f96e70bc74ea4238c45f",
+    "identity_hash_is_pdf": true
+  },
+  "fallback": {
+    "trigger": "NO_USABLE_TEXT_LAYER",
+    "extraction_method": "OCR_LOCAL",
+    "engine": "tesseract",
+    "engine_version": "v5.4.0.20240606",
+    "lang": "por",
+    "model_sha256": "016c6a371bb1e4c48fe521908cf3ba3d751fade0ab846ad5d4086b563f5c528c",
+    "oem": 1,
+    "psm": 3,
+    "dpi": 300,
+    "renderer": "pypdfium2 5.13.0",
+    "pages": 1,
+    "duration_ms": {
+      "render": 771,
+      "ocr": 2483,
+      "total": 3269
+    },
+    "usable": true,
+    "page_artifacts": [
+      {
+        "page": 1,
+        "image_px": [
+          3308,
+          4678
+        ],
+        "image_sha256": "b04df3b60a832d98115b2edef592ad6997f76c8ce3d4e86fa7dc9b9c42200100",
+        "text_sha256": "b54f5ed61974618f3daebc13062c6b5f84ea768a533932572e778306982ae492",
+        "tsv_sha256": "64a884a9c1e1fdc6bf0f18fabde5a7e4ff93cff8e703b3bbda87a8471413d43a",
+        "raw_text_path": "outputs/experiments/E-008_pre_ocr_ocr/ocr_h1/ocr_artifacts/cf4af08dd23f507ae72b852d86827bbee6c3fe2d0e31f96e70bc74ea4238c45f/page-1.txt",
+        "raw_tsv_path": "outputs/experiments/E-008_pre_ocr_ocr/ocr_h1/ocr_artifacts/cf4af08dd23f507ae72b852d86827bbee6c3fe2d0e31f96e70bc74ea4238c45f/page-1.tsv"
+      }
+    ]
+  },
+  "text": {
+    "chars": 1185,
+    "lines": 25,
+    "words": 192,
+    "mean_word_confidence": "89.0",
+    "low_confidence_words": 13,
+    "low_confidence_numeric_tokens": [
+      {
+        "token": "33.300.000.007",
+        "conf": "48.278183"
+      }
+    ],
+    "unexpected_chars": [],
+    "char_similarity_vs_transcription": 0.9587,
+    "transcription_words_found": {
+      "found": 179,
+      "total": 186
+    },
+    "transcription_chars": 1187
+  },
+  "critical_tokens_as_written": {
+    "issuer_name": {
+      "expected": "Telecom Norte Participações S.A.",
+      "exact": true
+    },
+    "cnpj": {
+      "expected": "33.222.111/0001-44",
+      "exact": true
+    },
+    "isin": {
+      "expected": "BRTLNRACNPR2",
+      "exact": true
+    },
+    "ticker": {
+      "expected": "TLNR4",
+      "exact": false,
+      "closest_ocr": "TLNRA",
+      "digit_positions_changed": [
+        4
+      ]
+    },
+    "approval_date": {
+      "expected": "06 de junho de 2026",
+      "exact": true
+    },
+    "record_date": {
+      "expected": "22/06/2026",
+      "exact": true
+    },
+    "ex_date": {
+      "expected": "23/06/2026",
+      "exact": true
+    },
+    "payment_date": {
+      "expected": "21/08/2026",
+      "exact": true
+    },
+    "gross_amount_per_share": {
+      "expected": "R$ 0,1124300000",
+      "exact": true
+    },
+    "net_amount_per_share": {
+      "expected": "R$ 0,0927547500",
+      "exact": true
+    },
+    "withholding_tax": {
+      "expected": "17,5%",
+      "exact": true
+    }
+  },
+  "evidence_recoverability": {
+    "found": 20,
+    "total": 24,
+    "missing": [
+      "TLNR4 (ISIN BRTLNRACNPR2)",
+      "TLNR4 (ISIN BRTLNRACNPR2)",
+      "Data ex-JCP",
+      "aprovou o crédito de Juros sobre o Capital Próprio (JCP), nos termos do art. 9º da Lei nº 9.249/95"
+    ]
+  },
+  "fields": {
+    "issuer_name": {
+      "expected": "Telecom Norte Participações S.A.",
+      "got": "Telecom Norte Participações S.A.",
+      "status": "found",
+      "result": "EXACT",
+      "confidence": "MEDIUM",
+      "rules": [
+        "issuer_name.pattern_company_sa"
+      ]
+    },
+    "cnpj": {
+      "expected": "33.222.111/0001-44",
+      "got": "33.222.111/0001-44",
+      "status": "found",
+      "result": "EXACT",
+      "confidence": "HIGH",
+      "rules": [
+        "cnpj.label_cnpj"
+      ]
+    },
+    "isin": {
+      "expected": "BRTLNRACNPR2",
+      "got": "BRTLNRACNPR2",
+      "status": "found",
+      "result": "EXACT",
+      "confidence": "HIGH",
+      "rules": [
+        "isin.label_isin"
+      ]
+    },
+    "ticker": {
+      "expected": "TLNR4",
+      "got": null,
+      "status": "not_found",
+      "result": "MISSING",
+      "confidence": null,
+      "rules": []
+    },
+    "approval_date": {
+      "expected": "2026-06-06",
+      "got": "2026-06-06",
+      "status": "found",
+      "result": "EXACT",
+      "confidence": "HIGH",
+      "rules": [
+        "approval_date.phrase_meeting"
+      ]
+    },
+    "record_date": {
+      "expected": "2026-06-22",
+      "got": "2026-06-22",
+      "status": "found",
+      "result": "EXACT",
+      "confidence": "HIGH",
+      "rules": [
+        "record_date.label_data_com.trailing_parenthetical"
+      ]
+    },
+    "ex_date": {
+      "expected": "2026-06-23",
+      "got": "2026-06-23",
+      "status": "found",
+      "result": "EXACT",
+      "confidence": "HIGH",
+      "rules": [
+        "ex_date.label_data_ex"
+      ]
+    },
+    "payment_date": {
+      "expected": "2026-08-21",
+      "got": null,
+      "status": "not_found",
+      "result": "MISSING",
+      "confidence": null,
+      "rules": []
+    },
+    "gross_amount_per_share": {
+      "expected": "0.1124300000",
+      "got": "0.1124300000",
+      "status": "found",
+      "result": "EXACT",
+      "confidence": "HIGH",
+      "rules": [
+        "gross.label_valor_bruto"
+      ]
+    },
+    "net_amount_per_share": {
+      "expected": "0.0927547500",
+      "got": "0.0927547500",
+      "status": "found",
+      "result": "EXACT",
+      "confidence": "HIGH",
+      "rules": [
+        "net.label_valor_liquido"
+      ]
+    },
+    "withholding_tax": {
+      "expected": {
+        "rate": "0.175",
+        "base": "GROSS_AMOUNT"
+      },
+      "got": {
+        "rate": "0.175",
+        "base": "GROSS_AMOUNT"
+      },
+      "status": "found",
+      "result": "EXACT",
+      "confidence": "HIGH",
+      "rules": [
+        "withholding.label_irrf"
+      ]
+    }
+  },
+  "safety": {
+    "unsafe_auto_approval_enhanced": false,
+    "components_if_approved": null,
+    "latent_components": {
+      "material_information_omission": [
+        "payment_date:not_found"
+      ]
+    },
+    "hallucinations": [],
+    "material_omissions": [
+      "payment_date:not_found"
+    ],
+    "silently_altered_fields": [],
+    "wrong_bindings": [],
+    "wrong_identity": false
+  },
+  "binding": {
+    "bound": 5,
+    "rejected": [
+      {
+        "field": "record_date",
+        "rule_id": "record_date.label_data_base",
+        "raw": "22/06/2026",
+        "evidence": "Data-base (data com) ............ 22/06/2026",
+        "decision": "REJECTED",
+        "reason": "CROSSES_SENTENCE",
+        "gap_chars": 25,
+        "crosses_line": false
+      },
+      {
+        "field": "record_date",
+        "rule_id": "record_date.label_data_com",
+        "raw": "22/06/2026",
+        "evidence": "data com) ............ 22/06/2026",
+        "decision": "REJECTED",
+        "reason": "CROSSES_SENTENCE",
+        "gap_chars": 15,
+        "crosses_line": false
+      },
+      {
+        "field": "payment_date",
+        "rule_id": "payment_date.label_data_pagamento",
+        "raw": "21/08/2026",
+        "evidence": "Data de pagamento .............. 21/08/2026",
+        "decision": "REJECTED",
+        "reason": "CROSSES_SENTENCE",
+        "gap_chars": 16,
+        "crosses_line": false
+      },
+      {
+        "field": "withholding_tax",
+        "rule_id": "withholding.label_irrf",
+        "raw": "17,5",
+        "evidence": "IRRF na fonte ...lllooo. 17,5%",
+        "decision": "REJECTED",
+        "reason": "CROSSES_SENTENCE",
+        "gap_chars": 21,
+        "crosses_line": false
+      }
+    ],
+    "superseded": 1,
+    "ambiguous_fields": []
+  },
+  "identity": {
+    "identity_method": "ISIN_EXACT",
+    "identifiers_used": {
+      "isin": "BRTLNRACNPR2"
+    },
+    "matched_reference": {
+      "emissor": "Telecom Norte Participações S.A.",
+      "cnpj": "33.222.111/0001-44",
+      "isin": "BRTLNRACNPR2",
+      "ticker": "TLNR4",
+      "classe": "PN",
+      "segmento_listagem": "Tradicional",
+      "status": "ativo"
+    },
+    "status": "RESOLVED",
+    "reason_code": null,
+    "conflicts": []
+  },
+  "pipeline": {
+    "extraction": {
+      "method": "OCR_LOCAL",
+      "status": "COMPLETED",
+      "failure_mode": null,
+      "unsupported_fields": [
+        "fraction_adjustment_period"
+      ],
+      "title": "Juros sobre o Capital Próprio (JCP)"
+    },
+    "event_type": "JCP",
+    "validations": {
+      "REF_ISIN_FOUND": {
+        "expected": "PASS",
+        "got": "PASS"
+      },
+      "REF_TICKER_CONSISTENT": {
+        "expected": "PASS",
+        "got": "NOT_EVALUATED"
+      },
+      "REF_CNPJ_CONSISTENT": {
+        "expected": "PASS",
+        "got": "PASS"
+      },
+      "REF_ISSUER_NAME_CONSISTENT": {
+        "expected": "PASS",
+        "got": "PASS"
+      },
+      "REF_SHARE_CLASS_CONSISTENT": {
+        "expected": "PASS",
+        "got": "PASS"
+      },
+      "REF_ISSUER_ACTIVE": {
+        "expected": "PASS",
+        "got": "PASS"
+      },
+      "REQUIRED_FIELDS_PRESENT": {
+        "expected": "PASS",
+        "got": "FAIL"
+      },
+      "REQUIRED_FIELDS_NOT_PENDING": {
+        "expected": "PASS",
+        "got": "PASS"
+      },
+      "CLASSIFICATION_DETERMINED": {
+        "expected": null,
+        "got": "PASS"
+      },
+      "CLASSIFICATION_TITLE_CONSISTENT": {
+        "expected": "PASS",
+        "got": "PASS"
+      },
+      "DATE_APPROVAL_NOT_AFTER_RECORD": {
+        "expected": "PASS",
+        "got": "PASS"
+      },
+      "DATE_RECORD_BEFORE_EX": {
+        "expected": "PASS",
+        "got": "PASS"
+      },
+      "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD": {
+        "expected": "PASS",
+        "got": "PASS"
+      },
+      "DATE_SETTLEMENT_NOT_BEFORE_EX": {
+        "expected": "PASS",
+        "got": "NOT_EVALUATED"
+      },
+      "AMOUNT_GROSS_POSITIVE": {
+        "expected": "PASS",
+        "got": "PASS"
+      },
+      "AMOUNT_NET_MATCHES_GROSS_AND_TAX": {
+        "expected": "PASS",
+        "got": "PASS"
+      },
+      "REF_IDENTITY_RESOLVED": {
+        "expected": null,
+        "got": "PASS"
+      }
+    },
+    "validation_mismatches": {
+      "REF_TICKER_CONSISTENT": {
+        "expected": "PASS",
+        "got": "NOT_EVALUATED"
+      },
+      "REQUIRED_FIELDS_PRESENT": {
+        "expected": "PASS",
+        "got": "FAIL"
+      },
+      "DATE_SETTLEMENT_NOT_BEFORE_EX": {
+        "expected": "PASS",
+        "got": "NOT_EVALUATED"
+      }
+    },
+    "routing": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "REQUIRED_FIELD_MISSING",
+      "SEMANTIC_INTERPRETER_FAILED"
+    ],
+    "explanations": [
+      "REQUIRED_FIELDS_PRESENT: required fields not found: ['ticker', 'payment_date']",
+      "SEMANTIC_INTERPRETER_FAILED"
+    ],
+    "llm_invoked": true,
+    "llm_triggers": [
+      "REQUIRED_DATE_ROLE_UNMAPPED"
+    ],
+    "llm_errors": [
+      "replay_cache_miss: no recorded response for this request (no API call made)"
+    ]
+  },
+  "operational": {
+    "ocr_duration_ms": {
+      "render": 771,
+      "ocr": 2483,
+      "total": 3269
+    },
+    "pipeline_duration_ms": 3472,
+    "api_calls": 0,
+    "cache_miss": true,
+    "marginal_cost_usd": "0"
+  },
+  "native_documents_unchanged": {
+    "01_energetica_vale_tiete_dividendo.pdf": {
+      "fallback_used": false,
+      "same_as_pre_ocr_regression": true
+    },
+    "02_banco_meridional_jcp.pdf": {
+      "fallback_used": false,
+      "same_as_pre_ocr_regression": true
+    },
+    "03_siderurgica_paranaense_proventos.pdf": {
+      "fallback_used": false,
+      "same_as_pre_ocr_regression": true
+    },
+    "04_rede_varejo_jcp_sem_data.pdf": {
+      "fallback_used": false,
+      "same_as_pre_ocr_regression": true
+    },
+    "05_aurora_saneamento_dividendo_datas.pdf": {
+      "fallback_used": false,
+      "same_as_pre_ocr_regression": true
+    },
+    "06_petroquimica_litoral_grupamento.pdf": {
+      "fallback_used": false,
+      "same_as_pre_ocr_regression": true
+    },
+    "08_construtora_horizonte_bonificacao.pdf": {
+      "fallback_used": false,
+      "same_as_pre_ocr_regression": true
+    }
+  },
+  "success_criteria": {
+    "1_end_to_end": true,
+    "2_no_silent_critical_alteration": true,
+    "3_enhanced_unsafe_zero": true,
+    "4_wrong_bindings_zero": true,
+    "5_identity_correct_or_fail_safe": true,
+    "6_routing_justifiable": true,
+    "7_marginal_cost_zero": true,
+    "native_documents_unchanged": true
+  },
+  "vision_triggers": {
+    "digit_error_in_critical_token": {
+      "ticker": {
+        "expected": "TLNR4",
+        "exact": false,
+        "closest_ocr": "TLNRA",
+        "digit_positions_changed": [
+          4
+        ]
+      }
+    },
+    "critical_fields_lost_ge_2": [
+      "ticker",
+      "payment_date"
+    ],
+    "pipeline_cannot_operate": false,
+    "evidence_recoverability_below_80pct": false
+  }
+}

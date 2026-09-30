@@ -1606,3 +1606,64 @@ Nas duas falhas, a pipeline congelada registrou `PROCESSING_ERROR` → REVIEW_RE
    - **Lição registrada:** o adaptador real não tinha teste ponta a ponta antes da primeira execução no doc 07.
    - Foi acrescentado `tests/test_ocr_local_smoke.py`: PDF sintético gerado no teste → PDFium → Tesseract → pipeline; verifica auditoria serializável e artefatos. Ele reproduzia a falha antes da correção.
    - Freeze do experimento → versão 3.
+
+### Resultado H1 (execução válida `ocr_h1`, freeze do experimento v3, sem ajustes após a saída)
+
+- **Execução:** case original completo. O OCR rodou **só no doc 07**, acionado por `NO_USABLE_TEXT_LAYER`. Os 7 documentos nativos ficaram idênticos à regressão pré-OCR.
+- **API:** 0 chamadas. Houve **1 cache miss:** com a data de pagamento ausente, o detector pediu o LLM. O miss ficou registrado como `SEMANTIC_INTERPRETER_FAILED`, sem chamada. Um LLM ao vivo não mudaria o roteamento, porque o ticker obrigatório continuaria ausente.
+- **Texto:** 1.185 caracteres (transcrição humana: 1.187), 25 linhas, 192 palavras.
+  - Similaridade de caracteres com a transcrição: **95,9%**; 179/186 palavras da transcrição encontradas.
+  - Confiança média do Tesseract: 89; 13 palavras abaixo de 60; nenhum caractere fora do conjunto esperado.
+  - Ruído localizado nos pontilhados da tabela ("........llllo.", "....i..eeí-intoooo"), na linha de assinatura ("EE CE O AAA AO") e em "9.249/95" → "9:249/95".
+- **Tokens críticos como escritos (11):** 10 exatos, com **todos os números financeiros preservados** (R$ 0,1124300000; R$ 0,0927547500; 17,5%; 22/06/2026; 23/06/2026; 21/08/2026; 06 de junho de 2026; CNPJ; ISIN).
+  - **1 erro de caractere:** ticker "TLNR4" → "TLNRA" (4 → A), com confiança de palavra **84**. O Tesseract não sinalizou o erro.
+- **Campos críticos (11):**
+  - 9 exatos: emissor, CNPJ, ISIN, aprovação, data-base, data ex, bruto, líquido, IRRF 17,5% sobre o bruto;
+  - **ticker ausente:** erro de OCR; o padrão de ticker exige dígito final, então o valor errado não foi extraído;
+  - **data de pagamento ausente:** o token estava exato no OCR, mas o binding rejeitou o par (abaixo);
+  - 0 valores diferentes do gabarito.
+- **Binding:** 5 associações mantidas, 1 preterida, **4 rejeitadas por `CROSSES_SENTENCE`**. O pontilhado de tabela termina em ". " antes do valor e a regra de fim de frase o confunde com fim de frase.
+  - Os pares de data-base e IRRF foram recuperados por outros rótulos.
+  - A **data de pagamento** foi perdida: falso negativo do binding, fail-safe.
+  - **0 bindings errados**; 0 campos ambíguos.
+- **Identidade:** `ISIN_EXACT` (BRTLNRACNPR2), correta.
+- **Validação:** as regras de referência (ISIN, CNPJ, emissor, classe, ativo), de datas avaliáveis e de valores (bruto positivo; líquido = bruto × (1 − 17,5%)) coincidem com o gabarito. Divergências: `REQUIRED_FIELDS_PRESENT` FAIL (ticker, pagamento); `REF_TICKER_CONSISTENT` e `DATE_SETTLEMENT_NOT_BEFORE_EX` NOT_EVALUATED (dependem dos campos ausentes).
+- **Roteamento:** REVIEW_REQUIRED (`REQUIRED_FIELD_MISSING`; `SEMANTIC_INTERPRETER_FAILED` é artefato do replay). Justificável: dois campos obrigatórios sem valor confiável. Não é revisão "por ser scan" (D-011).
+- **Segurança:** enhanced unsafe = 0; 0 alucinações; 0 alterações silenciosas; 0 bindings errados; 0 identidade errada. A omissão material (data de pagamento) é latente, num registro revisado.
+- **Operacional:** renderização 0,8 s + OCR 2,5 s = 3,3 s; pipeline total 3,5 s; custo marginal **US$ 0**.
+  - Setup: Tesseract via `winget` + modelo `por` com SHA-256 + `requirements-ocr.txt`.
+
+**Critérios de sucesso H1 (pré-registrados):** 1–7 atendidos.
+1. Ponta a ponta com `OCR_LOCAL`.
+2. Nenhuma alteração silenciosa.
+3. Enhanced unsafe 0.
+4. Bindings errados 0.
+5. Identidade correta.
+6. Roteamento justificável.
+7. Custo 0.
+8. (Setup reproduzível, qualitativo) atendido.
+
+**Gatilhos de vision (pré-registrados): 2 de 4 dispararam.**
+- Erro de caractere num token crítico: ticker 4 → A.
+- ≥ 2 campos críticos perdidos: ticker e data de pagamento. Esta perda é do binding, não da percepção.
+- Não dispararam: pipeline inoperante; recuperabilidade de evidências < 80% (foi 20/24 = 83%).
+
+### Novos failure modes (registrados, não corrigidos)
+
+1. **Pontilhado de tabela lido como fim de frase.** A regra `CROSSES_SENTENCE` do binding (`[.;]` + espaço) rejeita "Rótulo ....... VALOR". É falso negativo fail-safe, mas é um problema da pipeline (binding), exposto pelo layout do scan: vision não o resolve por si. A correção (tratar sequência de pontos como pontilhado, não como fim de frase) exige autorização.
+2. **A confiança do Tesseract não detecta troca dígito ↔ letra:** "TLNRA" teve confiança 84. Neste caso, a proteção veio da estrutura (padrão de ticker, checagens de referência), não da confiança.
+3. **Risco latente com identidade de nível 2 (E-007):** uma troca 3 ↔ 4 no ticker aponta para a outra classe do mesmo emissor (mesmo CNPJ). Sem ISIN no documento, `TICKER_AND_CNPJ_EXACT` casaria a linha errada. `REF_SHARE_CLASS_CONSISTENT` bloqueia se a classe (ON/PN) for extraída do texto; se não for, a checagem fica NOT_EVALUATED. Não ocorreu aqui: o doc 07 tem ISIN.
+4. **Um único documento não estabelece taxa de erro do OCR** (D-030): 1 erro de caractere em ~60 dígitos/identificadores críticos é observação, não estimativa.
+
+### Recomendação
+
+- **Pela regra pré-registrada, vision deve ser testado**, como experimento comparativo e não como substituto: dois gatilhos dispararam.
+- Leitura dos fatos:
+  - o OCR local preservou todos os números financeiros e não produziu nenhuma aprovação insegura nem valor errado;
+  - o único erro de percepção foi contido pela estrutura;
+  - a segunda perda vem do binding.
+- Um teste de vision deve medir, no mesmo gabarito:
+  1. se o ticker é lido corretamente;
+  2. se o texto chega sem pontilhado ambíguo;
+  3. se vision introduz erro silencioso de dígito, que é o risco principal de modelos generativos e que o OCR local não teve.
+- A correção do pontilhado no binding é independente de vision e pode ser avaliada à parte, com autorização.
