@@ -27,11 +27,9 @@ O gate `PERCEPTION_UNCERTAINTY` é acrescentado ao roteamento e recomposto com `
 import re
 
 from .confidence_model import _decide
-from .schema import REQUIRED
+from .critical_fields import critical_fields  # noqa: F401  (definição única de campo crítico, E-011)
 
-IDENTIFIERS = {"isin": "isin", "ticker": "ticker", "cnpj": "cnpj", "issuer_name": "emissor", "share_class": "classe"}
-MATERIAL = {"record_date", "ex_date", "payment_date", "share_credit_date", "gross_amount_per_share",
-            "net_amount_per_share", "withholding_tax", "tax_treatment", "ratio"}
+IDENTIFIERS = {"isin": "isin", "ticker": "ticker", "cnpj": "cnpj", "issuer_name": "emissor", "share_class": "classe"}  # campo -> coluna da base
 AMOUNTS = ("gross_amount_per_share", "net_amount_per_share", "withholding_tax")
 UNCORROBORATED, CONFLICT = "CRITICAL_FIELD_UNCERTAIN_UNCORROBORATED", "CRITICAL_FIELD_UNCERTAIN_CONFLICT"
 UNLOCATED = "UNCERTAIN_TOKEN_UNLOCATED"
@@ -39,10 +37,6 @@ UNLOCATED = "UNCERTAIN_TOKEN_UNLOCATED"
 
 def _norm_name(s):
     return re.sub(r"\s+", " ", s or "").strip().casefold()
-
-
-def critical_fields(event_type) -> set[str]:
-    return set(IDENTIFIERS) | MATERIAL | set(REQUIRED.get(event_type, []))
 
 
 def _value_spans(field) -> list[tuple[int, int]]:

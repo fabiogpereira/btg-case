@@ -24,7 +24,8 @@ def text_sha(p: Path) -> str:
 EVOLVABLE = {"src/corporate_actions/pipeline.py", "src/corporate_actions/__main__.py"}
 ADDED_AFTER_FREEZE = {"src/corporate_actions/identity.py", "src/corporate_actions/binding.py",   # G (E-007)
                       "src/corporate_actions/binding_v2.py",                                             # H (E-008)
-                      "src/corporate_actions/uncertainty.py"}                                            # J (E-010)
+                      "src/corporate_actions/uncertainty.py",                                            # J (E-010)
+                      "src/corporate_actions/critical_fields.py"}                                        # K (E-011)
 
 
 @pytest.mark.parametrize("path", sorted(set(FREEZE["files"]) - EVOLVABLE))

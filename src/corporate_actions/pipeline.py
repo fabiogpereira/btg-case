@@ -16,6 +16,8 @@ I  candidate_pre_vision (E-009): H com o juiz de binding que trata pontilhado de
    preenchimento, não como fim de frase (binding_v2.judge_dot_leader).
 J  candidate_pre_integration (E-010): I + política de incerteza crítica da percepção (uncertainty.py): campo crítico
    marcado como incerto pela percepção só segue com corroboração determinística independente.
+K  final_integrated (E-011): J + roteador de percepção (texto nativo -> OCR local -> vision só se faltar campo crítico
+   obrigatório; perception/router.py) + seções `perception` e `run_summary` (caminho, custos, tokens, latência).
 
 Em todas as variantes o orchestrator executa TODAS as validações obrigatórias; nada depende de
 o LLM chamar ou não uma tool (D-002).
@@ -54,11 +56,13 @@ VARIANT_VERSIONS = {"A": PIPELINE_VERSION, "B": PIPELINE_VERSION + "+semantic-pa
                     "G": PIPELINE_VERSION + "+candidate-f-pre-ocr-hardening/0.1",
                     "H": PIPELINE_VERSION + "+candidate-pre-ocr/0.1",
                     "I": PIPELINE_VERSION + "+candidate-pre-vision/0.1",
-                    "J": PIPELINE_VERSION + "+candidate-pre-integration/0.1"}
+                    "J": PIPELINE_VERSION + "+candidate-pre-integration/0.1",
+                    "K": PIPELINE_VERSION + "+final-integrated/1.0"}
 VARIANT_SCHEMA = {"A": RECORD_SCHEMA_VERSION, "B": "semantic-record/0.1", "C": "semantic-record/0.1",
                   "D": "semantic-record/0.2", "E": "semantic-record/0.3", "F": "semantic-record/0.4",
                   "G": "semantic-record/0.5", "H": "semantic-record/0.6",
-                  "I": "semantic-record/0.6", "J": "semantic-record/0.7"}
+                  "I": "semantic-record/0.6", "J": "semantic-record/0.7",
+                  "K": "corporate-action-record/1.0"}
 
 
 @dataclass
@@ -77,7 +81,7 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
     record = {"schema_version": VARIANT_SCHEMA[variant]}
     llm_info = None
     from .profiles import DETERMINISTIC_PROFILE
-    profile_token = DETERMINISTIC_PROFILE.set("v2" if variant in ("F", "G", "H", "I", "J") else "v1")
+    profile_token = DETERMINISTIC_PROFILE.set("v2" if variant in ("F", "G", "H", "I", "J", "K") else "v1")
     try:
         with audit.stage("ingest"):
             doc = ingest(path)
@@ -89,7 +93,7 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
             "usable": tl.usable, "alnum_chars": tl.alnum_chars,
             "min_alnum_chars_per_page": tl.min_alnum_chars_per_page, "reason": tl.reason})
 
-        extraction_method = EXTRACTION_METHOD
+        extraction_method = "NATIVE_TEXT" if variant == "K" else EXTRACTION_METHOD
         if not tl.usable and text_fallback is not None:
             with audit.stage("text_fallback") as st:
                 fallback_tl, fallback_audit = text_fallback(doc)
@@ -99,6 +103,16 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
             if fallback_tl.usable:
                 tl = fallback_tl
                 extraction_method = fallback_audit["extraction_method"]
+        if variant == "K":
+            fb = record["document"].get("text_fallback")
+            record["perception"] = {
+                "path": ("NATIVE_TEXT" if fb is None and tl.usable else
+                         fb.get("perception_path", fb.get("extraction_method")) if fb and fb["usable"] else "NONE"),
+                "native_text_layer": record["document"]["text_layer"],
+                "fallback_trigger": "NO_USABLE_TEXT_LAYER" if fb is not None else None,
+                "ocr_called": fb is not None, "vision_called": bool(fb and fb.get("vision_called")),
+                "decision": (fb or {}).get("perception_decision"), "vision_error": (fb or {}).get("vision_error"),
+                "detail": "document.text_fallback" if fb is not None else None}
 
         if not tl.usable:
             for name in ("extract_candidates", "classify", "normalize", "confidence", "validate"):
@@ -113,7 +127,7 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
 
         with audit.stage("extract_candidates"):
             extraction = extract_candidates(tl)
-            if variant in ("F", "G", "H", "I", "J"):
+            if variant in ("F", "G", "H", "I", "J", "K"):
                 from .hardening import extra_candidates
                 extra_candidates(extraction, tl)
             if variant == "G":
@@ -122,12 +136,12 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
             elif variant == "H":
                 from .binding_v2 import apply_best_binding
                 record["binding"] = apply_best_binding(extraction, tl)
-            elif variant in ("I", "J"):
+            elif variant in ("I", "J", "K"):
                 from .binding_v2 import apply_best_binding, judge_dot_leader
                 record["binding"] = apply_best_binding(extraction, tl, judge_fn=judge_dot_leader)
         negated, cls_semantic = [], None
         with audit.stage("classify"):
-            if variant in ("B", "D", "E", "F", "G", "H", "I", "J"):
+            if variant in ("B", "D", "E", "F", "G", "H", "I", "J", "K"):
                 from .semantic_patch import classification_semantics, classify_negation_aware
                 classification, negated = classify_negation_aware(extraction, tl)
                 cls_semantic = classification_semantics(classification, extraction, tl, negated)
@@ -158,9 +172,9 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
             score_all(fields, specific)
 
         semantic = need = None
-        if variant in ("D", "E", "F", "G", "H", "I", "J"):
+        if variant in ("D", "E", "F", "G", "H", "I", "J", "K"):
             semantic_fn = {"D": _semantic_d, "E": _semantic_e, "F": _semantic_f, "G": _semantic_f, "H": _semantic_f,
-                           "I": _semantic_f, "J": _semantic_f}[variant]
+                           "I": _semantic_f, "J": _semantic_f, "K": _semantic_f}[variant]
             classification, fields, specific, semantic, llm_info, parsed, need = semantic_fn(
                 extraction, tl, classification, cls_semantic, negated, fields, specific, golden, semantic_ctx, audit)
         elif variant == "B":
@@ -185,7 +199,7 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
         with audit.stage("validate") as st:
             candidate = CandidateRecord(classification, fields, specific)
             validations, not_applicable, ref = validate(candidate, golden)
-            if variant in ("G", "H", "I", "J"):
+            if variant in ("G", "H", "I", "J", "K"):
                 from .identity import apply_identity, resolve_identity
                 identity = resolve_identity(candidate, golden)
                 validations = apply_identity(validations, identity, candidate)
@@ -193,9 +207,9 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
             st["rules_executed"] = len(validations)
         required = REQUIRED.get(classification.event_type, ALWAYS_REQUIRED)
 
-        if variant in ("C", "D", "E", "F", "G", "H", "I", "J") and llm_info is not None:
+        if variant in ("C", "D", "E", "F", "G", "H", "I", "J", "K") and llm_info is not None:
             llm_info["reference_divergence"] = _reference_divergence(parsed, llm_info, validations)
-        if variant in ("D", "E", "F", "G", "H", "I", "J"):
+        if variant in ("D", "E", "F", "G", "H", "I", "J", "K"):
             from .semantic_hybrid import llm_only_corroboration_blocks
             semantic["blocking"] += llm_only_corroboration_blocks(semantic["fields"], validations)
         with audit.stage("route"):
@@ -203,10 +217,10 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
                 routing = route(True, validations, {**fields, **specific}, required)
             else:
                 routing = route_gated(True, validations, {**fields, **specific}, required, semantic)
-            if variant in ("G", "H", "I", "J"):
+            if variant in ("G", "H", "I", "J", "K"):
                 from .identity import gate_identity
                 routing = gate_identity(routing, validations)
-            if variant == "J":
+            if variant in ("J", "K"):
                 from .uncertainty import assess, gate_uncertainty
                 assessment = assess(record["document"].get("text_fallback"), fields, specific, classification,
                                     validations, golden, tl.normalized_text)
@@ -256,6 +270,33 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
             validators_executed=validators,
             final_decision=(record.get("routing") or {}).get("decision"),
             reason_codes=(record.get("routing") or {}).get("reason_codes"), **extra)
+        if variant == "K":
+            record["run_summary"] = _run_summary(record)
+
+
+def _run_summary(record: dict) -> dict:
+    """Resumo operacional da solução final: caminho de percepção, chamadas por papel (percepção × LLM semântico),
+    tokens, custo estimado (Decimal, sem float) e latência. Papéis e logs separados: vision = percepção; LLM = semântica."""
+    fb = record["document"].get("text_fallback") or {}
+    llm = record.get("llm") or {}
+    vision_cost = Decimal(str(fb.get("estimated_cost_usd") or 0)) if fb.get("perception_path") == "VISION_FALLBACK" else Decimal(0)
+    llm_cost = Decimal(str(llm.get("estimated_cost_usd") or 0))
+    stages = {s["stage"]: s["duration_us"] // 1000 for s in record["audit"]["stages"]}
+    return {
+        "perception_path": (record.get("perception") or {}).get("path"),
+        "ocr_called": "text_fallback" in record["document"],
+        "vision_called": bool(fb.get("vision_called")),
+        "vision_usage": fb.get("usage") if fb.get("perception_path") == "VISION_FALLBACK" else None,
+        "semantic_llm_called": bool(llm),
+        "semantic_llm_trigger_reasons": (record.get("semantic_need") or {}).get("llm_trigger_reasons", []),
+        "semantic_llm_api_calls": llm.get("api_calls", 0), "tool_calls": len(llm.get("tool_calls", [])),
+        "semantic_llm_usage": llm.get("usage"),
+        "estimated_cost_usd": {"perception": str(vision_cost), "semantic_llm": str(llm_cost), "total": str(vision_cost + llm_cost)},
+        "duration_ms": {"total": record["audit"]["duration_us"] // 1000, "stages": stages},
+        "errors": record["audit"]["errors"],
+        "decision": (record.get("routing") or {}).get("decision"),
+        "reason_codes": (record.get("routing") or {}).get("reason_codes"),
+    }
 
 
 def _semantic_d(extraction, tl, classification, cls_semantic, negated, fields, specific, golden, ctx, audit):
@@ -539,8 +580,8 @@ def run_batch(documents_dir: Path, golden_path: Path, out_dir: Path, run_id: str
                "total_duration_us": sum(r["audit"]["duration_us"] or 0 for r in records)}
     if variant != "A":
         config["variant"] = variant
-    if variant in ("C", "D", "E", "F", "G", "H", "I", "J"):
-        if variant in ("E", "F", "G", "H", "I", "J"):
+    if variant in ("C", "D", "E", "F", "G", "H", "I", "J", "K"):
+        if variant in ("E", "F", "G", "H", "I", "J", "K"):
             from .semantic_llm_v3 import PROMPT_VERSION, prompt_fingerprint
         elif variant == "D":
             from .semantic_llm_v2 import PROMPT_VERSION, prompt_fingerprint
@@ -563,7 +604,7 @@ def run_batch(documents_dir: Path, golden_path: Path, out_dir: Path, run_id: str
             "reference_divergences": sum(bool((x.get("reference_divergence") or {}).get("divergent")) for x in llms),
             "served_models": sorted({m for x in llms for m in x["served_models"]}),
             "replayed_documents": sum(x["replayed"] for x in llms)}
-    if variant in ("D", "E", "F", "G", "H", "I", "J"):
+    if variant in ("D", "E", "F", "G", "H", "I", "J", "K"):
         needs = [r.get("semantic_need") for r in records if r.get("semantic_need")]
         summary["semantic_need"] = {
             "documents_assessed": len(needs), "llm_required": sum(n["llm_required"] for n in needs),

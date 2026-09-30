@@ -1835,3 +1835,18 @@ Todos atendidos → **"PRONTO PARA INTEGRAÇÃO FINAL"**.
 4. **Corroboração aritmética** (bruto/líquido/alíquota) só vale supondo erros independentes em tokens diferentes da mesma leitura (documentado em D-035). Não foi exercitada no doc 07.
 5. **O OCR local não declara incerteza:** a política J não age sobre ele. As confianças por palavra do Tesseract não são usadas, e não teriam pego "TLNRA".
 6. **O texto livre dos motivos de incerteza varia entre execuções,** embora os tokens não variem. Sem efeito na política, que usa só os tokens.
+
+## E-011 — Integração final (variante K)
+
+- **Checkpoint anterior:** tag `pre-e011` → `0ba6c4e`.
+- **Arquitetura:** D-036.
+- **Código novo:**
+  - `src/perception/router.py` (roteador de percepção);
+  - `src/corporate_actions/critical_fields.py` (definição única de campo crítico; `uncertainty.py` passa a importá-la, sem mudança de comportamento);
+  - variante K em `pipeline.py` (seções `perception` e `run_summary`; método `NATIVE_TEXT`);
+  - CLI `--variant K` com `--perception auto` como padrão.
+- **Testes:**
+  - 14 em `tests/test_final_integration_k.py`: nativo nunca chama OCR/vision; OCR completo sem vision; confiança baixa sozinha não chama vision; ticker ausente → vision como percepção nova; sem merge campo a campo; pendência não chama vision; identidade não resolvida → vision; falha e saída inutilizável do vision → revisão; falha do OCR → revisão; política de incerteza no fallback; incerteza corroborada com trilha; custos por papel; definição única de campo crítico.
+  - Replay da J em `tests/test_e010_regression.py`: 43 registros + as duas avaliações do doc 07 com vision.
+- **Regressão K × J (replay, quatro conjuntos):** idêntica em campos, roteamento, identidade, bindings e validações. 0 inseguras, 0 bindings errados, 0 aprovações com identidade errada, 0 omissões aprovadas.
+- **Run final:** os 8 PDFs do case com a solução final (caches novos; LLM semântico e vision reais) e avaliação em `evaluation/e011.py`.

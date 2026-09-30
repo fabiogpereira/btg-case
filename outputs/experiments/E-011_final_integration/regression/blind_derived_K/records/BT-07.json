@@ -1,0 +1,1136 @@
+{
+  "schema_version": "corporate-action-record/1.0",
+  "document": {
+    "sha256": "044b043b3561327c2aca877275bbc58b6098464678851f433f30ea8da20c8692",
+    "file_name": "BT-07.txt",
+    "size_bytes": 711,
+    "pages": 1,
+    "text_layer": {
+      "usable": true,
+      "alnum_chars": 545,
+      "min_alnum_chars_per_page": 100,
+      "reason": null
+    }
+  },
+  "perception": {
+    "path": "NATIVE_TEXT",
+    "native_text_layer": {
+      "usable": true,
+      "alnum_chars": 545,
+      "min_alnum_chars_per_page": 100,
+      "reason": null
+    },
+    "fallback_trigger": null,
+    "ocr_called": false,
+    "vision_called": false,
+    "decision": null,
+    "vision_error": null,
+    "detail": null
+  },
+  "binding": [
+    {
+      "field": "record_date",
+      "rule_id": "record_date.label_data_base",
+      "raw": "29/09/2026",
+      "evidence": "Data-base: 29/09/2026",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 2,
+      "crosses_line": false
+    },
+    {
+      "field": "ex_date",
+      "rule_id": "ex_date.label_data_ex",
+      "raw": "30/09/2026",
+      "evidence": "Data ex: 30/09/2026",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 2,
+      "crosses_line": false
+    },
+    {
+      "field": "payment_date",
+      "rule_id": "payment_date.label_data_pagamento.pending",
+      "raw": "a ser definida",
+      "evidence": "Data de pagamento: a ser definida",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 2,
+      "crosses_line": false
+    },
+    {
+      "field": "gross_amount_per_share",
+      "rule_id": "gross.label_valor_bruto",
+      "raw": "0,6000000000",
+      "evidence": "Valor bruto por ação: R$ 0,6000000000",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 11,
+      "crosses_line": false
+    },
+    {
+      "field": "net_amount_per_share",
+      "rule_id": "net.label_valor_liquido",
+      "raw": "0,5100000000",
+      "evidence": "Valor líquido por ação: R$ 0,5100000000",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 11,
+      "crosses_line": false
+    },
+    {
+      "field": "withholding_tax",
+      "rule_id": "withholding.label_imposto_renda",
+      "raw": "15",
+      "evidence": "Imposto de Renda Retido na Fonte: 15%",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 18,
+      "crosses_line": false
+    }
+  ],
+  "identity": {
+    "identity_method": "ISIN_EXACT",
+    "identifiers_used": {
+      "isin": "BRESOLACNOR1"
+    },
+    "matched_reference": {
+      "emissor": "Energia Solar Cerrado S.A.",
+      "cnpj": "78.901.234/0001-56",
+      "isin": "BRESOLACNOR1",
+      "ticker": "ESOL3",
+      "classe": "ON",
+      "segmento_listagem": "Novo Mercado",
+      "status": "ativo"
+    },
+    "status": "RESOLVED",
+    "reason_code": null,
+    "conflicts": []
+  },
+  "extraction": {
+    "method": "NATIVE_TEXT",
+    "status": "COMPLETED",
+    "failure_mode": null,
+    "unsupported_fields": [
+      "fraction_adjustment_period"
+    ],
+    "title": "JUROS SOBRE CAPITAL PRÓPRIO"
+  },
+  "classification": {
+    "event_type": "JCP",
+    "decision_rule": "single_type",
+    "signals": {
+      "JCP": [
+        {
+          "rule_id": "event.jcp_juros_capital_proprio",
+          "evidence": {
+            "text": "Juros sobre o Capital Próprio",
+            "start": 251,
+            "end": 280,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.jcp_sigla",
+          "evidence": {
+            "text": "JCP",
+            "start": 282,
+            "end": 285,
+            "page": 1
+          }
+        }
+      ]
+    },
+    "title": "JUROS SOBRE CAPITAL PRÓPRIO",
+    "title_event_types": [
+      "JCP"
+    ],
+    "confidence": "HIGH",
+    "confidence_reasons": [
+      "SINGLE_TYPE_SIGNALS:JCP"
+    ]
+  },
+  "fields": {
+    "issuer_name": {
+      "status": "found",
+      "value": "Energia Solar Cerrado S.A.",
+      "raw": "ENERGIA SOLAR CERRADO S.A.",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "ENERGIA SOLAR CERRADO S.A.",
+          "start": 0,
+          "end": 26,
+          "page": 1
+        },
+        {
+          "text": "Energia Solar Cerrado S.A.",
+          "start": 118,
+          "end": 144,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "issuer_name.pattern_company_sa"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN",
+        "CORROBORATED:1"
+      ]
+    },
+    "cnpj": {
+      "status": "found",
+      "value": "78.901.234/0001-56",
+      "raw": "78.901.234/0001-56",
+      "source_label": "CNPJ nº",
+      "evidence": [
+        {
+          "text": "CNPJ nº 78.901.234/0001-56",
+          "start": 27,
+          "end": 53,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "cnpj.label_cnpj"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "isin": {
+      "status": "found",
+      "value": "BRESOLACNOR1",
+      "raw": "BRESOLACNOR1",
+      "source_label": "ISIN",
+      "evidence": [
+        {
+          "text": "ISIN: BRESOLACNOR1",
+          "start": 357,
+          "end": 375,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "isin.label_isin"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "ticker": {
+      "status": "found",
+      "value": "ESOL3",
+      "raw": "ESOL3",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "ESOL3",
+          "start": 351,
+          "end": 356,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ticker.pattern"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN"
+      ]
+    },
+    "share_class": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "approval_date": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "record_date": {
+      "status": "found",
+      "value": "2026-09-29",
+      "raw": "29/09/2026",
+      "source_label": "Data-base",
+      "evidence": [
+        {
+          "text": "Data-base: 29/09/2026",
+          "start": 492,
+          "end": 513,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "record_date.label_data_base"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "ex_date": {
+      "status": "found",
+      "value": "2026-09-30",
+      "raw": "30/09/2026",
+      "source_label": "Data ex",
+      "evidence": [
+        {
+          "text": "Data ex: 30/09/2026",
+          "start": 514,
+          "end": 533,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ex_date.label_data_ex"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "payment_date": {
+      "status": "declared_pending",
+      "value": null,
+      "raw": "a ser definida",
+      "source_label": "Data de pagamento",
+      "evidence": [
+        {
+          "text": "Data de pagamento: a ser definida",
+          "start": 534,
+          "end": 567,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "payment_date.label_data_pagamento.pending"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "PENDING_DECLARATION_LABEL_ANCHORED"
+      ]
+    },
+    "gross_amount_per_share": {
+      "status": "found",
+      "value": "0.6000000000",
+      "raw": "0,6000000000",
+      "source_label": "Valor bruto por ação",
+      "evidence": [
+        {
+          "text": "Valor bruto por ação: R$ 0,6000000000",
+          "start": 376,
+          "end": 413,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "gross.label_valor_bruto"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "net_amount_per_share": {
+      "status": "found",
+      "value": "0.5100000000",
+      "raw": "0,5100000000",
+      "source_label": "Valor líquido por ação",
+      "evidence": [
+        {
+          "text": "Valor líquido por ação: R$ 0,5100000000",
+          "start": 452,
+          "end": 491,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "net.label_valor_liquido"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "withholding_tax": {
+      "status": "found",
+      "value": {
+        "rate": "0.15",
+        "base": null
+      },
+      "raw": "15",
+      "source_label": "Imposto de Renda Retido na Fonte",
+      "evidence": [
+        {
+          "text": "Imposto de Renda Retido na Fonte: 15%",
+          "start": 414,
+          "end": 451,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "withholding.label_imposto_renda"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "currency": {
+      "status": "found",
+      "value": "BRL",
+      "raw": "R$",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "Valor bruto por ação: R$ 0,6000000000",
+          "start": 376,
+          "end": 413,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "currency.derived_from_gross_symbol"
+      ],
+      "anchor": "derived",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "derived from gross_amount_per_share evidence"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "DERIVED_FROM_SOURCE_FIELD"
+      ]
+    },
+    "ratio": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "tax_treatment": {
+      "status": "found",
+      "value": {
+        "kind": "WITHHOLDING_AT_RATE",
+        "rate": "0.15",
+        "base": null,
+        "beneficiary_exceptions": [],
+        "conditions": []
+      },
+      "raw": "15",
+      "source_label": "Imposto de Renda Retido na Fonte",
+      "evidence": [
+        {
+          "text": "Imposto de Renda Retido na Fonte: 15%",
+          "start": 414,
+          "end": 451,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "tax_treatment.v2_from_withholding"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    }
+  },
+  "event_specific_fields": {},
+  "reference_check": {
+    "found": true,
+    "matched_by": "isin",
+    "query": "BRESOLACNOR1",
+    "golden_row": {
+      "emissor": "Energia Solar Cerrado S.A.",
+      "cnpj": "78.901.234/0001-56",
+      "isin": "BRESOLACNOR1",
+      "ticker": "ESOL3",
+      "classe": "ON",
+      "segmento_listagem": "Novo Mercado",
+      "status": "ativo"
+    }
+  },
+  "validations": [
+    {
+      "rule_id": "REF_ISIN_FOUND",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ISIN found in golden records",
+      "observed": {
+        "isin": "BRESOLACNOR1"
+      }
+    },
+    {
+      "rule_id": "REF_TICKER_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ticker matches golden ticker",
+      "observed": {
+        "extracted": "ESOL3",
+        "golden": "ESOL3"
+      }
+    },
+    {
+      "rule_id": "REF_CNPJ_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "cnpj matches golden cnpj",
+      "observed": {
+        "extracted": "78.901.234/0001-56",
+        "golden": "78.901.234/0001-56"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "issuer_name matches golden emissor",
+      "observed": {
+        "extracted": "Energia Solar Cerrado S.A.",
+        "golden": "Energia Solar Cerrado S.A."
+      }
+    },
+    {
+      "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: share_class",
+      "observed": {
+        "golden": "ON"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_ACTIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "golden status = ativo",
+      "observed": {
+        "golden_status": "ativo"
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_PRESENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "all required fields present",
+      "observed": {
+        "required": [
+          "issuer_name",
+          "isin",
+          "ticker",
+          "record_date",
+          "ex_date",
+          "gross_amount_per_share",
+          "currency",
+          "payment_date",
+          "net_amount_per_share",
+          "withholding_tax"
+        ],
+        "not_found": []
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+      "status": "FAIL",
+      "severity": "ERROR",
+      "message": "required fields declared pending: ['payment_date']",
+      "observed": {
+        "declared_pending": [
+          "payment_date"
+        ]
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_DETERMINED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "event type JCP by rule single_type",
+      "observed": {
+        "decision_rule": "single_type"
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "title consistent with content",
+      "observed": {
+        "title": "JUROS SOBRE CAPITAL PRÓPRIO",
+        "title_event_types": [
+          "JCP"
+        ],
+        "content_event_type": "JCP"
+      }
+    },
+    {
+      "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: approval_date",
+      "observed": {}
+    },
+    {
+      "rule_id": "DATE_RECORD_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "record 2026-09-29 vs ex 2026-09-30",
+      "observed": {
+        "record_date": "2026-09-29",
+        "ex_date": "2026-09-30"
+      }
+    },
+    {
+      "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "ex 2026-09-30; next weekday after record is 2026-09-30 (no holiday calendar, D-006)",
+      "observed": {
+        "record_date": "2026-09-29",
+        "ex_date": "2026-09-30",
+        "expected_ex_date": "2026-09-30"
+      }
+    },
+    {
+      "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: payment_date",
+      "observed": {
+        "settlement_field_status": "declared_pending"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_GROSS_POSITIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "gross = 0.6000000000",
+      "observed": {
+        "gross": "0.6000000000"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "net = gross × (1 − rate), exact (tax base not stated; applied to gross)",
+      "observed": {
+        "gross": "0.6000000000",
+        "rate": "0.15",
+        "declared_value": "0.5100000000",
+        "calculated_value": "0.510000000000",
+        "comparison_precision": 10,
+        "rounding_rule": null,
+        "reason": null
+      }
+    },
+    {
+      "rule_id": "REF_IDENTITY_RESOLVED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "identity ISIN_EXACT",
+      "observed": {
+        "identity_method": "ISIN_EXACT",
+        "identifiers_used": {
+          "isin": "BRESOLACNOR1"
+        },
+        "reason_code": null,
+        "conflicts": []
+      }
+    }
+  ],
+  "validation_summary": {
+    "PASS": 13,
+    "NOT_EVALUATED": 3,
+    "FAIL": 1
+  },
+  "rule_groups_not_applicable": [
+    "ratio"
+  ],
+  "semantic_need": {
+    "llm_required": false,
+    "llm_trigger_reasons": [],
+    "signals": [
+      {
+        "signal": "DECLARED_PENDING",
+        "stage": "normalize",
+        "triggers_llm": false,
+        "detail": "payment_date"
+      },
+      {
+        "signal": "TAX_BASE_NOT_STATED",
+        "stage": "normalize",
+        "triggers_llm": false,
+        "detail": "base não literal; sem novo texto a interpretar (bruto×líquido valida a taxa)"
+      }
+    ]
+  },
+  "semantic": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "deterministic_patch",
+      "reasons": [
+        "SINGLE_TYPE"
+      ],
+      "qualifiers": [],
+      "interpretation": null
+    },
+    "fields": {
+      "record_date": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "ex_date": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "payment_date": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "DECLARED_PENDING"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "gross_amount_per_share": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "net_amount_per_share": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "withholding_tax": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      }
+    },
+    "blocking": [],
+    "negated_signals": [],
+    "resolutions": [],
+    "material_qualifiers": [],
+    "semantic_notes": [],
+    "issuer_resolution": {
+      "groups": {
+        "energia solar cerrado s.a.": {
+          "roles": [
+            "ANNOUNCER",
+            "CNPJ_ADJACENT",
+            "LETTERHEAD"
+          ],
+          "third_party_only": false
+        }
+      },
+      "aliases": {},
+      "decision": "V1_RESOLUTION"
+    },
+    "tax_statements": [],
+    "revocation": [],
+    "contradictions": [],
+    "material_coverage": [
+      {
+        "category": "tax_treatment",
+        "source": "deterministic",
+        "evidence": "Imposto de Renda Retido na Fonte: 15%",
+        "expected_target": "tax_treatment",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      }
+    ],
+    "event_status": "ACTIVE_OR_NOT_STATED"
+  },
+  "confidence_view": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "deterministic_patch",
+      "reasons": [
+        "SINGLE_TYPE"
+      ],
+      "qualifiers": [],
+      "interpretation": null
+    },
+    "fields": {
+      "issuer_name": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "cnpj": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "isin": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ticker": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "record_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ex_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "payment_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "UNVALIDATED"
+      },
+      "gross_amount_per_share": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "net_amount_per_share": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "withholding_tax": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "currency": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      },
+      "tax_treatment": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      }
+    }
+  },
+  "routing": {
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "PAYMENT_DATE_PENDING"
+    ],
+    "explanations": [
+      "REQUIRED_FIELDS_NOT_PENDING: required fields declared pending: ['payment_date']"
+    ],
+    "gates": [
+      {
+        "gate": "EXTRACTION_POSSIBLE",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REQUIRED_INFORMATION",
+        "status": "BLOCK",
+        "reason_codes": [
+          "PAYMENT_DATE_PENDING"
+        ],
+        "explanations": [
+          "REQUIRED_FIELDS_NOT_PENDING: required fields declared pending: ['payment_date']"
+        ]
+      },
+      {
+        "gate": "SEMANTIC_INTERPRETATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "DETERMINISTIC_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REFERENCE_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "BLOCKING_ERRORS",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      }
+    ]
+  },
+  "audit": {
+    "run_id": "e011-replay-blind_derived",
+    "pipeline_version": "baseline-a/0.1.0+final-integrated/1.0",
+    "started_at": "2026-09-30T03:53:52.610+00:00",
+    "finished_at": "2026-09-30T03:53:52.615+00:00",
+    "duration_us": 5102,
+    "stages": [
+      {
+        "stage": "ingest",
+        "started_at": "2026-09-30T03:53:52.610+00:00",
+        "status": "ok",
+        "duration_us": 292
+      },
+      {
+        "stage": "text_layer",
+        "started_at": "2026-09-30T03:53:52.611+00:00",
+        "status": "ok",
+        "duration_us": 167
+      },
+      {
+        "stage": "extract_candidates",
+        "started_at": "2026-09-30T03:53:52.611+00:00",
+        "status": "ok",
+        "duration_us": 2858
+      },
+      {
+        "stage": "classify",
+        "started_at": "2026-09-30T03:53:52.614+00:00",
+        "status": "ok",
+        "duration_us": 162
+      },
+      {
+        "stage": "normalize",
+        "started_at": "2026-09-30T03:53:52.614+00:00",
+        "status": "ok",
+        "duration_us": 203
+      },
+      {
+        "stage": "confidence",
+        "started_at": "2026-09-30T03:53:52.614+00:00",
+        "status": "ok",
+        "duration_us": 21
+      },
+      {
+        "stage": "semantic_patch",
+        "started_at": "2026-09-30T03:53:52.614+00:00",
+        "status": "ok",
+        "duration_us": 778
+      },
+      {
+        "stage": "semantic_need",
+        "started_at": "2026-09-30T03:53:52.615+00:00",
+        "status": "ok",
+        "duration_us": 45,
+        "llm_required": false,
+        "triggers": []
+      },
+      {
+        "stage": "semantic_llm",
+        "started_at": "2026-09-30T03:53:52.615+00:00",
+        "status": "skipped",
+        "reason": "NOT_REQUIRED",
+        "duration_us": 0
+      },
+      {
+        "stage": "hardening_gates",
+        "started_at": "2026-09-30T03:53:52.615+00:00",
+        "status": "ok",
+        "duration_us": 120
+      },
+      {
+        "stage": "validate",
+        "started_at": "2026-09-30T03:53:52.615+00:00",
+        "status": "ok",
+        "duration_us": 127,
+        "rules_executed": 17
+      },
+      {
+        "stage": "route",
+        "started_at": "2026-09-30T03:53:52.615+00:00",
+        "status": "ok",
+        "duration_us": 40
+      }
+    ],
+    "errors": [],
+    "retries": 0,
+    "extraction_method": "NATIVE_TEXT",
+    "model": null,
+    "prompt_version": null,
+    "validators_executed": [
+      "REF_ISIN_FOUND",
+      "REF_TICKER_CONSISTENT",
+      "REF_CNPJ_CONSISTENT",
+      "REF_ISSUER_NAME_CONSISTENT",
+      "REF_SHARE_CLASS_CONSISTENT",
+      "REF_ISSUER_ACTIVE",
+      "REQUIRED_FIELDS_PRESENT",
+      "REQUIRED_FIELDS_NOT_PENDING",
+      "CLASSIFICATION_DETERMINED",
+      "CLASSIFICATION_TITLE_CONSISTENT",
+      "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "DATE_RECORD_BEFORE_EX",
+      "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "AMOUNT_GROSS_POSITIVE",
+      "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "REF_IDENTITY_RESOLVED"
+    ],
+    "final_decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "PAYMENT_DATE_PENDING"
+    ],
+    "variant": "K"
+  },
+  "run_summary": {
+    "perception_path": "NATIVE_TEXT",
+    "ocr_called": false,
+    "vision_called": false,
+    "vision_usage": null,
+    "semantic_llm_called": false,
+    "semantic_llm_trigger_reasons": [],
+    "semantic_llm_api_calls": 0,
+    "tool_calls": 0,
+    "semantic_llm_usage": null,
+    "estimated_cost_usd": {
+      "perception": "0",
+      "semantic_llm": "0",
+      "total": "0"
+    },
+    "duration_ms": {
+      "total": 5,
+      "stages": {
+        "ingest": 0,
+        "text_layer": 0,
+        "extract_candidates": 2,
+        "classify": 0,
+        "normalize": 0,
+        "confidence": 0,
+        "semantic_patch": 0,
+        "semantic_need": 0,
+        "semantic_llm": 0,
+        "hardening_gates": 0,
+        "validate": 0,
+        "route": 0
+      }
+    },
+    "errors": [],
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "PAYMENT_DATE_PENDING"
+    ]
+  }
+}

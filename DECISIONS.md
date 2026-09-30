@@ -472,6 +472,26 @@ Formato:
 - **Limitação documentada:** a corroboração aritmética usa valores da mesma leitura e só vale supondo erros independentes em tokens diferentes.
 - **Garantias:** a I é verificada por replay (`tests/test_e009_regression.py`). Texto nativo e OCR local não declaram incerteza, então a J é idêntica à I neles.
 
+## D-036 — Solução final integrada (variante K)
+
+- **Data:** 2026-09-30
+- **Status:** ACCEPTED (integração; entrega técnica depende da revisão do usuário)
+- **Tipo:** arquitetura final
+- **Decisão:** K = J (`candidate-pre-integration`) + roteador de percepção (`src/perception/router.py`) + seções `perception` e `run_summary` no registro. Nada mudou na semântica, nos validadores, na identidade, no binding, na política de incerteza ou no roteamento geral (K idêntica à J nos quatro regression sets).
+  1. **Percepção.** Com texto nativo utilizável, só texto nativo (`NATIVE_TEXT`), sem OCR nem vision. Sem texto (`NO_USABLE_TEXT_LAYER`, nunca pelo nome do arquivo): OCR local (Tesseract, configuração do E-008/E-009).
+     - Uma sondagem determinística do texto OCR (mesma pipeline, LLM semântico offline) decide se algum campo crítico obrigatório ficou ausente, divergente, com identidade não resolvida ou com tipo de evento indeterminado.
+     - Só então vision (`claude-opus-5`, prompt `690896745b07273a`) gera uma percepção nova e completa (`VISION_FALLBACK`).
+     - OCR **ou** vision, nunca merge campo a campo. O OCR fica como evidência operacional (`ocr_evidence`).
+     - Reason codes: `REQUIRED_<CAMPO>_MISSING_AFTER_OCR`, `REQUIRED_MATERIAL_FIELD_UNRESOLVED:<campo>`, `CRITICAL_IDENTIFIER_UNRESOLVED_AFTER_OCR:<motivo>`, `EVENT_TYPE_UNRESOLVED_AFTER_OCR`, `OCR_TEXT_NOT_USABLE`.
+  2. **Pipeline**, igual à J: extração determinística + binding v2 com pontilhado → classificação → identidade hierárquica → detector de necessidade → LLM semântico só se necessário (grounding literal, function calling) → fusão → gate de cobertura material → contradições → validadores obrigatórios → incerteza crítica (política J; age quando a percepção declara incerteza) → gates de roteamento → AUTO_APPROVE / REVIEW_REQUIRED.
+  3. **Papéis separados:** vision = percepção; LLM semântico = interpretação; código = validação e roteamento; humano = o que continua incerto. Custos, tokens e chamadas por papel ficam em `run_summary`.
+  4. **Falha segura.** Vision indisponível ou saída inutilizável → fica a percepção OCR (incompleta) → revisão. OCR indisponível → `PROCESSING_ERROR` → revisão. LLM semântico indisponível → `SEMANTIC_INTERPRETER_FAILED` → revisão. Nenhum caminho técnico aprova.
+  5. **Campo crítico** tem definição única em `critical_fields.py`, usada pela política de incerteza e pelo roteador.
+- **Trade-off de segurança e privacidade (registrado para produção):**
+  - **OCR local:** o documento não sai da máquina; custo marginal zero; menor latência (~4 s por página); qualidade menor em alguns campos (no doc 07, ticker lido errado, de forma fail-safe).
+  - **Vision:** melhora a percepção (doc 07: 11/11 campos críticos, estável em duas execuções); custa ~US$ 0,05 e ~10 s por página; **envia a imagem da página a um serviço externo**.
+  - Em produção, o uso de vision **não pode ser presumido permitido**. Deve obedecer à governança de dados, ao contrato com o provedor, às políticas de retenção e residência de dados, à confidencialidade e à lista de modelos/provedores aprovados. Sem essa aprovação, a solução opera com `--perception` limitada a OCR, e os documentos que precisariam de vision vão para revisão (comportamento fail-safe já existente).
+
 ---
 
 ## Decisões deliberadamente adiadas (não são decisões)

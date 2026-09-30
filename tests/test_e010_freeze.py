@@ -16,7 +16,14 @@ def text_sha(p: Path) -> str:
     return hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
 
-@pytest.mark.parametrize("path", sorted(FREEZE["files"]))
+# Evolução a partir do E-011 (variante K: roteador de percepção, seções perception/run_summary; definição de campo
+# crítico centralizada em critical_fields.py, importada por uncertainty.py sem mudança de comportamento). O comportamento
+# congelado da J é garantido por tests/test_e010_regression.py. Estado exato: tag `candidate-pre-integration`.
+EVOLVABLE = {"src/corporate_actions/pipeline.py", "src/corporate_actions/__main__.py", "src/corporate_actions/uncertainty.py",
+             "tests/test_e006_freeze.py"}
+
+
+@pytest.mark.parametrize("path", sorted(set(FREEZE["files"]) - EVOLVABLE))
 def test_pre_integration_file_unchanged(path):
     assert text_sha(ROOT / path) == FREEZE["files"][path], f"{path} mudou depois do congelamento pré-integração"
 
