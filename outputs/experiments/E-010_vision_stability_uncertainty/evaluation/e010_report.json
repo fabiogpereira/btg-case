@@ -1,0 +1,333 @@
+{
+  "fields": {
+    "issuer_name": {
+      "run1": "Telecom Norte Participações S.A.",
+      "run2": "Telecom Norte Participações S.A.",
+      "agree": true,
+      "run1_vs_gt": "EXACT",
+      "run2_vs_gt": "EXACT"
+    },
+    "cnpj": {
+      "run1": "33.222.111/0001-44",
+      "run2": "33.222.111/0001-44",
+      "agree": true,
+      "run1_vs_gt": "EXACT",
+      "run2_vs_gt": "EXACT"
+    },
+    "isin": {
+      "run1": "BRTLNRACNPR2",
+      "run2": "BRTLNRACNPR2",
+      "agree": true,
+      "run1_vs_gt": "EXACT",
+      "run2_vs_gt": "EXACT"
+    },
+    "ticker": {
+      "run1": "TLNR4",
+      "run2": "TLNR4",
+      "agree": true,
+      "run1_vs_gt": "EXACT",
+      "run2_vs_gt": "EXACT"
+    },
+    "approval_date": {
+      "run1": "2026-06-06",
+      "run2": "2026-06-06",
+      "agree": true,
+      "run1_vs_gt": "EXACT",
+      "run2_vs_gt": "EXACT"
+    },
+    "record_date": {
+      "run1": "2026-06-22",
+      "run2": "2026-06-22",
+      "agree": true,
+      "run1_vs_gt": "EXACT",
+      "run2_vs_gt": "EXACT"
+    },
+    "ex_date": {
+      "run1": "2026-06-23",
+      "run2": "2026-06-23",
+      "agree": true,
+      "run1_vs_gt": "EXACT",
+      "run2_vs_gt": "EXACT"
+    },
+    "payment_date": {
+      "run1": "2026-08-21",
+      "run2": "2026-08-21",
+      "agree": true,
+      "run1_vs_gt": "EXACT",
+      "run2_vs_gt": "EXACT"
+    },
+    "gross_amount_per_share": {
+      "run1": "0.1124300000",
+      "run2": "0.1124300000",
+      "agree": true,
+      "run1_vs_gt": "EXACT",
+      "run2_vs_gt": "EXACT"
+    },
+    "net_amount_per_share": {
+      "run1": "0.0927547500",
+      "run2": "0.0927547500",
+      "agree": true,
+      "run1_vs_gt": "EXACT",
+      "run2_vs_gt": "EXACT"
+    },
+    "withholding_tax": {
+      "run1": {
+        "rate": "0.175",
+        "base": "GROSS_AMOUNT"
+      },
+      "run2": {
+        "rate": "0.175",
+        "base": "GROSS_AMOUNT"
+      },
+      "agree": true,
+      "run1_vs_gt": "EXACT",
+      "run2_vs_gt": "EXACT"
+    },
+    "event_type": {
+      "run1": "JCP",
+      "run2": "JCP",
+      "agree": true
+    }
+  },
+  "critical_tokens_exact": {
+    "issuer_name": {
+      "run1": true,
+      "run2": true
+    },
+    "cnpj": {
+      "run1": true,
+      "run2": true
+    },
+    "isin": {
+      "run1": true,
+      "run2": true
+    },
+    "ticker": {
+      "run1": true,
+      "run2": true
+    },
+    "approval_date": {
+      "run1": true,
+      "run2": true
+    },
+    "record_date": {
+      "run1": true,
+      "run2": true
+    },
+    "ex_date": {
+      "run1": true,
+      "run2": true
+    },
+    "payment_date": {
+      "run1": true,
+      "run2": true
+    },
+    "gross_amount_per_share": {
+      "run1": true,
+      "run2": true
+    },
+    "net_amount_per_share": {
+      "run1": true,
+      "run2": true
+    },
+    "withholding_tax": {
+      "run1": true,
+      "run2": true
+    }
+  },
+  "digits": {
+    "run1": {
+      "digits_total": 71,
+      "digit_errors": {}
+    },
+    "run2": {
+      "digits_total": 71,
+      "digit_errors": {}
+    }
+  },
+  "raw_text": {
+    "char_similarity_run1_run2": 1.0,
+    "identical": true,
+    "line_diff": []
+  },
+  "uncertainty": {
+    "run1": [
+      ",,,,,,,",
+      ",,,,,,,,,",
+      "BRTLNRACNPR2"
+    ],
+    "run2": [
+      ",,,,,,,",
+      ",,,,,,,,,",
+      "BRTLNRACNPR2"
+    ],
+    "common": [
+      ",,,,,,,",
+      ",,,,,,,,,",
+      "BRTLNRACNPR2"
+    ],
+    "only_run1": [],
+    "only_run2": [],
+    "jaccard": 1.0
+  },
+  "routing_via_I": {
+    "run1": [
+      "AUTO_APPROVE",
+      []
+    ],
+    "run2": [
+      "AUTO_APPROVE",
+      []
+    ]
+  },
+  "policy_J": {
+    "run1": {
+      "routing": "AUTO_APPROVE",
+      "reason_codes": [],
+      "explanations": [],
+      "uncertain_fields": {
+        "isin": {
+          "uncertain_tokens": [
+            "BRTLNRACNPR2"
+          ],
+          "critical_field": true,
+          "corroboration_status": "EXACT_MATCH",
+          "corroboration_source": "golden_records row via ticker=TLNR4",
+          "reference_value": "BRTLNRACNPR2",
+          "blocking_reason": null
+        }
+      },
+      "event_type_uncertainty": {
+        "vision_uncertain": false,
+        "uncertain_tokens": [],
+        "critical_field": true,
+        "corroboration_attempted": false,
+        "corroboration_source": null,
+        "corroboration_status": null,
+        "blocking_reason": null
+      },
+      "non_critical_uncertain_tokens": [],
+      "ignored_tokens": [
+        {
+          "token": ",,,,,,,,,",
+          "reason": "filler run of commas instead of dots; exact count unclear",
+          "page": 1
+        },
+        {
+          "token": ",,,,,,,",
+          "reason": "filler run of commas instead of dots; exact count unclear",
+          "page": 1
+        }
+      ],
+      "unlocated": [],
+      "fields_exact": [
+        "approval_date",
+        "cnpj",
+        "ex_date",
+        "gross_amount_per_share",
+        "isin",
+        "issuer_name",
+        "net_amount_per_share",
+        "payment_date",
+        "record_date",
+        "ticker",
+        "withholding_tax"
+      ],
+      "validation_mismatches": {},
+      "unsafe_auto_approval_enhanced": false,
+      "wrong_bindings": [],
+      "wrong_identity": false,
+      "llm_errors": []
+    },
+    "run2": {
+      "routing": "AUTO_APPROVE",
+      "reason_codes": [],
+      "explanations": [],
+      "uncertain_fields": {
+        "isin": {
+          "uncertain_tokens": [
+            "BRTLNRACNPR2"
+          ],
+          "critical_field": true,
+          "corroboration_status": "EXACT_MATCH",
+          "corroboration_source": "golden_records row via ticker=TLNR4",
+          "reference_value": "BRTLNRACNPR2",
+          "blocking_reason": null
+        }
+      },
+      "event_type_uncertainty": {
+        "vision_uncertain": false,
+        "uncertain_tokens": [],
+        "critical_field": true,
+        "corroboration_attempted": false,
+        "corroboration_source": null,
+        "corroboration_status": null,
+        "blocking_reason": null
+      },
+      "non_critical_uncertain_tokens": [],
+      "ignored_tokens": [
+        {
+          "token": ",,,,,,,,,",
+          "reason": "filler characters appear as commas rather than dots; exact count unclear",
+          "page": 1
+        },
+        {
+          "token": ",,,,,,,",
+          "reason": "filler characters appear as commas rather than dots; exact count unclear",
+          "page": 1
+        }
+      ],
+      "unlocated": [],
+      "fields_exact": [
+        "approval_date",
+        "cnpj",
+        "ex_date",
+        "gross_amount_per_share",
+        "isin",
+        "issuer_name",
+        "net_amount_per_share",
+        "payment_date",
+        "record_date",
+        "ticker",
+        "withholding_tax"
+      ],
+      "validation_mismatches": {},
+      "unsafe_auto_approval_enhanced": false,
+      "wrong_bindings": [],
+      "wrong_identity": false,
+      "llm_errors": []
+    }
+  },
+  "vision_usage": {
+    "run1": {
+      "input_tokens": 5541,
+      "output_tokens": 730
+    },
+    "run2": {
+      "input_tokens": 5541,
+      "output_tokens": 736
+    }
+  },
+  "vision_cost_usd": {
+    "run1": "0.045955",
+    "run2": "0.046105"
+  },
+  "vision_latency_ms": {
+    "run1": {
+      "api": 9691,
+      "total": 10119
+    },
+    "run2": {
+      "api": 9447,
+      "total": 9925
+    }
+  },
+  "readiness": {
+    "R1_regression": true,
+    "R2_run2_no_digit_or_value_error": true,
+    "R3_critical_fields_identical": true,
+    "R4_policy_safe_both_runs": true,
+    "R5_same_routing_under_J": true,
+    "decision": "PRONTO PARA INTEGRAÇÃO FINAL"
+  }
+}

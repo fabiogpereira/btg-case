@@ -1790,3 +1790,48 @@ python -m evaluation.e009 compare --out outputs/experiments/E-009_ocr_vs_vision/
 **Congelamento pré-integração:** tag `candidate-pre-integration` → `1aae016`.
 - `FREEZE_PRE_INTEGRATION.json` (93 arquivos, prompts semântico e de vision), verificado por `tests/test_e010_freeze.py`.
 - `case/`: 10/10 com o SHA-256 do mapa, sem mudança no git. `.env` fora do git.
+
+### Resultado (2ª execução oficial do vision + política J nas duas transcrições)
+
+- **2ª execução:** configuração do E-009 sem nenhuma mudança (`claude-opus-5`, prompt `690896745b07273a`, 200 DPI, sem ferramentas, sem referência, fallback off), com cache novo `vision_cache_run2`.
+  - Uma chamada: 5.541 tokens de entrada e 736 de saída; US$ 0,046105; 9,4 s de API.
+  - A chave de cache é idêntica à da run 1 (mesma imagem, prompt e modelo), o que confirma a mesma entrada.
+  - Passada pela mesma pipeline I, com LLM semântico em cache novo, e **não acionado**.
+- **Custo incremental do E-010:** US$ 0,046105. A política J foi avaliada por replay, sem chamadas.
+
+**Estabilidade run 1 × run 2**
+
+| Dimensão | Resultado |
+|---|---|
+| Campos críticos (emissor, CNPJ, ISIN, ticker, tipo, aprovação, data-base, ex, pagamento, bruto, líquido, IRRF) | **12/12 idênticos**, todos exatos contra o gabarito nas duas execuções |
+| Dígitos em tokens críticos | 71/71 e 71/71; 0 erros; concordância total |
+| Texto bruto | **idêntico** (similaridade 1,0; nenhuma linha diferente) |
+| Tokens incertos | idênticos (Jaccard 1,0): ISIN e dois preenchimentos de vírgulas. Só o texto livre do motivo variou |
+| Roteamento via I | AUTO_APPROVE / AUTO_APPROVE |
+| Roteamento via J | AUTO_APPROVE / AUTO_APPROVE |
+
+**Doc 07 com a política J (as duas transcrições)**
+- **Campos exatos:** 11/11 campos críticos; todas as regras de validação iguais ao gabarito.
+- **Incertos:** só o ISIN é crítico e incerto. Os dois tokens de vírgula são preenchimento sem letras ou dígitos, ignorados e registrados. Nenhum token não localizável; tipo de evento sem incerteza.
+- **ISIN:** corroborado, `EXACT_MATCH`. A fonte é a linha única da base encontrada pelo **ticker** TLNR4 (outra leitura, não incerta), cujo ISIN coincide exatamente. O registro traz `vision_uncertain`, `critical_field`, `corroboration_attempted`, fonte, status e `blocking_reason` nulo.
+- **Roteamento:** AUTO_APPROVE, com a incerteza explicitamente tratada. Sem a corroboração, o ISIN bloquearia com `CRITICAL_FIELD_UNCERTAIN_UNCORROBORATED`.
+- **Diferença em relação ao E-009:** o desfecho é o mesmo (aprovação correta), mas agora a aprovação tem justificativa auditável para o token incerto. No E-009, a incerteza era ignorada.
+- **Segurança:** 0 aprovações inseguras, 0 bindings errados, 0 identidade errada.
+
+**Critério de prontidão (pré-registrado):**
+- R1 regressão aprovada;
+- R2 run 2 sem erro de dígito ou valor;
+- R3 campos críticos idênticos;
+- R4 política segura nas duas execuções;
+- R5 mesmo roteamento sob a J.
+
+Todos atendidos → **"PRONTO PARA INTEGRAÇÃO FINAL"**.
+
+### Limitações e failure modes (registrados)
+
+1. **Estabilidade medida em 1 documento, 2 execuções.** Mostra estabilidade real neste scan (texto idêntico), mas não uma taxa. O doc 07 é visualmente limpo; scans degradados não foram testados (D-030).
+2. **A política só protege a incerteza *declarada*.** Uma leitura errada com confiança não é marcada (o Tesseract deu confiança 84 a "TLNRA"). Esse risco continua coberto só pelas validações determinísticas (referência, aritmética, ordem de datas).
+3. **Corroboração entre identificadores vem da mesma passada do modelo:** a independência é entre tokens, não entre leituras. Aqui os identificadores são fictícios (o modelo não pode "lembrar" pares ISIN/ticker), mas em dados reais um modelo poderia completar pares conhecidos. Mitigação: o prompt proíbe conhecimento externo, e a regra exige correspondência exata com a base. Limitação registrada.
+4. **Corroboração aritmética** (bruto/líquido/alíquota) só vale supondo erros independentes em tokens diferentes da mesma leitura (documentado em D-035). Não foi exercitada no doc 07.
+5. **O OCR local não declara incerteza:** a política J não age sobre ele. As confianças por palavra do Tesseract não são usadas, e não teriam pego "TLNRA".
+6. **O texto livre dos motivos de incerteza varia entre execuções,** embora os tokens não variem. Sem efeito na política, que usa só os tokens.

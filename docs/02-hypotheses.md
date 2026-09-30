@@ -437,11 +437,15 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
 ### H-39 — A leitura do vision do doc 07 é estável entre execuções independentes
 - **Hypothesis:** Com a mesma configuração congelada, uma segunda execução produz os mesmos valores em todos os campos críticos, sem erro de dígito e com o mesmo roteamento.
 - **How to test:** 2ª execução com cache novo; comparação run 1 × run 2 (E-010).
-- **Observed result:** (pendente)
-- **Status:** OPEN
+- **Observed result:** (E-010)
+  - Run 1 × run 2: texto idêntico, 12/12 campos críticos idênticos e exatos, 71/71 dígitos, mesmos tokens incertos, mesmo roteamento.
+- **Status:** SUPPORTED (1 documento limpo, 2 execuções; sem taxa)
 
 ### H-40 — Corroboração independente permite aceitar incerteza crítica sem ignorá-la
 - **Hypothesis:** Bloquear todo campo crítico incerto sem corroboração independente, e aceitar só os corroborados por fonte determinística independente, mantém 0 aprovações inseguras e evita revisões desnecessárias quando a corroboração existe.
 - **How to test:** `tests/test_uncertainty_j.py`, regressão J × I e as duas transcrições do doc 07 sob a J (E-010).
-- **Observed result:** (pendente)
-- **Status:** OPEN
+- **Observed result:** (E-010)
+  - 13 testes do invariante; J idêntica à I nos quatro conjuntos.
+  - No doc 07, o ISIN incerto foi corroborado pela linha encontrada pelo ticker (`EXACT_MATCH`) e o registro foi aprovado com trilha explícita; sem corroboração, bloquearia.
+  - 0 aprovações inseguras.
+- **Status:** SUPPORTED (protege só incerteza declarada; limitações em D-035 e no log)
