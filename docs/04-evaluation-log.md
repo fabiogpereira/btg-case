@@ -1699,3 +1699,65 @@ python -m evaluation.e009 compare --out outputs/experiments/E-009_ocr_vs_vision/
 **Congelamento pré-vision:** tag `candidate-pre-vision` → `f8da5d5`.
 - `outputs/experiments/E-009_ocr_vs_vision/FREEZE_PRE_VISION.json` (88 arquivos, prompts semântico e de vision), verificado por `tests/test_e009_freeze.py`.
 - `case/`: 10/10 com o SHA-256 do mapa, sem mudança no git. `.env` ignorado e não versionado.
+
+### Resultado A (OCR local) × B (vision) no doc 07 (execução oficial única de cada braço, pipeline I congelada)
+
+- **Chamadas de API:** 1 no total (a transcrição do braço B). O LLM semântico da pipeline não foi acionado em nenhum braço (0 gatilhos).
+- **Custo incremental do E-009:** US$ 0,045955.
+- **Modelo de vision:** `claude-opus-5` (servido: `claude-opus-5`), mensagem `msg_011CfYv8RfBWr5VjNSnKwkie`, prompt `690896745b07273a`, 5.541 tokens de entrada (imagem + prompt) e 730 de saída, `end_turn`.
+
+| Campo crítico | Gabarito | A: OCR local | B: vision |
+|---|---|---|---|
+| Emissor | Telecom Norte Participações S.A. | exato | exato |
+| CNPJ | 33.222.111/0001-44 | exato | exato |
+| ISIN | BRTLNRACNPR2 | exato | exato (marcado como incerto pelo próprio modelo) |
+| **Ticker** | TLNR4 | **ausente** (OCR leu "TLNRA") | **exato** |
+| Tipo de evento | JCP | JCP | JCP |
+| Aprovação | 2026-06-06 | exato | exato |
+| Data-base | 2026-06-22 | exato | exato |
+| Data ex | 2026-06-23 | exato | exato |
+| **Pagamento** | 2026-08-21 | **exato** (recuperado pela correção do pontilhado) | exato |
+| Valor bruto | 0,1124300000 | exato | exato |
+| Valor líquido | 0,0927547500 | exato | exato |
+| IRRF | 17,5% sobre o bruto | exato | exato |
+
+| | A: OCR local | B: vision |
+|---|---|---|
+| Dígitos em tokens críticos | 70/71 (ticker 4 → A) | **71/71** |
+| Separador decimal / datas / identificadores | preservados / exatas / ISIN e CNPJ exatos, ticker errado | preservados / exatas / todos exatos |
+| Similaridade de caracteres com a transcrição humana | 95,9% | **99,9%** |
+| Palavras fora da transcrição humana | ruído de pontilhado, assinatura ilegível, "9:249/95", "TLNRA", "eX-JCP" | só a vírgula usada como preenchimento (",,,,,,,") |
+| Evidências do gabarito recuperáveis | 20/24 | **24/24** |
+| Bindings | 7 mantidos, 2 preteridos, 1 rejeitado (IRRF com resíduo "...lllooo. ", recuperado por outro rótulo) | 8 mantidos, 2 preteridos, 0 rejeitados |
+| Bindings errados | 0 | 0 |
+| Identidade | `ISIN_EXACT`, correta | `ISIN_EXACT`, correta |
+| Validação × gabarito | `REQUIRED_FIELDS_PRESENT` FAIL (ticker); `REF_TICKER_CONSISTENT` NOT_EVALUATED | **todas as regras iguais ao gabarito** |
+| Roteamento | REVIEW_REQUIRED (`REQUIRED_FIELD_MISSING`: ticker) | **AUTO_APPROVE** (alternativa aceitável do gabarito: todos os campos com evidência e checagens objetivas aprovadas) |
+| Alucinações / omissões / alterações silenciosas / aprovações inseguras | 0 / 0 / 0 / 0 | 0 / 0 / 0 / 0 |
+| Latência da percepção / do pipeline | 3,7 s / 3,8 s | 10,1 s (9,7 s de API) / 10,2 s |
+| Custo | US$ 0 | US$ 0,046 |
+| Dependências | Tesseract local + modelo `por` + `pypdfium2`/`pillow` | API da Anthropic (a imagem do documento sai do ambiente) + `pypdfium2`/`pillow` |
+
+**H-37 (pontilhado):** a data de pagamento do doc 07 passou a ser associada corretamente no braço A, com 0 bindings errados e nenhuma regressão (I idêntica à H nos quatro conjuntos).
+
+### Decisão
+
+- **Regra pré-registrada:** devolveu **"VISION"**. A regra define braço seguro como "0 dígitos alterados em token crítico escrito", e o ticker lido errado pelo OCR (4 → A) desqualificou o braço A, embora o erro tenha sido **fail-safe**: o campo ficou ausente, sem valor errado e com revisão.
+- **Leitura pelos critérios de decisão do usuário (seção 7)**, onde erros fail-safe são aceitáveis para o OCR local:
+  - o vision melhora materialmente um campo crítico (ticker), o que muda o desfecho de revisão para aprovação correta;
+  - mantém 0 dígito errado, 0 identidade errada e 0 aprovação insegura;
+  - custa US$ 0,046 por página de scan.
+
+  O resultado é **"OCR local + vision apenas como fallback secundário"**.
+- **Divergência registrada, sem reescrever a regra:** a regra pré-registrada foi mais estrita que a estrutura de decisão pedida. As duas leituras concordam que o vision é útil e seguro nesta execução. Discordam só sobre primário × secundário. O argumento para secundário (OCR primeiro):
+  - OCR custa zero, é 3× mais rápido e é determinístico;
+  - OCR não envia o documento para fora;
+  - o erro do OCR foi contido.
+
+### Novos failure modes (registrados, não corrigidos)
+
+1. **A incerteza declarada pela percepção não é usada pela pipeline.** O vision marcou o ISIN como "incerto" (e acertou); a pipeline aprovou porque não consome `uncertain_tokens`. Aqui o risco é mitigado pela correspondência exata com a base (ISIN, ticker e CNPJ na mesma linha), mas uma política (ex.: token crítico incerto → revisão) exige autorização.
+2. **O vision não tem controle de temperatura** e esta é uma única amostra: estabilidade de leitura não medida. Para dígitos, o risco principal de um modelo generativo é a troca plausível e silenciosa. Aqui ela não ocorreu, mas uma amostra não mede a taxa.
+3. **Regra de decisão do E-009 com definição de segurança mais estrita que a estrutura de decisão pedida** (acima). É lição de pré-registro: separar "erro de percepção" de "erro com consequência".
+4. **Governança:** com vision, a imagem do documento é enviada a um serviço externo. Custo (~US$ 0,05 por página) e latência (~10 s) valem para cada scan que passar por vision.
+5. **Um documento, uma execução por braço:** não estabelece taxa de erro de nenhuma das duas percepções (D-030).

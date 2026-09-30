@@ -1,0 +1,22 @@
+{
+  "arm": "B",
+  "perception": {
+    "extraction_method": "VISION_LLM",
+    "engine": "anthropic",
+    "model": "claude-opus-5",
+    "prompt_fingerprint": "690896745b07273a",
+    "max_tokens": 4000,
+    "dpi": 200,
+    "renderer": "pypdfium2 5.13.0",
+    "temperature": "not supported by model (not sent)",
+    "tools": null,
+    "fallbacks": "off",
+    "reference_data_in_prompt": false
+  },
+  "pipeline_variant": "I",
+  "pipeline_llm": {
+    "model": "claude-opus-5",
+    "effort": "medium",
+    "fallbacks": "off"
+  }
+}

@@ -415,11 +415,19 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
 ### H-37 — Pontilhado de tabela tratado como preenchimento recupera bindings sem criar binding errado
 - **Hypothesis:** Ignorar sequências de 4+ pontos no teste de fim de frase recupera pares "Rótulo ..... VALOR" sem criar binding errado e sem regressão nos conjuntos existentes.
 - **How to test:** `tests/test_dot_leader_i.py` + regressão I × H por replay (E-009) + braço A no doc 07.
-- **Observed result:** (pendente)
-- **Status:** OPEN
+- **Observed result:** (E-009)
+  - A I é idêntica à H nos quatro conjuntos.
+  - No doc 07 lido por OCR, a data de pagamento passou a ser associada corretamente.
+  - 0 bindings errados; reticências e ponto final continuam pontuação (testes).
+- **Status:** SUPPORTED
 
 ### H-38 — Vision como percepção melhora campos críticos do doc 07 sem erro silencioso de dígito
 - **Hypothesis:** Um modelo multimodal transcrevendo literalmente a página recupera campos críticos que o OCR local perde (ticker), sem alterar dígitos, sem identidade errada e sem aprovação insegura, com custo incremental justificável.
 - **How to test:** E-009 parte 2: A × B no mesmo doc 07, mesma pipeline I, regra de decisão pré-registrada.
-- **Observed result:** (pendente)
-- **Status:** OPEN
+- **Observed result:** (E-009, uma execução por braço)
+  - Vision: 11/11 campos críticos exatos, 71/71 dígitos, 99,9% de similaridade, 24/24 evidências.
+  - 0 valores errados, bindings errados, identidade errada e aprovações inseguras; AUTO_APPROVE correto.
+  - Custo US$ 0,046; 10 s.
+  - OCR local: 10/11 (ticker ausente, fail-safe), US$ 0, 3,7 s.
+  - Regra pré-registrada: VISION. Pelos critérios da seção 7: OCR local + vision como fallback secundário.
+- **Status:** SUPPORTED (1 documento, 1 amostra; estabilidade do vision não medida)

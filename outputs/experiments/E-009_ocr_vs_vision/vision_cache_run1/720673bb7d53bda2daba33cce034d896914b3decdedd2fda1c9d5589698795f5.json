@@ -1,0 +1,13 @@
+{
+  "id": "msg_011CfYv8RfBWr5VjNSnKwkie",
+  "request_id": "req_011CfYv8Q1DCbuBfzm7nwShb",
+  "served_model": "claude-opus-5",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 5541,
+    "output_tokens": 730
+  },
+  "latency_ms": 9691,
+  "estimated_cost_usd": "0.045955",
+  "output_text": "{\"lines\":[\"TELECOM NORTE PARTICIPAÇÕES S.A.\",\"Companhia Aberta | CNPJ/ME nº 33.222.111/0001-44 | NIRE 33.300.000.007\",\"AVISO AOS ACIONISTAS\",\"Juros sobre o Capital Próprio (JCP)\",\"A Telecom Norte Participações S.A. comunica aos seus acionistas que o\",\"Conselho de Administração, em reunião realizada em 06 de junho de 2026,\",\"aprovou o crédito de Juros sobre o Capital Próprio (JCP), nos termos do\",\"art. 9º da Lei nº 9.249/95, com retenção de Imposto de Renda na Fonte\",\"(IRRF) à alíquota de 17,5% sobre o valor bruto.\",\"Farão jus ao provento os acionistas inscritos nos registros da Companhia\",\"ao final do dia 22 de junho de 2026 (data com). As ações passarão a ser\",\"negociadas ex-JCP a partir de 23 de junho de 2026.\",\"Tipo de evento .................... Juros sobre o Capital Próprio (JCP)\",\"Valor bruto por ação PN ,,,,,,,,, R$ 0,1124300000\",\"IRRF na fonte ..................... 17,5%\",\"Valor líquido por ação PN ,,,,,,, R$ 0,0927547500\",\"Data-base (data com) ............ 22/06/2026\",\"Data ex-JCP ..................... 23/06/2026\",\"Data de pagamento .............. 21/08/2026\",\"Código de negociação .......... TLNR4  (ISIN BRTLNRACNPR2)\",\"São Paulo (SP), 06 de junho de 2026.\",\"Ana Beatriz Moraes\",\"Diretora de Relações com Investidores\"],\"uncertain\":[{\"token\":\",,,,,,,,,\",\"reason\":\"filler run of commas instead of dots; exact count unclear\"},{\"token\":\",,,,,,,\",\"reason\":\"filler run of commas instead of dots; exact count unclear\"},{\"token\":\"BRTLNRACNPR2\",\"reason\":\"small print, letters could be misread\"}],\"illegible_regions\":0}"
+}

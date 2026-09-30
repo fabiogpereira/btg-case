@@ -1,0 +1,23 @@
+{
+  "arm": "A",
+  "perception": {
+    "extraction_method": "OCR_LOCAL",
+    "engine": "tesseract",
+    "engine_version": "v5.4.0.20240606",
+    "lang": "por",
+    "model_sha256": "016c6a371bb1e4c48fe521908cf3ba3d751fade0ab846ad5d4086b563f5c528c",
+    "oem": 1,
+    "psm": 3,
+    "dpi": 300,
+    "renderer": "pypdfium2 5.13.0",
+    "pillow": "12.3.0",
+    "preprocessing": null,
+    "post_correction": null
+  },
+  "pipeline_variant": "I",
+  "pipeline_llm": {
+    "model": "claude-opus-5",
+    "effort": "medium",
+    "fallbacks": "off"
+  }
+}
