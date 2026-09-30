@@ -495,6 +495,114 @@ Depois da primeira saída semântica oficial: nenhuma mudança em D, prompt, pol
 2. **Resultados do E-003 no challenge set eram conhecidos.** A fusão v2 e o detector foram desenhados sabendo os failure modes da C (C-1: CONDITION; C-2: desacordo em CH-01 e CH-10) e do B (CH-06), por pedido explícito desta etapa. Nenhum run da D, nem só do detector, foi feito sobre o challenge set antes do congelamento. Ainda assim, o challenge set **não é independente** da D. O holdout cego continua sendo o próximo passo.
 3. **Prompt v2:** exemplos só dos documentos originais: "sobre a parcela que exceder", "ressalvados os acionistas ... imunes ou isentos", "conforme legislação vigente", "no momento do pagamento ou crédito".
 
-### Resultado
+### Resultado (execução da D em 2026-09-30, freeze v1, sem nenhuma alteração após a primeira saída)
 
-_Pendente da execução da D._
+**Runs.**
+
+| Conjunto | Execução 1 | Execução 2 (consistência) |
+|---|---|---|
+| Original | `20260930T004418Z-0861ea71` | `20260930T004654Z-ed7ce642` |
+| Challenge | `20260930T004438Z-ce9f1072` | `20260930T004710Z-5571a787` |
+
+- **Execução:** 0 erros, 0 recusas, 0 falhas de parse/schema. O modelo servido foi sempre `claude-opus-5`.
+- **Custo:** US$ 1,44 nas 4 execuções da D.
+- **Relatório completo:** `outputs/experiments/E-004_hybrid/comparison/e004_report.md` (+ `e004_results.json`, com o oráculo e a análise de roteamento).
+
+**Qualidade e segurança — original** (conjunto de desenvolvimento):
+
+| | B | C | D |
+|---|---|---|---|
+| Campos semânticos | 29/31 | 31/31 | 30/31 |
+| Valor exato | 77/80 | 79/80 | 78/80 |
+| Regras de validação | 101/104 | 104/104 | 104/104 |
+| Roteamento DEFINED | 5/6 | 4/6 | 5/6 |
+| Taxa de revisão | 6/8 | 7/8 | 6/8 |
+| **Aprovações inseguras** | 0 | 0 | **0** |
+
+**Qualidade e segurança — challenge set** (ciente do autor):
+
+| | B | C | D |
+|---|---|---|---|
+| Acurácia semântica | 10/21 | 21/21 | **21/21** |
+| Papel de data | 0/8 | 8/8 | 8/8 |
+| Negação | 3/4 | 4/4 | 4/4 |
+| Qualificador / IR condicional | 6/6 | 6/6 | 6/6 |
+| Roteamento DEFINED | 4/7 | 5/7 | **7/7** |
+| Taxa de revisão | 8/11 | 4/11 | 5/11 |
+| Falsamente confiantes | 0 | 0 | 0 |
+| **Aprovações inseguras** | 0 | 0 | **0** |
+
+**Eficiência (H-25):**
+
+| | C original | D original | C challenge | D challenge |
+|---|---|---|---|---|
+| Documentos com LLM | 7/7 | **1/7** | 11/11 | 10/11 |
+| Chamadas de API / tool calls | 14 / 8 | 2 / 1 | 22 / 11 | 20 / 10 |
+| Custo total (US$) | 0,4113 | **0,0733** (−82%) | 0,5937 | 0,6413 (+8%) |
+| Custo por documento de entrada (US$) | 0,0514 | **0,0092** | 0,0540 | 0,0583 |
+| Latência fim a fim média / p50 | 10,4 s / 9,7 s | **2,2 s / 13 ms** | 10,6 s / 10,4 s | 11,2 s / 11,7 s |
+| Latência D sem LLM (média) | — | 13 ms | — | 3 ms |
+| Latência D com LLM (média) | — | 17,6 s | — | 12,3 s |
+| Tool calls por documento processado / com LLM | — | 0,125 / 1,0 | — | 0,909 / 1,0 |
+
+- **Tokens:** o prompt v2 usa ~+1,1k tokens de entrada (taxonomia) e ~+0,2k de saída (qualificadores) por documento com LLM; cerca de 15% mais caro por chamada que o v1.
+- **Function calling (só documentos com LLM):** 11/11 chamadas corretas; 0 desnecessárias, 0 ausentes, 0 argumentos incorretos, 0 divergências com o validation engine.
+- **Oráculo de invocação:**
+
+| | Original | Challenge |
+|---|---|---|
+| Corretas | doc 06 | CH-03, 04, 06, 07, 08, 09, 10 |
+| Puladas corretamente | 01, 02, 04, 05, 08 | CH-05 |
+| **Falso-positivas** | — | **CH-01, CH-02** (gatilho de negação decisiva, por desenho), **CH-11** (o B atribuiu o adiamento à data de aprovação) |
+| **Falso-negativas** | **doc 03** (base do IR não literal; previsto no pré-registro) | — |
+
+**Estabilidade (D1 × D2):**
+- decisão de invocar o LLM: 19/19;
+- tipo de evento e campos semânticos: 11/11 nos documentos com LLM;
+- **roteamento: 18/19** (CH-07 mudou; ver D-2).
+
+### Análise dos false reviews do C
+
+| Documento | B (determinístico) | C (E-003): interpretação e motivo | D: tratamento | Justificável sem reduzir segurança? |
+|---|---|---|---|---|
+| doc 01 | AUTO; base `EXCESS_OVER_THRESHOLD` por padrão conhecido | Base correta; "legislação vigente a partir de ..." marcada CONDITION → LOW | LLM **não chamado** (nenhum gatilho); AUTO | Sim: o qualificador material foi interpretado por código, e o contexto legal não altera o registro |
+| doc 02 | AUTO; exceção por titular interpretada; conflito JCP×dividendo por precedência | Base GROSS correta; "conforme legislação vigente" = CONDITION → LOW | Conflito reconhecido como imputação ao dividendo obrigatório → **não chamado**; AUTO | Sim: a menção a dividendo é a imputação legal do JCP, não outro evento |
+| doc 03 | REVIEW (conflito título × conteúdo) | "no momento do pagamento ou crédito" = CONDITION → LOW + conflito de título | Não chamado; REVIEW só pelo conflito de título (política Q-10) | Sim para o roteamento. A base do IR fica nula (falso negativo de invocação) |
+| CH-01 | AUTO (negação filtrada → DIVIDEND) | Desacordo (determinístico A = JCP) → REVIEW | Chamado (negação decisiva) → **AGREEMENT** com o B → AUTO | Sim: dois intérpretes independentes concordam, com evidência literal |
+| CH-06 | REVIEW (exceção do IR atribuída à data de aprovação) | AUTO | Chamado (qualificador não interpretado) → data confirmada (DETERMINISTIC_UNSUPPORTED); exceção por titular não bloqueia → AUTO | Sim: o LLM separou os escopos; a validação passa |
+| CH-09 | REVIEW (conflito no valor bruto) | REVIEW (mesmo conflito) | Datas mapeadas (LLM_ONLY_GROUNDED), mas REVIEW continua pelo conflito de valor (fora do escopo do LLM) + qualificadores | O REVIEW está correto: o conflito de valor é real no extrator |
+| CH-10 | REVIEW (precedência → JCP, errado) | Desacordo → REVIEW | Chamado (conflito de sinais) → LLM = DIVIDEND e explicou a menção ao JCP passado com citação que cobre o sinal → **HEURISTIC_RESOLVED** → AUTO | Sim: a heurística cede só com explicação literal de todos os sinais perdedores |
+| CH-11 | REVIEW (adiamento) | REVIEW | REVIEW (adiamento + `event_eligibility_condition`) | Sim |
+
+### Failure modes novos
+
+- **D-1 (qualificadores: rotulagem genérica bloqueante).** No doc 06, o LLM descreveu o ajuste de frações e o leilão das sobras como `other/amounts` (execução 1) e `event_eligibility_condition` (execução 2). As duas bloqueiam, e o doc 06 vai para revisão **mesmo com a `ex_date` mapeada corretamente**. A taxonomia não tem categoria para procedimento operacional do evento (tratamento de frações).
+- **D-2 (instabilidade de `affects` + salvaguarda de inconsistência).** No CH-07, execução 1, o LLM listou o próprio rótulo do valor bruto como qualificador `informational_context` com `affects=amounts`. A regra "não material que afeta algo material bloqueia" disparou; na execução 2 veio `affects=none`. É **a única instabilidade de roteamento (1/19)**. O LLM também lista como qualificador coisas que não são qualificadores.
+- **D-3 (falso positivo por atribuição do B).** No CH-11, o adiamento da natureza foi atribuído à data de aprovação da mesma frase: gatilho `UNINTERPRETED_QUALIFIER`. Desfecho correto, mas com custo.
+- **D-4 (falso positivo por desenho).** Negação decisiva (CH-01, CH-02): o determinístico acertava, mas a decisão tributária dependia de uma heurística de escopo de negação. Custo aceito por segurança.
+- **D-5 (falso negativo por desenho).** Doc 03, base do IR não literal.
+- **D-6 (custo por chamada).** O v2 é ~15% mais caro por documento com LLM. Num conjunto quase todo semântico (challenge set: 10/11 documentos com LLM), a D custa **mais** que a C.
+
+### H-25 e H-26
+
+- **H-25 — CONFIRMED, condicionada à distribuição.** No lote real (7 documentos com texto), a D chamou o LLM em 1/7, com custo −82% e p50 de latência de 9,7 s para 13 ms, **sem aprovação insegura** e com qualidade ≥ B (semântica 30/31, validação 104/104). Onde quase todo documento precisa de semântica (challenge set), não há economia. Falso-positivos: 3/11 no challenge set (2 por desenho). Falso-negativo: 1 (por desenho).
+- **H-26 — MODIFIED.**
+  - A **fusão v2** (acordo, determinístico sem suporte, heurística resolvida com cobertura, conflito real) funcionou: corrigiu os false reviews da C no CH-01 e no CH-10, manteve o CH-06 e evitou os alarmes dos docs 01 e 02. O roteamento DEFINED no challenge set foi a 7/7.
+  - O **modelo de qualificadores v2**, porém, introduziu novos false reviews (D-1, D-2) e 1 instabilidade de roteamento. A separação "o LLM descreve, o código decide" é válida; a taxonomia e a extração de qualificadores precisam de refinamento.
+
+### Conclusão e recomendação
+
+**Arquitetura candidata: D.**
+- **Base:** determinístico (A + patch B) como primeira linha, sempre.
+- **LLM:** só com gatilho objetivo; function calling de referência mantido; fusão v2.
+- **Autoridade:** validações e roteamento em código.
+
+No lote real, isso entrega a qualidade semântica perto da C, com custo e latência perto do determinístico.
+
+**Antes de adotar:**
+- (a) **qualificadores v3**: só registrar como qualificador o que modifica valor, base, taxa, elegibilidade ou natureza **deste** registro; categoria própria (não bloqueante) para procedimento operacional, como frações; tornar a salvaguarda de `affects` robusta à variação (ex.: exigir que o `affects` material seja coerente com o campo citado);
+- (b) medir tudo num **holdout cego**;
+- (c) prompt caching do system prompt (maior parte da entrada) para reduzir o custo por chamada.
+
+Nenhuma dessas mudanças foi feita: o E-004 está congelado, e a próxima etapa depende de autorização.
+

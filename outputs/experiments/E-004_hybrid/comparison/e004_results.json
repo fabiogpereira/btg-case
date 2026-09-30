@@ -1,0 +1,2156 @@
+{
+  "need_oracle": {
+    "original": {
+      "e49afdf81d2a1e4a74985e78fa0ea3639633cfa19f5dba633a2b545d115153cb": {
+        "document": "01_energetica_vale_tiete_dividendo.pdf",
+        "needed": false,
+        "b_semantic_errors": [],
+        "b_false_semantic_review": false
+      },
+      "64e0787afd32c0d99e5407a5fbc6f5048245ba70826563d0b14205074b970668": {
+        "document": "02_banco_meridional_jcp.pdf",
+        "needed": false,
+        "b_semantic_errors": [],
+        "b_false_semantic_review": false
+      },
+      "a21a294ac3ededbb6fdef195be0edb0572069544e0b73f6fc1918fa77d6b0e85": {
+        "document": "03_siderurgica_paranaense_proventos.pdf",
+        "needed": true,
+        "b_semantic_errors": [
+          "withholding_tax"
+        ],
+        "b_false_semantic_review": false
+      },
+      "37f846a73cb5486b543bb1e580144c8d94eafee4aa7396424637c063a3bfbb83": {
+        "document": "04_rede_varejo_jcp_sem_data.pdf",
+        "needed": false,
+        "b_semantic_errors": [],
+        "b_false_semantic_review": false
+      },
+      "925b6eb09fbcaecf81d3c1d125e041edd1460fed23d6a67bf10f8a6b170e9567": {
+        "document": "05_aurora_saneamento_dividendo_datas.pdf",
+        "needed": false,
+        "b_semantic_errors": [],
+        "b_false_semantic_review": false
+      },
+      "147d83f038f6ca94495a5d5248f36a6feedee7ae9a5cebc011d40e1f14d68068": {
+        "document": "06_petroquimica_litoral_grupamento.pdf",
+        "needed": true,
+        "b_semantic_errors": [
+          "ex_date"
+        ],
+        "b_false_semantic_review": true
+      },
+      "a509637f4b258454309e1d21e81beca56701a78624b8a6a6f9a6b0ec9389b0e5": {
+        "document": "08_construtora_horizonte_bonificacao.pdf",
+        "needed": false,
+        "b_semantic_errors": [],
+        "b_false_semantic_review": false
+      }
+    },
+    "challenge": {
+      "0948936feb0be22f66357d17bbb3eb4c1442fffe81200e1357cb974a0a6ca67b": {
+        "document": "CH-01",
+        "needed": false,
+        "b_semantic_errors": [],
+        "b_false_semantic_review": false
+      },
+      "2fd8dea09f15bc473647602d80456dcbf918e4c22dc83053857e5767e5e034af": {
+        "document": "CH-02",
+        "needed": false,
+        "b_semantic_errors": [],
+        "b_false_semantic_review": false
+      },
+      "569820a4f53b4caf55393e18aefb7f8d8834de064acab07ce6d62e884cab58a1": {
+        "document": "CH-03",
+        "needed": true,
+        "b_semantic_errors": [
+          "event_type"
+        ],
+        "b_false_semantic_review": true
+      },
+      "3485bf44e75fa1ffa73663a23f0f30ccb76f1c6bb266ccff85ba220e2f8a79a6": {
+        "document": "CH-04",
+        "needed": true,
+        "b_semantic_errors": [
+          "event_type"
+        ],
+        "b_false_semantic_review": true
+      },
+      "fe970d2831da40ea9d373fcc60f1a2543a0850e27b6458bece6781b03ac2fa21": {
+        "document": "CH-05",
+        "needed": false,
+        "b_semantic_errors": [],
+        "b_false_semantic_review": false
+      },
+      "add21102b91a8b5249aa3db35493aa3fee441f5275942a019b46ce672b55e0b4": {
+        "document": "CH-06",
+        "needed": true,
+        "b_semantic_errors": [],
+        "b_false_semantic_review": true
+      },
+      "5331e6fe193e7d4d5f76a21479ca5805cf47462bd39b4cc17c5bd443c520bd54": {
+        "document": "CH-07",
+        "needed": true,
+        "b_semantic_errors": [
+          "record_date",
+          "ex_date",
+          "payment_date"
+        ],
+        "b_false_semantic_review": true
+      },
+      "614a7e8f5ed961a556126662f5b19bc976f66d0b14e6602d86300d2aee4856b0": {
+        "document": "CH-08",
+        "needed": true,
+        "b_semantic_errors": [
+          "record_date",
+          "ex_date"
+        ],
+        "b_false_semantic_review": true
+      },
+      "410d545bb7d836135659e1bc487b02d2c2e89881d8ecc712f160fa5a21e4909c": {
+        "document": "CH-09",
+        "needed": true,
+        "b_semantic_errors": [
+          "record_date",
+          "ex_date",
+          "payment_date"
+        ],
+        "b_false_semantic_review": true
+      },
+      "d66be6ca69d44c4ab79d85e26574fce37a3c16641e8f5c895a113bb71888d55f": {
+        "document": "CH-10",
+        "needed": true,
+        "b_semantic_errors": [
+          "event_type"
+        ],
+        "b_false_semantic_review": false
+      },
+      "2d3f885861cb977d71b8455932f58c32295107c4eba531351b666ed893383f9d": {
+        "document": "CH-11",
+        "needed": false,
+        "b_semantic_errors": [],
+        "b_false_semantic_review": false
+      }
+    }
+  },
+  "quality": {
+    "original": {
+      "B": {
+        "event_type": {
+          "correct": 7,
+          "total": 7,
+          "pct": 100.0
+        },
+        "semantic_targets": {
+          "correct": 29,
+          "total": 31,
+          "pct": 93.5
+        },
+        "value_exact": {
+          "correct": 77,
+          "total": 80,
+          "pct": 96.2
+        },
+        "validation": {
+          "accuracy": {
+            "correct": 101,
+            "total": 104,
+            "pct": 97.1
+          },
+          "false_negatives": 0,
+          "false_positives": 1,
+          "other_mismatches": 2
+        },
+        "routing_defined": {
+          "correct": 5,
+          "total": 6,
+          "pct": 83.3
+        },
+        "review_rate": {
+          "correct": 6,
+          "total": 8,
+          "pct": 75.0
+        },
+        "unsafe_auto_approvals": [],
+        "invented_values": 0,
+        "routing_rows": [
+          {
+            "expectation_status": "DEFINED",
+            "expected": "AUTO_APPROVE",
+            "expected_reasons": [],
+            "got": "AUTO_APPROVE",
+            "got_reasons": [],
+            "match": true,
+            "document": "01_energetica_vale_tiete_dividendo.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "AUTO_APPROVE",
+            "expected_reasons": [],
+            "got": "AUTO_APPROVE",
+            "got_reasons": [],
+            "match": true,
+            "document": "02_banco_meridional_jcp.pdf"
+          },
+          {
+            "expectation_status": "PROVISIONAL",
+            "expected": "REVIEW_REQUIRED",
+            "expected_reasons": [
+              "CLASSIFICATION_TITLE_CONFLICT"
+            ],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "CLASSIFICATION_TITLE_CONFLICT"
+            ],
+            "match": true,
+            "document": "03_siderurgica_paranaense_proventos.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "REVIEW_REQUIRED",
+            "expected_reasons": [
+              "PAYMENT_DATE_PENDING"
+            ],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "PAYMENT_DATE_PENDING"
+            ],
+            "match": true,
+            "document": "04_rede_varejo_jcp_sem_data.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "REVIEW_REQUIRED",
+            "expected_reasons": [
+              "DATE_INCONSISTENCY"
+            ],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "DATE_INCONSISTENCY"
+            ],
+            "match": true,
+            "document": "05_aurora_saneamento_dividendo_datas.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "AUTO_APPROVE",
+            "expected_reasons": [],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "REQUIRED_FIELD_MISSING"
+            ],
+            "match": false,
+            "document": "06_petroquimica_litoral_grupamento.pdf"
+          },
+          {
+            "expectation_status": "POLICY_DEPENDENT",
+            "expected": null,
+            "expected_reasons": [],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "NO_USABLE_TEXT_LAYER"
+            ],
+            "match": null,
+            "document": "07_telecom_norte_jcp_SCAN.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "REVIEW_REQUIRED",
+            "expected_reasons": [
+              "REFERENCE_NOT_FOUND"
+            ],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "REFERENCE_NOT_FOUND"
+            ],
+            "match": true,
+            "document": "08_construtora_horizonte_bonificacao.pdf"
+          }
+        ]
+      },
+      "C": {
+        "event_type": {
+          "correct": 7,
+          "total": 7,
+          "pct": 100.0
+        },
+        "semantic_targets": {
+          "correct": 31,
+          "total": 31,
+          "pct": 100.0
+        },
+        "value_exact": {
+          "correct": 79,
+          "total": 80,
+          "pct": 98.8
+        },
+        "validation": {
+          "accuracy": {
+            "correct": 104,
+            "total": 104,
+            "pct": 100.0
+          },
+          "false_negatives": 0,
+          "false_positives": 0,
+          "other_mismatches": 0
+        },
+        "routing_defined": {
+          "correct": 4,
+          "total": 6,
+          "pct": 66.7
+        },
+        "review_rate": {
+          "correct": 7,
+          "total": 8,
+          "pct": 87.5
+        },
+        "unsafe_auto_approvals": [],
+        "invented_values": 0,
+        "routing_rows": [
+          {
+            "expectation_status": "DEFINED",
+            "expected": "AUTO_APPROVE",
+            "expected_reasons": [],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "SEMANTIC_AMBIGUITY"
+            ],
+            "match": false,
+            "document": "01_energetica_vale_tiete_dividendo.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "AUTO_APPROVE",
+            "expected_reasons": [],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "SEMANTIC_AMBIGUITY"
+            ],
+            "match": false,
+            "document": "02_banco_meridional_jcp.pdf"
+          },
+          {
+            "expectation_status": "PROVISIONAL",
+            "expected": "REVIEW_REQUIRED",
+            "expected_reasons": [
+              "CLASSIFICATION_TITLE_CONFLICT"
+            ],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "SEMANTIC_AMBIGUITY",
+              "CLASSIFICATION_TITLE_CONFLICT"
+            ],
+            "match": true,
+            "document": "03_siderurgica_paranaense_proventos.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "REVIEW_REQUIRED",
+            "expected_reasons": [
+              "PAYMENT_DATE_PENDING"
+            ],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "PAYMENT_DATE_PENDING"
+            ],
+            "match": true,
+            "document": "04_rede_varejo_jcp_sem_data.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "REVIEW_REQUIRED",
+            "expected_reasons": [
+              "DATE_INCONSISTENCY"
+            ],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "DATE_INCONSISTENCY"
+            ],
+            "match": true,
+            "document": "05_aurora_saneamento_dividendo_datas.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "AUTO_APPROVE",
+            "expected_reasons": [],
+            "got": "AUTO_APPROVE",
+            "got_reasons": [],
+            "match": true,
+            "document": "06_petroquimica_litoral_grupamento.pdf"
+          },
+          {
+            "expectation_status": "POLICY_DEPENDENT",
+            "expected": null,
+            "expected_reasons": [],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "NO_USABLE_TEXT_LAYER"
+            ],
+            "match": null,
+            "document": "07_telecom_norte_jcp_SCAN.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "REVIEW_REQUIRED",
+            "expected_reasons": [
+              "REFERENCE_NOT_FOUND"
+            ],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "REFERENCE_NOT_FOUND"
+            ],
+            "match": true,
+            "document": "08_construtora_horizonte_bonificacao.pdf"
+          }
+        ]
+      },
+      "D": {
+        "event_type": {
+          "correct": 7,
+          "total": 7,
+          "pct": 100.0
+        },
+        "semantic_targets": {
+          "correct": 30,
+          "total": 31,
+          "pct": 96.8
+        },
+        "value_exact": {
+          "correct": 78,
+          "total": 80,
+          "pct": 97.5
+        },
+        "validation": {
+          "accuracy": {
+            "correct": 104,
+            "total": 104,
+            "pct": 100.0
+          },
+          "false_negatives": 0,
+          "false_positives": 0,
+          "other_mismatches": 0
+        },
+        "routing_defined": {
+          "correct": 5,
+          "total": 6,
+          "pct": 83.3
+        },
+        "review_rate": {
+          "correct": 6,
+          "total": 8,
+          "pct": 75.0
+        },
+        "unsafe_auto_approvals": [],
+        "invented_values": 0,
+        "routing_rows": [
+          {
+            "expectation_status": "DEFINED",
+            "expected": "AUTO_APPROVE",
+            "expected_reasons": [],
+            "got": "AUTO_APPROVE",
+            "got_reasons": [],
+            "match": true,
+            "document": "01_energetica_vale_tiete_dividendo.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "AUTO_APPROVE",
+            "expected_reasons": [],
+            "got": "AUTO_APPROVE",
+            "got_reasons": [],
+            "match": true,
+            "document": "02_banco_meridional_jcp.pdf"
+          },
+          {
+            "expectation_status": "PROVISIONAL",
+            "expected": "REVIEW_REQUIRED",
+            "expected_reasons": [
+              "CLASSIFICATION_TITLE_CONFLICT"
+            ],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "CLASSIFICATION_TITLE_CONFLICT"
+            ],
+            "match": true,
+            "document": "03_siderurgica_paranaense_proventos.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "REVIEW_REQUIRED",
+            "expected_reasons": [
+              "PAYMENT_DATE_PENDING"
+            ],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "PAYMENT_DATE_PENDING"
+            ],
+            "match": true,
+            "document": "04_rede_varejo_jcp_sem_data.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "REVIEW_REQUIRED",
+            "expected_reasons": [
+              "DATE_INCONSISTENCY"
+            ],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "DATE_INCONSISTENCY"
+            ],
+            "match": true,
+            "document": "05_aurora_saneamento_dividendo_datas.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "AUTO_APPROVE",
+            "expected_reasons": [],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "MATERIAL_QUALIFIER_UNRESOLVED:other"
+            ],
+            "match": false,
+            "document": "06_petroquimica_litoral_grupamento.pdf"
+          },
+          {
+            "expectation_status": "POLICY_DEPENDENT",
+            "expected": null,
+            "expected_reasons": [],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "NO_USABLE_TEXT_LAYER"
+            ],
+            "match": null,
+            "document": "07_telecom_norte_jcp_SCAN.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "REVIEW_REQUIRED",
+            "expected_reasons": [
+              "REFERENCE_NOT_FOUND"
+            ],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "REFERENCE_NOT_FOUND"
+            ],
+            "match": true,
+            "document": "08_construtora_horizonte_bonificacao.pdf"
+          }
+        ]
+      }
+    },
+    "challenge": {
+      "B": {
+        "semantic_accuracy": {
+          "correct": 10,
+          "total": 21,
+          "pct": 47.6
+        },
+        "negation_accuracy": {
+          "correct": 3,
+          "total": 4,
+          "pct": 75.0
+        },
+        "conditional_expression_accuracy": {
+          "correct": 6,
+          "total": 6,
+          "pct": 100.0
+        },
+        "date_role_mapping_accuracy": {
+          "correct": 0,
+          "total": 8,
+          "pct": 0.0
+        },
+        "misleading_keywords_accuracy": {
+          "correct": 6,
+          "total": 8,
+          "pct": 75.0
+        },
+        "event_description_accuracy": {
+          "correct": 2,
+          "total": 3,
+          "pct": 66.7
+        },
+        "false_confident_interpretations": 0,
+        "wrong_but_flagged": 11,
+        "unsafe_auto_approvals": [],
+        "routing_defined": {
+          "correct": 4,
+          "total": 7,
+          "pct": 57.1
+        },
+        "review_rate": {
+          "correct": 8,
+          "total": 11,
+          "pct": 72.7
+        },
+        "cases": [
+          {
+            "case": "CH-01",
+            "correct": [
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-02",
+            "correct": [
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-03",
+            "correct": [
+              false
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "SEMANTIC_AMBIGUITY",
+              "CLASSIFICATION_UNDETERMINED"
+            ]
+          },
+          {
+            "case": "CH-04",
+            "correct": [
+              false
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "SEMANTIC_AMBIGUITY",
+              "CLASSIFICATION_UNDETERMINED"
+            ]
+          },
+          {
+            "case": "CH-05",
+            "correct": [
+              true,
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-06",
+            "correct": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "SEMANTIC_AMBIGUITY"
+            ]
+          },
+          {
+            "case": "CH-07",
+            "correct": [
+              false,
+              false,
+              false
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "REQUIRED_FIELD_MISSING"
+            ]
+          },
+          {
+            "case": "CH-08",
+            "correct": [
+              false,
+              false
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "REQUIRED_FIELD_MISSING"
+            ]
+          },
+          {
+            "case": "CH-09",
+            "correct": [
+              false,
+              false,
+              false
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "LOW_EXTRACTION_CONFIDENCE",
+              "REQUIRED_FIELD_MISSING"
+            ]
+          },
+          {
+            "case": "CH-10",
+            "correct": [
+              false,
+              true
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "REQUIRED_FIELD_MISSING"
+            ]
+          },
+          {
+            "case": "CH-11",
+            "correct": [
+              true
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "SEMANTIC_AMBIGUITY",
+              "CLASSIFICATION_UNDETERMINED"
+            ]
+          }
+        ]
+      },
+      "C": {
+        "semantic_accuracy": {
+          "correct": 21,
+          "total": 21,
+          "pct": 100.0
+        },
+        "negation_accuracy": {
+          "correct": 4,
+          "total": 4,
+          "pct": 100.0
+        },
+        "conditional_expression_accuracy": {
+          "correct": 6,
+          "total": 6,
+          "pct": 100.0
+        },
+        "date_role_mapping_accuracy": {
+          "correct": 8,
+          "total": 8,
+          "pct": 100.0
+        },
+        "misleading_keywords_accuracy": {
+          "correct": 8,
+          "total": 8,
+          "pct": 100.0
+        },
+        "event_description_accuracy": {
+          "correct": 3,
+          "total": 3,
+          "pct": 100.0
+        },
+        "false_confident_interpretations": 0,
+        "wrong_but_flagged": 0,
+        "unsafe_auto_approvals": [],
+        "routing_defined": {
+          "correct": 5,
+          "total": 7,
+          "pct": 71.4
+        },
+        "review_rate": {
+          "correct": 4,
+          "total": 11,
+          "pct": 36.4
+        },
+        "cases": [
+          {
+            "case": "CH-01",
+            "correct": [
+              true
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "CLASSIFICATION_DISAGREEMENT"
+            ]
+          },
+          {
+            "case": "CH-02",
+            "correct": [
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-03",
+            "correct": [
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-04",
+            "correct": [
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-05",
+            "correct": [
+              true,
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-06",
+            "correct": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-07",
+            "correct": [
+              true,
+              true,
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-08",
+            "correct": [
+              true,
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-09",
+            "correct": [
+              true,
+              true,
+              true
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "LOW_EXTRACTION_CONFIDENCE"
+            ]
+          },
+          {
+            "case": "CH-10",
+            "correct": [
+              true,
+              true
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "CLASSIFICATION_DISAGREEMENT"
+            ]
+          },
+          {
+            "case": "CH-11",
+            "correct": [
+              true
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "SEMANTIC_AMBIGUITY",
+              "CLASSIFICATION_UNDETERMINED"
+            ]
+          }
+        ]
+      },
+      "D": {
+        "semantic_accuracy": {
+          "correct": 21,
+          "total": 21,
+          "pct": 100.0
+        },
+        "negation_accuracy": {
+          "correct": 4,
+          "total": 4,
+          "pct": 100.0
+        },
+        "conditional_expression_accuracy": {
+          "correct": 6,
+          "total": 6,
+          "pct": 100.0
+        },
+        "date_role_mapping_accuracy": {
+          "correct": 8,
+          "total": 8,
+          "pct": 100.0
+        },
+        "misleading_keywords_accuracy": {
+          "correct": 8,
+          "total": 8,
+          "pct": 100.0
+        },
+        "event_description_accuracy": {
+          "correct": 3,
+          "total": 3,
+          "pct": 100.0
+        },
+        "false_confident_interpretations": 0,
+        "wrong_but_flagged": 0,
+        "unsafe_auto_approvals": [],
+        "routing_defined": {
+          "correct": 7,
+          "total": 7,
+          "pct": 100.0
+        },
+        "review_rate": {
+          "correct": 5,
+          "total": 11,
+          "pct": 45.5
+        },
+        "cases": [
+          {
+            "case": "CH-01",
+            "correct": [
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-02",
+            "correct": [
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-03",
+            "correct": [
+              true
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "MATERIAL_QUALIFIER_UNRESOLVED:informational_context",
+              "SEMANTIC_AMBIGUITY"
+            ]
+          },
+          {
+            "case": "CH-04",
+            "correct": [
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-05",
+            "correct": [
+              true,
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-06",
+            "correct": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-07",
+            "correct": [
+              true,
+              true,
+              true
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "MATERIAL_QUALIFIER_UNRESOLVED:informational_context"
+            ]
+          },
+          {
+            "case": "CH-08",
+            "correct": [
+              true,
+              true
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition"
+            ]
+          },
+          {
+            "case": "CH-09",
+            "correct": [
+              true,
+              true,
+              true
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "LOW_EXTRACTION_CONFIDENCE",
+              "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition",
+              "MATERIAL_QUALIFIER_UNRESOLVED:informational_context"
+            ]
+          },
+          {
+            "case": "CH-10",
+            "correct": [
+              true,
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-11",
+            "correct": [
+              true
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition",
+              "SEMANTIC_AMBIGUITY",
+              "CLASSIFICATION_UNDETERMINED"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "efficiency": {
+    "original": {
+      "total_documents": 8,
+      "eligible_documents": 7,
+      "invoked_documents": 1,
+      "invocation_rate_eligible": "1/7",
+      "correctly_invoked": [
+        "06_petroquimica_litoral_grupamento.pdf"
+      ],
+      "correctly_skipped": [
+        "01_energetica_vale_tiete_dividendo.pdf",
+        "02_banco_meridional_jcp.pdf",
+        "04_rede_varejo_jcp_sem_data.pdf",
+        "05_aurora_saneamento_dividendo_datas.pdf",
+        "08_construtora_horizonte_bonificacao.pdf"
+      ],
+      "false_positive_invocations": [],
+      "false_negative_invocations": [
+        "03_siderurgica_paranaense_proventos.pdf"
+      ],
+      "trigger_reasons": {
+        "01_energetica_vale_tiete_dividendo.pdf": [],
+        "02_banco_meridional_jcp.pdf": [],
+        "03_siderurgica_paranaense_proventos.pdf": [],
+        "04_rede_varejo_jcp_sem_data.pdf": [],
+        "05_aurora_saneamento_dividendo_datas.pdf": [],
+        "06_petroquimica_litoral_grupamento.pdf": [
+          "REQUIRED_DATE_ROLE_UNMAPPED"
+        ],
+        "08_construtora_horizonte_bonificacao.pdf": []
+      },
+      "llm_api_calls": 2,
+      "tool_calls": 1,
+      "tool_calls_per_processed_document": 0.125,
+      "tool_calls_per_llm_document": 1.0,
+      "estimated_cost_usd": "0.073275",
+      "cost_per_input_document_usd": "0.009159375",
+      "cost_per_llm_document_usd": "0.073275",
+      "latency_end_to_end_all": {
+        "n": 8,
+        "mean_ms": 2205.9,
+        "p50_ms": 13.2,
+        "max_ms": 17552.9
+      },
+      "latency_end_to_end_with_llm": {
+        "n": 1,
+        "mean_ms": 17552.9,
+        "p50_ms": 17552.9,
+        "max_ms": 17552.9
+      },
+      "latency_end_to_end_without_llm": {
+        "n": 7,
+        "mean_ms": 13.4,
+        "p50_ms": 12.0,
+        "max_ms": 20.8
+      },
+      "function_calling_invoked_docs": {
+        "documents_expected": 1,
+        "total_tool_calls": 1,
+        "documents_with_tool_call": 1,
+        "correct_calls": 1,
+        "unnecessary_calls": 0,
+        "incorrect_arguments": 0,
+        "expected_calls_missing": 0,
+        "missing_in": [],
+        "details": []
+      }
+    },
+    "challenge": {
+      "total_documents": 11,
+      "eligible_documents": 11,
+      "invoked_documents": 10,
+      "invocation_rate_eligible": "10/11",
+      "correctly_invoked": [
+        "CH-03",
+        "CH-04",
+        "CH-06",
+        "CH-07",
+        "CH-08",
+        "CH-09",
+        "CH-10"
+      ],
+      "correctly_skipped": [
+        "CH-05"
+      ],
+      "false_positive_invocations": [
+        "CH-01",
+        "CH-02",
+        "CH-11"
+      ],
+      "false_negative_invocations": [],
+      "trigger_reasons": {
+        "CH-01": [
+          "NEGATION_DECIDED_CLASSIFICATION"
+        ],
+        "CH-02": [
+          "NEGATION_DECIDED_CLASSIFICATION"
+        ],
+        "CH-03": [
+          "CLASSIFICATION_UNSUPPORTED"
+        ],
+        "CH-04": [
+          "EVENT_SIGNALS_CONFLICT",
+          "CLASSIFICATION_UNSUPPORTED"
+        ],
+        "CH-05": [],
+        "CH-06": [
+          "UNINTERPRETED_QUALIFIER"
+        ],
+        "CH-07": [
+          "REQUIRED_DATE_ROLE_UNMAPPED"
+        ],
+        "CH-08": [
+          "REQUIRED_DATE_ROLE_UNMAPPED"
+        ],
+        "CH-09": [
+          "REQUIRED_DATE_ROLE_UNMAPPED"
+        ],
+        "CH-10": [
+          "EVENT_SIGNALS_CONFLICT"
+        ],
+        "CH-11": [
+          "UNINTERPRETED_QUALIFIER"
+        ]
+      },
+      "llm_api_calls": 20,
+      "tool_calls": 10,
+      "tool_calls_per_processed_document": 0.909,
+      "tool_calls_per_llm_document": 1.0,
+      "estimated_cost_usd": "0.641265",
+      "cost_per_input_document_usd": "0.05829681818181818181818181818",
+      "cost_per_llm_document_usd": "0.0641265",
+      "latency_end_to_end_all": {
+        "n": 11,
+        "mean_ms": 11214.6,
+        "p50_ms": 11734.5,
+        "max_ms": 16552.3
+      },
+      "latency_end_to_end_with_llm": {
+        "n": 10,
+        "mean_ms": 12335.8,
+        "p50_ms": 11815.6,
+        "max_ms": 16552.3
+      },
+      "latency_end_to_end_without_llm": {
+        "n": 1,
+        "mean_ms": 3.0,
+        "p50_ms": 3.0,
+        "max_ms": 3.0
+      },
+      "function_calling_invoked_docs": {
+        "documents_expected": 10,
+        "total_tool_calls": 10,
+        "documents_with_tool_call": 10,
+        "correct_calls": 10,
+        "unnecessary_calls": 0,
+        "incorrect_arguments": 0,
+        "expected_calls_missing": 0,
+        "missing_in": [],
+        "details": []
+      }
+    }
+  },
+  "c_efficiency": {
+    "original": {
+      "total_documents": 8,
+      "invoked_documents": 7,
+      "estimated_cost_usd": "0.411280",
+      "cost_per_input_document_usd": "0.051410",
+      "llm_api_calls": 14,
+      "tool_calls": 8,
+      "latency_end_to_end_all": {
+        "n": 8,
+        "mean_ms": 10398.4,
+        "p50_ms": 9697.3,
+        "max_ms": 15492.7
+      }
+    },
+    "challenge": {
+      "total_documents": 11,
+      "invoked_documents": 11,
+      "estimated_cost_usd": "0.593720",
+      "cost_per_input_document_usd": "0.05397454545454545454545454545",
+      "llm_api_calls": 22,
+      "tool_calls": 11,
+      "latency_end_to_end_all": {
+        "n": 11,
+        "mean_ms": 10644.7,
+        "p50_ms": 10377.8,
+        "max_ms": 14020.0
+      }
+    }
+  },
+  "routing_analysis": {
+    "original": [
+      {
+        "document": "01_energetica_vale_tiete_dividendo.pdf",
+        "B": {
+          "decision": "AUTO_APPROVE",
+          "reasons": [],
+          "event_type": "DIVIDEND"
+        },
+        "C": {
+          "decision": "REVIEW_REQUIRED",
+          "reasons": [
+            "SEMANTIC_AMBIGUITY"
+          ],
+          "explanations": [
+            "withholding_tax: UNRESOLVED_QUALIFIER:CONDITION"
+          ],
+          "llm_event": "DIVIDEND",
+          "llm_tax": {
+            "status": "STATED",
+            "rate_as_written": "10%",
+            "base": "EXCESS_OVER_THRESHOLD"
+          },
+          "llm_qualifiers": [
+            {
+              "type": "THRESHOLD",
+              "quote": "sobre a parcela que exceder R$ 50.000,00 mensais por beneficiário pagos por esta Companhia"
+            },
+            {
+              "type": "CONDITION",
+              "quote": "Nos termos da legislação tributária vigente a partir de 1º de janeiro de 2026"
+            }
+          ]
+        },
+        "D": {
+          "decision": "AUTO_APPROVE",
+          "reasons": [],
+          "llm_invoked": false,
+          "triggers": [],
+          "resolutions": [],
+          "qualifiers_v2": [
+            {
+              "qualifier_type": "tax_base_condition",
+              "affects": "tax_base",
+              "materiality": "MATERIAL",
+              "blocks": false,
+              "quote": "sobre a parcela que exceder",
+              "source": "deterministic_patch"
+            }
+          ]
+        }
+      },
+      {
+        "document": "02_banco_meridional_jcp.pdf",
+        "B": {
+          "decision": "AUTO_APPROVE",
+          "reasons": [],
+          "event_type": "JCP"
+        },
+        "C": {
+          "decision": "REVIEW_REQUIRED",
+          "reasons": [
+            "SEMANTIC_AMBIGUITY"
+          ],
+          "explanations": [
+            "withholding_tax: UNRESOLVED_QUALIFIER:CONDITION"
+          ],
+          "llm_event": "JCP",
+          "llm_tax": {
+            "status": "STATED",
+            "rate_as_written": "17,5%",
+            "base": "GROSS_AMOUNT"
+          },
+          "llm_qualifiers": [
+            {
+              "type": "HOLDER_EXEMPTION",
+              "quote": "ressalvados os acionistas comprovadamente imunes ou isentos"
+            },
+            {
+              "type": "CONDITION",
+              "quote": "conforme legislação vigente a partir de 1º de janeiro de 2026"
+            }
+          ]
+        },
+        "D": {
+          "decision": "AUTO_APPROVE",
+          "reasons": [],
+          "llm_invoked": false,
+          "triggers": [],
+          "resolutions": [],
+          "qualifiers_v2": [
+            {
+              "qualifier_type": "beneficiary_exception",
+              "affects": "tax_application",
+              "materiality": "MATERIAL_FOR_TAX_APPLICATION",
+              "blocks": false,
+              "quote": "imunes",
+              "source": "deterministic_patch"
+            }
+          ]
+        }
+      },
+      {
+        "document": "03_siderurgica_paranaense_proventos.pdf",
+        "B": {
+          "decision": "REVIEW_REQUIRED",
+          "reasons": [
+            "CLASSIFICATION_TITLE_CONFLICT"
+          ],
+          "event_type": "JCP"
+        },
+        "C": {
+          "decision": "REVIEW_REQUIRED",
+          "reasons": [
+            "SEMANTIC_AMBIGUITY",
+            "CLASSIFICATION_TITLE_CONFLICT"
+          ],
+          "explanations": [
+            "withholding_tax: UNRESOLVED_QUALIFIER:CONDITION",
+            "CLASSIFICATION_TITLE_CONSISTENT: title suggests ['DIVIDEND'] but content classifies as JCP"
+          ],
+          "llm_event": "JCP",
+          "llm_tax": {
+            "status": "STATED",
+            "rate_as_written": "17,5%",
+            "base": "GROSS_AMOUNT"
+          },
+          "llm_qualifiers": [
+            {
+              "type": "CONDITION",
+              "quote": "no momento do pagamento ou crédito, o que ocorrer primeiro"
+            }
+          ]
+        },
+        "D": {
+          "decision": "REVIEW_REQUIRED",
+          "reasons": [
+            "CLASSIFICATION_TITLE_CONFLICT"
+          ],
+          "llm_invoked": false,
+          "triggers": [],
+          "resolutions": [],
+          "qualifiers_v2": []
+        }
+      }
+    ],
+    "challenge": [
+      {
+        "document": "CH-01.txt",
+        "B": {
+          "decision": "AUTO_APPROVE",
+          "reasons": [],
+          "event_type": "DIVIDEND"
+        },
+        "C": {
+          "decision": "REVIEW_REQUIRED",
+          "reasons": [
+            "CLASSIFICATION_DISAGREEMENT"
+          ],
+          "explanations": [
+            "classification: CLASSIFICATION_DISAGREEMENT"
+          ],
+          "llm_event": "DIVIDEND",
+          "llm_tax": {
+            "status": "NOT_STATED",
+            "rate_as_written": "",
+            "base": "NOT_STATED"
+          },
+          "llm_qualifiers": []
+        },
+        "D": {
+          "decision": "AUTO_APPROVE",
+          "reasons": [],
+          "llm_invoked": true,
+          "triggers": [
+            "NEGATION_DECIDED_CLASSIFICATION"
+          ],
+          "resolutions": [
+            {
+              "concept": "event_type",
+              "category": "AGREEMENT",
+              "deterministic": "DIVIDEND",
+              "deterministic_status": "HEURISTIC",
+              "llm": "DIVIDEND",
+              "rationale": "O texto e o quadro indicam distribuição de dividendos à conta do resultado de 2025; a única menção a JCP é negativa."
+            },
+            {
+              "concept": "approval_date",
+              "category": "AGREEMENT"
+            },
+            {
+              "concept": "record_date",
+              "category": "AGREEMENT"
+            },
+            {
+              "concept": "ex_date",
+              "category": "AGREEMENT"
+            },
+            {
+              "concept": "payment_date",
+              "category": "AGREEMENT"
+            },
+            {
+              "concept": "withholding_tax",
+              "category": "AGREEMENT",
+              "note": "not stated"
+            }
+          ],
+          "qualifiers_v2": [
+            {
+              "qualifier_type": "informational_context",
+              "affects": "none",
+              "materiality": "NOT_MATERIAL",
+              "blocks": false,
+              "quote": "à conta do resultado do exercício de 2025",
+              "source": "llm"
+            },
+            {
+              "qualifier_type": "informational_context",
+              "affects": "none",
+              "materiality": "NOT_MATERIAL",
+              "blocks": false,
+              "quote": "Não haverá crédito de juros sobre o capital próprio relativo ao exercício de 2026 nesta data.",
+              "source": "llm"
+            },
+            {
+              "qualifier_type": "informational_context",
+              "affects": "none",
+              "materiality": "NOT_MATERIAL",
+              "blocks": false,
+              "quote": "Valor bruto por ação ON R$ 0,2500000000",
+              "source": "llm"
+            }
+          ]
+        }
+      },
+      {
+        "document": "CH-06.txt",
+        "B": {
+          "decision": "REVIEW_REQUIRED",
+          "reasons": [
+            "SEMANTIC_AMBIGUITY"
+          ],
+          "event_type": "JCP"
+        },
+        "C": {
+          "decision": "AUTO_APPROVE",
+          "reasons": [],
+          "explanations": [],
+          "llm_event": "JCP",
+          "llm_tax": {
+            "status": "STATED",
+            "rate_as_written": "17,5%",
+            "base": "GROSS_AMOUNT"
+          },
+          "llm_qualifiers": [
+            {
+              "type": "HOLDER_EXEMPTION",
+              "quote": "exceto para os acionistas que comprovarem ser imunes ou isentos até 20/08/2026"
+            }
+          ]
+        },
+        "D": {
+          "decision": "AUTO_APPROVE",
+          "reasons": [],
+          "llm_invoked": true,
+          "triggers": [
+            "UNINTERPRETED_QUALIFIER"
+          ],
+          "resolutions": [
+            {
+              "concept": "event_type",
+              "category": "AGREEMENT",
+              "deterministic": "JCP",
+              "deterministic_status": "POSITIVE",
+              "llm": "JCP",
+              "rationale": "O texto, no título, na deliberação do Conselho e no campo \"Tipo de evento\", identifica de forma consistente juros sobre o capital próprio."
+            },
+            {
+              "concept": "approval_date",
+              "category": "DETERMINISTIC_UNSUPPORTED",
+              "reason": "uninterpreted qualifier resolved"
+            },
+            {
+              "concept": "record_date",
+              "category": "AGREEMENT"
+            },
+            {
+              "concept": "ex_date",
+              "category": "AGREEMENT"
+            },
+            {
+              "concept": "payment_date",
+              "category": "AGREEMENT"
+            },
+            {
+              "concept": "withholding_tax",
+              "category": "AGREEMENT"
+            }
+          ],
+          "qualifiers_v2": [
+            {
+              "qualifier_type": "beneficiary_exception",
+              "affects": "tax_application",
+              "materiality": "MATERIAL_FOR_TAX_APPLICATION",
+              "blocks": false,
+              "quote": "exceto para os acionistas que comprovarem ser imunes ou isentos até 20/08/2026",
+              "source": "llm"
+            }
+          ]
+        }
+      },
+      {
+        "document": "CH-09.txt",
+        "B": {
+          "decision": "REVIEW_REQUIRED",
+          "reasons": [
+            "LOW_EXTRACTION_CONFIDENCE",
+            "REQUIRED_FIELD_MISSING"
+          ],
+          "event_type": "JCP"
+        },
+        "C": {
+          "decision": "REVIEW_REQUIRED",
+          "reasons": [
+            "LOW_EXTRACTION_CONFIDENCE"
+          ],
+          "explanations": [
+            "gross_amount_per_share: CONFLICTING_VALUES:2",
+            "currency: DERIVED_FROM_SOURCE_FIELD"
+          ],
+          "llm_event": "JCP",
+          "llm_tax": {
+            "status": "STATED",
+            "rate_as_written": "17,5%",
+            "base": "GROSS_AMOUNT"
+          },
+          "llm_qualifiers": []
+        },
+        "D": {
+          "decision": "REVIEW_REQUIRED",
+          "reasons": [
+            "LOW_EXTRACTION_CONFIDENCE",
+            "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition",
+            "MATERIAL_QUALIFIER_UNRESOLVED:informational_context"
+          ],
+          "llm_invoked": true,
+          "triggers": [
+            "REQUIRED_DATE_ROLE_UNMAPPED"
+          ],
+          "resolutions": [
+            {
+              "concept": "event_type",
+              "category": "AGREEMENT",
+              "deterministic": "JCP",
+              "deterministic_status": "POSITIVE",
+              "llm": "JCP",
+              "rationale": "O aviso anuncia expressamente o pagamento de Juros sobre o Capital Próprio, com valor bruto por ação, retenção de IRRF e datas próprias do evento."
+            },
+            {
+              "concept": "approval_date",
+              "category": "AGREEMENT"
+            },
+            {
+              "concept": "record_date",
+              "category": "LLM_ONLY_GROUNDED",
+              "llm": "2026-08-26"
+            },
+            {
+              "concept": "ex_date",
+              "category": "LLM_ONLY_GROUNDED",
+              "llm": "2026-08-27"
+            },
+            {
+              "concept": "payment_date",
+              "category": "LLM_ONLY_GROUNDED",
+              "llm": "2026-09-18"
+            },
+            {
+              "concept": "withholding_tax",
+              "category": "AGREEMENT"
+            }
+          ],
+          "qualifiers_v2": [
+            {
+              "qualifier_type": "event_eligibility_condition",
+              "affects": "event_eligibility",
+              "materiality": "MATERIAL",
+              "blocks": true,
+              "quote": "Farão jus ao provento os acionistas titulares de ações ao final do dia 26 de agosto de 2026",
+              "source": "llm"
+            },
+            {
+              "qualifier_type": "informational_context",
+              "affects": "amounts",
+              "materiality": "INCONSISTENT",
+              "blocks": true,
+              "quote": "resultando em valor líquido de R$ 0,1237500000 por ação",
+              "source": "llm"
+            }
+          ]
+        }
+      },
+      {
+        "document": "CH-10.txt",
+        "B": {
+          "decision": "REVIEW_REQUIRED",
+          "reasons": [
+            "REQUIRED_FIELD_MISSING"
+          ],
+          "event_type": "JCP"
+        },
+        "C": {
+          "decision": "REVIEW_REQUIRED",
+          "reasons": [
+            "CLASSIFICATION_DISAGREEMENT"
+          ],
+          "explanations": [
+            "classification: CLASSIFICATION_DISAGREEMENT"
+          ],
+          "llm_event": "DIVIDEND",
+          "llm_tax": {
+            "status": "NOT_STATED",
+            "rate_as_written": "",
+            "base": "NOT_STATED"
+          },
+          "llm_qualifiers": []
+        },
+        "D": {
+          "decision": "AUTO_APPROVE",
+          "reasons": [],
+          "llm_invoked": true,
+          "triggers": [
+            "EVENT_SIGNALS_CONFLICT"
+          ],
+          "resolutions": [
+            {
+              "concept": "event_type",
+              "category": "HEURISTIC_RESOLVED",
+              "deterministic": "JCP",
+              "deterministic_status": "HEURISTIC",
+              "llm": "DIVIDEND",
+              "rationale": "O aviso declara dividendos complementares aprovados pelo Conselho de Administração; a menção a JCP diz respeito a evento passado já pago.",
+              "losing_signals_explained": 1
+            },
+            {
+              "concept": "approval_date",
+              "category": "AGREEMENT"
+            },
+            {
+              "concept": "record_date",
+              "category": "AGREEMENT"
+            },
+            {
+              "concept": "ex_date",
+              "category": "AGREEMENT"
+            },
+            {
+              "concept": "payment_date",
+              "category": "AGREEMENT"
+            },
+            {
+              "concept": "withholding_tax",
+              "category": "AGREEMENT",
+              "note": "not stated"
+            }
+          ],
+          "qualifiers_v2": [
+            {
+              "qualifier_type": "informational_context",
+              "affects": "none",
+              "materiality": "NOT_MATERIAL",
+              "blocks": false,
+              "quote": "já foram integralmente pagos em 15/05/2026 e não são objeto deste aviso",
+              "source": "llm"
+            },
+            {
+              "qualifier_type": "informational_context",
+              "affects": "none",
+              "materiality": "NOT_MATERIAL",
+              "blocks": false,
+              "quote": "dividendos complementares referentes ao exercício de 2025",
+              "source": "llm"
+            }
+          ]
+        }
+      },
+      {
+        "document": "CH-11.txt",
+        "B": {
+          "decision": "REVIEW_REQUIRED",
+          "reasons": [
+            "SEMANTIC_AMBIGUITY",
+            "CLASSIFICATION_UNDETERMINED"
+          ],
+          "event_type": null
+        },
+        "C": {
+          "decision": "REVIEW_REQUIRED",
+          "reasons": [
+            "SEMANTIC_AMBIGUITY",
+            "CLASSIFICATION_UNDETERMINED"
+          ],
+          "explanations": [
+            "classification: LLM_EVENT_TYPE_UNRESOLVED",
+            "CLASSIFICATION_DETERMINED: event type None by rule semantic_llm(deterministic=precedence:JCP_over_DIVIDEND:JCP)"
+          ],
+          "llm_event": "UNRESOLVED",
+          "llm_tax": {
+            "status": "NOT_STATED",
+            "rate_as_written": "",
+            "base": "NOT_STATED"
+          },
+          "llm_qualifiers": []
+        },
+        "D": {
+          "decision": "REVIEW_REQUIRED",
+          "reasons": [
+            "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition",
+            "SEMANTIC_AMBIGUITY",
+            "CLASSIFICATION_UNDETERMINED"
+          ],
+          "llm_invoked": true,
+          "triggers": [
+            "UNINTERPRETED_QUALIFIER"
+          ],
+          "resolutions": [
+            {
+              "concept": "event_type",
+              "category": "AGREEMENT",
+              "deterministic": "DEFERRED",
+              "llm": "UNRESOLVED"
+            },
+            {
+              "concept": "approval_date",
+              "category": "DETERMINISTIC_UNSUPPORTED",
+              "reason": "uninterpreted qualifier resolved"
+            },
+            {
+              "concept": "record_date",
+              "category": "AGREEMENT"
+            },
+            {
+              "concept": "ex_date",
+              "category": "AGREEMENT"
+            },
+            {
+              "concept": "payment_date",
+              "category": "AGREEMENT",
+              "deterministic": "declared_pending",
+              "llm": "PENDING"
+            },
+            {
+              "concept": "withholding_tax",
+              "category": "AGREEMENT",
+              "note": "not stated"
+            }
+          ],
+          "qualifiers_v2": [
+            {
+              "qualifier_type": "event_eligibility_condition",
+              "affects": "event_nature",
+              "materiality": "MATERIAL",
+              "blocks": true,
+              "quote": "cuja natureza — dividendos ou juros sobre o capital próprio — será definida em reunião do Conselho a ser realizada até 30 de setembro de 2026",
+              "source": "llm"
+            },
+            {
+              "qualifier_type": "timing_context",
+              "affects": "dates",
+              "materiality": "NOT_MATERIAL",
+              "blocks": false,
+              "quote": "Data de pagamento A definir",
+              "source": "llm"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "consistency": {
+    "original": {
+      "documents": 8,
+      "invocation_decision_consistent": 8,
+      "routing_decision_consistent": 8,
+      "llm_docs": {
+        "documents_compared": 1,
+        "event_type": {
+          "consistent": 1,
+          "total": 1
+        },
+        "semantic_fields": {
+          "consistent": 1,
+          "total": 1
+        },
+        "llm_interpretation": {
+          "consistent": 1,
+          "total": 1
+        },
+        "routing_decision": {
+          "consistent": 1,
+          "total": 1
+        },
+        "routing_reasons": {
+          "consistent": 0,
+          "total": 1
+        },
+        "tool_call_count": {
+          "consistent": 1,
+          "total": 1
+        },
+        "tool_arguments": {
+          "consistent": 1,
+          "total": 1
+        },
+        "inconsistent_documents": [
+          {
+            "document": "06_petroquimica_litoral_grupamento.pdf",
+            "inconsistent": [
+              "routing_reasons"
+            ],
+            "run1": {
+              "event_type": "REVERSE_SPLIT",
+              "decision": "REVIEW_REQUIRED",
+              "reasons": [
+                "MATERIAL_QUALIFIER_UNRESOLVED:other"
+              ],
+              "interpretation": {
+                "event_type": "REVERSE_SPLIT",
+                "dates": [
+                  [
+                    "approval_date",
+                    "FOUND",
+                    "30 de maio de 2026"
+                  ],
+                  [
+                    "ex_date",
+                    "FOUND",
+                    "29 de junho de 2026"
+                  ],
+                  [
+                    "record_date",
+                    "FOUND",
+                    "26 de junho de 2026"
+                  ]
+                ],
+                "withholding": [
+                  "NOT_STATED",
+                  "",
+                  "NOT_STATED"
+                ],
+                "reference": "YES"
+              },
+              "tool_calls": [
+                [
+                  "lookup_security",
+                  "{\"identifier\": \"BRPQLTACNOR8\", \"identifier_type\": \"ISIN\"}"
+                ]
+              ]
+            },
+            "run2": {
+              "event_type": "REVERSE_SPLIT",
+              "decision": "REVIEW_REQUIRED",
+              "reasons": [
+                "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition",
+                "MATERIAL_QUALIFIER_UNRESOLVED:other"
+              ],
+              "interpretation": {
+                "event_type": "REVERSE_SPLIT",
+                "dates": [
+                  [
+                    "approval_date",
+                    "FOUND",
+                    "30 de maio de 2026"
+                  ],
+                  [
+                    "ex_date",
+                    "FOUND",
+                    "29 de junho de 2026"
+                  ],
+                  [
+                    "record_date",
+                    "FOUND",
+                    "26 de junho de 2026"
+                  ]
+                ],
+                "withholding": [
+                  "NOT_STATED",
+                  "",
+                  "NOT_STATED"
+                ],
+                "reference": "YES"
+              },
+              "tool_calls": [
+                [
+                  "lookup_security",
+                  "{\"identifier\": \"BRPQLTACNOR8\", \"identifier_type\": \"ISIN\"}"
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "challenge": {
+      "documents": 11,
+      "invocation_decision_consistent": 11,
+      "routing_decision_consistent": 10,
+      "llm_docs": {
+        "documents_compared": 10,
+        "event_type": {
+          "consistent": 10,
+          "total": 10
+        },
+        "semantic_fields": {
+          "consistent": 10,
+          "total": 10
+        },
+        "llm_interpretation": {
+          "consistent": 10,
+          "total": 10
+        },
+        "routing_decision": {
+          "consistent": 9,
+          "total": 10
+        },
+        "routing_reasons": {
+          "consistent": 8,
+          "total": 10
+        },
+        "tool_call_count": {
+          "consistent": 9,
+          "total": 10
+        },
+        "tool_arguments": {
+          "consistent": 9,
+          "total": 10
+        },
+        "inconsistent_documents": [
+          {
+            "document": "CH-09.txt",
+            "inconsistent": [
+              "routing_reasons"
+            ],
+            "run1": {
+              "event_type": "JCP",
+              "decision": "REVIEW_REQUIRED",
+              "reasons": [
+                "LOW_EXTRACTION_CONFIDENCE",
+                "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition",
+                "MATERIAL_QUALIFIER_UNRESOLVED:informational_context"
+              ],
+              "interpretation": {
+                "event_type": "JCP",
+                "dates": [
+                  [
+                    "approval_date",
+                    "FOUND",
+                    "12 de agosto de 2026"
+                  ],
+                  [
+                    "ex_date",
+                    "FOUND",
+                    "27 de agosto de 2026"
+                  ],
+                  [
+                    "payment_date",
+                    "FOUND",
+                    "18 de setembro de 2026"
+                  ],
+                  [
+                    "record_date",
+                    "FOUND",
+                    "26 de agosto de 2026"
+                  ]
+                ],
+                "withholding": [
+                  "STATED",
+                  "17,5%",
+                  "GROSS_AMOUNT"
+                ],
+                "reference": "YES"
+              },
+              "tool_calls": [
+                [
+                  "lookup_security",
+                  "{\"identifier\": \"BRRVBRACNOR9\", \"identifier_type\": \"ISIN\"}"
+                ]
+              ]
+            },
+            "run2": {
+              "event_type": "JCP",
+              "decision": "REVIEW_REQUIRED",
+              "reasons": [
+                "LOW_EXTRACTION_CONFIDENCE",
+                "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition"
+              ],
+              "interpretation": {
+                "event_type": "JCP",
+                "dates": [
+                  [
+                    "approval_date",
+                    "FOUND",
+                    "12 de agosto de 2026"
+                  ],
+                  [
+                    "ex_date",
+                    "FOUND",
+                    "27 de agosto de 2026"
+                  ],
+                  [
+                    "payment_date",
+                    "FOUND",
+                    "18 de setembro de 2026"
+                  ],
+                  [
+                    "record_date",
+                    "FOUND",
+                    "26 de agosto de 2026"
+                  ]
+                ],
+                "withholding": [
+                  "STATED",
+                  "17,5%",
+                  "GROSS_AMOUNT"
+                ],
+                "reference": "YES"
+              },
+              "tool_calls": [
+                [
+                  "lookup_security",
+                  "{\"identifier\": \"BRRVBRACNOR9\", \"identifier_type\": \"ISIN\"}"
+                ]
+              ]
+            }
+          },
+          {
+            "document": "CH-07.txt",
+            "inconsistent": [
+              "routing_decision",
+              "routing_reasons",
+              "tool_call_count",
+              "tool_arguments"
+            ],
+            "run1": {
+              "event_type": "DIVIDEND",
+              "decision": "REVIEW_REQUIRED",
+              "reasons": [
+                "MATERIAL_QUALIFIER_UNRESOLVED:informational_context"
+              ],
+              "interpretation": {
+                "event_type": "DIVIDEND",
+                "dates": [
+                  [
+                    "approval_date",
+                    "FOUND",
+                    "05 de agosto de 2026"
+                  ],
+                  [
+                    "ex_date",
+                    "FOUND",
+                    "21/08/2026"
+                  ],
+                  [
+                    "payment_date",
+                    "FOUND",
+                    "04/09/2026"
+                  ],
+                  [
+                    "record_date",
+                    "FOUND",
+                    "20/08/2026"
+                  ]
+                ],
+                "withholding": [
+                  "NOT_STATED",
+                  "",
+                  "NOT_STATED"
+                ],
+                "reference": "YES"
+              },
+              "tool_calls": [
+                [
+                  "lookup_security",
+                  "{\"identifier\": \"BRBMRDACNPR7\", \"identifier_type\": \"ISIN\"}"
+                ]
+              ]
+            },
+            "run2": {
+              "event_type": "DIVIDEND",
+              "decision": "AUTO_APPROVE",
+              "reasons": [],
+              "interpretation": {
+                "event_type": "DIVIDEND",
+                "dates": [
+                  [
+                    "approval_date",
+                    "FOUND",
+                    "05 de agosto de 2026"
+                  ],
+                  [
+                    "ex_date",
+                    "FOUND",
+                    "21/08/2026"
+                  ],
+                  [
+                    "payment_date",
+                    "FOUND",
+                    "04/09/2026"
+                  ],
+                  [
+                    "record_date",
+                    "FOUND",
+                    "20/08/2026"
+                  ]
+                ],
+                "withholding": [
+                  "NOT_STATED",
+                  "",
+                  "NOT_STATED"
+                ],
+                "reference": "YES"
+              },
+              "tool_calls": [
+                [
+                  "lookup_security",
+                  "{\"identifier\": \"BRBMRDACNPR7\", \"identifier_type\": \"ISIN\"}"
+                ],
+                [
+                  "lookup_security",
+                  "{\"identifier\": \"BMRD4\", \"identifier_type\": \"TICKER\"}"
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

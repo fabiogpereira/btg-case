@@ -1,0 +1,988 @@
+{
+  "schema_version": "semantic-record/0.2",
+  "document": {
+    "sha256": "a21a294ac3ededbb6fdef195be0edb0572069544e0b73f6fc1918fa77d6b0e85",
+    "file_name": "03_siderurgica_paranaense_proventos.pdf",
+    "size_bytes": 3322,
+    "pages": 1,
+    "text_layer": {
+      "usable": true,
+      "alnum_chars": 1129,
+      "min_alnum_chars_per_page": 100,
+      "reason": null
+    }
+  },
+  "extraction": {
+    "method": "native_text_layer+deterministic_rules",
+    "status": "COMPLETED",
+    "failure_mode": null,
+    "unsupported_fields": [
+      "fraction_adjustment_period"
+    ],
+    "title": "Distribuição de Dividendos"
+  },
+  "classification": {
+    "event_type": "JCP",
+    "decision_rule": "precedence:JCP_over_DIVIDEND",
+    "signals": {
+      "JCP": [
+        {
+          "rule_id": "event.jcp_remuneracao_capital_proprio",
+          "evidence": {
+            "text": "remuneração do capital próprio",
+            "start": 359,
+            "end": 389,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.jcp_remuneracao_capital_proprio",
+          "evidence": {
+            "text": "Remuneração do capital próprio",
+            "start": 1033,
+            "end": 1063,
+            "page": 1
+          }
+        }
+      ],
+      "DIVIDEND": [
+        {
+          "rule_id": "event.dividend_dividendo",
+          "evidence": {
+            "text": "dividendo",
+            "start": 791,
+            "end": 800,
+            "page": 1
+          }
+        }
+      ]
+    },
+    "title": "Distribuição de Dividendos",
+    "title_event_types": [
+      "DIVIDEND"
+    ],
+    "confidence": "MEDIUM",
+    "confidence_reasons": [
+      "MULTIPLE_TYPE_SIGNALS",
+      "PRECEDENCE_RULE_APPLIED"
+    ]
+  },
+  "fields": {
+    "issuer_name": {
+      "status": "found",
+      "value": "Companhia Siderúrgica Paranaense S.A.",
+      "raw": "COMPANHIA SIDERÚRGICA PARANAENSE S.A.",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "COMPANHIA SIDERÚRGICA PARANAENSE S.A.",
+          "start": 0,
+          "end": 37,
+          "page": 1
+        },
+        {
+          "text": "Companhia Siderúrgica Paranaense S.A.",
+          "start": 161,
+          "end": 198,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "issuer_name.pattern_company_sa"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN",
+        "CORROBORATED:1"
+      ]
+    },
+    "cnpj": {
+      "status": "found",
+      "value": "76.543.210/0001-12",
+      "raw": "76.543.210/0001-12",
+      "source_label": "CNPJ/ME nº",
+      "evidence": [
+        {
+          "text": "CNPJ/ME nº 76.543.210/0001-12",
+          "start": 57,
+          "end": 86,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "cnpj.label_cnpj"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "isin": {
+      "status": "found",
+      "value": "BRCSPRACNOR1",
+      "raw": "BRCSPRACNOR1",
+      "source_label": "ISIN",
+      "evidence": [
+        {
+          "text": "ISIN BRCSPRACNOR1",
+          "start": 1297,
+          "end": 1314,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "isin.label_isin"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "ticker": {
+      "status": "found",
+      "value": "CSPR3",
+      "raw": "CSPR3",
+      "source_label": "Código de negociação",
+      "evidence": [
+        {
+          "text": "Código de negociação CSPR3",
+          "start": 1269,
+          "end": 1295,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ticker.label_codigo_negociacao"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "share_class": {
+      "status": "found",
+      "value": "ON",
+      "raw": "ON",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "por ação ON",
+          "start": 1076,
+          "end": 1087,
+          "page": 1
+        },
+        {
+          "text": "por ação ON",
+          "start": 1157,
+          "end": 1168,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "share_class.phrase_por_acao"
+      ],
+      "anchor": "phrase",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "PHRASE_ANCHORED",
+        "CORROBORATED:1"
+      ]
+    },
+    "approval_date": {
+      "status": "found",
+      "value": "2026-06-05",
+      "raw": "05 de junho de 2026",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "reunião de 05 de junho de 2026",
+          "start": 275,
+          "end": 305,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "approval_date.phrase_meeting"
+      ],
+      "anchor": "phrase",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "PHRASE_ANCHORED",
+        "CORROBORATED:1"
+      ]
+    },
+    "record_date": {
+      "status": "found",
+      "value": "2026-06-19",
+      "raw": "19/06/2026",
+      "source_label": "Data-base (“data com”)",
+      "evidence": [
+        {
+          "text": "Data-base (“data com”) 19/06/2026",
+          "start": 1185,
+          "end": 1218,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "record_date.label_data_base"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED",
+        "CORROBORATED:1"
+      ]
+    },
+    "ex_date": {
+      "status": "found",
+      "value": "2026-06-22",
+      "raw": "22/06/2026",
+      "source_label": "Data “ex”",
+      "evidence": [
+        {
+          "text": "Data “ex” 22/06/2026",
+          "start": 1219,
+          "end": 1239,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ex_date.label_data_ex"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED",
+        "CORROBORATED:1"
+      ]
+    },
+    "payment_date": {
+      "status": "found",
+      "value": "2026-09-11",
+      "raw": "11/09/2026",
+      "source_label": "Data de pagamento",
+      "evidence": [
+        {
+          "text": "Data de pagamento 11/09/2026",
+          "start": 1240,
+          "end": 1268,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "payment_date.label_data_pagamento"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "gross_amount_per_share": {
+      "status": "found",
+      "value": "0.0921500000",
+      "raw": "0,0921500000",
+      "source_label": "Valor bruto por ação ON",
+      "evidence": [
+        {
+          "text": "Valor bruto por ação ON R$ 0,0921500000",
+          "start": 1064,
+          "end": 1103,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "gross.label_valor_bruto"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "net_amount_per_share": {
+      "status": "found",
+      "value": "0.0760237500",
+      "raw": "0,0760237500",
+      "source_label": "Valor líquido por ação ON",
+      "evidence": [
+        {
+          "text": "Valor líquido por ação ON R$ 0,0760237500",
+          "start": 1143,
+          "end": 1184,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "net.label_valor_liquido"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "withholding_tax": {
+      "status": "found",
+      "value": {
+        "rate": "0.175",
+        "base": null
+      },
+      "raw": "17,5",
+      "source_label": "Imposto de Renda na Fonte à alíquota de",
+      "evidence": [
+        {
+          "text": "Imposto de Renda na Fonte à alíquota de 17,5%",
+          "start": 608,
+          "end": 653,
+          "page": 1
+        },
+        {
+          "text": "Imposto de Renda Retido na Fonte 17,5%",
+          "start": 1104,
+          "end": 1142,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "withholding.label_imposto_renda"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED",
+        "CORROBORATED:1"
+      ]
+    },
+    "currency": {
+      "status": "found",
+      "value": "BRL",
+      "raw": "R$",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "Valor bruto por ação ON R$ 0,0921500000",
+          "start": 1064,
+          "end": 1103,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "currency.derived_from_gross_symbol"
+      ],
+      "anchor": "derived",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "derived from gross_amount_per_share evidence"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "DERIVED_FROM_SOURCE_FIELD"
+      ]
+    },
+    "ratio": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    }
+  },
+  "event_specific_fields": {},
+  "reference_check": {
+    "found": true,
+    "matched_by": "isin",
+    "query": "BRCSPRACNOR1",
+    "golden_row": {
+      "emissor": "Companhia Siderúrgica Paranaense S.A.",
+      "cnpj": "76.543.210/0001-12",
+      "isin": "BRCSPRACNOR1",
+      "ticker": "CSPR3",
+      "classe": "ON",
+      "segmento_listagem": "Novo Mercado",
+      "status": "ativo"
+    }
+  },
+  "validations": [
+    {
+      "rule_id": "REF_ISIN_FOUND",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ISIN found in golden records",
+      "observed": {
+        "isin": "BRCSPRACNOR1"
+      }
+    },
+    {
+      "rule_id": "REF_TICKER_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ticker matches golden ticker",
+      "observed": {
+        "extracted": "CSPR3",
+        "golden": "CSPR3"
+      }
+    },
+    {
+      "rule_id": "REF_CNPJ_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "cnpj matches golden cnpj",
+      "observed": {
+        "extracted": "76.543.210/0001-12",
+        "golden": "76.543.210/0001-12"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "issuer_name matches golden emissor",
+      "observed": {
+        "extracted": "Companhia Siderúrgica Paranaense S.A.",
+        "golden": "Companhia Siderúrgica Paranaense S.A."
+      }
+    },
+    {
+      "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "share_class matches golden classe",
+      "observed": {
+        "extracted": "ON",
+        "golden": "ON"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_ACTIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "golden status = ativo",
+      "observed": {
+        "golden_status": "ativo"
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_PRESENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "all required fields present",
+      "observed": {
+        "required": [
+          "issuer_name",
+          "isin",
+          "ticker",
+          "record_date",
+          "ex_date",
+          "gross_amount_per_share",
+          "currency",
+          "payment_date",
+          "net_amount_per_share",
+          "withholding_tax"
+        ],
+        "not_found": []
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "no required field pending",
+      "observed": {
+        "declared_pending": []
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_DETERMINED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "event type JCP by rule precedence:JCP_over_DIVIDEND",
+      "observed": {
+        "decision_rule": "precedence:JCP_over_DIVIDEND"
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+      "status": "FAIL",
+      "severity": "ERROR",
+      "message": "title suggests ['DIVIDEND'] but content classifies as JCP",
+      "observed": {
+        "title": "Distribuição de Dividendos",
+        "title_event_types": [
+          "DIVIDEND"
+        ],
+        "content_event_type": "JCP"
+      }
+    },
+    {
+      "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "approval 2026-06-05 vs record 2026-06-19",
+      "observed": {
+        "approval_date": "2026-06-05",
+        "record_date": "2026-06-19"
+      }
+    },
+    {
+      "rule_id": "DATE_RECORD_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "record 2026-06-19 vs ex 2026-06-22",
+      "observed": {
+        "record_date": "2026-06-19",
+        "ex_date": "2026-06-22"
+      }
+    },
+    {
+      "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "ex 2026-06-22; next weekday after record is 2026-06-22 (no holiday calendar, D-006)",
+      "observed": {
+        "record_date": "2026-06-19",
+        "ex_date": "2026-06-22",
+        "expected_ex_date": "2026-06-22"
+      }
+    },
+    {
+      "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "payment_date 2026-09-11 vs ex 2026-06-22",
+      "observed": {
+        "settlement_field": "payment_date",
+        "settlement_date": "2026-09-11",
+        "ex_date": "2026-06-22"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_GROSS_POSITIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "gross = 0.0921500000",
+      "observed": {
+        "gross": "0.0921500000"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "net = gross × (1 − rate), exact (tax base not stated; applied to gross)",
+      "observed": {
+        "gross": "0.0921500000",
+        "rate": "0.175",
+        "declared_value": "0.0760237500",
+        "calculated_value": "0.0760237500000",
+        "comparison_precision": 10,
+        "rounding_rule": null,
+        "reason": null
+      }
+    }
+  ],
+  "validation_summary": {
+    "PASS": 15,
+    "FAIL": 1
+  },
+  "rule_groups_not_applicable": [
+    "ratio"
+  ],
+  "semantic_need": {
+    "llm_required": false,
+    "llm_trigger_reasons": [],
+    "signals": [
+      {
+        "signal": "EVENT_SIGNALS_CONFLICT_EXPLAINED",
+        "stage": "classify",
+        "triggers_llm": false,
+        "detail": "menções a dividendo só no contexto de imputação do JCP ao dividendo obrigatório"
+      },
+      {
+        "signal": "TAX_BASE_NOT_STATED",
+        "stage": "normalize",
+        "triggers_llm": false,
+        "detail": "base não literal; sem novo texto a interpretar (bruto×líquido valida a taxa)"
+      }
+    ]
+  },
+  "semantic": {
+    "classification": {
+      "confidence": "MEDIUM",
+      "source": "deterministic_patch",
+      "reasons": [
+        "PRECEDENCE:JCP_OVER_DIVIDEND"
+      ],
+      "qualifiers": [],
+      "interpretation": null
+    },
+    "fields": {
+      "record_date": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "ex_date": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "payment_date": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "approval_date": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "gross_amount_per_share": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "net_amount_per_share": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "withholding_tax": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      }
+    },
+    "blocking": [],
+    "negated_signals": [],
+    "resolutions": [],
+    "qualifiers_v2": []
+  },
+  "confidence_view": {
+    "classification": {
+      "confidence": "MEDIUM",
+      "source": "deterministic_patch",
+      "reasons": [
+        "PRECEDENCE:JCP_OVER_DIVIDEND"
+      ],
+      "qualifiers": [],
+      "interpretation": null
+    },
+    "fields": {
+      "issuer_name": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "cnpj": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "isin": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ticker": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "share_class": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "approval_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "record_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ex_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "payment_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "gross_amount_per_share": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "net_amount_per_share": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "withholding_tax": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "currency": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      }
+    }
+  },
+  "routing": {
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "CLASSIFICATION_TITLE_CONFLICT"
+    ],
+    "explanations": [
+      "CLASSIFICATION_TITLE_CONSISTENT: title suggests ['DIVIDEND'] but content classifies as JCP"
+    ],
+    "gates": [
+      {
+        "gate": "EXTRACTION_POSSIBLE",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REQUIRED_INFORMATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "SEMANTIC_INTERPRETATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "DETERMINISTIC_VALIDATION",
+        "status": "BLOCK",
+        "reason_codes": [
+          "CLASSIFICATION_TITLE_CONFLICT"
+        ],
+        "explanations": [
+          "CLASSIFICATION_TITLE_CONSISTENT: title suggests ['DIVIDEND'] but content classifies as JCP"
+        ]
+      },
+      {
+        "gate": "REFERENCE_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "BLOCKING_ERRORS",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      }
+    ]
+  },
+  "audit": {
+    "run_id": "20260930T004418Z-0861ea71",
+    "pipeline_version": "baseline-a/0.1.0+hybrid-on-demand/0.1",
+    "started_at": "2026-09-30T00:44:20.751+00:00",
+    "finished_at": "2026-09-30T00:44:20.763+00:00",
+    "duration_us": 12009,
+    "stages": [
+      {
+        "stage": "ingest",
+        "started_at": "2026-09-30T00:44:20.751+00:00",
+        "status": "ok",
+        "duration_us": 235
+      },
+      {
+        "stage": "text_layer",
+        "started_at": "2026-09-30T00:44:20.751+00:00",
+        "status": "ok",
+        "duration_us": 9208
+      },
+      {
+        "stage": "extract_candidates",
+        "started_at": "2026-09-30T00:44:20.760+00:00",
+        "status": "ok",
+        "duration_us": 1225
+      },
+      {
+        "stage": "classify",
+        "started_at": "2026-09-30T00:44:20.762+00:00",
+        "status": "ok",
+        "duration_us": 151
+      },
+      {
+        "stage": "normalize",
+        "started_at": "2026-09-30T00:44:20.762+00:00",
+        "status": "ok",
+        "duration_us": 209
+      },
+      {
+        "stage": "confidence",
+        "started_at": "2026-09-30T00:44:20.762+00:00",
+        "status": "ok",
+        "duration_us": 18
+      },
+      {
+        "stage": "semantic_patch",
+        "started_at": "2026-09-30T00:44:20.762+00:00",
+        "status": "ok",
+        "duration_us": 595
+      },
+      {
+        "stage": "semantic_need",
+        "started_at": "2026-09-30T00:44:20.763+00:00",
+        "status": "ok",
+        "duration_us": 61,
+        "llm_required": false,
+        "triggers": []
+      },
+      {
+        "stage": "semantic_llm",
+        "started_at": "2026-09-30T00:44:20.763+00:00",
+        "status": "skipped",
+        "reason": "NOT_REQUIRED",
+        "duration_us": 0
+      },
+      {
+        "stage": "validate",
+        "started_at": "2026-09-30T00:44:20.763+00:00",
+        "status": "ok",
+        "duration_us": 84,
+        "rules_executed": 16
+      },
+      {
+        "stage": "route",
+        "started_at": "2026-09-30T00:44:20.763+00:00",
+        "status": "ok",
+        "duration_us": 23
+      }
+    ],
+    "errors": [],
+    "retries": 0,
+    "extraction_method": "native_text_layer+deterministic_rules",
+    "model": null,
+    "prompt_version": null,
+    "validators_executed": [
+      "REF_ISIN_FOUND",
+      "REF_TICKER_CONSISTENT",
+      "REF_CNPJ_CONSISTENT",
+      "REF_ISSUER_NAME_CONSISTENT",
+      "REF_SHARE_CLASS_CONSISTENT",
+      "REF_ISSUER_ACTIVE",
+      "REQUIRED_FIELDS_PRESENT",
+      "REQUIRED_FIELDS_NOT_PENDING",
+      "CLASSIFICATION_DETERMINED",
+      "CLASSIFICATION_TITLE_CONSISTENT",
+      "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "DATE_RECORD_BEFORE_EX",
+      "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "AMOUNT_GROSS_POSITIVE",
+      "AMOUNT_NET_MATCHES_GROSS_AND_TAX"
+    ],
+    "final_decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "CLASSIFICATION_TITLE_CONFLICT"
+    ],
+    "variant": "D"
+  }
+}

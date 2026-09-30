@@ -1,0 +1,1120 @@
+{
+  "schema_version": "semantic-record/0.2",
+  "document": {
+    "sha256": "2d3f885861cb977d71b8455932f58c32295107c4eba531351b666ed893383f9d",
+    "file_name": "CH-11.txt",
+    "size_bytes": 670,
+    "pages": 1,
+    "text_layer": {
+      "usable": true,
+      "alnum_chars": 499,
+      "min_alnum_chars_per_page": 100,
+      "reason": null
+    }
+  },
+  "extraction": {
+    "method": "native_text_layer+deterministic_rules",
+    "status": "COMPLETED",
+    "failure_mode": null,
+    "unsupported_fields": [
+      "fraction_adjustment_period"
+    ],
+    "title": "Proventos"
+  },
+  "classification": {
+    "event_type": null,
+    "decision_rule": "deferred(precedence:JCP_over_DIVIDEND)",
+    "signals": {
+      "JCP": [
+        {
+          "rule_id": "event.jcp_juros_capital_proprio",
+          "evidence": {
+            "text": "juros sobre o capital próprio",
+            "start": 313,
+            "end": 342,
+            "page": 1
+          }
+        }
+      ],
+      "DIVIDEND": [
+        {
+          "rule_id": "event.dividend_dividendo",
+          "evidence": {
+            "text": "dividendos",
+            "start": 299,
+            "end": 309,
+            "page": 1
+          }
+        }
+      ]
+    },
+    "title": "Proventos",
+    "title_event_types": [],
+    "confidence": "MEDIUM",
+    "confidence_reasons": [
+      "MULTIPLE_TYPE_SIGNALS",
+      "PRECEDENCE_RULE_APPLIED"
+    ]
+  },
+  "fields": {
+    "issuer_name": {
+      "status": "found",
+      "value": "Aurora Saneamento S.A.",
+      "raw": "AURORA SANEAMENTO S.A.",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "AURORA SANEAMENTO S.A.",
+          "start": 0,
+          "end": 22,
+          "page": 1
+        },
+        {
+          "text": "Aurora Saneamento S.A.",
+          "start": 107,
+          "end": 129,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "issuer_name.pattern_company_sa"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN",
+        "CORROBORATED:1"
+      ]
+    },
+    "cnpj": {
+      "status": "found",
+      "value": "22.333.444/0001-77",
+      "raw": "22.333.444/0001-77",
+      "source_label": "CNPJ/ME nº",
+      "evidence": [
+        {
+          "text": "CNPJ/ME nº 22.333.444/0001-77",
+          "start": 42,
+          "end": 71,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "cnpj.label_cnpj"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "isin": {
+      "status": "found",
+      "value": "BRAURSACNOR4",
+      "raw": "BRAURSACNOR4",
+      "source_label": "ISIN",
+      "evidence": [
+        {
+          "text": "ISIN BRAURSACNOR4",
+          "start": 577,
+          "end": 594,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "isin.label_isin"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "ticker": {
+      "status": "found",
+      "value": "AURS3",
+      "raw": "AURS3",
+      "source_label": "Código de negociação",
+      "evidence": [
+        {
+          "text": "Código de negociação AURS3",
+          "start": 549,
+          "end": 575,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ticker.label_codigo_negociacao"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "share_class": {
+      "status": "found",
+      "value": "ON",
+      "raw": "ON",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "por ação ON",
+          "start": 438,
+          "end": 449,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "share_class.phrase_por_acao"
+      ],
+      "anchor": "phrase",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "PHRASE_ANCHORED"
+      ]
+    },
+    "approval_date": {
+      "status": "found",
+      "value": "2026-08-14",
+      "raw": "14 de agosto de 2026",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "reunião realizada em 14 de agosto de 2026",
+          "start": 175,
+          "end": 216,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "approval_date.phrase_meeting"
+      ],
+      "anchor": "phrase",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "PHRASE_ANCHORED",
+        "CORROBORATED:1"
+      ]
+    },
+    "record_date": {
+      "status": "found",
+      "value": "2026-08-28",
+      "raw": "28/08/2026",
+      "source_label": "Data-base (“data com”)",
+      "evidence": [
+        {
+          "text": "Data-base (“data com”) 28/08/2026",
+          "start": 466,
+          "end": 499,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "record_date.label_data_base"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "ex_date": {
+      "status": "found",
+      "value": "2026-08-31",
+      "raw": "31/08/2026",
+      "source_label": "Data “ex”",
+      "evidence": [
+        {
+          "text": "Data “ex” 31/08/2026",
+          "start": 500,
+          "end": 520,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ex_date.label_data_ex"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "payment_date": {
+      "status": "declared_pending",
+      "value": null,
+      "raw": "A definir",
+      "source_label": "Data de pagamento",
+      "evidence": [
+        {
+          "text": "Data de pagamento A definir",
+          "start": 521,
+          "end": 548,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "payment_date.label_data_pagamento.pending"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "PENDING_DECLARATION_LABEL_ANCHORED"
+      ]
+    },
+    "gross_amount_per_share": {
+      "status": "found",
+      "value": "0.3000000000",
+      "raw": "0,3000000000",
+      "source_label": "Valor bruto por ação ON",
+      "evidence": [
+        {
+          "text": "Valor bruto por ação ON R$ 0,3000000000",
+          "start": 426,
+          "end": 465,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "gross.label_valor_bruto"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "net_amount_per_share": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "withholding_tax": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "currency": {
+      "status": "found",
+      "value": "BRL",
+      "raw": "R$",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "Valor bruto por ação ON R$ 0,3000000000",
+          "start": 426,
+          "end": 465,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "currency.derived_from_gross_symbol"
+      ],
+      "anchor": "derived",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "derived from gross_amount_per_share evidence"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "DERIVED_FROM_SOURCE_FIELD"
+      ]
+    },
+    "ratio": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    }
+  },
+  "event_specific_fields": {},
+  "reference_check": {
+    "found": true,
+    "matched_by": "isin",
+    "query": "BRAURSACNOR4",
+    "golden_row": {
+      "emissor": "Aurora Saneamento S.A.",
+      "cnpj": "22.333.444/0001-77",
+      "isin": "BRAURSACNOR4",
+      "ticker": "AURS3",
+      "classe": "ON",
+      "segmento_listagem": "Novo Mercado",
+      "status": "ativo"
+    }
+  },
+  "validations": [
+    {
+      "rule_id": "REF_ISIN_FOUND",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ISIN found in golden records",
+      "observed": {
+        "isin": "BRAURSACNOR4"
+      }
+    },
+    {
+      "rule_id": "REF_TICKER_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ticker matches golden ticker",
+      "observed": {
+        "extracted": "AURS3",
+        "golden": "AURS3"
+      }
+    },
+    {
+      "rule_id": "REF_CNPJ_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "cnpj matches golden cnpj",
+      "observed": {
+        "extracted": "22.333.444/0001-77",
+        "golden": "22.333.444/0001-77"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "issuer_name matches golden emissor",
+      "observed": {
+        "extracted": "Aurora Saneamento S.A.",
+        "golden": "Aurora Saneamento S.A."
+      }
+    },
+    {
+      "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "share_class matches golden classe",
+      "observed": {
+        "extracted": "ON",
+        "golden": "ON"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_ACTIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "golden status = ativo",
+      "observed": {
+        "golden_status": "ativo"
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_PRESENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: event_type",
+      "observed": {}
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: event_type",
+      "observed": {}
+    },
+    {
+      "rule_id": "CLASSIFICATION_DETERMINED",
+      "status": "FAIL",
+      "severity": "ERROR",
+      "message": "event type None by rule deferred(precedence:JCP_over_DIVIDEND)",
+      "observed": {
+        "decision_rule": "deferred(precedence:JCP_over_DIVIDEND)"
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: event_type",
+      "observed": {}
+    },
+    {
+      "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "approval 2026-08-14 vs record 2026-08-28",
+      "observed": {
+        "approval_date": "2026-08-14",
+        "record_date": "2026-08-28"
+      }
+    },
+    {
+      "rule_id": "DATE_RECORD_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "record 2026-08-28 vs ex 2026-08-31",
+      "observed": {
+        "record_date": "2026-08-28",
+        "ex_date": "2026-08-31"
+      }
+    },
+    {
+      "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "ex 2026-08-31; next weekday after record is 2026-08-31 (no holiday calendar, D-006)",
+      "observed": {
+        "record_date": "2026-08-28",
+        "ex_date": "2026-08-31",
+        "expected_ex_date": "2026-08-31"
+      }
+    },
+    {
+      "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: payment_date",
+      "observed": {
+        "settlement_field_status": "declared_pending"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_GROSS_POSITIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "gross = 0.3000000000",
+      "observed": {
+        "gross": "0.3000000000"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: net_amount_per_share, withholding_tax",
+      "observed": {
+        "net_status": "not_found"
+      }
+    },
+    {
+      "rule_id": "RATIO_POSITIVE",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: ratio",
+      "observed": {}
+    }
+  ],
+  "validation_summary": {
+    "PASS": 10,
+    "NOT_EVALUATED": 6,
+    "FAIL": 1
+  },
+  "rule_groups_not_applicable": [],
+  "semantic_need": {
+    "llm_required": true,
+    "llm_trigger_reasons": [
+      "UNINTERPRETED_QUALIFIER"
+    ],
+    "signals": [
+      {
+        "signal": "EVENT_NATURE_DEFERRED",
+        "stage": "semantic_patch",
+        "triggers_llm": false,
+        "detail": "o próprio aviso adia a natureza do evento: revisão por determinístico; LLM não muda o desfecho"
+      },
+      {
+        "signal": "UNINTERPRETED_QUALIFIER",
+        "stage": "semantic_patch",
+        "triggers_llm": true,
+        "detail": {
+          "field": "approval_date",
+          "reasons": [
+            "UNINTERPRETED_QUALIFIER:DEFERRAL"
+          ]
+        }
+      },
+      {
+        "signal": "DECLARED_PENDING",
+        "stage": "normalize",
+        "triggers_llm": false,
+        "detail": "payment_date"
+      }
+    ]
+  },
+  "semantic": {
+    "classification": {
+      "confidence": "UNRESOLVED",
+      "source": "deterministic_patch",
+      "reasons": [
+        "EVENT_NATURE_DEFERRED"
+      ],
+      "qualifiers": [
+        {
+          "type": "DEFERRAL",
+          "cue": "será definida",
+          "evidence": " comunica que o Conselho de Administração, em reunião realizada em 14 de agosto de 2026, aprovou a destinação de R$ 0,3000000000 por ação aos acionistas, cuja natureza — dividendos ou juros sobre o capital próprio — será definida em reunião do Conselho a ser realizada até 30 de setembro de 2026"
+        }
+      ],
+      "interpretation": null
+    },
+    "fields": {
+      "record_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "AGREEMENT"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "ex_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "AGREEMENT"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "payment_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "AGREEMENT"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "approval_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "AGREEMENT",
+          "DETERMINISTIC_QUALIFIER_UNSUPPORTED_RESOLVED_BY_LLM"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "gross_amount_per_share": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      }
+    },
+    "blocking": [
+      "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition"
+    ],
+    "negated_signals": [],
+    "resolutions": [
+      {
+        "concept": "event_type",
+        "category": "AGREEMENT",
+        "deterministic": "DEFERRED",
+        "llm": "UNRESOLVED"
+      },
+      {
+        "concept": "approval_date",
+        "category": "DETERMINISTIC_UNSUPPORTED",
+        "reason": "uninterpreted qualifier resolved"
+      },
+      {
+        "concept": "record_date",
+        "category": "AGREEMENT"
+      },
+      {
+        "concept": "ex_date",
+        "category": "AGREEMENT"
+      },
+      {
+        "concept": "payment_date",
+        "category": "AGREEMENT",
+        "deterministic": "declared_pending",
+        "llm": "PENDING"
+      },
+      {
+        "concept": "withholding_tax",
+        "category": "AGREEMENT",
+        "note": "not stated"
+      }
+    ],
+    "qualifiers_v2": [
+      {
+        "qualifier_type": "event_eligibility_condition",
+        "affects": "event_nature",
+        "effect": "A natureza do provento (dividendos ou JCP) depende de deliberação futura do Conselho.",
+        "quote": "cuja natureza — dividendos ou juros sobre o capital próprio — será definida em reunião do Conselho a ser realizada até 30 de setembro de 2026",
+        "materiality": "MATERIAL",
+        "resolved": false,
+        "blocks": true,
+        "source": "llm"
+      },
+      {
+        "qualifier_type": "timing_context",
+        "affects": "dates",
+        "effect": "A data de pagamento ainda não foi definida.",
+        "quote": "Data de pagamento A definir",
+        "materiality": "NOT_MATERIAL",
+        "resolved": true,
+        "blocks": false,
+        "source": "llm"
+      }
+    ]
+  },
+  "confidence_view": {
+    "classification": {
+      "confidence": "UNRESOLVED",
+      "source": "deterministic_patch",
+      "reasons": [
+        "EVENT_NATURE_DEFERRED"
+      ],
+      "qualifiers": [
+        {
+          "type": "DEFERRAL",
+          "cue": "será definida",
+          "evidence": " comunica que o Conselho de Administração, em reunião realizada em 14 de agosto de 2026, aprovou a destinação de R$ 0,3000000000 por ação aos acionistas, cuja natureza — dividendos ou juros sobre o capital próprio — será definida em reunião do Conselho a ser realizada até 30 de setembro de 2026"
+        }
+      ],
+      "interpretation": null
+    },
+    "fields": {
+      "issuer_name": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "cnpj": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "isin": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ticker": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "share_class": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "approval_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "record_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ex_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "payment_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "UNVALIDATED"
+      },
+      "gross_amount_per_share": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "currency": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      }
+    }
+  },
+  "llm": {
+    "provider": "anthropic",
+    "model": "claude-opus-5",
+    "effort": "medium",
+    "max_tokens": 8000,
+    "fallbacks": "off",
+    "prompt_version": "semantic-interpreter/v2",
+    "prompt_fingerprint": "a1007b649ea5c243",
+    "served_models": [
+      "claude-opus-5"
+    ],
+    "attempts": 1,
+    "api_calls": 2,
+    "replayed": false,
+    "tool_calls": [
+      {
+        "name": "lookup_security",
+        "arguments": {
+          "identifier": "BRAURSACNOR4",
+          "identifier_type": "ISIN"
+        },
+        "result": {
+          "found": true,
+          "issuer": "Aurora Saneamento S.A.",
+          "isin": "BRAURSACNOR4",
+          "ticker": "AURS3",
+          "share_class": "ON",
+          "status": "ativo"
+        },
+        "latency_us": 32,
+        "error": null
+      }
+    ],
+    "usage": {
+      "input_tokens": 8338,
+      "output_tokens": 932,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "estimated_cost_usd": "0.06499",
+    "latency_ms": 11713,
+    "errors": [],
+    "refusals": [],
+    "served_model_mismatch": false,
+    "parse_or_schema_failures": 0,
+    "request_ids": [
+      "req_011CfYhd47RUH6oYnwUQ8j2S",
+      "req_011CfYhdGginfTn7fJGYEVqZ"
+    ],
+    "interpretation": {
+      "event": {
+        "type": "UNRESOLVED",
+        "evidence": [
+          "aprovou a destinação de R$ 0,3000000000 por ação aos acionistas, cuja natureza — dividendos ou juros sobre o capital próprio — será definida em reunião do Conselho a ser realizada até 30 de setembro de 2026"
+        ],
+        "misleading_mentions": [
+          {
+            "quote": "AVISO AOS ACIONISTAS — Proventos",
+            "why_not_the_event": "Título genérico de proventos; não especifica a natureza do evento."
+          },
+          {
+            "quote": "dividendos ou juros sobre o capital próprio",
+            "why_not_the_event": "Menção alternativa e não decidida: a natureza será definida em reunião futura, não caracterizando nem DIVIDEND nem JCP."
+          }
+        ],
+        "rationale": "A natureza do provento é expressamente deferida a decisão futura do Conselho, portanto o texto não resolve se é dividendo ou JCP."
+      },
+      "dates": [
+        {
+          "role": "approval_date",
+          "status": "FOUND",
+          "value_as_written": "14 de agosto de 2026",
+          "evidence": "o Conselho de Administração, em reunião realizada em 14 de agosto de 2026, aprovou a destinação"
+        },
+        {
+          "role": "record_date",
+          "status": "FOUND",
+          "value_as_written": "28/08/2026",
+          "evidence": "Data-base (“data com”) 28/08/2026"
+        },
+        {
+          "role": "ex_date",
+          "status": "FOUND",
+          "value_as_written": "31/08/2026",
+          "evidence": "Data “ex” 31/08/2026"
+        },
+        {
+          "role": "payment_date",
+          "status": "PENDING",
+          "value_as_written": "A definir",
+          "evidence": "Data de pagamento A definir"
+        }
+      ],
+      "withholding_tax": {
+        "status": "NOT_STATED",
+        "rate_as_written": "",
+        "base": "NOT_STATED",
+        "evidence": []
+      },
+      "qualifiers": [
+        {
+          "qualifier_type": "event_eligibility_condition",
+          "affects": "event_nature",
+          "effect": "A natureza do provento (dividendos ou JCP) depende de deliberação futura do Conselho.",
+          "quote": "cuja natureza — dividendos ou juros sobre o capital próprio — será definida em reunião do Conselho a ser realizada até 30 de setembro de 2026"
+        },
+        {
+          "qualifier_type": "timing_context",
+          "affects": "dates",
+          "effect": "A data de pagamento ainda não foi definida.",
+          "quote": "Data de pagamento A definir"
+        }
+      ],
+      "security_reference": {
+        "identifier_checked": "BRAURSACNOR4",
+        "found_in_reference": "YES"
+      }
+    },
+    "grounding": {
+      "event_grounded": true,
+      "total_quotes": 9,
+      "grounded_quotes": 9,
+      "ungrounded": []
+    },
+    "reference_divergence": {
+      "tool_called": true,
+      "tool_result_found": true,
+      "llm_reported": "YES",
+      "engine_REF_ISIN_FOUND": "PASS",
+      "divergent": false,
+      "authority": "validation_engine"
+    }
+  },
+  "routing": {
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition",
+      "SEMANTIC_AMBIGUITY",
+      "CLASSIFICATION_UNDETERMINED"
+    ],
+    "explanations": [
+      "classification: EVENT_NATURE_DEFERRED",
+      "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition",
+      "CLASSIFICATION_DETERMINED: event type None by rule deferred(precedence:JCP_over_DIVIDEND)"
+    ],
+    "gates": [
+      {
+        "gate": "EXTRACTION_POSSIBLE",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REQUIRED_INFORMATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "SEMANTIC_INTERPRETATION",
+        "status": "BLOCK",
+        "reason_codes": [
+          "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition",
+          "SEMANTIC_AMBIGUITY"
+        ],
+        "explanations": [
+          "classification: EVENT_NATURE_DEFERRED",
+          "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition"
+        ]
+      },
+      {
+        "gate": "DETERMINISTIC_VALIDATION",
+        "status": "BLOCK",
+        "reason_codes": [
+          "CLASSIFICATION_UNDETERMINED"
+        ],
+        "explanations": [
+          "CLASSIFICATION_DETERMINED: event type None by rule deferred(precedence:JCP_over_DIVIDEND)"
+        ]
+      },
+      {
+        "gate": "REFERENCE_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "BLOCKING_ERRORS",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      }
+    ]
+  },
+  "audit": {
+    "run_id": "20260930T004438Z-ce9f1072",
+    "pipeline_version": "baseline-a/0.1.0+hybrid-on-demand/0.1",
+    "started_at": "2026-09-30T00:46:32.265+00:00",
+    "finished_at": "2026-09-30T00:46:43.999+00:00",
+    "duration_us": 11734539,
+    "stages": [
+      {
+        "stage": "ingest",
+        "started_at": "2026-09-30T00:46:32.265+00:00",
+        "status": "ok",
+        "duration_us": 468
+      },
+      {
+        "stage": "text_layer",
+        "started_at": "2026-09-30T00:46:32.265+00:00",
+        "status": "ok",
+        "duration_us": 304
+      },
+      {
+        "stage": "extract_candidates",
+        "started_at": "2026-09-30T00:46:32.266+00:00",
+        "status": "ok",
+        "duration_us": 3053
+      },
+      {
+        "stage": "classify",
+        "started_at": "2026-09-30T00:46:32.269+00:00",
+        "status": "ok",
+        "duration_us": 393
+      },
+      {
+        "stage": "normalize",
+        "started_at": "2026-09-30T00:46:32.269+00:00",
+        "status": "ok",
+        "duration_us": 459
+      },
+      {
+        "stage": "confidence",
+        "started_at": "2026-09-30T00:46:32.270+00:00",
+        "status": "ok",
+        "duration_us": 48
+      },
+      {
+        "stage": "semantic_patch",
+        "started_at": "2026-09-30T00:46:32.270+00:00",
+        "status": "ok",
+        "duration_us": 888
+      },
+      {
+        "stage": "semantic_need",
+        "started_at": "2026-09-30T00:46:32.271+00:00",
+        "status": "ok",
+        "duration_us": 103,
+        "llm_required": true,
+        "triggers": [
+          "UNINTERPRETED_QUALIFIER"
+        ]
+      },
+      {
+        "stage": "semantic_llm",
+        "started_at": "2026-09-30T00:46:32.271+00:00",
+        "status": "ok",
+        "duration_us": 11727412,
+        "api_calls": 2,
+        "tool_calls": 1,
+        "replayed": false
+      },
+      {
+        "stage": "semantic_merge",
+        "started_at": "2026-09-30T00:46:43.998+00:00",
+        "status": "ok",
+        "duration_us": 182
+      },
+      {
+        "stage": "validate",
+        "started_at": "2026-09-30T00:46:43.998+00:00",
+        "status": "ok",
+        "duration_us": 276,
+        "rules_executed": 17
+      },
+      {
+        "stage": "route",
+        "started_at": "2026-09-30T00:46:43.999+00:00",
+        "status": "ok",
+        "duration_us": 118
+      }
+    ],
+    "errors": [],
+    "retries": 0,
+    "extraction_method": "native_text_layer+deterministic_rules",
+    "model": "claude-opus-5",
+    "prompt_version": "semantic-interpreter/v2",
+    "validators_executed": [
+      "REF_ISIN_FOUND",
+      "REF_TICKER_CONSISTENT",
+      "REF_CNPJ_CONSISTENT",
+      "REF_ISSUER_NAME_CONSISTENT",
+      "REF_SHARE_CLASS_CONSISTENT",
+      "REF_ISSUER_ACTIVE",
+      "REQUIRED_FIELDS_PRESENT",
+      "REQUIRED_FIELDS_NOT_PENDING",
+      "CLASSIFICATION_DETERMINED",
+      "CLASSIFICATION_TITLE_CONSISTENT",
+      "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "DATE_RECORD_BEFORE_EX",
+      "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "AMOUNT_GROSS_POSITIVE",
+      "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "RATIO_POSITIVE"
+    ],
+    "final_decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition",
+      "SEMANTIC_AMBIGUITY",
+      "CLASSIFICATION_UNDETERMINED"
+    ],
+    "variant": "D"
+  }
+}

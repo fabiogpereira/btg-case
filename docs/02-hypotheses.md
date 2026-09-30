@@ -259,16 +259,16 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
 - **Why it matters:** No lote, 7/8 documentos seguem um template em que A/B já acertam o que é localizável; C custa ~11 s e US$ 0,055 por documento.
 - **How to test:** Variante D = B + C condicional, sobre o original, o challenge set e o holdout cego; comparar com B e C.
 - **Expected signal:** Mesma segurança de C, taxa de chamadas ao LLM < 50%, sem regressão semântica.
-- **Observed result:**
-- **Decision:**
-- **Status:** UNTESTED
+- **Observed result:** (E-004) No original: LLM em 1/7 documentos elegíveis, custo −82% contra a C (US$ 0,073 × 0,411), latência p50 de 9,7 s para 13 ms, 0 aprovações inseguras, semântica 30/31, validação 104/104. No challenge set (quase todo semântico): LLM em 10/11, custo +8% contra a C (prompt v2 ~15% mais caro por chamada). Invocações falso-positivas 3 (CH-01 e CH-02 por desenho; CH-11 por atribuição do B); falso-negativa 1 (doc 03, por desenho). Decisão de invocar 19/19 estável entre execuções.
+- **Decision:** Economia real e segura quando a maioria dos documentos não precisa de semântica; nula quando precisa. Arquitetura candidata D.
+- **Status:** CONFIRMED (condicionada à distribuição de documentos)
 
 ### H-26 — Política de qualificadores v2 elimina os alarmes falsos de C sem reabrir o risco
 - **Hypothesis:** Bloquear só quando o qualificador altera a base ou a taxa (ou definir CONDITION de forma estreita no prompt v2) elimina os alarmes falsos dos docs 01, 02 e 03, mantendo 0 aprovações inseguras.
 - **Why it matters:** C-1 é a principal razão de C ter ficado abaixo de A/B no roteamento DEFINED.
 - **How to test:** Prompt/política v2 congelados antes de rodar; avaliar no holdout cego além dos conjuntos atuais.
 - **Expected signal:** Roteamento DEFINED 6/6 no original, sem aprovação insegura.
-- **Observed result:**
-- **Decision:**
-- **Status:** UNTESTED
+- **Observed result:** (E-004) A fusão v2 corrigiu os false reviews da C (CH-01, CH-10 → AUTO corretamente; docs 01 e 02 sem LLM e sem alarme) e levou o roteamento DEFINED do challenge set a 7/7. O modelo de qualificadores v2 introduziu novos false reviews: doc 06 (regras de frações rotuladas `other`/`event_eligibility`) e CH-07 na execução 1 (`affects` instável + salvaguarda de inconsistência), com 1/19 de instabilidade de roteamento. 0 aprovações inseguras.
+- **Decision:** Manter a fusão v2; refinar a taxonomia e a extração de qualificadores (v3) antes de adotar.
+- **Status:** MODIFIED (fusão v2 confirmada; qualificadores v2 precisam de refinamento)
 
