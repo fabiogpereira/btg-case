@@ -1,0 +1,93 @@
+{
+  "provider": "anthropic",
+  "requested_model": "claude-opus-5",
+  "served_model": "claude-opus-5",
+  "output_text": "{\"event\":{\"type\":\"JCP\",\"evidence\":[\"AVISO AOS ACIONISTAS — Juros sobre o Capital Próprio\",\"aprovou o pagamento de Juros sobre o Capital Próprio (JCP)\",\"Tipo de evento Juros sobre o Capital Próprio (JCP)\"],\"misleading_mentions\":[],\"rationale\":\"O aviso anuncia expressamente a aprovação e pagamento de Juros sobre o Capital Próprio, com valor bruto por ação e IRRF, sem outro evento concorrente.\"},\"dates\":[{\"role\":\"approval_date\",\"status\":\"FOUND\",\"value_as_written\":\"09 de junho de 2026\",\"evidence\":\"em reunião realizada em 09 de junho de 2026, aprovou o pagamento\"},{\"role\":\"record_date\",\"status\":\"FOUND\",\"value_as_written\":\"23/06/2026\",\"evidence\":\"Data-base (“data com”) 23/06/2026\"},{\"role\":\"ex_date\",\"status\":\"FOUND\",\"value_as_written\":\"24/06/2026\",\"evidence\":\"Data “ex-JCP” 24/06/2026\"},{\"role\":\"payment_date\",\"status\":\"PENDING\",\"value_as_written\":\"A definir (vide aviso complementar)\",\"evidence\":\"A data de pagamento será oportunamente definida e divulgada\"}],\"withholding_tax\":{\"status\":\"STATED\",\"rate_as_written\":\"17,5%\",\"base\":\"GROSS_AMOUNT\",\"evidence\":[\"com retenção de IRRF de 17,5% sobre o valor bruto\",\"IRRF na fonte 17,5%\"],\"qualifiers\":[]},\"security_reference\":{\"identifier_checked\":\"BRRVBRACNOR9\",\"found_in_reference\":\"YES\"}}",
+  "parsed": {
+    "event": {
+      "type": "JCP",
+      "evidence": [
+        "AVISO AOS ACIONISTAS — Juros sobre o Capital Próprio",
+        "aprovou o pagamento de Juros sobre o Capital Próprio (JCP)",
+        "Tipo de evento Juros sobre o Capital Próprio (JCP)"
+      ],
+      "misleading_mentions": [],
+      "rationale": "O aviso anuncia expressamente a aprovação e pagamento de Juros sobre o Capital Próprio, com valor bruto por ação e IRRF, sem outro evento concorrente."
+    },
+    "dates": [
+      {
+        "role": "approval_date",
+        "status": "FOUND",
+        "value_as_written": "09 de junho de 2026",
+        "evidence": "em reunião realizada em 09 de junho de 2026, aprovou o pagamento"
+      },
+      {
+        "role": "record_date",
+        "status": "FOUND",
+        "value_as_written": "23/06/2026",
+        "evidence": "Data-base (“data com”) 23/06/2026"
+      },
+      {
+        "role": "ex_date",
+        "status": "FOUND",
+        "value_as_written": "24/06/2026",
+        "evidence": "Data “ex-JCP” 24/06/2026"
+      },
+      {
+        "role": "payment_date",
+        "status": "PENDING",
+        "value_as_written": "A definir (vide aviso complementar)",
+        "evidence": "A data de pagamento será oportunamente definida e divulgada"
+      }
+    ],
+    "withholding_tax": {
+      "status": "STATED",
+      "rate_as_written": "17,5%",
+      "base": "GROSS_AMOUNT",
+      "evidence": [
+        "com retenção de IRRF de 17,5% sobre o valor bruto",
+        "IRRF na fonte 17,5%"
+      ],
+      "qualifiers": []
+    },
+    "security_reference": {
+      "identifier_checked": "BRRVBRACNOR9",
+      "found_in_reference": "YES"
+    }
+  },
+  "stop_reason": "end_turn",
+  "api_calls": 2,
+  "tool_calls": [
+    {
+      "name": "lookup_security",
+      "arguments": {
+        "identifier": "BRRVBRACNOR9",
+        "identifier_type": "ISIN"
+      },
+      "result": {
+        "found": true,
+        "issuer": "Rede Varejo Brasil S.A.",
+        "isin": "BRRVBRACNOR9",
+        "ticker": "RVBR3",
+        "share_class": "ON",
+        "status": "ativo"
+      },
+      "latency_us": 12,
+      "error": null
+    }
+  ],
+  "usage": {
+    "input_tokens": 7793,
+    "output_tokens": 674,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0
+  },
+  "latency_ms": 9502,
+  "errors": [],
+  "refusal": null,
+  "request_ids": [
+    "req_011CfYev3kj9QabUh75EUGCB",
+    "req_011CfYevHyyzREny4AWWxWN5"
+  ],
+  "replayed": false
+}

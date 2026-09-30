@@ -1,0 +1,97 @@
+{
+  "provider": "anthropic",
+  "requested_model": "claude-opus-5",
+  "served_model": "claude-opus-5",
+  "output_text": "{\"event\":{\"type\":\"DIVIDEND\",\"evidence\":[\"aprovou a distribuição de dividendos à conta de reservas de lucros\",\"Tipo de evento Dividendo\",\"AVISO AOS ACIONISTAS — Pagamento de Dividendos\"],\"misleading_mentions\":[],\"rationale\":\"O aviso anuncia expressamente a distribuição de dividendos à conta de reservas de lucros, confirmada pelo campo \\\"Tipo de evento Dividendo\\\".\"},\"dates\":[{\"role\":\"approval_date\",\"status\":\"FOUND\",\"value_as_written\":\"04 de agosto de 2026\",\"evidence\":\"em reunião realizada em 04 de agosto de 2026, aprovou a distribuição de dividendos\"},{\"role\":\"record_date\",\"status\":\"FOUND\",\"value_as_written\":\"18/08/2026\",\"evidence\":\"Data-base (“data com”) 18/08/2026\"},{\"role\":\"ex_date\",\"status\":\"FOUND\",\"value_as_written\":\"19/08/2026\",\"evidence\":\"Data “ex-dividendos” 19/08/2026\"},{\"role\":\"payment_date\",\"status\":\"FOUND\",\"value_as_written\":\"02/09/2026\",\"evidence\":\"Data de pagamento 02/09/2026\"}],\"withholding_tax\":{\"status\":\"STATED\",\"rate_as_written\":\"10%\",\"base\":\"EXCESS_OVER_THRESHOLD\",\"evidence\":[\"Haverá retenção de IRRF à alíquota de 10%, incidente apenas sobre os valores que ultrapassarem R$ 50.000,00 por mês pagos a um mesmo acionista\"],\"qualifiers\":[{\"type\":\"THRESHOLD\",\"quote\":\"incidente apenas sobre os valores que ultrapassarem R$ 50.000,00 por mês pagos a um mesmo acionista\"}]},\"security_reference\":{\"identifier_checked\":\"BRAGPLACNOR0\",\"found_in_reference\":\"YES\"}}",
+  "parsed": {
+    "event": {
+      "type": "DIVIDEND",
+      "evidence": [
+        "aprovou a distribuição de dividendos à conta de reservas de lucros",
+        "Tipo de evento Dividendo",
+        "AVISO AOS ACIONISTAS — Pagamento de Dividendos"
+      ],
+      "misleading_mentions": [],
+      "rationale": "O aviso anuncia expressamente a distribuição de dividendos à conta de reservas de lucros, confirmada pelo campo \"Tipo de evento Dividendo\"."
+    },
+    "dates": [
+      {
+        "role": "approval_date",
+        "status": "FOUND",
+        "value_as_written": "04 de agosto de 2026",
+        "evidence": "em reunião realizada em 04 de agosto de 2026, aprovou a distribuição de dividendos"
+      },
+      {
+        "role": "record_date",
+        "status": "FOUND",
+        "value_as_written": "18/08/2026",
+        "evidence": "Data-base (“data com”) 18/08/2026"
+      },
+      {
+        "role": "ex_date",
+        "status": "FOUND",
+        "value_as_written": "19/08/2026",
+        "evidence": "Data “ex-dividendos” 19/08/2026"
+      },
+      {
+        "role": "payment_date",
+        "status": "FOUND",
+        "value_as_written": "02/09/2026",
+        "evidence": "Data de pagamento 02/09/2026"
+      }
+    ],
+    "withholding_tax": {
+      "status": "STATED",
+      "rate_as_written": "10%",
+      "base": "EXCESS_OVER_THRESHOLD",
+      "evidence": [
+        "Haverá retenção de IRRF à alíquota de 10%, incidente apenas sobre os valores que ultrapassarem R$ 50.000,00 por mês pagos a um mesmo acionista"
+      ],
+      "qualifiers": [
+        {
+          "type": "THRESHOLD",
+          "quote": "incidente apenas sobre os valores que ultrapassarem R$ 50.000,00 por mês pagos a um mesmo acionista"
+        }
+      ]
+    },
+    "security_reference": {
+      "identifier_checked": "BRAGPLACNOR0",
+      "found_in_reference": "YES"
+    }
+  },
+  "stop_reason": "end_turn",
+  "api_calls": 2,
+  "tool_calls": [
+    {
+      "name": "lookup_security",
+      "arguments": {
+        "identifier": "BRAGPLACNOR0",
+        "identifier_type": "ISIN"
+      },
+      "result": {
+        "found": true,
+        "issuer": "Águas do Planalto S.A.",
+        "isin": "BRAGPLACNOR0",
+        "ticker": "AGPL3",
+        "share_class": "ON",
+        "status": "ativo"
+      },
+      "latency_us": 30,
+      "error": null
+    }
+  ],
+  "usage": {
+    "input_tokens": 7312,
+    "output_tokens": 745,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0
+  },
+  "latency_ms": 10040,
+  "errors": [],
+  "refusal": null,
+  "request_ids": [
+    "req_011CfYemJrZyrSm1MXfHq6Sy",
+    "req_011CfYemWCwfVALbb2BxSJVc"
+  ],
+  "replayed": false
+}

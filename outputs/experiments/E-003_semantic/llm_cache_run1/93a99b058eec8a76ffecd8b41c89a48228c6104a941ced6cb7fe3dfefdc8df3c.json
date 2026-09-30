@@ -1,0 +1,90 @@
+{
+  "provider": "anthropic",
+  "requested_model": "claude-opus-5",
+  "served_model": "claude-opus-5",
+  "output_text": "{\"event\":{\"type\":\"DIVIDEND\",\"evidence\":[\"aprovou a distribuição de dividendos intercalares à conta de reservas de lucros\",\"Tipo de evento Dividendo intercalar\",\"AVISO AOS ACIONISTAS — Pagamento de Dividendos Intercalares\"],\"misleading_mentions\":[],\"rationale\":\"O texto declara expressamente a distribuição de dividendos intercalares à conta de reservas de lucros, sem qualquer menção a juros sobre capital próprio ou outro evento.\"},\"dates\":[{\"role\":\"approval_date\",\"status\":\"FOUND\",\"value_as_written\":\"01/06/2026\",\"evidence\":\"Data de aprovação (RCA) 01/06/2026\"},{\"role\":\"record_date\",\"status\":\"FOUND\",\"value_as_written\":\"15/07/2026\",\"evidence\":\"Data-base (“data com”) 15/07/2026\"},{\"role\":\"ex_date\",\"status\":\"FOUND\",\"value_as_written\":\"16/07/2026\",\"evidence\":\"Data “ex-dividendos” 16/07/2026\"},{\"role\":\"payment_date\",\"status\":\"FOUND\",\"value_as_written\":\"10/07/2026\",\"evidence\":\"Data de pagamento 10/07/2026\"}],\"withholding_tax\":{\"status\":\"NOT_STATED\",\"rate_as_written\":\"\",\"base\":\"NOT_STATED\",\"evidence\":[],\"qualifiers\":[]},\"security_reference\":{\"identifier_checked\":\"BRAURSACNOR4\",\"found_in_reference\":\"YES\"}}",
+  "parsed": {
+    "event": {
+      "type": "DIVIDEND",
+      "evidence": [
+        "aprovou a distribuição de dividendos intercalares à conta de reservas de lucros",
+        "Tipo de evento Dividendo intercalar",
+        "AVISO AOS ACIONISTAS — Pagamento de Dividendos Intercalares"
+      ],
+      "misleading_mentions": [],
+      "rationale": "O texto declara expressamente a distribuição de dividendos intercalares à conta de reservas de lucros, sem qualquer menção a juros sobre capital próprio ou outro evento."
+    },
+    "dates": [
+      {
+        "role": "approval_date",
+        "status": "FOUND",
+        "value_as_written": "01/06/2026",
+        "evidence": "Data de aprovação (RCA) 01/06/2026"
+      },
+      {
+        "role": "record_date",
+        "status": "FOUND",
+        "value_as_written": "15/07/2026",
+        "evidence": "Data-base (“data com”) 15/07/2026"
+      },
+      {
+        "role": "ex_date",
+        "status": "FOUND",
+        "value_as_written": "16/07/2026",
+        "evidence": "Data “ex-dividendos” 16/07/2026"
+      },
+      {
+        "role": "payment_date",
+        "status": "FOUND",
+        "value_as_written": "10/07/2026",
+        "evidence": "Data de pagamento 10/07/2026"
+      }
+    ],
+    "withholding_tax": {
+      "status": "NOT_STATED",
+      "rate_as_written": "",
+      "base": "NOT_STATED",
+      "evidence": [],
+      "qualifiers": []
+    },
+    "security_reference": {
+      "identifier_checked": "BRAURSACNOR4",
+      "found_in_reference": "YES"
+    }
+  },
+  "stop_reason": "end_turn",
+  "api_calls": 2,
+  "tool_calls": [
+    {
+      "name": "lookup_security",
+      "arguments": {
+        "identifier": "BRAURSACNOR4",
+        "identifier_type": "ISIN"
+      },
+      "result": {
+        "found": true,
+        "issuer": "Aurora Saneamento S.A.",
+        "isin": "BRAURSACNOR4",
+        "ticker": "AURS3",
+        "share_class": "ON",
+        "status": "ativo"
+      },
+      "latency_us": 32,
+      "error": null
+    }
+  ],
+  "usage": {
+    "input_tokens": 7592,
+    "output_tokens": 598,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0
+  },
+  "latency_ms": 9726,
+  "errors": [],
+  "refusal": null,
+  "request_ids": [
+    "req_011CfYef5TzQu1m1utvw9QKu",
+    "req_011CfYefGj9vuPt7tzzruW6d"
+  ],
+  "replayed": false
+}

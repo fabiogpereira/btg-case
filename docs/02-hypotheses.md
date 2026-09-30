@@ -65,18 +65,18 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
 - **Why it matters:** Responde "por que IA aqui e não ali".
 - **How to test:** Comparar H-04 vs extração com LLM vs híbrido, por campo, no lote original e nas variações.
 - **Expected signal:** Híbrido ≥ LLM puro ≥ regras em classificação/papéis de data; regras = LLM em identificadores com formato fixo.
-- **Observed result:** Não testado (sem LLM). (E-002) localizou onde o determinístico falha: semântica condicional (doc 01), mapeamento de rótulo para papel (doc 06) e classificação dependente de precedência (docs 02/03). São exatamente as categorias previstas para o LLM.
-- **Decision:** 
-- **Status:** UNTESTED — candidata ao próximo experimento
+- **Observed result:** (E-003) C acertou 31/31 campos semânticos no original e 21/21 alvos no challenge set (contra 10/21 do B e 6/21 do A), com os valores, a aritmética e o lookup mantidos determinísticos. O ganho vem de papéis de data (8/8 contra 0/8), descrição do evento e negação/referências enganosas. O failure mode perigoso do E-002 também foi resolvido pelo B, sem LLM.
+- **Decision:** O LLM agrega valor onde há interpretação semântica; não é necessário para qualificadores de padrão conhecido. Recomendação no E-003; sem decisão final até o E-004.
+- **Status:** CONFIRMED (no lote e no challenge set ciente do autor; holdout cego pendente)
 
 ### H-06 — Grounding obrigatório: todo valor extraído tem evidência literal na fonte
 - **Hypothesis:** Exigir que o extrator (regra ou LLM) devolva o trecho literal de origem e verificar deterministicamente que o trecho existe no texto do documento detecta valores alucinados.
 - **Why it matters:** "Valores inventados viram prejuízo" e "auditar sem reabrir o documento". É o principal controle contra alucinação.
 - **How to test:** Rodar sobre o lote; injetar valores alterados na resposta do extrator e verificar se o check os rejeita.
 - **Expected signal:** 100% dos valores corretos passam; 100% dos injetados falham. Atenção à normalização (quebras de linha do pypdf nos rótulos, espaços).
-- **Observed result:**
-- **Decision:**
-- **Status:** UNTESTED
+- **Observed result:** (E-003) 150/150 trechos devolvidos pelo LLM foram localizados literalmente; nenhuma interpretação foi descartada nas execuções reais. O caminho de rejeição (citação inexistente, valor fora da citação) está coberto por testes offline.
+- **Decision:** Manter grounding obrigatório.
+- **Status:** CONFIRMED (grounding respeitado; rejeição exercitada só offline)
 
 ### H-07 — Números como Decimal/string, nunca float
 - **Hypothesis:** Converter "R$ 0,1434196500" para `Decimal` a partir da string preserva exatamente o valor; `float` introduz erro na checagem bruto × líquido.
@@ -92,9 +92,9 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
 - **Why it matters:** Erro de tipo muda tratamento tributário (enunciado).
 - **How to test:** Classificar com (a) só título, (b) regras de palavras-chave, (c) LLM, (d) LLM + corroboração. Verificar doc 03 e armadilha lexical dos docs 02/03 ("imputado aos dividendos obrigatórios").
 - **Expected signal:** (a) erra doc 03; (b) é frágil; (c) e (d) acertam; (d) sinaliza o conflito título × corpo como evidência auditável.
-- **Observed result:** (E-002) (a) Só o título: o doc 03 seria DIVIDEND (o título tem sinal só de dividendo) — refutada como estratégia. (b) Palavras-chave no conteúdo sem o título: 7/7, mas docs 02 e 03 precisaram da regra de precedência (MEDIUM) e o caso de negação falha (xfail). A regra `CLASSIFICATION_TITLE_CONSISTENT` sinalizou o conflito do doc 03. (c) e (d), com LLM, não testados.
-- **Decision:** 
-- **Status:** TESTING — (a) e (b) medidos; (c) e (d) pendentes
+- **Observed result:** (E-002) (a) só o título erra o doc 03; (b) palavras-chave precisam de precedência e falham em negação. (E-003) (c) LLM: 7/7 no original e todos os alvos de tipo no challenge set, incluindo negação (CH-01, CH-02), referências enganosas (CH-04, CH-10), descrição sem palavra-chave (CH-03) e adiamento (CH-11 → não resolvido). (d) Corroboração com o determinístico: acordo → HIGH; o desacordo mandou para revisão CH-01 e CH-10, onde o LLM acertou e o determinístico errou (conservador por desenho).
+- **Decision:** Classificar pelo conteúdo; o LLM é o intérprete mais robusto. A política de desacordo continua conservadora.
+- **Status:** CONFIRMED
 
 ### H-09 — Schema condicional ao tipo de evento com três estados de ausência
 - **Hypothesis:** Um schema com campos requeridos/aplicáveis por tipo e ausência tipada (`not_found`, `not_applicable`, `declared_pending`) representa fielmente os docs 04, 06 e 08 sem inventar valores.
@@ -110,9 +110,9 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
 - **Why it matters:** Simplicidade, custo, determinismo e depurabilidade na sessão ao vivo.
 - **How to test:** Medir acerto com 1 chamada; só testar alternativas se aparecer modo de falha que 1 chamada não resolve.
 - **Expected signal:** Acerto no nível do gabarito com 1 chamada.
-- **Observed result:**
-- **Decision:**
-- **Status:** UNTESTED
+- **Observed result:** (E-003) Uma interpretação por documento (2 chamadas de API: rodada da tool + resposta estruturada) bastou: 0 falhas de parse/schema, 0 recusas, 0 novas tentativas. Multi-agente não foi necessário.
+- **Decision:** Manter uma chamada estruturada por documento.
+- **Status:** CONFIRMED
 
 ## C. Validação
 
@@ -161,9 +161,9 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
 - **Why it matters:** Atende a letra do R3 com evidência mensurável; se o LLM omitir chamadas, isso não afeta a segurança, mas mostra que a chamada pelo LLM não pode ser a única linha de defesa.
 - **How to test:** Registrar no audit trail as tool calls feitas pelo LLM; comparar com as execuções do orchestrator nos 8 docs, em ≥ 2 runs.
 - **Expected signal:** Chamadas presentes e coerentes; qualquer divergência é registrada e o resultado do orchestrator prevalece.
-- **Observed result:**
-- **Decision:** Desenho já decidido (D-002); o resultado desta hipótese só informa métricas e o texto do README.
-- **Status:** MODIFIED (reformulada após D-002; teste pendente)
+- **Observed result:** (E-003) Tool chamada em 18/18 documentos com texto, com argumentos corretos em todos; 1 chamada desnecessária (consulta extra por ticker); 0 divergências entre tool e validation engine. A presença e o número de chamadas variaram entre execuções (5/7 consistentes no original), o que confirma que a segurança não pode depender da chamada (D-002).
+- **Decision:** D-002 mantida: o LLM usa a tool; o orchestrator valida sempre.
+- **Status:** CONFIRMED
 
 ## D. Confiança, roteamento e revisão humana
 
@@ -181,18 +181,18 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
 - **Why it matters:** R4 exige justificativa; com 8 docs não há como calibrar um score numérico.
 - **How to test:** Pedir também o score do LLM e comparar com o nosso nos casos difíceis (03, 05, 07).
 - **Expected signal:** Score do LLM alto em quase tudo, inclusive no doc 05; nossa confiança diferencia os casos e traz o motivo.
-- **Observed result:** (E-002) **Resultado negativo parcial:** a confiança por sinais é explicável (cada nível tem motivo), mas deu HIGH aos 2 valores com semântica incompleta (IR do doc 01 e do doc 03). Âncora mede "achei no lugar certo", não "entendi o que diz". A comparação com a autoavaliação de um LLM não foi feita.
-- **Decision:** 
-- **Status:** TESTING — lacuna identificada (ver H-23)
+- **Observed result:** (E-002) confiança por âncora não detecta perda semântica. (E-003) Com a dimensão semântica separada (D-015), B e C eliminaram a aprovação insegura. Mas a regra de C (qualquer CONDITION → LOW) gerou alarmes falsos estáveis nos docs 01, 02 e 03, com a base do IR correta.
+- **Decision:** Três dimensões mantidas; a política de fusão de qualificadores precisa de revisão (E-004).
+- **Status:** MODIFIED (dimensão semântica confirmada; regra de qualificadores de C refutada como está)
 
 ### H-18 — Roteamento para revisão humana com códigos de motivo
 - **Hypothesis:** Regras explícitas de roteamento (ex.: `EMISSOR_NAO_ENCONTRADO`, `INCOERENCIA_DATAS`, `CAMPO_CRITICO_BAIXA_CONFIANCA`, `CONFLITO_CLASSIFICACAO`, `CAMPO_PENDENTE_DECLARADO`) produzem o roteamento esperado no lote: 05 e 08 para revisão; 04 com pendência explícita (política em Q-05); 07 para revisão só se algum campo crítico não passar em grounding/checksum; 01, 02, 06 aprovados; 03 aprovado ou revisado conforme a política para conflito título × corpo.
 - **Why it matters:** R5; e evitar tanto aprovação indevida quanto "tudo para revisão".
 - **How to test:** Comparar o roteamento com o esperado no gabarito.
 - **Expected signal:** Roteamento idêntico ao esperado, com motivo específico em cada exceção.
-- **Observed result:** (E-002) Expectativas DEFINED 5/6. A lógica de roteamento se comportou como especificado dado o que recebeu; o único erro (doc 06 → revisão) vem da extração. Doc 07 → `NO_USABLE_TEXT_LAYER` (POLICY_DEPENDENT, não conta). Doc 01 aprovado com IR semanticamente errado: o roteamento não tinha sinal para detectar.
+- **Observed result:** (E-003) Roteamento DEFINED no original: A 5/6, B 5/6, C 4/6 (C erra os docs 01 e 02 por alarme falso e acerta o 06). Challenge: A 3/7, B 4/7, C 5/7. Nenhuma variante produziu aprovação insegura.
 - **Decision:** 
-- **Status:** TESTING — depende de H-04/H-05 e H-23
+- **Status:** TESTING — depende da política de fusão v2
 
 ## E. Auditoria, reprodutibilidade e custo
 
@@ -210,9 +210,9 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
 - **Why it matters:** Auditoria ("qual resposta o modelo deu naquele run?"), custo e demo ao vivo sem depender da rede.
 - **How to test:** Rodar 2×; diffar outputs; rodar sem rede com cache.
 - **Expected signal:** Outputs idênticos; segundo run com custo zero.
-- **Observed result:**
-- **Decision:**
-- **Status:** UNTESTED
+- **Observed result:** (E-003) As respostas das 4 execuções de C foram gravadas em cache (`llm_cache_run1`, `llm_cache_run2`). Entre execuções independentes: tipo, campos normalizados e roteamento 18/18 consistentes; interpretação bruta 16/18 (forma das datas) e tool calls 16/18. O replay está coberto por teste offline, não por uma re-execução oficial.
+- **Decision:** Manter o cache como registro auditável; a reprodutibilidade de decisão foi observada mesmo sem replay.
+- **Status:** CONFIRMED (decisões estáveis; forma bruta varia)
 
 ### H-21 — Nome do arquivo não influencia o resultado
 - **Hypothesis:** Renomear os PDFs para hashes não altera nenhum output (exceto o campo de nome de origem).
@@ -228,9 +228,9 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
 - **Why it matters:** "Quanto custa?" e "como escalaríamos?".
 - **How to test:** Registrar tokens de entrada/saída por chamada no manifest; calcular custo com a tabela de preços do provider.
 - **Expected signal:** Custo total do lote baixo; escaneado com mais tokens.
-- **Observed result:**
-- **Decision:**
-- **Status:** UNTESTED
+- **Observed result:** (E-003) ~US$ 0,055 e ~11 s por documento (claude-opus-5, effort medium, sem cache de prompt). ~7,5k tokens de entrada e ~0,75k de saída por documento. Total do experimento: US$ 2,01.
+- **Decision:** Custo na ordem de centavos confirmado; latência é o custo dominante.
+- **Status:** CONFIRMED
 
 ## F. Hipóteses novas a partir do E-002
 
@@ -239,15 +239,36 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
 - **Why it matters:** O E-002 mostrou um valor aprovado automaticamente com semântica errada e confiança HIGH. É o erro mais caro do experimento, e a confiança atual não o vê.
 - **How to test:** Aplicar ao lote e às variações (H-24); medir quantos erros semânticos passam a ser sinalizados e quantos campos corretos são rebaixados sem necessidade.
 - **Expected signal:** Doc 01 `withholding_tax` → LOW → revisão; poucos rebaixamentos indevidos. Se o léxico de qualificadores crescer caso a caso, isso é sinal de que o problema precisa de interpretação semântica (H-05).
-- **Observed result:**
-- **Decision:**
-- **Status:** UNTESTED
+- **Observed result:** (E-003) O patch B interpretou o IR condicional do doc 01 e do CH-05 (base EXCESS_OVER_THRESHOLD) e aceitou a exceção por titular do doc 02, sem alarme falso no original. Um alarme falso no challenge set (CH-06: qualificador atribuído à data da mesma frase). **Ressalva:** o léxico se sobrepõe ao CH-05 (mesmo autor).
+- **Decision:** Qualificadores de padrão conhecido podem ser resolvidos deterministicamente e de graça.
+- **Status:** CONFIRMED (com ressalva de contaminação por autoria)
 
 ### H-24 — O desempenho do Baseline A cai em avisos heterogêneos
 - **Hypothesis:** Num pequeno conjunto de variações escritas à mão (rótulos sinônimos, ordem trocada, datas só por extenso, tabela ausente, negações, qualificadores), a acurácia de valor e de classificação do Baseline A cai de forma relevante em relação ao lote original, e as falhas se concentram em mapeamento semântico e não em localização de padrões.
 - **Why it matters:** 7/8 documentos do lote compartilham o template. Sem variações, não dá para medir generalização, nem justificar ou refutar um componente de LLM.
 - **How to test:** Criar de 10 a 20 variações com gabarito (mesmo formato v2.0) e rodar o Baseline A sem alterá-lo.
 - **Expected signal:** Queda concentrada em classificação, papéis de data e qualificadores; identificadores e aritmética estáveis.
+- **Observed result:** (E-003) A caiu de 28/31 campos semânticos no original para 6/21 alvos no challenge set, com falhas concentradas em papéis de data (0/8), descrição do evento (0/3) e negação (1/4). Identificadores e aritmética ficaram estáveis.
+- **Decision:** 
+- **Status:** CONFIRMED (challenge set ciente do autor)
+
+## G. Hipóteses novas a partir do E-003
+
+### H-25 — LLM sob demanda preserva a segurança com fração do custo
+- **Hypothesis:** Chamar o intérprete semântico só quando o determinístico sinaliza necessidade (campo obrigatório ausente, classificação por precedência, ambígua ou indeterminada, qualificador detectado pelo B) mantém 0 aprovações inseguras e a acurácia semântica de C, com custo e latência bem menores que C sempre ligado.
+- **Why it matters:** No lote, 7/8 documentos seguem um template em que A/B já acertam o que é localizável; C custa ~11 s e US$ 0,055 por documento.
+- **How to test:** Variante D = B + C condicional, sobre o original, o challenge set e o holdout cego; comparar com B e C.
+- **Expected signal:** Mesma segurança de C, taxa de chamadas ao LLM < 50%, sem regressão semântica.
 - **Observed result:**
 - **Decision:**
 - **Status:** UNTESTED
+
+### H-26 — Política de qualificadores v2 elimina os alarmes falsos de C sem reabrir o risco
+- **Hypothesis:** Bloquear só quando o qualificador altera a base ou a taxa (ou definir CONDITION de forma estreita no prompt v2) elimina os alarmes falsos dos docs 01, 02 e 03, mantendo 0 aprovações inseguras.
+- **Why it matters:** C-1 é a principal razão de C ter ficado abaixo de A/B no roteamento DEFINED.
+- **How to test:** Prompt/política v2 congelados antes de rodar; avaliar no holdout cego além dos conjuntos atuais.
+- **Expected signal:** Roteamento DEFINED 6/6 no original, sem aprovação insegura.
+- **Observed result:**
+- **Decision:**
+- **Status:** UNTESTED
+

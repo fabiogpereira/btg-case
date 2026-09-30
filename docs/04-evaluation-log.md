@@ -258,6 +258,135 @@ python -m evaluation.variants --original A=$E/original_A B=$E/original_B C=$E/or
 - **Inalterados:** prompt (`cf27c1d6164099c5`), schema, B, avaliação, gabaritos e challenge set. A mudança no `pipeline.py` só afeta o caminho com LLM; os runs oficiais de A e B continuam válidos.
 - **Run descartado:** o `original_C` que falhou (0 respostas do modelo) foi apagado, junto com o cache.
 
-### Resultado
+### Resultado (execução de C em 2026-09-30, freeze v2)
 
-_Pendente da execução de C._
+**Runs.**
+
+| Conjunto | Execução 1 | Execução 2 (consistência) |
+|---|---|---|
+| Original | `20260930T000643Z-a90cb473` | `20260930T001024Z-e41c436b` |
+| Challenge | `20260930T000818Z-fd2fca1a` | `20260930T001142Z-779d6649` |
+
+- **Custo total:** US$ 2,01, nas 4 execuções de C.
+- **Relatório completo:** `outputs/experiments/E-003_semantic/comparison/comparison_report.md`.
+
+**Dataset original** (7 documentos com texto; **métricas de desenvolvimento para B**, ver disclosure):
+
+| Métrica | A | B | C |
+|---|---|---|---|
+| Tipo de evento | 7/7 | 7/7 | 7/7 |
+| Campos semânticos (tipo, IR com base, papéis de data) | 28/31 | 29/31 | **31/31** |
+| Valor exato | 76/80 | 77/80 | 79/80 |
+| Regras de validação | 101/104 | 101/104 | **104/104** |
+| **Aprovações automáticas inseguras** | **1** (doc 01) | **0** | **0** |
+| Valores inventados | 0 | 0 | 0 |
+| Taxa de revisão | 6/8 | 6/8 | 7/8 |
+| Roteamento DEFINED | 5/6 | 5/6 | **4/6** |
+| Tempo | 75 ms | 83 ms | 83 s |
+
+- **C resolve o doc 06:** "Início da negociação grupada" → `ex_date`, e o documento vai para AUTO_APPROVE.
+- **C manda para revisão sem necessidade os docs 01 e 02** (e o 03, que já ia para revisão por outro motivo), por `SEMANTIC_AMBIGUITY`: ver failure mode C-1.
+
+**Challenge set** (11 casos, 21 alvos; **ciente do autor**, ver disclosure):
+
+| Métrica | A | B | C |
+|---|---|---|---|
+| Acurácia semântica | 6/21 | 10/21 | **21/21** |
+| Negação | 1/4 | 3/4 | 4/4 |
+| Expressão condicional | 5/6 | 6/6 | 6/6 |
+| Papel de data | 0/8 | 0/8 | **8/8** |
+| Palavras enganosas | 5/8 | 6/8 | 8/8 |
+| Descrição do evento | 0/3 | 2/3 | 3/3 |
+| **Falsamente confiantes** | **1** | **0** | **0** |
+| **Aprovações automáticas inseguras** | **1** (CH-05) | **0** | **0** |
+| Roteamento DEFINED | 3/7 | 4/7 | 5/7 |
+| Taxa de revisão | 9/11 | 8/11 | 4/11 |
+
+**LLM (C).**
+- **Configuração:** `claude-opus-5`, effort medium, fallback off. O modelo servido foi sempre o solicitado.
+- **Chamadas:** 0 recusas, 0 erros, 0 falhas de parse/schema. 2 chamadas de API por documento (rodada da tool + resposta final).
+
+| | Original | Challenge |
+|---|---|---|
+| Custo por documento | ~US$ 0,059 | ~US$ 0,054 |
+| Latência por documento | ~11,8 s (9,3–15,5 s) | ~10,6 s (9,4–14,0 s) |
+| Tokens por documento (entrada / saída) | ~7,9k / ~0,8k | ~7,3k / ~0,7k |
+
+**Grounding:** 150/150 trechos localizados literalmente (65 no original, 85 no challenge). Nenhuma interpretação foi descartada por falta de evidência nas execuções reais. O caminho de rejeição foi testado apenas offline.
+
+**Function calling:**
+
+| | Original | Challenge |
+|---|---|---|
+| Tool calls | 8 | 11 |
+| Documentos com chamada | 7/7 | 11/11 |
+| Corretas | 7 | 11 |
+| Desnecessárias | 1 (doc 02: ticker consultado além do ISIN) | 0 |
+| Esperadas ausentes | 0 | 0 |
+| Argumentos incorretos | 0 | 0 |
+| Divergências tool × validation engine | 0 | 0 |
+
+**Consistência entre execuções:**
+
+| Dimensão | Original | Challenge |
+|---|---|---|
+| Tipo de evento | 7/7 | 11/11 |
+| Campos semanticamente interpretados | 7/7 | 11/11 |
+| Decisão de roteamento | 7/7 | 11/11 |
+| Motivos de roteamento | 7/7 | 11/11 |
+| Interpretação bruta | **5/7** | 11/11 |
+| Número / argumentos de tool calls | **5/7** | 11/11 |
+
+- **Interpretação bruta, doc 04:** datas "como escritas" citadas por extenso numa execução e numéricas na outra. Os valores normalizados são idênticos.
+- **Tool calls, docs 01 e 02:** consulta extra por ticker em uma das execuções.
+
+### Failure modes observados
+
+- **C-1 (C, novo, conservador): alarme falso por qualificador CONDITION.** O LLM marcou como CONDITION trechos que não condicionam a alíquota:
+  - doc 01 e doc 02: "legislação vigente a partir de 1º de janeiro de 2026" (vigência da lei);
+  - doc 03: "no momento do pagamento ou crédito, o que ocorrer primeiro" (momento da retenção).
+
+  A regra de fusão (`merge_withholding`: qualquer CONDITION/DEFERRAL → LOW) bloqueou os três, **mesmo com a base do IR correta nos três**. O falso alarme é estável nas duas execuções. Ele é o motivo de C ter ficado em 4/6 no roteamento DEFINED. A causa está na combinação da **política de fusão** com a **definição ampla de CONDITION no prompt**, não na leitura do LLM.
+- **C-2 (C, por desenho): desacordo manda para revisão mesmo quando o LLM acerta.** Em CH-01 e CH-10, o determinístico erra por precedência (JCP) e o LLM acerta (DIVIDEND). A regra de desacordo bloqueia (seguro, mas custa automação).
+- **C-3 (todas as variantes): conflito de valor bruto no extrator determinístico (CH-09).** O rótulo "valor bruto" em prosa ("... sobre o valor bruto, resultando em valor líquido de R$ ...") captura o líquido como segundo candidato do bruto, e a confiança de extração vai para LOW (revisão). Fica fora do escopo do LLM, porque valores são determinísticos.
+- **C-4 (C): variação de chamadas de tool** (consulta extra por ticker). Não tem efeito na decisão, mas mostra que a presença e a forma da tool call não são determinísticas. Isso reforça a D-002: a validação não pode depender delas.
+- **B-1 (B): atribuição de qualificador por frase (CH-06).** A exceção do IR foi atribuída à data de aprovação da mesma frase: revisão desnecessária. Visto só no challenge set; não corrigido (D-017).
+- **B-2 (B):** não mapeia papéis de data (0/8) nem descrições sem palavra-chave (CH-03, CH-04). Essas faltas estavam previstas no escopo do B.
+- **Custo operacional de C:** cerca de 1.000× a latência do determinístico (s × ms) e cerca de US$ 0,055 por documento.
+
+### Respostas às perguntas do experimento
+
+1. **O LLM elimina o failure mode perigoso?** Sim. 0 aprovações inseguras e 0 interpretações falsamente confiantes nos dois conjuntos. No doc 01 e no CH-05, a base `EXCESS_OVER_THRESHOLD` foi extraída corretamente. No doc 01, porém, o registro foi para revisão por C-1.
+2. **O patch determinístico também elimina?** Sim, no failure mode observado: doc 01 e CH-05 interpretados, e o doc 01 aprovado. Isso ocorre sem LLM, com 83 ms e custo zero. **Ressalva:** o léxico do B foi escrito conhecendo o doc 01 e se sobrepõe ao CH-05 ("apenas sobre", "ultrapassarem").
+3. **Qual generaliza melhor?** C, com 21/21 contra 10/21 no challenge set, sobretudo em papéis de data (8/8 contra 0/8) e em descrição do evento. É uma medida ciente do autor, não cega.
+4. **Qual introduz novos erros?**
+   - C: alarmes falsos por CONDITION (docs 01 e 02) e revisões por desacordo (CH-01, CH-10);
+   - B: um alarme falso por atribuição de qualificador (CH-06).
+   - Nenhum dos dois introduziu aprovação insegura nem valor inventado.
+5. **Impacto em custo e latência:**
+
+   | | B | C |
+   |---|---|---|
+   | Custo por documento | ~0 | ~US$ 0,055 |
+   | Latência por documento | ~10 ms | ~11 s |
+
+   A 10 mil avisos por mês, C custaria cerca de US$ 550/mês nesta configuração, antes de otimizações (cache de prompt, effort, chamar o LLM só quando necessário).
+6. **O LLM permaneceu grounded?** Sim: 150/150 trechos literais, 0 divergências de referência, 0 falhas de schema. As diferenças entre execuções ficaram na forma (extenso × numérico, tool extra), não no conteúdo normalizado.
+7. **Onde o determinístico deve continuar preferido?**
+   - Identificadores, valores e aritmética, referência, datas com rótulo literal (acordo em todos os casos) e regras de validação;
+   - qualificadores de padrão conhecido (B resolveu o caso crítico sem custo);
+   - e o fluxo em que o template é uniforme: 7/8 documentos do lote, em que A/B já acertam tudo o que é localizável.
+
+### Conclusão
+
+- **O LLM agrega valor real e grounded** em mapeamento semântico (papéis de data, descrição do evento, negação, referências enganosas), onde o determinístico falha de forma estrutural.
+- **O LLM não é necessário para o failure mode perigoso do E-002**: um patch determinístico pequeno resolve.
+- **A política de fusão de C é conservadora demais** com qualificadores (C-1). Há duas saídas testáveis: uma definição mais estreita de CONDITION no prompt (v2), ou bloquear só quando o qualificador altera a base ou a taxa. Nenhuma mudança foi feita, porque o experimento está congelado.
+
+### Next action (proposta, não executada)
+
+**E-004**, se autorizado:
+- (a) holdout **cego** escrito por outra pessoa ou por um agente sem acesso ao código;
+- (b) política de fusão v2 para qualificadores (só bloquear quando alteram a base ou a taxa, ou a definição estreita de CONDITION no prompt v2);
+- (c) **LLM sob demanda**: chamar C só quando o determinístico indica necessidade (campo obrigatório ausente, classificação por precedência ou ambígua, qualificador detectado), medindo custo, latência e segurança contra C sempre ligado (H-25).
+

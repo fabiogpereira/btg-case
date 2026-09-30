@@ -1,0 +1,1104 @@
+{
+  "schema_version": "semantic-record/0.1",
+  "document": {
+    "sha256": "37f846a73cb5486b543bb1e580144c8d94eafee4aa7396424637c063a3bfbb83",
+    "file_name": "04_rede_varejo_jcp_sem_data.pdf",
+    "size_bytes": 3117,
+    "pages": 1,
+    "text_layer": {
+      "usable": true,
+      "alnum_chars": 972,
+      "min_alnum_chars_per_page": 100,
+      "reason": null
+    }
+  },
+  "extraction": {
+    "method": "native_text_layer+deterministic_rules",
+    "status": "COMPLETED",
+    "failure_mode": null,
+    "unsupported_fields": [
+      "fraction_adjustment_period"
+    ],
+    "title": "Juros sobre o Capital Próprio"
+  },
+  "classification": {
+    "event_type": "JCP",
+    "decision_rule": "single_type",
+    "signals": {
+      "JCP": [
+        {
+          "rule_id": "event.jcp_juros_capital_proprio",
+          "evidence": {
+            "text": "Juros sobre o Capital Próprio",
+            "start": 283,
+            "end": 312,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.jcp_juros_capital_proprio",
+          "evidence": {
+            "text": "Juros sobre o Capital Próprio",
+            "start": 837,
+            "end": 866,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.jcp_sigla",
+          "evidence": {
+            "text": "JCP",
+            "start": 314,
+            "end": 317,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.jcp_sigla",
+          "evidence": {
+            "text": "JCP",
+            "start": 503,
+            "end": 506,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.jcp_sigla",
+          "evidence": {
+            "text": "JCP",
+            "start": 868,
+            "end": 871,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.jcp_sigla",
+          "evidence": {
+            "text": "JCP",
+            "start": 1018,
+            "end": 1021,
+            "page": 1
+          }
+        }
+      ]
+    },
+    "title": "Juros sobre o Capital Próprio",
+    "title_event_types": [
+      "JCP"
+    ],
+    "confidence": "HIGH",
+    "confidence_reasons": [
+      "SINGLE_TYPE_SIGNALS:JCP"
+    ]
+  },
+  "fields": {
+    "issuer_name": {
+      "status": "found",
+      "value": "Rede Varejo Brasil S.A.",
+      "raw": "REDE VAREJO BRASIL S.A.",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "REDE VAREJO BRASIL S.A.",
+          "start": 0,
+          "end": 23,
+          "page": 1
+        },
+        {
+          "text": "Rede Varejo Brasil S.A.",
+          "start": 150,
+          "end": 173,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "issuer_name.pattern_company_sa"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN",
+        "CORROBORATED:1"
+      ]
+    },
+    "cnpj": {
+      "status": "found",
+      "value": "08.777.666/0001-33",
+      "raw": "08.777.666/0001-33",
+      "source_label": "CNPJ/ME nº",
+      "evidence": [
+        {
+          "text": "CNPJ/ME nº 08.777.666/0001-33",
+          "start": 43,
+          "end": 72,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "cnpj.label_cnpj"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "isin": {
+      "status": "found",
+      "value": "BRRVBRACNOR9",
+      "raw": "BRRVBRACNOR9",
+      "source_label": "ISIN",
+      "evidence": [
+        {
+          "text": "ISIN BRRVBRACNOR9",
+          "start": 1116,
+          "end": 1133,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "isin.label_isin"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "ticker": {
+      "status": "found",
+      "value": "RVBR3",
+      "raw": "RVBR3",
+      "source_label": "Código de negociação",
+      "evidence": [
+        {
+          "text": "Código de negociação RVBR3",
+          "start": 1088,
+          "end": 1114,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ticker.label_codigo_negociacao"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "share_class": {
+      "status": "found",
+      "value": "ON",
+      "raw": "ON",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "por ação ON",
+          "start": 885,
+          "end": 896,
+          "page": 1
+        },
+        {
+          "text": "por ação ON",
+          "start": 947,
+          "end": 958,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "share_class.phrase_por_acao"
+      ],
+      "anchor": "phrase",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "PHRASE_ANCHORED",
+        "CORROBORATED:1"
+      ]
+    },
+    "approval_date": {
+      "status": "found",
+      "value": "2026-06-09",
+      "raw": "09 de junho de 2026",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "reunião realizada em 09 de junho de 2026",
+          "start": 218,
+          "end": 258,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "approval_date.phrase_meeting"
+      ],
+      "anchor": "phrase",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "PHRASE_ANCHORED",
+        "CORROBORATED:1"
+      ]
+    },
+    "record_date": {
+      "status": "found",
+      "value": "2026-06-23",
+      "raw": "23/06/2026",
+      "source_label": "Data-base (“data com”)",
+      "evidence": [
+        {
+          "text": "Data-base (“data com”) 23/06/2026",
+          "start": 975,
+          "end": 1008,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "record_date.label_data_base"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED",
+        "CORROBORATED:1"
+      ]
+    },
+    "ex_date": {
+      "status": "found",
+      "value": "2026-06-24",
+      "raw": "24/06/2026",
+      "source_label": "Data “ex-JCP”",
+      "evidence": [
+        {
+          "text": "Data “ex-JCP” 24/06/2026",
+          "start": 1009,
+          "end": 1033,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ex_date.label_data_ex"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED",
+        "CORROBORATED:1"
+      ]
+    },
+    "payment_date": {
+      "status": "declared_pending",
+      "value": null,
+      "raw": "será oportunamente definida",
+      "source_label": "data de pagamento",
+      "evidence": [
+        {
+          "text": "data de pagamento será oportunamente definida",
+          "start": 543,
+          "end": 588,
+          "page": 1
+        },
+        {
+          "text": "Data de pagamento A definir",
+          "start": 1034,
+          "end": 1061,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "payment_date.label_data_pagamento.pending"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "PENDING_DECLARATION_LABEL_ANCHORED"
+      ]
+    },
+    "gross_amount_per_share": {
+      "status": "found",
+      "value": "0.2050000000",
+      "raw": "0,2050000000",
+      "source_label": "Valor bruto por ação ON",
+      "evidence": [
+        {
+          "text": "Valor bruto por ação ON R$ 0,2050000000",
+          "start": 873,
+          "end": 912,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "gross.label_valor_bruto"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "net_amount_per_share": {
+      "status": "found",
+      "value": "0.1691250000",
+      "raw": "0,1691250000",
+      "source_label": "Valor líquido por ação ON",
+      "evidence": [
+        {
+          "text": "Valor líquido por ação ON R$ 0,1691250000",
+          "start": 933,
+          "end": 974,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "net.label_valor_liquido"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "withholding_tax": {
+      "status": "found",
+      "value": {
+        "rate": "0.175",
+        "base": "GROSS_AMOUNT"
+      },
+      "raw": "17,5",
+      "source_label": "IRRF de",
+      "evidence": [
+        {
+          "text": "IRRF de 17,5%",
+          "start": 336,
+          "end": 349,
+          "page": 1
+        },
+        {
+          "text": "IRRF na fonte 17,5%",
+          "start": 913,
+          "end": 932,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "withholding.label_irrf"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED",
+        "CORROBORATED:1"
+      ]
+    },
+    "currency": {
+      "status": "found",
+      "value": "BRL",
+      "raw": "R$",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "Valor bruto por ação ON R$ 0,2050000000",
+          "start": 873,
+          "end": 912,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "currency.derived_from_gross_symbol"
+      ],
+      "anchor": "derived",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "derived from gross_amount_per_share evidence"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "DERIVED_FROM_SOURCE_FIELD"
+      ]
+    },
+    "ratio": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    }
+  },
+  "event_specific_fields": {},
+  "reference_check": {
+    "found": true,
+    "matched_by": "isin",
+    "query": "BRRVBRACNOR9",
+    "golden_row": {
+      "emissor": "Rede Varejo Brasil S.A.",
+      "cnpj": "08.777.666/0001-33",
+      "isin": "BRRVBRACNOR9",
+      "ticker": "RVBR3",
+      "classe": "ON",
+      "segmento_listagem": "Novo Mercado",
+      "status": "ativo"
+    }
+  },
+  "validations": [
+    {
+      "rule_id": "REF_ISIN_FOUND",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ISIN found in golden records",
+      "observed": {
+        "isin": "BRRVBRACNOR9"
+      }
+    },
+    {
+      "rule_id": "REF_TICKER_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ticker matches golden ticker",
+      "observed": {
+        "extracted": "RVBR3",
+        "golden": "RVBR3"
+      }
+    },
+    {
+      "rule_id": "REF_CNPJ_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "cnpj matches golden cnpj",
+      "observed": {
+        "extracted": "08.777.666/0001-33",
+        "golden": "08.777.666/0001-33"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "issuer_name matches golden emissor",
+      "observed": {
+        "extracted": "Rede Varejo Brasil S.A.",
+        "golden": "Rede Varejo Brasil S.A."
+      }
+    },
+    {
+      "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "share_class matches golden classe",
+      "observed": {
+        "extracted": "ON",
+        "golden": "ON"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_ACTIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "golden status = ativo",
+      "observed": {
+        "golden_status": "ativo"
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_PRESENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "all required fields present",
+      "observed": {
+        "required": [
+          "issuer_name",
+          "isin",
+          "ticker",
+          "record_date",
+          "ex_date",
+          "gross_amount_per_share",
+          "currency",
+          "payment_date",
+          "net_amount_per_share",
+          "withholding_tax"
+        ],
+        "not_found": []
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+      "status": "FAIL",
+      "severity": "ERROR",
+      "message": "required fields declared pending: ['payment_date']",
+      "observed": {
+        "declared_pending": [
+          "payment_date"
+        ]
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_DETERMINED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "event type JCP by rule single_type",
+      "observed": {
+        "decision_rule": "single_type"
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "title consistent with content",
+      "observed": {
+        "title": "Juros sobre o Capital Próprio",
+        "title_event_types": [
+          "JCP"
+        ],
+        "content_event_type": "JCP"
+      }
+    },
+    {
+      "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "approval 2026-06-09 vs record 2026-06-23",
+      "observed": {
+        "approval_date": "2026-06-09",
+        "record_date": "2026-06-23"
+      }
+    },
+    {
+      "rule_id": "DATE_RECORD_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "record 2026-06-23 vs ex 2026-06-24",
+      "observed": {
+        "record_date": "2026-06-23",
+        "ex_date": "2026-06-24"
+      }
+    },
+    {
+      "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "ex 2026-06-24; next weekday after record is 2026-06-24 (no holiday calendar, D-006)",
+      "observed": {
+        "record_date": "2026-06-23",
+        "ex_date": "2026-06-24",
+        "expected_ex_date": "2026-06-24"
+      }
+    },
+    {
+      "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: payment_date",
+      "observed": {
+        "settlement_field_status": "declared_pending"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_GROSS_POSITIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "gross = 0.2050000000",
+      "observed": {
+        "gross": "0.2050000000"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "net = gross × (1 − rate), exact",
+      "observed": {
+        "gross": "0.2050000000",
+        "rate": "0.175",
+        "declared_value": "0.1691250000",
+        "calculated_value": "0.1691250000000",
+        "comparison_precision": 10,
+        "rounding_rule": null,
+        "reason": null
+      }
+    }
+  ],
+  "validation_summary": {
+    "PASS": 14,
+    "FAIL": 1,
+    "NOT_EVALUATED": 1
+  },
+  "rule_groups_not_applicable": [
+    "ratio"
+  ],
+  "semantic": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "llm+deterministic",
+      "reasons": [
+        "LLM_AND_DETERMINISTIC_AGREE"
+      ],
+      "qualifiers": [],
+      "interpretation": {
+        "llm_type": "JCP",
+        "deterministic_type": "JCP",
+        "deterministic_rule": "single_type",
+        "rationale": "O aviso anuncia expressamente a aprovação e pagamento de Juros sobre o Capital Próprio, com valor bruto por ação e IRRF, sem outro evento concorrente.",
+        "misleading_mentions": []
+      }
+    },
+    "fields": {
+      "approval_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "ROLE_AGREE"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "record_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "ROLE_AGREE"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "ex_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "ROLE_AGREE"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "payment_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "PENDING_AGREE"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "withholding_tax": {
+        "confidence": "HIGH",
+        "source": "llm",
+        "reasons": [
+          "LLM_INTERPRETED_GROUNDED"
+        ],
+        "qualifiers": [],
+        "interpretation": {
+          "base": "GROSS_AMOUNT"
+        }
+      }
+    },
+    "blocking": []
+  },
+  "confidence_view": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "llm+deterministic",
+      "reasons": [
+        "LLM_AND_DETERMINISTIC_AGREE"
+      ],
+      "qualifiers": [],
+      "interpretation": {
+        "llm_type": "JCP",
+        "deterministic_type": "JCP",
+        "deterministic_rule": "single_type",
+        "rationale": "O aviso anuncia expressamente a aprovação e pagamento de Juros sobre o Capital Próprio, com valor bruto por ação e IRRF, sem outro evento concorrente.",
+        "misleading_mentions": []
+      }
+    },
+    "fields": {
+      "issuer_name": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "cnpj": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "isin": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ticker": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "share_class": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "approval_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "record_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ex_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "payment_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "UNVALIDATED"
+      },
+      "gross_amount_per_share": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "net_amount_per_share": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "withholding_tax": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "currency": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      }
+    }
+  },
+  "llm": {
+    "provider": "anthropic",
+    "model": "claude-opus-5",
+    "effort": "medium",
+    "max_tokens": 8000,
+    "fallbacks": "off",
+    "prompt_version": "semantic-interpreter/v1",
+    "prompt_fingerprint": "cf27c1d6164099c5",
+    "served_models": [
+      "claude-opus-5"
+    ],
+    "attempts": 1,
+    "api_calls": 2,
+    "replayed": false,
+    "tool_calls": [
+      {
+        "name": "lookup_security",
+        "arguments": {
+          "identifier": "BRRVBRACNOR9",
+          "identifier_type": "ISIN"
+        },
+        "result": {
+          "found": true,
+          "issuer": "Rede Varejo Brasil S.A.",
+          "isin": "BRRVBRACNOR9",
+          "ticker": "RVBR3",
+          "share_class": "ON",
+          "status": "ativo"
+        },
+        "latency_us": 12,
+        "error": null
+      }
+    ],
+    "usage": {
+      "input_tokens": 7793,
+      "output_tokens": 674,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "estimated_cost_usd": "0.055815",
+    "latency_ms": 9502,
+    "errors": [],
+    "refusals": [],
+    "served_model_mismatch": false,
+    "parse_or_schema_failures": 0,
+    "request_ids": [
+      "req_011CfYev3kj9QabUh75EUGCB",
+      "req_011CfYevHyyzREny4AWWxWN5"
+    ],
+    "interpretation": {
+      "event": {
+        "type": "JCP",
+        "evidence": [
+          "AVISO AOS ACIONISTAS — Juros sobre o Capital Próprio",
+          "aprovou o pagamento de Juros sobre o Capital Próprio (JCP)",
+          "Tipo de evento Juros sobre o Capital Próprio (JCP)"
+        ],
+        "misleading_mentions": [],
+        "rationale": "O aviso anuncia expressamente a aprovação e pagamento de Juros sobre o Capital Próprio, com valor bruto por ação e IRRF, sem outro evento concorrente."
+      },
+      "dates": [
+        {
+          "role": "approval_date",
+          "status": "FOUND",
+          "value_as_written": "09 de junho de 2026",
+          "evidence": "em reunião realizada em 09 de junho de 2026, aprovou o pagamento"
+        },
+        {
+          "role": "record_date",
+          "status": "FOUND",
+          "value_as_written": "23/06/2026",
+          "evidence": "Data-base (“data com”) 23/06/2026"
+        },
+        {
+          "role": "ex_date",
+          "status": "FOUND",
+          "value_as_written": "24/06/2026",
+          "evidence": "Data “ex-JCP” 24/06/2026"
+        },
+        {
+          "role": "payment_date",
+          "status": "PENDING",
+          "value_as_written": "A definir (vide aviso complementar)",
+          "evidence": "A data de pagamento será oportunamente definida e divulgada"
+        }
+      ],
+      "withholding_tax": {
+        "status": "STATED",
+        "rate_as_written": "17,5%",
+        "base": "GROSS_AMOUNT",
+        "evidence": [
+          "com retenção de IRRF de 17,5% sobre o valor bruto",
+          "IRRF na fonte 17,5%"
+        ],
+        "qualifiers": []
+      },
+      "security_reference": {
+        "identifier_checked": "BRRVBRACNOR9",
+        "found_in_reference": "YES"
+      }
+    },
+    "grounding": {
+      "event_grounded": true,
+      "total_quotes": 9,
+      "grounded_quotes": 9,
+      "ungrounded": []
+    },
+    "reference_divergence": {
+      "tool_called": true,
+      "tool_result_found": true,
+      "llm_reported": "YES",
+      "engine_REF_ISIN_FOUND": "PASS",
+      "divergent": false,
+      "authority": "validation_engine"
+    }
+  },
+  "routing": {
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "PAYMENT_DATE_PENDING"
+    ],
+    "explanations": [
+      "REQUIRED_FIELDS_NOT_PENDING: required fields declared pending: ['payment_date']"
+    ],
+    "gates": [
+      {
+        "gate": "EXTRACTION_POSSIBLE",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REQUIRED_INFORMATION",
+        "status": "BLOCK",
+        "reason_codes": [
+          "PAYMENT_DATE_PENDING"
+        ],
+        "explanations": [
+          "REQUIRED_FIELDS_NOT_PENDING: required fields declared pending: ['payment_date']"
+        ]
+      },
+      {
+        "gate": "SEMANTIC_INTERPRETATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "DETERMINISTIC_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REFERENCE_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "BLOCKING_ERRORS",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      }
+    ]
+  },
+  "audit": {
+    "run_id": "20260930T001024Z-e41c436b",
+    "pipeline_version": "baseline-a/0.1.0+semantic-llm/0.1",
+    "started_at": "2026-09-30T00:11:02.329+00:00",
+    "finished_at": "2026-09-30T00:11:11.861+00:00",
+    "duration_us": 9531711,
+    "stages": [
+      {
+        "stage": "ingest",
+        "started_at": "2026-09-30T00:11:02.329+00:00",
+        "status": "ok",
+        "duration_us": 446
+      },
+      {
+        "stage": "text_layer",
+        "started_at": "2026-09-30T00:11:02.330+00:00",
+        "status": "ok",
+        "duration_us": 17297
+      },
+      {
+        "stage": "extract_candidates",
+        "started_at": "2026-09-30T00:11:02.347+00:00",
+        "status": "ok",
+        "duration_us": 2175
+      },
+      {
+        "stage": "classify",
+        "started_at": "2026-09-30T00:11:02.349+00:00",
+        "status": "ok",
+        "duration_us": 41
+      },
+      {
+        "stage": "semantic_llm",
+        "started_at": "2026-09-30T00:11:02.349+00:00",
+        "status": "ok",
+        "duration_us": 9510533,
+        "api_calls": 2,
+        "tool_calls": 1,
+        "replayed": false
+      },
+      {
+        "stage": "normalize",
+        "started_at": "2026-09-30T00:11:11.860+00:00",
+        "status": "ok",
+        "duration_us": 438
+      },
+      {
+        "stage": "confidence",
+        "started_at": "2026-09-30T00:11:11.860+00:00",
+        "status": "ok",
+        "duration_us": 42
+      },
+      {
+        "stage": "semantic_merge",
+        "started_at": "2026-09-30T00:11:11.860+00:00",
+        "status": "ok",
+        "duration_us": 35
+      },
+      {
+        "stage": "validate",
+        "started_at": "2026-09-30T00:11:11.860+00:00",
+        "status": "ok",
+        "duration_us": 175,
+        "rules_executed": 16
+      },
+      {
+        "stage": "route",
+        "started_at": "2026-09-30T00:11:11.861+00:00",
+        "status": "ok",
+        "duration_us": 53
+      }
+    ],
+    "errors": [],
+    "retries": 0,
+    "extraction_method": "native_text_layer+deterministic_rules",
+    "model": "claude-opus-5",
+    "prompt_version": "semantic-interpreter/v1",
+    "validators_executed": [
+      "REF_ISIN_FOUND",
+      "REF_TICKER_CONSISTENT",
+      "REF_CNPJ_CONSISTENT",
+      "REF_ISSUER_NAME_CONSISTENT",
+      "REF_SHARE_CLASS_CONSISTENT",
+      "REF_ISSUER_ACTIVE",
+      "REQUIRED_FIELDS_PRESENT",
+      "REQUIRED_FIELDS_NOT_PENDING",
+      "CLASSIFICATION_DETERMINED",
+      "CLASSIFICATION_TITLE_CONSISTENT",
+      "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "DATE_RECORD_BEFORE_EX",
+      "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "AMOUNT_GROSS_POSITIVE",
+      "AMOUNT_NET_MATCHES_GROSS_AND_TAX"
+    ],
+    "final_decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "PAYMENT_DATE_PENDING"
+    ],
+    "variant": "C"
+  }
+}
