@@ -15,7 +15,13 @@ def text_sha(p: Path) -> str:
     return hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
 
-@pytest.mark.parametrize("path", sorted(FREEZE["files"]))
+# Evolução a partir do E-009 (variante I: juiz com pontilhado em binding_v2.py, parâmetro judge_fn). O comportamento
+# congelado da H é garantido por tests/test_e008_regression.py (replay dos registros oficiais da regressão do E-008).
+EVOLVABLE = {"src/corporate_actions/pipeline.py", "src/corporate_actions/__main__.py",
+             "src/corporate_actions/binding_v2.py"}
+
+
+@pytest.mark.parametrize("path", sorted(set(FREEZE["files"]) - EVOLVABLE))
 def test_pre_ocr_file_unchanged(path):
     assert text_sha(ROOT / path) == FREEZE["files"][path], f"{path} mudou depois do congelamento pré-OCR"
 

@@ -409,3 +409,17 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
   - Dois gatilhos pré-registrados de vision dispararam.
 - **Decision:** OCR local seguro (fail-safe) mas não suficiente para aprovar o doc 07. Pela regra pré-registrada, testar vision (comparativo). Correção do pontilhado no binding é independente e precisa de autorização.
 - **Status:** MODIFIED (seguro e barato; recuperação incompleta; 1 documento — sem taxa de erro)
+
+## N. OCR local × vision (E-009)
+
+### H-37 — Pontilhado de tabela tratado como preenchimento recupera bindings sem criar binding errado
+- **Hypothesis:** Ignorar sequências de 4+ pontos no teste de fim de frase recupera pares "Rótulo ..... VALOR" sem criar binding errado e sem regressão nos conjuntos existentes.
+- **How to test:** `tests/test_dot_leader_i.py` + regressão I × H por replay (E-009) + braço A no doc 07.
+- **Observed result:** (pendente)
+- **Status:** OPEN
+
+### H-38 — Vision como percepção melhora campos críticos do doc 07 sem erro silencioso de dígito
+- **Hypothesis:** Um modelo multimodal transcrevendo literalmente a página recupera campos críticos que o OCR local perde (ticker), sem alterar dígitos, sem identidade errada e sem aprovação insegura, com custo incremental justificável.
+- **How to test:** E-009 parte 2: A × B no mesmo doc 07, mesma pipeline I, regra de decisão pré-registrada.
+- **Observed result:** (pendente)
+- **Status:** OPEN

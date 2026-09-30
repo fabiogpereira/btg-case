@@ -430,6 +430,30 @@ Formato:
   - O motor de OCR é um adaptador de percepção fora da versão congelada.
 - **Garantias:** a G é verificada por replay dos registros oficiais do E-007 (`tests/test_e007_regression.py`); a F, pelos do E-006 e BT-002.
 
+## D-033 — Variante I (`candidate_pre_vision`): pontilhado de tabela não é fim de frase
+
+- **Data:** 2026-09-30
+- **Status:** ACCEPTED (autorizado pelo usuário; vale como candidata pré-vision se a regressão do E-009 passar)
+- **Tipo:** arquitetura (determinística)
+- **Decisão:** I = H com o juiz de binding `binding_v2.judge_dot_leader`.
+  - Uma sequência de 4 ou mais pontos (com ou sem um espaço entre eles) no trecho entre rótulo e valor é preenchimento de tabela e não conta como fim de frase.
+  - Reticências (3 pontos ou "…") e ponto final continuam sendo pontuação.
+  - Pontilhado seguido de texto residual e ponto ("......xyz. VALOR") continua rejeitado (conservador).
+  - As outras regras (rótulo anota o valor anterior, pista de outro campo) não mudam. Não há regra por documento.
+- **Garantias:** a H é verificada por replay (`tests/test_e008_regression.py`).
+
+## D-034 — E-009: vision só como camada de percepção, comparada ao OCR local com a pipeline fixa
+
+- **Data:** 2026-09-30
+- **Status:** ACCEPTED
+- **Tipo:** protocolo experimental
+- **Decisão:**
+  - A única variável é a percepção: A = Tesseract (E-008), B = `claude-opus-5` transcrevendo a página renderizada.
+  - O prompt de transcrição é literal e congelado (fingerprint `690896745b07273a`), com saída estruturada (linhas + tokens incertos), sem ferramentas, sem dados de referência e sem fallback. O modelo não aceita temperatura.
+  - As duas saídas entram na mesma pipeline I congelada, com o mesmo LLM semântico e o mesmo cache novo.
+  - Sem combinação, voto, ensemble ou correção cruzada; golden records nunca corrigem leitura.
+  - Uma execução oficial. A regra de decisão está pré-registrada em `evaluation/e009.py`.
+
 ---
 
 ## Decisões deliberadamente adiadas (não são decisões)

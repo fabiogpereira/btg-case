@@ -15,6 +15,8 @@ Estratégia (decisão tardia, sem regra por rótulo):
    registra `distinct_values > 1`, a confiança cai para LOW e o campo obrigatório vai para revisão (mecanismo existente).
 Mais o binding "DATA (rótulo)" do v1. Candidatos não ancorados em rótulo (frase, padrão) não são tocados.
 Cada par considerado fica em `record.binding` (decisão, motivo, distância do gap, travessia de linha).
+
+Variante I (E-009): mesmo algoritmo com `judge_dot_leader`, que distingue pontilhado de tabela de pontuação real.
 """
 import re
 
@@ -36,6 +38,20 @@ MONEY = {"gross_amount_per_share", "net_amount_per_share", "tax_cost_per_share"}
 
 def _base_rule(rule_id):
     return rule_id.removesuffix(".pending").removesuffix(".v2fmt")
+
+
+# Pontilhado de tabela ("Rótulo ........ VALOR"): 4+ pontos seguidos, com ou sem um espaço entre eles. É preenchimento
+# de layout, não pontuação. Reticências (3 pontos, ou "…") e ponto final continuam sendo pontuação real.
+DOT_LEADER = r"(?:[.·][ \t]?){4,}"
+
+
+def judge_dot_leader(text, field, label_start, label_end, value_start):
+    """`binding.judge` com uma única diferença: o teste de fim de frase ignora pontilhados de tabela."""
+    reason = judge(text, field, label_start, label_end, value_start)
+    if reason != "CROSSES_SENTENCE":
+        return reason
+    gap = re.sub(DOT_LEADER, " ", text[label_end:value_start])
+    return "CROSSES_SENTENCE" if re.search(r"[.;]\s", gap) else None
 
 
 def _pairs(text, field, rules):
@@ -64,7 +80,7 @@ def _pairs(text, field, rules):
     return out
 
 
-def apply_best_binding(extraction, tl) -> list[dict]:
+def apply_best_binding(extraction, tl, judge_fn=judge) -> list[dict]:
     text = tl.normalized_text
     breaks = line_breaks(tl)
     audit = []
@@ -74,7 +90,7 @@ def apply_best_binding(extraction, tl) -> list[dict]:
                 if not (c.anchor == "label" and _base_rule(c.rule_id) in label_rules)]
         valid_by_end = {}
         for p in _pairs(text, field, rules):
-            reason = judge(text, field, p["label_start"], p["label_end"], p["value_start"])
+            reason = judge_fn(text, field, p["label_start"], p["label_end"], p["value_start"])
             p["gap_chars"] = p["value_start"] - p["label_end"]
             p["crosses_line"] = any(p["label_end"] <= b < p["value_start"] for b in breaks)
             p["reason"] = reason

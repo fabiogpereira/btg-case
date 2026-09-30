@@ -1667,3 +1667,25 @@ Nas duas falhas, a pipeline congelada registrou `PROCESSING_ERROR` → REVIEW_RE
   2. se o texto chega sem pontilhado ambíguo;
   3. se vision introduz erro silencioso de dígito, que é o risco principal de modelos generativos e que o OCR local não teve.
 - A correção do pontilhado no binding é independente de vision e pode ser avaliada à parte, com autorização.
+
+## E-009 — Correção de pontilhado (variante I) e OCR local × vision no doc 07 (pré-registro)
+
+- **Checkpoint anterior:** `e008-final` → `f933e32`.
+- **Parte 1 — pontilhado (D-033):**
+  - variante I = H + `judge_dot_leader`;
+  - 10 testes (`tests/test_dot_leader_i.py`): pontilhado longo, 5 pontos, pontos espaçados, reticências reais, ponto final, tabela com vários campos, tabela que atravessa outro campo, rótulo que anota o valor anterior, pontilhado com resíduo, e o juiz da H inalterado;
+  - replay da H em `tests/test_e008_regression.py`;
+  - regressão I × H por replay nos quatro conjuntos, com os critérios da docstring de `evaluation/e009.py`.
+- **Parte 2 — A (OCR local) × B (vision), D-034:**
+  - doc 07 com a pipeline I congelada;
+  - adaptador de vision em `src/perception/vision_transcriber.py`;
+  - fumaça sem API em `tests/test_vision_transcriber_smoke.py`, que também verifica a ausência de dados de referência no prompt;
+  - regra de decisão fixada antes da execução.
+
+```bash
+python -m evaluation.e009 regress-run  --out outputs/experiments/E-009_ocr_vs_vision/regression
+python -m evaluation.e009 regress-eval --out outputs/experiments/E-009_ocr_vs_vision/regression/evaluation
+python -m evaluation.e009 perceive --arm A --out outputs/experiments/E-009_ocr_vs_vision/arm_A_ocr
+python -m evaluation.e009 perceive --arm B --out outputs/experiments/E-009_ocr_vs_vision/arm_B_vision
+python -m evaluation.e009 compare --out outputs/experiments/E-009_ocr_vs_vision/comparison
+```
