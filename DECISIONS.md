@@ -411,6 +411,25 @@ Formato:
   - Nada muda em `validation.py`, `extraction.py`, `routing.py`, `profiles.py` ou `hardening.py` (congelados): os módulos novos pós-processam.
   - A F é garantida por replay (`tests/test_e006_regression.py`, 43 registros oficiais do E-006 e do BT-002).
 
+## D-032 — Variante H (`candidate_pre_ocr`): binding v2 e hook de fallback de texto
+
+- **Data:** 2026-09-30
+- **Status:** ACCEPTED (implementação; vale como candidata pré-OCR se a regressão do E-008 passar)
+- **Tipo:** arquitetura (determinística)
+- **Decisão:** H = G com a seleção de binding trocada por `binding_v2.py`. O extrator não decide cedo:
+  - são coletados todos os pares rótulo → valor com a sintaxe do extrator base;
+  - cada par é julgado pelas regras do binding v1;
+  - para cada valor fica o par válido de rótulo mais próximo, e os demais são registrados como `SUPERSEDED`;
+  - pares válidos com valores diferentes seguem como candidatos, e a divergência vira LOW → revisão (sem vencedor claro).
+  - Não há regra por rótulo. Identidade, semântica LLM, detector, qualificadores e roteamento são os da G.
+- **Hook `text_fallback`** em `process_document`/`run_batch`: inativo por padrão, entra na versão pré-OCR congelada.
+  - Só é chamado quando a camada de texto nativa não é utilizável (`NO_USABLE_TEXT_LAYER`), nunca pelo nome do arquivo.
+  - O texto obtido segue exatamente o mesmo pipeline.
+  - A identidade continua sendo o SHA-256 do PDF.
+  - O método de extração e a auditoria do fallback ficam no registro.
+  - O motor de OCR é um adaptador de percepção fora da versão congelada.
+- **Garantias:** a G é verificada por replay dos registros oficiais do E-007 (`tests/test_e007_regression.py`); a F, pelos do E-006 e BT-002.
+
 ---
 
 ## Decisões deliberadamente adiadas (não são decisões)

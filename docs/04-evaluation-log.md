@@ -1528,3 +1528,22 @@ Depois da primeira saída da regressão, nada muda na G. Se houver cache miss re
 - **Condições para o OCR:**
   - medir bindings errados e identidade errada como métricas de segurança de primeira classe;
   - a correção do item 1 e qualquer relaxamento de pistas léxicas exigem autorização própria.
+
+## E-008 — Pré-OCR (variante H) e OCR local no doc 07 (H1)
+
+### Parte 1 — correção de rótulo repetido e regressão pré-OCR (pré-registro)
+
+- **Checkpoint anterior:** `e007-final` → `f49795f`.
+- **Variante H** (`candidate_pre_ocr`, schema `semantic-record/0.6`): G + `binding_v2.py` + hook opcional `text_fallback` (D-032).
+- **Testes:**
+  - 11 testes novos (`tests/test_binding_v2_h.py`), com frases sintéticas próprias: rótulo repetido distante × próximo; o mesmo texto no binding v1 perde o valor (defeito do E-007); dois rótulos válidos para o mesmo valor; dois valores igualmente plausíveis → LOW; rótulo antes do valor; rótulo depois do valor; outro rótulo no meio; linhas diferentes; pendência; valor monetário repetido; ambiguidade → revisão de ponta a ponta.
+  - Replay da G (43 registros oficiais do E-007) em `tests/test_e007_regression.py`.
+- **Desenvolvimento:** só no case original. Lá, a H é idêntica à G (mesmos campos e roteamento); aparecem apenas pares `SUPERSEDED` como "Data-base (“data com”) DATA".
+- **Avaliação pré-registrada:** `src/evaluation/e008.py`, replay sem rede, H × G. Critérios:
+  1. enhanced unsafe = 0;
+  2. bindings errados = 0;
+  3. identidade inalterada;
+  4. original sem regressão material;
+  5. bindings corretos perdidos H ≤ G.
+
+  Se 1–3 falharem, parar e avisar o usuário.

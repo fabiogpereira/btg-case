@@ -22,7 +22,8 @@ def text_sha(p: Path) -> str:
 # Evolução a partir do E-007 (ramo aditivo da variante G). O comportamento congelado da F é garantido por
 # tests/test_e006_regression.py (replay dos registros oficiais do E-006 e do BT-002). Estado exato: tag `candidate-F`.
 EVOLVABLE = {"src/corporate_actions/pipeline.py", "src/corporate_actions/__main__.py"}
-ADDED_AFTER_FREEZE = {"src/corporate_actions/identity.py", "src/corporate_actions/binding.py"}   # só a G usa
+ADDED_AFTER_FREEZE = {"src/corporate_actions/identity.py", "src/corporate_actions/binding.py",   # G (E-007)
+                      "src/corporate_actions/binding_v2.py"}                                             # H (E-008)
 
 
 @pytest.mark.parametrize("path", sorted(set(FREEZE["files"]) - EVOLVABLE))
