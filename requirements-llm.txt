@@ -1,0 +1,4 @@
+# LLM semântico e vision (provedor Anthropic). Opcional: sem isto, rodam as variantes determinísticas e o replay
+# de caches só funciona com o SDK instalado.
+-r requirements.txt
+anthropic==1.9.0

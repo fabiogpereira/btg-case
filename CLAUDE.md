@@ -9,10 +9,12 @@ Este arquivo orienta qualquer agente/pessoa que trabalhe aqui. Ler antes de qual
 
 ## 0. Fase atual
 
-**Fase 0 — Entendimento do problema, hipóteses e gabarito.**
+**Entrega técnica.** A solução final é a variante K (tag `final-integration`; arquitetura em D-036); o README descreve a
+entrega. Implementação encerrada: não alterar lógica, prompts, validadores, roteamento, OCR ou vision sem autorização.
 Gabarito manual em `tests/ground_truth/` (formato em `tests/ground_truth/README.md`). Qualquer mudança no gabarito exige incrementar `ground_truth_version` e justificar.
-**E-003 congelado** (D-019): não alterar código de A/B/C, avaliação, gabaritos, challenge set ou prompt a partir de resultados; `tests/test_e003_freeze.py` verifica. Experimentos de LLM usam configuração fixa, com fallback desligado (D-018).
-Estado atual e próximos passos: ver `docs/04-evaluation-log.md` e `DECISIONS.md`.
+Cada experimento (E-003 em diante) está congelado por hash e/ou por replay dos registros oficiais (`tests/test_e0*_freeze.py`,
+`tests/test_e0*_regression.py`); experimentos de LLM usam configuração fixa, com fallback desligado (D-018).
+Histórico e decisões: `docs/04-evaluation-log.md` e `DECISIONS.md`.
 
 ---
 
