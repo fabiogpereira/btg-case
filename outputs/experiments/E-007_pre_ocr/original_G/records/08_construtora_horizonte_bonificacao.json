@@ -1,0 +1,1103 @@
+{
+  "schema_version": "semantic-record/0.5",
+  "document": {
+    "sha256": "a509637f4b258454309e1d21e81beca56701a78624b8a6a6f9a6b0ec9389b0e5",
+    "file_name": "08_construtora_horizonte_bonificacao.pdf",
+    "size_bytes": 3095,
+    "pages": 1,
+    "text_layer": {
+      "usable": true,
+      "alnum_chars": 969,
+      "min_alnum_chars_per_page": 100,
+      "reason": null
+    }
+  },
+  "binding": [
+    {
+      "field": "record_date",
+      "rule_id": "record_date.label_data_base",
+      "raw": "18/06/2026",
+      "evidence": "Data-base (“data com”) 18/06/2026",
+      "decision": "BOUND",
+      "reason": null,
+      "crosses_line": true
+    },
+    {
+      "field": "ex_date",
+      "rule_id": "ex_date.label_data_ex",
+      "raw": "19/06/2026",
+      "evidence": "Data “ex-bonificação” 19/06/2026",
+      "decision": "BOUND",
+      "reason": null,
+      "crosses_line": true
+    },
+    {
+      "field": "share_credit_date",
+      "rule_id": "share_credit_date.label_credito_acoes",
+      "raw": "26/06/2026",
+      "evidence": "Crédito das ações bonificadas 26/06/2026",
+      "decision": "BOUND",
+      "reason": null,
+      "crosses_line": true
+    },
+    {
+      "field": "tax_cost_per_share",
+      "rule_id": "tax_cost.label_custo_atribuido",
+      "raw": "7,820000",
+      "evidence": "custo unitário atribuído às ações bonificadas, para fins fiscais, é de R$ 7,820000",
+      "decision": "BOUND",
+      "reason": null,
+      "crosses_line": false
+    },
+    {
+      "field": "tax_cost_per_share",
+      "rule_id": "tax_cost.label_custo_atribuido",
+      "raw": "7,820000",
+      "evidence": "Custo atribuído (base fiscal) R$ 7,820000",
+      "decision": "BOUND",
+      "reason": null,
+      "crosses_line": true
+    },
+    {
+      "field": "record_date",
+      "rule_id": "record_date.label_data_com.trailing_parenthetical",
+      "raw": "18 de junho de 2026",
+      "evidence": "18 de junho de 2026 (“data com”)",
+      "decision": "BOUND",
+      "reason": "VALUE_FOLLOWED_BY_PARENTHETICAL_LABEL"
+    }
+  ],
+  "identity": {
+    "identity_method": "UNRESOLVED",
+    "identifiers_used": {
+      "isin": "BRCNHZACNOR5"
+    },
+    "matched_reference": null,
+    "status": "UNRESOLVED",
+    "reason_code": "REFERENCE_NOT_FOUND",
+    "conflicts": []
+  },
+  "extraction": {
+    "method": "native_text_layer+deterministic_rules",
+    "status": "COMPLETED",
+    "failure_mode": null,
+    "unsupported_fields": [
+      "fraction_adjustment_period"
+    ],
+    "title": "Bonificação em Ações"
+  },
+  "classification": {
+    "event_type": "BONUS_SHARES",
+    "decision_rule": "single_type",
+    "signals": {
+      "BONUS_SHARES": [
+        {
+          "rule_id": "event.bonus_bonificacao",
+          "evidence": {
+            "text": "bonificação",
+            "start": 349,
+            "end": 360,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.bonus_bonificacao",
+          "evidence": {
+            "text": "bonificação",
+            "start": 388,
+            "end": 399,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.bonus_bonificacao",
+          "evidence": {
+            "text": "bonificação",
+            "start": 639,
+            "end": 650,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.bonus_bonificacao",
+          "evidence": {
+            "text": "Bonificação",
+            "start": 851,
+            "end": 862,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.bonus_bonificacao",
+          "evidence": {
+            "text": "bonificação",
+            "start": 1012,
+            "end": 1023,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.bonus_acoes_bonificadas",
+          "evidence": {
+            "text": "ações bonificadas",
+            "start": 715,
+            "end": 732,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.bonus_acoes_bonificadas",
+          "evidence": {
+            "text": "ações bonificadas",
+            "start": 1048,
+            "end": 1065,
+            "page": 1
+          }
+        }
+      ]
+    },
+    "title": "Bonificação em Ações",
+    "title_event_types": [
+      "BONUS_SHARES"
+    ],
+    "confidence": "HIGH",
+    "confidence_reasons": [
+      "SINGLE_TYPE_SIGNALS:BONUS_SHARES"
+    ]
+  },
+  "fields": {
+    "issuer_name": {
+      "status": "found",
+      "value": "Construtora Horizonte S.A.",
+      "raw": "CONSTRUTORA HORIZONTE S.A.",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "CONSTRUTORA HORIZONTE S.A.",
+          "start": 0,
+          "end": 26,
+          "page": 1
+        },
+        {
+          "text": "Construtora Horizonte S.A.",
+          "start": 144,
+          "end": 170,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "issuer_name.pattern_company_sa"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN",
+        "CORROBORATED:1"
+      ]
+    },
+    "cnpj": {
+      "status": "found",
+      "value": "09.888.999/0001-21",
+      "raw": "09.888.999/0001-21",
+      "source_label": "CNPJ/ME nº",
+      "evidence": [
+        {
+          "text": "CNPJ/ME nº 09.888.999/0001-21",
+          "start": 46,
+          "end": 75,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "cnpj.label_cnpj"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "isin": {
+      "status": "found",
+      "value": "BRCNHZACNOR5",
+      "raw": "BRCNHZACNOR5",
+      "source_label": "ISIN",
+      "evidence": [
+        {
+          "text": "ISIN BRCNHZACNOR5",
+          "start": 1105,
+          "end": 1122,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "isin.label_isin"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "ticker": {
+      "status": "found",
+      "value": "CNHZ3",
+      "raw": "CNHZ3",
+      "source_label": "Código de negociação",
+      "evidence": [
+        {
+          "text": "Código de negociação CNHZ3",
+          "start": 1077,
+          "end": 1103,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ticker.label_codigo_negociacao"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "share_class": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "approval_date": {
+      "status": "found",
+      "value": "2026-06-04",
+      "raw": "04 de junho de 2026",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "Assembleia Geral Extraordinária de 04 de junho de 2026",
+          "start": 206,
+          "end": 260,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "approval_date.phrase_meeting"
+      ],
+      "anchor": "phrase",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "PHRASE_ANCHORED",
+        "CORROBORATED:1"
+      ]
+    },
+    "record_date": {
+      "status": "found",
+      "value": "2026-06-18",
+      "raw": "18 de junho de 2026",
+      "source_label": "data com",
+      "evidence": [
+        {
+          "text": "18 de junho de 2026 (“data com”)",
+          "start": 566,
+          "end": 598,
+          "page": 1
+        },
+        {
+          "text": "Data-base (“data com”) 18/06/2026",
+          "start": 969,
+          "end": 1002,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "record_date.label_data_base",
+        "record_date.label_data_com.trailing_parenthetical"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED",
+        "CORROBORATED:1"
+      ]
+    },
+    "ex_date": {
+      "status": "found",
+      "value": "2026-06-19",
+      "raw": "19/06/2026",
+      "source_label": "Data “ex-bonificação”",
+      "evidence": [
+        {
+          "text": "Data “ex-bonificação” 19/06/2026",
+          "start": 1003,
+          "end": 1035,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ex_date.label_data_ex"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED",
+        "CORROBORATED:1"
+      ]
+    },
+    "payment_date": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "gross_amount_per_share": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "net_amount_per_share": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "withholding_tax": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "currency": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "ratio": {
+      "status": "found",
+      "value": {
+        "shares_held": "20",
+        "bonus_shares": "1",
+        "percentage": "0.05"
+      },
+      "raw": "1 (uma) ação nova para cada 20 (vinte) ações",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "1 (uma) ação nova para cada 20 (vinte) ações",
+          "start": 431,
+          "end": 475,
+          "page": 1
+        },
+        {
+          "text": "1 ação nova para cada 20 ações (5%)",
+          "start": 882,
+          "end": 917,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ratio.phrase_bonus_new_per_held"
+      ],
+      "anchor": "phrase",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "PHRASE_ANCHORED",
+        "CORROBORATED:1"
+      ]
+    },
+    "tax_treatment": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "non-cash event"
+      ],
+      "confidence": null,
+      "confidence_reasons": []
+    }
+  },
+  "event_specific_fields": {
+    "share_credit_date": {
+      "status": "found",
+      "value": "2026-06-26",
+      "raw": "26/06/2026",
+      "source_label": "Crédito das ações bonificadas",
+      "evidence": [
+        {
+          "text": "Crédito das ações bonificadas 26/06/2026",
+          "start": 1036,
+          "end": 1076,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "share_credit_date.label_credito_acoes"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "tax_cost_per_share": {
+      "status": "found",
+      "value": {
+        "amount": "7.820000",
+        "currency": "BRL"
+      },
+      "raw": "7,820000",
+      "source_label": "custo unitário atribuído às ações bonificadas, para fins fiscais, é de",
+      "evidence": [
+        {
+          "text": "custo unitário atribuído às ações bonificadas, para fins fiscais, é de R$ 7,820000",
+          "start": 687,
+          "end": 769,
+          "page": 1
+        },
+        {
+          "text": "Custo atribuído (base fiscal) R$ 7,820000",
+          "start": 918,
+          "end": 959,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "tax_cost.label_custo_atribuido"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED",
+        "CORROBORATED:1"
+      ]
+    }
+  },
+  "reference_check": {
+    "found": false,
+    "matched_by": null,
+    "query": "BRCNHZACNOR5",
+    "golden_row": null
+  },
+  "validations": [
+    {
+      "rule_id": "REF_ISIN_FOUND",
+      "status": "FAIL",
+      "severity": "ERROR",
+      "message": "ISIN not found in golden records (exact match)",
+      "observed": {
+        "isin": "BRCNHZACNOR5"
+      }
+    },
+    {
+      "rule_id": "REF_TICKER_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: reference_row",
+      "observed": {}
+    },
+    {
+      "rule_id": "REF_CNPJ_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: reference_row",
+      "observed": {}
+    },
+    {
+      "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: reference_row",
+      "observed": {}
+    },
+    {
+      "rule_id": "REF_ISSUER_ACTIVE",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: reference_row",
+      "observed": {}
+    },
+    {
+      "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "WARNING",
+      "message": "missing dependency: reference_row",
+      "observed": {}
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_PRESENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "all required fields present",
+      "observed": {
+        "required": [
+          "issuer_name",
+          "isin",
+          "ticker",
+          "record_date",
+          "ex_date",
+          "ratio"
+        ],
+        "not_found": []
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "no required field pending",
+      "observed": {
+        "declared_pending": []
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_DETERMINED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "event type BONUS_SHARES by rule single_type",
+      "observed": {
+        "decision_rule": "single_type"
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "title consistent with content",
+      "observed": {
+        "title": "Bonificação em Ações",
+        "title_event_types": [
+          "BONUS_SHARES"
+        ],
+        "content_event_type": "BONUS_SHARES"
+      }
+    },
+    {
+      "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "approval 2026-06-04 vs record 2026-06-18",
+      "observed": {
+        "approval_date": "2026-06-04",
+        "record_date": "2026-06-18"
+      }
+    },
+    {
+      "rule_id": "DATE_RECORD_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "record 2026-06-18 vs ex 2026-06-19",
+      "observed": {
+        "record_date": "2026-06-18",
+        "ex_date": "2026-06-19"
+      }
+    },
+    {
+      "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "ex 2026-06-19; next weekday after record is 2026-06-19 (no holiday calendar, D-006)",
+      "observed": {
+        "record_date": "2026-06-18",
+        "ex_date": "2026-06-19",
+        "expected_ex_date": "2026-06-19"
+      }
+    },
+    {
+      "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "share_credit_date 2026-06-26 vs ex 2026-06-19",
+      "observed": {
+        "settlement_field": "share_credit_date",
+        "settlement_date": "2026-06-26",
+        "ex_date": "2026-06-19"
+      }
+    },
+    {
+      "rule_id": "RATIO_POSITIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ratio = {'shares_held': Decimal('20'), 'bonus_shares': Decimal('1'), 'percentage': Decimal('0.05')}",
+      "observed": {
+        "ratio": {
+          "shares_held": "20",
+          "bonus_shares": "1",
+          "percentage": "0.05"
+        }
+      }
+    },
+    {
+      "rule_id": "RATIO_PERCENTAGE_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "bonus_shares = percentage × shares_held",
+      "observed": {
+        "ratio": {
+          "shares_held": "20",
+          "bonus_shares": "1",
+          "percentage": "0.05"
+        }
+      }
+    },
+    {
+      "rule_id": "REF_IDENTITY_RESOLVED",
+      "status": "FAIL",
+      "severity": "ERROR",
+      "message": "identity unresolved: REFERENCE_NOT_FOUND []",
+      "observed": {
+        "identity_method": "UNRESOLVED",
+        "identifiers_used": {
+          "isin": "BRCNHZACNOR5"
+        },
+        "reason_code": "REFERENCE_NOT_FOUND",
+        "conflicts": []
+      }
+    }
+  ],
+  "validation_summary": {
+    "FAIL": 2,
+    "NOT_EVALUATED": 5,
+    "PASS": 10
+  },
+  "rule_groups_not_applicable": [
+    "amounts"
+  ],
+  "semantic_need": {
+    "llm_required": false,
+    "llm_trigger_reasons": [],
+    "signals": []
+  },
+  "semantic": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "deterministic_patch",
+      "reasons": [
+        "SINGLE_TYPE"
+      ],
+      "qualifiers": [],
+      "interpretation": null
+    },
+    "fields": {
+      "record_date": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "ex_date": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "approval_date": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "ratio": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "share_credit_date": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      }
+    },
+    "blocking": [],
+    "negated_signals": [],
+    "resolutions": [],
+    "material_qualifiers": [],
+    "semantic_notes": [],
+    "issuer_resolution": {
+      "groups": {
+        "construtora horizonte s.a.": {
+          "roles": [
+            "ANNOUNCER",
+            "CNPJ_ADJACENT",
+            "LETTERHEAD"
+          ],
+          "third_party_only": false
+        }
+      },
+      "aliases": {},
+      "decision": "V1_RESOLUTION"
+    },
+    "tax_statements": [],
+    "revocation": [],
+    "contradictions": [],
+    "material_coverage": [
+      {
+        "category": "date_role",
+        "source": "deterministic",
+        "evidence": "Crédito das ações bonificadas 26/06/2026",
+        "expected_target": "share_credit_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "ratio",
+        "source": "deterministic",
+        "evidence": "1 (uma) ação nova para cada 20 (vinte) ações",
+        "expected_target": "ratio",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      }
+    ],
+    "event_status": "ACTIVE_OR_NOT_STATED"
+  },
+  "confidence_view": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "deterministic_patch",
+      "reasons": [
+        "SINGLE_TYPE"
+      ],
+      "qualifiers": [],
+      "interpretation": null
+    },
+    "fields": {
+      "issuer_name": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      },
+      "cnpj": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      },
+      "isin": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CONTRADICTED"
+      },
+      "ticker": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      },
+      "approval_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "record_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ex_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ratio": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "share_credit_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "tax_cost_per_share": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      }
+    }
+  },
+  "routing": {
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "REFERENCE_NOT_FOUND"
+    ],
+    "explanations": [
+      "REF_ISIN_FOUND: ISIN not found in golden records (exact match)",
+      "REF_IDENTITY_RESOLVED: identity unresolved: REFERENCE_NOT_FOUND []"
+    ],
+    "gates": [
+      {
+        "gate": "EXTRACTION_POSSIBLE",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REQUIRED_INFORMATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "SEMANTIC_INTERPRETATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "DETERMINISTIC_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REFERENCE_VALIDATION",
+        "status": "BLOCK",
+        "reason_codes": [
+          "REFERENCE_NOT_FOUND"
+        ],
+        "explanations": [
+          "REF_ISIN_FOUND: ISIN not found in golden records (exact match)",
+          "REF_IDENTITY_RESOLVED: identity unresolved: REFERENCE_NOT_FOUND []"
+        ]
+      },
+      {
+        "gate": "BLOCKING_ERRORS",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      }
+    ]
+  },
+  "audit": {
+    "run_id": "e007-replay-original",
+    "pipeline_version": "baseline-a/0.1.0+candidate-f-pre-ocr-hardening/0.1",
+    "started_at": "2026-09-30T02:55:32.533+00:00",
+    "finished_at": "2026-09-30T02:55:32.546+00:00",
+    "duration_us": 13678,
+    "stages": [
+      {
+        "stage": "ingest",
+        "started_at": "2026-09-30T02:55:32.533+00:00",
+        "status": "ok",
+        "duration_us": 197
+      },
+      {
+        "stage": "text_layer",
+        "started_at": "2026-09-30T02:55:32.533+00:00",
+        "status": "ok",
+        "duration_us": 8497
+      },
+      {
+        "stage": "extract_candidates",
+        "started_at": "2026-09-30T02:55:32.541+00:00",
+        "status": "ok",
+        "duration_us": 2697
+      },
+      {
+        "stage": "classify",
+        "started_at": "2026-09-30T02:55:32.544+00:00",
+        "status": "ok",
+        "duration_us": 273
+      },
+      {
+        "stage": "normalize",
+        "started_at": "2026-09-30T02:55:32.544+00:00",
+        "status": "ok",
+        "duration_us": 273
+      },
+      {
+        "stage": "confidence",
+        "started_at": "2026-09-30T02:55:32.545+00:00",
+        "status": "ok",
+        "duration_us": 17
+      },
+      {
+        "stage": "semantic_patch",
+        "started_at": "2026-09-30T02:55:32.545+00:00",
+        "status": "ok",
+        "duration_us": 910
+      },
+      {
+        "stage": "semantic_need",
+        "started_at": "2026-09-30T02:55:32.545+00:00",
+        "status": "ok",
+        "duration_us": 38,
+        "llm_required": false,
+        "triggers": []
+      },
+      {
+        "stage": "semantic_llm",
+        "started_at": "2026-09-30T02:55:32.546+00:00",
+        "status": "skipped",
+        "reason": "NOT_REQUIRED",
+        "duration_us": 0
+      },
+      {
+        "stage": "hardening_gates",
+        "started_at": "2026-09-30T02:55:32.546+00:00",
+        "status": "ok",
+        "duration_us": 284
+      },
+      {
+        "stage": "validate",
+        "started_at": "2026-09-30T02:55:32.546+00:00",
+        "status": "ok",
+        "duration_us": 81,
+        "rules_executed": 17
+      },
+      {
+        "stage": "route",
+        "started_at": "2026-09-30T02:55:32.546+00:00",
+        "status": "ok",
+        "duration_us": 35
+      }
+    ],
+    "errors": [],
+    "retries": 0,
+    "extraction_method": "native_text_layer+deterministic_rules",
+    "model": null,
+    "prompt_version": null,
+    "validators_executed": [
+      "REF_ISIN_FOUND",
+      "REF_TICKER_CONSISTENT",
+      "REF_CNPJ_CONSISTENT",
+      "REF_SHARE_CLASS_CONSISTENT",
+      "REF_ISSUER_ACTIVE",
+      "REF_ISSUER_NAME_CONSISTENT",
+      "REQUIRED_FIELDS_PRESENT",
+      "REQUIRED_FIELDS_NOT_PENDING",
+      "CLASSIFICATION_DETERMINED",
+      "CLASSIFICATION_TITLE_CONSISTENT",
+      "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "DATE_RECORD_BEFORE_EX",
+      "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "RATIO_POSITIVE",
+      "RATIO_PERCENTAGE_CONSISTENT",
+      "REF_IDENTITY_RESOLVED"
+    ],
+    "final_decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "REFERENCE_NOT_FOUND"
+    ],
+    "variant": "G"
+  }
+}

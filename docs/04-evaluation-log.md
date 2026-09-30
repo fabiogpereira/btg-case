@@ -1443,3 +1443,88 @@ python -m evaluation.e007 eval --out outputs/experiments/E-007_pre_ocr/evaluatio
 ```
 
 Depois da primeira saída da regressão, nada muda na G. Se houver cache miss relevante, a necessidade de API é explicada ao usuário antes de qualquer chamada.
+
+### Resultado (regressão oficial da G por replay, freeze `e007-freeze` → `1f43a96`, sem alterações após a primeira saída)
+
+- **Execução:** `outputs/experiments/E-007_pre_ocr/{original,challenge,blind_derived,bt002}_G`. **0 chamadas de API; custo US$ 0.**
+- **1 cache miss (BT-03):** a G pediu o LLM onde a F não pedia (causa abaixo). O documento foi para revisão por `SEMANTIC_INTERPRETER_FAILED`.
+- **Avaliação:** `evaluation/e007_results.json` (avaliador pré-registrado, inalterado).
+- **BT-002:** a partir daqui é regression set, não blind.
+
+**Segurança**
+
+| | Original | Challenge | Blind-derived | BT-002 |
+|---|---|---|---|---|
+| Aprovações inseguras (enhanced), F → G | 0 → **0** | 0 → **0** | 0 → **0** | 0 → **0** |
+| Aprovações com identidade errada | 0 | 0 | 0 | 0 |
+| Bindings errados aprovados | 0 | 0 | 0 | 0 |
+| Omissões materiais aprovadas | 0 | 0 | 0 | 0 |
+| Aprovações falsas | 0 | 0 | 0 | 0 |
+| Bindings errados em qualquer roteamento, F → G | 0 → 0 | 0 → 0 | 0 → 0 | **1 → 0** (BT2-02) |
+
+**Identidade (G)**
+
+| | Original | Challenge | Blind-derived | BT-002 |
+|---|---|---|---|---|
+| `ISIN_EXACT` | 6 | 11 | 13 | 0 |
+| `TICKER_AND_CNPJ_EXACT` | 0 | 0 | 0 | **9** |
+| `TICKER_AND_ISSUER_EXACT` | 0 | 0 | 0 | 0 |
+| `UNRESOLVED` | 1 (doc 08, fora da base) | 0 | 1 (BT-13, fora da base) | 1 (BT2-10, fora da base) |
+| Conflitos detectados | 0 | 0 | 0 | 0 |
+| Identidade errada | 0 | 0 | 0 | 0 |
+
+- As 3 identidades não resolvidas são os 3 ativos que de fato não estão na base; todas com `REFERENCE_NOT_FOUND`.
+- O BT2-10 passa a ser revisado **pelo motivo certo**. Na F, a ausência na base nem era detectada.
+- Os conflitos (ticker de outro CNPJ, nome parecido, ticker ambíguo, identificador divergente) não ocorreram nos dados. São cobertos pelos testes unitários.
+
+**Binding (G)**
+
+| | Original | Challenge | Blind-derived | BT-002 |
+|---|---|---|---|---|
+| Associações mantidas | 43 | 39 | 50 | 11 |
+| Rejeitadas | 0 | 1 (`CROSSES_OTHER_FIELD_CUE`) | 1 (`CROSSES_SENTENCE`) | 1 (`LABEL_ANNOTATES_PRECEDING_VALUE`) |
+| Binding errado evitado | — | CH-09: rótulo "valor bruto" capturava o valor **líquido** (R$ 0,12375) | — | BT2-02: data-base 13.05 (era a data ex) |
+| Binding correto perdido | 0 | 0 | **BT-03** (data-base 22/09) | 0 |
+
+- No CH-09, o gabarito do challenge set não tem o valor bruto como alvo, então o avaliador não conta essa rejeição como "evitada". O valor rejeitado é o líquido do próprio registro.
+- No BT2-02, "DATA (data-base)" passou a dar a data-base correta (10/05), em acordo com o LLM.
+
+**Utilidade**
+
+| | Original | Challenge | Blind-derived | BT-002 |
+|---|---|---|---|---|
+| Roteamento, F → G | 5/6 → 5/6 | 7/7 → 7/7 | 9/14 → **8/14** | 6/10 → **7/10** |
+| Taxa de revisão | 6/8 → 6/8 | 3/11 → **2/11** | 10/14 → **11/14** | 10/10 → **9/10** |
+| Aprovações corretas | 01, 02 → 01, 02 | 8 → **9** (+CH-09) | 4 → **3** (−BT-03) | 0 → **1** (BT2-01) |
+| False reviews | doc 06 → doc 06 | CH-03, CH-09 → CH-03 | +BT-03 | BT2-01, 02, 03, 05 → BT2-02, 03, 05 |
+
+- BT2-01 é aprovado corretamente por `TICKER_AND_CNPJ_EXACT`: antes, a falta de ISIN era o único bloqueio.
+- BT2-02 continua em revisão por uma limitação anterior à G: o patch B atribui a exceção "imunes ou isentos" aos valores bruto e líquido.
+
+**Critérios de sucesso pré-registrados:** 1–5 atendidos.
+- 1: enhanced unsafe = 0.
+- 2: nenhuma aprovação com identidade errada ou não resolvida.
+- 3: nenhum binding errado aprovado; errados G ≤ F.
+- 4: 9 identidades de nível 2.
+- 5: o original é idêntico à F.
+- 6 (simplicidade e auditabilidade, qualitativo): dois módulos pequenos e determinísticos. Cada decisão fica no registro (`identity`, `binding`). Nenhuma mudança em validação, roteamento ou LLM.
+
+### Novos failure modes (registrados, **não corrigidos**)
+
+1. **Binding correto perdido por deduplicação no extrator** (BT-03, "…na data-base. Data-base: 22/09/2026").
+   - Com duas ocorrências do rótulo antes do mesmo valor, o extrator base mantém só o candidato do rótulo mais distante (deduplica pelo fim do valor).
+   - O binding o rejeita por atravessar frase e não reavalia a ocorrência imediatamente anterior.
+   - É fail-safe (revisão), mas é defeito da G, com correção genérica evidente (julgar a ocorrência de rótulo mais próxima). Exige autorização e transformaria esses conjuntos em regression sets da correção.
+2. **Limite do replay:** quando a G muda o que o detector de necessidade vê, o replay não tem a resposta do LLM (BT-03). O desfecho com LLM ao vivo é desconhecido. Uma chamada (~US$ 0,07) resolveria; não foi feita, porque o resultado por replay é fail-safe e não muda as conclusões.
+3. **As pistas de campo do binding são léxicas** ("a partir de", "pagamento", "líquido"…). Com OCR, erros de caractere numa pista ("a partlr de") podem deixar passar um binding que o texto limpo rejeitaria. A etapa de OCR precisa medir bindings errados explicitamente.
+4. **`TICKER_AND_ISSUER_EXACT` exige igualdade exata do nome** ("S.A." × "S/A" não casa) → `UNRESOLVED` → revisão. Limitação de utilidade, fail-safe por desenho.
+
+### Recomendação: **GO** para iniciar a etapa de OCR
+
+- As duas fragilidades estruturais do BT-002 foram tratadas por invariantes defensáveis, com 0 aprovação insegura em todos os conjuntos.
+- **Identidade:** ISIN ausente deixou de ser bloqueio absoluto, sem permitir identidade ambígua.
+- **Binding:** o binding errado conhecido foi evitado, e um segundo (CH-09), que antes só era segurado pela confiança LOW, também.
+- O defeito novo (item 1) é fail-safe.
+- **Condições para o OCR:**
+  - medir bindings errados e identidade errada como métricas de segurança de primeira classe;
+  - a correção do item 1 e qualquer relaxamento de pistas léxicas exigem autorização própria.

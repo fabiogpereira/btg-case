@@ -1,0 +1,954 @@
+{
+  "schema_version": "semantic-record/0.5",
+  "document": {
+    "sha256": "e22a3b0c7afb65369825cbf6d353ac30447aca3fc8bf8bdfe832bea218232812",
+    "file_name": "BT-08.txt",
+    "size_bytes": 876,
+    "pages": 1,
+    "text_layer": {
+      "usable": true,
+      "alnum_chars": 684,
+      "min_alnum_chars_per_page": 100,
+      "reason": null
+    }
+  },
+  "binding": [
+    {
+      "field": "gross_amount_per_share",
+      "rule_id": "gross.label_valor_bruto",
+      "raw": "0,4000000000",
+      "evidence": "valor bruto de R$ 0,4000000000",
+      "decision": "BOUND",
+      "reason": null,
+      "crosses_line": false
+    }
+  ],
+  "identity": {
+    "identity_method": "ISIN_EXACT",
+    "identifiers_used": {
+      "isin": "BRBNCRACNPR1"
+    },
+    "matched_reference": {
+      "emissor": "Banco Nortecred S.A.",
+      "cnpj": "89.012.345/0001-67",
+      "isin": "BRBNCRACNPR1",
+      "ticker": "BNCR4",
+      "classe": "PN",
+      "segmento_listagem": "Tradicional",
+      "status": "ativo"
+    },
+    "status": "RESOLVED",
+    "reason_code": null,
+    "conflicts": []
+  },
+  "extraction": {
+    "method": "native_text_layer+deterministic_rules",
+    "status": "COMPLETED",
+    "failure_mode": null,
+    "unsupported_fields": [
+      "fraction_adjustment_period"
+    ],
+    "title": "RETIFICAÇÃO"
+  },
+  "classification": {
+    "event_type": "DIVIDEND",
+    "decision_rule": "single_type",
+    "signals": {
+      "DIVIDEND": [
+        {
+          "rule_id": "event.dividend_dividendo",
+          "evidence": {
+            "text": "dividendos",
+            "start": 270,
+            "end": 280,
+            "page": 1
+          }
+        }
+      ]
+    },
+    "title": "RETIFICAÇÃO",
+    "title_event_types": [],
+    "confidence": "HIGH",
+    "confidence_reasons": [
+      "SINGLE_TYPE_SIGNALS:DIVIDEND"
+    ]
+  },
+  "fields": {
+    "issuer_name": {
+      "status": "found",
+      "value": "Banco Nortecred S.A.",
+      "raw": "BANCO NORTECRED S.A.",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "BANCO NORTECRED S.A.",
+          "start": 0,
+          "end": 20,
+          "page": 1
+        },
+        {
+          "text": "Banco Nortecred S.A.",
+          "start": 102,
+          "end": 122,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "issuer_name.pattern_company_sa"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN",
+        "CORROBORATED:1"
+      ]
+    },
+    "cnpj": {
+      "status": "found",
+      "value": "89.012.345/0001-67",
+      "raw": "89.012.345/0001-67",
+      "source_label": "CNPJ nº",
+      "evidence": [
+        {
+          "text": "CNPJ nº 89.012.345/0001-67",
+          "start": 21,
+          "end": 47,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "cnpj.label_cnpj"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "isin": {
+      "status": "found",
+      "value": "BRBNCRACNPR1",
+      "raw": "BRBNCRACNPR1",
+      "source_label": "ISIN",
+      "evidence": [
+        {
+          "text": "ISIN BRBNCRACNPR1",
+          "start": 336,
+          "end": 353,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "isin.label_isin"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "ticker": {
+      "status": "found",
+      "value": "BNCR4",
+      "raw": "BNCR4",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "BNCR4",
+          "start": 329,
+          "end": 334,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ticker.pattern"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN"
+      ]
+    },
+    "share_class": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "approval_date": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "record_date": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "ex_date": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "payment_date": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "gross_amount_per_share": {
+      "status": "found",
+      "value": "0.4000000000",
+      "raw": "0,4000000000",
+      "source_label": "valor bruto de",
+      "evidence": [
+        {
+          "text": "valor bruto de R$ 0,4000000000",
+          "start": 384,
+          "end": 414,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "gross.label_valor_bruto"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "net_amount_per_share": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "withholding_tax": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "currency": {
+      "status": "found",
+      "value": "BRL",
+      "raw": "R$",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "valor bruto de R$ 0,4000000000",
+          "start": 384,
+          "end": 414,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "currency.derived_from_gross_symbol"
+      ],
+      "anchor": "derived",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "derived from gross_amount_per_share evidence"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "DERIVED_FROM_SOURCE_FIELD"
+      ]
+    },
+    "ratio": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "tax_treatment": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "no tax statement found"
+      ],
+      "confidence": null,
+      "confidence_reasons": []
+    }
+  },
+  "event_specific_fields": {},
+  "reference_check": {
+    "found": true,
+    "matched_by": "isin",
+    "query": "BRBNCRACNPR1",
+    "golden_row": {
+      "emissor": "Banco Nortecred S.A.",
+      "cnpj": "89.012.345/0001-67",
+      "isin": "BRBNCRACNPR1",
+      "ticker": "BNCR4",
+      "classe": "PN",
+      "segmento_listagem": "Tradicional",
+      "status": "ativo"
+    }
+  },
+  "validations": [
+    {
+      "rule_id": "REF_ISIN_FOUND",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ISIN found in golden records",
+      "observed": {
+        "isin": "BRBNCRACNPR1"
+      }
+    },
+    {
+      "rule_id": "REF_TICKER_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ticker matches golden ticker",
+      "observed": {
+        "extracted": "BNCR4",
+        "golden": "BNCR4"
+      }
+    },
+    {
+      "rule_id": "REF_CNPJ_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "cnpj matches golden cnpj",
+      "observed": {
+        "extracted": "89.012.345/0001-67",
+        "golden": "89.012.345/0001-67"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "issuer_name matches golden emissor",
+      "observed": {
+        "extracted": "Banco Nortecred S.A.",
+        "golden": "Banco Nortecred S.A."
+      }
+    },
+    {
+      "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: share_class",
+      "observed": {
+        "golden": "PN"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_ACTIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "golden status = ativo",
+      "observed": {
+        "golden_status": "ativo"
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_PRESENT",
+      "status": "FAIL",
+      "severity": "ERROR",
+      "message": "required fields not found: ['record_date', 'ex_date', 'payment_date']",
+      "observed": {
+        "required": [
+          "issuer_name",
+          "isin",
+          "ticker",
+          "record_date",
+          "ex_date",
+          "gross_amount_per_share",
+          "currency",
+          "payment_date"
+        ],
+        "not_found": [
+          "record_date",
+          "ex_date",
+          "payment_date"
+        ]
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "no required field pending",
+      "observed": {
+        "declared_pending": []
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_DETERMINED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "event type DIVIDEND by rule single_type",
+      "observed": {
+        "decision_rule": "single_type"
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: title_event_type",
+      "observed": {
+        "title": "RETIFICAÇÃO"
+      }
+    },
+    {
+      "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: approval_date, record_date",
+      "observed": {}
+    },
+    {
+      "rule_id": "DATE_RECORD_BEFORE_EX",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: record_date, ex_date",
+      "observed": {}
+    },
+    {
+      "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "status": "NOT_EVALUATED",
+      "severity": "WARNING",
+      "message": "missing dependency: record_date, ex_date",
+      "observed": {}
+    },
+    {
+      "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: payment_date, ex_date",
+      "observed": {
+        "settlement_field_status": "not_found"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_GROSS_POSITIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "gross = 0.4000000000",
+      "observed": {
+        "gross": "0.4000000000"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: net_amount_per_share, withholding_tax",
+      "observed": {
+        "net_status": "not_applicable"
+      }
+    },
+    {
+      "rule_id": "REF_IDENTITY_RESOLVED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "identity ISIN_EXACT",
+      "observed": {
+        "identity_method": "ISIN_EXACT",
+        "identifiers_used": {
+          "isin": "BRBNCRACNPR1"
+        },
+        "reason_code": null,
+        "conflicts": []
+      }
+    }
+  ],
+  "validation_summary": {
+    "PASS": 9,
+    "NOT_EVALUATED": 7,
+    "FAIL": 1
+  },
+  "rule_groups_not_applicable": [
+    "ratio"
+  ],
+  "semantic_need": {
+    "llm_required": false,
+    "llm_trigger_reasons": [
+      "REQUIRED_DATE_ROLE_UNMAPPED",
+      "UNINTERPRETED_QUALIFIER"
+    ],
+    "signals": [
+      {
+        "signal": "REQUIRED_DATE_ROLE_UNMAPPED",
+        "stage": "extract_candidates",
+        "triggers_llm": true,
+        "detail": {
+          "missing_roles": [
+            "record_date",
+            "ex_date",
+            "payment_date"
+          ],
+          "unassigned_date_mentions": [
+            "01/09/2026",
+            "22/09/2026",
+            "22 de setembro de 2026"
+          ]
+        }
+      },
+      {
+        "signal": "UNINTERPRETED_QUALIFIER",
+        "stage": "semantic_patch",
+        "triggers_llm": true,
+        "detail": {
+          "field": "gross_amount_per_share",
+          "reasons": [
+            "UNINTERPRETED_QUALIFIER:NEGATION"
+          ]
+        }
+      },
+      {
+        "signal": "REVOCATION_LANGUAGE",
+        "stage": "contradiction_detector",
+        "triggers_llm": false,
+        "detail": "evento revogado não é suportado: revisão, LLM não muda o desfecho"
+      },
+      {
+        "signal": "REVOCATION_LANGUAGE",
+        "stage": "contradiction_detector",
+        "triggers_llm": false,
+        "detail": "evento revogado não é suportado: revisão, LLM não muda o desfecho"
+      },
+      {
+        "signal": "REVOCATION_LANGUAGE",
+        "stage": "contradiction_detector",
+        "triggers_llm": false,
+        "detail": "evento revogado não é suportado: revisão, LLM não muda o desfecho"
+      }
+    ]
+  },
+  "semantic": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "deterministic_patch",
+      "reasons": [
+        "SINGLE_TYPE"
+      ],
+      "qualifiers": [],
+      "interpretation": null
+    },
+    "fields": {
+      "gross_amount_per_share": {
+        "confidence": "LOW",
+        "source": "deterministic_patch",
+        "reasons": [
+          "UNINTERPRETED_QUALIFIER:NEGATION"
+        ],
+        "qualifiers": [
+          {
+            "type": "NEGATION",
+            "cue": "não",
+            "evidence": "(\"Banco\"), em complemento ao Aviso aos Acionistas divulgado em 01/09/2026, informa aos seus acionistas e ao mercado em geral que a distribuição de dividendos relativa às ações preferenciais de sua emissão (BNCR4, ISIN BRBNCRACNPR1), anteriormente anunciada com valor bruto de R$ 0,4000000000 por ação, não será realizada, tendo a respectiva deliberação sido revogada pelo Conselho de Administração em reunião de 22/09/2026, em razão de recálculo do resultado do exercício"
+          }
+        ],
+        "interpretation": null
+      }
+    },
+    "blocking": [
+      "UNSUPPORTED_EVENT_REVOCATION"
+    ],
+    "negated_signals": [],
+    "resolutions": [],
+    "material_qualifiers": [
+      {
+        "kind": "unresolved",
+        "affects": null,
+        "quote": "não",
+        "source": "deterministic_patch",
+        "blocks": true
+      }
+    ],
+    "semantic_notes": [],
+    "issuer_resolution": {
+      "groups": {
+        "banco nortecred s.a.": {
+          "roles": [
+            "CNPJ_ADJACENT",
+            "LETTERHEAD"
+          ],
+          "third_party_only": false
+        }
+      },
+      "aliases": {},
+      "decision": "V1_RESOLUTION"
+    },
+    "tax_statements": [],
+    "revocation": [
+      {
+        "cue": "não será realizada",
+        "evidence": "(\"Banco\"), em complemento ao Aviso aos Acionistas divulgado em 01/09/2026, informa aos seus acionistas e ao mercado em geral que a distribuição de dividendos relativa às ações preferenciais de sua emissão (BNCR4, ISIN BRBNCRACNPR1), anteriormente anunciada com valor bruto de R$ 0,4000000000 por ação, não será realizada, tendo a respectiva deliberação sido revogada pelo Conselho de Administração em reunião de 22/09/2026, em razão de recálculo do resultado do exercício"
+      },
+      {
+        "cue": "revogada",
+        "evidence": "(\"Banco\"), em complemento ao Aviso aos Acionistas divulgado em 01/09/2026, informa aos seus acionistas e ao mercado em geral que a distribuição de dividendos relativa às ações preferenciais de sua emissão (BNCR4, ISIN BRBNCRACNPR1), anteriormente anunciada com valor bruto de R$ 0,4000000000 por ação, não será realizada, tendo a respectiva deliberação sido revogada pelo Conselho de Administração em reunião de 22/09/2026, em razão de recálculo do resultado do exercício"
+      },
+      {
+        "cue": "sem efeito",
+        "evidence": "O Banco esclarece que nenhum valor será creditado aos acionistas em decorrência do aviso ora tornado sem efeito, e que um novo comunicado poderá ser oportunamente divulgado caso nova deliberação venha a ocorrer"
+      }
+    ],
+    "contradictions": [],
+    "material_coverage": [
+      {
+        "category": "event_status:revocation",
+        "source": "deterministic",
+        "evidence": "(\"Banco\"), em complemento ao Aviso aos Acionistas divulgado em 01/09/2026, informa aos seus acionistas e ao mercado em geral que a distribuição de dividendos relativa às ações preferenciais de sua emissão (BNCR4, ISIN BRBNCRACNPR1), anterio",
+        "expected_target": "event",
+        "representation_status": "UNRESOLVED_EXPLICIT",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "event_status:revocation",
+        "source": "deterministic",
+        "evidence": "(\"Banco\"), em complemento ao Aviso aos Acionistas divulgado em 01/09/2026, informa aos seus acionistas e ao mercado em geral que a distribuição de dividendos relativa às ações preferenciais de sua emissão (BNCR4, ISIN BRBNCRACNPR1), anterio",
+        "expected_target": "event",
+        "representation_status": "UNRESOLVED_EXPLICIT",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "event_status:revocation",
+        "source": "deterministic",
+        "evidence": "O Banco esclarece que nenhum valor será creditado aos acionistas em decorrência do aviso ora tornado sem efeito, e que um novo comunicado poderá ser oportunamente divulgado caso nova deliberação venha a ocorrer",
+        "expected_target": "event",
+        "representation_status": "UNRESOLVED_EXPLICIT",
+        "justification": null,
+        "blocks": false
+      }
+    ],
+    "event_status": "REVOCATION_DETECTED_UNSUPPORTED"
+  },
+  "confidence_view": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "deterministic_patch",
+      "reasons": [
+        "SINGLE_TYPE"
+      ],
+      "qualifiers": [],
+      "interpretation": null
+    },
+    "fields": {
+      "issuer_name": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "cnpj": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "isin": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ticker": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "gross_amount_per_share": {
+        "extraction": "HIGH",
+        "semantic": "LOW",
+        "validation": "CROSS_VALIDATED"
+      },
+      "currency": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      }
+    }
+  },
+  "routing": {
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "REQUIRED_FIELD_MISSING",
+      "SEMANTIC_AMBIGUITY",
+      "UNSUPPORTED_EVENT_REVOCATION"
+    ],
+    "explanations": [
+      "REQUIRED_FIELDS_PRESENT: required fields not found: ['record_date', 'ex_date', 'payment_date']",
+      "gross_amount_per_share: UNINTERPRETED_QUALIFIER:NEGATION",
+      "UNSUPPORTED_EVENT_REVOCATION"
+    ],
+    "gates": [
+      {
+        "gate": "EXTRACTION_POSSIBLE",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REQUIRED_INFORMATION",
+        "status": "BLOCK",
+        "reason_codes": [
+          "REQUIRED_FIELD_MISSING"
+        ],
+        "explanations": [
+          "REQUIRED_FIELDS_PRESENT: required fields not found: ['record_date', 'ex_date', 'payment_date']"
+        ]
+      },
+      {
+        "gate": "SEMANTIC_INTERPRETATION",
+        "status": "BLOCK",
+        "reason_codes": [
+          "SEMANTIC_AMBIGUITY",
+          "UNSUPPORTED_EVENT_REVOCATION"
+        ],
+        "explanations": [
+          "gross_amount_per_share: UNINTERPRETED_QUALIFIER:NEGATION",
+          "UNSUPPORTED_EVENT_REVOCATION"
+        ]
+      },
+      {
+        "gate": "DETERMINISTIC_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REFERENCE_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "BLOCKING_ERRORS",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      }
+    ]
+  },
+  "audit": {
+    "run_id": "e007-replay-blind_derived",
+    "pipeline_version": "baseline-a/0.1.0+candidate-f-pre-ocr-hardening/0.1",
+    "started_at": "2026-09-30T02:55:32.686+00:00",
+    "finished_at": "2026-09-30T02:55:32.690+00:00",
+    "duration_us": 3338,
+    "stages": [
+      {
+        "stage": "ingest",
+        "started_at": "2026-09-30T02:55:32.686+00:00",
+        "status": "ok",
+        "duration_us": 166
+      },
+      {
+        "stage": "text_layer",
+        "started_at": "2026-09-30T02:55:32.687+00:00",
+        "status": "ok",
+        "duration_us": 122
+      },
+      {
+        "stage": "extract_candidates",
+        "started_at": "2026-09-30T02:55:32.687+00:00",
+        "status": "ok",
+        "duration_us": 1548
+      },
+      {
+        "stage": "classify",
+        "started_at": "2026-09-30T02:55:32.688+00:00",
+        "status": "ok",
+        "duration_us": 87
+      },
+      {
+        "stage": "normalize",
+        "started_at": "2026-09-30T02:55:32.688+00:00",
+        "status": "ok",
+        "duration_us": 85
+      },
+      {
+        "stage": "confidence",
+        "started_at": "2026-09-30T02:55:32.688+00:00",
+        "status": "ok",
+        "duration_us": 12
+      },
+      {
+        "stage": "semantic_patch",
+        "started_at": "2026-09-30T02:55:32.689+00:00",
+        "status": "ok",
+        "duration_us": 906
+      },
+      {
+        "stage": "semantic_need",
+        "started_at": "2026-09-30T02:55:32.689+00:00",
+        "status": "ok",
+        "duration_us": 42,
+        "llm_required": false,
+        "triggers": [
+          "REQUIRED_DATE_ROLE_UNMAPPED",
+          "UNINTERPRETED_QUALIFIER"
+        ]
+      },
+      {
+        "stage": "semantic_llm",
+        "started_at": "2026-09-30T02:55:32.690+00:00",
+        "status": "skipped",
+        "reason": "NOT_REQUIRED",
+        "duration_us": 0
+      },
+      {
+        "stage": "hardening_gates",
+        "started_at": "2026-09-30T02:55:32.690+00:00",
+        "status": "ok",
+        "duration_us": 79
+      },
+      {
+        "stage": "validate",
+        "started_at": "2026-09-30T02:55:32.690+00:00",
+        "status": "ok",
+        "duration_us": 67,
+        "rules_executed": 17
+      },
+      {
+        "stage": "route",
+        "started_at": "2026-09-30T02:55:32.690+00:00",
+        "status": "ok",
+        "duration_us": 26
+      }
+    ],
+    "errors": [],
+    "retries": 0,
+    "extraction_method": "native_text_layer+deterministic_rules",
+    "model": null,
+    "prompt_version": null,
+    "validators_executed": [
+      "REF_ISIN_FOUND",
+      "REF_TICKER_CONSISTENT",
+      "REF_CNPJ_CONSISTENT",
+      "REF_ISSUER_NAME_CONSISTENT",
+      "REF_SHARE_CLASS_CONSISTENT",
+      "REF_ISSUER_ACTIVE",
+      "REQUIRED_FIELDS_PRESENT",
+      "REQUIRED_FIELDS_NOT_PENDING",
+      "CLASSIFICATION_DETERMINED",
+      "CLASSIFICATION_TITLE_CONSISTENT",
+      "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "DATE_RECORD_BEFORE_EX",
+      "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "AMOUNT_GROSS_POSITIVE",
+      "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "REF_IDENTITY_RESOLVED"
+    ],
+    "final_decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "REQUIRED_FIELD_MISSING",
+      "SEMANTIC_AMBIGUITY",
+      "UNSUPPORTED_EVENT_REVOCATION"
+    ],
+    "variant": "G"
+  }
+}

@@ -368,13 +368,19 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
 - **Why it matters:** No BT-002, a ausência de ISIN sozinha bloqueou todas as aprovações esperadas, mesmo com ticker e CNPJ exatos.
 - **How to test:** Testes unitários do invariante e regressão por replay nos quatro conjuntos (E-007).
 - **Expected signal:** 0 aprovações com identidade errada ou não resolvida; resoluções de nível 2 onde há ticker + CNPJ; conflitos → revisão.
-- **Observed result:** (pendente)
-- **Status:** OPEN
+- **Observed result:** (E-007, replay)
+  - 9 identidades `TICKER_AND_CNPJ_EXACT` no BT-002; BT2-01 aprovado corretamente sem ISIN.
+  - 0 aprovações com identidade errada ou não resolvida; os 3 ativos fora da base foram revisados com `REFERENCE_NOT_FOUND`.
+  - Conflitos só exercitados nos testes unitários: não ocorreram nos dados.
+- **Status:** SUPPORTED (sintético: expõe o invariante, não mede prevalência — D-030)
 
 ### H-34 — Binding conservador impede associação silenciosa rótulo → valor errado
 - **Hypothesis:** Rejeitar a associação quando o gap entre rótulo e valor indica que o rótulo anota o valor anterior, atravessa outro campo ou atravessa frase elimina bindings errados sem perda material de bindings corretos no case original.
 - **Why it matters:** No BT-002, "DATA (data-base) – A partir de DATA2" levou a data-base a DATA2. O mecanismo é do extrator base (A–F), e OCR tende a piorar a estrutura.
 - **How to test:** Testes unitários do invariante; regressão com bindings errados, evitados e perdidos.
 - **Expected signal:** 0 bindings errados aprovados; bindings errados da G ≤ F; nenhum binding correto perdido no original.
-- **Observed result:** (pendente)
-- **Status:** OPEN
+- **Observed result:** (E-007, replay)
+  - Bindings errados: F 1 → G 0 (BT2-02 evitado); também evitado o valor líquido capturado como bruto (CH-09).
+  - 0 bindings errados aprovados; original idêntico à F.
+  - 1 binding correto perdido (BT-03, deduplicação do extrator + rejeição por frase): fail-safe, registrado e não corrigido.
+- **Status:** SUPPORTED com defeito conhecido (perda de binding correto em rótulo repetido)

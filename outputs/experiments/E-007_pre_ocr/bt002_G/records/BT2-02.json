@@ -1,0 +1,1433 @@
+{
+  "schema_version": "semantic-record/0.5",
+  "document": {
+    "sha256": "42af7d4c39054fc1e78d287c98f1dd231de6ac81fd073253f7519090d9b53010",
+    "file_name": "BT2-02.txt",
+    "size_bytes": 797,
+    "pages": 1,
+    "text_layer": {
+      "usable": true,
+      "alnum_chars": 591,
+      "min_alnum_chars_per_page": 100,
+      "reason": null
+    }
+  },
+  "binding": [
+    {
+      "field": "record_date",
+      "rule_id": "record_date.label_data_base.v2fmt",
+      "raw": "13.05.2024",
+      "evidence": "data-base) - A partir de 13.05.2024",
+      "decision": "REJECTED",
+      "reason": "LABEL_ANNOTATES_PRECEDING_VALUE",
+      "crosses_line": true
+    },
+    {
+      "field": "gross_amount_per_share",
+      "rule_id": "gross.label_valor_bruto",
+      "raw": "0,3000000000",
+      "evidence": "Valor bruto por ação: R$ 0,3000000000",
+      "decision": "BOUND",
+      "reason": null,
+      "crosses_line": false
+    },
+    {
+      "field": "net_amount_per_share",
+      "rule_id": "net.label_valor_liquido",
+      "raw": "0,2550000000",
+      "evidence": "Valor líquido por ação: R$ 0,2550000000",
+      "decision": "BOUND",
+      "reason": null,
+      "crosses_line": false
+    },
+    {
+      "field": "withholding_tax",
+      "rule_id": "withholding.label_imposto_renda",
+      "raw": "15",
+      "evidence": "Imposto de Renda Retido na Fonte: 15%",
+      "decision": "BOUND",
+      "reason": null,
+      "crosses_line": false
+    },
+    {
+      "field": "record_date",
+      "rule_id": "record_date.label_data_base.trailing_parenthetical",
+      "raw": "10.05.2024",
+      "evidence": "10.05.2024 (data-base)",
+      "decision": "BOUND",
+      "reason": "VALUE_FOLLOWED_BY_PARENTHETICAL_LABEL"
+    }
+  ],
+  "identity": {
+    "identity_method": "TICKER_AND_CNPJ_EXACT",
+    "identifiers_used": {
+      "ticker": "AURT3",
+      "cnpj": "24.454.597/0001-98"
+    },
+    "matched_reference": {
+      "emissor": "Aurora Têxtil Nordeste S.A.",
+      "cnpj": "24.454.597/0001-98",
+      "isin": "BRAURTACNOR3",
+      "ticker": "AURT3",
+      "classe": "ON",
+      "segmento_listagem": "Novo Mercado",
+      "status": "ativo"
+    },
+    "status": "RESOLVED",
+    "reason_code": null,
+    "conflicts": []
+  },
+  "extraction": {
+    "method": "native_text_layer+deterministic_rules",
+    "status": "COMPLETED",
+    "failure_mode": null,
+    "unsupported_fields": [
+      "fraction_adjustment_period"
+    ],
+    "title": null
+  },
+  "classification": {
+    "event_type": "JCP",
+    "decision_rule": "single_type",
+    "signals": {
+      "JCP": [
+        {
+          "rule_id": "event.jcp_juros_capital_proprio",
+          "evidence": {
+            "text": "Juros sobre o Capital Próprio",
+            "start": 198,
+            "end": 227,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.jcp_sigla",
+          "evidence": {
+            "text": "JCP",
+            "start": 229,
+            "end": 232,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.jcp_sigla",
+          "evidence": {
+            "text": "JCP",
+            "start": 687,
+            "end": 690,
+            "page": 1
+          }
+        }
+      ]
+    },
+    "title": null,
+    "title_event_types": [],
+    "confidence": "HIGH",
+    "confidence_reasons": [
+      "SINGLE_TYPE_SIGNALS:JCP"
+    ]
+  },
+  "fields": {
+    "issuer_name": {
+      "status": "found",
+      "value": "AURORA TÊXTIL NORDESTE S.A.",
+      "raw": "AURORA TÊXTIL NORDESTE S.A.",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "AURORA TÊXTIL NORDESTE S.A.",
+          "start": 0,
+          "end": 27,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "issuer_name.pattern_company_sa"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN"
+      ]
+    },
+    "cnpj": {
+      "status": "found",
+      "value": "24.454.597/0001-98",
+      "raw": "24.454.597/0001-98",
+      "source_label": "CNPJ",
+      "evidence": [
+        {
+          "text": "CNPJ 24.454.597/0001-98",
+          "start": 28,
+          "end": 51,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "cnpj.label_cnpj"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "isin": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "ticker": {
+      "status": "found",
+      "value": "AURT3",
+      "raw": "AURT3",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "AURT3",
+          "start": 318,
+          "end": 323,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ticker.pattern"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN"
+      ]
+    },
+    "share_class": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "approval_date": {
+      "status": "found",
+      "value": "2024-05-02",
+      "raw": "02.05.2024",
+      "source_label": "o Conselho de Administração, em reunião de",
+      "evidence": [
+        {
+          "text": "o Conselho de Administração, em reunião de 02.05.2024, deliberou",
+          "start": 115,
+          "end": 179,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "llm.date_role_mapping"
+      ],
+      "anchor": "llm",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "value located by LLM role mapping; literal quote grounded"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LITERAL_GROUNDED_QUOTE",
+        "DETERMINISTIC_PARSE"
+      ]
+    },
+    "record_date": {
+      "status": "found",
+      "value": "2024-05-10",
+      "raw": "10.05.2024",
+      "source_label": "data-base",
+      "evidence": [
+        {
+          "text": "10.05.2024 (data-base)",
+          "start": 608,
+          "end": 630,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "record_date.label_data_base.trailing_parenthetical"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "ex_date": {
+      "status": "found",
+      "value": "2024-05-13",
+      "raw": "13.05.2024",
+      "source_label": "A partir de",
+      "evidence": [
+        {
+          "text": "A partir de 13.05.2024, as ações serão negociadas \"ex-JCP\"",
+          "start": 633,
+          "end": 691,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "llm.date_role_mapping"
+      ],
+      "anchor": "llm",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "value located by LLM role mapping; literal quote grounded"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LITERAL_GROUNDED_QUOTE",
+        "DETERMINISTIC_PARSE"
+      ]
+    },
+    "payment_date": {
+      "status": "found",
+      "value": "2024-05-27",
+      "raw": "27.05.2024",
+      "source_label": "Pagamento previsto para",
+      "evidence": [
+        {
+          "text": "Pagamento previsto para 27.05.2024",
+          "start": 694,
+          "end": 728,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "llm.date_role_mapping"
+      ],
+      "anchor": "llm",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "value located by LLM role mapping; literal quote grounded"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LITERAL_GROUNDED_QUOTE",
+        "DETERMINISTIC_PARSE"
+      ]
+    },
+    "gross_amount_per_share": {
+      "status": "found",
+      "value": "0.3000000000",
+      "raw": "0,3000000000",
+      "source_label": "Valor bruto por ação",
+      "evidence": [
+        {
+          "text": "Valor bruto por ação: R$ 0,3000000000",
+          "start": 326,
+          "end": 363,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "gross.label_valor_bruto"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "net_amount_per_share": {
+      "status": "found",
+      "value": "0.2550000000",
+      "raw": "0,2550000000",
+      "source_label": "Valor líquido por ação",
+      "evidence": [
+        {
+          "text": "Valor líquido por ação: R$ 0,2550000000",
+          "start": 483,
+          "end": 522,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "net.label_valor_liquido"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "withholding_tax": {
+      "status": "found",
+      "value": {
+        "rate": "0.15",
+        "base": null
+      },
+      "raw": "15",
+      "source_label": "Imposto de Renda Retido na Fonte",
+      "evidence": [
+        {
+          "text": "Imposto de Renda Retido na Fonte: 15%",
+          "start": 366,
+          "end": 403,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "withholding.label_imposto_renda"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "semantic_patch: base interpreted as None",
+        "beneficiary exception: exceto para acionistas comprovadamente imunes ou isentos"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "currency": {
+      "status": "found",
+      "value": "BRL",
+      "raw": "R$",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "Valor bruto por ação: R$ 0,3000000000",
+          "start": 326,
+          "end": 363,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "currency.derived_from_gross_symbol"
+      ],
+      "anchor": "derived",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "derived from gross_amount_per_share evidence"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "DERIVED_FROM_SOURCE_FIELD"
+      ]
+    },
+    "ratio": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "tax_treatment": {
+      "status": "found",
+      "value": {
+        "kind": "WITHHOLDING_AT_RATE",
+        "rate": "0.15",
+        "base": null,
+        "beneficiary_exceptions": [
+          "Valor bruto por ação: R$ 0,3000000000 - Imposto de Renda Retido na Fonte: 15% (quinze por cento), exceto para acionistas comprovadamente imunes ou isentos -"
+        ],
+        "conditions": []
+      },
+      "raw": "15",
+      "source_label": "Imposto de Renda Retido na Fonte",
+      "evidence": [
+        {
+          "text": "Imposto de Renda Retido na Fonte: 15%",
+          "start": 366,
+          "end": 403,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "tax_treatment.v2_from_withholding"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    }
+  },
+  "event_specific_fields": {},
+  "reference_check": {
+    "found": false,
+    "matched_by": null,
+    "query": null,
+    "golden_row": null
+  },
+  "validations": [
+    {
+      "rule_id": "REF_ISIN_FOUND",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: isin",
+      "observed": {}
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_PRESENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "all required fields present (isin waived: identity TICKER_AND_CNPJ_EXACT)",
+      "observed": {
+        "required": [
+          "issuer_name",
+          "isin",
+          "ticker",
+          "record_date",
+          "ex_date",
+          "gross_amount_per_share",
+          "currency",
+          "payment_date",
+          "net_amount_per_share",
+          "withholding_tax"
+        ],
+        "not_found": [],
+        "isin_waived_by": "TICKER_AND_CNPJ_EXACT"
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "no required field pending",
+      "observed": {
+        "declared_pending": []
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_DETERMINED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "event type JCP by rule single_type",
+      "observed": {
+        "decision_rule": "single_type"
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: title_event_type",
+      "observed": {
+        "title": null
+      }
+    },
+    {
+      "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "approval 2024-05-02 vs record 2024-05-10",
+      "observed": {
+        "approval_date": "2024-05-02",
+        "record_date": "2024-05-10"
+      }
+    },
+    {
+      "rule_id": "DATE_RECORD_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "record 2024-05-10 vs ex 2024-05-13",
+      "observed": {
+        "record_date": "2024-05-10",
+        "ex_date": "2024-05-13"
+      }
+    },
+    {
+      "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "ex 2024-05-13; next weekday after record is 2024-05-13 (no holiday calendar, D-006)",
+      "observed": {
+        "record_date": "2024-05-10",
+        "ex_date": "2024-05-13",
+        "expected_ex_date": "2024-05-13"
+      }
+    },
+    {
+      "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "payment_date 2024-05-27 vs ex 2024-05-13",
+      "observed": {
+        "settlement_field": "payment_date",
+        "settlement_date": "2024-05-27",
+        "ex_date": "2024-05-13"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_GROSS_POSITIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "gross = 0.3000000000",
+      "observed": {
+        "gross": "0.3000000000"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "net = gross × (1 − rate), exact (tax base not stated; applied to gross)",
+      "observed": {
+        "gross": "0.3000000000",
+        "rate": "0.15",
+        "declared_value": "0.2550000000",
+        "calculated_value": "0.255000000000",
+        "comparison_precision": 10,
+        "rounding_rule": null,
+        "reason": null
+      }
+    },
+    {
+      "rule_id": "REF_IDENTITY_RESOLVED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "identity TICKER_AND_CNPJ_EXACT",
+      "observed": {
+        "identity_method": "TICKER_AND_CNPJ_EXACT",
+        "identifiers_used": {
+          "ticker": "AURT3",
+          "cnpj": "24.454.597/0001-98"
+        },
+        "reason_code": null,
+        "conflicts": []
+      }
+    },
+    {
+      "rule_id": "REF_TICKER_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ticker matches golden ticker",
+      "observed": {
+        "extracted": "AURT3",
+        "golden": "AURT3"
+      }
+    },
+    {
+      "rule_id": "REF_CNPJ_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "cnpj matches golden cnpj",
+      "observed": {
+        "extracted": "24.454.597/0001-98",
+        "golden": "24.454.597/0001-98"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "issuer_name matches golden emissor",
+      "observed": {
+        "extracted": "AURORA TÊXTIL NORDESTE S.A.",
+        "golden": "Aurora Têxtil Nordeste S.A."
+      }
+    },
+    {
+      "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: share_class",
+      "observed": {
+        "golden": "ON"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_ACTIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "golden status = ativo",
+      "observed": {
+        "golden_status": "ativo"
+      }
+    }
+  ],
+  "validation_summary": {
+    "NOT_EVALUATED": 3,
+    "PASS": 14
+  },
+  "rule_groups_not_applicable": [
+    "ratio"
+  ],
+  "semantic_need": {
+    "llm_required": true,
+    "llm_trigger_reasons": [
+      "REQUIRED_DATE_ROLE_UNMAPPED",
+      "UNINTERPRETED_QUALIFIER",
+      "UNINTERPRETED_QUALIFIER"
+    ],
+    "signals": [
+      {
+        "signal": "REQUIRED_DATE_ROLE_UNMAPPED",
+        "stage": "extract_candidates",
+        "triggers_llm": true,
+        "detail": {
+          "missing_roles": [
+            "ex_date",
+            "payment_date"
+          ],
+          "unassigned_date_mentions": [
+            "02 de maio de 2024",
+            "02.05.2024",
+            "13.05.2024",
+            "27.05.2024"
+          ]
+        }
+      },
+      {
+        "signal": "UNINTERPRETED_QUALIFIER",
+        "stage": "semantic_patch",
+        "triggers_llm": true,
+        "detail": {
+          "field": "gross_amount_per_share",
+          "reasons": [
+            "UNINTERPRETED_QUALIFIER:EXCEPTION"
+          ]
+        }
+      },
+      {
+        "signal": "UNINTERPRETED_QUALIFIER",
+        "stage": "semantic_patch",
+        "triggers_llm": true,
+        "detail": {
+          "field": "net_amount_per_share",
+          "reasons": [
+            "UNINTERPRETED_QUALIFIER:EXCEPTION"
+          ]
+        }
+      },
+      {
+        "signal": "TAX_BASE_NOT_STATED",
+        "stage": "normalize",
+        "triggers_llm": false,
+        "detail": "base não literal; sem novo texto a interpretar (bruto×líquido valida a taxa)"
+      }
+    ]
+  },
+  "semantic": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "llm+deterministic",
+      "reasons": [
+        "AGREEMENT"
+      ],
+      "qualifiers": [],
+      "interpretation": {
+        "deterministic": "JCP",
+        "deterministic_status": "POSITIVE",
+        "llm": "JCP",
+        "rationale": "O texto declara expressamente a deliberação de pagamento de Juros sobre o Capital Próprio (JCP), referente ao 1º trimestre de 2024, com retenção de IRRF típica de JCP."
+      }
+    },
+    "fields": {
+      "record_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "AGREEMENT"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "gross_amount_per_share": {
+        "confidence": "LOW",
+        "source": "deterministic_patch",
+        "reasons": [
+          "UNINTERPRETED_QUALIFIER:EXCEPTION"
+        ],
+        "qualifiers": [
+          {
+            "type": "HOLDER_EXEMPTION",
+            "cue": "imunes",
+            "evidence": "CNPJ 24.454.597/0001-98 Fato Relevante / Aviso aos Acionistas A Companhia comunica que o Conselho de Administração, em reunião de 02.05.2024, deliberou pelo pagamento de Juros sobre o Capital Próprio (JCP), referente ao 1º trimestre de 2024, nas condições abaixo: - Ativo: ações ordinárias AURT3 - Valor bruto por ação: R$ 0,3000000000 - Imposto de Renda Retido na Fonte: 15% (quinze por cento), exceto para acionistas comprovadamente imunes ou isentos -"
+          },
+          {
+            "type": "EXCEPTION",
+            "cue": "exceto",
+            "evidence": "CNPJ 24.454.597/0001-98 Fato Relevante / Aviso aos Acionistas A Companhia comunica que o Conselho de Administração, em reunião de 02.05.2024, deliberou pelo pagamento de Juros sobre o Capital Próprio (JCP), referente ao 1º trimestre de 2024, nas condições abaixo: - Ativo: ações ordinárias AURT3 - Valor bruto por ação: R$ 0,3000000000 - Imposto de Renda Retido na Fonte: 15% (quinze por cento), exceto para acionistas comprovadamente imunes ou isentos -"
+          }
+        ],
+        "interpretation": null
+      },
+      "net_amount_per_share": {
+        "confidence": "LOW",
+        "source": "deterministic_patch",
+        "reasons": [
+          "UNINTERPRETED_QUALIFIER:EXCEPTION"
+        ],
+        "qualifiers": [
+          {
+            "type": "HOLDER_EXEMPTION",
+            "cue": "imunes",
+            "evidence": "Valor bruto por ação: R$ 0,3000000000 - Imposto de Renda Retido na Fonte: 15% (quinze por cento), exceto para acionistas comprovadamente imunes ou isentos - Valor líquido por ação: R$ 0,2550000000 - Terão direito ao recebimento os acionistas inscritos nos registros da Companhia em 10.05.2024 (data-base) - A partir de 13.05.2024, as ações serão negociadas \"ex-JCP\" - Pagamento previsto para 27.05.2024 Recife, 02 de maio de 2024"
+          },
+          {
+            "type": "EXCEPTION",
+            "cue": "exceto",
+            "evidence": "Valor bruto por ação: R$ 0,3000000000 - Imposto de Renda Retido na Fonte: 15% (quinze por cento), exceto para acionistas comprovadamente imunes ou isentos - Valor líquido por ação: R$ 0,2550000000 - Terão direito ao recebimento os acionistas inscritos nos registros da Companhia em 10.05.2024 (data-base) - A partir de 13.05.2024, as ações serão negociadas \"ex-JCP\" - Pagamento previsto para 27.05.2024 Recife, 02 de maio de 2024"
+          }
+        ],
+        "interpretation": null
+      },
+      "withholding_tax": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "INTERPRETED:HOLDER_LEVEL_EXEMPTION"
+        ],
+        "qualifiers": [
+          {
+            "type": "HOLDER_EXEMPTION",
+            "cue": "imunes",
+            "evidence": "Valor bruto por ação: R$ 0,3000000000 - Imposto de Renda Retido na Fonte: 15% (quinze por cento), exceto para acionistas comprovadamente imunes ou isentos -"
+          },
+          {
+            "type": "EXCEPTION",
+            "cue": "exceto",
+            "evidence": "Valor bruto por ação: R$ 0,3000000000 - Imposto de Renda Retido na Fonte: 15% (quinze por cento), exceto para acionistas comprovadamente imunes ou isentos -"
+          }
+        ],
+        "interpretation": {
+          "base": null
+        }
+      },
+      "approval_date": {
+        "confidence": "MEDIUM",
+        "source": "llm",
+        "reasons": [
+          "DETERMINISTIC_UNSUPPORTED",
+          "LLM_ONLY_GROUNDED"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "ex_date": {
+        "confidence": "MEDIUM",
+        "source": "llm",
+        "reasons": [
+          "DETERMINISTIC_UNSUPPORTED",
+          "LLM_ONLY_GROUNDED"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "payment_date": {
+        "confidence": "MEDIUM",
+        "source": "llm",
+        "reasons": [
+          "DETERMINISTIC_UNSUPPORTED",
+          "LLM_ONLY_GROUNDED"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      }
+    },
+    "blocking": [],
+    "negated_signals": [],
+    "resolutions": [
+      {
+        "concept": "event_type",
+        "category": "AGREEMENT",
+        "deterministic": "JCP",
+        "deterministic_status": "POSITIVE",
+        "llm": "JCP",
+        "rationale": "O texto declara expressamente a deliberação de pagamento de Juros sobre o Capital Próprio (JCP), referente ao 1º trimestre de 2024, com retenção de IRRF típica de JCP."
+      },
+      {
+        "concept": "approval_date",
+        "category": "LLM_ONLY_GROUNDED",
+        "llm": "2024-05-02"
+      },
+      {
+        "concept": "record_date",
+        "category": "AGREEMENT"
+      },
+      {
+        "concept": "ex_date",
+        "category": "LLM_ONLY_GROUNDED",
+        "llm": "2024-05-13"
+      },
+      {
+        "concept": "payment_date",
+        "category": "LLM_ONLY_GROUNDED",
+        "llm": "2024-05-27"
+      },
+      {
+        "concept": "withholding_tax",
+        "category": "LLM_UNGROUNDED_IGNORED"
+      }
+    ],
+    "material_qualifiers": [
+      {
+        "kind": "material_exception",
+        "affects": "beneficiary_tax_treatment",
+        "target_field": "withholding_tax",
+        "effect": "Acionistas comprovadamente imunes ou isentos não sofrem a retenção de 15%.",
+        "materiality_reason": "Sem essa passagem, a retenção de 15% se aplicaria a todos os acionistas, alterando o tratamento tributário de parte dos beneficiários e o valor líquido recebido.",
+        "quote": "exceto para acionistas comprovadamente imunes ou isentos",
+        "represented": true,
+        "representation": "withholding_tax.notes (exceção por titular)",
+        "blocks": false,
+        "source": "llm"
+      }
+    ],
+    "semantic_notes": [
+      {
+        "kind": "informational_context",
+        "note": "O JCP refere-se ao 1º trimestre de 2024.",
+        "quote": "referente ao 1º trimestre de 2024",
+        "blocks": false,
+        "source": "llm"
+      },
+      {
+        "kind": "informational_context",
+        "note": "Local e data de emissão do aviso.",
+        "quote": "Recife, 02 de maio de 2024.",
+        "blocks": false,
+        "source": "llm"
+      }
+    ],
+    "issuer_resolution": {
+      "groups": {
+        "aurora têxtil nordeste s.a.": {
+          "roles": [
+            "CNPJ_ADJACENT",
+            "LETTERHEAD"
+          ],
+          "third_party_only": false
+        }
+      },
+      "aliases": {},
+      "decision": "V1_RESOLUTION"
+    },
+    "tax_statements": [],
+    "revocation": [],
+    "contradictions": [],
+    "material_coverage": [
+      {
+        "category": "tax_treatment",
+        "source": "deterministic",
+        "evidence": "Imposto de Renda Retido na Fonte: 15%",
+        "expected_target": "tax_treatment",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "tax_treatment",
+        "source": "llm",
+        "evidence": "Imposto de Renda Retido na Fonte: 15% (quinze por cento)",
+        "expected_target": "tax_treatment",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "date_role",
+        "source": "llm",
+        "evidence": "Terão direito ao recebimento os acionistas inscritos nos registros da Companhia em 10.05.2024 (data-base)",
+        "expected_target": "record_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "date_role",
+        "source": "llm",
+        "evidence": "A partir de 13.05.2024, as ações serão negociadas \"ex-JCP\"",
+        "expected_target": "ex_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "date_role",
+        "source": "llm",
+        "evidence": "Pagamento previsto para 27.05.2024",
+        "expected_target": "payment_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "qualifier:beneficiary_tax_treatment",
+        "source": "llm",
+        "evidence": "exceto para acionistas comprovadamente imunes ou isentos",
+        "expected_target": "withholding_tax",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "date_role",
+        "source": "deterministic",
+        "evidence": ", as ações serão negociadas \"ex-JCP\" - Pagamento previsto para 27.05.2024",
+        "expected_target": "payment_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      }
+    ],
+    "event_status": "ACTIVE_OR_NOT_STATED"
+  },
+  "confidence_view": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "llm+deterministic",
+      "reasons": [
+        "AGREEMENT"
+      ],
+      "qualifiers": [],
+      "interpretation": {
+        "deterministic": "JCP",
+        "deterministic_status": "POSITIVE",
+        "llm": "JCP",
+        "rationale": "O texto declara expressamente a deliberação de pagamento de Juros sobre o Capital Próprio (JCP), referente ao 1º trimestre de 2024, com retenção de IRRF típica de JCP."
+      }
+    },
+    "fields": {
+      "issuer_name": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "cnpj": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ticker": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "approval_date": {
+        "extraction": "HIGH",
+        "semantic": "MEDIUM",
+        "validation": "CROSS_VALIDATED"
+      },
+      "record_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ex_date": {
+        "extraction": "HIGH",
+        "semantic": "MEDIUM",
+        "validation": "CROSS_VALIDATED"
+      },
+      "payment_date": {
+        "extraction": "HIGH",
+        "semantic": "MEDIUM",
+        "validation": "CROSS_VALIDATED"
+      },
+      "gross_amount_per_share": {
+        "extraction": "HIGH",
+        "semantic": "LOW",
+        "validation": "CROSS_VALIDATED"
+      },
+      "net_amount_per_share": {
+        "extraction": "HIGH",
+        "semantic": "LOW",
+        "validation": "CROSS_VALIDATED"
+      },
+      "withholding_tax": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "currency": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      },
+      "tax_treatment": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      }
+    }
+  },
+  "llm": {
+    "provider": "anthropic",
+    "model": "claude-opus-5",
+    "effort": "medium",
+    "max_tokens": 8000,
+    "fallbacks": "off",
+    "prompt_version": "semantic-interpreter/v3",
+    "prompt_fingerprint": "e6bd3105dc7c8c84",
+    "served_models": [
+      "claude-opus-5"
+    ],
+    "attempts": 1,
+    "api_calls": 2,
+    "replayed": true,
+    "tool_calls": [
+      {
+        "name": "lookup_security",
+        "arguments": {
+          "identifier": "AURT3",
+          "identifier_type": "TICKER"
+        },
+        "result": {
+          "found": true,
+          "issuer": "Aurora Têxtil Nordeste S.A.",
+          "isin": "BRAURTACNOR3",
+          "ticker": "AURT3",
+          "share_class": "ON",
+          "status": "ativo"
+        },
+        "latency_us": 40,
+        "error": null
+      }
+    ],
+    "usage": {
+      "input_tokens": 9680,
+      "output_tokens": 1122,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "estimated_cost_usd": "0.07645",
+    "latency_ms": 13088,
+    "errors": [],
+    "refusals": [],
+    "served_model_mismatch": false,
+    "parse_or_schema_failures": 0,
+    "request_ids": [
+      "req_011CfYqpftDhA2u3hEh8t16K",
+      "req_011CfYqpxGxNoMj6Bg5PQAXe"
+    ],
+    "interpretation": {
+      "event": {
+        "type": "JCP",
+        "evidence": [
+          "deliberou pelo pagamento de Juros sobre o Capital Próprio (JCP)",
+          "A partir de 13.05.2024, as ações serão negociadas \"ex-JCP\""
+        ],
+        "misleading_mentions": [
+          {
+            "quote": "Fato Relevante / Aviso aos Acionistas",
+            "why_not_the_event": "Título genérico do documento, não indica a natureza do provento."
+          }
+        ],
+        "rationale": "O texto declara expressamente a deliberação de pagamento de Juros sobre o Capital Próprio (JCP), referente ao 1º trimestre de 2024, com retenção de IRRF típica de JCP."
+      },
+      "dates": [
+        {
+          "role": "approval_date",
+          "status": "FOUND",
+          "value_as_written": "02.05.2024",
+          "evidence": "o Conselho de Administração, em reunião de 02.05.2024, deliberou"
+        },
+        {
+          "role": "record_date",
+          "status": "FOUND",
+          "value_as_written": "10.05.2024",
+          "evidence": "Terão direito ao recebimento os acionistas inscritos nos registros da Companhia em 10.05.2024 (data-base)"
+        },
+        {
+          "role": "ex_date",
+          "status": "FOUND",
+          "value_as_written": "13.05.2024",
+          "evidence": "A partir de 13.05.2024, as ações serão negociadas \"ex-JCP\""
+        },
+        {
+          "role": "payment_date",
+          "status": "FOUND",
+          "value_as_written": "27.05.2024",
+          "evidence": "Pagamento previsto para 27.05.2024"
+        }
+      ],
+      "withholding_tax": {
+        "status": "STATED",
+        "rate_as_written": "15% (quinze por cento)",
+        "base": "NOT_STATED",
+        "evidence": [
+          "Imposto de Renda Retido na Fonte: 15% (quinze por cento)"
+        ]
+      },
+      "material_qualifiers": [
+        {
+          "kind": "material_exception",
+          "affects": "beneficiary_tax_treatment",
+          "target_field": "withholding_tax",
+          "effect": "Acionistas comprovadamente imunes ou isentos não sofrem a retenção de 15%.",
+          "materiality_reason": "Sem essa passagem, a retenção de 15% se aplicaria a todos os acionistas, alterando o tratamento tributário de parte dos beneficiários e o valor líquido recebido.",
+          "quote": "exceto para acionistas comprovadamente imunes ou isentos"
+        }
+      ],
+      "semantic_notes": [
+        {
+          "kind": "informational_context",
+          "note": "O JCP refere-se ao 1º trimestre de 2024.",
+          "quote": "referente ao 1º trimestre de 2024"
+        },
+        {
+          "kind": "informational_context",
+          "note": "Local e data de emissão do aviso.",
+          "quote": "Recife, 02 de maio de 2024."
+        }
+      ],
+      "security_reference": {
+        "identifier_checked": "AURT3",
+        "found_in_reference": "YES"
+      }
+    },
+    "grounding": {
+      "event_grounded": true,
+      "total_quotes": 11,
+      "grounded_quotes": 11,
+      "ungrounded": []
+    },
+    "reference_divergence": {
+      "tool_called": true,
+      "tool_result_found": true,
+      "llm_reported": "YES",
+      "engine_REF_ISIN_FOUND": "NOT_EVALUATED",
+      "divergent": false,
+      "authority": "validation_engine"
+    }
+  },
+  "routing": {
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "SEMANTIC_AMBIGUITY"
+    ],
+    "explanations": [
+      "gross_amount_per_share: UNINTERPRETED_QUALIFIER:EXCEPTION",
+      "net_amount_per_share: UNINTERPRETED_QUALIFIER:EXCEPTION"
+    ],
+    "gates": [
+      {
+        "gate": "EXTRACTION_POSSIBLE",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REQUIRED_INFORMATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "SEMANTIC_INTERPRETATION",
+        "status": "BLOCK",
+        "reason_codes": [
+          "SEMANTIC_AMBIGUITY"
+        ],
+        "explanations": [
+          "gross_amount_per_share: UNINTERPRETED_QUALIFIER:EXCEPTION",
+          "net_amount_per_share: UNINTERPRETED_QUALIFIER:EXCEPTION"
+        ]
+      },
+      {
+        "gate": "DETERMINISTIC_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REFERENCE_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "BLOCKING_ERRORS",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      }
+    ]
+  },
+  "audit": {
+    "run_id": "e007-replay-bt002",
+    "pipeline_version": "baseline-a/0.1.0+candidate-f-pre-ocr-hardening/0.1",
+    "started_at": "2026-09-30T02:55:32.742+00:00",
+    "finished_at": "2026-09-30T02:55:32.747+00:00",
+    "duration_us": 5710,
+    "stages": [
+      {
+        "stage": "ingest",
+        "started_at": "2026-09-30T02:55:32.742+00:00",
+        "status": "ok",
+        "duration_us": 143
+      },
+      {
+        "stage": "text_layer",
+        "started_at": "2026-09-30T02:55:32.742+00:00",
+        "status": "ok",
+        "duration_us": 113
+      },
+      {
+        "stage": "extract_candidates",
+        "started_at": "2026-09-30T02:55:32.742+00:00",
+        "status": "ok",
+        "duration_us": 1482
+      },
+      {
+        "stage": "classify",
+        "started_at": "2026-09-30T02:55:32.744+00:00",
+        "status": "ok",
+        "duration_us": 127
+      },
+      {
+        "stage": "normalize",
+        "started_at": "2026-09-30T02:55:32.744+00:00",
+        "status": "ok",
+        "duration_us": 135
+      },
+      {
+        "stage": "confidence",
+        "started_at": "2026-09-30T02:55:32.744+00:00",
+        "status": "ok",
+        "duration_us": 12
+      },
+      {
+        "stage": "semantic_patch",
+        "started_at": "2026-09-30T02:55:32.744+00:00",
+        "status": "ok",
+        "duration_us": 758
+      },
+      {
+        "stage": "semantic_need",
+        "started_at": "2026-09-30T02:55:32.745+00:00",
+        "status": "ok",
+        "duration_us": 29,
+        "llm_required": true,
+        "triggers": [
+          "REQUIRED_DATE_ROLE_UNMAPPED",
+          "UNINTERPRETED_QUALIFIER",
+          "UNINTERPRETED_QUALIFIER"
+        ]
+      },
+      {
+        "stage": "semantic_llm",
+        "started_at": "2026-09-30T02:55:32.745+00:00",
+        "status": "ok",
+        "duration_us": 2196,
+        "api_calls": 2,
+        "tool_calls": 1,
+        "replayed": true
+      },
+      {
+        "stage": "semantic_merge",
+        "started_at": "2026-09-30T02:55:32.747+00:00",
+        "status": "ok",
+        "duration_us": 191
+      },
+      {
+        "stage": "hardening_gates",
+        "started_at": "2026-09-30T02:55:32.747+00:00",
+        "status": "ok",
+        "duration_us": 162
+      },
+      {
+        "stage": "validate",
+        "started_at": "2026-09-30T02:55:32.747+00:00",
+        "status": "ok",
+        "duration_us": 98,
+        "rules_executed": 17
+      },
+      {
+        "stage": "route",
+        "started_at": "2026-09-30T02:55:32.747+00:00",
+        "status": "ok",
+        "duration_us": 25
+      }
+    ],
+    "errors": [],
+    "retries": 0,
+    "extraction_method": "native_text_layer+deterministic_rules",
+    "model": "claude-opus-5",
+    "prompt_version": "semantic-interpreter/v3",
+    "validators_executed": [
+      "REF_ISIN_FOUND",
+      "REQUIRED_FIELDS_PRESENT",
+      "REQUIRED_FIELDS_NOT_PENDING",
+      "CLASSIFICATION_DETERMINED",
+      "CLASSIFICATION_TITLE_CONSISTENT",
+      "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "DATE_RECORD_BEFORE_EX",
+      "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "AMOUNT_GROSS_POSITIVE",
+      "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "REF_IDENTITY_RESOLVED",
+      "REF_TICKER_CONSISTENT",
+      "REF_CNPJ_CONSISTENT",
+      "REF_ISSUER_NAME_CONSISTENT",
+      "REF_SHARE_CLASS_CONSISTENT",
+      "REF_ISSUER_ACTIVE"
+    ],
+    "final_decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "SEMANTIC_AMBIGUITY"
+    ],
+    "variant": "G"
+  }
+}
