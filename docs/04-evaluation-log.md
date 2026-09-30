@@ -1097,3 +1097,107 @@ Depois da primeira saída oficial, nada muda: F, prompt, regras, avaliador e con
   Nenhuma regra usa texto, nome, ticker ou identificador de um documento específico. Ainda assim, **os resultados da F nos três conjuntos são in-sample**.
 - **O dry run não prevê o run oficial:** as respostas do LLM do run oficial são novas, e documentos em que a F chama o LLM e a E não chamava (ex.: gatilho de contradição) não tinham resposta gravada.
 - **Leitura post-hoc da E pela definição enhanced (vista no dry run, antes do congelamento):** BT-01 (isenção descartada) e BT-03 (data de crédito descartada) seriam aprovações inseguras da E. Isso **não altera** o resultado pré-registrado do BT-001 (0 inseguras pela definição da época).
+
+### Resultado (execução oficial única da F em 2026-09-30, freeze v1 `e006-freeze` → `e7011ef`, sem alterações após a primeira saída)
+
+- **Runs:**
+  - `outputs/experiments/E-006_hardened/original_F`, `challenge_F` e `blind_derived_F`;
+  - cache novo `llm_cache_run1`, sem replay (`replayed_documents` = 0 nos três);
+  - 0 erros, 0 recusas, 0 falhas de parse, 0 divergências tool × engine, modelo servido `claude-opus-5` em todas as chamadas.
+- **Avaliação:** `evaluation/e006_results.json` (avaliador pré-registrado, inalterado).
+- **Custo incremental do E-006:** **US$ 1,3422**, com 38 chamadas, 183.408 tokens de entrada e 17.005 de saída. Por conjunto: original 0,0744; challenge 0,6925; blind-derived 0,5753. Os dry runs foram por replay, sem custo. A E custou US$ 1,3496 nos mesmos conjuntos.
+
+**Segurança (definição enhanced, D-025).** Os números da E são leitura **post-hoc** dos registros oficiais congelados.
+
+| | Original E / F | Challenge E / F | Blind-derived E / F |
+|---|---|---|---|
+| **Aprovações inseguras (enhanced)** | 0 / **0** | 0 / **0** | **2 (BT-01, BT-03)** / **0** |
+| Omissões materiais aprovadas | 0 / 0 | 0 / 0 | 2 / **0** |
+| Alucinações aprovadas | 0 / 0 | 0 / 0 | 0 / 0 |
+| Ambiguidade não resolvida aprovada | 0 / 0 | 0 / 0 | 0 / 0 |
+| Falha de validação aprovada | 0 / 0 | — | 0 / 0 |
+| Contradição aprovada | 0 / 0 | 0 / 0 | 0 / 0 |
+| Aprovações falsas | 0 / 0 | 0 / 0 | 0 / 0 |
+| Aprovações inseguras (definição histórica) | 0 / 0 | 0 / 0 | 0 / 0 |
+
+As duas aprovações inseguras da E pela definição enhanced são omissões:
+- **BT-01:** isenção de IR descartada na fusão;
+- **BT-03:** "Data de crédito das novas ações" não reconhecida pelo rótulo.
+
+A F aprova os dois **com** a informação representada: `tax_treatment` EXEMPT, sem alíquota; `share_credit_date` 07/10/2026.
+
+**Utilidade**
+
+| | Original E / F | Challenge E / F | Blind-derived E / F |
+|---|---|---|---|
+| Roteamento (expectativas DEFINED) | 5/6 / 5/6 | 7/7 / 7/7 | 8/14 / **9/14** |
+| Taxa de revisão | 6/8 / 6/8 | 2/11 / **3/11** | 11/14 / **10/14** |
+| False reviews | doc 06 / doc 06 | CH-09 / CH-03, CH-09 | BT-02, 05, 09, 10, 11, 12 / BT-02, 05, 09, 10, 12 |
+| Acurácia semântica (avaliador original) | 30/31 / **29/31** | 21/21 / 21/21 | 46/57 / **49/57** |
+| Validação (regras) | 104/104 / **101/104** (1 FP) | — | 43/54 / **45/54** (1 FN nas duas) |
+| Valores e proporções (blind) | — | — | 16/18 / **17/18** |
+| Cobertura de extração determinística | 66/79 / 66/79 | 5/13 / 5/13 | 87/115 / **92/115** |
+| Invocação do LLM | 1/8 / 1/8 | 10/11 / 10/11 | 8/14 / 8/14 |
+| Grounding (citações literais) | — | — | 76/76 / 74/74 |
+| Latência p50 com LLM | 18,8 s / 12,4 s | 11,6 s / 10,4 s | 12,0 s / 11,5 s |
+| Latência p50 sem LLM | 12 ms / 14 ms | 7 ms / 8 ms | 4 ms / 6 ms |
+
+**Oráculo de necessidade do E-004 (inalterado; ele não conhece os gatilhos novos da F):**
+- original: igual à E (falso-negativo doc 03);
+- challenge: igual à E (falso-positivos CH-01, CH-02, CH-11);
+- blind-derived: falso-negativos BT-03, BT-07 e BT-08; na E eram BT-03, BT-07 e BT-13.
+  - BT-13 passou a ser invocado pelo gatilho `SEMANTIC_CONTRADICTION`.
+  - BT-08 deixou de ser invocado **por desenho** (revogação → revisão sem LLM).
+  - BT-03 agora é aprovado corretamente só pelo determinístico.
+
+**Checagens por classe (blind-derived regression set):**
+
+| Classe | Resultado |
+|---|---|
+| Isenção representada em vez de descartada | BT-01 e BT-06: `tax_treatment` EXEMPT, `rate` nulo ✔ |
+| Datas com pontos | BT-11: pagamento 15.10.2026 → 2026-10-15 ✔ (AUTO_APPROVE correto) |
+| Proporção de desdobramento/grupamento/bonificação | 4/4 ✔. BT-05 ("cada uma ação … dará origem a 3") agora é 1→3 |
+| Emissor com várias empresas | BT-12: alias "Diretoria da X S.A." agrupado, emissor resolvido por papel estrutural, sem LOW. Continua em revisão por `SEMANTIC_AMBIGUITY` (negação atribuída pelo B ao valor líquido, como na E) |
+| Contradição evento × tributação | BT-13: `EVENT_TYPE_VS_TAX_TREATMENT` detectada antes do LLM, gatilho do LLM, persistiu → revisão ✔ |
+| Revogação | BT-08: `UNSUPPORTED_EVENT_REVOCATION`, `event_status = REVOCATION_DETECTED_UNSUPPORTED`, revisão ✔. O valor revogado nunca é aprovado |
+| Qualificadores v3 sem regressão | Lógica idêntica à da E. Houve 1 bloqueio novo por variação do LLM (CH-03, abaixo) |
+
+### Regressões e mudanças de roteamento em relação à E
+
+| Caso | E → F | Causa |
+|---|---|---|
+| **CH-03** (challenge, PROVISIONAL AUTO) | AUTO → **REVIEW** (`SEMANTIC_AMBIGUITY`) | Nesta amostra, o LLM marcou "limitados à variação pro rata die da TJLP" como qualificador material de `amount`, não representado → bloqueio. É a política v3, **idêntica** na F. No dry run pré-congelamento, com a resposta gravada da E, a F aprovou o CH-03. É variação do LLM, não mudança de código. |
+| **Doc 06** (original) | REVIEW → REVIEW (motivo muda) | O LLM escreveu datas cujo valor não está na citação (`VALUE_NOT_IN_EVIDENCE`), o mesmo failure mode da execução 2 do E-005. A data ex fica ausente (`REQUIRED_FIELD_MISSING`, e o gate registra `MATERIAL_INFORMATION_NOT_REPRESENTED`). É a origem das quedas na semântica (29/31) e na validação (1 FP em `REQUIRED_FIELDS_PRESENT`, 2 regras não avaliadas) do original. |
+| **BT-05** | REVIEW → REVIEW (motivo muda) | Proporção agora extraída. Continua em revisão pela data de crédito ("… 16 de setembro de 2026, data em que as novas ações também serão creditadas"): a citação do LLM se refere à data sem contê-la, o grounding literal não aceita valor fora da citação, e o gate bloqueia. É revisão segura, e falsa pelo gabarito. |
+| **BT-11** | REVIEW → **AUTO** ✔ | Data com pontos. |
+| **BT-13** | REVIEW → REVIEW | Agora pelo motivo certo (contradição detectada). |
+| **BT-08** | REVIEW → REVIEW | Agora com `UNSUPPORTED_EVENT_REVOCATION`. Sem LLM, o registro perde a data de aprovação que o LLM mapeava. |
+
+### Critérios de sucesso pré-registrados
+
+| # | Critério | Resultado |
+|---|---|---|
+| 1 | `unsafe_auto_approvals_enhanced` = 0 | **Atendido** (0/0/0) |
+| 2 | Omissão material eliminada nos casos cobertos | **Atendido** (BT-01 e BT-03 representados; 0 omissões aprovadas) |
+| 3 | Nenhuma regressão de segurança | **Atendido** (histórica 0; enhanced F ≤ E em todos os conjuntos) |
+| 4 | Roteamento não piora materialmente (FR ≤ E + 1 por conjunto) | **Atendido** (original +0, challenge +1, blind-derived −1) |
+| 5 | Mudanças generalizáveis e explicáveis | Atendido, qualitativo: nenhuma regra cita documento; o teste de freeze verifica a ausência de identificadores do blind-derived set. Ressalva: as regras foram refinadas vendo dry runs nos três conjuntos (disclosure) |
+| 6 | Custo e latência aceitáveis | **Atendido** (custo 0,99× o da E; p50 com LLM menor nos três conjuntos) |
+| 7 | Arquitetura simples de defender | Atendido, qualitativo: uma camada determinística (`hardening.py`) e um gate. Nenhum componente novo de LLM |
+
+### Failure modes novos
+
+1. **Referência anafórica a data** ("data em que as novas ações serão creditadas", BT-05). O grounding literal (valor dentro da citação) não aceita, e o gate bloqueia. É revisão segura, mas falsa.
+2. **O inventário de datas de liquidação é heurístico** (a pista de papel mais próxima). Foi refinado em quatro alarmes falsos vistos no dry run. Redações novas podem gerar alarmes falsos (revisão), ou deixar de ver uma data (a omissão volta a depender do LLM).
+3. **Alias de emissor por sufixo.** "Banco X S.A." e "X S.A." seriam tratados como a mesma entidade. Se o emissor fosse o "Banco X S.A." e uma subsidiária "X S.A." fosse citada, o nome registrado seria o da subsidiária. Risco latente, não observado; a validação de referência por ISIN/ticker/CNPJ continua ativa.
+4. **Revogação sem LLM** deixa o registro revogado menos informativo (BT-08 perdeu a data de aprovação). Sem risco de aprovação.
+5. **Variação do LLM nos qualificadores v3** (CH-03) e **valor fora da citação** (doc 06) continuam sendo as fontes de revisão instável. Não mudam com a F.
+6. **O oráculo de necessidade do E-004 não conhece os gatilhos da F** (contradição, revogação). A métrica de invocação da F contra esse oráculo é conservadora.
+
+### Leitura
+
+- **Resultado principal:** a F fecha a lacuna que o BT-001 expôs. Nenhum registro é aprovado com informação material explicitamente presente e descartada, nem nos dois casos em que a E fazia isso (BT-01 e BT-03, este último descoberto no E-006).
+- A utilidade melhora pouco no blind-derived set (roteamento 8 → 9/14, revisão 11 → 10/14, semântica 46 → 49/57) e fica estável no original e no challenge set. A única revisão nova é atribuível à amostragem do LLM.
+- **Todos os números da F são in-sample:** os três conjuntos foram vistos em dry run durante o desenvolvimento. Nenhuma afirmação de generalização é possível sem um novo conjunto independente.
+- **Recomendação:** a F atende a todos os critérios pré-registrados. Recomenda-se que substitua a E como candidata. A decisão é do usuário, como foi a D-024.
+- **Segunda execução:** não foi feita. A única mudança de roteamento atribuível ao LLM (CH-03) tem contrafactual determinístico: a mesma F, com a resposta gravada da E, aprova. Uma segunda execução mediria a estabilidade da amostragem, não a F.

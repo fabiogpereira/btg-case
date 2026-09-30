@@ -1,0 +1,2833 @@
+{
+  "E": {
+    "original": {
+      "dataset": "original",
+      "run_dir": "outputs/experiments/E-005_qualifiers_v3/original_E",
+      "documents": 8,
+      "safety_enhanced": {
+        "unsafe_auto_approvals_enhanced": [],
+        "material_omissions_approved": [],
+        "hallucinations_approved": [],
+        "unresolved_ambiguity_approved": [],
+        "validation_failures_approved": [],
+        "contradictions_approved": [],
+        "other_expected_review_approved": [],
+        "detail": {}
+      },
+      "routing": {
+        "accuracy_defined": {
+          "correct": 5,
+          "total": 6
+        },
+        "accuracy_all": {
+          "correct": 7,
+          "total": 8
+        },
+        "false_approvals": [],
+        "false_reviews": [
+          "06_petroquimica_litoral_grupamento.pdf"
+        ],
+        "review_rate": {
+          "correct": 6,
+          "total": 8
+        }
+      },
+      "deterministic_extraction_coverage": {
+        "correct": 66,
+        "total": 79
+      },
+      "llm": {
+        "invoked": [
+          "06_petroquimica_litoral_grupamento.pdf"
+        ],
+        "invocation_rate": {
+          "correct": 1,
+          "total": 8
+        },
+        "api_calls": 2,
+        "replayed_documents": 0,
+        "input_tokens": 10154,
+        "output_tokens": 1183,
+        "estimated_cost_usd": "0.080345"
+      },
+      "latency": {
+        "end_to_end_all": {
+          "n": 8,
+          "mean_ms": 2357.2,
+          "p50_ms": 13.2,
+          "max_ms": 18767.0
+        },
+        "with_llm": {
+          "n": 1,
+          "mean_ms": 18767.0,
+          "p50_ms": 18767.0,
+          "max_ms": 18767.0
+        },
+        "without_llm": {
+          "n": 7,
+          "mean_ms": 12.9,
+          "p50_ms": 11.9,
+          "max_ms": 24.2
+        }
+      },
+      "errors": 0,
+      "per_document": [
+        {
+          "id": "01_energetica_vale_tiete_dividendo.pdf",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": false,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "02_banco_meridional_jcp.pdf",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": false,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "03_siderurgica_paranaense_proventos.pdf",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "CLASSIFICATION_TITLE_CONFLICT"
+          ],
+          "expected_routing": "REVIEW_REQUIRED",
+          "routing_defined": false,
+          "routing_kind": "correct_review",
+          "llm_invoked": false,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [
+              "withholding_tax:wrong_value"
+            ],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [
+              "CLASSIFICATION_TITLE_CONSISTENT"
+            ],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "04_rede_varejo_jcp_sem_data.pdf",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "PAYMENT_DATE_PENDING"
+          ],
+          "expected_routing": "REVIEW_REQUIRED",
+          "routing_defined": true,
+          "routing_kind": "correct_review",
+          "llm_invoked": false,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": true,
+            "material_validation_failure_approved": [
+              "REQUIRED_FIELDS_NOT_PENDING"
+            ],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "05_aurora_saneamento_dividendo_datas.pdf",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "DATE_INCONSISTENCY"
+          ],
+          "expected_routing": "REVIEW_REQUIRED",
+          "routing_defined": true,
+          "routing_kind": "correct_review",
+          "llm_invoked": false,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": true,
+            "material_validation_failure_approved": [
+              "DATE_SETTLEMENT_NOT_BEFORE_EX"
+            ],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "06_petroquimica_litoral_grupamento.pdf",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "SEMANTIC_AMBIGUITY"
+          ],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "false_review",
+          "llm_invoked": true,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "07_telecom_norte_jcp_SCAN.pdf",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "NO_USABLE_TEXT_LAYER"
+          ],
+          "expected_routing": null,
+          "routing_defined": false,
+          "routing_kind": "correct_review",
+          "llm_invoked": false,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [
+              "event_type"
+            ],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [
+              "record_date:ABSENT",
+              "ex_date:ABSENT",
+              "payment_date:ABSENT",
+              "gross_amount_per_share:ABSENT",
+              "net_amount_per_share:ABSENT",
+              "withholding_tax:ABSENT"
+            ],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "08_construtora_horizonte_bonificacao.pdf",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "REFERENCE_NOT_FOUND"
+          ],
+          "expected_routing": "REVIEW_REQUIRED",
+          "routing_defined": true,
+          "routing_kind": "correct_review",
+          "llm_invoked": false,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": true,
+            "material_validation_failure_approved": [
+              "REF_ISIN_FOUND"
+            ],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        }
+      ]
+    },
+    "challenge": {
+      "dataset": "challenge",
+      "run_dir": "outputs/experiments/E-005_qualifiers_v3/challenge_E",
+      "documents": 11,
+      "safety_enhanced": {
+        "unsafe_auto_approvals_enhanced": [],
+        "material_omissions_approved": [],
+        "hallucinations_approved": [],
+        "unresolved_ambiguity_approved": [],
+        "validation_failures_approved": [],
+        "contradictions_approved": [],
+        "other_expected_review_approved": [],
+        "detail": {}
+      },
+      "routing": {
+        "accuracy_defined": {
+          "correct": 7,
+          "total": 7
+        },
+        "accuracy_all": {
+          "correct": 10,
+          "total": 11
+        },
+        "false_approvals": [],
+        "false_reviews": [
+          "CH-09"
+        ],
+        "review_rate": {
+          "correct": 2,
+          "total": 11
+        }
+      },
+      "deterministic_extraction_coverage": {
+        "correct": 5,
+        "total": 13
+      },
+      "llm": {
+        "invoked": [
+          "CH-01",
+          "CH-02",
+          "CH-03",
+          "CH-04",
+          "CH-06",
+          "CH-07",
+          "CH-08",
+          "CH-09",
+          "CH-10",
+          "CH-11"
+        ],
+        "invocation_rate": {
+          "correct": 10,
+          "total": 11
+        },
+        "api_calls": 20,
+        "replayed_documents": 0,
+        "input_tokens": 95561,
+        "output_tokens": 8125,
+        "estimated_cost_usd": "0.680930"
+      },
+      "latency": {
+        "end_to_end_all": {
+          "n": 11,
+          "mean_ms": 11892.8,
+          "p50_ms": 11560.9,
+          "max_ms": 31901.5
+        },
+        "with_llm": {
+          "n": 10,
+          "mean_ms": 13081.4,
+          "p50_ms": 11606.2,
+          "max_ms": 31901.5
+        },
+        "without_llm": {
+          "n": 1,
+          "mean_ms": 7.1,
+          "p50_ms": 7.1,
+          "max_ms": 7.1
+        }
+      },
+      "errors": 0,
+      "per_document": [
+        {
+          "id": "CH-01",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": true,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "CH-02",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": true,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "CH-03",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": false,
+          "routing_kind": "correct_auto",
+          "llm_invoked": true,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "CH-04",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": true,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "CH-05",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": false,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "CH-06",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": true,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "CH-07",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": false,
+          "routing_kind": "correct_auto",
+          "llm_invoked": true,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "CH-08",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": false,
+          "routing_kind": "correct_auto",
+          "llm_invoked": true,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "CH-09",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "LOW_EXTRACTION_CONFIDENCE"
+          ],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": false,
+          "routing_kind": "false_review",
+          "llm_invoked": true,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "CH-10",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": true,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "CH-11",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "MATERIAL_QUALIFIER_UNREPRESENTED:event_nature",
+            "SEMANTIC_AMBIGUITY",
+            "CLASSIFICATION_UNDETERMINED"
+          ],
+          "expected_routing": "REVIEW_REQUIRED",
+          "routing_defined": true,
+          "routing_kind": "correct_review",
+          "llm_invoked": true,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": true,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        }
+      ]
+    },
+    "blind_derived": {
+      "dataset": "blind_derived",
+      "run_dir": "outputs/experiments/BT-001_blind_E/blind_E_run2",
+      "documents": 14,
+      "safety_enhanced": {
+        "unsafe_auto_approvals_enhanced": [
+          "BT-01",
+          "BT-03"
+        ],
+        "material_omissions_approved": [
+          "BT-01",
+          "BT-03"
+        ],
+        "hallucinations_approved": [],
+        "unresolved_ambiguity_approved": [],
+        "validation_failures_approved": [],
+        "contradictions_approved": [],
+        "other_expected_review_approved": [],
+        "detail": {
+          "BT-01": {
+            "material_information_omission": [
+              "tax_treatment:exemption"
+            ]
+          },
+          "BT-03": {
+            "material_information_omission": [
+              "share_credit_date:not_found"
+            ]
+          }
+        }
+      },
+      "routing": {
+        "accuracy_defined": {
+          "correct": 8,
+          "total": 14
+        },
+        "accuracy_all": {
+          "correct": 8,
+          "total": 14
+        },
+        "false_approvals": [],
+        "false_reviews": [
+          "BT-02",
+          "BT-05",
+          "BT-09",
+          "BT-10",
+          "BT-11",
+          "BT-12"
+        ],
+        "review_rate": {
+          "correct": 11,
+          "total": 14
+        }
+      },
+      "deterministic_extraction_coverage": {
+        "correct": 87,
+        "total": 115
+      },
+      "llm": {
+        "invoked": [
+          "BT-01",
+          "BT-02",
+          "BT-05",
+          "BT-06",
+          "BT-08",
+          "BT-10",
+          "BT-11",
+          "BT-12"
+        ],
+        "invocation_rate": {
+          "correct": 8,
+          "total": 14
+        },
+        "api_calls": 16,
+        "replayed_documents": 0,
+        "input_tokens": 77764,
+        "output_tokens": 7980,
+        "estimated_cost_usd": "0.588320"
+      },
+      "latency": {
+        "end_to_end_all": {
+          "n": 14,
+          "mean_ms": 7324.1,
+          "p50_ms": 9589.0,
+          "max_ms": 21374.0
+        },
+        "with_llm": {
+          "n": 8,
+          "mean_ms": 12813.9,
+          "p50_ms": 12025.6,
+          "max_ms": 21374.0
+        },
+        "without_llm": {
+          "n": 6,
+          "mean_ms": 4.4,
+          "p50_ms": 4.0,
+          "max_ms": 6.5
+        }
+      },
+      "errors": 0,
+      "per_document": [
+        {
+          "id": "BT-01",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": true,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [
+              "tax_treatment:exemption"
+            ],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [
+              "tax_treatment:exemption"
+            ],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": true,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "BT-02",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "SEMANTIC_AMBIGUITY"
+          ],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "false_review",
+          "llm_invoked": true,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [
+              "withholding_tax:wrong_value"
+            ],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "BT-03",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": false,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [
+              "share_credit_date:not_found"
+            ],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [
+              "share_credit_date:not_found"
+            ],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": true,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "BT-04",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": false,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "BT-05",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "REQUIRED_FIELD_MISSING"
+          ],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "false_review",
+          "llm_invoked": true,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [
+              "share_credit_date:ABSENT",
+              "ratio:not_found"
+            ],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "BT-06",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "REQUIRED_FIELD_MISSING"
+          ],
+          "expected_routing": "REVIEW_REQUIRED",
+          "routing_defined": true,
+          "routing_kind": "correct_review",
+          "llm_invoked": true,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": true,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [
+              "tax_treatment:exemption"
+            ],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "BT-07",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "PAYMENT_DATE_PENDING"
+          ],
+          "expected_routing": "REVIEW_REQUIRED",
+          "routing_defined": true,
+          "routing_kind": "correct_review",
+          "llm_invoked": false,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [
+              "withholding_tax:wrong_value"
+            ],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": true,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "BT-08",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "REQUIRED_FIELD_MISSING",
+            "MATERIAL_QUALIFIER_UNREPRESENTED:entitlement",
+            "MATERIAL_QUALIFIER_UNREPRESENTED:event_nature",
+            "SEMANTIC_AMBIGUITY"
+          ],
+          "expected_routing": "REVIEW_REQUIRED",
+          "routing_defined": true,
+          "routing_kind": "correct_review",
+          "llm_invoked": true,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [
+              "event_type",
+              "gross_amount_per_share:invented"
+            ],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": true,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": [
+              "ground_truth_event_type:OTHER"
+            ]
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "BT-09",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "LOW_EXTRACTION_CONFIDENCE"
+          ],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "false_review",
+          "llm_invoked": false,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [
+              "qualifier:tax_rate"
+            ],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "BT-10",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "MATERIAL_QUALIFIER_UNREPRESENTED:eligibility"
+          ],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "false_review",
+          "llm_invoked": true,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "BT-11",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "REQUIRED_FIELD_MISSING"
+          ],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "false_review",
+          "llm_invoked": true,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [
+              "payment_date:not_found"
+            ],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "BT-12",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "LOW_EXTRACTION_CONFIDENCE",
+            "SEMANTIC_AMBIGUITY"
+          ],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "false_review",
+          "llm_invoked": true,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [
+              "withholding_tax:wrong_value"
+            ],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "BT-13",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "REQUIRED_FIELD_MISSING"
+          ],
+          "expected_routing": "REVIEW_REQUIRED",
+          "routing_defined": true,
+          "routing_kind": "correct_review",
+          "llm_invoked": false,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [
+              "event_type",
+              "withholding_tax:wrong_value"
+            ],
+            "material_ambiguity_approved": true,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [
+              "REF_ISIN_FOUND"
+            ],
+            "material_information_omission": [
+              "gross_amount_per_share:not_found",
+              "qualifier:event_nature",
+              "qualifier:event_nature"
+            ],
+            "unsupported_material_semantic_conflict": [
+              "ground_truth_event_type:UNRESOLVED"
+            ]
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "BT-14",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "DATE_INCONSISTENCY"
+          ],
+          "expected_routing": "REVIEW_REQUIRED",
+          "routing_defined": true,
+          "routing_kind": "correct_review",
+          "llm_invoked": false,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": true,
+            "material_validation_failure_approved": [
+              "DATE_SETTLEMENT_NOT_BEFORE_EX"
+            ],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": [
+              "ground_truth:internal_inconsistency"
+            ]
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        }
+      ]
+    }
+  },
+  "F": {
+    "original": {
+      "dataset": "original",
+      "run_dir": "outputs/experiments/E-006_hardened/original_F",
+      "documents": 8,
+      "safety_enhanced": {
+        "unsafe_auto_approvals_enhanced": [],
+        "material_omissions_approved": [],
+        "hallucinations_approved": [],
+        "unresolved_ambiguity_approved": [],
+        "validation_failures_approved": [],
+        "contradictions_approved": [],
+        "other_expected_review_approved": [],
+        "detail": {}
+      },
+      "routing": {
+        "accuracy_defined": {
+          "correct": 5,
+          "total": 6
+        },
+        "accuracy_all": {
+          "correct": 7,
+          "total": 8
+        },
+        "false_approvals": [],
+        "false_reviews": [
+          "06_petroquimica_litoral_grupamento.pdf"
+        ],
+        "review_rate": {
+          "correct": 6,
+          "total": 8
+        }
+      },
+      "deterministic_extraction_coverage": {
+        "correct": 66,
+        "total": 79
+      },
+      "llm": {
+        "invoked": [
+          "06_petroquimica_litoral_grupamento.pdf"
+        ],
+        "invocation_rate": {
+          "correct": 1,
+          "total": 8
+        },
+        "api_calls": 2,
+        "replayed_documents": 0,
+        "input_tokens": 10154,
+        "output_tokens": 945,
+        "estimated_cost_usd": "0.074395"
+      },
+      "latency": {
+        "end_to_end_all": {
+          "n": 8,
+          "mean_ms": 1567.3,
+          "p50_ms": 15.4,
+          "max_ms": 12432.2
+        },
+        "with_llm": {
+          "n": 1,
+          "mean_ms": 12432.2,
+          "p50_ms": 12432.2,
+          "max_ms": 12432.2
+        },
+        "without_llm": {
+          "n": 7,
+          "mean_ms": 15.1,
+          "p50_ms": 13.6,
+          "max_ms": 29.0
+        }
+      },
+      "errors": 0,
+      "per_document": [
+        {
+          "id": "01_energetica_vale_tiete_dividendo.pdf",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": false,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": {
+            "kind": "WITHHOLDING_AT_RATE",
+            "rate": "0.10",
+            "base": "EXCESS_OVER_THRESHOLD",
+            "beneficiary_exceptions": [],
+            "conditions": [
+              "Nos termos da legislação tributária vigente a partir de 1º de janeiro de 2026, os dividendos estarão sujeitos à retenção de Imposto de Renda na Fonte (IRRF) à alíquota de 10% sobre a parcela que exceder R$ 50.000,00 mensais por beneficiário pagos por esta Companhia"
+            ]
+          },
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "02_banco_meridional_jcp.pdf",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": false,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": {
+            "kind": "WITHHOLDING_AT_RATE",
+            "rate": "0.175",
+            "base": "GROSS_AMOUNT",
+            "beneficiary_exceptions": [
+              "Sobre o valor bruto incidirá Imposto de Renda Retido na Fonte (IRRF) à alíquota de 17,5%, conforme legislação vigente a partir de 1º de janeiro de 2026, ressalvados os acionistas comprovadamente imunes ou isentos"
+            ],
+            "conditions": []
+          },
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "03_siderurgica_paranaense_proventos.pdf",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "CLASSIFICATION_TITLE_CONFLICT"
+          ],
+          "expected_routing": "REVIEW_REQUIRED",
+          "routing_defined": false,
+          "routing_kind": "correct_review",
+          "llm_invoked": false,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [
+              "withholding_tax:wrong_value"
+            ],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [
+              "CLASSIFICATION_TITLE_CONSISTENT"
+            ],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": {
+            "kind": "WITHHOLDING_AT_RATE",
+            "rate": "0.175",
+            "base": null,
+            "beneficiary_exceptions": [],
+            "conditions": []
+          },
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "04_rede_varejo_jcp_sem_data.pdf",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "PAYMENT_DATE_PENDING"
+          ],
+          "expected_routing": "REVIEW_REQUIRED",
+          "routing_defined": true,
+          "routing_kind": "correct_review",
+          "llm_invoked": false,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": true,
+            "material_validation_failure_approved": [
+              "REQUIRED_FIELDS_NOT_PENDING"
+            ],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": {
+            "kind": "WITHHOLDING_AT_RATE",
+            "rate": "0.175",
+            "base": "GROSS_AMOUNT",
+            "beneficiary_exceptions": [],
+            "conditions": []
+          },
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "05_aurora_saneamento_dividendo_datas.pdf",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "DATE_INCONSISTENCY"
+          ],
+          "expected_routing": "REVIEW_REQUIRED",
+          "routing_defined": true,
+          "routing_kind": "correct_review",
+          "llm_invoked": false,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": true,
+            "material_validation_failure_approved": [
+              "DATE_SETTLEMENT_NOT_BEFORE_EX"
+            ],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "06_petroquimica_litoral_grupamento.pdf",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "REQUIRED_FIELD_MISSING",
+            "MATERIAL_INFORMATION_NOT_REPRESENTED"
+          ],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "false_review",
+          "llm_invoked": true,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [
+              "ex_date:not_found"
+            ],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [
+            {
+              "category": "date_role",
+              "source": "llm",
+              "evidence": "A partir de 29 de junho de 2026, as ações passarão a ser negociadas já grupadas.",
+              "expected_target": "ex_date",
+              "representation_status": "NOT_REPRESENTED",
+              "justification": null,
+              "blocks": true
+            }
+          ],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "07_telecom_norte_jcp_SCAN.pdf",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "NO_USABLE_TEXT_LAYER"
+          ],
+          "expected_routing": null,
+          "routing_defined": false,
+          "routing_kind": "correct_review",
+          "llm_invoked": false,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [
+              "event_type"
+            ],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [
+              "record_date:ABSENT",
+              "ex_date:ABSENT",
+              "payment_date:ABSENT",
+              "gross_amount_per_share:ABSENT",
+              "net_amount_per_share:ABSENT",
+              "withholding_tax:ABSENT"
+            ],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": null
+        },
+        {
+          "id": "08_construtora_horizonte_bonificacao.pdf",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "REFERENCE_NOT_FOUND"
+          ],
+          "expected_routing": "REVIEW_REQUIRED",
+          "routing_defined": true,
+          "routing_kind": "correct_review",
+          "llm_invoked": false,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": true,
+            "material_validation_failure_approved": [
+              "REF_ISIN_FOUND"
+            ],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        }
+      ]
+    },
+    "challenge": {
+      "dataset": "challenge",
+      "run_dir": "outputs/experiments/E-006_hardened/challenge_F",
+      "documents": 11,
+      "safety_enhanced": {
+        "unsafe_auto_approvals_enhanced": [],
+        "material_omissions_approved": [],
+        "hallucinations_approved": [],
+        "unresolved_ambiguity_approved": [],
+        "validation_failures_approved": [],
+        "contradictions_approved": [],
+        "other_expected_review_approved": [],
+        "detail": {}
+      },
+      "routing": {
+        "accuracy_defined": {
+          "correct": 7,
+          "total": 7
+        },
+        "accuracy_all": {
+          "correct": 9,
+          "total": 11
+        },
+        "false_approvals": [],
+        "false_reviews": [
+          "CH-03",
+          "CH-09"
+        ],
+        "review_rate": {
+          "correct": 3,
+          "total": 11
+        }
+      },
+      "deterministic_extraction_coverage": {
+        "correct": 5,
+        "total": 13
+      },
+      "llm": {
+        "invoked": [
+          "CH-01",
+          "CH-02",
+          "CH-03",
+          "CH-04",
+          "CH-06",
+          "CH-07",
+          "CH-08",
+          "CH-09",
+          "CH-10",
+          "CH-11"
+        ],
+        "invocation_rate": {
+          "correct": 10,
+          "total": 11
+        },
+        "api_calls": 20,
+        "replayed_documents": 0,
+        "input_tokens": 95733,
+        "output_tokens": 8554,
+        "estimated_cost_usd": "0.692515"
+      },
+      "latency": {
+        "end_to_end_all": {
+          "n": 11,
+          "mean_ms": 9940.6,
+          "p50_ms": 9895.5,
+          "max_ms": 15164.9
+        },
+        "with_llm": {
+          "n": 10,
+          "mean_ms": 10933.9,
+          "p50_ms": 10403.5,
+          "max_ms": 15164.9
+        },
+        "without_llm": {
+          "n": 1,
+          "mean_ms": 8.0,
+          "p50_ms": 8.0,
+          "max_ms": 8.0
+        }
+      },
+      "errors": 0,
+      "per_document": [
+        {
+          "id": "CH-01",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": true,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "CH-02",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": true,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "CH-03",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "SEMANTIC_AMBIGUITY"
+          ],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": false,
+          "routing_kind": "false_review",
+          "llm_invoked": true,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": {
+            "kind": "WITHHOLDING_AT_RATE",
+            "rate": "0.175",
+            "base": "GROSS_AMOUNT",
+            "beneficiary_exceptions": [],
+            "conditions": []
+          },
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "CH-04",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": true,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "CH-05",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": false,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": {
+            "kind": "WITHHOLDING_AT_RATE",
+            "rate": "0.10",
+            "base": "EXCESS_OVER_THRESHOLD",
+            "beneficiary_exceptions": [],
+            "conditions": [
+              "Haverá retenção de IRRF à alíquota de 10%, incidente apenas sobre os valores que ultrapassarem R$ 50.000,00 por mês pagos a um mesmo acionista"
+            ]
+          },
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "CH-06",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": true,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": {
+            "kind": "WITHHOLDING_AT_RATE",
+            "rate": "0.175",
+            "base": "GROSS_AMOUNT",
+            "beneficiary_exceptions": [
+              "comunica que o Conselho de Administração, em reunião realizada em 11 de agosto de 2026, aprovou o crédito de Juros sobre o Capital Próprio (JCP), com retenção de IRRF de 17,5% sobre o valor bruto, exceto para os acionistas que comprovarem ser imunes ou isentos até 20/08/2026"
+            ],
+            "conditions": []
+          },
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "CH-07",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": false,
+          "routing_kind": "correct_auto",
+          "llm_invoked": true,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "CH-08",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": false,
+          "routing_kind": "correct_auto",
+          "llm_invoked": true,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "CH-09",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "LOW_EXTRACTION_CONFIDENCE"
+          ],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": false,
+          "routing_kind": "false_review",
+          "llm_invoked": true,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": {
+            "kind": "WITHHOLDING_AT_RATE",
+            "rate": "0.175",
+            "base": "GROSS_AMOUNT",
+            "beneficiary_exceptions": [],
+            "conditions": []
+          },
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "CH-10",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": true,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "CH-11",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "MATERIAL_QUALIFIER_UNREPRESENTED:event_nature",
+            "SEMANTIC_AMBIGUITY",
+            "CLASSIFICATION_UNDETERMINED"
+          ],
+          "expected_routing": "REVIEW_REQUIRED",
+          "routing_defined": true,
+          "routing_kind": "correct_review",
+          "llm_invoked": true,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": true,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        }
+      ]
+    },
+    "blind_derived": {
+      "dataset": "blind_derived",
+      "run_dir": "outputs/experiments/E-006_hardened/blind_derived_F",
+      "documents": 14,
+      "safety_enhanced": {
+        "unsafe_auto_approvals_enhanced": [],
+        "material_omissions_approved": [],
+        "hallucinations_approved": [],
+        "unresolved_ambiguity_approved": [],
+        "validation_failures_approved": [],
+        "contradictions_approved": [],
+        "other_expected_review_approved": [],
+        "detail": {}
+      },
+      "routing": {
+        "accuracy_defined": {
+          "correct": 9,
+          "total": 14
+        },
+        "accuracy_all": {
+          "correct": 9,
+          "total": 14
+        },
+        "false_approvals": [],
+        "false_reviews": [
+          "BT-02",
+          "BT-05",
+          "BT-09",
+          "BT-10",
+          "BT-12"
+        ],
+        "review_rate": {
+          "correct": 10,
+          "total": 14
+        }
+      },
+      "deterministic_extraction_coverage": {
+        "correct": 92,
+        "total": 115
+      },
+      "llm": {
+        "invoked": [
+          "BT-01",
+          "BT-02",
+          "BT-05",
+          "BT-06",
+          "BT-10",
+          "BT-11",
+          "BT-12",
+          "BT-13"
+        ],
+        "invocation_rate": {
+          "correct": 8,
+          "total": 14
+        },
+        "api_calls": 16,
+        "replayed_documents": 0,
+        "input_tokens": 77521,
+        "output_tokens": 7506,
+        "estimated_cost_usd": "0.575255"
+      },
+      "latency": {
+        "end_to_end_all": {
+          "n": 14,
+          "mean_ms": 6637.8,
+          "p50_ms": 9227.5,
+          "max_ms": 16073.6
+        },
+        "with_llm": {
+          "n": 8,
+          "mean_ms": 11611.8,
+          "p50_ms": 11461.7,
+          "max_ms": 16073.6
+        },
+        "without_llm": {
+          "n": 6,
+          "mean_ms": 5.9,
+          "p50_ms": 5.7,
+          "max_ms": 7.7
+        }
+      },
+      "errors": 0,
+      "per_document": [
+        {
+          "id": "BT-01",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": true,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": {
+            "kind": "EXEMPT",
+            "rate": null,
+            "base": null,
+            "beneficiary_exceptions": [],
+            "conditions": []
+          },
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "BT-02",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "SEMANTIC_AMBIGUITY"
+          ],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "false_review",
+          "llm_invoked": true,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [
+              "withholding_tax:wrong_value"
+            ],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": {
+            "kind": "WITHHOLDING_AT_RATE",
+            "rate": "0.15",
+            "base": null,
+            "beneficiary_exceptions": [
+              "Valor bruto por ação: R$ 1,0000000000 - Imposto de Renda Retido na Fonte: 15% (quinze por cento), exceto para acionistas comprovadamente imunes ou isentos -"
+            ],
+            "conditions": []
+          },
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "BT-03",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": false,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "BT-04",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": false,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "BT-05",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "MATERIAL_INFORMATION_NOT_REPRESENTED"
+          ],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "false_review",
+          "llm_invoked": true,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [
+              "share_credit_date:not_found"
+            ],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [
+            {
+              "category": "date_role",
+              "source": "llm",
+              "evidence": "data em que as novas ações também serão creditadas aos titulares",
+              "expected_target": "share_credit_date",
+              "representation_status": "NOT_REPRESENTED",
+              "justification": null,
+              "blocks": true
+            }
+          ],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "BT-06",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "REQUIRED_FIELD_MISSING"
+          ],
+          "expected_routing": "REVIEW_REQUIRED",
+          "routing_defined": true,
+          "routing_kind": "correct_review",
+          "llm_invoked": true,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": true,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": {
+            "kind": "EXEMPT",
+            "rate": null,
+            "base": null,
+            "beneficiary_exceptions": [],
+            "conditions": []
+          },
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "BT-07",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "PAYMENT_DATE_PENDING"
+          ],
+          "expected_routing": "REVIEW_REQUIRED",
+          "routing_defined": true,
+          "routing_kind": "correct_review",
+          "llm_invoked": false,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [
+              "withholding_tax:wrong_value"
+            ],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": true,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": {
+            "kind": "WITHHOLDING_AT_RATE",
+            "rate": "0.15",
+            "base": null,
+            "beneficiary_exceptions": [],
+            "conditions": []
+          },
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "BT-08",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "REQUIRED_FIELD_MISSING",
+            "SEMANTIC_AMBIGUITY",
+            "UNSUPPORTED_EVENT_REVOCATION"
+          ],
+          "expected_routing": "REVIEW_REQUIRED",
+          "routing_defined": true,
+          "routing_kind": "correct_review",
+          "llm_invoked": false,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [
+              "event_type",
+              "gross_amount_per_share:invented"
+            ],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": true,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": [
+              "ground_truth_event_type:OTHER"
+            ]
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "REVOCATION_DETECTED_UNSUPPORTED"
+        },
+        {
+          "id": "BT-09",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "LOW_EXTRACTION_CONFIDENCE"
+          ],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "false_review",
+          "llm_invoked": false,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [
+              "qualifier:tax_rate"
+            ],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": {
+            "kind": "WITHHOLDING_AT_RATE",
+            "rate": "0.15",
+            "base": "GROSS_AMOUNT",
+            "beneficiary_exceptions": [],
+            "conditions": []
+          },
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "BT-10",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "MATERIAL_QUALIFIER_UNREPRESENTED:eligibility"
+          ],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "false_review",
+          "llm_invoked": true,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "BT-11",
+          "decision": "AUTO_APPROVE",
+          "reason_codes": [],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "correct_auto",
+          "llm_invoked": true,
+          "components_if_approved": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "BT-12",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "SEMANTIC_AMBIGUITY"
+          ],
+          "expected_routing": "AUTO_APPROVE",
+          "routing_defined": true,
+          "routing_kind": "false_review",
+          "llm_invoked": true,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [
+              "withholding_tax:wrong_value"
+            ],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": []
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": {
+            "kind": "WITHHOLDING_AT_RATE",
+            "rate": "0.15",
+            "base": null,
+            "beneficiary_exceptions": [],
+            "conditions": []
+          },
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "BT-13",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "REQUIRED_FIELD_MISSING",
+            "MATERIAL_QUALIFIER_UNREPRESENTED:event_nature",
+            "SEMANTIC_AMBIGUITY",
+            "SEMANTIC_CONTRADICTION:EVENT_TYPE_VS_TAX_TREATMENT"
+          ],
+          "expected_routing": "REVIEW_REQUIRED",
+          "routing_defined": true,
+          "routing_kind": "correct_review",
+          "llm_invoked": true,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [
+              "event_type"
+            ],
+            "material_ambiguity_approved": true,
+            "other_expected_review_approved": false,
+            "material_validation_failure_approved": [
+              "REF_ISIN_FOUND"
+            ],
+            "material_information_omission": [
+              "gross_amount_per_share:not_found",
+              "qualifier:event_nature",
+              "qualifier:event_nature"
+            ],
+            "unsupported_material_semantic_conflict": [
+              "ground_truth_event_type:UNRESOLVED",
+              "pipeline:EVENT_TYPE_VS_TAX_TREATMENT"
+            ]
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": {
+            "kind": "WITHHOLDING_AT_RATE",
+            "rate": "0.15",
+            "base": null,
+            "beneficiary_exceptions": [],
+            "conditions": []
+          },
+          "coverage_blocking": [],
+          "contradictions": [
+            {
+              "code": "EVENT_TYPE_VS_TAX_TREATMENT",
+              "detail": "dividendo com retenção à alíquota fixa para todos os titulares, sem condição de limite: regime característico de JCP (retenção na fonte sobre o bruto), não do dividendo"
+            }
+          ],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        },
+        {
+          "id": "BT-14",
+          "decision": "REVIEW_REQUIRED",
+          "reason_codes": [
+            "DATE_INCONSISTENCY"
+          ],
+          "expected_routing": "REVIEW_REQUIRED",
+          "routing_defined": true,
+          "routing_kind": "correct_review",
+          "llm_invoked": false,
+          "components_if_approved": null,
+          "latent_components": {
+            "field_hallucination": [],
+            "material_ambiguity_approved": false,
+            "other_expected_review_approved": true,
+            "material_validation_failure_approved": [
+              "DATE_SETTLEMENT_NOT_BEFORE_EX"
+            ],
+            "material_information_omission": [],
+            "unsupported_material_semantic_conflict": [
+              "ground_truth:internal_inconsistency"
+            ]
+          },
+          "unsafe_enhanced": false,
+          "tax_treatment": null,
+          "coverage_blocking": [],
+          "contradictions": [],
+          "event_status": "ACTIVE_OR_NOT_STATED"
+        }
+      ]
+    }
+  },
+  "legacy": {
+    "E": {
+      "original": {
+        "unsafe_auto_approvals_legacy": [],
+        "semantic_accuracy": {
+          "correct": 30,
+          "total": 31,
+          "pct": 96.8
+        },
+        "validation_accuracy": {
+          "correct": 104,
+          "total": 104,
+          "pct": 100.0
+        },
+        "validation_false_negatives": 0,
+        "validation_false_positives": 0,
+        "field_values": {
+          "correct": 78,
+          "total": 80,
+          "pct": 97.5
+        },
+        "invented_values": 0
+      },
+      "challenge": {
+        "unsafe_auto_approvals_legacy": [],
+        "semantic_accuracy": {
+          "correct": 21,
+          "total": 21,
+          "pct": 100.0
+        },
+        "false_confident_interpretations": 0
+      },
+      "blind_derived": {
+        "unsafe_auto_approvals_legacy": [],
+        "semantic_accuracy": {
+          "correct": 46,
+          "total": 57
+        },
+        "validation_accuracy": {
+          "correct": 43,
+          "total": 54,
+          "false_negatives": 1,
+          "false_positives": 0
+        },
+        "field_values": {
+          "correct": 16,
+          "total": 18
+        },
+        "identifiers": {
+          "correct": 41,
+          "total": 41
+        },
+        "gt_material_qualifiers_captured": {
+          "correct": 2,
+          "total": 6
+        },
+        "grounding": {
+          "correct": 76,
+          "total": 76
+        },
+        "need_oracle": {
+          "needed": [
+            "BT-01",
+            "BT-02",
+            "BT-03",
+            "BT-05",
+            "BT-06",
+            "BT-07",
+            "BT-08",
+            "BT-10",
+            "BT-11",
+            "BT-12",
+            "BT-13"
+          ],
+          "false_positive_invocations": [],
+          "false_negative_invocations": [
+            "BT-03",
+            "BT-07",
+            "BT-13"
+          ]
+        }
+      }
+    },
+    "F": {
+      "original": {
+        "unsafe_auto_approvals_legacy": [],
+        "semantic_accuracy": {
+          "correct": 29,
+          "total": 31,
+          "pct": 93.5
+        },
+        "validation_accuracy": {
+          "correct": 101,
+          "total": 104,
+          "pct": 97.1
+        },
+        "validation_false_negatives": 0,
+        "validation_false_positives": 1,
+        "field_values": {
+          "correct": 77,
+          "total": 80,
+          "pct": 96.2
+        },
+        "invented_values": 0
+      },
+      "challenge": {
+        "unsafe_auto_approvals_legacy": [],
+        "semantic_accuracy": {
+          "correct": 21,
+          "total": 21,
+          "pct": 100.0
+        },
+        "false_confident_interpretations": 0
+      },
+      "blind_derived": {
+        "unsafe_auto_approvals_legacy": [],
+        "semantic_accuracy": {
+          "correct": 49,
+          "total": 57
+        },
+        "validation_accuracy": {
+          "correct": 45,
+          "total": 54,
+          "false_negatives": 1,
+          "false_positives": 0
+        },
+        "field_values": {
+          "correct": 17,
+          "total": 18
+        },
+        "identifiers": {
+          "correct": 41,
+          "total": 41
+        },
+        "gt_material_qualifiers_captured": {
+          "correct": 2,
+          "total": 6
+        },
+        "grounding": {
+          "correct": 74,
+          "total": 74
+        },
+        "need_oracle": {
+          "needed": [
+            "BT-01",
+            "BT-02",
+            "BT-03",
+            "BT-05",
+            "BT-06",
+            "BT-07",
+            "BT-08",
+            "BT-10",
+            "BT-11",
+            "BT-12",
+            "BT-13"
+          ],
+          "false_positive_invocations": [],
+          "false_negative_invocations": [
+            "BT-03",
+            "BT-07",
+            "BT-08"
+          ]
+        }
+      }
+    }
+  },
+  "need_oracle": {
+    "E": {
+      "original": {
+        "needed": [
+          "03_siderurgica_paranaense_proventos.pdf",
+          "06_petroquimica_litoral_grupamento.pdf"
+        ],
+        "false_positive_invocations": [],
+        "false_negative_invocations": [
+          "03_siderurgica_paranaense_proventos.pdf"
+        ]
+      },
+      "challenge": {
+        "needed": [
+          "CH-03",
+          "CH-04",
+          "CH-06",
+          "CH-07",
+          "CH-08",
+          "CH-09",
+          "CH-10"
+        ],
+        "false_positive_invocations": [
+          "CH-01",
+          "CH-02",
+          "CH-11"
+        ],
+        "false_negative_invocations": []
+      },
+      "blind_derived": null
+    },
+    "F": {
+      "original": {
+        "needed": [
+          "03_siderurgica_paranaense_proventos.pdf",
+          "06_petroquimica_litoral_grupamento.pdf"
+        ],
+        "false_positive_invocations": [],
+        "false_negative_invocations": [
+          "03_siderurgica_paranaense_proventos.pdf"
+        ]
+      },
+      "challenge": {
+        "needed": [
+          "CH-03",
+          "CH-04",
+          "CH-06",
+          "CH-07",
+          "CH-08",
+          "CH-09",
+          "CH-10"
+        ],
+        "false_positive_invocations": [
+          "CH-01",
+          "CH-02",
+          "CH-11"
+        ],
+        "false_negative_invocations": []
+      },
+      "blind_derived": null
+    }
+  },
+  "notes": {
+    "E": "post-hoc: registros oficiais congelados (E-005 run 1; BT-001 run 2) reavaliados com a definição enhanced",
+    "blind_derived": "blind-derived regression set: não é blind/out-of-sample para F"
+  },
+  "class_checks_blind_derived": {
+    "tax_exemption_represented": {
+      "BT-01": true,
+      "BT-06": true
+    },
+    "dot_separated_dates_parsed": {
+      "BT-11:payment_date": true
+    },
+    "share_event_ratio_extracted": {
+      "BT-03": true,
+      "BT-04": true,
+      "BT-05": true,
+      "BT-10": true
+    },
+    "multiple_company_issuer": {
+      "BT-12": {
+        "decision": "STRUCTURAL_PRIMARY",
+        "routing": "REVIEW_REQUIRED",
+        "issuer": "Farmacêutica Novavida S.A."
+      }
+    },
+    "event_tax_contradiction_detected": {
+      "BT-13": {
+        "contradictions": [
+          "EVENT_TYPE_VS_TAX_TREATMENT"
+        ],
+        "routing": "REVIEW_REQUIRED"
+      }
+    },
+    "revocation_not_approvable": {
+      "BT-08": {
+        "routing": "REVIEW_REQUIRED",
+        "reason": true
+      }
+    }
+  },
+  "success_criteria": {
+    "1_enhanced_unsafe_zero": true,
+    "2_no_material_omission_approved": true,
+    "3_no_safety_regression": true,
+    "4_routing_not_materially_worse": true,
+    "6_cost_acceptable": true,
+    "6_latency_acceptable": true,
+    "thresholds": {
+      "4": "false reviews de F <= false reviews de E + 1, em cada conjunto",
+      "6_cost": "custo total de F nos 3 conjuntos <= 1,25 x custo da E nos mesmos conjuntos",
+      "6_latency": "p50 de documentos com LLM <= 1,5 x o da E, em cada conjunto",
+      "5_7": "qualitativos (generalização e simplicidade): avaliados no log, não aqui"
+    }
+  }
+}

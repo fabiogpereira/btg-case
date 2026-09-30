@@ -1,0 +1,1192 @@
+{
+  "schema_version": "semantic-record/0.4",
+  "document": {
+    "sha256": "1a02cc916077b0b5717812fa2ef244887b3c03e2ed74af1c906d7a2a788b8afc",
+    "file_name": "BT-13.txt",
+    "size_bytes": 692,
+    "pages": 1,
+    "text_layer": {
+      "usable": true,
+      "alnum_chars": 528,
+      "min_alnum_chars_per_page": 100,
+      "reason": null
+    }
+  },
+  "extraction": {
+    "method": "native_text_layer+deterministic_rules",
+    "status": "COMPLETED",
+    "failure_mode": null,
+    "unsupported_fields": [
+      "fraction_adjustment_period"
+    ],
+    "title": "DISTRIBUIÇÃO DE PROVENTOS"
+  },
+  "classification": {
+    "event_type": "DIVIDEND",
+    "decision_rule": "single_type",
+    "signals": {
+      "DIVIDEND": [
+        {
+          "rule_id": "event.dividend_dividendo",
+          "evidence": {
+            "text": "dividendos",
+            "start": 340,
+            "end": 350,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.dividend_dividendo",
+          "evidence": {
+            "text": "dividendo",
+            "start": 590,
+            "end": 599,
+            "page": 1
+          }
+        }
+      ]
+    },
+    "title": "DISTRIBUIÇÃO DE PROVENTOS",
+    "title_event_types": [],
+    "confidence": "HIGH",
+    "confidence_reasons": [
+      "SINGLE_TYPE_SIGNALS:DIVIDEND"
+    ]
+  },
+  "fields": {
+    "issuer_name": {
+      "status": "found",
+      "value": "Agropecuária Campo Largo S.A.",
+      "raw": "AGROPECUÁRIA CAMPO LARGO S.A.",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "AGROPECUÁRIA CAMPO LARGO S.A.",
+          "start": 0,
+          "end": 29,
+          "page": 1
+        },
+        {
+          "text": "Agropecuária Campo Largo S.A.",
+          "start": 125,
+          "end": 154,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "issuer_name.pattern_company_sa"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN",
+        "CORROBORATED:1"
+      ]
+    },
+    "cnpj": {
+      "status": "found",
+      "value": "33.444.555/0001-66",
+      "raw": "33.444.555/0001-66",
+      "source_label": "CNPJ nº",
+      "evidence": [
+        {
+          "text": "CNPJ nº 33.444.555/0001-66",
+          "start": 30,
+          "end": 56,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "cnpj.label_cnpj"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "isin": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "ticker": {
+      "status": "found",
+      "value": "ACLA4",
+      "raw": "ACLA4",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "ACLA4",
+          "start": 282,
+          "end": 287,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ticker.pattern"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN"
+      ]
+    },
+    "share_class": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "approval_date": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "record_date": {
+      "status": "found",
+      "value": "2026-09-19",
+      "raw": "19/09/2026",
+      "source_label": "Data-base",
+      "evidence": [
+        {
+          "text": "Data-base: 19/09/2026",
+          "start": 352,
+          "end": 373,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "record_date.label_data_base"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "ex_date": {
+      "status": "found",
+      "value": "2026-09-20",
+      "raw": "20/09/2026",
+      "source_label": "Data ex",
+      "evidence": [
+        {
+          "text": "Data ex: 20/09/2026",
+          "start": 374,
+          "end": 393,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ex_date.label_data_ex"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "payment_date": {
+      "status": "found",
+      "value": "2026-10-05",
+      "raw": "05/10/2026",
+      "source_label": "Data de pagamento",
+      "evidence": [
+        {
+          "text": "Data de pagamento: 05/10/2026",
+          "start": 394,
+          "end": 423,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "payment_date.label_data_pagamento"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "gross_amount_per_share": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "net_amount_per_share": {
+      "status": "found",
+      "value": "0.4250000000",
+      "raw": "0,4250000000",
+      "source_label": "valor líquido de",
+      "evidence": [
+        {
+          "text": "valor líquido de R$ 0,4250000000",
+          "start": 529,
+          "end": 561,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "net.label_valor_liquido"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "UNEXPECTED_FOR_EVENT_TYPE:DIVIDEND"
+      ],
+      "confidence": "LOW",
+      "confidence_reasons": [
+        "UNEXPECTED_FOR_EVENT_TYPE"
+      ]
+    },
+    "withholding_tax": {
+      "status": "found",
+      "value": {
+        "rate": "0.15",
+        "base": "GROSS_AMOUNT"
+      },
+      "raw": "15",
+      "source_label": "Imposto de Renda Retido na Fonte à alíquota de",
+      "evidence": [
+        {
+          "text": "Imposto de Renda Retido na Fonte à alíquota de 15%",
+          "start": 463,
+          "end": 513,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "withholding.label_imposto_renda"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "semantic_hybrid: base interpreted by LLM as GROSS_AMOUNT"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "currency": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "ratio": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "tax_treatment": {
+      "status": "found",
+      "value": {
+        "kind": "WITHHOLDING_AT_RATE",
+        "rate": "0.15",
+        "base": null,
+        "beneficiary_exceptions": [],
+        "conditions": []
+      },
+      "raw": "15",
+      "source_label": "Imposto de Renda Retido na Fonte à alíquota de",
+      "evidence": [
+        {
+          "text": "Imposto de Renda Retido na Fonte à alíquota de 15%",
+          "start": 463,
+          "end": 513,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "tax_treatment.v2_from_withholding"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    }
+  },
+  "event_specific_fields": {},
+  "reference_check": {
+    "found": false,
+    "matched_by": null,
+    "query": null,
+    "golden_row": null
+  },
+  "validations": [
+    {
+      "rule_id": "REF_ISIN_FOUND",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: isin",
+      "observed": {}
+    },
+    {
+      "rule_id": "REF_TICKER_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: reference_row",
+      "observed": {}
+    },
+    {
+      "rule_id": "REF_CNPJ_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: reference_row",
+      "observed": {}
+    },
+    {
+      "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: reference_row",
+      "observed": {}
+    },
+    {
+      "rule_id": "REF_ISSUER_ACTIVE",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: reference_row",
+      "observed": {}
+    },
+    {
+      "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "WARNING",
+      "message": "missing dependency: reference_row",
+      "observed": {}
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_PRESENT",
+      "status": "FAIL",
+      "severity": "ERROR",
+      "message": "required fields not found: ['isin', 'gross_amount_per_share', 'currency']",
+      "observed": {
+        "required": [
+          "issuer_name",
+          "isin",
+          "ticker",
+          "record_date",
+          "ex_date",
+          "gross_amount_per_share",
+          "currency",
+          "payment_date"
+        ],
+        "not_found": [
+          "isin",
+          "gross_amount_per_share",
+          "currency"
+        ]
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "no required field pending",
+      "observed": {
+        "declared_pending": []
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_DETERMINED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "event type DIVIDEND by rule single_type",
+      "observed": {
+        "decision_rule": "single_type"
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: title_event_type",
+      "observed": {
+        "title": "DISTRIBUIÇÃO DE PROVENTOS"
+      }
+    },
+    {
+      "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: approval_date",
+      "observed": {}
+    },
+    {
+      "rule_id": "DATE_RECORD_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "record 2026-09-19 vs ex 2026-09-20",
+      "observed": {
+        "record_date": "2026-09-19",
+        "ex_date": "2026-09-20"
+      }
+    },
+    {
+      "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "status": "FAIL",
+      "severity": "WARNING",
+      "message": "ex 2026-09-20; next weekday after record is 2026-09-21 (no holiday calendar, D-006)",
+      "observed": {
+        "record_date": "2026-09-19",
+        "ex_date": "2026-09-20",
+        "expected_ex_date": "2026-09-21"
+      }
+    },
+    {
+      "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "payment_date 2026-10-05 vs ex 2026-09-20",
+      "observed": {
+        "settlement_field": "payment_date",
+        "settlement_date": "2026-10-05",
+        "ex_date": "2026-09-20"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_GROSS_POSITIVE",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: gross_amount_per_share",
+      "observed": {}
+    },
+    {
+      "rule_id": "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: gross_amount_per_share",
+      "observed": {
+        "net_status": "found"
+      }
+    }
+  ],
+  "validation_summary": {
+    "NOT_EVALUATED": 10,
+    "FAIL": 2,
+    "PASS": 4
+  },
+  "rule_groups_not_applicable": [
+    "ratio"
+  ],
+  "semantic_need": {
+    "llm_required": true,
+    "llm_trigger_reasons": [
+      "SEMANTIC_CONTRADICTION"
+    ],
+    "signals": [
+      {
+        "signal": "TAX_BASE_NOT_STATED",
+        "stage": "normalize",
+        "triggers_llm": false,
+        "detail": "base não literal; sem novo texto a interpretar (bruto×líquido valida a taxa)"
+      },
+      {
+        "signal": "SEMANTIC_CONTRADICTION",
+        "stage": "contradiction_detector",
+        "triggers_llm": true,
+        "detail": {
+          "code": "EVENT_TYPE_VS_TAX_TREATMENT",
+          "detail": "dividendo com retenção à alíquota fixa para todos os titulares, sem condição de limite: regime característico de JCP (retenção na fonte sobre o bruto), não do dividendo"
+        }
+      }
+    ]
+  },
+  "semantic": {
+    "classification": {
+      "confidence": "UNRESOLVED",
+      "source": "llm",
+      "reasons": [
+        "LLM_EVENT_TYPE_UNRESOLVED"
+      ],
+      "qualifiers": [],
+      "interpretation": {
+        "deterministic": "DIVIDEND",
+        "deterministic_status": "POSITIVE",
+        "llm": "UNRESOLVED",
+        "rationale": "O texto qualifica a distribuição como 'dividendos', mas simultaneamente informa retenção de Imposto de Renda Retido na Fonte de 15% sobre o valor distribuído e imputação ao dividendo obrigatório, elementos incompatíveis com a descrição de dividendos e típicos de juros sobre o capital próprio. O aviso em nenhum ponto menciona 'juros sobre o capital próprio' nem explica a retenção, de modo que a contradição não é resolvida pelo próprio texto; a natureza permanece indeterminada."
+      }
+    },
+    "fields": {
+      "record_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "AGREEMENT"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "ex_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "AGREEMENT"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "payment_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "AGREEMENT"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "net_amount_per_share": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "withholding_tax": {
+        "confidence": "MEDIUM",
+        "source": "llm",
+        "reasons": [
+          "DETERMINISTIC_UNSUPPORTED"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      }
+    },
+    "blocking": [
+      "MATERIAL_QUALIFIER_UNREPRESENTED:event_nature",
+      "SEMANTIC_CONTRADICTION:EVENT_TYPE_VS_TAX_TREATMENT"
+    ],
+    "negated_signals": [],
+    "resolutions": [
+      {
+        "concept": "event_type",
+        "category": "LLM_UNRESOLVED",
+        "deterministic": "DIVIDEND",
+        "deterministic_status": "POSITIVE",
+        "llm": "UNRESOLVED",
+        "rationale": "O texto qualifica a distribuição como 'dividendos', mas simultaneamente informa retenção de Imposto de Renda Retido na Fonte de 15% sobre o valor distribuído e imputação ao dividendo obrigatório, elementos incompatíveis com a descrição de dividendos e típicos de juros sobre o capital próprio. O aviso em nenhum ponto menciona 'juros sobre o capital próprio' nem explica a retenção, de modo que a contradição não é resolvida pelo próprio texto; a natureza permanece indeterminada."
+      },
+      {
+        "concept": "record_date",
+        "category": "AGREEMENT"
+      },
+      {
+        "concept": "ex_date",
+        "category": "AGREEMENT"
+      },
+      {
+        "concept": "payment_date",
+        "category": "AGREEMENT"
+      },
+      {
+        "concept": "withholding_tax",
+        "category": "DETERMINISTIC_UNSUPPORTED"
+      }
+    ],
+    "material_qualifiers": [
+      {
+        "kind": "unresolved",
+        "affects": "event_nature",
+        "target_field": "event",
+        "effect": "A incidência de IRRF de 15% sobre a distribuição contradiz a qualificação como dividendos, deixando a natureza do evento indeterminada.",
+        "materiality_reason": "Removida essa passagem, a distribuição seria registrada simplesmente como dividendo; com ela, a natureza do evento (e o tratamento tributário) fica em conflito e não resolvido pelo texto.",
+        "quote": "Sobre o valor ora distribuído incidirá Imposto de Renda Retido na Fonte à alíquota de 15%",
+        "represented": false,
+        "representation": null,
+        "blocks": true,
+        "source": "llm"
+      }
+    ],
+    "semantic_notes": [
+      {
+        "kind": "informational_context",
+        "note": "O provento será imputado ao dividendo obrigatório do exercício.",
+        "quote": "a ser imputado ao dividendo obrigatório do exercício",
+        "blocks": false,
+        "source": "llm"
+      },
+      {
+        "kind": "informational_context",
+        "note": "A distribuição é dirigida exclusivamente aos titulares de ações preferenciais (ACLA4).",
+        "quote": "aos titulares de ações preferenciais de sua emissão (ACLA4)",
+        "blocks": false,
+        "source": "llm"
+      }
+    ],
+    "issuer_resolution": {
+      "groups": {
+        "agropecuária campo largo s.a.": {
+          "roles": [
+            "ANNOUNCER",
+            "CNPJ_ADJACENT",
+            "LETTERHEAD"
+          ],
+          "third_party_only": false
+        }
+      },
+      "aliases": {},
+      "decision": "V1_RESOLUTION"
+    },
+    "tax_statements": [],
+    "revocation": [],
+    "contradictions": [
+      {
+        "code": "EVENT_TYPE_VS_TAX_TREATMENT",
+        "detail": "dividendo com retenção à alíquota fixa para todos os titulares, sem condição de limite: regime característico de JCP (retenção na fonte sobre o bruto), não do dividendo"
+      }
+    ],
+    "material_coverage": [
+      {
+        "category": "tax_treatment",
+        "source": "deterministic",
+        "evidence": "Imposto de Renda Retido na Fonte à alíquota de 15%",
+        "expected_target": "tax_treatment",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "tax_treatment",
+        "source": "llm",
+        "evidence": "Sobre o valor ora distribuído incidirá Imposto de Renda Retido na Fonte à alíquota de 15%",
+        "expected_target": "tax_treatment",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "date_role",
+        "source": "llm",
+        "evidence": "Data-base: 19/09/2026",
+        "expected_target": "record_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "date_role",
+        "source": "llm",
+        "evidence": "Data ex: 20/09/2026",
+        "expected_target": "ex_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "date_role",
+        "source": "llm",
+        "evidence": "Data de pagamento: 05/10/2026",
+        "expected_target": "payment_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "qualifier:event_nature",
+        "source": "llm",
+        "evidence": "Sobre o valor ora distribuído incidirá Imposto de Renda Retido na Fonte à alíquota de 15%",
+        "expected_target": "event",
+        "representation_status": "UNRESOLVED_EXPLICIT",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "date_role",
+        "source": "deterministic",
+        "evidence": "Data de pagamento: 05/10/2026",
+        "expected_target": "payment_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      }
+    ],
+    "event_status": "ACTIVE_OR_NOT_STATED"
+  },
+  "confidence_view": {
+    "classification": {
+      "confidence": "UNRESOLVED",
+      "source": "llm",
+      "reasons": [
+        "LLM_EVENT_TYPE_UNRESOLVED"
+      ],
+      "qualifiers": [],
+      "interpretation": {
+        "deterministic": "DIVIDEND",
+        "deterministic_status": "POSITIVE",
+        "llm": "UNRESOLVED",
+        "rationale": "O texto qualifica a distribuição como 'dividendos', mas simultaneamente informa retenção de Imposto de Renda Retido na Fonte de 15% sobre o valor distribuído e imputação ao dividendo obrigatório, elementos incompatíveis com a descrição de dividendos e típicos de juros sobre o capital próprio. O aviso em nenhum ponto menciona 'juros sobre o capital próprio' nem explica a retenção, de modo que a contradição não é resolvida pelo próprio texto; a natureza permanece indeterminada."
+      }
+    },
+    "fields": {
+      "issuer_name": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      },
+      "cnpj": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      },
+      "ticker": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      },
+      "record_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "WARNED"
+      },
+      "ex_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "WARNED"
+      },
+      "payment_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "net_amount_per_share": {
+        "extraction": "LOW",
+        "semantic": "HIGH",
+        "validation": "UNVALIDATED"
+      },
+      "withholding_tax": {
+        "extraction": "HIGH",
+        "semantic": "MEDIUM",
+        "validation": "UNVALIDATED"
+      },
+      "tax_treatment": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      }
+    }
+  },
+  "llm": {
+    "provider": "anthropic",
+    "model": "claude-opus-5",
+    "effort": "medium",
+    "max_tokens": 8000,
+    "fallbacks": "off",
+    "prompt_version": "semantic-interpreter/v3",
+    "prompt_fingerprint": "e6bd3105dc7c8c84",
+    "served_models": [
+      "claude-opus-5"
+    ],
+    "attempts": 1,
+    "api_calls": 2,
+    "replayed": false,
+    "tool_calls": [
+      {
+        "name": "lookup_security",
+        "arguments": {
+          "identifier": "ACLA4",
+          "identifier_type": "TICKER"
+        },
+        "result": {
+          "found": false,
+          "identifier": "ACLA4"
+        },
+        "latency_us": 31,
+        "error": null
+      }
+    ],
+    "usage": {
+      "input_tokens": 9693,
+      "output_tokens": 1503,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "estimated_cost_usd": "0.08604",
+    "latency_ms": 16053,
+    "errors": [],
+    "refusals": [],
+    "served_model_mismatch": false,
+    "parse_or_schema_failures": 0,
+    "request_ids": [
+      "req_011CfYp9epXPHBcm2mgDwNLq",
+      "req_011CfYp9xwSZNAyu3JGzxcQn"
+    ],
+    "interpretation": {
+      "event": {
+        "type": "UNRESOLVED",
+        "evidence": [
+          "a título de dividendos",
+          "Sobre o valor ora distribuído incidirá Imposto de Renda Retido na Fonte à alíquota de 15%",
+          "a ser imputado ao dividendo obrigatório do exercício",
+          "DISTRIBUIÇÃO DE PROVENTOS"
+        ],
+        "misleading_mentions": [
+          {
+            "quote": "a ser imputado ao dividendo obrigatório do exercício",
+            "why_not_the_event": "Imputação ao dividendo obrigatório descreve o destino contábil do provento, não a natureza do evento anunciado."
+          },
+          {
+            "quote": "AVISO AOS ACIONISTAS – DISTRIBUIÇÃO DE PROVENTOS",
+            "why_not_the_event": "Título genérico ('proventos') que não define a natureza específica da distribuição."
+          }
+        ],
+        "rationale": "O texto qualifica a distribuição como 'dividendos', mas simultaneamente informa retenção de Imposto de Renda Retido na Fonte de 15% sobre o valor distribuído e imputação ao dividendo obrigatório, elementos incompatíveis com a descrição de dividendos e típicos de juros sobre o capital próprio. O aviso em nenhum ponto menciona 'juros sobre o capital próprio' nem explica a retenção, de modo que a contradição não é resolvida pelo próprio texto; a natureza permanece indeterminada."
+      },
+      "dates": [
+        {
+          "role": "record_date",
+          "status": "FOUND",
+          "value_as_written": "19/09/2026",
+          "evidence": "Data-base: 19/09/2026"
+        },
+        {
+          "role": "ex_date",
+          "status": "FOUND",
+          "value_as_written": "20/09/2026",
+          "evidence": "Data ex: 20/09/2026"
+        },
+        {
+          "role": "payment_date",
+          "status": "FOUND",
+          "value_as_written": "05/10/2026",
+          "evidence": "Data de pagamento: 05/10/2026"
+        }
+      ],
+      "withholding_tax": {
+        "status": "STATED",
+        "rate_as_written": "15%",
+        "base": "GROSS_AMOUNT",
+        "evidence": [
+          "Sobre o valor ora distribuído incidirá Imposto de Renda Retido na Fonte à alíquota de 15%",
+          "resultando em valor líquido de R$ 0,4250000000 por ação"
+        ]
+      },
+      "material_qualifiers": [
+        {
+          "kind": "unresolved",
+          "affects": "event_nature",
+          "target_field": "event",
+          "effect": "A incidência de IRRF de 15% sobre a distribuição contradiz a qualificação como dividendos, deixando a natureza do evento indeterminada.",
+          "materiality_reason": "Removida essa passagem, a distribuição seria registrada simplesmente como dividendo; com ela, a natureza do evento (e o tratamento tributário) fica em conflito e não resolvido pelo texto.",
+          "quote": "Sobre o valor ora distribuído incidirá Imposto de Renda Retido na Fonte à alíquota de 15%"
+        }
+      ],
+      "semantic_notes": [
+        {
+          "kind": "informational_context",
+          "note": "O provento será imputado ao dividendo obrigatório do exercício.",
+          "quote": "a ser imputado ao dividendo obrigatório do exercício"
+        },
+        {
+          "kind": "informational_context",
+          "note": "A distribuição é dirigida exclusivamente aos titulares de ações preferenciais (ACLA4).",
+          "quote": "aos titulares de ações preferenciais de sua emissão (ACLA4)"
+        }
+      ],
+      "security_reference": {
+        "identifier_checked": "ACLA4",
+        "found_in_reference": "NO"
+      }
+    },
+    "grounding": {
+      "event_grounded": true,
+      "total_quotes": 14,
+      "grounded_quotes": 14,
+      "ungrounded": []
+    },
+    "reference_divergence": {
+      "tool_called": true,
+      "tool_result_found": false,
+      "llm_reported": "NO",
+      "engine_REF_ISIN_FOUND": "NOT_EVALUATED",
+      "divergent": false,
+      "authority": "validation_engine"
+    }
+  },
+  "routing": {
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "REQUIRED_FIELD_MISSING",
+      "MATERIAL_QUALIFIER_UNREPRESENTED:event_nature",
+      "SEMANTIC_AMBIGUITY",
+      "SEMANTIC_CONTRADICTION:EVENT_TYPE_VS_TAX_TREATMENT"
+    ],
+    "explanations": [
+      "REQUIRED_FIELDS_PRESENT: required fields not found: ['isin', 'gross_amount_per_share', 'currency']",
+      "classification: LLM_EVENT_TYPE_UNRESOLVED",
+      "MATERIAL_QUALIFIER_UNREPRESENTED:event_nature",
+      "SEMANTIC_CONTRADICTION:EVENT_TYPE_VS_TAX_TREATMENT"
+    ],
+    "gates": [
+      {
+        "gate": "EXTRACTION_POSSIBLE",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REQUIRED_INFORMATION",
+        "status": "BLOCK",
+        "reason_codes": [
+          "REQUIRED_FIELD_MISSING"
+        ],
+        "explanations": [
+          "REQUIRED_FIELDS_PRESENT: required fields not found: ['isin', 'gross_amount_per_share', 'currency']"
+        ]
+      },
+      {
+        "gate": "SEMANTIC_INTERPRETATION",
+        "status": "BLOCK",
+        "reason_codes": [
+          "MATERIAL_QUALIFIER_UNREPRESENTED:event_nature",
+          "SEMANTIC_AMBIGUITY",
+          "SEMANTIC_CONTRADICTION:EVENT_TYPE_VS_TAX_TREATMENT"
+        ],
+        "explanations": [
+          "classification: LLM_EVENT_TYPE_UNRESOLVED",
+          "MATERIAL_QUALIFIER_UNREPRESENTED:event_nature",
+          "SEMANTIC_CONTRADICTION:EVENT_TYPE_VS_TAX_TREATMENT"
+        ]
+      },
+      {
+        "gate": "DETERMINISTIC_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REFERENCE_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "BLOCKING_ERRORS",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      }
+    ]
+  },
+  "audit": {
+    "run_id": "20260930T021049Z-f851612a",
+    "pipeline_version": "baseline-a/0.1.0+candidate-hardened/0.1",
+    "started_at": "2026-09-30T02:12:08.237+00:00",
+    "finished_at": "2026-09-30T02:12:24.311+00:00",
+    "duration_us": 16073591,
+    "stages": [
+      {
+        "stage": "ingest",
+        "started_at": "2026-09-30T02:12:08.237+00:00",
+        "status": "ok",
+        "duration_us": 487
+      },
+      {
+        "stage": "text_layer",
+        "started_at": "2026-09-30T02:12:08.238+00:00",
+        "status": "ok",
+        "duration_us": 310
+      },
+      {
+        "stage": "extract_candidates",
+        "started_at": "2026-09-30T02:12:08.238+00:00",
+        "status": "ok",
+        "duration_us": 2618
+      },
+      {
+        "stage": "classify",
+        "started_at": "2026-09-30T02:12:08.241+00:00",
+        "status": "ok",
+        "duration_us": 347
+      },
+      {
+        "stage": "normalize",
+        "started_at": "2026-09-30T02:12:08.241+00:00",
+        "status": "ok",
+        "duration_us": 456
+      },
+      {
+        "stage": "confidence",
+        "started_at": "2026-09-30T02:12:08.242+00:00",
+        "status": "ok",
+        "duration_us": 43
+      },
+      {
+        "stage": "semantic_patch",
+        "started_at": "2026-09-30T02:12:08.242+00:00",
+        "status": "ok",
+        "duration_us": 1838
+      },
+      {
+        "stage": "semantic_need",
+        "started_at": "2026-09-30T02:12:08.244+00:00",
+        "status": "ok",
+        "duration_us": 103,
+        "llm_required": true,
+        "triggers": [
+          "SEMANTIC_CONTRADICTION"
+        ]
+      },
+      {
+        "stage": "semantic_llm",
+        "started_at": "2026-09-30T02:12:08.244+00:00",
+        "status": "ok",
+        "duration_us": 16064448,
+        "api_calls": 2,
+        "tool_calls": 1,
+        "replayed": false
+      },
+      {
+        "stage": "semantic_merge",
+        "started_at": "2026-09-30T02:12:24.308+00:00",
+        "status": "ok",
+        "duration_us": 1098
+      },
+      {
+        "stage": "hardening_gates",
+        "started_at": "2026-09-30T02:12:24.310+00:00",
+        "status": "ok",
+        "duration_us": 654
+      },
+      {
+        "stage": "validate",
+        "started_at": "2026-09-30T02:12:24.310+00:00",
+        "status": "ok",
+        "duration_us": 198,
+        "rules_executed": 16
+      },
+      {
+        "stage": "route",
+        "started_at": "2026-09-30T02:12:24.311+00:00",
+        "status": "ok",
+        "duration_us": 116
+      }
+    ],
+    "errors": [],
+    "retries": 0,
+    "extraction_method": "native_text_layer+deterministic_rules",
+    "model": "claude-opus-5",
+    "prompt_version": "semantic-interpreter/v3",
+    "validators_executed": [
+      "REF_ISIN_FOUND",
+      "REF_TICKER_CONSISTENT",
+      "REF_CNPJ_CONSISTENT",
+      "REF_SHARE_CLASS_CONSISTENT",
+      "REF_ISSUER_ACTIVE",
+      "REF_ISSUER_NAME_CONSISTENT",
+      "REQUIRED_FIELDS_PRESENT",
+      "REQUIRED_FIELDS_NOT_PENDING",
+      "CLASSIFICATION_DETERMINED",
+      "CLASSIFICATION_TITLE_CONSISTENT",
+      "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "DATE_RECORD_BEFORE_EX",
+      "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "AMOUNT_GROSS_POSITIVE",
+      "AMOUNT_NET_MATCHES_GROSS_AND_TAX"
+    ],
+    "final_decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "REQUIRED_FIELD_MISSING",
+      "MATERIAL_QUALIFIER_UNREPRESENTED:event_nature",
+      "SEMANTIC_AMBIGUITY",
+      "SEMANTIC_CONTRADICTION:EVENT_TYPE_VS_TAX_TREATMENT"
+    ],
+    "variant": "F"
+  }
+}

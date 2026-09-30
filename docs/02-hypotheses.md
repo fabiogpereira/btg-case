@@ -301,8 +301,14 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
 - **Why it matters:** O BT-001 mostrou que "não inventar" não basta: descartar uma informação material também produz registro errado.
 - **How to test:** F × E (E reavaliada post-hoc) nos três conjuntos, com a definição enhanced (D-025).
 - **Expected signal:** `unsafe_auto_approvals_enhanced` = 0 e 0 omissões aprovadas na F; false reviews da F ≤ E + 1 por conjunto.
-- **Observed result:** (pendente — run oficial do E-006)
-- **Status:** OPEN
+- **Observed result:** (E-006, execução oficial única)
+  - Aprovações inseguras enhanced: 0 nos três conjuntos (E post-hoc: 2 no blind-derived set, BT-01 e BT-03, ambas omissões).
+  - BT-01 e BT-03 aprovados **com** a isenção e a data de crédito representadas.
+  - False reviews: original +0, challenge +1 (CH-03, por variação do LLM nos qualificadores v3; lógica idêntica à da E), blind-derived −1.
+  - O gate também bloqueou de forma segura uma data anafórica (BT-05) que o grounding literal não aceita.
+  - Resultado **in-sample**: os três conjuntos foram vistos em dry run.
+- **Decision:** Critérios 1–4 e 6 atendidos; recomenda-se adotar a F (decisão do usuário).
+- **Status:** SUPPORTED (in-sample; sem medida independente)
 
 ### H-30 — Correções determinísticas pequenas e genéricas reduzem revisões desnecessárias sem regressão
 - **Hypothesis:** Estas correções reduzem revisões por cobertura sem nenhuma regressão no original e no challenge set:
@@ -312,8 +318,11 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
   - emissor por papel estrutural, com agrupamento de alias "órgão da X S.A." → "X S.A." e revisão se houver duas entidades estruturais.
 - **How to test:** Checagens por classe no blind-derived regression set; regressão no original e no challenge set.
 - **Expected signal:** As classes observadas no BT-001 corrigidas; nenhuma aprovação nova incorreta.
-- **Observed result:** (pendente)
-- **Status:** OPEN
+- **Observed result:** (E-006)
+  - Blind-derived set: datas com pontos (BT-11 → AUTO correto); proporções 4/4 (BT-05 1→3); crédito "das novas ações" (BT-03); alias de emissor (BT-12 sem LOW, mas em revisão por outro motivo).
+  - Cobertura determinística 87 → 92/115; semântica 46 → 49/57; roteamento 8 → 9/14.
+  - Original e challenge set sem regressão determinística (cobertura igual). As quedas no original (semântica 29/31, 1 FP de validação) vêm do LLM no doc 06 (valor fora da citação, failure mode já visto no E-005).
+- **Status:** SUPPORTED (in-sample)
 
 ### H-31 — Contradição e revogação nunca viram evento vivo aprovado
 - **Hypothesis:** Um detector determinístico de incompatibilidades documentadas e a revogação mínima garantem que contradições persistentes e revogações vão para revisão, e só adicionam chamada do LLM onde há contradição. As incompatibilidades são:
@@ -323,5 +332,9 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
   - isenção junto com alíquota numérica.
 - **How to test:** Checagens por classe e roteamento nos três conjuntos.
 - **Expected signal:** 0 aprovações com contradição; revogação com `UNSUPPORTED_EVENT_REVOCATION`.
-- **Observed result:** (pendente)
-- **Status:** OPEN
+- **Observed result:** (E-006)
+  - BT-13: `EVENT_TYPE_VS_TAX_TREATMENT` detectada, virou gatilho do LLM, persistiu → revisão.
+  - BT-08: `UNSUPPORTED_EVENT_REVOCATION` → revisão, sem LLM.
+  - 0 contradições aprovadas; nenhuma contradição falsa nos três conjuntos.
+  - Custo: 1 documento a mais com LLM (BT-13) e 1 a menos (BT-08).
+- **Status:** SUPPORTED (in-sample; 1 caso de cada classe)
