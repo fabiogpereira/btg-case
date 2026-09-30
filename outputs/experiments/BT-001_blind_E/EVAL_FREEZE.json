@@ -1,0 +1,27 @@
+{
+  "experiment": "BT-001 (blind test da variante E)",
+  "frozen_at": "2026-09-30",
+  "variant": "E",
+  "variant_state": "tag candidate-E / e005-final (arquivos idênticos ao FREEZE do E-005)",
+  "e005_frozen_files_changed": [],
+  "required_llm_config": {
+    "LLM_PROVIDER": "anthropic",
+    "LLM_MODEL": "claude-opus-5",
+    "LLM_EFFORT": "medium",
+    "LLM_FALLBACKS": "off",
+    "LLM_MAX_TOKENS": "8000"
+  },
+  "prompt": {
+    "version": "semantic-interpreter/v3",
+    "fingerprint": "e6bd3105dc7c8c84"
+  },
+  "blind_set_manifest": "tests/blind_set/MANIFEST.json",
+  "evaluator": {
+    "src/evaluation/blind.py": "b0cf8c605be3d608efd954acf15a696e13b2e68d239da883353cd971090cb47f"
+  },
+  "protocol": [
+    "1 execução oficial da E (cache llm_cache_run1)",
+    "run do B (determinístico, sem LLM) só como instrumentação do oráculo de necessidade",
+    "segunda execução da E só se justificada, com autorização do resultado da primeira"
+  ]
+}
