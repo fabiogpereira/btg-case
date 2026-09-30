@@ -358,3 +358,23 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
   - Risco latente registrado: rótulo depois do valor captura a data seguinte (data-base errada no BT2-02, segurada pela validação de ordem e pelo LLM).
 - **Decision:** GO condicional para a etapa de OCR (critérios pré-registrados atendidos; limitações fail-safe). O caminho de aprovação não foi exercitado em dados independentes.
 - **Status:** MODIFIED (segura e fail-safe em dados independentes; pouco útil; aprovação não validada de forma independente)
+
+## L. Hardening determinístico pré-OCR (E-007)
+
+> No pedido do usuário, a identidade foi chamada de "H-32" e o binding de "H-33". Aqui elas são H-33 e H-34, porque H-32 já registra a validação cega do BT-002.
+
+### H-33 — Identidade sem ISIN por identificadores exatos e independentes
+- **Hypothesis:** Aceitar ticker exato + CNPJ exato (ou, sem CNPJ, + razão social exata), na mesma linha única da base, como identidade suficiente quando o documento não traz ISIN remove um bloqueio absoluto sem permitir aprovação com identidade ambígua ou errada.
+- **Why it matters:** No BT-002, a ausência de ISIN sozinha bloqueou todas as aprovações esperadas, mesmo com ticker e CNPJ exatos.
+- **How to test:** Testes unitários do invariante e regressão por replay nos quatro conjuntos (E-007).
+- **Expected signal:** 0 aprovações com identidade errada ou não resolvida; resoluções de nível 2 onde há ticker + CNPJ; conflitos → revisão.
+- **Observed result:** (pendente)
+- **Status:** OPEN
+
+### H-34 — Binding conservador impede associação silenciosa rótulo → valor errado
+- **Hypothesis:** Rejeitar a associação quando o gap entre rótulo e valor indica que o rótulo anota o valor anterior, atravessa outro campo ou atravessa frase elimina bindings errados sem perda material de bindings corretos no case original.
+- **Why it matters:** No BT-002, "DATA (data-base) – A partir de DATA2" levou a data-base a DATA2. O mecanismo é do extrator base (A–F), e OCR tende a piorar a estrutura.
+- **How to test:** Testes unitários do invariante; regressão com bindings errados, evitados e perdidos.
+- **Expected signal:** 0 bindings errados aprovados; bindings errados da G ≤ F; nenhum binding correto perdido no original.
+- **Observed result:** (pendente)
+- **Status:** OPEN

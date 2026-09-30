@@ -8,6 +8,8 @@ D  hybrid_on_demand (E-004): B + detector de necessidade -> [LLM v2 só se preci
 E  hybrid_qualifiers_v3 (E-005): igual à D, com prompt v3 e qualificadores v3 (material × notas, guarda de escopo)
 F  candidate_hardened (E-006): E + perfil determinístico v2 + tratamento tributário + contradições + revogação
    + gate de cobertura material (hardening.py)
+G  candidate_f_pre_ocr_hardening (E-007): F + identidade hierárquica sem ISIN (identity.py) + binding conservador
+   rótulo/valor (binding.py). Semântica LLM idêntica à F.
 
 Em todas as variantes o orchestrator executa TODAS as validações obrigatórias; nada depende de
 o LLM chamar ou não uma tool (D-002).
@@ -42,9 +44,11 @@ VARIANT_VERSIONS = {"A": PIPELINE_VERSION, "B": PIPELINE_VERSION + "+semantic-pa
                     "C": PIPELINE_VERSION + "+semantic-llm/0.1",
                     "D": PIPELINE_VERSION + "+hybrid-on-demand/0.1",
                     "E": PIPELINE_VERSION + "+hybrid-qualifiers-v3/0.1",
-                    "F": PIPELINE_VERSION + "+candidate-hardened/0.1"}
+                    "F": PIPELINE_VERSION + "+candidate-hardened/0.1",
+                    "G": PIPELINE_VERSION + "+candidate-f-pre-ocr-hardening/0.1"}
 VARIANT_SCHEMA = {"A": RECORD_SCHEMA_VERSION, "B": "semantic-record/0.1", "C": "semantic-record/0.1",
-                  "D": "semantic-record/0.2", "E": "semantic-record/0.3", "F": "semantic-record/0.4"}
+                  "D": "semantic-record/0.2", "E": "semantic-record/0.3", "F": "semantic-record/0.4",
+                  "G": "semantic-record/0.5"}
 
 
 @dataclass
@@ -60,7 +64,7 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
     record = {"schema_version": VARIANT_SCHEMA[variant]}
     llm_info = None
     from .profiles import DETERMINISTIC_PROFILE
-    profile_token = DETERMINISTIC_PROFILE.set("v2" if variant == "F" else "v1")
+    profile_token = DETERMINISTIC_PROFILE.set("v2" if variant in ("F", "G") else "v1")
     try:
         with audit.stage("ingest"):
             doc = ingest(path)
@@ -85,12 +89,15 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
 
         with audit.stage("extract_candidates"):
             extraction = extract_candidates(tl)
-            if variant == "F":
+            if variant in ("F", "G"):
                 from .hardening import extra_candidates
                 extra_candidates(extraction, tl)
+            if variant == "G":
+                from .binding import apply_safe_binding
+                record["binding"] = apply_safe_binding(extraction, tl)
         negated, cls_semantic = [], None
         with audit.stage("classify"):
-            if variant in ("B", "D", "E", "F"):
+            if variant in ("B", "D", "E", "F", "G"):
                 from .semantic_patch import classification_semantics, classify_negation_aware
                 classification, negated = classify_negation_aware(extraction, tl)
                 cls_semantic = classification_semantics(classification, extraction, tl, negated)
@@ -121,8 +128,8 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
             score_all(fields, specific)
 
         semantic = need = None
-        if variant in ("D", "E", "F"):
-            semantic_fn = {"D": _semantic_d, "E": _semantic_e, "F": _semantic_f}[variant]
+        if variant in ("D", "E", "F", "G"):
+            semantic_fn = {"D": _semantic_d, "E": _semantic_e, "F": _semantic_f, "G": _semantic_f}[variant]
             classification, fields, specific, semantic, llm_info, parsed, need = semantic_fn(
                 extraction, tl, classification, cls_semantic, negated, fields, specific, golden, semantic_ctx, audit)
         elif variant == "B":
@@ -147,12 +154,17 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
         with audit.stage("validate") as st:
             candidate = CandidateRecord(classification, fields, specific)
             validations, not_applicable, ref = validate(candidate, golden)
+            if variant == "G":
+                from .identity import apply_identity, resolve_identity
+                identity = resolve_identity(candidate, golden)
+                validations = apply_identity(validations, identity, candidate)
+                record["identity"] = identity
             st["rules_executed"] = len(validations)
         required = REQUIRED.get(classification.event_type, ALWAYS_REQUIRED)
 
-        if variant in ("C", "D", "E", "F") and llm_info is not None:
+        if variant in ("C", "D", "E", "F", "G") and llm_info is not None:
             llm_info["reference_divergence"] = _reference_divergence(parsed, llm_info, validations)
-        if variant in ("D", "E", "F"):
+        if variant in ("D", "E", "F", "G"):
             from .semantic_hybrid import llm_only_corroboration_blocks
             semantic["blocking"] += llm_only_corroboration_blocks(semantic["fields"], validations)
         with audit.stage("route"):
@@ -160,6 +172,9 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
                 routing = route(True, validations, {**fields, **specific}, required)
             else:
                 routing = route_gated(True, validations, {**fields, **specific}, required, semantic)
+            if variant == "G":
+                from .identity import gate_identity
+                routing = gate_identity(routing, validations)
 
         record["extraction"] = {"method": EXTRACTION_METHOD, "status": "COMPLETED", "failure_mode": None,
                                 "unsupported_fields": extraction.unsupported_fields, "title": extraction.title}
@@ -486,8 +501,8 @@ def run_batch(documents_dir: Path, golden_path: Path, out_dir: Path, run_id: str
                "total_duration_us": sum(r["audit"]["duration_us"] or 0 for r in records)}
     if variant != "A":
         config["variant"] = variant
-    if variant in ("C", "D", "E", "F"):
-        if variant in ("E", "F"):
+    if variant in ("C", "D", "E", "F", "G"):
+        if variant in ("E", "F", "G"):
             from .semantic_llm_v3 import PROMPT_VERSION, prompt_fingerprint
         elif variant == "D":
             from .semantic_llm_v2 import PROMPT_VERSION, prompt_fingerprint
@@ -510,7 +525,7 @@ def run_batch(documents_dir: Path, golden_path: Path, out_dir: Path, run_id: str
             "reference_divergences": sum(bool((x.get("reference_divergence") or {}).get("divergent")) for x in llms),
             "served_models": sorted({m for x in llms for m in x["served_models"]}),
             "replayed_documents": sum(x["replayed"] for x in llms)}
-    if variant in ("D", "E", "F"):
+    if variant in ("D", "E", "F", "G"):
         needs = [r.get("semantic_need") for r in records if r.get("semantic_need")]
         summary["semantic_need"] = {
             "documents_assessed": len(needs), "llm_required": sum(n["llm_required"] for n in needs),

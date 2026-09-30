@@ -376,6 +376,41 @@ Formato:
   - Uma execução oficial, com cache novo.
 - **Regra:** o BT-002 não pode ser usado para modificar a F. Qualquer correção futura motivada por ele o transforma em regression set, como aconteceu com o BT-001 (D-026).
 
+## D-030 — Papel dos dados sintéticos: expor failure modes, não medir prevalência
+
+- **Data:** 2026-09-30
+- **Status:** ACCEPTED
+- **Tipo:** metodologia (definida pelo usuário)
+- **Decisão:**
+  - O case original do BTG continua sendo a principal evidência funcional.
+  - Datasets sintéticos (challenge set, blind-derived set, BT-002) servem para expor failure modes e testar invariantes. **Não** são tratados como representativos da frequência real do mercado.
+  - Nenhuma métrica deles é usada para afirmar prevalência em produção.
+- **Regra de trabalho:** *"Synthetic data can expose structural failure modes, but cannot establish production prevalence."*
+- **Consequência:** Correções motivadas por dados sintéticos precisam ser defensáveis por princípio de arquitetura (classe de comportamento), não pelo placar. O conjunto que as motivou vira regression set.
+
+## D-031 — Variante G (`candidate_f_pre_ocr_hardening`): identidade hierárquica e binding conservador
+
+- **Data:** 2026-09-30
+- **Status:** ACCEPTED (implementação; adoção como candidata depende do E-007 e do usuário)
+- **Tipo:** arquitetura (determinística)
+- **Decisão:** G = F + duas mudanças determinísticas; semântica LLM, prompt, detector, qualificadores e fusão idênticos à F.
+  1. **Identidade hierárquica** (`identity.py`):
+     - `ISIN_EXACT`. ISIN presente é autoritativo: fora da base → `REFERENCE_NOT_FOUND`, sem cair para o nível 2.
+     - Sem ISIN: `TICKER_AND_CNPJ_EXACT` (preferido) ou `TICKER_AND_ISSUER_EXACT`, na mesma e única linha da base.
+     - Qualquer outro caso é `UNRESOLVED` e bloqueia: identificadores insuficientes, ticker sozinho, ticker fora da base ou em mais de uma linha, ticker de outro CNPJ/emissor, identificador divergente no documento, emissor não resolvido.
+     - Sem fuzzy; o LLM não participa.
+     - No nível 2, o ISIN é dispensado como campo obrigatório e as regras de consistência rodam contra a linha casada. O gate REFERENCE_VALIDATION é recomposto com `REF_IDENTITY_RESOLVED`, porque `route_gated` só conhece as regras baseadas em ISIN.
+     - Registro: `identity` (método, identificadores usados, linha casada, status, reason code, conflitos).
+  2. **Binding conservador rótulo/valor** (`binding.py`). Um candidato ancorado em rótulo é rejeitado se o trecho entre rótulo e valor:
+     - mostra que o rótulo anota o valor anterior ("VALOR (rótulo)");
+     - atravessa pista de outro campo semântico;
+     - atravessa fim de frase.
+
+     Associação rejeitada deixa o campo `not_found` ou com outro candidato. Único binding novo: "DATA (rótulo)".
+     Registro: `binding` (decisão, motivo, `crosses_line`).
+  - Nada muda em `validation.py`, `extraction.py`, `routing.py`, `profiles.py` ou `hardening.py` (congelados): os módulos novos pós-processam.
+  - A F é garantida por replay (`tests/test_e006_regression.py`, 43 registros oficiais do E-006 e do BT-002).
+
 ---
 
 ## Decisões deliberadamente adiadas (não são decisões)

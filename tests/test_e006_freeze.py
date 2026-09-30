@@ -19,7 +19,13 @@ def text_sha(p: Path) -> str:
     return hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
 
-@pytest.mark.parametrize("path", sorted(FREEZE["files"]))
+# Evolução a partir do E-007 (ramo aditivo da variante G). O comportamento congelado da F é garantido por
+# tests/test_e006_regression.py (replay dos registros oficiais do E-006 e do BT-002). Estado exato: tag `candidate-F`.
+EVOLVABLE = {"src/corporate_actions/pipeline.py", "src/corporate_actions/__main__.py"}
+ADDED_AFTER_FREEZE = {"src/corporate_actions/identity.py", "src/corporate_actions/binding.py"}   # só a G usa
+
+
+@pytest.mark.parametrize("path", sorted(set(FREEZE["files"]) - EVOLVABLE))
 def test_frozen_file_unchanged(path):
     assert text_sha(ROOT / path) == FREEZE["files"][path], f"{path} mudou depois do congelamento do E-006"
 
@@ -28,7 +34,7 @@ def test_no_unfrozen_source_file():
     # Escopo = código da variante F (pipeline). Avaliadores novos (ex.: BT-002) podem ser acrescentados em
     # src/evaluation sem mudar a F; os avaliadores já congelados continuam protegidos pelo hash acima.
     current = {p.relative_to(ROOT).as_posix() for p in (ROOT / "src" / "corporate_actions").rglob("*.py")}
-    assert current <= set(FREEZE["files"]), f"arquivo de código fora do freeze: {sorted(current - set(FREEZE['files']))}"
+    assert current <= set(FREEZE["files"]) | ADDED_AFTER_FREEZE, f"arquivo de código fora do freeze: {sorted(current - set(FREEZE['files']))}"
 
 
 def test_prompt_v3_is_frozen():

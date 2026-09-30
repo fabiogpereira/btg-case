@@ -1393,3 +1393,53 @@ Condições e ressalvas que acompanham o GO:
 - **O failure mode 2** (valor com âncora de rótulo errada) é risco latente de segurança. Deve ser investigado antes de confiar em aprovações de documentos vindos de OCR, que tendem a quebrar a estrutura de linhas. Correção exige autorização e transformaria o BT-002 em regression set.
 - **A utilidade em avisos sem ISIN é nula:** a identidade por ticker + CNPJ exatos é uma decisão de desenho pendente, não uma correção.
 - **Se o critério for "evidência independente de que aprovações são corretas", o BT-002 não a fornece.** Nesse caso, a recomendação passa a ser investigar antes do OCR.
+
+## E-007 — Hardening determinístico pré-OCR: variante G (pré-registro; congelado)
+
+- **Checkpoint da F antes da mudança:** tag `pre-e007` → `51287b1`. A F avaliada no BT-002 continua em `candidate-F` → `769e147`.
+- **Princípio metodológico (D-030):** *Synthetic data can expose structural failure modes, but cannot establish production prevalence.* O case original é a evidência funcional principal. Challenge, blind-derived e BT-002 servem para testar invariantes; suas métricas não medem prevalência.
+- **Escopo:** só duas classes estruturais reveladas pelo BT-002, identidade sem ISIN e binding rótulo/valor. Não entram:
+  - novos formatos de proporção;
+  - valores ou datas em prosa;
+  - novos tipos de evento;
+  - revogação;
+  - nenhum outro gap do BT-002 (seguem como known limitations).
+- **Variante G** (`candidate_f_pre_ocr_hardening`, schema `semantic-record/0.5`). Desenho em D-031; código em `identity.py` e `binding.py`, ramo aditivo em `pipeline.py`.
+- **F preservada:** replay de 43 registros oficiais (`tests/test_e006_regression.py`). A–E seguem reproduzindo os seus.
+- **Testes:** `tests/test_pre_ocr_hardening_g.py`, 26 testes com textos sintéticos novos, sem frases dos conjuntos BT.
+  - Identidade: ISIN exato; ticker + CNPJ; ticker + emissor; CNPJ errado; nome parecido; ticker ambíguo na base; emissor ambíguo no documento; ticker sozinho; nenhum identificador; ISIN fora da base sem fallback; ticker divergente; bloqueio no roteamento.
+  - Binding: mesma linha; delimitador; célula de tabela quebrada; rótulo seguido de outro rótulo; duas datas próximas; rótulo depois do valor; "a partir de"; valor errado mais próximo; frase; reconstrução das quebras de linha.
+  - Ponta a ponta: sem ISIN, a G aprova com ticker + CNPJ exatos e a F revisa; CNPJ errado → `IDENTITY_CONFLICT`.
+
+### Ajuste de desenvolvimento (no case original, antes do congelamento)
+
+- A primeira versão do binding também rejeitava "atravessa quebra de linha com palavras no caminho".
+- No case original, isso derrubou o valor bruto dos docs 01 e 02 (aprovados corretamente pela F) e a alíquota do doc 03. O PDF quebra a célula do rótulo ("Valor bruto por ação ordinária / (ON) / R$ …").
+- Quebra de linha foi rebaixada a informação de auditoria (`crosses_line`), porque não discrimina binding errado em tabelas e seria ainda pior com OCR.
+- Depois do ajuste, a G é idêntica à F no original: mesmos campos e mesmo roteamento. Os bindings "DATA (rótulo)" encontrados só corroboram valores existentes.
+- **Nenhum outro conjunto foi executado com a G antes do congelamento.**
+
+### Avaliação pré-registrada (`src/evaluation/e007.py`)
+
+- **Regressão por replay:** `python -m evaluation.e007 run`. A G usa as respostas gravadas da F. Cache miss não chama a API: vira `SEMANTIC_INTERPRETER_FAILED` (revisão) e é listado em `cache_misses`.
+- **Segurança:** enhanced com componentes separados; aprovações com identidade errada; bindings errados aprovados; omissões; aprovações falsas.
+- **Identidade:** métodos, não resolvidas, conflitos, identidade errada.
+- **Binding:** mantidos, rejeitados por motivo, errados evitados, corretos perdidos. Binding errado = valor final vindo de regra de rótulo diferente do gabarito; no IR, compara-se a alíquota.
+- **Utilidade:** roteamento, taxa de revisão, aprovações corretas, false reviews.
+- **Linha de base da F** (registros oficiais; definição conferida antes da regressão): 1 binding errado, a data-base do BT2-02; 0 identidades erradas.
+- **Critérios de sucesso:**
+  1. enhanced unsafe = 0;
+  2. nenhuma aprovação com identidade errada ou `UNRESOLVED`;
+  3. nenhum binding errado aprovado, e bindings errados da G ≤ F por conjunto;
+  4. ao menos uma identidade de nível 2 nos conjuntos (o invariante é provado nos testes);
+  5. no original, mesmas aprovações corretas e false reviews da F, sem binding correto perdido;
+  6. simplicidade e auditabilidade (qualitativo).
+
+### Protocolo
+
+```bash
+python -m evaluation.e007 run  --out outputs/experiments/E-007_pre_ocr
+python -m evaluation.e007 eval --out outputs/experiments/E-007_pre_ocr/evaluation
+```
+
+Depois da primeira saída da regressão, nada muda na G. Se houver cache miss relevante, a necessidade de API é explicada ao usuário antes de qualquer chamada.
