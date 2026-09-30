@@ -1,0 +1,910 @@
+{
+  "schema_version": "semantic-record/0.6",
+  "document": {
+    "sha256": "2d24a20fb884a4bf837252fd9dd4341957435b339162f770e3fa765f8214c5ff",
+    "file_name": "BT2-05.txt",
+    "size_bytes": 679,
+    "pages": 1,
+    "text_layer": {
+      "usable": true,
+      "alnum_chars": 502,
+      "min_alnum_chars_per_page": 100,
+      "reason": null
+    }
+  },
+  "binding": [
+    {
+      "field": "record_date",
+      "rule_id": "record_date.label_data_base",
+      "raw": "30/04/2024",
+      "evidence": "Data-base: acionistas com posição em 30/04/2024",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 28,
+      "crosses_line": false
+    },
+    {
+      "field": "ex_date",
+      "rule_id": "ex_date.label_data_ex",
+      "raw": "02/05/2024",
+      "evidence": "Data \"ex-bonificação\": 02/05/2024",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 2,
+      "crosses_line": false
+    }
+  ],
+  "identity": {
+    "identity_method": "TICKER_AND_CNPJ_EXACT",
+    "identifiers_used": {
+      "ticker": "VSOL3",
+      "cnpj": "16.945.504/0001-44"
+    },
+    "matched_reference": {
+      "emissor": "Vale do Sol Alimentos S.A.",
+      "cnpj": "16.945.504/0001-44",
+      "isin": "BRVSOLACNOR5",
+      "ticker": "VSOL3",
+      "classe": "ON",
+      "segmento_listagem": "Novo Mercado",
+      "status": "ativo"
+    },
+    "status": "RESOLVED",
+    "reason_code": null,
+    "conflicts": []
+  },
+  "extraction": {
+    "method": "native_text_layer+deterministic_rules",
+    "status": "COMPLETED",
+    "failure_mode": null,
+    "unsupported_fields": [
+      "fraction_adjustment_period"
+    ],
+    "title": null
+  },
+  "classification": {
+    "event_type": "BONUS_SHARES",
+    "decision_rule": "single_type",
+    "signals": {
+      "BONUS_SHARES": [
+        {
+          "rule_id": "event.bonus_bonificacao",
+          "evidence": {
+            "text": "bonificação",
+            "start": 155,
+            "end": 166,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.bonus_bonificacao",
+          "evidence": {
+            "text": "bonificação",
+            "start": 457,
+            "end": 468,
+            "page": 1
+          }
+        }
+      ]
+    },
+    "title": null,
+    "title_event_types": [],
+    "confidence": "HIGH",
+    "confidence_reasons": [
+      "SINGLE_TYPE_SIGNALS:BONUS_SHARES"
+    ]
+  },
+  "fields": {
+    "issuer_name": {
+      "status": "found",
+      "value": "VALE DO SOL ALIMENTOS S.A.",
+      "raw": "VALE DO SOL ALIMENTOS S.A.",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "VALE DO SOL ALIMENTOS S.A.",
+          "start": 0,
+          "end": 26,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "issuer_name.pattern_company_sa"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN"
+      ]
+    },
+    "cnpj": {
+      "status": "found",
+      "value": "16.945.504/0001-44",
+      "raw": "16.945.504/0001-44",
+      "source_label": "CNPJ da Companhia:",
+      "evidence": [
+        {
+          "text": "CNPJ da Companhia: 16.945.504/0001-44",
+          "start": 567,
+          "end": 604,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "cnpj.label_cnpj"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "isin": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "ticker": {
+      "status": "found",
+      "value": "VSOL3",
+      "raw": "VSOL3",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "VSOL3",
+          "start": 222,
+          "end": 227,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ticker.pattern"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN"
+      ]
+    },
+    "share_class": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "approval_date": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "record_date": {
+      "status": "found",
+      "value": "2024-04-30",
+      "raw": "30/04/2024",
+      "source_label": "Data-base: acionistas com posição em",
+      "evidence": [
+        {
+          "text": "Data-base: acionistas com posição em 30/04/2024",
+          "start": 400,
+          "end": 447,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "record_date.label_data_base"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "ex_date": {
+      "status": "found",
+      "value": "2024-05-02",
+      "raw": "02/05/2024",
+      "source_label": "Data \"ex-bonificação\"",
+      "evidence": [
+        {
+          "text": "Data \"ex-bonificação\": 02/05/2024",
+          "start": 448,
+          "end": 481,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ex_date.label_data_ex"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "payment_date": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "gross_amount_per_share": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "net_amount_per_share": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "withholding_tax": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "currency": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "ratio": {
+      "status": "found",
+      "value": {
+        "shares_held": "10",
+        "bonus_shares": "1"
+      },
+      "raw": "a cada 10 (dez) ações possuídas, o acionista receberá 1 (uma) ação",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "a cada 10 (dez) ações possuídas, o acionista receberá 1 (uma) ação",
+          "start": 312,
+          "end": 378,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ratio.v2_bonus_per_held_receive"
+      ],
+      "anchor": "phrase",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "PHRASE_ANCHORED"
+      ]
+    },
+    "tax_treatment": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "non-cash event"
+      ],
+      "confidence": null,
+      "confidence_reasons": []
+    }
+  },
+  "event_specific_fields": {
+    "share_credit_date": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "tax_cost_per_share": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    }
+  },
+  "reference_check": {
+    "found": false,
+    "matched_by": null,
+    "query": null,
+    "golden_row": null
+  },
+  "validations": [
+    {
+      "rule_id": "REF_ISIN_FOUND",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: isin",
+      "observed": {}
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_PRESENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "all required fields present (isin waived: identity TICKER_AND_CNPJ_EXACT)",
+      "observed": {
+        "required": [
+          "issuer_name",
+          "isin",
+          "ticker",
+          "record_date",
+          "ex_date",
+          "ratio"
+        ],
+        "not_found": [],
+        "isin_waived_by": "TICKER_AND_CNPJ_EXACT"
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "no required field pending",
+      "observed": {
+        "declared_pending": []
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_DETERMINED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "event type BONUS_SHARES by rule single_type",
+      "observed": {
+        "decision_rule": "single_type"
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: title_event_type",
+      "observed": {
+        "title": null
+      }
+    },
+    {
+      "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: approval_date",
+      "observed": {}
+    },
+    {
+      "rule_id": "DATE_RECORD_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "record 2024-04-30 vs ex 2024-05-02",
+      "observed": {
+        "record_date": "2024-04-30",
+        "ex_date": "2024-05-02"
+      }
+    },
+    {
+      "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "status": "FAIL",
+      "severity": "WARNING",
+      "message": "ex 2024-05-02; next weekday after record is 2024-05-01 (no holiday calendar, D-006)",
+      "observed": {
+        "record_date": "2024-04-30",
+        "ex_date": "2024-05-02",
+        "expected_ex_date": "2024-05-01"
+      }
+    },
+    {
+      "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: share_credit_date",
+      "observed": {
+        "settlement_field_status": "not_found"
+      }
+    },
+    {
+      "rule_id": "RATIO_POSITIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ratio = {'shares_held': Decimal('10'), 'bonus_shares': Decimal('1')}",
+      "observed": {
+        "ratio": {
+          "shares_held": "10",
+          "bonus_shares": "1"
+        }
+      }
+    },
+    {
+      "rule_id": "RATIO_PERCENTAGE_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: ratio.percentage",
+      "observed": {}
+    },
+    {
+      "rule_id": "REF_IDENTITY_RESOLVED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "identity TICKER_AND_CNPJ_EXACT",
+      "observed": {
+        "identity_method": "TICKER_AND_CNPJ_EXACT",
+        "identifiers_used": {
+          "ticker": "VSOL3",
+          "cnpj": "16.945.504/0001-44"
+        },
+        "reason_code": null,
+        "conflicts": []
+      }
+    },
+    {
+      "rule_id": "REF_TICKER_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ticker matches golden ticker",
+      "observed": {
+        "extracted": "VSOL3",
+        "golden": "VSOL3"
+      }
+    },
+    {
+      "rule_id": "REF_CNPJ_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "cnpj matches golden cnpj",
+      "observed": {
+        "extracted": "16.945.504/0001-44",
+        "golden": "16.945.504/0001-44"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "issuer_name matches golden emissor",
+      "observed": {
+        "extracted": "VALE DO SOL ALIMENTOS S.A.",
+        "golden": "Vale do Sol Alimentos S.A."
+      }
+    },
+    {
+      "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: share_class",
+      "observed": {
+        "golden": "ON"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_ACTIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "golden status = ativo",
+      "observed": {
+        "golden_status": "ativo"
+      }
+    }
+  ],
+  "validation_summary": {
+    "NOT_EVALUATED": 6,
+    "PASS": 10,
+    "FAIL": 1
+  },
+  "rule_groups_not_applicable": [
+    "amounts"
+  ],
+  "semantic_need": {
+    "llm_required": false,
+    "llm_trigger_reasons": [],
+    "signals": []
+  },
+  "semantic": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "deterministic_patch",
+      "reasons": [
+        "SINGLE_TYPE"
+      ],
+      "qualifiers": [],
+      "interpretation": null
+    },
+    "fields": {
+      "record_date": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "ex_date": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "ratio": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      }
+    },
+    "blocking": [
+      "MATERIAL_INFORMATION_NOT_REPRESENTED"
+    ],
+    "negated_signals": [],
+    "resolutions": [],
+    "material_qualifiers": [],
+    "semantic_notes": [],
+    "issuer_resolution": {
+      "groups": {
+        "vale do sol alimentos s.a.": {
+          "roles": [
+            "LETTERHEAD"
+          ],
+          "third_party_only": false
+        }
+      },
+      "aliases": {},
+      "decision": "V1_RESOLUTION"
+    },
+    "tax_statements": [],
+    "revocation": [],
+    "contradictions": [],
+    "material_coverage": [
+      {
+        "category": "date_role",
+        "source": "deterministic",
+        "evidence": "As novas ações serão creditadas nas contas de custódia dos acionistas em 15/05/2024",
+        "expected_target": "share_credit_date",
+        "representation_status": "NOT_REPRESENTED",
+        "justification": null,
+        "blocks": true
+      },
+      {
+        "category": "ratio",
+        "source": "deterministic",
+        "evidence": "a cada 10 (dez) ações possuídas, o acionista receberá 1 (uma) ação",
+        "expected_target": "ratio",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      }
+    ],
+    "event_status": "ACTIVE_OR_NOT_STATED"
+  },
+  "confidence_view": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "deterministic_patch",
+      "reasons": [
+        "SINGLE_TYPE"
+      ],
+      "qualifiers": [],
+      "interpretation": null
+    },
+    "fields": {
+      "issuer_name": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "cnpj": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ticker": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "record_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "WARNED"
+      },
+      "ex_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "WARNED"
+      },
+      "ratio": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      }
+    }
+  },
+  "routing": {
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "MATERIAL_INFORMATION_NOT_REPRESENTED"
+    ],
+    "explanations": [
+      "MATERIAL_INFORMATION_NOT_REPRESENTED"
+    ],
+    "gates": [
+      {
+        "gate": "EXTRACTION_POSSIBLE",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REQUIRED_INFORMATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "SEMANTIC_INTERPRETATION",
+        "status": "BLOCK",
+        "reason_codes": [
+          "MATERIAL_INFORMATION_NOT_REPRESENTED"
+        ],
+        "explanations": [
+          "MATERIAL_INFORMATION_NOT_REPRESENTED"
+        ]
+      },
+      {
+        "gate": "DETERMINISTIC_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REFERENCE_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "BLOCKING_ERRORS",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      }
+    ]
+  },
+  "audit": {
+    "run_id": "e008-replay-bt002",
+    "pipeline_version": "baseline-a/0.1.0+candidate-pre-ocr/0.1",
+    "started_at": "2026-09-30T03:07:39.987+00:00",
+    "finished_at": "2026-09-30T03:07:39.990+00:00",
+    "duration_us": 2953,
+    "stages": [
+      {
+        "stage": "ingest",
+        "started_at": "2026-09-30T03:07:39.987+00:00",
+        "status": "ok",
+        "duration_us": 235
+      },
+      {
+        "stage": "text_layer",
+        "started_at": "2026-09-30T03:07:39.987+00:00",
+        "status": "ok",
+        "duration_us": 102
+      },
+      {
+        "stage": "extract_candidates",
+        "started_at": "2026-09-30T03:07:39.988+00:00",
+        "status": "ok",
+        "duration_us": 1389
+      },
+      {
+        "stage": "classify",
+        "started_at": "2026-09-30T03:07:39.989+00:00",
+        "status": "ok",
+        "duration_us": 115
+      },
+      {
+        "stage": "normalize",
+        "started_at": "2026-09-30T03:07:39.989+00:00",
+        "status": "ok",
+        "duration_us": 144
+      },
+      {
+        "stage": "confidence",
+        "started_at": "2026-09-30T03:07:39.989+00:00",
+        "status": "ok",
+        "duration_us": 13
+      },
+      {
+        "stage": "semantic_patch",
+        "started_at": "2026-09-30T03:07:39.989+00:00",
+        "status": "ok",
+        "duration_us": 486
+      },
+      {
+        "stage": "semantic_need",
+        "started_at": "2026-09-30T03:07:39.990+00:00",
+        "status": "ok",
+        "duration_us": 15,
+        "llm_required": false,
+        "triggers": []
+      },
+      {
+        "stage": "semantic_llm",
+        "started_at": "2026-09-30T03:07:39.990+00:00",
+        "status": "skipped",
+        "reason": "NOT_REQUIRED",
+        "duration_us": 0
+      },
+      {
+        "stage": "hardening_gates",
+        "started_at": "2026-09-30T03:07:39.990+00:00",
+        "status": "ok",
+        "duration_us": 143
+      },
+      {
+        "stage": "validate",
+        "started_at": "2026-09-30T03:07:39.990+00:00",
+        "status": "ok",
+        "duration_us": 85,
+        "rules_executed": 17
+      },
+      {
+        "stage": "route",
+        "started_at": "2026-09-30T03:07:39.990+00:00",
+        "status": "ok",
+        "duration_us": 27
+      }
+    ],
+    "errors": [],
+    "retries": 0,
+    "extraction_method": "native_text_layer+deterministic_rules",
+    "model": null,
+    "prompt_version": null,
+    "validators_executed": [
+      "REF_ISIN_FOUND",
+      "REQUIRED_FIELDS_PRESENT",
+      "REQUIRED_FIELDS_NOT_PENDING",
+      "CLASSIFICATION_DETERMINED",
+      "CLASSIFICATION_TITLE_CONSISTENT",
+      "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "DATE_RECORD_BEFORE_EX",
+      "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "RATIO_POSITIVE",
+      "RATIO_PERCENTAGE_CONSISTENT",
+      "REF_IDENTITY_RESOLVED",
+      "REF_TICKER_CONSISTENT",
+      "REF_CNPJ_CONSISTENT",
+      "REF_ISSUER_NAME_CONSISTENT",
+      "REF_SHARE_CLASS_CONSISTENT",
+      "REF_ISSUER_ACTIVE"
+    ],
+    "final_decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "MATERIAL_INFORMATION_NOT_REPRESENTED"
+    ],
+    "variant": "H"
+  }
+}

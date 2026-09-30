@@ -1,0 +1,1364 @@
+{
+  "schema_version": "semantic-record/0.6",
+  "document": {
+    "sha256": "569820a4f53b4caf55393e18aefb7f8d8834de064acab07ce6d62e884cab58a1",
+    "file_name": "CH-03.txt",
+    "size_bytes": 771,
+    "pages": 1,
+    "text_layer": {
+      "usable": true,
+      "alnum_chars": 579,
+      "min_alnum_chars_per_page": 100,
+      "reason": null
+    }
+  },
+  "binding": [
+    {
+      "field": "record_date",
+      "rule_id": "record_date.label_data_base",
+      "raw": "21/08/2026",
+      "evidence": "Data-base (“data com”) 21/08/2026",
+      "decision": "SUPERSEDED",
+      "reason": "SUPERSEDED_BY_NEARER_LABEL",
+      "gap_chars": 14,
+      "crosses_line": false
+    },
+    {
+      "field": "record_date",
+      "rule_id": "record_date.label_data_com",
+      "raw": "21/08/2026",
+      "evidence": "data com”) 21/08/2026",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 3,
+      "crosses_line": false
+    },
+    {
+      "field": "ex_date",
+      "rule_id": "ex_date.label_data_ex",
+      "raw": "24/08/2026",
+      "evidence": "Data “ex” 24/08/2026",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 1,
+      "crosses_line": false
+    },
+    {
+      "field": "payment_date",
+      "rule_id": "payment_date.label_data_pagamento",
+      "raw": "15/09/2026",
+      "evidence": "Data de pagamento 15/09/2026",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 1,
+      "crosses_line": false
+    },
+    {
+      "field": "gross_amount_per_share",
+      "rule_id": "gross.label_valor_bruto",
+      "raw": "0,1200000000",
+      "evidence": "Valor bruto por ação PN R$ 0,1200000000",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 13,
+      "crosses_line": false
+    },
+    {
+      "field": "net_amount_per_share",
+      "rule_id": "net.label_valor_liquido",
+      "raw": "0,0990000000",
+      "evidence": "Valor líquido por ação PN R$ 0,0990000000",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 13,
+      "crosses_line": false
+    },
+    {
+      "field": "withholding_tax",
+      "rule_id": "withholding.label_imposto_renda",
+      "raw": "17,5",
+      "evidence": "imposto de renda na fonte de 17,5%",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 13,
+      "crosses_line": false
+    }
+  ],
+  "identity": {
+    "identity_method": "ISIN_EXACT",
+    "identifiers_used": {
+      "isin": "BRSGPMACNPR4"
+    },
+    "matched_reference": {
+      "emissor": "Seguradora Pampa S.A.",
+      "cnpj": "11.222.333/0001-81",
+      "isin": "BRSGPMACNPR4",
+      "ticker": "SGPM4",
+      "classe": "PN",
+      "segmento_listagem": "Nível 1",
+      "status": "ativo"
+    },
+    "status": "RESOLVED",
+    "reason_code": null,
+    "conflicts": []
+  },
+  "extraction": {
+    "method": "native_text_layer+deterministic_rules",
+    "status": "COMPLETED",
+    "failure_mode": null,
+    "unsupported_fields": [
+      "fraction_adjustment_period"
+    ],
+    "title": "Proventos"
+  },
+  "classification": {
+    "event_type": "JCP",
+    "decision_rule": "semantic_hybrid(DETERMINISTIC_UNSUPPORTED;deterministic=no_signals:None)",
+    "signals": {},
+    "title": "Proventos",
+    "title_event_types": [],
+    "confidence": "LOW",
+    "confidence_reasons": [
+      "NO_EVENT_SIGNALS"
+    ]
+  },
+  "fields": {
+    "issuer_name": {
+      "status": "found",
+      "value": "Seguradora Pampa S.A.",
+      "raw": "SEGURADORA PAMPA S.A.",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "SEGURADORA PAMPA S.A.",
+          "start": 0,
+          "end": 21,
+          "page": 1
+        },
+        {
+          "text": "Seguradora Pampa S.A.",
+          "start": 106,
+          "end": 127,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "issuer_name.pattern_company_sa"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN",
+        "CORROBORATED:1"
+      ]
+    },
+    "cnpj": {
+      "status": "found",
+      "value": "11.222.333/0001-81",
+      "raw": "11.222.333/0001-81",
+      "source_label": "CNPJ/ME nº",
+      "evidence": [
+        {
+          "text": "CNPJ/ME nº 11.222.333/0001-81",
+          "start": 41,
+          "end": 70,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "cnpj.label_cnpj"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "isin": {
+      "status": "found",
+      "value": "BRSGPMACNPR4",
+      "raw": "BRSGPMACNPR4",
+      "source_label": "ISIN",
+      "evidence": [
+        {
+          "text": "ISIN BRSGPMACNPR4",
+          "start": 679,
+          "end": 696,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "isin.label_isin"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "ticker": {
+      "status": "found",
+      "value": "SGPM4",
+      "raw": "SGPM4",
+      "source_label": "Código de negociação",
+      "evidence": [
+        {
+          "text": "Código de negociação SGPM4",
+          "start": 651,
+          "end": 677,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ticker.label_codigo_negociacao"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "share_class": {
+      "status": "found",
+      "value": "PN",
+      "raw": "PN",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "por ação PN",
+          "start": 497,
+          "end": 508,
+          "page": 1
+        },
+        {
+          "text": "por ação PN",
+          "start": 539,
+          "end": 550,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "share_class.phrase_por_acao"
+      ],
+      "anchor": "phrase",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "PHRASE_ANCHORED",
+        "CORROBORATED:1"
+      ]
+    },
+    "approval_date": {
+      "status": "found",
+      "value": "2026-08-10",
+      "raw": "10 de agosto de 2026",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "reunião realizada em 10 de agosto de 2026",
+          "start": 172,
+          "end": 213,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "approval_date.phrase_meeting"
+      ],
+      "anchor": "phrase",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "PHRASE_ANCHORED",
+        "CORROBORATED:1"
+      ]
+    },
+    "record_date": {
+      "status": "found",
+      "value": "2026-08-21",
+      "raw": "21/08/2026",
+      "source_label": "data com”)",
+      "evidence": [
+        {
+          "text": "data com”) 21/08/2026",
+          "start": 579,
+          "end": 600,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "record_date.label_data_com"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "ex_date": {
+      "status": "found",
+      "value": "2026-08-24",
+      "raw": "24/08/2026",
+      "source_label": "Data “ex”",
+      "evidence": [
+        {
+          "text": "Data “ex” 24/08/2026",
+          "start": 601,
+          "end": 621,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ex_date.label_data_ex"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "payment_date": {
+      "status": "found",
+      "value": "2026-09-15",
+      "raw": "15/09/2026",
+      "source_label": "Data de pagamento",
+      "evidence": [
+        {
+          "text": "Data de pagamento 15/09/2026",
+          "start": 622,
+          "end": 650,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "payment_date.label_data_pagamento"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "gross_amount_per_share": {
+      "status": "found",
+      "value": "0.1200000000",
+      "raw": "0,1200000000",
+      "source_label": "Valor bruto por ação PN",
+      "evidence": [
+        {
+          "text": "Valor bruto por ação PN R$ 0,1200000000",
+          "start": 485,
+          "end": 524,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "gross.label_valor_bruto"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "net_amount_per_share": {
+      "status": "found",
+      "value": "0.0990000000",
+      "raw": "0,0990000000",
+      "source_label": "Valor líquido por ação PN",
+      "evidence": [
+        {
+          "text": "Valor líquido por ação PN R$ 0,0990000000",
+          "start": 525,
+          "end": 566,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "net.label_valor_liquido"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "withholding_tax": {
+      "status": "found",
+      "value": {
+        "rate": "0.175",
+        "base": "GROSS_AMOUNT"
+      },
+      "raw": "17,5",
+      "source_label": "imposto de renda na fonte de",
+      "evidence": [
+        {
+          "text": "imposto de renda na fonte de 17,5%",
+          "start": 375,
+          "end": 409,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "withholding.label_imposto_renda"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "currency": {
+      "status": "found",
+      "value": "BRL",
+      "raw": "R$",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "Valor bruto por ação PN R$ 0,1200000000",
+          "start": 485,
+          "end": 524,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "currency.derived_from_gross_symbol"
+      ],
+      "anchor": "derived",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "derived from gross_amount_per_share evidence"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "DERIVED_FROM_SOURCE_FIELD"
+      ]
+    },
+    "ratio": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "tax_treatment": {
+      "status": "found",
+      "value": {
+        "kind": "WITHHOLDING_AT_RATE",
+        "rate": "0.175",
+        "base": "GROSS_AMOUNT",
+        "beneficiary_exceptions": [],
+        "conditions": []
+      },
+      "raw": "17,5",
+      "source_label": "imposto de renda na fonte de",
+      "evidence": [
+        {
+          "text": "imposto de renda na fonte de 17,5%",
+          "start": 375,
+          "end": 409,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "tax_treatment.v2_from_withholding"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    }
+  },
+  "event_specific_fields": {},
+  "reference_check": {
+    "found": true,
+    "matched_by": "isin",
+    "query": "BRSGPMACNPR4",
+    "golden_row": {
+      "emissor": "Seguradora Pampa S.A.",
+      "cnpj": "11.222.333/0001-81",
+      "isin": "BRSGPMACNPR4",
+      "ticker": "SGPM4",
+      "classe": "PN",
+      "segmento_listagem": "Nível 1",
+      "status": "ativo"
+    }
+  },
+  "validations": [
+    {
+      "rule_id": "REF_ISIN_FOUND",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ISIN found in golden records",
+      "observed": {
+        "isin": "BRSGPMACNPR4"
+      }
+    },
+    {
+      "rule_id": "REF_TICKER_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ticker matches golden ticker",
+      "observed": {
+        "extracted": "SGPM4",
+        "golden": "SGPM4"
+      }
+    },
+    {
+      "rule_id": "REF_CNPJ_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "cnpj matches golden cnpj",
+      "observed": {
+        "extracted": "11.222.333/0001-81",
+        "golden": "11.222.333/0001-81"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "issuer_name matches golden emissor",
+      "observed": {
+        "extracted": "Seguradora Pampa S.A.",
+        "golden": "Seguradora Pampa S.A."
+      }
+    },
+    {
+      "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "share_class matches golden classe",
+      "observed": {
+        "extracted": "PN",
+        "golden": "PN"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_ACTIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "golden status = ativo",
+      "observed": {
+        "golden_status": "ativo"
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_PRESENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "all required fields present",
+      "observed": {
+        "required": [
+          "issuer_name",
+          "isin",
+          "ticker",
+          "record_date",
+          "ex_date",
+          "gross_amount_per_share",
+          "currency",
+          "payment_date",
+          "net_amount_per_share",
+          "withholding_tax"
+        ],
+        "not_found": []
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "no required field pending",
+      "observed": {
+        "declared_pending": []
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_DETERMINED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "event type JCP by rule semantic_hybrid(DETERMINISTIC_UNSUPPORTED;deterministic=no_signals:None)",
+      "observed": {
+        "decision_rule": "semantic_hybrid(DETERMINISTIC_UNSUPPORTED;deterministic=no_signals:None)"
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: title_event_type",
+      "observed": {
+        "title": "Proventos"
+      }
+    },
+    {
+      "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "approval 2026-08-10 vs record 2026-08-21",
+      "observed": {
+        "approval_date": "2026-08-10",
+        "record_date": "2026-08-21"
+      }
+    },
+    {
+      "rule_id": "DATE_RECORD_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "record 2026-08-21 vs ex 2026-08-24",
+      "observed": {
+        "record_date": "2026-08-21",
+        "ex_date": "2026-08-24"
+      }
+    },
+    {
+      "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "ex 2026-08-24; next weekday after record is 2026-08-24 (no holiday calendar, D-006)",
+      "observed": {
+        "record_date": "2026-08-21",
+        "ex_date": "2026-08-24",
+        "expected_ex_date": "2026-08-24"
+      }
+    },
+    {
+      "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "payment_date 2026-09-15 vs ex 2026-08-24",
+      "observed": {
+        "settlement_field": "payment_date",
+        "settlement_date": "2026-09-15",
+        "ex_date": "2026-08-24"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_GROSS_POSITIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "gross = 0.1200000000",
+      "observed": {
+        "gross": "0.1200000000"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "net = gross × (1 − rate), exact",
+      "observed": {
+        "gross": "0.1200000000",
+        "rate": "0.175",
+        "declared_value": "0.0990000000",
+        "calculated_value": "0.0990000000000",
+        "comparison_precision": 10,
+        "rounding_rule": null,
+        "reason": null
+      }
+    },
+    {
+      "rule_id": "REF_IDENTITY_RESOLVED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "identity ISIN_EXACT",
+      "observed": {
+        "identity_method": "ISIN_EXACT",
+        "identifiers_used": {
+          "isin": "BRSGPMACNPR4"
+        },
+        "reason_code": null,
+        "conflicts": []
+      }
+    }
+  ],
+  "validation_summary": {
+    "PASS": 16,
+    "NOT_EVALUATED": 1
+  },
+  "rule_groups_not_applicable": [
+    "ratio"
+  ],
+  "semantic_need": {
+    "llm_required": true,
+    "llm_trigger_reasons": [
+      "CLASSIFICATION_UNSUPPORTED"
+    ],
+    "signals": [
+      {
+        "signal": "CLASSIFICATION_UNSUPPORTED",
+        "stage": "classify",
+        "triggers_llm": true,
+        "detail": {
+          "decision_rule": "no_signals"
+        }
+      }
+    ]
+  },
+  "semantic": {
+    "classification": {
+      "confidence": "MEDIUM",
+      "source": "llm",
+      "reasons": [
+        "DETERMINISTIC_UNSUPPORTED",
+        "LLM_ONLY_GROUNDED"
+      ],
+      "qualifiers": [],
+      "interpretation": {
+        "deterministic": null,
+        "deterministic_status": "UNSUPPORTED",
+        "llm": "JCP",
+        "rationale": "O corpo do aviso e o campo de natureza indicam crédito de juros calculados sobre as contas do patrimônio líquido, limitados à variação da TJLP, o que caracteriza juros sobre o capital próprio (JCP), e não dividendo."
+      }
+    },
+    "fields": {
+      "record_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "AGREEMENT"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "ex_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "AGREEMENT"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "payment_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "AGREEMENT"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "approval_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "AGREEMENT"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "gross_amount_per_share": {
+        "confidence": "LOW",
+        "source": "llm",
+        "reasons": [
+          "NO_QUALIFIERS",
+          "MATERIAL_QUALIFIER_UNREPRESENTED:amount"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "net_amount_per_share": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "withholding_tax": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "AGREEMENT"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      }
+    },
+    "blocking": [],
+    "negated_signals": [],
+    "resolutions": [
+      {
+        "concept": "event_type",
+        "category": "DETERMINISTIC_UNSUPPORTED",
+        "deterministic": null,
+        "deterministic_status": "UNSUPPORTED",
+        "llm": "JCP",
+        "rationale": "O corpo do aviso e o campo de natureza indicam crédito de juros calculados sobre as contas do patrimônio líquido, limitados à variação da TJLP, o que caracteriza juros sobre o capital próprio (JCP), e não dividendo."
+      },
+      {
+        "concept": "approval_date",
+        "category": "AGREEMENT"
+      },
+      {
+        "concept": "record_date",
+        "category": "AGREEMENT"
+      },
+      {
+        "concept": "ex_date",
+        "category": "AGREEMENT"
+      },
+      {
+        "concept": "payment_date",
+        "category": "AGREEMENT"
+      },
+      {
+        "concept": "withholding_tax",
+        "category": "AGREEMENT"
+      }
+    ],
+    "material_qualifiers": [
+      {
+        "kind": "material_condition",
+        "affects": "amount",
+        "target_field": "gross_amount_per_share",
+        "effect": "O valor dos juros creditados está limitado à variação pro rata die da TJLP.",
+        "materiality_reason": "Sem essa limitação, o montante dos juros creditados não teria teto definido, alterando o valor do provento registrado.",
+        "quote": "limitados à variação pro rata die da Taxa de Juros de Longo Prazo",
+        "represented": false,
+        "representation": null,
+        "blocks": true,
+        "source": "llm"
+      }
+    ],
+    "semantic_notes": [],
+    "issuer_resolution": {
+      "groups": {
+        "seguradora pampa s.a.": {
+          "roles": [
+            "ANNOUNCER",
+            "CNPJ_ADJACENT",
+            "LETTERHEAD"
+          ],
+          "third_party_only": false
+        }
+      },
+      "aliases": {},
+      "decision": "V1_RESOLUTION"
+    },
+    "tax_statements": [],
+    "revocation": [],
+    "contradictions": [],
+    "material_coverage": [
+      {
+        "category": "tax_treatment",
+        "source": "deterministic",
+        "evidence": "imposto de renda na fonte de 17,5%",
+        "expected_target": "tax_treatment",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "tax_treatment",
+        "source": "llm",
+        "evidence": "com retenção de imposto de renda na fonte de 17,5% sobre o valor bruto",
+        "expected_target": "tax_treatment",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "date_role",
+        "source": "llm",
+        "evidence": "Data-base (“data com”) 21/08/2026",
+        "expected_target": "record_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "date_role",
+        "source": "llm",
+        "evidence": "Data “ex” 24/08/2026",
+        "expected_target": "ex_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "date_role",
+        "source": "llm",
+        "evidence": "Data de pagamento 15/09/2026",
+        "expected_target": "payment_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "qualifier:amount",
+        "source": "llm",
+        "evidence": "limitados à variação pro rata die da Taxa de Juros de Longo Prazo",
+        "expected_target": "gross_amount_per_share",
+        "representation_status": "UNRESOLVED_EXPLICIT",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "date_role",
+        "source": "deterministic",
+        "evidence": "Data de pagamento 15/09/2026",
+        "expected_target": "payment_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      }
+    ],
+    "event_status": "ACTIVE_OR_NOT_STATED"
+  },
+  "confidence_view": {
+    "classification": {
+      "confidence": "MEDIUM",
+      "source": "llm",
+      "reasons": [
+        "DETERMINISTIC_UNSUPPORTED",
+        "LLM_ONLY_GROUNDED"
+      ],
+      "qualifiers": [],
+      "interpretation": {
+        "deterministic": null,
+        "deterministic_status": "UNSUPPORTED",
+        "llm": "JCP",
+        "rationale": "O corpo do aviso e o campo de natureza indicam crédito de juros calculados sobre as contas do patrimônio líquido, limitados à variação da TJLP, o que caracteriza juros sobre o capital próprio (JCP), e não dividendo."
+      }
+    },
+    "fields": {
+      "issuer_name": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "cnpj": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "isin": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ticker": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "share_class": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "approval_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "record_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ex_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "payment_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "gross_amount_per_share": {
+        "extraction": "HIGH",
+        "semantic": "LOW",
+        "validation": "CROSS_VALIDATED"
+      },
+      "net_amount_per_share": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "withholding_tax": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "currency": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      },
+      "tax_treatment": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      }
+    }
+  },
+  "llm": {
+    "provider": "anthropic",
+    "model": "claude-opus-5",
+    "effort": "medium",
+    "max_tokens": 8000,
+    "fallbacks": "off",
+    "prompt_version": "semantic-interpreter/v3",
+    "prompt_fingerprint": "e6bd3105dc7c8c84",
+    "served_models": [
+      "claude-opus-5"
+    ],
+    "attempts": 1,
+    "api_calls": 2,
+    "replayed": true,
+    "tool_calls": [
+      {
+        "name": "lookup_security",
+        "arguments": {
+          "identifier": "BRSGPMACNPR4",
+          "identifier_type": "ISIN"
+        },
+        "result": {
+          "found": true,
+          "issuer": "Seguradora Pampa S.A.",
+          "isin": "BRSGPMACNPR4",
+          "ticker": "SGPM4",
+          "share_class": "PN",
+          "status": "ativo"
+        },
+        "latency_us": 35,
+        "error": null
+      }
+    ],
+    "usage": {
+      "input_tokens": 9893,
+      "output_tokens": 1241,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "estimated_cost_usd": "0.08049",
+    "latency_ms": 15142,
+    "errors": [],
+    "refusals": [],
+    "served_model_mismatch": false,
+    "parse_or_schema_failures": 0,
+    "request_ids": [
+      "req_011CfYow5qoe4aJPKvdENWKJ",
+      "req_011CfYowXGWr4J4mvuj5WvB7"
+    ],
+    "interpretation": {
+      "event": {
+        "type": "JCP",
+        "evidence": [
+          "aprovou o crédito de juros calculados sobre as contas do patrimônio líquido, limitados à variação pro rata die da Taxa de Juros de Longo Prazo",
+          "Natureza do provento Juros sobre o patrimônio líquido"
+        ],
+        "misleading_mentions": [
+          {
+            "quote": "AVISO AOS ACIONISTAS — Proventos",
+            "why_not_the_event": "Título genérico de \"proventos\"; não define a natureza do evento, que o corpo do aviso especifica como juros sobre o patrimônio líquido."
+          }
+        ],
+        "rationale": "O corpo do aviso e o campo de natureza indicam crédito de juros calculados sobre as contas do patrimônio líquido, limitados à variação da TJLP, o que caracteriza juros sobre o capital próprio (JCP), e não dividendo."
+      },
+      "dates": [
+        {
+          "role": "approval_date",
+          "status": "FOUND",
+          "value_as_written": "10 de agosto de 2026",
+          "evidence": "o Conselho de Administração, em reunião realizada em 10 de agosto de 2026, aprovou o crédito de juros"
+        },
+        {
+          "role": "record_date",
+          "status": "FOUND",
+          "value_as_written": "21/08/2026",
+          "evidence": "Data-base (“data com”) 21/08/2026"
+        },
+        {
+          "role": "ex_date",
+          "status": "FOUND",
+          "value_as_written": "24/08/2026",
+          "evidence": "Data “ex” 24/08/2026"
+        },
+        {
+          "role": "payment_date",
+          "status": "FOUND",
+          "value_as_written": "15/09/2026",
+          "evidence": "Data de pagamento 15/09/2026"
+        }
+      ],
+      "withholding_tax": {
+        "status": "STATED",
+        "rate_as_written": "17,5%",
+        "base": "GROSS_AMOUNT",
+        "evidence": [
+          "com retenção de imposto de renda na fonte de 17,5% sobre o valor bruto"
+        ]
+      },
+      "material_qualifiers": [
+        {
+          "kind": "material_condition",
+          "affects": "amount",
+          "target_field": "gross_amount_per_share",
+          "effect": "O valor dos juros creditados está limitado à variação pro rata die da TJLP.",
+          "materiality_reason": "Sem essa limitação, o montante dos juros creditados não teria teto definido, alterando o valor do provento registrado.",
+          "quote": "limitados à variação pro rata die da Taxa de Juros de Longo Prazo"
+        }
+      ],
+      "semantic_notes": [],
+      "security_reference": {
+        "identifier_checked": "BRSGPMACNPR4",
+        "found_in_reference": "YES"
+      }
+    },
+    "grounding": {
+      "event_grounded": true,
+      "total_quotes": 9,
+      "grounded_quotes": 9,
+      "ungrounded": []
+    },
+    "reference_divergence": {
+      "tool_called": true,
+      "tool_result_found": true,
+      "llm_reported": "YES",
+      "engine_REF_ISIN_FOUND": "PASS",
+      "divergent": false,
+      "authority": "validation_engine"
+    }
+  },
+  "routing": {
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "SEMANTIC_AMBIGUITY"
+    ],
+    "explanations": [
+      "gross_amount_per_share: NO_QUALIFIERS, MATERIAL_QUALIFIER_UNREPRESENTED:amount"
+    ],
+    "gates": [
+      {
+        "gate": "EXTRACTION_POSSIBLE",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REQUIRED_INFORMATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "SEMANTIC_INTERPRETATION",
+        "status": "BLOCK",
+        "reason_codes": [
+          "SEMANTIC_AMBIGUITY"
+        ],
+        "explanations": [
+          "gross_amount_per_share: NO_QUALIFIERS, MATERIAL_QUALIFIER_UNREPRESENTED:amount"
+        ]
+      },
+      {
+        "gate": "DETERMINISTIC_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REFERENCE_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "BLOCKING_ERRORS",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      }
+    ]
+  },
+  "audit": {
+    "run_id": "e008-replay-challenge",
+    "pipeline_version": "baseline-a/0.1.0+candidate-pre-ocr/0.1",
+    "started_at": "2026-09-30T03:07:39.756+00:00",
+    "finished_at": "2026-09-30T03:07:39.765+00:00",
+    "duration_us": 9461,
+    "stages": [
+      {
+        "stage": "ingest",
+        "started_at": "2026-09-30T03:07:39.756+00:00",
+        "status": "ok",
+        "duration_us": 188
+      },
+      {
+        "stage": "text_layer",
+        "started_at": "2026-09-30T03:07:39.756+00:00",
+        "status": "ok",
+        "duration_us": 125
+      },
+      {
+        "stage": "extract_candidates",
+        "started_at": "2026-09-30T03:07:39.756+00:00",
+        "status": "ok",
+        "duration_us": 2448
+      },
+      {
+        "stage": "classify",
+        "started_at": "2026-09-30T03:07:39.759+00:00",
+        "status": "ok",
+        "duration_us": 58
+      },
+      {
+        "stage": "normalize",
+        "started_at": "2026-09-30T03:07:39.759+00:00",
+        "status": "ok",
+        "duration_us": 277
+      },
+      {
+        "stage": "confidence",
+        "started_at": "2026-09-30T03:07:39.759+00:00",
+        "status": "ok",
+        "duration_us": 31
+      },
+      {
+        "stage": "semantic_patch",
+        "started_at": "2026-09-30T03:07:39.759+00:00",
+        "status": "ok",
+        "duration_us": 990
+      },
+      {
+        "stage": "semantic_need",
+        "started_at": "2026-09-30T03:07:39.760+00:00",
+        "status": "ok",
+        "duration_us": 54,
+        "llm_required": true,
+        "triggers": [
+          "CLASSIFICATION_UNSUPPORTED"
+        ]
+      },
+      {
+        "stage": "semantic_llm",
+        "started_at": "2026-09-30T03:07:39.760+00:00",
+        "status": "ok",
+        "duration_us": 3311,
+        "api_calls": 2,
+        "tool_calls": 1,
+        "replayed": true
+      },
+      {
+        "stage": "semantic_merge",
+        "started_at": "2026-09-30T03:07:39.764+00:00",
+        "status": "ok",
+        "duration_us": 1283
+      },
+      {
+        "stage": "hardening_gates",
+        "started_at": "2026-09-30T03:07:39.765+00:00",
+        "status": "ok",
+        "duration_us": 200
+      },
+      {
+        "stage": "validate",
+        "started_at": "2026-09-30T03:07:39.765+00:00",
+        "status": "ok",
+        "duration_us": 109,
+        "rules_executed": 17
+      },
+      {
+        "stage": "route",
+        "started_at": "2026-09-30T03:07:39.765+00:00",
+        "status": "ok",
+        "duration_us": 30
+      }
+    ],
+    "errors": [],
+    "retries": 0,
+    "extraction_method": "native_text_layer+deterministic_rules",
+    "model": "claude-opus-5",
+    "prompt_version": "semantic-interpreter/v3",
+    "validators_executed": [
+      "REF_ISIN_FOUND",
+      "REF_TICKER_CONSISTENT",
+      "REF_CNPJ_CONSISTENT",
+      "REF_ISSUER_NAME_CONSISTENT",
+      "REF_SHARE_CLASS_CONSISTENT",
+      "REF_ISSUER_ACTIVE",
+      "REQUIRED_FIELDS_PRESENT",
+      "REQUIRED_FIELDS_NOT_PENDING",
+      "CLASSIFICATION_DETERMINED",
+      "CLASSIFICATION_TITLE_CONSISTENT",
+      "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "DATE_RECORD_BEFORE_EX",
+      "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "AMOUNT_GROSS_POSITIVE",
+      "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "REF_IDENTITY_RESOLVED"
+    ],
+    "final_decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "SEMANTIC_AMBIGUITY"
+    ],
+    "variant": "H"
+  }
+}

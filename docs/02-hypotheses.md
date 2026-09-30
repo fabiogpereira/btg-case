@@ -391,5 +391,8 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
 - **Hypothesis:** Coletar todos os pares rótulo → valor plausíveis, julgar cada um e escolher, por valor, o rótulo válido mais próximo recupera o binding correto que a G perdia com rótulo repetido. Mantém 0 bindings errados e declara ambiguidade quando valores diferentes têm rótulos válidos.
 - **How to test:** Testes unitários (`tests/test_binding_v2_h.py`) e regressão H × G por replay nos quatro regression sets (E-008).
 - **Expected signal:** 0 bindings errados; nenhum binding correto perdido; identidade inalterada; original idêntico.
-- **Observed result:** (pendente)
-- **Status:** OPEN
+- **Observed result:** (E-008, replay)
+  - Binding correto perdido 1 → 0 (BT-03 volta a ser aprovado corretamente).
+  - 0 bindings errados; identidade e original inalterados.
+  - 16 pares `SUPERSEDED` (mesmo valor, rótulo mais distante).
+- **Status:** SUPPORTED (sintético expõe o invariante — D-030)

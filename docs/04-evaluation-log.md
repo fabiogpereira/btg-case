@@ -1547,3 +1547,24 @@ Depois da primeira saída da regressão, nada muda na G. Se houver cache miss re
   5. bindings corretos perdidos H ≤ G.
 
   Se 1–3 falharem, parar e avisar o usuário.
+
+**Resultado da regressão (replay, 0 chamadas de API, 0 cache misses):**
+
+| | Original | Challenge | Blind-derived | BT-002 |
+|---|---|---|---|---|
+| Aprovações inseguras (enhanced), H | 0 | 0 | 0 | 0 |
+| Bindings errados, H | 0 | 0 | 0 | 0 |
+| Bindings corretos perdidos, G → H | 0 → 0 | 0 → 0 | **1 → 0** | 0 → 0 |
+| Pares `SUPERSEDED` | 8 | 8 | 0 | 0 |
+| Roteamento, G → H | 5/6 → 5/6 | 7/7 → 7/7 | 8/14 → **9/14** | 7/10 → 7/10 |
+| Taxa de revisão, G → H | 6/8 → 6/8 | 2/11 → 2/11 | 11/14 → **10/14** | 9/10 → 9/10 |
+
+- **Única mudança de roteamento:** BT-03, de REVIEW (`REQUIRED_FIELD_MISSING`, `SEMANTIC_INTERPRETER_FAILED`) para **AUTO_APPROVE** (correto pelo gabarito). A data-base 22/09 vem do rótulo imediatamente anterior; o par distante atravessa frase e é rejeitado. Sem o campo ausente, o detector não pede mais o LLM, e o cache miss da G desaparece.
+- Identidade idêntica à da G em todos os documentos. Original idêntico em campos e roteamento. BT2-02 continua com o binding errado evitado.
+- **Critérios 1–5 atendidos.** Não houve regressão de segurança.
+
+### Congelamento pré-OCR
+
+- **Candidata pré-OCR:** tag `candidate-pre-ocr`. Código em `af73747`; `outputs/experiments/E-008_pre_ocr_ocr/FREEZE_PRE_OCR.json` com 76 arquivos, verificado por `tests/test_e008_freeze.py`.
+- `case/`: 10/10 arquivos com o SHA-256 do mapa, sem mudança no git. `.env` ignorado e não versionado.
+- A partir daqui, a versão H não muda durante o experimento de OCR.

@@ -1,0 +1,125 @@
+{
+  "run_id": "e008-replay-bt002",
+  "pipeline_version": "baseline-a/0.1.0+candidate-pre-ocr/0.1",
+  "record_schema_version": "semantic-record/0.6",
+  "started_at": "2026-09-30T03:07:39.950+00:00",
+  "finished_at": "2026-09-30T03:07:40.034+00:00",
+  "environment": {
+    "python": "3.13.1",
+    "pypdf": "6.16.1"
+  },
+  "config": {
+    "min_alnum_chars_per_page": 100,
+    "extraction_method": "native_text_layer+deterministic_rules",
+    "llm": {
+      "provider": "anthropic",
+      "model": "claude-opus-5",
+      "effort": "medium",
+      "max_tokens": 8000,
+      "fallbacks": "off",
+      "prompt_version": "semantic-interpreter/v3",
+      "prompt_fingerprint": "e6bd3105dc7c8c84"
+    },
+    "ocr": null,
+    "holiday_calendar": null,
+    "variant": "H"
+  },
+  "golden_records": {
+    "path": "C:/Users/Windows 11/Documents/Projetos Pessoais/btg-case/tests/blind_set_v2/golden_records.csv",
+    "sha256": "d4dd9efda4b2c0b95d5c51fb50becdc8c28f9634b887b5af7eb8ef585d2db7d8",
+    "rows": 12
+  },
+  "inputs": [
+    {
+      "file_name": "BT2-01.txt",
+      "sha256": "a1ca9b275baedd035f6e7df264f07b3aca86e7d16321f9d60b96059012a14695"
+    },
+    {
+      "file_name": "BT2-02.txt",
+      "sha256": "42af7d4c39054fc1e78d287c98f1dd231de6ac81fd073253f7519090d9b53010"
+    },
+    {
+      "file_name": "BT2-03.txt",
+      "sha256": "8dfca2dcf7ba8b7ebf939b97e086fd4b1972373a80800edfec76628377b57aa0"
+    },
+    {
+      "file_name": "BT2-04.txt",
+      "sha256": "a975b832b7f01e2fdd78f6c013407601474bc584924a4a87bdd10f1dc37db3ea"
+    },
+    {
+      "file_name": "BT2-05.txt",
+      "sha256": "2d24a20fb884a4bf837252fd9dd4341957435b339162f770e3fa765f8214c5ff"
+    },
+    {
+      "file_name": "BT2-06.txt",
+      "sha256": "19fbec9c5df9776e5e0e45308269d0b66c0bdf8eb200f518c4de84e7f4df1379"
+    },
+    {
+      "file_name": "BT2-07.txt",
+      "sha256": "139a6fc0a984417f656de86a2f69b0f1446d2a976c7172e87b2523719422079a"
+    },
+    {
+      "file_name": "BT2-08.txt",
+      "sha256": "9b9b889252fe824baba98e0664ee4feec39392e1b0123822c8953e24696a6878"
+    },
+    {
+      "file_name": "BT2-09.txt",
+      "sha256": "d24c10547ab9fb399b8981e643d283b17480adf3c445aab3d7a02aedd88fd6de"
+    },
+    {
+      "file_name": "BT2-10.txt",
+      "sha256": "a9cdfc3f34cac60ea51a823a15b315a47dbae460f53924f347d2ea0f38e9f948"
+    }
+  ],
+  "outputs": [
+    "records/BT2-01.json",
+    "records/BT2-02.json",
+    "records/BT2-03.json",
+    "records/BT2-04.json",
+    "records/BT2-05.json",
+    "records/BT2-06.json",
+    "records/BT2-07.json",
+    "records/BT2-08.json",
+    "records/BT2-09.json",
+    "records/BT2-10.json",
+    "exceptions_report.md"
+  ],
+  "summary": {
+    "documents": 10,
+    "decisions": {
+      "AUTO_APPROVE": 1,
+      "REVIEW_REQUIRED": 9
+    },
+    "without_usable_text_layer": 0,
+    "errors": 0,
+    "total_duration_us": 62097,
+    "llm": {
+      "documents_with_llm": 9,
+      "api_calls": 18,
+      "tool_calls": 9,
+      "input_tokens": 86192,
+      "output_tokens": 9723,
+      "estimated_cost_usd": "0.674035",
+      "llm_latency_ms": 115551,
+      "parse_or_schema_failures": 0,
+      "errors": 0,
+      "refusals": 0,
+      "served_model_mismatches": 0,
+      "reference_divergences": 0,
+      "served_models": [
+        "claude-opus-5"
+      ],
+      "replayed_documents": 9
+    },
+    "semantic_need": {
+      "documents_assessed": 10,
+      "llm_required": 9,
+      "trigger_counts": {
+        "REQUIRED_DATE_ROLE_UNMAPPED": 9,
+        "UNINTERPRETED_QUALIFIER": 2,
+        "CLASSIFICATION_UNSUPPORTED": 1,
+        "EVENT_SIGNALS_CONFLICT": 1
+      }
+    }
+  }
+}
