@@ -606,3 +606,99 @@ No lote real, isso entrega a qualidade semântica perto da C, com custo e latên
 
 Nenhuma dessas mudanças foi feita: o E-004 está congelado, e a próxima etapa depende de autorização.
 
+### Errata do E-004 (registrada em 2026-09-30, durante o E-005)
+
+A análise do E-004 **subnotificou** os bloqueios falsos por qualificador na D. Os artefatos não mudam; só a leitura.
+
+- **O que o log dizia:** os failure modes novos da D eram o doc 06 (frações) e o CH-07 (instabilidade).
+- **O que os registros mostram:** na execução 1, a D também mandou para revisão **CH-03, CH-08 e CH-09** por qualificadores v2:
+
+  | Caso | Qualificador bloqueante | Tipo atribuído |
+  |---|---|---|
+  | CH-03 | "limitados à variação ... TJLP" | `informational_context` com `affects=amounts` (inconsistente) |
+  | CH-03 | "de 17,5% sobre o valor bruto" | `tax_base_condition` |
+  | CH-08 | "Será considerada a posição acionária do dia ..." | `event_eligibility_condition` |
+  | CH-09 | "Farão jus ao provento os acionistas ..." | `event_eligibility_condition` |
+
+- **Por que passou despercebido:** esses casos têm expectativa PROVISIONAL e não entram no "roteamento DEFINED 7/7".
+- **Consequência:** a C (E-003) aprovava CH-03, CH-07 e CH-08, que a D mandou para revisão (a taxa de revisão 5/11 da D inclui esses casos). A afirmação de que a D "corrigiu os false reviews da C" continua verdadeira para CH-01 e CH-10, mas a D **criou** false reviews novos no challenge set.
+- **Efeito sobre as hipóteses:** H-26 continua MODIFIED; o problema dos qualificadores era maior do que o reportado.
+
+## E-005 — Qualificadores v3 (H-27): D × E (pré-registro; congelado)
+
+- **Checkpoint anterior:** tag `e004-final` → `5d5fb83`.
+- **E-004 preservado:** a D reproduz os 19 registros oficiais do E-004 por replay do cache (`tests/test_e004_regression.py`). A, B e C continuam reproduzindo o E-003.
+- **Congelamento:** `outputs/experiments/E-005_qualifiers_v3/FREEZE.json` (57 arquivos; prompt `semantic-interpreter/v3`, fingerprint `e6bd3105dc7c8c84`), verificado por `tests/test_e005_freeze.py`.
+- **Configuração:** `claude-opus-5`, effort medium, fallback off, 8000 max tokens (igual à D).
+
+### Variante E — `hybrid_qualifiers_v3`
+
+Idêntica à D em tudo que não é qualificador: patch B, detector de necessidade, fusão v2 (acordo, sem suporte, heurística resolvida, conflito real), validation engine, gates, function calling. Muda só:
+
+1. **Prompt v3**, com duas listas separadas:
+   - `material_qualifiers` (kind: `material_condition`, `material_exception`, `unresolved`; `affects`, `target_field`, `effect`, `materiality_reason`, citação): só o que passa no **teste de remoção** ("se o trecho for removido, muda natureza, elegibilidade, direito, alíquota, base, tratamento tributário por titular, valor, proporção ou semântica de data?");
+   - `semantic_notes` (`operational_instruction`, `legal_context`, `informational_context`).
+   - Regra de escopo: rótulo com valor, e frase que só declara ou explica um campo já no registro (a data com definida pela posição; a base "sobre o valor bruto"), não são qualificadores.
+   - Palavras como "condição", "exceto", "conforme" não tornam nada material por si.
+2. **Política v3** (`qualifiers_v3.py`):
+   - notas nunca bloqueiam;
+   - material com citação localizada passa pela **guarda de escopo** determinística e genérica: se, removidos os trechos de evidência dos campos e as repetições entre parênteses, não sobra conteúdo, a citação é rebaixada para nota (`SCOPE_GUARD_FIELD_LABEL_OR_VALUE`);
+   - material **já representado** não bloqueia:
+
+     | `affects` | Representado quando |
+     |---|---|
+     | `tax_base` (condição) | base do registro = `EXCESS_OVER_THRESHOLD` |
+     | `beneficiary_tax_treatment` | anotado no campo de IR |
+     | `effective_dates` | campo `declared_pending` que contém a citação |
+
+   - material não representado, ou `unresolved`, bloqueia.
+
+**Diferença de desenho em relação ao v2:**
+
+| | v2 | v3 |
+|---|---|---|
+| Tipos | 9 | 3 materiais + 3 de nota |
+| Materialidade | inferida da tabela por tipo | exige justificativa (`materiality_reason`) e o teste de remoção |
+| `other` genérico bloqueante | sim | não existe |
+| Salvaguarda "tipo não material com `affects` material" | sim | removida: notas não têm `affects` |
+| Critério de bloqueio | tipo do qualificador | "efeito material não representado no registro" |
+
+### Mudanças feitas antes do congelamento, e por quê
+
+- **Guarda de escopo** passou de "cobertura ≥ 80%" para "sem conteúdo fora da evidência dos campos". Motivo: o teste sintético do doc 06 ("Proporção 10:1 (dez para uma)" não era rejeitado). Um teste garante que citações com relação real anexada a um valor continuam bloqueando.
+- **Regra de escopo do prompt** para frase que define um campo e para a declaração de base. Motivada pelos bloqueios falsos da D em CH-08, CH-09 e CH-03 (errata acima), e alinhada ao item "texto explicativo que apenas repete o significado do campo" da especificação do E-005.
+- **Regra de representação "base do registro igual à base do LLM":** adicionada e **removida antes do congelamento**. Ela abria um buraco de segurança: com uma redação de limite não reconhecida pelo B e o LLM errando a base para GROSS_AMOUNT, o registro seria aprovado com base errada. Agora um teste de regressão garante revisão nesse cenário.
+
+### Critérios de sucesso (pré-registrados, do enunciado)
+
+1. `unsafe_auto_approvals` = 0;
+2. o doc 06 deixa de ir para revisão por motivo operacional;
+3. CH-07 com roteamento estável;
+4. nenhum caso antes seguro passa a ser aprovado incorretamente;
+5. a taxa de revisão cai ou fica igual;
+6. a lógica fica mais simples ou mais explicável.
+
+Se a taxa de revisão cair às custas de segurança, H-27 fica **refutada**.
+
+### Protocolo
+
+```bash
+E=outputs/experiments/E-005_qualifiers_v3
+python -m corporate_actions --variant E --out $E/original_E --llm-cache $E/llm_cache_run1
+python -m corporate_actions --variant E --documents tests/challenge_set/cases --out $E/challenge_E --llm-cache $E/llm_cache_run1
+python -m corporate_actions --variant E --out $E/original_E_run2 --llm-cache $E/llm_cache_run2 --no-cache-read
+python -m corporate_actions --variant E --documents tests/challenge_set/cases --out $E/challenge_E_run2 --llm-cache $E/llm_cache_run2 --no-cache-read
+python -m evaluation.e005
+```
+
+Depois da primeira saída oficial: nenhuma mudança em E, prompt, política ou challenge set.
+
+### Disclosure
+
+- **Original é desenvolvimento.** O exemplo operacional do prompt ("how fractions are grouped and sold") é uma paráfrase do exemplo genérico da especificação, e o doc 06 tem esse tipo de texto. O resultado do doc 06 é **in-sample**.
+- **Challenge set conhecido.** Os resultados da D (E-003 e E-004) eram conhecidos e motivaram a regra de escopo (CH-03, CH-07, CH-08, CH-09). Nenhum run da E foi feito sobre o challenge set antes do congelamento; ainda assim, a métrica ali **não é independente**.
+- **Holdout cego** continua sendo a medida necessária antes de adotar.
+
+### Resultado
+
+_Pendente da execução da E._

@@ -283,6 +283,21 @@ Formato:
 - **Tipo:** processo
 - **Decisão:** O código da D (detector, política de qualificadores v2, fusão v2), o prompt v2 (`a1007b649ea5c243`), a avaliação (`evaluation/e004.py`, com o oráculo de necessidade pré-registrado), os gabaritos e o challenge set estão congelados por hash em `outputs/experiments/E-004_hybrid/FREEZE.json` (`tests/test_e004_freeze.py`). A configuração é fixa: `claude-opus-5`, effort medium, fallback off.
 
+
+## D-022 — Congelamento do E-004 passa a ser comportamental (tag + regressão)
+
+- **Data:** 2026-09-30
+- **Status:** ACCEPTED
+- **Tipo:** processo
+- **Decisão:** Mesmo mecanismo da D-020. O estado do E-004 fica na tag `e004-final`. `tests/test_e004_regression.py` exige que a D reproduza os 19 registros oficiais por replay. O hash continua valendo para tudo, exceto `pipeline.py` e `__main__.py`, que recebem o ramo aditivo da variante E.
+
+## D-023 — E-005 congelado antes do run oficial da variante E
+
+- **Data:** 2026-09-30
+- **Status:** ACCEPTED
+- **Tipo:** processo
+- **Decisão:** Prompt v3 (`e6bd3105dc7c8c84`), `qualifiers_v3.py`, o ramo `_semantic_e`, a avaliação `evaluation/e005.py` (com os critérios de sucesso pré-registrados), os gabaritos e o challenge set estão congelados em `outputs/experiments/E-005_qualifiers_v3/FREEZE.json` (`tests/test_e005_freeze.py`). A configuração é a mesma da D, com fallback off.
+
 ---
 
 ## Decisões deliberadamente adiadas (não são decisões)
