@@ -25,7 +25,9 @@ def test_frozen_file_unchanged(path):
 
 
 def test_no_unfrozen_source_file():
-    current = {p.relative_to(ROOT).as_posix() for p in (ROOT / "src").rglob("*.py")}
+    # Escopo = código da variante F (pipeline). Avaliadores novos (ex.: BT-002) podem ser acrescentados em
+    # src/evaluation sem mudar a F; os avaliadores já congelados continuam protegidos pelo hash acima.
+    current = {p.relative_to(ROOT).as_posix() for p in (ROOT / "src" / "corporate_actions").rglob("*.py")}
     assert current <= set(FREEZE["files"]), f"arquivo de código fora do freeze: {sorted(current - set(FREEZE['files']))}"
 
 

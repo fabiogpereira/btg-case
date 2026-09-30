@@ -1201,3 +1201,71 @@ A F aprova os dois **com** a informação representada: `tax_treatment` EXEMPT, 
 - **Todos os números da F são in-sample:** os três conjuntos foram vistos em dry run durante o desenvolvimento. Nenhuma afirmação de generalização é possível sem um novo conjunto independente.
 - **Recomendação:** a F atende a todos os critérios pré-registrados. Recomenda-se que substitua a E como candidata. A decisão é do usuário, como foi a D-024.
 - **Segunda execução:** não foi feita. A única mudança de roteamento atribuível ao LLM (CH-03) tem contrafactual determinístico: a mesma F, com a resposta gravada da E, aprova. Uma segunda execução mediria a estabilidade da amostragem, não a F.
+
+## BT-002 — Validação cega independente da candidata F (pré-registro; congelado)
+
+**Pergunta:** em casos novos, independentes e não influenciados pelo desenvolvimento, a F continua segura e razoavelmente útil? Esta etapa é validação, não desenvolvimento.
+
+- **F avaliada:** tag `candidate-F` → `769e14765f57387e48b416f50a8e54bc2f1e20c4` (`e006-final` preservada).
+  - Árvore de `src/corporate_actions`: `f902ae8`.
+  - Prompt v3: `e6bd3105dc7c8c84`.
+  - `claude-opus-5`, effort medium, 8000 max tokens, fallback off (conferido no ambiente, sem expor a chave).
+- **Verificações antes do dataset:**
+  - 651 testes passando;
+  - `case/`: 10 arquivos, todos com o SHA-256 de `docs/01-document-map.md`, sem mudança no git;
+  - `.env` ignorado e nunca versionado.
+- **Criador:** `claude-sonnet-5` por chamada direta à API, em contexto limpo (sem system prompt, sem ferramentas, sem arquivos).
+  - Entrada: o brief neutro do usuário, verbatim, mais um anexo técnico de formato e o critério de negócio de roteamento do BT-001.
+  - O acréscimo do anexo é um desvio declarado; detalhes e limitações em `tests/blind_set_v2/BRIEF.md`.
+  - Id `msg_011CfYq1Ppmuj9UqKMfN4skD`; 2.671 tokens de entrada e 42.223 de saída.
+- **Conjunto:** `tests/blind_set_v2`, com 10 avisos e 12 ativos na base de referência (1 ativo dos avisos fora dela, 1 ativo extra).
+
+  | Caso | Tipo (gabarito) | Rota esperada | Traço principal |
+  |---|---|---|---|
+  | BT2-01 | DIVIDEND | AUTO | isenção de IR explícita |
+  | BT2-02 | JCP | AUTO | datas com pontos; exceção imunes/isentos |
+  | BT2-03 | SPLIT | AUTO | frações em leilão (rotulado material pelo criador) |
+  | BT2-04 | REVERSE_SPLIT | REVIEW | data ex e crédito pendentes |
+  | BT2-05 | BONUS_SHARES | AUTO | proporção em % e razão; ex após feriado |
+  | BT2-06 | DIVIDEND | REVIEW | pagamento pendente; valor adicional condicionado |
+  | BT2-07 | JCP | REVIEW | alíquota pendente |
+  | BT2-08 | OTHER (cisão parcial) | REVIEW | evento fora do schema, proporção pendente |
+  | BT2-09 | UNRESOLVED | REVIEW | dividendo ou JCP a definir |
+  | BT2-10 | REVERSE_SPLIT | REVIEW | ativo fora da base |
+
+  - Rotas esperadas: 4 AUTO_APPROVE, 6 REVIEW_REQUIRED.
+  - Nenhum aviso traz ISIN.
+- **QA do dataset** (`tests/blind_set_v2/QA.md`):
+  - **1 correção:** remapeamento mecânico 1:1 dos 11 CNPJs, que eram placeholders idênticos aos de conjuntos anteriores;
+  - evidências, aritmética, datas, base e justificativas conferidas;
+  - pontos de julgamento do criador **não** corrigidos (BT2-03).
+- **Congelamento:** `tests/blind_set_v2/MANIFEST.json` (SHA-256 de 22 arquivos), verificado por `tests/test_blind_set_v2_freeze.py`. Nenhum documento foi processado pela F antes deste ponto.
+
+### Avaliação pré-registrada (`src/evaluation/bt002.py`)
+
+- **Segurança:** definição enhanced do E-006, sem mudança (`e006.enhanced_components`). Cada componente é reportado separadamente: alucinação, omissão material, ambiguidade não resolvida aprovada, falha de validação aprovada, contradição aprovada e aprovação falsa. Também são reportadas as ambiguidades perigosas (UNRESOLVED/OTHER/`ambiguous`) que foram revisadas.
+- **Utilidade:** roteamento, aprovações corretas, revisões corretas, false reviews, taxa de revisão.
+- **Semântica:** tipo de evento; tratamento tributário (isenção só via `tax_treatment` EXEMPT/NO_WITHHOLDING_DECLARED); cobertura de informação material; qualificadores materiais capturados; falsos alarmes de qualificador sobre contexto não material; papéis de data.
+- **Determinístico:** identificadores, valores, proporções, datas, status de campo, golden lookup, regras objetivas.
+  - Golden lookup: `in_reference_base` do gabarito × `REF_ISIN_FOUND` da F. Como nenhum aviso traz ISIN, NOT_EVALUATED conta como "presença na base não confirmada".
+- **LLM:** documentos com LLM, gatilhos, chamadas por documento, tool calls e argumentos corretos, grounding, falhas de schema, recusas.
+- **Operacional:** custo, tokens, latência com e sem LLM, erros.
+- **Validação do avaliador:** executado sobre o run oficial da F no blind-derived set (E-006), reproduz os números do `e006` (0 inseguras, roteamento 9/14, cobertura determinística 92/115).
+- **Hierarquia de leitura:** 1) nenhuma aprovação insegura; 2) nenhuma omissão material em registro aprovado; 3) ambiguidades perigosas revisadas; 4) utilidade. Revisão desnecessária é problema de utilidade; aprovação materialmente incorreta é problema de segurança.
+- **GO** para a etapa de OCR se:
+  - enhanced unsafe = 0;
+  - nenhuma omissão material aprovada;
+  - nenhum failure mode estrutural novo que torne a arquitetura insegura;
+  - utilidade aceitável ou limitações fail-safe.
+- **STOP/INVESTIGATE** se houver qualquer aprovação materialmente insegura.
+- **Caso-limite pré-registrado:** se o qualificador de frações do BT2-03 (julgamento do criador) decidir sozinho o GO/STOP, a decisão vai para o usuário.
+
+### Protocolo (uma execução oficial; cache novo)
+
+```bash
+B=outputs/experiments/BT-002_blind_F
+python -m corporate_actions --variant F --documents tests/blind_set_v2/documents --golden tests/blind_set_v2/golden_records.csv --out $B/blind_F --llm-cache $B/llm_cache_run1
+python -m evaluation.bt002 --run-dir $B/blind_F --out $B/evaluation
+```
+
+Depois da primeira saída oficial: nenhuma mudança na F, no prompt, nas regras, no avaliador ou no conjunto. Falhas são registradas, não corrigidas. Segunda execução só se houver pergunta real de estabilidade.

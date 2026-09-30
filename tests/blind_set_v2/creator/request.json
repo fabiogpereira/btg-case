@@ -1,0 +1,11 @@
+{
+  "model": "claude-sonnet-5",
+  "max_tokens": 64000,
+  "thinking": {
+    "type": "adaptive"
+  },
+  "system": null,
+  "tools": null,
+  "prompt_file": "PROMPT.txt",
+  "prompt_sha256": "ee488bc774e6e69f0e90c7fd6a018497583ade85a8a5d1f2ce7012b60e6bb716"
+}

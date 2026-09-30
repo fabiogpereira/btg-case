@@ -1,0 +1,12 @@
+{
+  "id": "msg_011CfYq1Ppmuj9UqKMfN4skD",
+  "requested_model": "claude-sonnet-5",
+  "served_model": "claude-sonnet-5",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2671,
+    "output_tokens": 42223
+  },
+  "latency_s": 332.7,
+  "response_sha256": "9853a867f5a63ade4d9743434a3679812d3592629dd4e37bf0b655fed5b5d50e"
+}

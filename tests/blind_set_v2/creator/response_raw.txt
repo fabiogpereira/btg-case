@@ -1,0 +1,522 @@
+<<<FILE: BT2-01.txt>>>
+CERRADO MINERAÇÃO S.A.
+CNPJ/MF nº 12.345.678/0001-90
+Companhia Aberta
+
+AVISO AOS ACIONISTAS
+
+A Cerrado Mineração S.A. ("Companhia") comunica aos seus acionistas e ao mercado em geral que, em Reunião do Conselho de Administração realizada em 10 de abril de 2024, foi aprovada a distribuição de dividendos, nos seguintes termos:
+
+Valor bruto: R$ 0,8500000000 por ação ordinária (CRDO3)
+Data-base (terão direito os acionistas titulares de ações em): 22/04/2024
+Data "ex-dividendos": as ações passarão a ser negociadas "ex-dividendos" a partir de 23/04/2024
+Pagamento: os créditos serão efetuados em 06/05/2024
+
+Os dividendos ora aprovados são isentos de Imposto de Renda na Fonte, nos termos da legislação em vigor.
+
+São Paulo, 10 de abril de 2024.
+
+Diretoria de Relações com Investidores
+<<<END FILE>>>
+
+<<<FILE: BT2-02.txt>>>
+AURORA TÊXTIL NORDESTE S.A.
+CNPJ 23.456.789/0001-01
+
+Fato Relevante / Aviso aos Acionistas
+
+A Companhia comunica que o Conselho de Administração, em reunião de 02.05.2024, deliberou pelo pagamento de Juros sobre o Capital Próprio (JCP), referente ao 1º trimestre de 2024, nas condições abaixo:
+
+- Ativo: ações ordinárias AURT3
+- Valor bruto por ação: R$ 0,3000000000
+- Imposto de Renda Retido na Fonte: 15% (quinze por cento), exceto para acionistas comprovadamente imunes ou isentos
+- Valor líquido por ação: R$ 0,2550000000
+- Terão direito ao recebimento os acionistas inscritos nos registros da Companhia em 10.05.2024 (data-base)
+- A partir de 13.05.2024, as ações serão negociadas "ex-JCP"
+- Pagamento previsto para 27.05.2024
+
+Recife, 02 de maio de 2024.
+<<<END FILE>>>
+
+<<<FILE: BT2-03.txt>>>
+RIO BRAVO ENERGIA S.A.
+CNPJ nº 34.567.890/0001-12
+Companhia Aberta
+
+Aviso aos Acionistas – Desdobramento de Ações
+
+A Rio Bravo Energia S.A. informa que, em Assembleia Geral Extraordinária realizada em 18/06/2024, os acionistas aprovaram o desdobramento (split) da totalidade das ações preferenciais de emissão da Companhia (RBRA4), na proporção de 1 (uma) ação existente para 3 (três) ações novas, sem alteração do capital social.
+
+Terão direito ao desdobramento os acionistas detentores de ações em 25/06/2024. A partir de 26/06/2024, as ações serão negociadas já desdobradas ("ex-desdobramento").
+
+As frações de ações resultantes, se houver, serão agrupadas e alienadas em leilão na B3, com o crédito do valor correspondente aos acionistas titulares.
+
+Rio de Janeiro, 18 de junho de 2024.
+<<<END FILE>>>
+
+<<<FILE: BT2-04.txt>>>
+PLANALTO SIDERURGIA S.A.
+CNPJ 56.789.012/0001-34
+
+AVISO AOS ACIONISTAS
+
+A Planalto Siderurgia S.A. comunica que, conforme deliberado em Assembleia Geral Extraordinária de 03/07/2024, será realizado o grupamento das ações preferenciais de emissão da Companhia (PLSD4), na proporção de 10 (dez) ações existentes para 1 (uma) ação nova.
+
+Farão jus ao grupamento os acionistas titulares de ações preferenciais na data-base de 12/07/2024.
+
+A data a partir da qual as ações passarão a ser negociadas já grupadas ("ex-grupamento"), bem como a data de crédito das novas ações nas contas de custódia, ainda dependem de homologação operacional junto à B3 e ao escriturador, e serão divulgadas em aviso complementar oportunamente.
+
+Belo Horizonte, 03 de julho de 2024.
+<<<END FILE>>>
+
+<<<FILE: BT2-05.txt>>>
+VALE DO SOL ALIMENTOS S.A.
+Aviso aos Acionistas
+
+Comunicamos que a Assembleia Geral Ordinária e Extraordinária, realizada em 25 de abril de 2024, aprovou a bonificação de ações aos acionistas titulares de ações ordinárias (VSOL3), mediante capitalização de reservas, na proporção de 10% (dez por cento), ou seja, a cada 10 (dez) ações possuídas, o acionista receberá 1 (uma) ação nova, gratuitamente.
+
+Data-base: acionistas com posição em 30/04/2024
+Data "ex-bonificação": 02/05/2024
+As novas ações serão creditadas nas contas de custódia dos acionistas em 15/05/2024.
+
+CNPJ da Companhia: 45.678.901/0001-23
+
+Campinas, 25 de abril de 2024.
+<<<END FILE>>>
+
+<<<FILE: BT2-06.txt>>>
+COSTA VERDE LOGÍSTICA S.A.
+CNPJ 67.890.123/0001-45
+Companhia Aberta
+
+Comunicado ao Mercado
+
+O Conselho de Administração da Costa Verde Logística S.A., em reunião realizada em 14/08/2024, aprovou a distribuição de dividendo no valor de R$ 0,4000000000 por ação ordinária (CVLG3), a ser pago aos acionistas detentores de ações na data-base de 21/08/2024, com as ações passando a ser negociadas "ex-dividendo" a partir de 22/08/2024.
+
+Adicionalmente, o Conselho aprovou dividendo extraordinário complementar de R$ 0,1000000000 por ação, condicionado à ratificação pela Assembleia Geral Ordinária a ser convocada para deliberar sobre as demonstrações financeiras do exercício de 2024, cuja data ainda não foi definida.
+
+A data de pagamento de ambos os valores será divulgada em aviso específico após a conclusão dos trâmites societários acima mencionados.
+
+São Paulo, 14 de agosto de 2024.
+<<<END FILE>>>
+
+<<<FILE: BT2-07.txt>>>
+NORTLINE TRANSPORTES S.A.
+CNPJ 78.901.234/0001-56
+
+Aviso aos Acionistas – Juros sobre Capital Próprio
+
+A Diretoria da Nortline Transportes S.A. informa que, em reunião de 05/09/2024, foi aprovado o pagamento de Juros sobre Capital Próprio (JCP) no valor bruto de R$ 0,6000000000 por ação ordinária (NTLN3).
+
+Terão direito ao recebimento os acionistas com posição acionária em 12/09/2024, sendo as ações negociadas "ex-JCP" a partir de 13/09/2024. O pagamento está previsto para ocorrer em 30/09/2024.
+
+A alíquota do Imposto de Renda Retido na Fonte aplicável será informada em comunicado complementar, a ser publicado antes da data de pagamento, em conformidade com o tratamento tributário aplicável a cada categoria de acionista.
+
+Curitiba, 05 de setembro de 2024.
+<<<END FILE>>>
+
+<<<FILE: BT2-08.txt>>>
+SERRA ALTA PAPEL E CELULOSE S.A.
+CNPJ 89.012.345/0001-67
+
+Fato Relevante
+
+A Serra Alta Papel e Celulose S.A. comunica aos seus acionistas e ao mercado em geral que, em razão da cisão parcial aprovada em Assembleia Geral Extraordinária realizada em 20/09/2024, com versão de parcela do patrimônio líquido para a sociedade Serra Alta Embalagens S.A., os acionistas titulares de ações preferenciais (SRAL4) receberão ações da nova sociedade na proporção a ser detalhada em laudo de avaliação ainda em elaboração.
+
+Não há, neste momento, definição sobre eventual redução proporcional do valor patrimonial das ações remanescentes da Companhia, tampouco sobre os efeitos tributários da operação para os acionistas.
+
+Novas informações serão divulgadas oportunamente por meio de fato relevante específico.
+
+Florianópolis, 20 de setembro de 2024.
+<<<END FILE>>>
+
+<<<FILE: BT2-09.txt>>>
+HORIZONTE DIGITAL S.A.
+CNPJ 90.123.456/0001-78
+
+Aviso aos Acionistas
+
+A Horizonte Digital S.A. comunica a distribuição de proventos aos acionistas de suas ações ordinárias (HZDG3), no valor de R$ 0,5000000000 por ação, a serem pagos aos acionistas titulares de posição em 10/10/2024, com ações negociadas "ex" a partir de 11/10/2024 e pagamento em 25/10/2024.
+
+Os valores acima poderão ser distribuídos a título de dividendos ou de juros sobre capital próprio, ou mediante combinação de ambos, conforme deliberação final a ser tomada pelo Conselho de Administração na mesma data de pagamento, em função da apuração do resultado fiscal do período.
+
+São Paulo, 01 de outubro de 2024.
+<<<END FILE>>>
+
+<<<FILE: BT2-10.txt>>>
+AVIAMENTO CAPITAL S.A.
+CNPJ 01.234.567/0001-89
+
+Aviso aos Acionistas – Grupamento de Ações
+
+A Aviamento Capital S.A. informa que, em Assembleia Geral Extraordinária realizada em 11/11/2024, foi aprovado o grupamento das ações ordinárias de emissão da Companhia (AVCP3), na razão de 5 (cinco) ações antigas para 1 (uma) ação nova.
+
+Terão direito ao grupamento os acionistas com posição em 18/11/2024, passando as ações a ser negociadas grupadas a partir de 19/11/2024. O crédito das novas ações ocorrerá em 22/11/2024, na mesma proporção aprovada.
+
+São Paulo, 11 de novembro de 2024.
+<<<END FILE>>>
+
+<<<FILE: golden_records.csv>>>
+emissor,cnpj,isin,ticker,classe,segmento_listagem,status
+Cerrado Mineração S.A.,12.345.678/0001-90,BRCRDOACNOR1,CRDO3,ON,Novo Mercado,ativo
+Cerrado Mineração S.A.,12.345.678/0001-90,BRCRDOACNPR2,CRDO4,PN,Novo Mercado,ativo
+Aurora Têxtil Nordeste S.A.,23.456.789/0001-01,BRAURTACNOR3,AURT3,ON,Novo Mercado,ativo
+Rio Bravo Energia S.A.,34.567.890/0001-12,BRRBRAACNPR4,RBRA4,PN,Nível 1,ativo
+Vale do Sol Alimentos S.A.,45.678.901/0001-23,BRVSOLACNOR5,VSOL3,ON,Novo Mercado,ativo
+Planalto Siderurgia S.A.,56.789.012/0001-34,BRPLSDACNPR6,PLSD4,PN,Nível 1,ativo
+Costa Verde Logística S.A.,67.890.123/0001-45,BRCVLGACNOR7,CVLG3,ON,Novo Mercado,ativo
+Nortline Transportes S.A.,78.901.234/0001-56,BRNTLNACNOR8,NTLN3,ON,Nível 2,ativo
+Nortline Transportes S.A.,78.901.234/0001-56,BRNTLNACNPR9,NTLN4,PN,Nível 2,ativo
+Serra Alta Papel e Celulose S.A.,89.012.345/0001-67,BRSRALACNPR9,SRAL4,PN,Nível 1,ativo
+Horizonte Digital S.A.,90.123.456/0001-78,BRHZDGACNOR0,HZDG3,ON,Novo Mercado,ativo
+Trilha Agro S.A.,11.222.333/0001-44,BRTRAGACNOR4,TRAG3,ON,Novo Mercado,ativo
+<<<END FILE>>>
+
+<<<FILE: ground_truth.json>>>
+{
+  "created_by": "Conjunto sintético elaborado manualmente (assistente de IA) para fins de teste de sistema de processamento de eventos corporativos. Nenhum dado real foi utilizado.",
+  "cases": [
+    {
+      "case_id": "BT2-01",
+      "document_file": "BT2-01.txt",
+      "case_categories": ["dividendo", "documento_simples", "completo", "isencao_fiscal_explicita"],
+      "event_type": "DIVIDEND",
+      "issuer": {"name": "Cerrado Mineração S.A.", "cnpj": "12.345.678/0001-90", "isin": null, "ticker": "CRDO3", "in_reference_base": true},
+      "fields": {
+        "approval_date":          {"status": "present", "value": "2024-04-10", "evidence": "em Reunião do Conselho de Administração realizada em 10 de abril de 2024, foi aprovada a distribuição de dividendos"},
+        "record_date":            {"status": "present", "value": "2024-04-22", "evidence": "Data-base (terão direito os acionistas titulares de ações em): 22/04/2024"},
+        "ex_date":                {"status": "present", "value": "2024-04-23", "evidence": "as ações passarão a ser negociadas \"ex-dividendos\" a partir de 23/04/2024"},
+        "payment_date":           {"status": "present", "value": "2024-05-06", "evidence": "os créditos serão efetuados em 06/05/2024"},
+        "share_credit_date":      {"status": "not_applicable", "value": null, "evidence": null},
+        "gross_amount_per_share": {"status": "present", "value": "0.8500000000", "currency": "BRL", "evidence": "Valor bruto: R$ 0,8500000000 por ação ordinária (CRDO3)"},
+        "net_amount_per_share":   {"status": "not_applicable", "value": null, "evidence": null},
+        "withholding_tax":        {"status": "present", "rate": null, "base": "EXEMPT", "evidence": "Os dividendos ora aprovados são isentos de Imposto de Renda na Fonte, nos termos da legislação em vigor."},
+        "ratio":                  {"status": "not_applicable", "value": null, "evidence": null}
+      },
+      "material_qualifiers": [],
+      "non_material_context": [
+        {"description": "Referência genérica à legislação tributária vigente, sem alterar o tratamento fiscal já declarado como isento.", "evidence": "nos termos da legislação em vigor"}
+      ],
+      "expected_validation_findings": [
+        "ISIN não informado no aviso; identificação do ativo confirmada via ticker CRDO3 e CNPJ na base de referência",
+        "Nenhuma inconsistência de datas ou valores encontrada"
+      ],
+      "expected_routing": "AUTO_APPROVE",
+      "routing_reason": "Aviso completo para dividendo: valor bruto, data-base, data ex e data de pagamento presentes e consistentes; ativo consta na base de referência (CRDO3, ON)."
+    },
+    {
+      "case_id": "BT2-02",
+      "document_file": "BT2-02.txt",
+      "case_categories": ["jcp", "completo", "aliquota_padrao"],
+      "event_type": "JCP",
+      "issuer": {"name": "Aurora Têxtil Nordeste S.A.", "cnpj": "23.456.789/0001-01", "isin": null, "ticker": "AURT3", "in_reference_base": true},
+      "fields": {
+        "approval_date":          {"status": "present", "value": "2024-05-02", "evidence": "em reunião de 02.05.2024, deliberou pelo pagamento de Juros sobre o Capital Próprio (JCP)"},
+        "record_date":            {"status": "present", "value": "2024-05-10", "evidence": "Terão direito ao recebimento os acionistas inscritos nos registros da Companhia em 10.05.2024 (data-base)"},
+        "ex_date":                {"status": "present", "value": "2024-05-13", "evidence": "A partir de 13.05.2024, as ações serão negociadas \"ex-JCP\""},
+        "payment_date":           {"status": "present", "value": "2024-05-27", "evidence": "Pagamento previsto para 27.05.2024"},
+        "share_credit_date":      {"status": "not_applicable", "value": null, "evidence": null},
+        "gross_amount_per_share": {"status": "present", "value": "0.3000000000", "currency": "BRL", "evidence": "Valor bruto por ação: R$ 0,3000000000"},
+        "net_amount_per_share":   {"status": "present", "value": "0.2550000000", "evidence": "Valor líquido por ação: R$ 0,2550000000"},
+        "withholding_tax":        {"status": "present", "rate": "0.15", "base": "GROSS_AMOUNT", "evidence": "Imposto de Renda Retido na Fonte: 15% (quinze por cento), exceto para acionistas comprovadamente imunes ou isentos"},
+        "ratio":                  {"status": "not_applicable", "value": null, "evidence": null}
+      },
+      "material_qualifiers": [
+        {"description": "Alíquota padrão de 15% não se aplica a acionistas comprovadamente imunes ou isentos, alterando o tratamento tributário individual.", "affects": "beneficiary_tax_treatment", "evidence": "exceto para acionistas comprovadamente imunes ou isentos"}
+      ],
+      "non_material_context": [],
+      "expected_validation_findings": [
+        "Valor líquido (R$ 0,2550000000) consistente com valor bruto (R$ 0,3000000000) menos alíquota de 15% declarada"
+      ],
+      "expected_routing": "AUTO_APPROVE",
+      "routing_reason": "Aviso completo para JCP: valor bruto, valor líquido, alíquota de IRRF, data-base, data ex e data de pagamento presentes e matematicamente consistentes; ativo consta na base de referência."
+    },
+    {
+      "case_id": "BT2-03",
+      "document_file": "BT2-03.txt",
+      "case_categories": ["desdobramento", "completo", "fracoes_leilao", "linguagem_alternativa"],
+      "event_type": "SPLIT",
+      "issuer": {"name": "Rio Bravo Energia S.A.", "cnpj": "34.567.890/0001-12", "isin": null, "ticker": "RBRA4", "in_reference_base": true},
+      "fields": {
+        "approval_date":          {"status": "present", "value": "2024-06-18", "evidence": "em Assembleia Geral Extraordinária realizada em 18/06/2024, os acionistas aprovaram o desdobramento"},
+        "record_date":            {"status": "present", "value": "2024-06-25", "evidence": "Terão direito ao desdobramento os acionistas detentores de ações em 25/06/2024."},
+        "ex_date":                {"status": "present", "value": "2024-06-26", "evidence": "A partir de 26/06/2024, as ações serão negociadas já desdobradas (\"ex-desdobramento\")."},
+        "payment_date":           {"status": "not_applicable", "value": null, "evidence": null},
+        "share_credit_date":      {"status": "absent", "value": null, "evidence": null},
+        "gross_amount_per_share": {"status": "not_applicable", "value": null, "currency": null, "evidence": null},
+        "net_amount_per_share":   {"status": "not_applicable", "value": null, "evidence": null},
+        "withholding_tax":        {"status": "not_applicable", "rate": null, "base": "NOT_STATED", "evidence": null},
+        "ratio":                  {"status": "present", "value": {"from": "1", "to": "3"}, "evidence": "na proporção de 1 (uma) ação existente para 3 (três) ações novas"}
+      },
+      "material_qualifiers": [
+        {"description": "Frações resultantes do desdobramento serão agrupadas e leiloadas na B3, com repasse do valor aos titulares, ao invés de crédito fracionário direto.", "affects": "other", "evidence": "As frações de ações resultantes, se houver, serão agrupadas e alienadas em leilão na B3, com o crédito do valor correspondente aos acionistas titulares."}
+      ],
+      "non_material_context": [
+        {"description": "Menção de que não há alteração do capital social, informação típica de desdobramentos e sem efeito sobre os campos do evento.", "evidence": "sem alteração do capital social"}
+      ],
+      "expected_validation_findings": [
+        "Data de crédito específica das novas ações não mencionada separadamente da data ex (não exigida para completude de desdobramento)"
+      ],
+      "expected_routing": "AUTO_APPROVE",
+      "routing_reason": "Aviso completo para desdobramento: proporção, data-base e data ex presentes e consistentes; ativo consta na base de referência (RBRA4, PN)."
+    },
+    {
+      "case_id": "BT2-04",
+      "document_file": "BT2-04.txt",
+      "case_categories": ["grupamento", "data_pendente", "campo_ausente"],
+      "event_type": "REVERSE_SPLIT",
+      "issuer": {"name": "Planalto Siderurgia S.A.", "cnpj": "56.789.012/0001-34", "isin": null, "ticker": "PLSD4", "in_reference_base": true},
+      "fields": {
+        "approval_date":          {"status": "present", "value": "2024-07-03", "evidence": "conforme deliberado em Assembleia Geral Extraordinária de 03/07/2024, será realizado o grupamento"},
+        "record_date":            {"status": "present", "value": "2024-07-12", "evidence": "Farão jus ao grupamento os acionistas titulares de ações preferenciais na data-base de 12/07/2024."},
+        "ex_date":                {"status": "pending", "value": null, "evidence": "A data a partir da qual as ações passarão a ser negociadas já grupadas (\"ex-grupamento\"), bem como a data de crédito das novas ações nas contas de custódia, ainda dependem de homologação operacional junto à B3 e ao escriturador, e serão divulgadas em aviso complementar oportunamente."},
+        "payment_date":           {"status": "not_applicable", "value": null, "evidence": null},
+        "share_credit_date":      {"status": "pending", "value": null, "evidence": "A data a partir da qual as ações passarão a ser negociadas já grupadas (\"ex-grupamento\"), bem como a data de crédito das novas ações nas contas de custódia, ainda dependem de homologação operacional junto à B3 e ao escriturador, e serão divulgadas em aviso complementar oportunamente."},
+        "gross_amount_per_share": {"status": "not_applicable", "value": null, "currency": null, "evidence": null},
+        "net_amount_per_share":   {"status": "not_applicable", "value": null, "evidence": null},
+        "withholding_tax":        {"status": "not_applicable", "rate": null, "base": "NOT_STATED", "evidence": null},
+        "ratio":                  {"status": "present", "value": {"from": "10", "to": "1"}, "evidence": "na proporção de 10 (dez) ações existentes para 1 (uma) ação nova"}
+      },
+      "material_qualifiers": [
+        {"description": "Data ex do grupamento e data de crédito das novas ações dependem de homologação operacional futura junto à B3 e ao escriturador.", "affects": "dates", "evidence": "ainda dependem de homologação operacional junto à B3 e ao escriturador, e serão divulgadas em aviso complementar oportunamente"}
+      ],
+      "non_material_context": [],
+      "expected_validation_findings": [
+        "Data ex ('ex-grupamento') não definida, declarada como pendente de homologação",
+        "Data de crédito das novas ações não definida, declarada como pendente"
+      ],
+      "expected_routing": "REVIEW_REQUIRED",
+      "routing_reason": "Para grupamento, a data ex é campo obrigatório para completude; o aviso declara expressamente que essa data ainda está pendente de homologação futura."
+    },
+    {
+      "case_id": "BT2-05",
+      "document_file": "BT2-05.txt",
+      "case_categories": ["bonificacao", "proporcao_percentual_e_razao", "isin_ausente", "linguagem_alternativa"],
+      "event_type": "BONUS_SHARES",
+      "issuer": {"name": "Vale do Sol Alimentos S.A.", "cnpj": "45.678.901/0001-23", "isin": null, "ticker": "VSOL3", "in_reference_base": true},
+      "fields": {
+        "approval_date":          {"status": "present", "value": "2024-04-25", "evidence": "a Assembleia Geral Ordinária e Extraordinária, realizada em 25 de abril de 2024, aprovou a bonificação de ações"},
+        "record_date":            {"status": "present", "value": "2024-04-30", "evidence": "Data-base: acionistas com posição em 30/04/2024"},
+        "ex_date":                {"status": "present", "value": "2024-05-02", "evidence": "Data \"ex-bonificação\": 02/05/2024"},
+        "payment_date":           {"status": "not_applicable", "value": null, "evidence": null},
+        "share_credit_date":      {"status": "present", "value": "2024-05-15", "evidence": "As novas ações serão creditadas nas contas de custódia dos acionistas em 15/05/2024."},
+        "gross_amount_per_share": {"status": "not_applicable", "value": null, "currency": null, "evidence": null},
+        "net_amount_per_share":   {"status": "not_applicable", "value": null, "evidence": null},
+        "withholding_tax":        {"status": "not_applicable", "rate": null, "base": "NOT_STATED", "evidence": null},
+        "ratio":                  {"status": "present", "value": {"held": "10", "new": "1"}, "evidence": "na proporção de 10% (dez por cento), ou seja, a cada 10 (dez) ações possuídas, o acionista receberá 1 (uma) ação nova, gratuitamente."}
+      },
+      "material_qualifiers": [],
+      "non_material_context": [
+        {"description": "Explicitação de que a bonificação decorre de capitalização de reservas, informação contábil que não altera os campos do evento.", "evidence": "mediante capitalização de reservas"}
+      ],
+      "expected_validation_findings": [
+        "Proporção expressa tanto em percentual (10%) quanto em razão (10 para 1); ambas as formas são consistentes entre si",
+        "ISIN não informado no aviso; identificação confirmada via ticker VSOL3 e CNPJ na base de referência"
+      ],
+      "expected_routing": "AUTO_APPROVE",
+      "routing_reason": "Aviso completo para bonificação: proporção, data-base e data ex presentes e consistentes; ativo consta na base de referência (VSOL3, ON)."
+    },
+    {
+      "case_id": "BT2-06",
+      "document_file": "BT2-06.txt",
+      "case_categories": ["dividendo", "condicao_suspensiva", "data_pagamento_pendente", "valor_adicional_condicionado"],
+      "event_type": "DIVIDEND",
+      "issuer": {"name": "Costa Verde Logística S.A.", "cnpj": "67.890.123/0001-45", "isin": null, "ticker": "CVLG3", "in_reference_base": true},
+      "fields": {
+        "approval_date":          {"status": "present", "value": "2024-08-14", "evidence": "em reunião realizada em 14/08/2024, aprovou a distribuição de dividendo"},
+        "record_date":            {"status": "present", "value": "2024-08-21", "evidence": "na data-base de 21/08/2024"},
+        "ex_date":                {"status": "present", "value": "2024-08-22", "evidence": "com as ações passando a ser negociadas \"ex-dividendo\" a partir de 22/08/2024"},
+        "payment_date":           {"status": "pending", "value": null, "evidence": "A data de pagamento de ambos os valores será divulgada em aviso específico após a conclusão dos trâmites societários acima mencionados."},
+        "share_credit_date":      {"status": "not_applicable", "value": null, "evidence": null},
+        "gross_amount_per_share": {"status": "present", "value": "0.4000000000", "currency": "BRL", "evidence": "no valor de R$ 0,4000000000 por ação ordinária (CVLG3)"},
+        "net_amount_per_share":   {"status": "absent", "value": null, "evidence": null},
+        "withholding_tax":        {"status": "absent", "rate": null, "base": "NOT_STATED", "evidence": null},
+        "ratio":                  {"status": "not_applicable", "value": null, "evidence": null}
+      },
+      "material_qualifiers": [
+        {"description": "Dividendo extraordinário complementar de R$ 0,10 por ação está condicionado à ratificação futura em AGO sem data definida, podendo não se confirmar.", "affects": "amount", "evidence": "dividendo extraordinário complementar de R$ 0,1000000000 por ação, condicionado à ratificação pela Assembleia Geral Ordinária a ser convocada para deliberar sobre as demonstrações financeiras do exercício de 2024, cuja data ainda não foi definida."}
+      ],
+      "non_material_context": [],
+      "expected_validation_findings": [
+        "Data de pagamento não definida, declarada como pendente",
+        "Existe valor adicional de R$ 0,10 por ação condicionado a evento societário futuro incerto, sem data definida",
+        "Tratamento tributário (isenção ou retenção) não mencionado no aviso"
+      ],
+      "expected_routing": "REVIEW_REQUIRED",
+      "routing_reason": "A data de pagamento está expressamente pendente e há valor adicional condicionado a ratificação futura incerta, impedindo considerar o aviso completo e não ambíguo."
+    },
+    {
+      "case_id": "BT2-07",
+      "document_file": "BT2-07.txt",
+      "case_categories": ["jcp", "aliquota_pendente", "campo_ausente"],
+      "event_type": "JCP",
+      "issuer": {"name": "Nortline Transportes S.A.", "cnpj": "78.901.234/0001-56", "isin": null, "ticker": "NTLN3", "in_reference_base": true},
+      "fields": {
+        "approval_date":          {"status": "present", "value": "2024-09-05", "evidence": "em reunião de 05/09/2024, foi aprovado o pagamento de Juros sobre Capital Próprio (JCP)"},
+        "record_date":            {"status": "present", "value": "2024-09-12", "evidence": "acionistas com posição acionária em 12/09/2024"},
+        "ex_date":                {"status": "present", "value": "2024-09-13", "evidence": "sendo as ações negociadas \"ex-JCP\" a partir de 13/09/2024"},
+        "payment_date":           {"status": "present", "value": "2024-09-30", "evidence": "O pagamento está previsto para ocorrer em 30/09/2024."},
+        "share_credit_date":      {"status": "not_applicable", "value": null, "evidence": null},
+        "gross_amount_per_share": {"status": "present", "value": "0.6000000000", "currency": "BRL", "evidence": "no valor bruto de R$ 0,6000000000 por ação ordinária (NTLN3)"},
+        "net_amount_per_share":   {"status": "absent", "value": null, "evidence": null},
+        "withholding_tax":        {"status": "pending", "rate": null, "base": "NOT_STATED", "evidence": "A alíquota do Imposto de Renda Retido na Fonte aplicável será informada em comunicado complementar, a ser publicado antes da data de pagamento"},
+        "ratio":                  {"status": "not_applicable", "value": null, "evidence": null}
+      },
+      "material_qualifiers": [],
+      "non_material_context": [],
+      "expected_validation_findings": [
+        "Alíquota de IRRF declarada como pendente de divulgação futura",
+        "Valor líquido por ação não pode ser calculado sem a alíquota definida"
+      ],
+      "expected_routing": "REVIEW_REQUIRED",
+      "routing_reason": "Para JCP, a completude exige alíquota de IRRF e valor líquido por ação; ambos estão ausentes/pendentes no aviso."
+    },
+    {
+      "case_id": "BT2-08",
+      "document_file": "BT2-08.txt",
+      "case_categories": ["evento_societario_complexo", "cisao", "other", "informacao_pendente"],
+      "event_type": "OTHER",
+      "issuer": {"name": "Serra Alta Papel e Celulose S.A.", "cnpj": "89.012.345/0001-67", "isin": null, "ticker": "SRAL4", "in_reference_base": true},
+      "fields": {
+        "approval_date":          {"status": "present", "value": "2024-09-20", "evidence": "cisão parcial aprovada em Assembleia Geral Extraordinária realizada em 20/09/2024"},
+        "record_date":            {"status": "absent", "value": null, "evidence": null},
+        "ex_date":                {"status": "absent", "value": null, "evidence": null},
+        "payment_date":           {"status": "not_applicable", "value": null, "evidence": null},
+        "share_credit_date":      {"status": "absent", "value": null, "evidence": null},
+        "gross_amount_per_share": {"status": "not_applicable", "value": null, "currency": null, "evidence": null},
+        "net_amount_per_share":   {"status": "not_applicable", "value": null, "evidence": null},
+        "withholding_tax":        {"status": "pending", "rate": null, "base": "NOT_STATED", "evidence": "tampouco sobre os efeitos tributários da operação para os acionistas"},
+        "ratio":                  {"status": "pending", "value": null, "evidence": "os acionistas titulares de ações preferenciais (SRAL4) receberão ações da nova sociedade na proporção a ser detalhada em laudo de avaliação ainda em elaboração."}
+      },
+      "material_qualifiers": [
+        {"description": "Operação é uma cisão parcial com versão de patrimônio para nova sociedade, não um simples provento ou evento em ações padrão.", "affects": "event_nature", "evidence": "em razão da cisão parcial aprovada em Assembleia Geral Extraordinária realizada em 20/09/2024, com versão de parcela do patrimônio líquido para a sociedade Serra Alta Embalagens S.A."},
+        {"description": "Não há definição sobre redução do valor patrimonial das ações remanescentes.", "affects": "other", "evidence": "Não há, neste momento, definição sobre eventual redução proporcional do valor patrimonial das ações remanescentes da Companhia"}
+      ],
+      "non_material_context": [],
+      "expected_validation_findings": [
+        "Evento societário classificado como cisão parcial, fora do escopo dos tipos padronizados (dividendo, JCP, bonificação, desdobramento, grupamento)",
+        "Proporção de ações a receber não definida, pendente de laudo de avaliação",
+        "Efeitos tributários da operação não definidos"
+      ],
+      "expected_routing": "REVIEW_REQUIRED",
+      "routing_reason": "Evento classificado como OTHER (cisão parcial) com proporção, efeitos patrimoniais e tributários pendentes de definição; exige análise humana especializada."
+    },
+    {
+      "case_id": "BT2-09",
+      "document_file": "BT2-09.txt",
+      "case_categories": ["ambiguidade_legitima", "natureza_indefinida", "unresolved"],
+      "event_type": "UNRESOLVED",
+      "issuer": {"name": "Horizonte Digital S.A.", "cnpj": "90.123.456/0001-78", "isin": null, "ticker": "HZDG3", "in_reference_base": true},
+      "fields": {
+        "approval_date":          {"status": "pending", "value": null, "evidence": "conforme deliberação final a ser tomada pelo Conselho de Administração na mesma data de pagamento, em função da apuração do resultado fiscal do período"},
+        "record_date":            {"status": "present", "value": "2024-10-10", "evidence": "a serem pagos aos acionistas titulares de posição em 10/10/2024"},
+        "ex_date":                {"status": "present", "value": "2024-10-11", "evidence": "com ações negociadas \"ex\" a partir de 11/10/2024"},
+        "payment_date":           {"status": "present", "value": "2024-10-25", "evidence": "pagamento em 25/10/2024"},
+        "share_credit_date":      {"status": "not_applicable", "value": null, "evidence": null},
+        "gross_amount_per_share": {"status": "present", "value": "0.5000000000", "currency": "BRL", "evidence": "no valor de R$ 0,5000000000 por ação"},
+        "net_amount_per_share":   {"status": "absent", "value": null, "evidence": null},
+        "withholding_tax":        {"status": "pending", "rate": null, "base": "NOT_STATED", "evidence": "Os valores acima poderão ser distribuídos a título de dividendos ou de juros sobre capital próprio, ou mediante combinação de ambos, conforme deliberação final a ser tomada pelo Conselho de Administração na mesma data de pagamento, em função da apuração do resultado fiscal do período."},
+        "ratio":                  {"status": "not_applicable", "value": null, "evidence": null}
+      },
+      "material_qualifiers": [
+        {"description": "A natureza do provento (dividendo, JCP ou combinação) ainda não foi definida pelo Conselho de Administração, dependendo de deliberação futura na própria data de pagamento.", "affects": "event_nature", "evidence": "Os valores acima poderão ser distribuídos a título de dividendos ou de juros sobre capital próprio, ou mediante combinação de ambos, conforme deliberação final a ser tomada pelo Conselho de Administração na mesma data de pagamento"}
+      ],
+      "non_material_context": [],
+      "expected_validation_findings": [
+        "Não é possível determinar com segurança se o provento é dividendo, JCP ou combinação de ambos",
+        "Tratamento tributário depende da natureza final do provento, ainda não definida",
+        "Data de aprovação final do enquadramento coincide com a própria data de pagamento, o que impede resolução antecipada"
+      ],
+      "expected_routing": "REVIEW_REQUIRED",
+      "routing_reason": "O aviso não permite determinar com segurança a natureza do evento (dividendo vs. JCP), caracterizando ambiguidade legítima; classificado como UNRESOLVED e encaminhado para revisão humana."
+    },
+    {
+      "case_id": "BT2-10",
+      "document_file": "BT2-10.txt",
+      "case_categories": ["grupamento", "completo", "emissor_fora_da_base"],
+      "event_type": "REVERSE_SPLIT",
+      "issuer": {"name": "Aviamento Capital S.A.", "cnpj": "01.234.567/0001-89", "isin": null, "ticker": "AVCP3", "in_reference_base": false},
+      "fields": {
+        "approval_date":          {"status": "present", "value": "2024-11-11", "evidence": "em Assembleia Geral Extraordinária realizada em 11/11/2024, foi aprovado o grupamento"},
+        "record_date":            {"status": "present", "value": "2024-11-18", "evidence": "Terão direito ao grupamento os acionistas com posição em 18/11/2024"},
+        "ex_date":                {"status": "present", "value": "2024-11-19", "evidence": "passando as ações a ser negociadas grupadas a partir de 19/11/2024"},
+        "payment_date":           {"status": "not_applicable", "value": null, "evidence": null},
+        "share_credit_date":      {"status": "present", "value": "2024-11-22", "evidence": "O crédito das novas ações ocorrerá em 22/11/2024, na mesma proporção aprovada."},
+        "gross_amount_per_share": {"status": "not_applicable", "value": null, "currency": null, "evidence": null},
+        "net_amount_per_share":   {"status": "not_applicable", "value": null, "evidence": null},
+        "withholding_tax":        {"status": "not_applicable", "rate": null, "base": "NOT_STATED", "evidence": null},
+        "ratio":                  {"status": "present", "value": {"from": "5", "to": "1"}, "evidence": "na razão de 5 (cinco) ações antigas para 1 (uma) ação nova"}
+      },
+      "material_qualifiers": [],
+      "non_material_context": [],
+      "expected_validation_findings": [
+        "Emissor 'Aviamento Capital S.A.' e ticker AVCP3 não localizados na base de referência de ativos fornecida"
+      ],
+      "expected_routing": "REVIEW_REQUIRED",
+      "routing_reason": "Embora o aviso esteja completo e internamente consistente (proporção, data-base e data ex presentes), o ativo não consta na base de referência, exigindo confirmação manual antes de qualquer automação."
+    }
+  ]
+}
+<<<END FILE>>>
+
+<<<FILE: README.md>>>
+# Conjunto sintético BT2 — Avisos de Eventos Corporativos (fictício)
+
+## Como este conjunto foi criado
+
+Todos os documentos, emissores, CNPJs, ISINs, tickers, datas e valores são
+**fictícios**, criados especificamente para este exercício de teste. Nenhuma
+companhia real, CNPJ real ou evento real foi utilizado. As coincidências de
+nomes com empresas reais, se existirem, são involuntárias.
+
+Os 10 avisos (`BT2-01.txt` a `BT2-10.txt`) foram escritos manualmente para
+simular a variedade natural de comunicados de RI/CVM/B3 de diferentes
+companhias brasileiras: alguns em formato de "Aviso aos Acionistas" formal,
+outros como "Fato Relevante" ou "Comunicado ao Mercado", com diferenças de
+estrutura, ordem das informações, terminologia (ex.: "data-base" vs.
+"acionistas com posição em"), formatos de data (`22/04/2024`, `02.05.2024`,
+"10 de abril de 2024") e formas de expressar proporções ("1 para 3", "10%",
+"razão de 5 para 1").
+
+A base de referência (`golden_records.csv`) foi construída à parte, contendo
+todos os emissores/tickers citados nos avisos (exceto um, propositalmente
+ausente — ver BT2-10) mais um ativo adicional (Trilha Agro S.A. / TRAG3) que
+não aparece em nenhum aviso, para simular uma base de mercado mais ampla que
+o lote de eventos do dia.
+
+O `ground_truth.json` foi elaborado depois dos avisos, lendo cada documento
+isoladamente e extraindo apenas o que está literalmente escrito. Onde o
+aviso não traz uma informação, o campo foi marcado `absent`; onde o aviso
+declara explicitamente que a informação virá depois, foi marcado `pending`;
+onde o campo não faz sentido para o tipo de evento, foi marcado
+`not_applicable`. Todas as evidências são trechos copiados literalmente dos
+respectivos `.txt`.
+
+## Lista de casos e intenção de cada um
+
+| Caso | Emissor | Evento | Intenção |
+|---|---|---|---|
+| BT2-01 | Cerrado Mineração S.A. (CRDO3) | DIVIDEND | Caso simples e completo, isenção fiscal explícita, formato de aviso de RI clássico → `AUTO_APPROVE`. |
+| BT2-02 | Aurora Têxtil Nordeste S.A. (AURT3) | JCP | Caso completo com alíquota padrão de 15%, valor líquido consistente com o bruto, formato de lista → `AUTO_APPROVE`. |
+| BT2-03 | Rio Bravo Energia S.A. (RBRA4) | SPLIT | Desdobramento completo, com cláusula operacional sobre frações/leilão na B3 (contexto material mas não bloqueante) → `AUTO_APPROVE`. |
+| BT2-04 | Planalto Siderurgia S.A. (PLSD4) | REVERSE_SPLIT | Grupamento com data ex e data de crédito **expressamente pendentes** de homologação na B3 → `REVIEW_REQUIRED` (campo obrigatório pendente). |
+| BT2-05 | Vale do Sol Alimentos S.A. (VSOL3) | BONUS_SHARES | Bonificação com proporção expressa de duas formas (percentual e razão), ISIN ausente do texto (mas ativo localizável via ticker/CNPJ) → `AUTO_APPROVE`. |
+| BT2-06 | Costa Verde Logística S.A. (CVLG3) | DIVIDEND | Dividendo com valor adicional **condicionado** a ratificação futura em AGO sem data definida, e data de pagamento pendente → `REVIEW_REQUIRED`. |
+| BT2-07 | Nortline Transportes S.A. (NTLN3) | JCP | JCP com alíquota de IRRF **expressamente pendente** de divulgação, impossibilitando cálculo do valor líquido → `REVIEW_REQUIRED`. |
+| BT2-08 | Serra Alta Papel e Celulose S.A. (SRAL4) | OTHER | Cisão parcial — evento societário fora dos tipos padronizados, com proporção e efeitos tributários pendentes de laudo de avaliação → `REVIEW_REQUIRED`, classificado como `OTHER`. |
+| BT2-09 | Horizonte Digital S.A. (HZDG3) | UNRESOLVED | Caso **legitimamente ambíguo**: o próprio aviso declara que o provento pode ser dividendo, JCP, ou combinação de ambos, a depender de deliberação futura → `UNRESOLVED` / `REVIEW_REQUIRED`. |
+| BT2-10 | Aviamento Capital S.A. (AVCP3) | REVERSE_SPLIT | Grupamento **completo e consistente**, porém o emissor/ticker não consta na base de referência fornecida → `REVIEW_REQUIRED` apesar da completude textual, para testar a regra de matching contra a base. |
+
+## Observações de fidelidade
+
+- Nenhuma "pegadinha" artificial (ex.: erros ortográficos propositais,
+  armadilhas de formatação) foi introduzida; toda ambiguidade ou lacuna
+  decorre de situações plausíveis do mundo real (deliberações condicionadas,
+  homologações operacionais pendentes, cisões sem laudo pronto, dupla
+  natureza de provento a depender de apuração fiscal futura).
+- Cada `evidence` no `ground_truth.json` foi conferida manualmente contra o
+  texto correspondente em `BT2-XX.txt` para garantir correspondência literal.
+- Os cálculos de valor líquido/bruto e as proporções expressas de mais de
+  uma forma foram verificados aritmeticamente (ex.: BT2-02: 0,30 × (1 − 0,15)
+  = 0,255; BT2-05: 10% equivale a 1 nova ação para cada 10 possuídas).
+<<<END FILE>>>

@@ -355,6 +355,27 @@ Formato:
   - Congelamento: `outputs/experiments/E-006_hardened/FREEZE.json` (`tests/test_e006_freeze.py`).
 - **Não muda:** detector de necessidade (só recebe o sinal de contradição), LLM sob demanda, validation engine, gates, function calling, grounding literal, política Decimal.
 
+## D-028 — Variante F é a arquitetura candidata
+
+- **Data:** 2026-09-30
+- **Status:** ACCEPTED
+- **Tipo:** decisão de engenharia (tomada pelo usuário, ao iniciar o BT-002: "A Variante F (`candidate_hardened`) é a arquitetura candidata atual")
+- **Decisão:** A F substitui a E como candidata.
+  - Estado: tag `candidate-F` → `769e147` (= `e006-final`); árvore de `src/corporate_actions` `f902ae8`; prompt `semantic-interpreter/v3` `e6bd3105dc7c8c84`; `claude-opus-5`, effort medium, fallback off.
+  - Base: E-006, em que todos os critérios pré-registrados foram atendidos, in-sample.
+- **Consequência:** A F é validada no BT-002 exatamente como está, sem mudança de código, prompt, regras ou configuração.
+
+## D-029 — BT-002: validação cega independente, sem desenvolvimento
+
+- **Data:** 2026-09-30
+- **Status:** ACCEPTED
+- **Tipo:** processo
+- **Decisão:**
+  - Novo conjunto (`tests/blind_set_v2`, 10 avisos), criado por chamada direta à API (`claude-sonnet-5`, contexto limpo, sem ferramentas nem arquivos) a partir do brief neutro do usuário e de um anexo técnico de formato.
+  - Congelado (SHA-256) antes de a F ver qualquer documento. Avaliador `evaluation/bt002.py` pré-registrado; definição enhanced de segurança (D-025) sem mudança.
+  - Uma execução oficial, com cache novo.
+- **Regra:** o BT-002 não pode ser usado para modificar a F. Qualquer correção futura motivada por ele o transforma em regression set, como aconteceu com o BT-001 (D-026).
+
 ---
 
 ## Decisões deliberadamente adiadas (não são decisões)

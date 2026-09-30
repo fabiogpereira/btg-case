@@ -1,0 +1,112 @@
+Crie entre 8 e 10 avisos fictícios, porém plausíveis, de eventos corporativos de companhias brasileiras.
+
+Os documentos devem estar em português e variar naturalmente em:
+- estrutura;
+- redação;
+- posição das informações;
+- terminologia.
+
+Inclua uma mistura plausível de eventos relacionados a ações, como:
+- dividendos;
+- juros sobre capital próprio;
+- bonificação;
+- desdobramento;
+- grupamento;
+- e, se fizer sentido, algum evento que não possa ser processado com segurança sem revisão humana.
+
+Evite criar pegadinhas artificiais destinadas a quebrar um sistema.
+
+O conjunto deve conter uma mistura de:
+- documentos simples;
+- linguagem alternativa;
+- campos ausentes;
+- informação explicitamente pendente;
+- condições ou exceções;
+- diferentes formas de expressar datas;
+- diferentes formas de expressar valores ou proporções;
+- contexto jurídico ou operacional;
+- pelo menos um caso legitimamente ambíguo.
+
+Crie também uma base de referência fictícia para os ativos.
+
+Para cada documento, produza um ground truth separado contendo:
+- event type;
+- issuer;
+- ticker/ISIN quando aplicável;
+- datas;
+- valores/ratios;
+- tax treatment quando presente;
+- campos ausentes ou pendentes;
+- informações materiais;
+- validações esperadas;
+- routing esperado;
+- evidências literais que sustentam o gabarito.
+
+A prioridade do gabarito é fidelidade ao próprio documento.
+
+---
+
+ANEXO TÉCNICO — formato de entrega (define apenas o formato; não define o conteúdo dos casos)
+
+Você não tem ferramentas nem acesso a arquivos. Entregue tudo nesta resposta, cada arquivo num bloco exatamente assim:
+
+<<<FILE: nome-do-arquivo>>>
+(conteúdo)
+<<<END FILE>>>
+
+Arquivos (todos em UTF-8):
+1. Um arquivo por aviso: BT2-01.txt, BT2-02.txt, ... — o texto do aviso, como seria lido de um PDF.
+2. golden_records.csv — base de referência fictícia exclusiva deste conjunto, com EXATAMENTE este cabeçalho:
+   emissor,cnpj,isin,ticker,classe,segmento_listagem,status
+   (classe = ON ou PN; status = ativo). Pode conter ativos adicionais que não aparecem nos avisos.
+3. ground_truth.json — gabarito separado, no schema abaixo.
+4. README.md — como você criou o conjunto, lista de casos e a intenção de cada um.
+
+Convenções de identificadores (plausibilidade): nomes, CNPJs, ISINs e tickers fictícios, inventados por você. ISIN com 12 caracteres: "BR" + 4 letras + "ACN" + "OR" (ordinárias) ou "PR" (preferenciais) + 1 dígito. Ticker: 4 letras + 3 (ON) ou 4 (PN). CNPJ no formato NN.NNN.NNN/NNNN-NN. Nos avisos, valores em reais no formato brasileiro.
+
+Schema do ground_truth.json:
+{
+  "created_by": "<quem criou>",
+  "cases": [
+    {
+      "case_id": "BT2-01",
+      "document_file": "BT2-01.txt",
+      "case_categories": ["<rótulos livres que descrevam o caso>"],
+      "event_type": "DIVIDEND | JCP | BONUS_SHARES | SPLIT | REVERSE_SPLIT | OTHER | UNRESOLVED",
+      "issuer": {"name": "...", "cnpj": "...", "isin": "... ou null", "ticker": "... ou null", "in_reference_base": true},
+      "fields": {
+        "approval_date":          {"status": "...", "value": "AAAA-MM-DD ou null", "evidence": "... ou null"},
+        "record_date":            {"status": "...", "value": "...", "evidence": "..."},
+        "ex_date":                {"status": "...", "value": "...", "evidence": "..."},
+        "payment_date":           {"status": "...", "value": "...", "evidence": "..."},
+        "share_credit_date":      {"status": "...", "value": "...", "evidence": "..."},
+        "gross_amount_per_share": {"status": "...", "value": "0.4500000000 ou null", "currency": "BRL ou null", "evidence": "..."},
+        "net_amount_per_share":   {"status": "...", "value": "...", "evidence": "..."},
+        "withholding_tax":        {"status": "...", "rate": "0.15 ou null", "base": "...", "evidence": "..."},
+        "ratio":                  {"status": "...", "value": {...} ou null, "evidence": "..."}
+      },
+      "material_qualifiers": [{"description": "...", "affects": "...", "evidence": "..."}],
+      "non_material_context": [{"description": "...", "evidence": "..."}],
+      "expected_validation_findings": ["..."],
+      "expected_routing": "AUTO_APPROVE | REVIEW_REQUIRED",
+      "routing_reason": "..."
+    }
+  ]
+}
+
+Regras do schema:
+- status: present (o valor consta no aviso) | absent (não consta) | pending (o aviso declara que será definido depois) | not_applicable (o campo não se aplica ao tipo de evento).
+- value: null quando o status não for present. Datas em ISO (AAAA-MM-DD). Valores como string decimal com ponto, com a precisão escrita no aviso.
+- withholding_tax: rate como fração decimal em string ("0.15" para 15%); base = GROSS_AMOUNT | EXCESS_OVER_THRESHOLD | EXEMPT | NOT_STATED; para isenção declarada use base EXEMPT e rate null.
+- ratio.value: desdobramento/grupamento {"from": "N", "to": "M"} (N ações existentes passam a M); bonificação {"held": "N", "new": "M"} (M ações novas para cada N possuídas).
+- event_type: OTHER se o evento não é nenhum dos tipos listados; UNRESOLVED se não é possível determinar o tipo com segurança a partir do aviso.
+- evidence: trecho copiado literalmente do aviso correspondente.
+- material_qualifiers: somente trechos que, se removidos, mudariam algum elemento do registro financeiro; "affects" diz o que mudaria (ex.: event_nature, eligibility, amount, ratio, dates, tax_rate, tax_base, beneficiary_tax_treatment, other). Contexto que não muda nada vai em non_material_context.
+
+Critério de negócio para expected_routing:
+- AUTO_APPROVE somente se o aviso estiver completo para o tipo de evento, internamente consistente, sem ambiguidade relevante, e o ativo constar da base de referência.
+- Completo significa: para proventos em dinheiro (dividendos, JCP), valor bruto por ação, data com (data-base), data ex e data de pagamento; para JCP, também a alíquota do imposto retido e o valor líquido por ação; para eventos em ações (grupamento, desdobramento, bonificação), a proporção, a data com e a data ex.
+- Caso contrário, REVIEW_REQUIRED, com o motivo em routing_reason.
+- Contexto operacional ou jurídico que não altera o evento não torna o caso ambíguo por si só.
+
+Antes de terminar, revise você mesmo que cada "evidence" aparece literalmente no aviso correspondente e que datas, valores e contas do gabarito conferem com o texto.

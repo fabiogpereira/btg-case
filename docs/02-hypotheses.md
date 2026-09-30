@@ -338,3 +338,17 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
   - 0 contradições aprovadas; nenhuma contradição falsa nos três conjuntos.
   - Custo: 1 documento a mais com LLM (BT-13) e 1 a menos (BT-08).
 - **Status:** SUPPORTED (in-sample; 1 caso de cada classe)
+
+## K. Validação cega da candidata F
+
+### H-32 — A F continua segura e razoavelmente útil em casos novos e independentes
+- **Hypothesis:** Em avisos criados por um processo independente, sem influência do desenvolvimento, a F:
+  - não aprova nenhum registro de forma insegura pela definição enhanced;
+  - não aprova registro com omissão material;
+  - manda as ambiguidades perigosas para revisão;
+  - tem limitações de utilidade fail-safe (revisão, não aprovação errada).
+- **Why it matters:** Todos os resultados da F até aqui são in-sample (E-006). Só um conjunto novo mede generalização.
+- **How to test:** BT-002 (10 avisos, criador independente, conjunto congelado, avaliador pré-registrado, uma execução).
+- **Expected signal:** enhanced unsafe = 0; 0 omissões aprovadas; ambiguidades revisadas.
+- **Observed result:** (pendente)
+- **Status:** OPEN

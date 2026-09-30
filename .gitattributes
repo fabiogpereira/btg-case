@@ -6,3 +6,5 @@ case/** -text -diff
 tests/challenge_set/cases/*.txt -text
 # Blind set: bytes preservados exatamente (identificado por SHA-256).
 tests/blind_set/** -text
+# Blind set v2 (BT-002): bytes preservados exatamente (identificado por SHA-256).
+tests/blind_set_v2/** -text
