@@ -55,8 +55,12 @@ def ingest(path: Path) -> DocumentInput:
 
 
 def read_text_layer(doc: DocumentInput) -> TextLayer:
-    reader = pypdf.PdfReader(io.BytesIO(doc.content))
-    page_texts = [page.extract_text() or "" for page in reader.pages]
+    if doc.path.suffix.lower() == ".txt":
+        # Casos sintéticos do challenge set (E-003): texto puro, uma "página". Medem interpretação, não parsing de PDF.
+        page_texts = [doc.content.decode("utf-8")]
+    else:
+        reader = pypdf.PdfReader(io.BytesIO(doc.content))
+        page_texts = [page.extract_text() or "" for page in reader.pages]
     offsets, parts, cursor = [], [], 0
     for text in page_texts:
         norm = normalize_whitespace(text)

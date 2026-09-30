@@ -196,6 +196,76 @@ Formato:
   3. As métricas são reportadas por camada (extração, validação, roteamento, operacional), sem métrica única agregada, e separando "todos os documentos" de "documentos com camada de texto".
 - **Evidência:** E-002.
 
+## D-015 — Confiança em três dimensões e roteamento por gates explícitos
+
+- **Data:** 2026-09-29
+- **Status:** ACCEPTED
+- **Tipo:** técnica — arquitetural
+- **Contexto:** O E-002 mostrou um valor localizado corretamente, mas interpretado de forma incompleta (IR condicional do doc 01), que recebeu confiança HIGH e foi aprovado automaticamente. Confiança de extração alta não implica confiança semântica alta.
+- **Decisão:**
+  1. Por campo, quando aplicável, três dimensões separadas:
+     - **extraction** (o valor foi localizado e lido corretamente?): HIGH/MEDIUM/LOW;
+     - **semantic** (papel, qualificadores, negação e condição foram capturados?): HIGH / MEDIUM / LOW / UNRESOLVED / NOT_ASSESSED;
+     - **validation** (alguma regra determinística cruzou o valor?): CROSS_VALIDATED / CONTRADICTED / WARNED / UNVALIDATED.
+  2. A classificação do evento também tem confiança semântica própria.
+  3. **Não existe fórmula agregada.** O roteamento passa por gates independentes, e qualquer BLOCK manda o registro para revisão com o motivo do gate. Os gates são:
+     - `EXTRACTION_POSSIBLE`;
+     - `REQUIRED_INFORMATION` (ausente, pendente, extração LOW);
+     - `SEMANTIC_INTERPRETATION` (LOW/UNRESOLVED em classificação ou em campo emitido; falha do intérprete);
+     - `DETERMINISTIC_VALIDATION`;
+     - `REFERENCE_VALIDATION`;
+     - `BLOCKING_ERRORS`.
+  4. `NOT_ASSESSED` não bloqueia. Uma dimensão não avaliada não é evidência de problema, mas também não é evidência de acerto, e aparece como tal na saída.
+  5. O Baseline A continua com o roteamento original (E-002, inalterado). As variantes B e C usam os gates.
+- **Evidência:** E-002 (failure mode silencioso); decisão do usuário.
+- **Módulo:** `src/corporate_actions/confidence_model.py`.
+
+## D-016 — Camada de LLM atrás de interface mínima; provedor e modelo por configuração
+
+- **Data:** 2026-09-29
+- **Status:** ACCEPTED
+- **Tipo:** técnica
+- **Decisão:**
+  1. O pipeline só conhece `LLMProvider.structured_call(system, user, tools, schema)`.
+  2. Provedor e modelo vêm de `LLM_PROVIDER` / `LLM_MODEL` / `LLM_EFFORT` (ambiente ou `.env`, ignorado pelo git; modelo em `.env.example`).
+  3. Adicionar um provedor significa escrever um módulo adaptador e uma linha em `llm/registry.py`. Hoje só o adaptador Anthropic (SDK oficial) está implementado.
+  4. O custo é estimado em Decimal exato a partir de uma tabela de preços por modelo. Latências são registradas em inteiros (D-007: nenhum float na saída).
+  5. As respostas do LLM são gravadas em cache/replay, por hash de provedor + modelo + effort + prompt + documento, para reprodutibilidade e auditoria (H-20). O cache não guarda o prompt nem o texto do documento.
+- **Evidência:** decisão do usuário (troca simples de provedor/modelo).
+
+## D-017 — Challenge set sintético separado; protocolo desenvolvimento × teste
+
+- **Data:** 2026-09-29
+- **Status:** ACCEPTED
+- **Tipo:** processo / avaliação
+- **Decisão:**
+  1. O challenge set (`tests/challenge_set/`) tem arquivos, gabarito, métricas e relatórios próprios. **Nunca** se mistura com as métricas do dataset original.
+  2. A origem de cada caso é registrada (sintético, escrito à mão, não derivado da saída de nenhuma variante).
+  3. **Protocolo:** os documentos originais são o conjunto de desenvolvimento; o challenge set é o conjunto de teste. Ajustes nas variantes só podem ser motivados por falhas vistas nos documentos originais ou nos testes unitários. Um failure mode visto apenas no challenge set é registrado, não corrigido. O prompt da variante C fica congelado (v1) antes da primeira execução.
+- **Evidência:** decisão do usuário (não misturar métricas); necessidade de uma medida de generalização não contaminada.
+- **Limite reconhecido (2026-09-29):** challenge set, patch B e prompt de C têm o mesmo autor e foram escritos na mesma sessão. Isso deixa o challenge set **ciente do autor**, não cego. As sobreposições conhecidas estão listadas no disclosure do E-003 (`docs/04-evaluation-log.md`). Os rótulos literais que tinham vazado para o rascunho do prompt foram removidos antes do congelamento e de qualquer execução. Um holdout cego, escrito por outra pessoa, fica como próximo passo recomendado.
+- **Dataset original × B (2026-09-29):** os docs 01 (alvo de desenho), 02 e 04 (correções da janela de qualificadores) foram usados no desenvolvimento do B. As métricas do B no dataset original não são estimativa out-of-sample.
+
+## D-018 — Experimentos de LLM com configuração fixa: fallback de modelo desligado
+
+- **Data:** 2026-09-29
+- **Status:** ACCEPTED
+- **Tipo:** processo / avaliação
+- **Contexto:** O fallback de recusa do lado do servidor faria outro modelo responder quando o modelo avaliado recusa, misturando duas configurações num mesmo resultado.
+- **Decisão:**
+  1. No E-003 (e em qualquer experimento de qualidade), `LLM_FALLBACKS=off`. O padrão do código também passou a ser `off`.
+  2. A recusa é registrada como resultado (`llm.refusals`, com categoria), sem nova tentativa. O registro vai para revisão (`SEMANTIC_INTERPRETER_FAILED`), e as validações obrigatórias rodam mesmo assim.
+  3. O relatório verifica o protocolo (configuração fixa) e registra se o modelo servido difere do solicitado.
+  4. O fallback pode ser avaliado depois, em separado, como mecanismo de **resiliência operacional**, com métricas próprias (taxa de recusa, custo, divergência entre modelos).
+- **Evidência:** decisão do usuário.
+
+## D-019 — E-003 congelado antes da execução do LLM
+
+- **Data:** 2026-09-29
+- **Status:** ACCEPTED
+- **Tipo:** processo
+- **Decisão:** código de A/B/C, avaliação, gabarito v2.1, challenge set v1.0 e prompt v1 (`cf27c1d6164099c5`) estão congelados por hash em `outputs/experiments/E-003_semantic/FREEZE.json`. `tests/test_e003_freeze.py` falha se qualquer arquivo congelado mudar. A única exceção pré-registrada é uma correção de compatibilidade de API no adaptador, antes de qualquer saída semântica; ela gera `freeze_version` 2 e é registrada no evaluation log.
+
 ---
 
 ## Decisões deliberadamente adiadas (não são decisões)

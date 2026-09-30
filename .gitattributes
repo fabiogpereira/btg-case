@@ -2,3 +2,5 @@
 # para que os SHA-256 registrados continuem válidos em qualquer clone.
 case/** -text -diff
 *.pdf binary
+# Casos do challenge set são identificados por SHA-256: bytes preservados (LF) em qualquer clone.
+tests/challenge_set/cases/*.txt -text

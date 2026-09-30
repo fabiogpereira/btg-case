@@ -11,7 +11,7 @@ Este arquivo orienta qualquer agente/pessoa que trabalhe aqui. Ler antes de qual
 
 **Fase 0 — Entendimento do problema, hipóteses e gabarito.**
 Gabarito manual em `tests/ground_truth/` (formato em `tests/ground_truth/README.md`). Qualquer mudança no gabarito exige incrementar `ground_truth_version` e justificar.
-Não implementar o pipeline até o usuário autorizar explicitamente o início do baseline.
+**E-003 congelado** (D-019): não alterar código de A/B/C, avaliação, gabaritos, challenge set ou prompt a partir de resultados; `tests/test_e003_freeze.py` verifica. Experimentos de LLM usam configuração fixa, com fallback desligado (D-018).
 Estado atual e próximos passos: ver `docs/04-evaluation-log.md` e `DECISIONS.md`.
 
 ---

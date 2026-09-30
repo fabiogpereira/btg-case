@@ -68,6 +68,55 @@ PDF ──► [1] ingestão ──► [2] detecção de camada de texto ──�
 
 Como rodar: ver `README.md`. Resultados e failure modes: `docs/04-evaluation-log.md` (E-002).
 
+## 2.2 Evolução do modelo de confiança (D-015)
+
+O E-002 mostrou que "achei no lugar certo" não é "entendi o que diz". A confiança passou a ter três dimensões por campo, sem agregação:
+
+| Dimensão | Pergunta | Quem produz | Valores |
+|---|---|---|---|
+| extraction | O valor foi localizado e lido corretamente? | `confidence.py` (âncora, conflito, derivação) | HIGH / MEDIUM / LOW |
+| semantic | O significado foi capturado por inteiro (papel, qualificadores, negação, condição)? | B: `semantic_patch.py` · C: `semantic_llm.py` | HIGH / MEDIUM / LOW / UNRESOLVED / NOT_ASSESSED |
+| validation | Alguma regra determinística cruzou o valor com outro dado? | `confidence_model.validation_view` sobre os resultados do validation engine | CROSS_VALIDATED / CONTRADICTED / WARNED / UNVALIDATED |
+
+O roteamento das variantes B e C passa por **gates explícitos** (`confidence_model.route_gated`), cada um com seus motivos. Qualquer BLOCK manda o registro para revisão:
+
+```
+EXTRACTION_POSSIBLE -> REQUIRED_INFORMATION -> SEMANTIC_INTERPRETATION -> DETERMINISTIC_VALIDATION -> REFERENCE_VALIDATION -> BLOCKING_ERRORS
+```
+
+## 2.3 Variantes do E-003
+
+Todas compartilham ingestão, extração de candidatos, normalização, validation engine e referência. Só muda a camada semântica.
+
+**A — Baseline A.** Caminho de código idêntico ao do E-002 (teste de regressão byte a byte contra os registros versionados).
+
+**B — patch semântico determinístico** (`semantic_patch.py`, cerca de 200 linhas):
+- a classificação descarta sinais de tipo precedidos de "não/nem/sem" na mesma oração;
+- se a frase do sinal declara que a natureza será definida depois, a classificação fica UNRESOLVED e o tipo fica nulo;
+- qualificadores na janela de cada valor extraído (a frase, limitada por pontuação e por início de linha de tabela):
+  - THRESHOLD e HOLDER_EXEMPTION têm interpretação fixa (base do IR = `EXCESS_OVER_THRESHOLD`; exceção por titular não muda a base) → semântica HIGH;
+  - negação, condição, adiamento ou exceção genérica → semântica LOW (vai para revisão);
+- não mapeia rótulos de data alternativos (fora do escopo).
+
+**C — intérprete semântico por LLM** (`semantic_llm.py` + `llm/`):
+
+```
+texto do documento --> LLM (prompt v1, saída JSON estruturada, tool lookup_security via function calling)
+                       |-- tipo de evento + evidências + menções enganosas
+                       |-- papéis de data (valor "como escrito" + evidência)
+                       |-- IR: taxa como escrita, base, qualificadores
+                       '-- checagem de referência reportada
+     --> grounding determinístico: toda citação localizada literalmente; valor contido na citação;
+         data e taxa parseadas por código (o LLM nunca converte nem calcula)
+     --> fusão com o determinístico:
+         acordo -> HIGH | só o LLM (determinístico não achou) -> MEDIUM (não bloqueia)
+         desacordo / ambíguo / não grounded / falha -> LOW ou UNRESOLVED (bloqueia)
+     --> validation engine executa TODAS as regras (independe das tools chamadas pelo LLM)
+     --> divergência entre tool/relato do LLM e REF_ISIN_FOUND é registrada; o engine prevalece
+```
+
+O LLM não calcula, não aprova, não substitui o lookup nem as validações, e não preenche informação ausente com conhecimento externo.
+
 ## 3. Esboço do registro de saída (a validar, não é o schema final)
 
 Ideia de estrutura, para discutir o que o operador precisa ver:

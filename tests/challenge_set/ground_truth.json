@@ -1,0 +1,362 @@
+{
+  "challenge_set_version": "1.0",
+  "origin": "synthetic; hand-written by Claude Code on 2026-09-29 for E-003; modeled on the failure modes observed in E-002 and on B3/CVM notice vocabulary; issuers/identifiers taken from the golden records; not derived from any variant's output",
+  "cases": [
+    {
+      "id": "CH-01",
+      "categories": [
+        "negation",
+        "event_description"
+      ],
+      "purpose": "Aviso de dividendo que menciona JCP de forma negada. Sinal lexical de JCP não deve prevalecer.",
+      "targets": [
+        {
+          "target": "event_type",
+          "expected": "DIVIDEND",
+          "evidence": [
+            "aprovou a distribuição de dividendos",
+            "Não haverá crédito de juros sobre o capital próprio"
+          ]
+        }
+      ],
+      "routing": {
+        "expectation_status": "DEFINED",
+        "decision": "AUTO_APPROVE"
+      },
+      "file": "cases/CH-01.txt",
+      "sha256": "0948936feb0be22f66357d17bbb3eb4c1442fffe81200e1357cb974a0a6ca67b"
+    },
+    {
+      "id": "CH-02",
+      "categories": [
+        "negation",
+        "misleading_keywords"
+      ],
+      "purpose": "Bonificação que cita dividendos apenas para dizer que não os altera.",
+      "targets": [
+        {
+          "target": "event_type",
+          "expected": "BONUS_SHARES",
+          "evidence": [
+            "capitalização de reservas, com bonificação de 1 (uma) ação nova"
+          ]
+        }
+      ],
+      "routing": {
+        "expectation_status": "DEFINED",
+        "decision": "AUTO_APPROVE"
+      },
+      "file": "cases/CH-02.txt",
+      "sha256": "2fd8dea09f15bc473647602d80456dcbf918e4c22dc83053857e5767e5e034af"
+    },
+    {
+      "id": "CH-03",
+      "categories": [
+        "event_description"
+      ],
+      "purpose": "JCP descrito pela definição (juros sobre o patrimônio líquido limitados à TJLP), sem as expressões canônicas.",
+      "targets": [
+        {
+          "target": "event_type",
+          "expected": "JCP",
+          "evidence": [
+            "juros calculados sobre as contas do patrimônio líquido, limitados à variação pro rata die da Taxa de Juros de Longo Prazo"
+          ]
+        }
+      ],
+      "routing": {
+        "expectation_status": "PROVISIONAL",
+        "decision": "AUTO_APPROVE",
+        "note": "natureza inferida da definição, sem a expressão 'juros sobre o capital próprio'"
+      },
+      "file": "cases/CH-03.txt",
+      "sha256": "569820a4f53b4caf55393e18aefb7f8d8834de064acab07ce6d62e884cab58a1"
+    },
+    {
+      "id": "CH-04",
+      "categories": [
+        "misleading_keywords"
+      ],
+      "purpose": "Grupamento que menciona um desdobramento passado.",
+      "targets": [
+        {
+          "target": "event_type",
+          "expected": "REVERSE_SPLIT",
+          "evidence": [
+            "aprovou o grupamento das ações na proporção de 5 (cinco) ações existentes para 1 (uma) ação"
+          ]
+        }
+      ],
+      "routing": {
+        "expectation_status": "DEFINED",
+        "decision": "AUTO_APPROVE"
+      },
+      "file": "cases/CH-04.txt",
+      "sha256": "3485bf44e75fa1ffa73663a23f0f30ccb76f1c6bb266ccff85ba220e2f8a79a6"
+    },
+    {
+      "id": "CH-05",
+      "categories": [
+        "conditional_tax"
+      ],
+      "purpose": "IR condicional de dividendo com redação diferente da do doc 01.",
+      "targets": [
+        {
+          "target": "event_type",
+          "expected": "DIVIDEND",
+          "evidence": [
+            "aprovou a distribuição de dividendos"
+          ]
+        },
+        {
+          "target": "field",
+          "field": "withholding_tax",
+          "expected_status": "found",
+          "expected_value": {
+            "rate": "0.10",
+            "base": "EXCESS_OVER_THRESHOLD"
+          },
+          "evidence": [
+            "alíquota de 10%, incidente apenas sobre os valores que ultrapassarem R$ 50.000,00 por mês"
+          ]
+        }
+      ],
+      "routing": {
+        "expectation_status": "DEFINED",
+        "decision": "AUTO_APPROVE"
+      },
+      "file": "cases/CH-05.txt",
+      "sha256": "fe970d2831da40ea9d373fcc60f1a2543a0850e27b6458bece6781b03ac2fa21"
+    },
+    {
+      "id": "CH-06",
+      "categories": [
+        "conditional_tax",
+        "misleading_keywords"
+      ],
+      "purpose": "Controle: JCP com alíquota plana sobre o bruto e exceção por titular (imunes/isentos), mais uma data que não é papel do evento (prazo de comprovação).",
+      "targets": [
+        {
+          "target": "event_type",
+          "expected": "JCP",
+          "evidence": [
+            "aprovou o crédito de Juros sobre o Capital Próprio (JCP)"
+          ]
+        },
+        {
+          "target": "field",
+          "field": "withholding_tax",
+          "expected_status": "found",
+          "expected_value": {
+            "rate": "0.175",
+            "base": "GROSS_AMOUNT"
+          },
+          "evidence": [
+            "retenção de IRRF de 17,5% sobre o valor bruto"
+          ]
+        },
+        {
+          "target": "field",
+          "field": "record_date",
+          "expected_status": "found",
+          "expected_value": "2026-08-21",
+          "evidence": [
+            "Data-base (“data com”) 21/08/2026"
+          ]
+        },
+        {
+          "target": "field",
+          "field": "payment_date",
+          "expected_status": "found",
+          "expected_value": "2026-09-30",
+          "evidence": [
+            "Data de pagamento 30/09/2026"
+          ]
+        }
+      ],
+      "routing": {
+        "expectation_status": "DEFINED",
+        "decision": "AUTO_APPROVE"
+      },
+      "file": "cases/CH-06.txt",
+      "sha256": "add21102b91a8b5249aa3db35493aa3fee441f5275942a019b46ce672b55e0b4"
+    },
+    {
+      "id": "CH-07",
+      "categories": [
+        "alternative_date_labels"
+      ],
+      "purpose": "Datas com rótulos alternativos (último dia com direito, ex-direito, crédito em conta).",
+      "targets": [
+        {
+          "target": "field",
+          "field": "record_date",
+          "expected_status": "found",
+          "expected_value": "2026-08-20",
+          "evidence": [
+            "Último dia com direito 20/08/2026"
+          ]
+        },
+        {
+          "target": "field",
+          "field": "ex_date",
+          "expected_status": "found",
+          "expected_value": "2026-08-21",
+          "evidence": [
+            "Ações ex-direito a partir de 21/08/2026"
+          ]
+        },
+        {
+          "target": "field",
+          "field": "payment_date",
+          "expected_status": "found",
+          "expected_value": "2026-09-04",
+          "evidence": [
+            "Crédito em conta 04/09/2026"
+          ]
+        }
+      ],
+      "routing": {
+        "expectation_status": "PROVISIONAL",
+        "decision": "AUTO_APPROVE",
+        "note": "rótulos não canônicos"
+      },
+      "file": "cases/CH-07.txt",
+      "sha256": "5331e6fe193e7d4d5f76a21479ca5805cf47462bd39b4cc17c5bd443c520bd54"
+    },
+    {
+      "id": "CH-08",
+      "categories": [
+        "alternative_date_labels"
+      ],
+      "purpose": "Grupamento com data-base e início de negociação expressos em frase, sem rótulo.",
+      "targets": [
+        {
+          "target": "field",
+          "field": "record_date",
+          "expected_status": "found",
+          "expected_value": "2026-08-07",
+          "evidence": [
+            "posição acionária do dia 07/08/2026"
+          ]
+        },
+        {
+          "target": "field",
+          "field": "ex_date",
+          "expected_status": "found",
+          "expected_value": "2026-08-10",
+          "evidence": [
+            "negociadas grupadas a partir de 10/08/2026"
+          ]
+        }
+      ],
+      "routing": {
+        "expectation_status": "PROVISIONAL",
+        "decision": "AUTO_APPROVE",
+        "note": "papéis de data só por frase"
+      },
+      "file": "cases/CH-08.txt",
+      "sha256": "614a7e8f5ed961a556126662f5b19bc976f66d0b14e6602d86300d2aee4856b0"
+    },
+    {
+      "id": "CH-09",
+      "categories": [
+        "alternative_date_labels"
+      ],
+      "purpose": "Datas apenas por extenso no corpo, sem tabela.",
+      "targets": [
+        {
+          "target": "field",
+          "field": "record_date",
+          "expected_status": "found",
+          "expected_value": "2026-08-26",
+          "evidence": [
+            "ao final do dia 26 de agosto de 2026"
+          ]
+        },
+        {
+          "target": "field",
+          "field": "ex_date",
+          "expected_status": "found",
+          "expected_value": "2026-08-27",
+          "evidence": [
+            "negociadas ex-JCP a partir de 27 de agosto de 2026"
+          ]
+        },
+        {
+          "target": "field",
+          "field": "payment_date",
+          "expected_status": "found",
+          "expected_value": "2026-09-18",
+          "evidence": [
+            "O pagamento será realizado em 18 de setembro de 2026"
+          ]
+        }
+      ],
+      "routing": {
+        "expectation_status": "PROVISIONAL",
+        "decision": "AUTO_APPROVE",
+        "note": "datas só por extenso"
+      },
+      "file": "cases/CH-09.txt",
+      "sha256": "410d545bb7d836135659e1bc487b02d2c2e89881d8ecc712f160fa5a21e4909c"
+    },
+    {
+      "id": "CH-10",
+      "categories": [
+        "negation",
+        "misleading_keywords"
+      ],
+      "purpose": "Dividendo com referência a um JCP passado, já pago e fora do escopo do aviso; título genérico.",
+      "targets": [
+        {
+          "target": "event_type",
+          "expected": "DIVIDEND",
+          "evidence": [
+            "aprovou a distribuição de dividendos complementares",
+            "não são objeto deste aviso"
+          ]
+        },
+        {
+          "target": "field",
+          "field": "payment_date",
+          "expected_status": "found",
+          "expected_value": "2026-09-11",
+          "evidence": [
+            "Data de pagamento 11/09/2026"
+          ]
+        }
+      ],
+      "routing": {
+        "expectation_status": "DEFINED",
+        "decision": "AUTO_APPROVE"
+      },
+      "file": "cases/CH-10.txt",
+      "sha256": "d66be6ca69d44c4ab79d85e26574fce37a3c16641e8f5c895a113bb71888d55f"
+    },
+    {
+      "id": "CH-11",
+      "categories": [
+        "event_description",
+        "unresolvable"
+      ],
+      "purpose": "Natureza do provento adiada pelo próprio aviso: a resposta correta é 'não resolvido'.",
+      "targets": [
+        {
+          "target": "event_type",
+          "expected": null,
+          "evidence": [
+            "cuja natureza — dividendos ou juros sobre o capital próprio — será definida"
+          ]
+        }
+      ],
+      "routing": {
+        "expectation_status": "DEFINED",
+        "decision": "REVIEW_REQUIRED",
+        "note": "o próprio aviso adia a natureza do provento"
+      },
+      "file": "cases/CH-11.txt",
+      "sha256": "2d3f885861cb977d71b8455932f58c32295107c4eba531351b666ed893383f9d"
+    }
+  ]
+}

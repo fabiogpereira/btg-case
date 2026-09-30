@@ -1,0 +1,94 @@
+{
+  "run_id": "20260929T235439Z-f4f69aca",
+  "pipeline_version": "baseline-a/0.1.0+semantic-patch/0.1",
+  "record_schema_version": "semantic-record/0.1",
+  "started_at": "2026-09-29T23:54:39.464+00:00",
+  "finished_at": "2026-09-29T23:54:39.514+00:00",
+  "environment": {
+    "python": "3.13.1",
+    "pypdf": "6.16.1"
+  },
+  "config": {
+    "min_alnum_chars_per_page": 100,
+    "extraction_method": "native_text_layer+deterministic_rules",
+    "llm": null,
+    "ocr": null,
+    "holiday_calendar": null,
+    "variant": "B"
+  },
+  "golden_records": {
+    "path": "C:/Users/Windows 11/Documents/Projetos Pessoais/btg-case/case/Case AI Dev - Envio/golden_records/golden records.csv",
+    "sha256": "6ce677a6849febc4d3ccc02b4430e14ad50c415639017f159abb6219e6584f33",
+    "rows": 12
+  },
+  "inputs": [
+    {
+      "file_name": "CH-01.txt",
+      "sha256": "0948936feb0be22f66357d17bbb3eb4c1442fffe81200e1357cb974a0a6ca67b"
+    },
+    {
+      "file_name": "CH-02.txt",
+      "sha256": "2fd8dea09f15bc473647602d80456dcbf918e4c22dc83053857e5767e5e034af"
+    },
+    {
+      "file_name": "CH-03.txt",
+      "sha256": "569820a4f53b4caf55393e18aefb7f8d8834de064acab07ce6d62e884cab58a1"
+    },
+    {
+      "file_name": "CH-04.txt",
+      "sha256": "3485bf44e75fa1ffa73663a23f0f30ccb76f1c6bb266ccff85ba220e2f8a79a6"
+    },
+    {
+      "file_name": "CH-05.txt",
+      "sha256": "fe970d2831da40ea9d373fcc60f1a2543a0850e27b6458bece6781b03ac2fa21"
+    },
+    {
+      "file_name": "CH-06.txt",
+      "sha256": "add21102b91a8b5249aa3db35493aa3fee441f5275942a019b46ce672b55e0b4"
+    },
+    {
+      "file_name": "CH-07.txt",
+      "sha256": "5331e6fe193e7d4d5f76a21479ca5805cf47462bd39b4cc17c5bd443c520bd54"
+    },
+    {
+      "file_name": "CH-08.txt",
+      "sha256": "614a7e8f5ed961a556126662f5b19bc976f66d0b14e6602d86300d2aee4856b0"
+    },
+    {
+      "file_name": "CH-09.txt",
+      "sha256": "410d545bb7d836135659e1bc487b02d2c2e89881d8ecc712f160fa5a21e4909c"
+    },
+    {
+      "file_name": "CH-10.txt",
+      "sha256": "d66be6ca69d44c4ab79d85e26574fce37a3c16641e8f5c895a113bb71888d55f"
+    },
+    {
+      "file_name": "CH-11.txt",
+      "sha256": "2d3f885861cb977d71b8455932f58c32295107c4eba531351b666ed893383f9d"
+    }
+  ],
+  "outputs": [
+    "records/CH-01.json",
+    "records/CH-02.json",
+    "records/CH-03.json",
+    "records/CH-04.json",
+    "records/CH-05.json",
+    "records/CH-06.json",
+    "records/CH-07.json",
+    "records/CH-08.json",
+    "records/CH-09.json",
+    "records/CH-10.json",
+    "records/CH-11.json",
+    "exceptions_report.md"
+  ],
+  "summary": {
+    "documents": 11,
+    "decisions": {
+      "AUTO_APPROVE": 3,
+      "REVIEW_REQUIRED": 8
+    },
+    "without_usable_text_layer": 0,
+    "errors": 0,
+    "total_duration_us": 30486
+  }
+}

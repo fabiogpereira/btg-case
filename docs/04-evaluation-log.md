@@ -135,3 +135,117 @@ Expectativas DEFINED: **5/6**. O único erro é conservador (revisão desnecess�
 ### Next action
 
 Nenhuma melhoria implementada (por instrução). Próximo experimento recomendado em `docs/02-hypotheses.md` (H-05/H-08, com H-23 como controle de segurança).
+
+## E-003 — Interpretação semântica: A × B × C (pré-registro; experimento congelado)
+
+- **Data do congelamento:** 2026-09-29 · base `c5b241a` + mudanças não commitadas · manifesto `outputs/experiments/E-003_semantic/FREEZE.json` (51 arquivos com SHA-256, fins de linha normalizados), verificado por `tests/test_e003_freeze.py`
+- **Status:** A e B executados; **C pendente** (nenhuma chamada ao modelo foi feita até o congelamento).
+- **Hipóteses:** H-05, H-06, H-08 (c, d), H-10, H-15, H-17, H-20, H-22, H-23, H-24.
+- **Pergunta:** um componente semântico melhora os failure modes do E-002 de forma justificável, sem substituir validações determinísticas?
+
+### Variantes
+
+| Variante | Versão | O que muda |
+|---|---|---|
+| A | `baseline-a/0.1.0` | nada (idêntico ao E-002; regressão automática) |
+| B | `+semantic-patch/0.1` | negação na classificação, adiamento da natureza, qualificadores (THRESHOLD, HOLDER_EXEMPTION interpretados; demais → LOW) |
+| C | `+semantic-llm/0.1` | intérprete por LLM, grounded, com function calling (`lookup_security`); prompt `semantic-interpreter/v1`, fingerprint `cf27c1d6164099c5` |
+
+### Configuração fixa de C (D-018)
+
+Os valores vêm de `.env`, e o relatório verifica se o run obedeceu:
+- `LLM_PROVIDER=anthropic`
+- `LLM_MODEL=claude-opus-5`
+- `LLM_EFFORT=medium`
+- `LLM_MAX_TOKENS=8000`
+- **`LLM_FALLBACKS=off`**: recusa é resultado registrado, nunca respondida por outro modelo.
+
+Uma nova tentativa só acontece em falha de parse/schema. Recusa e erro de API não geram nova tentativa. O SDK faz até 2 retries de transporte (408/409/429/5xx, conexão).
+
+### Protocolo de execução de C (pré-registrado)
+
+```bash
+E=outputs/experiments/E-003_semantic
+# Execução 1 (grava cache)
+python -m corporate_actions --variant C --out $E/original_C --llm-cache $E/llm_cache_run1
+python -m corporate_actions --variant C --documents tests/challenge_set/cases --out $E/challenge_C --llm-cache $E/llm_cache_run1
+# Execução 2: independente, sem ler cache (só para consistência)
+python -m corporate_actions --variant C --out $E/original_C_run2 --llm-cache $E/llm_cache_run2 --no-cache-read
+python -m corporate_actions --variant C --documents tests/challenge_set/cases --out $E/challenge_C_run2 --llm-cache $E/llm_cache_run2 --no-cache-read
+# Comparação
+python -m evaluation.variants --original A=$E/original_A B=$E/original_B C=$E/original_C \
+  --challenge A=$E/challenge_A B=$E/challenge_B C=$E/challenge_C \
+  --c-repeat-original $E/original_C_run2 --c-repeat-challenge $E/challenge_C_run2 --out $E/comparison
+```
+
+- **Métricas de qualidade:** vêm da execução 1. A execução 2 serve apenas para a consistência.
+- **Correção técnica permitida:** se a primeira chamada falhar por incompatibilidade de API (erro 4xx antes de qualquer saída semântica), a correção fica restrita ao adaptador `llm/anthropic_provider.py`. Ela gera `freeze_version` 2 e é registrada aqui.
+- **Nenhuma outra mudança** em A, B, C, prompt, gabarito, challenge set ou avaliação a partir de resultados.
+
+### Métricas pré-registradas
+
+- **Dataset original** (7 documentos com texto):
+  - tipo de evento;
+  - campos semânticos (tipo, IR com base, papéis de data);
+  - valor exato;
+  - status de campo;
+  - validação (acerto, falsos negativos, falsos positivos);
+  - **aprovações automáticas inseguras**;
+  - valores inventados;
+  - taxa de revisão;
+  - roteamento DEFINED.
+- **Challenge set** (11 casos, 21 alvos, métricas separadas):
+  - acurácia semântica;
+  - negação;
+  - expressão condicional;
+  - papel de data;
+  - palavras enganosas;
+  - descrição do evento;
+  - **interpretações falsamente confiantes**;
+  - erradas mas sinalizadas;
+  - aprovações automáticas inseguras;
+  - roteamento DEFINED;
+  - taxa de revisão.
+- **Execução do LLM (C):**
+  - modelo solicitado e servido;
+  - versão e fingerprint do prompt;
+  - chamadas de API;
+  - tokens;
+  - custo estimado (Decimal);
+  - latência;
+  - falhas de parse/schema;
+  - recusas;
+  - grounding (trechos localizados / total);
+  - divergências de referência (tool × validation engine).
+- **Function calling:**
+  - total de tool calls;
+  - documentos com chamada;
+  - chamadas corretas;
+  - chamadas desnecessárias;
+  - chamadas esperadas ausentes;
+  - argumentos incorretos.
+  - O esperado é 1 chamada por documento com texto, com o ISIN ou ticker do aviso (do gabarito original ou do texto do caso).
+- **Consistência entre execuções** (C1 × C2):
+  - tipo de evento;
+  - campos semanticamente interpretados (valor + confiança);
+  - interpretação bruta do LLM;
+  - decisão e motivos de roteamento;
+  - número de tool calls;
+  - argumentos das tool calls.
+
+### Disclosure metodológico (limites de validade)
+
+1. **O dataset original não é out-of-sample para B.** O B foi desenhado a partir do failure mode do **doc 01** (E-002). A janela de qualificadores foi corrigida duas vezes durante o desenvolvimento, por falhas vistas nos **docs 02 e 04**:
+   - iteração 1: a janela de ±80 caracteres cortava "imunes ou isentos" (doc 02) e vazava "A definir" para as datas (doc 04);
+   - iteração 2: a janela ainda vazava entre as linhas da tabela curta do doc 04.
+   As métricas do B no dataset original são, portanto, **métricas de desenvolvimento**, não estimativa de generalização. O mesmo vale em parte para C: o prompt usa conceitos e rótulos dos documentos originais (ex.: "imputado ao dividendo obrigatório", "ressalvados os acionistas imunes ou isentos", "data com", "data-base").
+2. **Observação prévia do challenge set.** Um preview de A e B sobre o challenge set foi executado **antes** da iteração 2 do B. A iteração 2 foi motivada pelo doc 04 (original) e é genérica (limite de janela por início de linha de tabela). Mesmo assim, ela aconteceu depois de o autor ter visto resultados do challenge set. O failure mode do B visto só no challenge set (**CH-06**: exceção do IR atribuída à data de aprovação na mesma frase) foi **deliberadamente não corrigido**.
+3. **Mesmo autor para challenge set e variantes.** O challenge set, o patch B e o prompt de C foram escritos pelo mesmo agente, na mesma sessão. Portanto:
+   - o léxico de THRESHOLD do B contém "apenas sobre" e "que ultrapassarem", que também aparecem no **CH-05**; e "nem" (negação) aparece no **CH-02**;
+   - o rascunho do prompt de C continha rótulos literais do **CH-07/CH-08** ("último dia com direito", "ex-direito", "posição acionária de", "negociadas grupadas a partir de") e a citação "não haverá". Eles **foram removidos antes do congelamento e antes de qualquer execução**, e substituídos por definições de papel sem rótulos do challenge set;
+   - o challenge set mede, portanto, generalização **com conhecimento do autor**, não uma holdout cega. Um conjunto cego escrito por outra pessoa (ou por um agente sem acesso ao código) seria a medida mais forte; está proposto como próximo passo, não feito.
+4. **Amostra pequena.** 7 documentos originais com texto e 11 casos sintéticos (21 alvos). As diferenças entre variantes devem ser lidas caso a caso, não como taxas estáveis.
+
+### Resultado
+
+_Pendente da execução de C._

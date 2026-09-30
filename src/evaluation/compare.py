@@ -16,6 +16,7 @@ from pathlib import Path
 from corporate_actions import extraction as extraction_rules
 
 ABSENT = "ABSENT"   # o run não produziu esse campo/regra
+SEMANTIC_FIELDS = ["withholding_tax", "record_date", "ex_date", "payment_date", "share_credit_date"]
 
 
 def _load_json(path: Path):
@@ -128,6 +129,23 @@ def evaluate(gt_dir: Path, run_dir: Path) -> dict:
         return {"value_exact_match": _ratio(sum(f["value_match"] for f in values), len(values)),
                 "status_match": _ratio(sum(f["status_match"] for f in statuses), len(statuses))}
 
+    # Campos semânticos (E-003): tipo de evento, IR (taxa + base) e papéis de data
+    for d in per_doc:
+        sem = [d["event_type"]["match"]]
+        for name in SEMANTIC_FIELDS:
+            f = d["fields"].get(name)
+            if f and f["expected_status"] in ("found", "declared_pending"):
+                sem.append(f["status_match"] and f["value_match"] is not False)
+        d["semantic_targets"] = {"correct": sum(sem), "total": len(sem)}
+        wrong_values = [k for k, f in d["fields"].items() if f["got_status"] == "found" and f["value_match"] is False]
+        invented_here = [i["field"] for i in invented if i["document"] == d["document"]]
+        r = d["routing"]
+        unsafe = r["got"] == "AUTO_APPROVE" and bool(
+            wrong_values or invented_here or not d["event_type"]["match"]
+            or (r["expectation_status"] == "DEFINED" and r["expected"] != "AUTO_APPROVE"))
+        d["unsafe_auto_approval"] = {"unsafe": unsafe, "wrong_values_emitted": wrong_values,
+                                     "invented": invented_here, "event_type_wrong": not d["event_type"]["match"]}
+
     with_text = [d for d in per_doc if d["text_layer_usable"]]
     defined = [r for r in routing_rows if r["expectation_status"] == "DEFINED"]
     defined_rules = all_defined_extractor_rules()
@@ -147,7 +165,17 @@ def evaluate(gt_dir: Path, run_dir: Path) -> dict:
                        "with_text_layer": rules_summary([r for r in rule_rows if r["text_layer_usable"]]),
                        "mismatches": [r for r in rule_rows if r["kind"] != "match"]},
         "routing": {"defined_expectations": _ratio(sum(bool(r["match"]) for r in defined), len(defined)),
+                    "review_rate": _ratio(sum(r["got"] != "AUTO_APPROVE" for r in routing_rows), len(routing_rows)),
                     "rows": routing_rows},
+        "semantic": {
+            "semantic_targets": {
+                "all_documents": _ratio(sum(d["semantic_targets"]["correct"] for d in per_doc),
+                                        sum(d["semantic_targets"]["total"] for d in per_doc)),
+                "with_text_layer": _ratio(sum(d["semantic_targets"]["correct"] for d in with_text),
+                                          sum(d["semantic_targets"]["total"] for d in with_text))},
+            "unsafe_auto_approvals": [{"document": d["document"], **d["unsafe_auto_approval"]}
+                                      for d in per_doc if d["unsafe_auto_approval"]["unsafe"]],
+        },
         "operational": {"documents_processed": manifest["summary"]["documents"],
                         "without_usable_text_layer": manifest["summary"]["without_usable_text_layer"],
                         "errors": manifest["summary"]["errors"],

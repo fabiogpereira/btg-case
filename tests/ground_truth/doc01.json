@@ -1,5 +1,5 @@
 {
-  "ground_truth_version": "2.0",
+  "ground_truth_version": "2.1",
   "document": {
     "sha256": "e49afdf81d2a1e4a74985e78fa0ea3639633cfa19f5dba633a2b545d115153cb",
     "file_name": "01_energetica_vale_tiete_dividendo.pdf",
@@ -137,7 +137,7 @@
         "status": "found",
         "value": {
           "rate": "0.10",
-          "base": "MONTHLY_EXCESS_OVER_BRL_50000_PER_BENEFICIARY"
+          "base": "EXCESS_OVER_THRESHOLD"
         },
         "raw": "10% sobre a parcela que exceder R$ 50.000,00 mensais por beneficiário",
         "source_label": null,
@@ -145,7 +145,7 @@
         "evidence": [
           "à alíquota de 10% sobre a parcela que exceder R$ 50.000,00 mensais por beneficiário pagos por esta Companhia"
         ],
-        "notes": "Alíquota condicional ao beneficiário; não é retenção fixa sobre o bruto."
+        "notes": "Alíquota condicional ao beneficiário; não é retenção fixa sobre o bruto. Limite: R$ 50.000,00 mensais por beneficiário (base = EXCESS_OVER_THRESHOLD)."
       },
       "currency": {
         "status": "found",

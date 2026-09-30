@@ -1,4 +1,4 @@
-# Ground truth manual — v2.0
+# Ground truth manual — v2.1
 
 Gabarito dos 8 documentos do lote, construído **manualmente, a partir do conteúdo dos documentos** (camada de texto nativa ou leitura visual do escaneado). Serve para testes automatizados e para medir cada mudança do pipeline (`docs/04-evaluation-log.md`).
 
@@ -33,7 +33,7 @@ tests/ground_truth/
 
 ```jsonc
 {
-  "ground_truth_version": "2.0",
+  "ground_truth_version": "2.1",
   "document": {
     "sha256": "...", "file_name": "...",          // file_name: somente identificação (D-004)
     "text_layer": "native" | "none",
@@ -107,7 +107,7 @@ Exemplos de normalização com rótulo preservado:
 | `payment_date` | ISO — pagamento em dinheiro |
 | `gross_amount_per_share` | string decimal com **todas as casas do documento** (D-007) |
 | `net_amount_per_share` | idem |
-| `withholding_tax` | `{ "rate": "0.175", "base": "GROSS_AMOUNT" }` — `rate` preserva as casas declaradas ("10%" → `"0.10"`) |
+| `withholding_tax` | `{ "rate": "0.175", "base": <enum> }` — `rate` preserva as casas declaradas ("10%" → `"0.10"`); `base` ∈ `GROSS_AMOUNT` (sobre o valor bruto), `EXCESS_OVER_THRESHOLD` (só sobre o que exceder um limite), `EXEMPT` (sem retenção), ou `null` quando o documento não diz |
 | `currency` | ISO 4217 |
 | `ratio` | grupamento `{ "shares_before", "shares_after" }`; bonificação `{ "shares_held", "bonus_shares", "percentage" }` |
 
@@ -194,3 +194,4 @@ Uma regra é `NOT_EVALUATED` quando falta um dado de que ela depende (ausente, p
 |---|---|---|
 | 1.0 | 2026-09-29 | Versão inicial |
 | 2.0 | 2026-09-29 | Separação em `document_truth` / `validation_truth` / `routing_expectation` (D-009); `source_label` em todos os campos encontrados (D-010); nova regra `REQUIRED_FIELDS_NOT_PENDING`; status das regras em maiúsculas; doc 03 com nota de classificação e roteamento PROVISIONAL; doc 07 POLICY_DEPENDENT (D-011); doc 08 com `REFERENCE_NOT_FOUND` → REVIEW_REQUIRED como DEFINED (D-008) |
+| 2.1 | 2026-09-29 | `withholding_tax.base` passa a ser um enum fechado (`GROSS_AMOUNT`, `EXCESS_OVER_THRESHOLD`, `EXEMPT`); doc 01 muda de `MONTHLY_EXCESS_OVER_BRL_50000_PER_BENEFICIARY` para `EXCESS_OVER_THRESHOLD`, com o limite nas notas. Motivo: permitir comparar extratores diferentes (E-003) sem casar uma string ad hoc. Não altera o resultado do Baseline A (base nula continua divergente). |
