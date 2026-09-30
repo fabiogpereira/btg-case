@@ -16,7 +16,12 @@ def text_sha(p: Path) -> str:
     return hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
 
-@pytest.mark.parametrize("path", sorted(FREEZE["files"]))
+# Evolução a partir do E-006 (ramo aditivo da variante F; perfil v2 no parse_date). O comportamento congelado da E
+# é garantido por tests/test_e005_regression.py (replay dos registros do E-005 e do BT-001). Estado exato: tag `candidate-E`.
+EVOLVABLE = {"src/corporate_actions/pipeline.py", "src/corporate_actions/__main__.py", "src/corporate_actions/normalization.py"}
+
+
+@pytest.mark.parametrize("path", sorted(set(FREEZE["files"]) - EVOLVABLE))
 def test_frozen_file_unchanged(path):
     assert text_sha(ROOT / path) == FREEZE["files"][path], f"{path} mudou depois do congelamento do E-005"
 

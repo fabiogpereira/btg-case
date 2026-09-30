@@ -19,7 +19,8 @@ def text_sha(p: Path) -> str:
 # Arquivos que podem evoluir depois do E-003 (ramo aditivo da variante D no E-004). O comportamento
 # congelado deles é garantido por tests/test_e003_regression.py (A, B e C reproduzem os registros
 # oficiais; C por replay do cache). O estado exato do E-003 está na tag git `e003-final`.
-EVOLVABLE = {"src/corporate_actions/pipeline.py", "src/corporate_actions/__main__.py"}
+EVOLVABLE = {"src/corporate_actions/pipeline.py", "src/corporate_actions/__main__.py",
+             "src/corporate_actions/normalization.py"}  # E-006: parse_date ganhou perfil v2 (v1 inalterado)
 
 
 @pytest.mark.parametrize("path", sorted(set(FREEZE["files"]) - EVOLVABLE))

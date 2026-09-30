@@ -1009,3 +1009,91 @@ Falha real e recorrente: `approval_date` não encontrada em 10/14 avisos. A fras
 - **BT-7:** o parser de datas não aceita dd.mm.aaaa.
 - **BT-8:** exclusão legal padrão (ações em tesouraria) tratada como exceção material.
 - **BT-9:** outra entidade "S.A." no aviso gera conflito de razão social.
+
+## E-006 — Hardening da candidata E → variante F (pré-registro; congelado)
+
+- **Checkpoint da E antes do E-006:** tag `pre-e006` (`d5384ef`). O estado exato da E também está nas tags `e005-final` e `candidate-E`.
+- **E preservada:** a E reproduz, por replay, todos os registros oficiais do E-005 (execução 1) e do BT-001 (execução 2) (`tests/test_e005_regression.py`, 33 casos). A, B, C e D continuam reproduzindo o E-003 e o E-004.
+- **Congelamento:** `outputs/experiments/E-006_hardened/FREEZE.json`, verificado por `tests/test_e006_freeze.py`.
+  - Cobre o código inteiro, os testes, os gabaritos dos três conjuntos, o prompt v3 (`e6bd3105dc7c8c84`) e o avaliador `evaluation/e006.py`.
+  - O teste também verifica que nenhum identificador do blind-derived set (razão social, ticker, ISIN, CNPJ) aparece no código de `src/corporate_actions`.
+- **Configuração:** `claude-opus-5`, effort medium, 8000 max tokens, fallback off (igual à E).
+
+### Variante F — `candidate_hardened` (schema `semantic-record/0.4`)
+
+F = E + os blocos abaixo. Tudo fica num ramo aditivo (`_semantic_f`, `hardening.py`, perfil `v2` via ContextVar, ativo só durante o processamento da F).
+
+1. **Cobertura determinística (perfil v2):**
+   - datas dd.mm.aaaa, dd-mm-aaaa e d/m/aaaa, normalizadas para ISO;
+   - proporções: quatro formas genéricas, com quantidade por extenso (um/uma…dez) e direção preservada (`shares_before`→`shares_after`; `shares_held`/`bonus_shares`). Exemplos: "cada N ação(ões) … será(ão) desdobrada(s)/grupada(s)/convertida(s) em M" / "dará origem a" / "passará a ser representada por"; "proporção de N para M"; "proporção/fator N:M"; "para cada N ações … receberão M novas";
+   - rótulo "crédito das [qualificador] ações";
+   - `share_credit_date` opcional também em desdobramento e grupamento. Sem esse campo, uma data de crédito declarada não teria onde ser representada;
+   - emissor principal por papel estrutural: cabeçalho, CNPJ adjacente, "(a Companhia)", "comunica/informa"; escriturador, custodiante etc. são terceiros. Alias "órgão da X S.A." é agrupado em "X S.A.". Duas entidades com papel estrutural → LOW, `ISSUER_UNRESOLVED_MULTIPLE_STRUCTURAL_CANDIDATES` → revisão. O LLM nunca escolhe o emissor.
+2. **`tax_treatment`** (`fields.tax_treatment`):
+   - `kind`: WITHHOLDING_AT_RATE, CONDITIONAL_MULTIPLE_RATES, EXEMPT, NO_WITHHOLDING_DECLARED; o campo fica `not_found` se não houver declaração e `not_applicable` em eventos em ações;
+   - atributos: `rate`, `base`, `beneficiary_exceptions`, `conditions`, com evidência literal, regra, âncora e confiança;
+   - isenção de titular ("acionistas imunes ou isentos") é exceção por beneficiário, não isenção da distribuição;
+   - isenção nunca vira alíquota zero; `withholding_tax` continua sendo só alíquota numérica;
+   - isenção dita pelo LLM com citação literal localizada é representada (`llm.tax_treatment_exempt`), em vez de descartada por não ter porcentagem.
+3. **Gate de cobertura material** (`semantic.material_coverage`, antes do AUTO_APPROVE):
+   - **inventário de itens materiais:**
+     - declarações tributárias determinísticas;
+     - IR numérico;
+     - IR do LLM com citação localizada;
+     - papéis de data do LLM (data-base, ex, pagamento, crédito);
+     - qualificadores materiais do LLM;
+     - candidatos de proporção;
+     - revogação;
+     - **inventário determinístico de datas de liquidação**, que não depende do LLM: data cuja pista de papel mais próxima, na mesma linha ou frase e sem outra data no meio, é de crédito ou pagamento;
+   - liquidação no passado ("já foram pagos em") é registrada como não material, com justificativa;
+   - cada item registra evidência, categoria, campo-alvo, status (REPRESENTED / UNRESOLVED_EXPLICIT / NON_MATERIAL_JUSTIFIED / NOT_REPRESENTED), justificativa e decisão de bloqueio;
+   - qualquer NOT_REPRESENTED → `MATERIAL_INFORMATION_NOT_REPRESENTED` → revisão.
+4. **Detector de contradições** (`semantic.contradictions`). Não decide qual lado está certo. Incompatibilidades documentadas:
+   - DIVIDEND com retenção à alíquota fixa, sem condição de limite nem base de excedente: regime do JCP, porque o dividendo só é tributado acima de limite;
+   - JCP isento ou sem retenção no nível da distribuição (a isenção do JCP é por titular);
+   - direção da proporção incompatível com SPLIT/REVERSE_SPLIT;
+   - isenção junto com alíquota numérica.
+
+   Se existe antes do LLM, vira gatilho `SEMANTIC_CONTRADICTION` do detector de necessidade. Se persiste depois da fusão, bloqueia (`SEMANTIC_CONTRADICTION:<código>`).
+5. **Revogação mínima:** linguagem de revogação ou cancelamento em contexto de evento (excluído "cancelamento de ações") → `semantic.event_status = REVOCATION_DETECTED_UNSUPPORTED` e `UNSUPPORTED_EVENT_REVOCATION` → revisão. O LLM não é chamado, porque não muda o desfecho. Não há novo tipo de evento.
+
+### Definições de segurança (D-025) e papéis dos conjuntos (D-026)
+
+- `unsafe_auto_approval` (histórica): avaliadores originais, inalterados.
+- `unsafe_auto_approval_enhanced` (E-006 em diante; **post-hoc**, motivada pelo BT-001): alucinação, ambiguidade aprovada, falha de validação aprovada, **omissão material**, conflito semântico não suportado. A E é reavaliada com ela como leitura post-hoc.
+- **Original:** regression/development. **Challenge set:** regression, inalterado. **Blind-derived regression set:** o antigo blind set; não é blind test para a F.
+
+### Critérios de sucesso (pré-registrados; limiares fixados antes do run)
+
+1. `unsafe_auto_approvals_enhanced` = 0 nos três conjuntos. Qualquer aprovação com omissão material = F falha;
+2. 0 omissões materiais aprovadas;
+3. nenhuma regressão de segurança: `unsafe` histórica = 0 na F, e enhanced da F ≤ enhanced da E, por conjunto;
+4. roteamento não piora materialmente: false reviews da F ≤ false reviews da E + 1, por conjunto;
+5. mudanças generalizáveis e explicáveis (qualitativo; o teste de freeze proíbe identificadores do blind-derived set no código);
+6. custo total da F ≤ 1,25 × custo da E nos mesmos conjuntos; p50 dos documentos com LLM ≤ 1,5 × o da E;
+7. arquitetura simples de defender (qualitativo).
+
+### Protocolo (uma execução oficial; cache novo, todas as chamadas reais)
+
+```bash
+F=outputs/experiments/E-006_hardened
+python -m corporate_actions --variant F --out $F/original_F --llm-cache $F/llm_cache_run1
+python -m corporate_actions --variant F --documents tests/challenge_set/cases --out $F/challenge_F --llm-cache $F/llm_cache_run1
+python -m corporate_actions --variant F --documents tests/blind_set/documents --golden tests/blind_set/golden_records.csv --out $F/blind_derived_F --llm-cache $F/llm_cache_run1
+python -m evaluation.e006 --out $F/evaluation
+```
+
+Depois da primeira saída oficial, nada muda: F, prompt, regras, avaliador e conjuntos ficam como estão. Uma segunda execução só acontece se houver necessidade clara de medir estabilidade.
+
+### Disclosure (importante)
+
+- **Dry run nos três conjuntos durante o desenvolvimento.** A F foi executada por replay das respostas do LLM já gravadas da E (caches do E-005 e do BT-001, sem API) no original, no challenge set e no blind-derived set. As seguintes mudanças foram feitas **depois** de observar essas saídas:
+  - quantidade por extenso e "dará origem a" na regra de proporção (classe vista no BT-05);
+  - `share_credit_date` opcional em desdobramento e grupamento (BT-05: data de crédito sem lugar no schema);
+  - inventário determinístico de datas de liquidação e rótulo "crédito das [qualificador] ações". Motivo: o dry run revelou que a **E aprovou o BT-03 sem a data de crédito das novas ações**, uma omissão material pela definição enhanced;
+  - refinamentos do inventário depois de alarmes falsos: pista mais próxima decide o papel (doc 01), limite na data anterior (BT-14), liquidação passada (CH-10), "realizado" deixa de ser pista de aprovação (BT-11);
+  - agrupamento de alias de emissor ("Diretoria da X S.A.", visto no BT-12).
+
+  Nenhuma regra usa texto, nome, ticker ou identificador de um documento específico. Ainda assim, **os resultados da F nos três conjuntos são in-sample**.
+- **O dry run não prevê o run oficial:** as respostas do LLM do run oficial são novas, e documentos em que a F chama o LLM e a E não chamava (ex.: gatilho de contradição) não tinham resposta gravada.
+- **Leitura post-hoc da E pela definição enhanced (vista no dry run, antes do congelamento):** BT-01 (isenção descartada) e BT-03 (data de crédito descartada) seriam aprovações inseguras da E. Isso **não altera** o resultado pré-registrado do BT-001 (0 inseguras pela definição da época).

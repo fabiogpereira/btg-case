@@ -314,6 +314,47 @@ Formato:
 - **Known limitation:** o doc 06 continua indo para revisão (período de ajuste de frações lido como "direito" numa execução; valor da data ex fora da citação na outra). Não será corrigido antes do blind test.
 - **Consequências:** A E é avaliada no blind test exatamente como congelada no E-005, sem nenhuma alteração de prompt, detector, qualificadores, fusão, validação, roteamento, modelo, effort, fallback ou function calling.
 
+## D-025 — Definição de segurança *enhanced* (E-006 em diante), separada da definição histórica
+
+- **Data:** 2026-09-30
+- **Status:** ACCEPTED
+- **Tipo:** métrica / processo
+- **Contexto:** O BT-001 mostrou um registro aprovado sem nenhum valor inventado e ainda assim incompleto: a isenção de IR do BT-01, identificada pelo LLM, foi descartada na fusão.
+- **Decisão:** A partir do E-006, `unsafe_auto_approval_enhanced` = AUTO_APPROVE com qualquer um destes componentes:
+  1. alucinação de campo (tipo errado, valor emitido errado, valor onde o gabarito diz ausente/pendente/não aplicável);
+  2. ambiguidade material aprovada (rota esperada REVIEW);
+  3. falha de validação material aprovada;
+  4. **omissão de informação material** (campo material presente no gabarito sem representação; pendência não representada; qualificador material do gabarito não representado);
+  5. conflito semântico material não suportado.
+  - Definição completa e regras de representação: `src/evaluation/e006.py`.
+  - Isenção só conta como representada por `tax_treatment` EXEMPT/NO_WITHHOLDING_DECLARED, nunca por alíquota zero.
+- **Não reescreve a história:** `unsafe_auto_approval` do E-003..E-005 e do BT-001 continua calculada pelos avaliadores originais, sem mudança, e é reportada ao lado. A E é reavaliada com a nova definição **como leitura post-hoc**, e isso é dito explicitamente.
+- **Consequência:** A nova definição é uma evolução post-hoc motivada pelo blind test, não um critério pré-registrado do BT-001.
+
+## D-026 — O antigo blind set passa a ser *blind-derived regression set*
+
+- **Data:** 2026-09-30
+- **Status:** ACCEPTED
+- **Tipo:** processo
+- **Decisão:** O conjunto BT-01..BT-14 já foi visto: seus failure modes motivaram o E-006, e o desenvolvimento da F o executou em dry run (replay, sem API). Para a F e daqui em diante, ele é `blind-derived regression set`, nunca "blind test" nem out-of-sample. Os artefatos e resultados do BT-001 continuam intactos.
+- **Consequência:** Não há medida independente de generalização da F. Uma nova medida exige um novo conjunto independente.
+
+## D-027 — Variante F (`candidate_hardened`) e schema `semantic-record/0.4`, congelados antes do run oficial
+
+- **Data:** 2026-09-30
+- **Status:** ACCEPTED
+- **Tipo:** arquitetura / processo
+- **Decisão:** F = E + as seguintes adições, todas no ramo aditivo `_semantic_f` e em `hardening.py` (a E não muda; replay em `tests/test_e005_regression.py`):
+  - perfil determinístico v2 (ContextVar, só na F);
+  - `tax_treatment` explícito;
+  - inventário e gate de cobertura material (`MATERIAL_INFORMATION_NOT_REPRESENTED`);
+  - detector de contradições (`SEMANTIC_CONTRADICTION:<código>`, também gatilho do LLM);
+  - revogação mínima (`UNSUPPORTED_EVENT_REVOCATION`, sem LLM).
+  - O schema 0.4 acrescenta `fields.tax_treatment`, `share_credit_date` opcional em SPLIT/REVERSE_SPLIT e as seções `semantic.material_coverage`, `semantic.contradictions`, `semantic.event_status`, `semantic.issuer_resolution`, `semantic.tax_statements` e `semantic.revocation`.
+  - Prompt v3 inalterado (`e6bd3105dc7c8c84`), mesmo modelo/effort/max_tokens, fallback off.
+  - Congelamento: `outputs/experiments/E-006_hardened/FREEZE.json` (`tests/test_e006_freeze.py`).
+- **Não muda:** detector de necessidade (só recebe o sinal de contradição), LLM sob demanda, validation engine, gates, function calling, grounding literal, política Decimal.
+
 ---
 
 ## Decisões deliberadamente adiadas (não são decisões)

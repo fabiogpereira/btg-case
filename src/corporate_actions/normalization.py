@@ -13,6 +13,7 @@ from .extraction import DATE_NUM, ExtractionResult
 from .models import (BONUS_SHARES, DECLARED_PENDING, FOUND, NOT_APPLICABLE, NOT_FOUND, REVERSE_SPLIT, SPLIT,
                      Candidate, ExtractedField)
 from .numeric import parse_br_decimal, parse_br_percent
+from .profiles import is_v2
 from .schema import COMMON_FIELDS, EVENT_SPECIFIC_FIELDS, is_applicable
 
 MONTHS = {"janeiro": 1, "fevereiro": 2, "março": 3, "marco": 3, "abril": 4, "maio": 5, "junho": 6, "julho": 7,
@@ -20,10 +21,16 @@ MONTHS = {"janeiro": 1, "fevereiro": 2, "março": 3, "marco": 3, "abril": 4, "ma
 ANCHOR_RANK = {"label": 0, "phrase": 1, "pattern": 2, "derived": 3}
 
 
+DATE_NUM_V2 = r"\d{1,2}[./-]\d{1,2}[./-]\d{4}"      # perfil v2 (E-006): DD.MM.AAAA, DD-MM-AAAA, D/M/AAAA
+
+
 def parse_date(raw: str) -> dt.date:
     raw = raw.strip()
     if re.fullmatch(DATE_NUM, raw):
         day, month, year = raw.split("/")
+        return dt.date(int(year), int(month), int(day))
+    if is_v2() and re.fullmatch(DATE_NUM_V2, raw):
+        day, month, year = re.split(r"[./-]", raw)
         return dt.date(int(year), int(month), int(day))
     m = re.fullmatch(r"(\d{1,2})º?\s+de\s+(\w+)\s+de\s+(\d{4})", raw)
     if m and m.group(2).lower() in MONTHS:

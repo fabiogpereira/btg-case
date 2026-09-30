@@ -6,6 +6,8 @@ B  + patch semântico determinístico: classificação com negação + qualifica
 C  + intérprete semântico por LLM (grounded, com function calling) -> gates
 D  hybrid_on_demand (E-004): B + detector de necessidade -> [LLM v2 só se preciso] -> fusão v2 -> gates
 E  hybrid_qualifiers_v3 (E-005): igual à D, com prompt v3 e qualificadores v3 (material × notas, guarda de escopo)
+F  candidate_hardened (E-006): E + perfil determinístico v2 + tratamento tributário + contradições + revogação
+   + gate de cobertura material (hardening.py)
 
 Em todas as variantes o orchestrator executa TODAS as validações obrigatórias; nada depende de
 o LLM chamar ou não uma tool (D-002).
@@ -39,9 +41,10 @@ RECORD_SCHEMA_VERSION = "baseline-a-record/0.1"
 VARIANT_VERSIONS = {"A": PIPELINE_VERSION, "B": PIPELINE_VERSION + "+semantic-patch/0.1",
                     "C": PIPELINE_VERSION + "+semantic-llm/0.1",
                     "D": PIPELINE_VERSION + "+hybrid-on-demand/0.1",
-                    "E": PIPELINE_VERSION + "+hybrid-qualifiers-v3/0.1"}
+                    "E": PIPELINE_VERSION + "+hybrid-qualifiers-v3/0.1",
+                    "F": PIPELINE_VERSION + "+candidate-hardened/0.1"}
 VARIANT_SCHEMA = {"A": RECORD_SCHEMA_VERSION, "B": "semantic-record/0.1", "C": "semantic-record/0.1",
-                  "D": "semantic-record/0.2", "E": "semantic-record/0.3"}
+                  "D": "semantic-record/0.2", "E": "semantic-record/0.3", "F": "semantic-record/0.4"}
 
 
 @dataclass
@@ -56,6 +59,8 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
     audit = DocumentAudit(run_id, VARIANT_VERSIONS[variant])
     record = {"schema_version": VARIANT_SCHEMA[variant]}
     llm_info = None
+    from .profiles import DETERMINISTIC_PROFILE
+    profile_token = DETERMINISTIC_PROFILE.set("v2" if variant == "F" else "v1")
     try:
         with audit.stage("ingest"):
             doc = ingest(path)
@@ -80,9 +85,12 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
 
         with audit.stage("extract_candidates"):
             extraction = extract_candidates(tl)
+            if variant == "F":
+                from .hardening import extra_candidates
+                extra_candidates(extraction, tl)
         negated, cls_semantic = [], None
         with audit.stage("classify"):
-            if variant in ("B", "D", "E"):
+            if variant in ("B", "D", "E", "F"):
                 from .semantic_patch import classification_semantics, classify_negation_aware
                 classification, negated = classify_negation_aware(extraction, tl)
                 cls_semantic = classification_semantics(classification, extraction, tl, negated)
@@ -113,8 +121,8 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
             score_all(fields, specific)
 
         semantic = need = None
-        if variant in ("D", "E"):
-            semantic_fn = _semantic_d if variant == "D" else _semantic_e
+        if variant in ("D", "E", "F"):
+            semantic_fn = {"D": _semantic_d, "E": _semantic_e, "F": _semantic_f}[variant]
             classification, fields, specific, semantic, llm_info, parsed, need = semantic_fn(
                 extraction, tl, classification, cls_semantic, negated, fields, specific, golden, semantic_ctx, audit)
         elif variant == "B":
@@ -142,9 +150,9 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
             st["rules_executed"] = len(validations)
         required = REQUIRED.get(classification.event_type, ALWAYS_REQUIRED)
 
-        if variant in ("C", "D", "E") and llm_info is not None:
+        if variant in ("C", "D", "E", "F") and llm_info is not None:
             llm_info["reference_divergence"] = _reference_divergence(parsed, llm_info, validations)
-        if variant in ("D", "E"):
+        if variant in ("D", "E", "F"):
             from .semantic_hybrid import llm_only_corroboration_blocks
             semantic["blocking"] += llm_only_corroboration_blocks(semantic["fields"], validations)
         with audit.stage("route"):
@@ -182,6 +190,7 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
             record["llm"] = llm_info
         return record
     finally:
+        DETERMINISTIC_PROFILE.reset(profile_token)
         audit.finish()
         validators = [v.rule_id for v in record.get("validations", [])]
         extra = {}
@@ -296,6 +305,96 @@ def _semantic_e(extraction, tl, classification, cls_semantic, negated, fields, s
     return classification, fields, specific, semantic, llm_info, parsed, need
 
 
+def _semantic_f(extraction, tl, classification, cls_semantic, negated, fields, specific, golden, ctx, audit):
+    """Variante F: E + endurecimento (hardening.py). O LLM, o prompt v3, o detector, a fusão v2 e os gates são os da E."""
+    from . import hardening as HD
+    from . import qualifiers_v3 as Q
+    from . import semantic_hybrid as H
+    from .semantic_llm_v3 import ground_v3, interpret
+    from .semantic_patch import assess_fields
+    text = tl.normalized_text
+
+    def deterministic_layer(fields, specific, event_type):
+        HD.extend_specific_v2(specific, extraction, event_type)
+        issuer = HD.resolve_issuer_v2(fields, extraction, tl)
+        b_sem = assess_fields(fields, specific, tl)
+        fields["tax_treatment"] = HD.build_tax_treatment(fields, b_sem, tax_statements, event_type, tl)
+        return issuer, b_sem
+
+    with audit.stage("semantic_patch"):
+        tax_statements = HD.detect_tax_statements(tl)
+        revocations = HD.detect_revocation(tl)
+        issuer_diag, b_field_sem = deterministic_layer(fields, specific, classification.event_type)
+        pre_contra = HD.detect_contradictions(classification.event_type, fields)
+    with audit.stage("semantic_need") as st:
+        need = H.detect_need(extraction, tl, classification, cls_semantic, b_field_sem, negated, fields, specific)
+        for c in pre_contra:
+            need["signals"].append({"signal": "SEMANTIC_CONTRADICTION", "stage": "contradiction_detector",
+                                    "triggers_llm": True, "detail": c})
+        for r in revocations:
+            need["signals"].append({"signal": "REVOCATION_LANGUAGE", "stage": "contradiction_detector",
+                                    "triggers_llm": False, "detail": "evento revogado não é suportado: revisão, LLM não muda o desfecho"})
+        need["llm_trigger_reasons"] = [s["signal"] for s in need["signals"] if s["triggers_llm"]]
+        need["llm_required"] = bool(need["llm_trigger_reasons"]) and not revocations
+        st.update(llm_required=need["llm_required"], triggers=need["llm_trigger_reasons"])
+    semantic = {"classification": cls_semantic, "fields": b_field_sem, "blocking": [], "negated_signals": negated,
+                "resolutions": [], "material_qualifiers": [q for a in b_field_sem.values() for q in Q.project_b(a)],
+                "semantic_notes": [], "issuer_resolution": issuer_diag, "tax_statements": tax_statements,
+                "revocation": revocations}
+    llm_info = parsed = grounding = None
+    material = semantic["material_qualifiers"]
+    field_sem = b_field_sem
+    if not need["llm_required"]:
+        audit.skip("semantic_llm", "NOT_REQUIRED")
+    else:
+        with audit.stage("semantic_llm") as st:
+            parsed, attempts = interpret(ctx.provider, tl, golden, ctx.cache)
+            grounding = ground_v3(parsed, tl) if parsed else None
+            llm_info = _llm_audit(ctx, attempts, parsed, grounding, prompt="v3")
+            st.update(api_calls=llm_info["api_calls"], tool_calls=len(llm_info["tool_calls"]), replayed=llm_info["replayed"])
+        if parsed is None:
+            semantic["blocking"].append("SEMANTIC_INTERPRETER_FAILED")
+        else:
+            with audit.stage("semantic_merge"):
+                final_type, cls_sem, cls_res = H.merge_classification(classification, cls_semantic, need, parsed, grounding, tl)
+                if final_type != classification.event_type:
+                    classification = dataclasses.replace(
+                        classification, event_type=final_type,
+                        decision_rule=f"semantic_hybrid({cls_res['category']};deterministic={classification.decision_rule}:{classification.event_type})")
+                    fields, specific = resolve_all(extraction, final_type)
+                    score_all(fields, specific)
+                    issuer_diag, b_field_sem = deterministic_layer(fields, specific, final_type)
+                required = REQUIRED.get(final_type, ALWAYS_REQUIRED)
+                field_sem = dict(b_field_sem)
+                spans = Q._field_spans(fields, specific)
+                pre = [dict(q, blocks=Q.representation(q, fields, specific) is None) for q in grounding["material_qualifiers"]
+                       if q["grounded"] and not Q.scope_guard(q["span"], spans, text)]
+                date_sem, date_res = H.merge_dates(fields, specific, b_field_sem, grounding, Q.as_v2_like(pre), tl, required)
+                field_sem.update(date_sem)
+                tax_sem, tax_res = H.merge_tax(fields, b_field_sem, grounding, Q.as_v2_like(pre), tl)
+                if tax_sem is not None:
+                    field_sem["withholding_tax"] = tax_sem
+                if fields["withholding_tax"].status == "found" and fields["tax_treatment"].status != "found":
+                    fields["tax_treatment"] = HD.build_tax_treatment(fields, b_field_sem, tax_statements, final_type, tl)
+                tt_res = HD.merge_llm_tax_treatment(fields, grounding, tl)
+                material, notes, q_blocking = Q.evaluate(grounding, fields, specific, field_sem, text)
+                semantic.update(classification=cls_sem, blocking=q_blocking, semantic_notes=notes,
+                                resolutions=[cls_res] + date_res + [tax_res] + ([tt_res] if tt_res else []),
+                                material_qualifiers=material, issuer_resolution=issuer_diag)
+    with audit.stage("hardening_gates"):
+        contradictions = HD.detect_contradictions(classification.event_type, fields)
+        coverage, cov_blocking = HD.coverage_gate(classification.event_type, fields, specific, field_sem, grounding,
+                                                  material, extraction, revocations, tax_statements, text)
+        semantic["fields"] = field_sem
+        semantic["contradictions"] = contradictions
+        semantic["material_coverage"] = coverage
+        semantic["event_status"] = "REVOCATION_DETECTED_UNSUPPORTED" if revocations else "ACTIVE_OR_NOT_STATED"
+        semantic["blocking"] += [f"SEMANTIC_CONTRADICTION:{c['code']}" for c in contradictions]
+        semantic["blocking"] += ["UNSUPPORTED_EVENT_REVOCATION"] if revocations else []
+        semantic["blocking"] += cov_blocking
+    return classification, fields, specific, semantic, llm_info, parsed, need
+
+
 def _llm_audit(ctx: SemanticContext, attempts, parsed, grounding, prompt: str = "v1") -> dict:
     from .llm.registry import estimate_cost_usd
     if prompt == "v3":
@@ -387,8 +486,8 @@ def run_batch(documents_dir: Path, golden_path: Path, out_dir: Path, run_id: str
                "total_duration_us": sum(r["audit"]["duration_us"] or 0 for r in records)}
     if variant != "A":
         config["variant"] = variant
-    if variant in ("C", "D", "E"):
-        if variant == "E":
+    if variant in ("C", "D", "E", "F"):
+        if variant in ("E", "F"):
             from .semantic_llm_v3 import PROMPT_VERSION, prompt_fingerprint
         elif variant == "D":
             from .semantic_llm_v2 import PROMPT_VERSION, prompt_fingerprint
@@ -411,7 +510,7 @@ def run_batch(documents_dir: Path, golden_path: Path, out_dir: Path, run_id: str
             "reference_divergences": sum(bool((x.get("reference_divergence") or {}).get("divergent")) for x in llms),
             "served_models": sorted({m for x in llms for m in x["served_models"]}),
             "replayed_documents": sum(x["replayed"] for x in llms)}
-    if variant in ("D", "E"):
+    if variant in ("D", "E", "F"):
         needs = [r.get("semantic_need") for r in records if r.get("semantic_need")]
         summary["semantic_need"] = {
             "documents_assessed": len(needs), "llm_required": sum(n["llm_required"] for n in needs),

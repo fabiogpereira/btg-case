@@ -294,3 +294,34 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
 - **Decision:** Segurança pré-registrada confirmada em dados independentes; utilidade insuficiente; a omissão de tratamento tributário não numérico precisa entrar na definição de aprovação insegura antes de qualquer adoção.
 - **Status:** MODIFIED (seguro pela métrica pré-registrada; pouco útil; omissão silenciosa estável identificada)
 
+## J. Hipóteses do E-006
+
+### H-29 — Tratamento tributário explícito e gate de cobertura eliminam omissão material silenciosa
+- **Hypothesis:** Representar o tratamento tributário como `tax_treatment` (alíquota, isenção, sem retenção, múltiplas alíquotas, exceções por beneficiário, condições) e exigir, antes do AUTO_APPROVE, que toda informação material detectada (declaração tributária, data de liquidação anunciada, papel de data mapeado pelo LLM, proporção, revogação, qualificador material) esteja representada, explicitamente não resolvida ou justificada leva a 0 aprovações inseguras pela definição enhanced, sem piorar materialmente o roteamento.
+- **Why it matters:** O BT-001 mostrou que "não inventar" não basta: descartar uma informação material também produz registro errado.
+- **How to test:** F × E (E reavaliada post-hoc) nos três conjuntos, com a definição enhanced (D-025).
+- **Expected signal:** `unsafe_auto_approvals_enhanced` = 0 e 0 omissões aprovadas na F; false reviews da F ≤ E + 1 por conjunto.
+- **Observed result:** (pendente — run oficial do E-006)
+- **Status:** OPEN
+
+### H-30 — Correções determinísticas pequenas e genéricas reduzem revisões desnecessárias sem regressão
+- **Hypothesis:** Estas correções reduzem revisões por cobertura sem nenhuma regressão no original e no challenge set:
+  - datas dd.mm.aaaa, dd-mm-aaaa e d/m/aaaa;
+  - proporções em frases genéricas, com quantidade por extenso de 1 a 10 e direção preservada;
+  - rótulo de crédito com qualificador ("crédito das novas ações");
+  - emissor por papel estrutural, com agrupamento de alias "órgão da X S.A." → "X S.A." e revisão se houver duas entidades estruturais.
+- **How to test:** Checagens por classe no blind-derived regression set; regressão no original e no challenge set.
+- **Expected signal:** As classes observadas no BT-001 corrigidas; nenhuma aprovação nova incorreta.
+- **Observed result:** (pendente)
+- **Status:** OPEN
+
+### H-31 — Contradição e revogação nunca viram evento vivo aprovado
+- **Hypothesis:** Um detector determinístico de incompatibilidades documentadas e a revogação mínima garantem que contradições persistentes e revogações vão para revisão, e só adicionam chamada do LLM onde há contradição. As incompatibilidades são:
+  - dividendo com retenção fixa sem condição de limite, que é o regime do JCP;
+  - JCP isento no nível da distribuição;
+  - direção da proporção incompatível com o tipo;
+  - isenção junto com alíquota numérica.
+- **How to test:** Checagens por classe e roteamento nos três conjuntos.
+- **Expected signal:** 0 aprovações com contradição; revogação com `UNSUPPORTED_EVENT_REVOCATION`.
+- **Observed result:** (pendente)
+- **Status:** OPEN
