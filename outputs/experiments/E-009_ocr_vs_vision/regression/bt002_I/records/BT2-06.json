@@ -1,0 +1,1215 @@
+{
+  "schema_version": "semantic-record/0.6",
+  "document": {
+    "sha256": "19fbec9c5df9776e5e0e45308269d0b66c0bdf8eb200f518c4de84e7f4df1379",
+    "file_name": "BT2-06.txt",
+    "size_bytes": 931,
+    "pages": 1,
+    "text_layer": {
+      "usable": true,
+      "alnum_chars": 716,
+      "min_alnum_chars_per_page": 100,
+      "reason": null
+    }
+  },
+  "binding": [
+    {
+      "field": "record_date",
+      "rule_id": "record_date.label_data_base",
+      "raw": "21/08/2024",
+      "evidence": "data-base de 21/08/2024",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 4,
+      "crosses_line": false
+    }
+  ],
+  "identity": {
+    "identity_method": "TICKER_AND_CNPJ_EXACT",
+    "identifiers_used": {
+      "ticker": "CVLG3",
+      "cnpj": "33.832.377/0001-06"
+    },
+    "matched_reference": {
+      "emissor": "Costa Verde Logística S.A.",
+      "cnpj": "33.832.377/0001-06",
+      "isin": "BRCVLGACNOR7",
+      "ticker": "CVLG3",
+      "classe": "ON",
+      "segmento_listagem": "Novo Mercado",
+      "status": "ativo"
+    },
+    "status": "RESOLVED",
+    "reason_code": null,
+    "conflicts": []
+  },
+  "extraction": {
+    "method": "native_text_layer+deterministic_rules",
+    "status": "COMPLETED",
+    "failure_mode": null,
+    "unsupported_fields": [
+      "fraction_adjustment_period"
+    ],
+    "title": null
+  },
+  "classification": {
+    "event_type": "DIVIDEND",
+    "decision_rule": "single_type",
+    "signals": {
+      "DIVIDEND": [
+        {
+          "rule_id": "event.dividend_dividendo",
+          "evidence": {
+            "text": "dividendo",
+            "start": 211,
+            "end": 220,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.dividend_dividendo",
+          "evidence": {
+            "text": "dividendo",
+            "start": 394,
+            "end": 403,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.dividend_dividendo",
+          "evidence": {
+            "text": "dividendo",
+            "start": 464,
+            "end": 473,
+            "page": 1
+          }
+        }
+      ]
+    },
+    "title": null,
+    "title_event_types": [],
+    "confidence": "HIGH",
+    "confidence_reasons": [
+      "SINGLE_TYPE_SIGNALS:DIVIDEND"
+    ]
+  },
+  "fields": {
+    "issuer_name": {
+      "status": "found",
+      "value": "Costa Verde Logística S.A.",
+      "raw": "Costa Verde Logística S.A.",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "COSTA VERDE LOGÍSTICA S.A.",
+          "start": 0,
+          "end": 26,
+          "page": 1
+        },
+        {
+          "text": "Conselho de Administração da Costa Verde Logística S.A.",
+          "start": 92,
+          "end": 147,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "issuer_name.v2_structural_role"
+      ],
+      "anchor": "phrase",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [
+        "other entities mentioned (not primary): []",
+        "aliases grouped: {'conselho de administração da costa verde logística s.a.': 'costa verde logística s.a.'}"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "STRUCTURAL_ROLE:CNPJ_ADJACENT+LETTERHEAD"
+      ]
+    },
+    "cnpj": {
+      "status": "found",
+      "value": "33.832.377/0001-06",
+      "raw": "33.832.377/0001-06",
+      "source_label": "CNPJ",
+      "evidence": [
+        {
+          "text": "CNPJ 33.832.377/0001-06",
+          "start": 27,
+          "end": 50,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "cnpj.label_cnpj"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "isin": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "ticker": {
+      "status": "found",
+      "value": "CVLG3",
+      "raw": "CVLG3",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "CVLG3",
+          "start": 269,
+          "end": 274,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ticker.pattern"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN"
+      ]
+    },
+    "share_class": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "approval_date": {
+      "status": "found",
+      "value": "2024-08-14",
+      "raw": "14/08/2024",
+      "source_label": "em reunião realizada em",
+      "evidence": [
+        {
+          "text": "em reunião realizada em 14/08/2024, aprovou a distribuição de dividendo",
+          "start": 149,
+          "end": 220,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "llm.date_role_mapping"
+      ],
+      "anchor": "llm",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "value located by LLM role mapping; literal quote grounded"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LITERAL_GROUNDED_QUOTE",
+        "DETERMINISTIC_PARSE"
+      ]
+    },
+    "record_date": {
+      "status": "found",
+      "value": "2024-08-21",
+      "raw": "21/08/2024",
+      "source_label": "data-base de",
+      "evidence": [
+        {
+          "text": "data-base de 21/08/2024",
+          "start": 326,
+          "end": 349,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "record_date.label_data_base"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "ex_date": {
+      "status": "found",
+      "value": "2024-08-22",
+      "raw": "22/08/2024",
+      "source_label": "negociadas \"ex-dividendo\" a partir de",
+      "evidence": [
+        {
+          "text": "negociadas \"ex-dividendo\" a partir de 22/08/2024",
+          "start": 379,
+          "end": 427,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "llm.date_role_mapping"
+      ],
+      "anchor": "llm",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "value located by LLM role mapping; literal quote grounded"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LITERAL_GROUNDED_QUOTE",
+        "DETERMINISTIC_PARSE"
+      ]
+    },
+    "payment_date": {
+      "status": "declared_pending",
+      "value": null,
+      "raw": "será divulgada em aviso específico",
+      "source_label": "A data de pagamento de ambos os valores",
+      "evidence": [
+        {
+          "text": "A data de pagamento de ambos os valores será divulgada em aviso específico",
+          "start": 712,
+          "end": 786,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "llm.date_role_mapping.pending"
+      ],
+      "anchor": "llm",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "pending declaration located by LLM"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LITERAL_GROUNDED_QUOTE",
+        "DETERMINISTIC_PARSE"
+      ]
+    },
+    "gross_amount_per_share": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "net_amount_per_share": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "withholding_tax": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "currency": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "ratio": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "tax_treatment": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "no tax statement found"
+      ],
+      "confidence": null,
+      "confidence_reasons": []
+    }
+  },
+  "event_specific_fields": {},
+  "reference_check": {
+    "found": false,
+    "matched_by": null,
+    "query": null,
+    "golden_row": null
+  },
+  "validations": [
+    {
+      "rule_id": "REF_ISIN_FOUND",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: isin",
+      "observed": {}
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_PRESENT",
+      "status": "FAIL",
+      "severity": "ERROR",
+      "message": "required fields not found: ['gross_amount_per_share', 'currency']",
+      "observed": {
+        "required": [
+          "issuer_name",
+          "isin",
+          "ticker",
+          "record_date",
+          "ex_date",
+          "gross_amount_per_share",
+          "currency",
+          "payment_date"
+        ],
+        "not_found": [
+          "gross_amount_per_share",
+          "currency"
+        ],
+        "isin_waived_by": "TICKER_AND_CNPJ_EXACT"
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+      "status": "FAIL",
+      "severity": "ERROR",
+      "message": "required fields declared pending: ['payment_date']",
+      "observed": {
+        "declared_pending": [
+          "payment_date"
+        ]
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_DETERMINED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "event type DIVIDEND by rule single_type",
+      "observed": {
+        "decision_rule": "single_type"
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: title_event_type",
+      "observed": {
+        "title": null
+      }
+    },
+    {
+      "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "approval 2024-08-14 vs record 2024-08-21",
+      "observed": {
+        "approval_date": "2024-08-14",
+        "record_date": "2024-08-21"
+      }
+    },
+    {
+      "rule_id": "DATE_RECORD_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "record 2024-08-21 vs ex 2024-08-22",
+      "observed": {
+        "record_date": "2024-08-21",
+        "ex_date": "2024-08-22"
+      }
+    },
+    {
+      "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "ex 2024-08-22; next weekday after record is 2024-08-22 (no holiday calendar, D-006)",
+      "observed": {
+        "record_date": "2024-08-21",
+        "ex_date": "2024-08-22",
+        "expected_ex_date": "2024-08-22"
+      }
+    },
+    {
+      "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: payment_date",
+      "observed": {
+        "settlement_field_status": "declared_pending"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_GROSS_POSITIVE",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: gross_amount_per_share",
+      "observed": {}
+    },
+    {
+      "rule_id": "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: gross_amount_per_share, net_amount_per_share, withholding_tax",
+      "observed": {
+        "net_status": "not_applicable"
+      }
+    },
+    {
+      "rule_id": "REF_IDENTITY_RESOLVED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "identity TICKER_AND_CNPJ_EXACT",
+      "observed": {
+        "identity_method": "TICKER_AND_CNPJ_EXACT",
+        "identifiers_used": {
+          "ticker": "CVLG3",
+          "cnpj": "33.832.377/0001-06"
+        },
+        "reason_code": null,
+        "conflicts": []
+      }
+    },
+    {
+      "rule_id": "REF_TICKER_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ticker matches golden ticker",
+      "observed": {
+        "extracted": "CVLG3",
+        "golden": "CVLG3"
+      }
+    },
+    {
+      "rule_id": "REF_CNPJ_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "cnpj matches golden cnpj",
+      "observed": {
+        "extracted": "33.832.377/0001-06",
+        "golden": "33.832.377/0001-06"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "issuer_name matches golden emissor",
+      "observed": {
+        "extracted": "Costa Verde Logística S.A.",
+        "golden": "Costa Verde Logística S.A."
+      }
+    },
+    {
+      "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: share_class",
+      "observed": {
+        "golden": "ON"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_ACTIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "golden status = ativo",
+      "observed": {
+        "golden_status": "ativo"
+      }
+    }
+  ],
+  "validation_summary": {
+    "NOT_EVALUATED": 6,
+    "FAIL": 2,
+    "PASS": 9
+  },
+  "rule_groups_not_applicable": [
+    "ratio"
+  ],
+  "semantic_need": {
+    "llm_required": true,
+    "llm_trigger_reasons": [
+      "REQUIRED_DATE_ROLE_UNMAPPED"
+    ],
+    "signals": [
+      {
+        "signal": "REQUIRED_DATE_ROLE_UNMAPPED",
+        "stage": "extract_candidates",
+        "triggers_llm": true,
+        "detail": {
+          "missing_roles": [
+            "ex_date",
+            "payment_date"
+          ],
+          "unassigned_date_mentions": [
+            "14/08/2024",
+            "22/08/2024",
+            "14 de agosto de 2024"
+          ]
+        }
+      }
+    ]
+  },
+  "semantic": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "llm+deterministic",
+      "reasons": [
+        "AGREEMENT"
+      ],
+      "qualifiers": [],
+      "interpretation": {
+        "deterministic": "DIVIDEND",
+        "deterministic_status": "POSITIVE",
+        "llm": "DIVIDEND",
+        "rationale": "O Conselho de Administração aprovou a distribuição de dividendo por ação ordinária, com data-base e data ex definidas; o texto qualifica expressamente o provento como dividendo."
+      }
+    },
+    "fields": {
+      "record_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "AGREEMENT"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "approval_date": {
+        "confidence": "MEDIUM",
+        "source": "llm",
+        "reasons": [
+          "DETERMINISTIC_UNSUPPORTED",
+          "LLM_ONLY_GROUNDED"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "ex_date": {
+        "confidence": "MEDIUM",
+        "source": "llm",
+        "reasons": [
+          "DETERMINISTIC_UNSUPPORTED",
+          "LLM_ONLY_GROUNDED"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "payment_date": {
+        "confidence": "LOW",
+        "source": "llm",
+        "reasons": [
+          "DETERMINISTIC_UNSUPPORTED",
+          "MATERIAL_QUALIFIER_UNREPRESENTED:effective_dates"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "gross_amount_per_share": {
+        "confidence": "LOW",
+        "source": "llm",
+        "reasons": [
+          "MATERIAL_QUALIFIER_UNREPRESENTED:amount"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      }
+    },
+    "blocking": [],
+    "negated_signals": [],
+    "resolutions": [
+      {
+        "concept": "event_type",
+        "category": "AGREEMENT",
+        "deterministic": "DIVIDEND",
+        "deterministic_status": "POSITIVE",
+        "llm": "DIVIDEND",
+        "rationale": "O Conselho de Administração aprovou a distribuição de dividendo por ação ordinária, com data-base e data ex definidas; o texto qualifica expressamente o provento como dividendo."
+      },
+      {
+        "concept": "approval_date",
+        "category": "LLM_ONLY_GROUNDED",
+        "llm": "2024-08-14"
+      },
+      {
+        "concept": "record_date",
+        "category": "AGREEMENT"
+      },
+      {
+        "concept": "ex_date",
+        "category": "LLM_ONLY_GROUNDED",
+        "llm": "2024-08-22"
+      },
+      {
+        "concept": "payment_date",
+        "category": "DETERMINISTIC_UNSUPPORTED",
+        "deterministic": "not_found",
+        "llm": "PENDING"
+      },
+      {
+        "concept": "withholding_tax",
+        "category": "AGREEMENT",
+        "note": "not stated"
+      }
+    ],
+    "material_qualifiers": [
+      {
+        "kind": "material_condition",
+        "affects": "amount",
+        "target_field": "gross_amount_per_share",
+        "effect": "O valor complementar de R$ 0,1000000000 por ação só será devido se ratificado pela Assembleia Geral Ordinária.",
+        "materiality_reason": "Sem essa condição, o valor complementar seria tratado como aprovado e devido, alterando o montante por ação do registro.",
+        "quote": "condicionado à ratificação pela Assembleia Geral Ordinária a ser convocada para deliberar sobre as demonstrações financeiras do exercício de 2024",
+        "represented": false,
+        "representation": null,
+        "blocks": true,
+        "source": "llm"
+      },
+      {
+        "kind": "unresolved",
+        "affects": "effective_dates",
+        "target_field": "payment_date",
+        "effect": "A data de pagamento de ambos os valores permanece indefinida, a ser divulgada posteriormente.",
+        "materiality_reason": "Remover a passagem faria supor uma data de pagamento existente; ela define que o campo está pendente.",
+        "quote": "A data de pagamento de ambos os valores será divulgada em aviso específico após a conclusão dos trâmites societários acima mencionados.",
+        "represented": false,
+        "representation": null,
+        "blocks": true,
+        "source": "llm"
+      }
+    ],
+    "semantic_notes": [
+      {
+        "kind": "informational_context",
+        "note": "A data da Assembleia Geral Ordinária que ratificaria o dividendo complementar ainda não foi definida.",
+        "quote": "cuja data ainda não foi definida",
+        "blocks": false,
+        "source": "llm"
+      }
+    ],
+    "issuer_resolution": {
+      "groups": {
+        "costa verde logística s.a.": {
+          "roles": [
+            "CNPJ_ADJACENT",
+            "LETTERHEAD"
+          ],
+          "third_party_only": false
+        }
+      },
+      "aliases": {
+        "conselho de administração da costa verde logística s.a.": "costa verde logística s.a."
+      },
+      "decision": "STRUCTURAL_PRIMARY"
+    },
+    "tax_statements": [],
+    "revocation": [],
+    "contradictions": [],
+    "material_coverage": [
+      {
+        "category": "date_role",
+        "source": "llm",
+        "evidence": "a ser pago aos acionistas detentores de ações na data-base de 21/08/2024",
+        "expected_target": "record_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "date_role",
+        "source": "llm",
+        "evidence": "negociadas \"ex-dividendo\" a partir de 22/08/2024",
+        "expected_target": "ex_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "qualifier:amount",
+        "source": "llm",
+        "evidence": "condicionado à ratificação pela Assembleia Geral Ordinária a ser convocada para deliberar sobre as demonstrações financeiras do exercício de 2024",
+        "expected_target": "gross_amount_per_share",
+        "representation_status": "UNRESOLVED_EXPLICIT",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "qualifier:effective_dates",
+        "source": "llm",
+        "evidence": "A data de pagamento de ambos os valores será divulgada em aviso específico após a conclusão dos trâmites societários acima mencionados.",
+        "expected_target": "payment_date",
+        "representation_status": "UNRESOLVED_EXPLICIT",
+        "justification": null,
+        "blocks": false
+      }
+    ],
+    "event_status": "ACTIVE_OR_NOT_STATED"
+  },
+  "confidence_view": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "llm+deterministic",
+      "reasons": [
+        "AGREEMENT"
+      ],
+      "qualifiers": [],
+      "interpretation": {
+        "deterministic": "DIVIDEND",
+        "deterministic_status": "POSITIVE",
+        "llm": "DIVIDEND",
+        "rationale": "O Conselho de Administração aprovou a distribuição de dividendo por ação ordinária, com data-base e data ex definidas; o texto qualifica expressamente o provento como dividendo."
+      }
+    },
+    "fields": {
+      "issuer_name": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "cnpj": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ticker": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "approval_date": {
+        "extraction": "HIGH",
+        "semantic": "MEDIUM",
+        "validation": "CROSS_VALIDATED"
+      },
+      "record_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ex_date": {
+        "extraction": "HIGH",
+        "semantic": "MEDIUM",
+        "validation": "CROSS_VALIDATED"
+      },
+      "payment_date": {
+        "extraction": "HIGH",
+        "semantic": "LOW",
+        "validation": "UNVALIDATED"
+      }
+    }
+  },
+  "llm": {
+    "provider": "anthropic",
+    "model": "claude-opus-5",
+    "effort": "medium",
+    "max_tokens": 8000,
+    "fallbacks": "off",
+    "prompt_version": "semantic-interpreter/v3",
+    "prompt_fingerprint": "e6bd3105dc7c8c84",
+    "served_models": [
+      "claude-opus-5"
+    ],
+    "attempts": 1,
+    "api_calls": 2,
+    "replayed": true,
+    "tool_calls": [
+      {
+        "name": "lookup_security",
+        "arguments": {
+          "identifier": "CVLG3",
+          "identifier_type": "TICKER"
+        },
+        "result": {
+          "found": true,
+          "issuer": "Costa Verde Logística S.A.",
+          "isin": "BRCVLGACNOR7",
+          "ticker": "CVLG3",
+          "share_class": "ON",
+          "status": "ativo"
+        },
+        "latency_us": 28,
+        "error": null
+      }
+    ],
+    "usage": {
+      "input_tokens": 9625,
+      "output_tokens": 1215,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "estimated_cost_usd": "0.0785",
+    "latency_ms": 14336,
+    "errors": [],
+    "refusals": [],
+    "served_model_mismatch": false,
+    "parse_or_schema_failures": 0,
+    "request_ids": [
+      "req_011CfYqsTtyfmnPy2g3obqzK",
+      "req_011CfYqshhwR5cTW6bEAwiJ8"
+    ],
+    "interpretation": {
+      "event": {
+        "type": "DIVIDEND",
+        "evidence": [
+          "aprovou a distribuição de dividendo no valor de R$ 0,4000000000 por ação ordinária",
+          "as ações passando a ser negociadas \"ex-dividendo\" a partir de 22/08/2024"
+        ],
+        "misleading_mentions": [
+          {
+            "quote": "dividendo extraordinário complementar de R$ 0,1000000000 por ação, condicionado à ratificação pela Assembleia Geral Ordinária",
+            "why_not_the_event": "Parcela adicional ainda condicionada a ratificação futura pela AGO, não é o evento principal aprovado e definido neste comunicado."
+          }
+        ],
+        "rationale": "O Conselho de Administração aprovou a distribuição de dividendo por ação ordinária, com data-base e data ex definidas; o texto qualifica expressamente o provento como dividendo."
+      },
+      "dates": [
+        {
+          "role": "approval_date",
+          "status": "FOUND",
+          "value_as_written": "14/08/2024",
+          "evidence": "em reunião realizada em 14/08/2024, aprovou a distribuição de dividendo"
+        },
+        {
+          "role": "record_date",
+          "status": "FOUND",
+          "value_as_written": "21/08/2024",
+          "evidence": "a ser pago aos acionistas detentores de ações na data-base de 21/08/2024"
+        },
+        {
+          "role": "ex_date",
+          "status": "FOUND",
+          "value_as_written": "22/08/2024",
+          "evidence": "negociadas \"ex-dividendo\" a partir de 22/08/2024"
+        },
+        {
+          "role": "payment_date",
+          "status": "PENDING",
+          "value_as_written": "será divulgada em aviso específico",
+          "evidence": "A data de pagamento de ambos os valores será divulgada em aviso específico"
+        }
+      ],
+      "withholding_tax": {
+        "status": "NOT_STATED",
+        "rate_as_written": "",
+        "base": "NOT_STATED",
+        "evidence": []
+      },
+      "material_qualifiers": [
+        {
+          "kind": "material_condition",
+          "affects": "amount",
+          "target_field": "gross_amount_per_share",
+          "effect": "O valor complementar de R$ 0,1000000000 por ação só será devido se ratificado pela Assembleia Geral Ordinária.",
+          "materiality_reason": "Sem essa condição, o valor complementar seria tratado como aprovado e devido, alterando o montante por ação do registro.",
+          "quote": "condicionado à ratificação pela Assembleia Geral Ordinária a ser convocada para deliberar sobre as demonstrações financeiras do exercício de 2024"
+        },
+        {
+          "kind": "unresolved",
+          "affects": "effective_dates",
+          "target_field": "payment_date",
+          "effect": "A data de pagamento de ambos os valores permanece indefinida, a ser divulgada posteriormente.",
+          "materiality_reason": "Remover a passagem faria supor uma data de pagamento existente; ela define que o campo está pendente.",
+          "quote": "A data de pagamento de ambos os valores será divulgada em aviso específico após a conclusão dos trâmites societários acima mencionados."
+        }
+      ],
+      "semantic_notes": [
+        {
+          "kind": "informational_context",
+          "note": "A data da Assembleia Geral Ordinária que ratificaria o dividendo complementar ainda não foi definida.",
+          "quote": "cuja data ainda não foi definida"
+        }
+      ],
+      "security_reference": {
+        "identifier_checked": "CVLG3",
+        "found_in_reference": "YES"
+      }
+    },
+    "grounding": {
+      "event_grounded": true,
+      "total_quotes": 10,
+      "grounded_quotes": 10,
+      "ungrounded": []
+    },
+    "reference_divergence": {
+      "tool_called": true,
+      "tool_result_found": true,
+      "llm_reported": "YES",
+      "engine_REF_ISIN_FOUND": "NOT_EVALUATED",
+      "divergent": false,
+      "authority": "validation_engine"
+    }
+  },
+  "routing": {
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "PAYMENT_DATE_PENDING",
+      "REQUIRED_FIELD_MISSING",
+      "SEMANTIC_AMBIGUITY"
+    ],
+    "explanations": [
+      "REQUIRED_FIELDS_PRESENT: required fields not found: ['gross_amount_per_share', 'currency']",
+      "REQUIRED_FIELDS_NOT_PENDING: required fields declared pending: ['payment_date']",
+      "payment_date: DETERMINISTIC_UNSUPPORTED, MATERIAL_QUALIFIER_UNREPRESENTED:effective_dates"
+    ],
+    "gates": [
+      {
+        "gate": "EXTRACTION_POSSIBLE",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REQUIRED_INFORMATION",
+        "status": "BLOCK",
+        "reason_codes": [
+          "PAYMENT_DATE_PENDING",
+          "REQUIRED_FIELD_MISSING"
+        ],
+        "explanations": [
+          "REQUIRED_FIELDS_PRESENT: required fields not found: ['gross_amount_per_share', 'currency']",
+          "REQUIRED_FIELDS_NOT_PENDING: required fields declared pending: ['payment_date']"
+        ]
+      },
+      {
+        "gate": "SEMANTIC_INTERPRETATION",
+        "status": "BLOCK",
+        "reason_codes": [
+          "SEMANTIC_AMBIGUITY"
+        ],
+        "explanations": [
+          "payment_date: DETERMINISTIC_UNSUPPORTED, MATERIAL_QUALIFIER_UNREPRESENTED:effective_dates"
+        ]
+      },
+      {
+        "gate": "DETERMINISTIC_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REFERENCE_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "BLOCKING_ERRORS",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      }
+    ]
+  },
+  "audit": {
+    "run_id": "e009-replay-bt002",
+    "pipeline_version": "baseline-a/0.1.0+candidate-pre-vision/0.1",
+    "started_at": "2026-09-30T03:29:03.674+00:00",
+    "finished_at": "2026-09-30T03:29:03.682+00:00",
+    "duration_us": 7270,
+    "stages": [
+      {
+        "stage": "ingest",
+        "started_at": "2026-09-30T03:29:03.674+00:00",
+        "status": "ok",
+        "duration_us": 194
+      },
+      {
+        "stage": "text_layer",
+        "started_at": "2026-09-30T03:29:03.675+00:00",
+        "status": "ok",
+        "duration_us": 138
+      },
+      {
+        "stage": "extract_candidates",
+        "started_at": "2026-09-30T03:29:03.675+00:00",
+        "status": "ok",
+        "duration_us": 1668
+      },
+      {
+        "stage": "classify",
+        "started_at": "2026-09-30T03:29:03.677+00:00",
+        "status": "ok",
+        "duration_us": 148
+      },
+      {
+        "stage": "normalize",
+        "started_at": "2026-09-30T03:29:03.677+00:00",
+        "status": "ok",
+        "duration_us": 103
+      },
+      {
+        "stage": "confidence",
+        "started_at": "2026-09-30T03:29:03.677+00:00",
+        "status": "ok",
+        "duration_us": 10
+      },
+      {
+        "stage": "semantic_patch",
+        "started_at": "2026-09-30T03:29:03.677+00:00",
+        "status": "ok",
+        "duration_us": 449
+      },
+      {
+        "stage": "semantic_need",
+        "started_at": "2026-09-30T03:29:03.677+00:00",
+        "status": "ok",
+        "duration_us": 26,
+        "llm_required": true,
+        "triggers": [
+          "REQUIRED_DATE_ROLE_UNMAPPED"
+        ]
+      },
+      {
+        "stage": "semantic_llm",
+        "started_at": "2026-09-30T03:29:03.677+00:00",
+        "status": "ok",
+        "duration_us": 3470,
+        "api_calls": 2,
+        "tool_calls": 1,
+        "replayed": true
+      },
+      {
+        "stage": "semantic_merge",
+        "started_at": "2026-09-30T03:29:03.681+00:00",
+        "status": "ok",
+        "duration_us": 596
+      },
+      {
+        "stage": "hardening_gates",
+        "started_at": "2026-09-30T03:29:03.681+00:00",
+        "status": "ok",
+        "duration_us": 119
+      },
+      {
+        "stage": "validate",
+        "started_at": "2026-09-30T03:29:03.682+00:00",
+        "status": "ok",
+        "duration_us": 82,
+        "rules_executed": 17
+      },
+      {
+        "stage": "route",
+        "started_at": "2026-09-30T03:29:03.682+00:00",
+        "status": "ok",
+        "duration_us": 30
+      }
+    ],
+    "errors": [],
+    "retries": 0,
+    "extraction_method": "native_text_layer+deterministic_rules",
+    "model": "claude-opus-5",
+    "prompt_version": "semantic-interpreter/v3",
+    "validators_executed": [
+      "REF_ISIN_FOUND",
+      "REQUIRED_FIELDS_PRESENT",
+      "REQUIRED_FIELDS_NOT_PENDING",
+      "CLASSIFICATION_DETERMINED",
+      "CLASSIFICATION_TITLE_CONSISTENT",
+      "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "DATE_RECORD_BEFORE_EX",
+      "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "AMOUNT_GROSS_POSITIVE",
+      "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "REF_IDENTITY_RESOLVED",
+      "REF_TICKER_CONSISTENT",
+      "REF_CNPJ_CONSISTENT",
+      "REF_ISSUER_NAME_CONSISTENT",
+      "REF_SHARE_CLASS_CONSISTENT",
+      "REF_ISSUER_ACTIVE"
+    ],
+    "final_decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "PAYMENT_DATE_PENDING",
+      "REQUIRED_FIELD_MISSING",
+      "SEMANTIC_AMBIGUITY"
+    ],
+    "variant": "I"
+  }
+}

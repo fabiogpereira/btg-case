@@ -1,0 +1,1283 @@
+{
+  "schema_version": "semantic-record/0.6",
+  "document": {
+    "sha256": "139a6fc0a984417f656de86a2f69b0f1446d2a976c7172e87b2523719422079a",
+    "file_name": "BT2-07.txt",
+    "size_bytes": 798,
+    "pages": 1,
+    "text_layer": {
+      "usable": true,
+      "alnum_chars": 610,
+      "min_alnum_chars_per_page": 100,
+      "reason": null
+    }
+  },
+  "binding": [
+    {
+      "field": "gross_amount_per_share",
+      "rule_id": "gross.label_valor_bruto",
+      "raw": "0,6000000000",
+      "evidence": "valor bruto de R$ 0,6000000000",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 4,
+      "crosses_line": false
+    }
+  ],
+  "identity": {
+    "identity_method": "TICKER_AND_CNPJ_EXACT",
+    "identifiers_used": {
+      "ticker": "NTLN3",
+      "cnpj": "41.843.451/0001-14"
+    },
+    "matched_reference": {
+      "emissor": "Nortline Transportes S.A.",
+      "cnpj": "41.843.451/0001-14",
+      "isin": "BRNTLNACNOR8",
+      "ticker": "NTLN3",
+      "classe": "ON",
+      "segmento_listagem": "Nível 2",
+      "status": "ativo"
+    },
+    "status": "RESOLVED",
+    "reason_code": null,
+    "conflicts": []
+  },
+  "extraction": {
+    "method": "native_text_layer+deterministic_rules",
+    "status": "COMPLETED",
+    "failure_mode": null,
+    "unsupported_fields": [
+      "fraction_adjustment_period"
+    ],
+    "title": null
+  },
+  "classification": {
+    "event_type": "JCP",
+    "decision_rule": "single_type",
+    "signals": {
+      "JCP": [
+        {
+          "rule_id": "event.jcp_juros_capital_proprio",
+          "evidence": {
+            "text": "Juros sobre Capital Próprio",
+            "start": 73,
+            "end": 100,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.jcp_juros_capital_proprio",
+          "evidence": {
+            "text": "Juros sobre Capital Próprio",
+            "start": 209,
+            "end": 236,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.jcp_sigla",
+          "evidence": {
+            "text": "JCP",
+            "start": 238,
+            "end": 241,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.jcp_sigla",
+          "evidence": {
+            "text": "JCP",
+            "start": 415,
+            "end": 418,
+            "page": 1
+          }
+        }
+      ]
+    },
+    "title": null,
+    "title_event_types": [],
+    "confidence": "HIGH",
+    "confidence_reasons": [
+      "SINGLE_TYPE_SIGNALS:JCP"
+    ]
+  },
+  "fields": {
+    "issuer_name": {
+      "status": "found",
+      "value": "Nortline Transportes S.A.",
+      "raw": "Nortline Transportes S.A.",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "NORTLINE TRANSPORTES S.A.",
+          "start": 0,
+          "end": 25,
+          "page": 1
+        },
+        {
+          "text": "Diretoria da Nortline Transportes S.A.",
+          "start": 103,
+          "end": 141,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "issuer_name.v2_structural_role"
+      ],
+      "anchor": "phrase",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [
+        "other entities mentioned (not primary): []",
+        "aliases grouped: {'diretoria da nortline transportes s.a.': 'nortline transportes s.a.'}"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "STRUCTURAL_ROLE:ANNOUNCER+CNPJ_ADJACENT+LETTERHEAD"
+      ]
+    },
+    "cnpj": {
+      "status": "found",
+      "value": "41.843.451/0001-14",
+      "raw": "41.843.451/0001-14",
+      "source_label": "CNPJ",
+      "evidence": [
+        {
+          "text": "CNPJ 41.843.451/0001-14",
+          "start": 26,
+          "end": 49,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "cnpj.label_cnpj"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "isin": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "ticker": {
+      "status": "found",
+      "value": "NTLN3",
+      "raw": "NTLN3",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "NTLN3",
+          "start": 297,
+          "end": 302,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ticker.pattern"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN"
+      ]
+    },
+    "share_class": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "approval_date": {
+      "status": "found",
+      "value": "2024-09-05",
+      "raw": "05/09/2024",
+      "source_label": "em reunião de",
+      "evidence": [
+        {
+          "text": "em reunião de 05/09/2024, foi aprovado o pagamento",
+          "start": 155,
+          "end": 205,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "llm.date_role_mapping"
+      ],
+      "anchor": "llm",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "value located by LLM role mapping; literal quote grounded"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LITERAL_GROUNDED_QUOTE",
+        "DETERMINISTIC_PARSE"
+      ]
+    },
+    "record_date": {
+      "status": "found",
+      "value": "2024-09-12",
+      "raw": "12/09/2024",
+      "source_label": "Terão direito ao recebimento os acionistas com posição acionária em",
+      "evidence": [
+        {
+          "text": "Terão direito ao recebimento os acionistas com posição acionária em 12/09/2024",
+          "start": 305,
+          "end": 383,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "llm.date_role_mapping"
+      ],
+      "anchor": "llm",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "value located by LLM role mapping; literal quote grounded"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LITERAL_GROUNDED_QUOTE",
+        "DETERMINISTIC_PARSE"
+      ]
+    },
+    "ex_date": {
+      "status": "found",
+      "value": "2024-09-13",
+      "raw": "13/09/2024",
+      "source_label": "sendo as ações negociadas \"ex-JCP\" a partir de",
+      "evidence": [
+        {
+          "text": "sendo as ações negociadas \"ex-JCP\" a partir de 13/09/2024",
+          "start": 385,
+          "end": 442,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "llm.date_role_mapping"
+      ],
+      "anchor": "llm",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "value located by LLM role mapping; literal quote grounded"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LITERAL_GROUNDED_QUOTE",
+        "DETERMINISTIC_PARSE"
+      ]
+    },
+    "payment_date": {
+      "status": "found",
+      "value": "2024-09-30",
+      "raw": "30/09/2024",
+      "source_label": "O pagamento está previsto para ocorrer em",
+      "evidence": [
+        {
+          "text": "O pagamento está previsto para ocorrer em 30/09/2024",
+          "start": 444,
+          "end": 496,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "llm.date_role_mapping"
+      ],
+      "anchor": "llm",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "value located by LLM role mapping; literal quote grounded"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LITERAL_GROUNDED_QUOTE",
+        "DETERMINISTIC_PARSE"
+      ]
+    },
+    "gross_amount_per_share": {
+      "status": "found",
+      "value": "0.6000000000",
+      "raw": "0,6000000000",
+      "source_label": "valor bruto de",
+      "evidence": [
+        {
+          "text": "valor bruto de R$ 0,6000000000",
+          "start": 246,
+          "end": 276,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "gross.label_valor_bruto"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "net_amount_per_share": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "withholding_tax": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "currency": {
+      "status": "found",
+      "value": "BRL",
+      "raw": "R$",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "valor bruto de R$ 0,6000000000",
+          "start": 246,
+          "end": 276,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "currency.derived_from_gross_symbol"
+      ],
+      "anchor": "derived",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "derived from gross_amount_per_share evidence"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "DERIVED_FROM_SOURCE_FIELD"
+      ]
+    },
+    "ratio": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "tax_treatment": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "no tax statement found"
+      ],
+      "confidence": null,
+      "confidence_reasons": []
+    }
+  },
+  "event_specific_fields": {},
+  "reference_check": {
+    "found": false,
+    "matched_by": null,
+    "query": null,
+    "golden_row": null
+  },
+  "validations": [
+    {
+      "rule_id": "REF_ISIN_FOUND",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: isin",
+      "observed": {}
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_PRESENT",
+      "status": "FAIL",
+      "severity": "ERROR",
+      "message": "required fields not found: ['net_amount_per_share', 'withholding_tax']",
+      "observed": {
+        "required": [
+          "issuer_name",
+          "isin",
+          "ticker",
+          "record_date",
+          "ex_date",
+          "gross_amount_per_share",
+          "currency",
+          "payment_date",
+          "net_amount_per_share",
+          "withholding_tax"
+        ],
+        "not_found": [
+          "net_amount_per_share",
+          "withholding_tax"
+        ],
+        "isin_waived_by": "TICKER_AND_CNPJ_EXACT"
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "no required field pending",
+      "observed": {
+        "declared_pending": []
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_DETERMINED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "event type JCP by rule single_type",
+      "observed": {
+        "decision_rule": "single_type"
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: title_event_type",
+      "observed": {
+        "title": null
+      }
+    },
+    {
+      "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "approval 2024-09-05 vs record 2024-09-12",
+      "observed": {
+        "approval_date": "2024-09-05",
+        "record_date": "2024-09-12"
+      }
+    },
+    {
+      "rule_id": "DATE_RECORD_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "record 2024-09-12 vs ex 2024-09-13",
+      "observed": {
+        "record_date": "2024-09-12",
+        "ex_date": "2024-09-13"
+      }
+    },
+    {
+      "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "ex 2024-09-13; next weekday after record is 2024-09-13 (no holiday calendar, D-006)",
+      "observed": {
+        "record_date": "2024-09-12",
+        "ex_date": "2024-09-13",
+        "expected_ex_date": "2024-09-13"
+      }
+    },
+    {
+      "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "payment_date 2024-09-30 vs ex 2024-09-13",
+      "observed": {
+        "settlement_field": "payment_date",
+        "settlement_date": "2024-09-30",
+        "ex_date": "2024-09-13"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_GROSS_POSITIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "gross = 0.6000000000",
+      "observed": {
+        "gross": "0.6000000000"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: net_amount_per_share, withholding_tax",
+      "observed": {
+        "net_status": "not_found"
+      }
+    },
+    {
+      "rule_id": "REF_IDENTITY_RESOLVED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "identity TICKER_AND_CNPJ_EXACT",
+      "observed": {
+        "identity_method": "TICKER_AND_CNPJ_EXACT",
+        "identifiers_used": {
+          "ticker": "NTLN3",
+          "cnpj": "41.843.451/0001-14"
+        },
+        "reason_code": null,
+        "conflicts": []
+      }
+    },
+    {
+      "rule_id": "REF_TICKER_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ticker matches golden ticker",
+      "observed": {
+        "extracted": "NTLN3",
+        "golden": "NTLN3"
+      }
+    },
+    {
+      "rule_id": "REF_CNPJ_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "cnpj matches golden cnpj",
+      "observed": {
+        "extracted": "41.843.451/0001-14",
+        "golden": "41.843.451/0001-14"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "issuer_name matches golden emissor",
+      "observed": {
+        "extracted": "Nortline Transportes S.A.",
+        "golden": "Nortline Transportes S.A."
+      }
+    },
+    {
+      "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: share_class",
+      "observed": {
+        "golden": "ON"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_ACTIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "golden status = ativo",
+      "observed": {
+        "golden_status": "ativo"
+      }
+    }
+  ],
+  "validation_summary": {
+    "NOT_EVALUATED": 4,
+    "FAIL": 1,
+    "PASS": 12
+  },
+  "rule_groups_not_applicable": [
+    "ratio"
+  ],
+  "semantic_need": {
+    "llm_required": true,
+    "llm_trigger_reasons": [
+      "REQUIRED_DATE_ROLE_UNMAPPED"
+    ],
+    "signals": [
+      {
+        "signal": "REQUIRED_DATE_ROLE_UNMAPPED",
+        "stage": "extract_candidates",
+        "triggers_llm": true,
+        "detail": {
+          "missing_roles": [
+            "record_date",
+            "ex_date",
+            "payment_date"
+          ],
+          "unassigned_date_mentions": [
+            "05/09/2024",
+            "12/09/2024",
+            "13/09/2024",
+            "30/09/2024",
+            "05 de setembro de 2024"
+          ]
+        }
+      }
+    ]
+  },
+  "semantic": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "llm+deterministic",
+      "reasons": [
+        "AGREEMENT"
+      ],
+      "qualifiers": [],
+      "interpretation": {
+        "deterministic": "JCP",
+        "deterministic_status": "POSITIVE",
+        "llm": "JCP",
+        "rationale": "O texto anuncia expressamente a aprovação e pagamento de Juros sobre Capital Próprio, sem menção a dividendos ou outros eventos."
+      }
+    },
+    "fields": {
+      "gross_amount_per_share": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "approval_date": {
+        "confidence": "MEDIUM",
+        "source": "llm",
+        "reasons": [
+          "DETERMINISTIC_UNSUPPORTED",
+          "LLM_ONLY_GROUNDED"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "record_date": {
+        "confidence": "MEDIUM",
+        "source": "llm",
+        "reasons": [
+          "DETERMINISTIC_UNSUPPORTED",
+          "LLM_ONLY_GROUNDED"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "ex_date": {
+        "confidence": "MEDIUM",
+        "source": "llm",
+        "reasons": [
+          "DETERMINISTIC_UNSUPPORTED",
+          "LLM_ONLY_GROUNDED"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "payment_date": {
+        "confidence": "MEDIUM",
+        "source": "llm",
+        "reasons": [
+          "DETERMINISTIC_UNSUPPORTED",
+          "LLM_ONLY_GROUNDED"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "withholding_tax": {
+        "confidence": "LOW",
+        "source": "llm",
+        "reasons": [
+          "MATERIAL_QUALIFIER_UNREPRESENTED:tax_rate",
+          "MATERIAL_QUALIFIER_UNREPRESENTED:beneficiary_tax_treatment"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      }
+    },
+    "blocking": [],
+    "negated_signals": [],
+    "resolutions": [
+      {
+        "concept": "event_type",
+        "category": "AGREEMENT",
+        "deterministic": "JCP",
+        "deterministic_status": "POSITIVE",
+        "llm": "JCP",
+        "rationale": "O texto anuncia expressamente a aprovação e pagamento de Juros sobre Capital Próprio, sem menção a dividendos ou outros eventos."
+      },
+      {
+        "concept": "approval_date",
+        "category": "LLM_ONLY_GROUNDED",
+        "llm": "2024-09-05"
+      },
+      {
+        "concept": "record_date",
+        "category": "LLM_ONLY_GROUNDED",
+        "llm": "2024-09-12"
+      },
+      {
+        "concept": "ex_date",
+        "category": "LLM_ONLY_GROUNDED",
+        "llm": "2024-09-13"
+      },
+      {
+        "concept": "payment_date",
+        "category": "LLM_ONLY_GROUNDED",
+        "llm": "2024-09-30"
+      },
+      {
+        "concept": "withholding_tax",
+        "category": "AGREEMENT",
+        "note": "not stated"
+      }
+    ],
+    "material_qualifiers": [
+      {
+        "kind": "unresolved",
+        "affects": "tax_rate",
+        "target_field": "withholding_tax",
+        "effect": "A alíquota de IRRF não é informada neste aviso e será definida em comunicado complementar.",
+        "materiality_reason": "Sem esta passagem não haveria indicação de que a alíquota permanece indefinida; ela determina que a taxa do registro fica pendente de divulgação futura.",
+        "quote": "A alíquota do Imposto de Renda Retido na Fonte aplicável será informada em comunicado complementar",
+        "represented": false,
+        "representation": null,
+        "blocks": true,
+        "source": "llm"
+      },
+      {
+        "kind": "material_condition",
+        "affects": "beneficiary_tax_treatment",
+        "target_field": "withholding_tax",
+        "effect": "O tratamento tributário variará conforme a categoria de acionista.",
+        "materiality_reason": "Removida a passagem, presumir-se-ia tratamento tributário uniforme; ela indica que a retenção depende da categoria do beneficiário.",
+        "quote": "em conformidade com o tratamento tributário aplicável a cada categoria de acionista",
+        "represented": false,
+        "representation": null,
+        "blocks": true,
+        "source": "llm"
+      }
+    ],
+    "semantic_notes": [
+      {
+        "kind": "informational_context",
+        "note": "O comunicado complementar será publicado antes da data de pagamento.",
+        "quote": "a ser publicado antes da data de pagamento",
+        "blocks": false,
+        "source": "llm"
+      }
+    ],
+    "issuer_resolution": {
+      "groups": {
+        "nortline transportes s.a.": {
+          "roles": [
+            "ANNOUNCER",
+            "CNPJ_ADJACENT",
+            "LETTERHEAD"
+          ],
+          "third_party_only": false
+        }
+      },
+      "aliases": {
+        "diretoria da nortline transportes s.a.": "nortline transportes s.a."
+      },
+      "decision": "STRUCTURAL_PRIMARY"
+    },
+    "tax_statements": [],
+    "revocation": [],
+    "contradictions": [],
+    "material_coverage": [
+      {
+        "category": "date_role",
+        "source": "llm",
+        "evidence": "Terão direito ao recebimento os acionistas com posição acionária em 12/09/2024",
+        "expected_target": "record_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "date_role",
+        "source": "llm",
+        "evidence": "sendo as ações negociadas \"ex-JCP\" a partir de 13/09/2024",
+        "expected_target": "ex_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "date_role",
+        "source": "llm",
+        "evidence": "O pagamento está previsto para ocorrer em 30/09/2024",
+        "expected_target": "payment_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "qualifier:tax_rate",
+        "source": "llm",
+        "evidence": "A alíquota do Imposto de Renda Retido na Fonte aplicável será informada em comunicado complementar",
+        "expected_target": "withholding_tax",
+        "representation_status": "UNRESOLVED_EXPLICIT",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "qualifier:beneficiary_tax_treatment",
+        "source": "llm",
+        "evidence": "em conformidade com o tratamento tributário aplicável a cada categoria de acionista",
+        "expected_target": "withholding_tax",
+        "representation_status": "UNRESOLVED_EXPLICIT",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "date_role",
+        "source": "deterministic",
+        "evidence": "O pagamento está previsto para ocorrer em 30/09/2024",
+        "expected_target": "payment_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      }
+    ],
+    "event_status": "ACTIVE_OR_NOT_STATED"
+  },
+  "confidence_view": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "llm+deterministic",
+      "reasons": [
+        "AGREEMENT"
+      ],
+      "qualifiers": [],
+      "interpretation": {
+        "deterministic": "JCP",
+        "deterministic_status": "POSITIVE",
+        "llm": "JCP",
+        "rationale": "O texto anuncia expressamente a aprovação e pagamento de Juros sobre Capital Próprio, sem menção a dividendos ou outros eventos."
+      }
+    },
+    "fields": {
+      "issuer_name": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "cnpj": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ticker": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "approval_date": {
+        "extraction": "HIGH",
+        "semantic": "MEDIUM",
+        "validation": "CROSS_VALIDATED"
+      },
+      "record_date": {
+        "extraction": "HIGH",
+        "semantic": "MEDIUM",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ex_date": {
+        "extraction": "HIGH",
+        "semantic": "MEDIUM",
+        "validation": "CROSS_VALIDATED"
+      },
+      "payment_date": {
+        "extraction": "HIGH",
+        "semantic": "MEDIUM",
+        "validation": "CROSS_VALIDATED"
+      },
+      "gross_amount_per_share": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "currency": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      }
+    }
+  },
+  "llm": {
+    "provider": "anthropic",
+    "model": "claude-opus-5",
+    "effort": "medium",
+    "max_tokens": 8000,
+    "fallbacks": "off",
+    "prompt_version": "semantic-interpreter/v3",
+    "prompt_fingerprint": "e6bd3105dc7c8c84",
+    "served_models": [
+      "claude-opus-5"
+    ],
+    "attempts": 1,
+    "api_calls": 2,
+    "replayed": true,
+    "tool_calls": [
+      {
+        "name": "lookup_security",
+        "arguments": {
+          "identifier": "NTLN3",
+          "identifier_type": "TICKER"
+        },
+        "result": {
+          "found": true,
+          "issuer": "Nortline Transportes S.A.",
+          "isin": "BRNTLNACNOR8",
+          "ticker": "NTLN3",
+          "share_class": "ON",
+          "status": "ativo"
+        },
+        "latency_us": 39,
+        "error": null
+      }
+    ],
+    "usage": {
+      "input_tokens": 9524,
+      "output_tokens": 1063,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "estimated_cost_usd": "0.074195",
+    "latency_ms": 12011,
+    "errors": [],
+    "refusals": [],
+    "served_model_mismatch": false,
+    "parse_or_schema_failures": 0,
+    "request_ids": [
+      "req_011CfYqtXKPWXqvhaKVEh2iF",
+      "req_011CfYqtgWnZG9PQ47sazVA6"
+    ],
+    "interpretation": {
+      "event": {
+        "type": "JCP",
+        "evidence": [
+          "Aviso aos Acionistas – Juros sobre Capital Próprio",
+          "foi aprovado o pagamento de Juros sobre Capital Próprio (JCP) no valor bruto de R$ 0,6000000000 por ação ordinária"
+        ],
+        "misleading_mentions": [],
+        "rationale": "O texto anuncia expressamente a aprovação e pagamento de Juros sobre Capital Próprio, sem menção a dividendos ou outros eventos."
+      },
+      "dates": [
+        {
+          "role": "approval_date",
+          "status": "FOUND",
+          "value_as_written": "05/09/2024",
+          "evidence": "em reunião de 05/09/2024, foi aprovado o pagamento"
+        },
+        {
+          "role": "record_date",
+          "status": "FOUND",
+          "value_as_written": "12/09/2024",
+          "evidence": "Terão direito ao recebimento os acionistas com posição acionária em 12/09/2024"
+        },
+        {
+          "role": "ex_date",
+          "status": "FOUND",
+          "value_as_written": "13/09/2024",
+          "evidence": "sendo as ações negociadas \"ex-JCP\" a partir de 13/09/2024"
+        },
+        {
+          "role": "payment_date",
+          "status": "FOUND",
+          "value_as_written": "30/09/2024",
+          "evidence": "O pagamento está previsto para ocorrer em 30/09/2024"
+        }
+      ],
+      "withholding_tax": {
+        "status": "NOT_STATED",
+        "rate_as_written": "",
+        "base": "NOT_STATED",
+        "evidence": [
+          "A alíquota do Imposto de Renda Retido na Fonte aplicável será informada em comunicado complementar"
+        ]
+      },
+      "material_qualifiers": [
+        {
+          "kind": "unresolved",
+          "affects": "tax_rate",
+          "target_field": "withholding_tax",
+          "effect": "A alíquota de IRRF não é informada neste aviso e será definida em comunicado complementar.",
+          "materiality_reason": "Sem esta passagem não haveria indicação de que a alíquota permanece indefinida; ela determina que a taxa do registro fica pendente de divulgação futura.",
+          "quote": "A alíquota do Imposto de Renda Retido na Fonte aplicável será informada em comunicado complementar"
+        },
+        {
+          "kind": "material_condition",
+          "affects": "beneficiary_tax_treatment",
+          "target_field": "withholding_tax",
+          "effect": "O tratamento tributário variará conforme a categoria de acionista.",
+          "materiality_reason": "Removida a passagem, presumir-se-ia tratamento tributário uniforme; ela indica que a retenção depende da categoria do beneficiário.",
+          "quote": "em conformidade com o tratamento tributário aplicável a cada categoria de acionista"
+        }
+      ],
+      "semantic_notes": [
+        {
+          "kind": "informational_context",
+          "note": "O comunicado complementar será publicado antes da data de pagamento.",
+          "quote": "a ser publicado antes da data de pagamento"
+        }
+      ],
+      "security_reference": {
+        "identifier_checked": "NTLN3",
+        "found_in_reference": "YES"
+      }
+    },
+    "grounding": {
+      "event_grounded": true,
+      "total_quotes": 10,
+      "grounded_quotes": 10,
+      "ungrounded": []
+    },
+    "reference_divergence": {
+      "tool_called": true,
+      "tool_result_found": true,
+      "llm_reported": "YES",
+      "engine_REF_ISIN_FOUND": "NOT_EVALUATED",
+      "divergent": false,
+      "authority": "validation_engine"
+    }
+  },
+  "routing": {
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "REQUIRED_FIELD_MISSING"
+    ],
+    "explanations": [
+      "REQUIRED_FIELDS_PRESENT: required fields not found: ['net_amount_per_share', 'withholding_tax']"
+    ],
+    "gates": [
+      {
+        "gate": "EXTRACTION_POSSIBLE",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REQUIRED_INFORMATION",
+        "status": "BLOCK",
+        "reason_codes": [
+          "REQUIRED_FIELD_MISSING"
+        ],
+        "explanations": [
+          "REQUIRED_FIELDS_PRESENT: required fields not found: ['net_amount_per_share', 'withholding_tax']"
+        ]
+      },
+      {
+        "gate": "SEMANTIC_INTERPRETATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "DETERMINISTIC_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REFERENCE_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "BLOCKING_ERRORS",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      }
+    ]
+  },
+  "audit": {
+    "run_id": "e009-replay-bt002",
+    "pipeline_version": "baseline-a/0.1.0+candidate-pre-vision/0.1",
+    "started_at": "2026-09-30T03:29:03.684+00:00",
+    "finished_at": "2026-09-30T03:29:03.690+00:00",
+    "duration_us": 6814,
+    "stages": [
+      {
+        "stage": "ingest",
+        "started_at": "2026-09-30T03:29:03.684+00:00",
+        "status": "ok",
+        "duration_us": 181
+      },
+      {
+        "stage": "text_layer",
+        "started_at": "2026-09-30T03:29:03.684+00:00",
+        "status": "ok",
+        "duration_us": 121
+      },
+      {
+        "stage": "extract_candidates",
+        "started_at": "2026-09-30T03:29:03.684+00:00",
+        "status": "ok",
+        "duration_us": 1730
+      },
+      {
+        "stage": "classify",
+        "started_at": "2026-09-30T03:29:03.686+00:00",
+        "status": "ok",
+        "duration_us": 157
+      },
+      {
+        "stage": "normalize",
+        "started_at": "2026-09-30T03:29:03.686+00:00",
+        "status": "ok",
+        "duration_us": 90
+      },
+      {
+        "stage": "confidence",
+        "started_at": "2026-09-30T03:29:03.686+00:00",
+        "status": "ok",
+        "duration_us": 11
+      },
+      {
+        "stage": "semantic_patch",
+        "started_at": "2026-09-30T03:29:03.686+00:00",
+        "status": "ok",
+        "duration_us": 350
+      },
+      {
+        "stage": "semantic_need",
+        "started_at": "2026-09-30T03:29:03.686+00:00",
+        "status": "ok",
+        "duration_us": 27,
+        "llm_required": true,
+        "triggers": [
+          "REQUIRED_DATE_ROLE_UNMAPPED"
+        ]
+      },
+      {
+        "stage": "semantic_llm",
+        "started_at": "2026-09-30T03:29:03.686+00:00",
+        "status": "ok",
+        "duration_us": 3161,
+        "api_calls": 2,
+        "tool_calls": 1,
+        "replayed": true
+      },
+      {
+        "stage": "semantic_merge",
+        "started_at": "2026-09-30T03:29:03.689+00:00",
+        "status": "ok",
+        "duration_us": 485
+      },
+      {
+        "stage": "hardening_gates",
+        "started_at": "2026-09-30T03:29:03.690+00:00",
+        "status": "ok",
+        "duration_us": 123
+      },
+      {
+        "stage": "validate",
+        "started_at": "2026-09-30T03:29:03.690+00:00",
+        "status": "ok",
+        "duration_us": 95,
+        "rules_executed": 17
+      },
+      {
+        "stage": "route",
+        "started_at": "2026-09-30T03:29:03.690+00:00",
+        "status": "ok",
+        "duration_us": 28
+      }
+    ],
+    "errors": [],
+    "retries": 0,
+    "extraction_method": "native_text_layer+deterministic_rules",
+    "model": "claude-opus-5",
+    "prompt_version": "semantic-interpreter/v3",
+    "validators_executed": [
+      "REF_ISIN_FOUND",
+      "REQUIRED_FIELDS_PRESENT",
+      "REQUIRED_FIELDS_NOT_PENDING",
+      "CLASSIFICATION_DETERMINED",
+      "CLASSIFICATION_TITLE_CONSISTENT",
+      "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "DATE_RECORD_BEFORE_EX",
+      "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "AMOUNT_GROSS_POSITIVE",
+      "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "REF_IDENTITY_RESOLVED",
+      "REF_TICKER_CONSISTENT",
+      "REF_CNPJ_CONSISTENT",
+      "REF_ISSUER_NAME_CONSISTENT",
+      "REF_SHARE_CLASS_CONSISTENT",
+      "REF_ISSUER_ACTIVE"
+    ],
+    "final_decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "REQUIRED_FIELD_MISSING"
+    ],
+    "variant": "I"
+  }
+}

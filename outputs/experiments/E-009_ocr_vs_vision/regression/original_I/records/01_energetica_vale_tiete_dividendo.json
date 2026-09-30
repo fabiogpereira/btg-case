@@ -1,0 +1,1166 @@
+{
+  "schema_version": "semantic-record/0.6",
+  "document": {
+    "sha256": "e49afdf81d2a1e4a74985e78fa0ea3639633cfa19f5dba633a2b545d115153cb",
+    "file_name": "01_energetica_vale_tiete_dividendo.pdf",
+    "size_bytes": 3268,
+    "pages": 1,
+    "text_layer": {
+      "usable": true,
+      "alnum_chars": 1052,
+      "min_alnum_chars_per_page": 100,
+      "reason": null
+    }
+  },
+  "binding": [
+    {
+      "field": "record_date",
+      "rule_id": "record_date.label_data_base",
+      "raw": "12/06/2026",
+      "evidence": "Data-base (“data com”) 12/06/2026",
+      "decision": "SUPERSEDED",
+      "reason": "SUPERSEDED_BY_NEARER_LABEL",
+      "gap_chars": 14,
+      "crosses_line": true
+    },
+    {
+      "field": "record_date",
+      "rule_id": "record_date.label_data_com",
+      "raw": "12/06/2026",
+      "evidence": "data com”) 12/06/2026",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 3,
+      "crosses_line": true
+    },
+    {
+      "field": "ex_date",
+      "rule_id": "ex_date.label_data_ex",
+      "raw": "15/06/2026",
+      "evidence": "Data “ex-dividendos” 15/06/2026",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 1,
+      "crosses_line": true
+    },
+    {
+      "field": "payment_date",
+      "rule_id": "payment_date.label_data_pagamento",
+      "raw": "03/07/2026",
+      "evidence": "Data de pagamento 03/07/2026",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 1,
+      "crosses_line": true
+    },
+    {
+      "field": "approval_date",
+      "rule_id": "approval_date.label_data_aprovacao",
+      "raw": "28/05/2026",
+      "evidence": "Data de aprovação (RCA) 28/05/2026",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 7,
+      "crosses_line": true
+    },
+    {
+      "field": "gross_amount_per_share",
+      "rule_id": "gross.label_valor_bruto",
+      "raw": "0,4275000000",
+      "evidence": "Valor bruto por ação ordinária (ON) R$ 0,4275000000",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 25,
+      "crosses_line": true
+    },
+    {
+      "field": "withholding_tax",
+      "rule_id": "withholding.label_imposto_renda",
+      "raw": "10",
+      "evidence": "Imposto de Renda na Fonte (IRRF) à alíquota de 10%",
+      "decision": "SUPERSEDED",
+      "reason": "SUPERSEDED_BY_NEARER_LABEL",
+      "gap_chars": 31,
+      "crosses_line": false
+    },
+    {
+      "field": "withholding_tax",
+      "rule_id": "withholding.label_irrf",
+      "raw": "10",
+      "evidence": "IRRF) à alíquota de 10%",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 16,
+      "crosses_line": false
+    }
+  ],
+  "identity": {
+    "identity_method": "ISIN_EXACT",
+    "identifiers_used": {
+      "isin": "BRTIETACNOR3"
+    },
+    "matched_reference": {
+      "emissor": "Energética Vale do Tietê S.A.",
+      "cnpj": "12.345.678/0001-90",
+      "isin": "BRTIETACNOR3",
+      "ticker": "TIET3",
+      "classe": "ON",
+      "segmento_listagem": "Novo Mercado",
+      "status": "ativo"
+    },
+    "status": "RESOLVED",
+    "reason_code": null,
+    "conflicts": []
+  },
+  "extraction": {
+    "method": "native_text_layer+deterministic_rules",
+    "status": "COMPLETED",
+    "failure_mode": null,
+    "unsupported_fields": [
+      "fraction_adjustment_period"
+    ],
+    "title": "Pagamento de Dividendos"
+  },
+  "classification": {
+    "event_type": "DIVIDEND",
+    "decision_rule": "single_type",
+    "signals": {
+      "DIVIDEND": [
+        {
+          "rule_id": "event.dividend_dividendo",
+          "evidence": {
+            "text": "dividendos",
+            "start": 415,
+            "end": 425,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.dividend_dividendo",
+          "evidence": {
+            "text": "dividendos",
+            "start": 510,
+            "end": 520,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.dividend_dividendo",
+          "evidence": {
+            "text": "dividendos",
+            "start": 676,
+            "end": 686,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.dividend_dividendo",
+          "evidence": {
+            "text": "dividendos",
+            "start": 803,
+            "end": 813,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.dividend_dividendo",
+          "evidence": {
+            "text": "Dividendo",
+            "start": 1003,
+            "end": 1012,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.dividend_dividendo",
+          "evidence": {
+            "text": "dividendos",
+            "start": 1143,
+            "end": 1153,
+            "page": 1
+          }
+        }
+      ]
+    },
+    "title": "Pagamento de Dividendos",
+    "title_event_types": [
+      "DIVIDEND"
+    ],
+    "confidence": "HIGH",
+    "confidence_reasons": [
+      "SINGLE_TYPE_SIGNALS:DIVIDEND"
+    ]
+  },
+  "fields": {
+    "issuer_name": {
+      "status": "found",
+      "value": "Energética Vale do Tietê S.A.",
+      "raw": "ENERGÉTICA VALE DO TIETÊ S.A.",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "ENERGÉTICA VALE DO TIETÊ S.A.",
+          "start": 0,
+          "end": 29,
+          "page": 1
+        },
+        {
+          "text": "Energética Vale do Tietê S.A.",
+          "start": 150,
+          "end": 179,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "issuer_name.pattern_company_sa"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN",
+        "CORROBORATED:1"
+      ]
+    },
+    "cnpj": {
+      "status": "found",
+      "value": "12.345.678/0001-90",
+      "raw": "12.345.678/0001-90",
+      "source_label": "CNPJ/ME nº",
+      "evidence": [
+        {
+          "text": "CNPJ/ME nº 12.345.678/0001-90",
+          "start": 49,
+          "end": 78,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "cnpj.label_cnpj"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "isin": {
+      "status": "found",
+      "value": "BRTIETACNOR3",
+      "raw": "BRTIETACNOR3",
+      "source_label": "ISIN",
+      "evidence": [
+        {
+          "text": "ISIN BRTIETACNOR3",
+          "start": 1223,
+          "end": 1240,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "isin.label_isin"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "ticker": {
+      "status": "found",
+      "value": "TIET3",
+      "raw": "TIET3",
+      "source_label": "Código de negociação",
+      "evidence": [
+        {
+          "text": "Código de negociação TIET3",
+          "start": 1195,
+          "end": 1221,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ticker.label_codigo_negociacao"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "share_class": {
+      "status": "found",
+      "value": "ON",
+      "raw": "ON",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "por ação ordinária (ON)",
+          "start": 1025,
+          "end": 1048,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "share_class.phrase_por_acao"
+      ],
+      "anchor": "phrase",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "PHRASE_ANCHORED"
+      ]
+    },
+    "approval_date": {
+      "status": "found",
+      "value": "2026-05-28",
+      "raw": "28/05/2026",
+      "source_label": "Data de aprovação (RCA)",
+      "evidence": [
+        {
+          "text": "Data de aprovação (RCA) 28/05/2026",
+          "start": 1065,
+          "end": 1099,
+          "page": 1
+        },
+        {
+          "text": "reunião realizada em 28 de maio de 2026",
+          "start": 348,
+          "end": 387,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "approval_date.label_data_aprovacao",
+        "approval_date.phrase_meeting"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 2,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED",
+        "CORROBORATED:2"
+      ]
+    },
+    "record_date": {
+      "status": "found",
+      "value": "2026-06-12",
+      "raw": "12/06/2026",
+      "source_label": "data com”)",
+      "evidence": [
+        {
+          "text": "data com”) 12/06/2026",
+          "start": 1112,
+          "end": 1133,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "record_date.label_data_com"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED",
+        "CORROBORATED:1"
+      ]
+    },
+    "ex_date": {
+      "status": "found",
+      "value": "2026-06-15",
+      "raw": "15/06/2026",
+      "source_label": "Data “ex-dividendos”",
+      "evidence": [
+        {
+          "text": "Data “ex-dividendos” 15/06/2026",
+          "start": 1134,
+          "end": 1165,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ex_date.label_data_ex"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED",
+        "CORROBORATED:1"
+      ]
+    },
+    "payment_date": {
+      "status": "found",
+      "value": "2026-07-03",
+      "raw": "03/07/2026",
+      "source_label": "Data de pagamento",
+      "evidence": [
+        {
+          "text": "Data de pagamento 03/07/2026",
+          "start": 1166,
+          "end": 1194,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "payment_date.label_data_pagamento"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "gross_amount_per_share": {
+      "status": "found",
+      "value": "0.4275000000",
+      "raw": "0,4275000000",
+      "source_label": "Valor bruto por ação ordinária (ON)",
+      "evidence": [
+        {
+          "text": "Valor bruto por ação ordinária (ON) R$ 0,4275000000",
+          "start": 1013,
+          "end": 1064,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "gross.label_valor_bruto"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "net_amount_per_share": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "withholding_tax": {
+      "status": "found",
+      "value": {
+        "rate": "0.10",
+        "base": "EXCESS_OVER_THRESHOLD"
+      },
+      "raw": "10",
+      "source_label": "IRRF) à alíquota de",
+      "evidence": [
+        {
+          "text": "IRRF) à alíquota de 10%",
+          "start": 872,
+          "end": 895,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "withholding.label_irrf"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "semantic_patch: base interpreted as EXCESS_OVER_THRESHOLD"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "currency": {
+      "status": "found",
+      "value": "BRL",
+      "raw": "R$",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "Valor bruto por ação ordinária (ON) R$ 0,4275000000",
+          "start": 1013,
+          "end": 1064,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "currency.derived_from_gross_symbol"
+      ],
+      "anchor": "derived",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "derived from gross_amount_per_share evidence"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "DERIVED_FROM_SOURCE_FIELD"
+      ]
+    },
+    "ratio": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "tax_treatment": {
+      "status": "found",
+      "value": {
+        "kind": "WITHHOLDING_AT_RATE",
+        "rate": "0.10",
+        "base": "EXCESS_OVER_THRESHOLD",
+        "beneficiary_exceptions": [],
+        "conditions": [
+          "Nos termos da legislação tributária vigente a partir de 1º de janeiro de 2026, os dividendos estarão sujeitos à retenção de Imposto de Renda na Fonte (IRRF) à alíquota de 10% sobre a parcela que exceder R$ 50.000,00 mensais por beneficiário pagos por esta Companhia"
+        ]
+      },
+      "raw": "10",
+      "source_label": "IRRF) à alíquota de",
+      "evidence": [
+        {
+          "text": "IRRF) à alíquota de 10%",
+          "start": 872,
+          "end": 895,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "tax_treatment.v2_from_withholding"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    }
+  },
+  "event_specific_fields": {},
+  "reference_check": {
+    "found": true,
+    "matched_by": "isin",
+    "query": "BRTIETACNOR3",
+    "golden_row": {
+      "emissor": "Energética Vale do Tietê S.A.",
+      "cnpj": "12.345.678/0001-90",
+      "isin": "BRTIETACNOR3",
+      "ticker": "TIET3",
+      "classe": "ON",
+      "segmento_listagem": "Novo Mercado",
+      "status": "ativo"
+    }
+  },
+  "validations": [
+    {
+      "rule_id": "REF_ISIN_FOUND",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ISIN found in golden records",
+      "observed": {
+        "isin": "BRTIETACNOR3"
+      }
+    },
+    {
+      "rule_id": "REF_TICKER_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ticker matches golden ticker",
+      "observed": {
+        "extracted": "TIET3",
+        "golden": "TIET3"
+      }
+    },
+    {
+      "rule_id": "REF_CNPJ_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "cnpj matches golden cnpj",
+      "observed": {
+        "extracted": "12.345.678/0001-90",
+        "golden": "12.345.678/0001-90"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "issuer_name matches golden emissor",
+      "observed": {
+        "extracted": "Energética Vale do Tietê S.A.",
+        "golden": "Energética Vale do Tietê S.A."
+      }
+    },
+    {
+      "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "share_class matches golden classe",
+      "observed": {
+        "extracted": "ON",
+        "golden": "ON"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_ACTIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "golden status = ativo",
+      "observed": {
+        "golden_status": "ativo"
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_PRESENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "all required fields present",
+      "observed": {
+        "required": [
+          "issuer_name",
+          "isin",
+          "ticker",
+          "record_date",
+          "ex_date",
+          "gross_amount_per_share",
+          "currency",
+          "payment_date"
+        ],
+        "not_found": []
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "no required field pending",
+      "observed": {
+        "declared_pending": []
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_DETERMINED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "event type DIVIDEND by rule single_type",
+      "observed": {
+        "decision_rule": "single_type"
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "title consistent with content",
+      "observed": {
+        "title": "Pagamento de Dividendos",
+        "title_event_types": [
+          "DIVIDEND"
+        ],
+        "content_event_type": "DIVIDEND"
+      }
+    },
+    {
+      "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "approval 2026-05-28 vs record 2026-06-12",
+      "observed": {
+        "approval_date": "2026-05-28",
+        "record_date": "2026-06-12"
+      }
+    },
+    {
+      "rule_id": "DATE_RECORD_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "record 2026-06-12 vs ex 2026-06-15",
+      "observed": {
+        "record_date": "2026-06-12",
+        "ex_date": "2026-06-15"
+      }
+    },
+    {
+      "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "ex 2026-06-15; next weekday after record is 2026-06-15 (no holiday calendar, D-006)",
+      "observed": {
+        "record_date": "2026-06-12",
+        "ex_date": "2026-06-15",
+        "expected_ex_date": "2026-06-15"
+      }
+    },
+    {
+      "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "payment_date 2026-07-03 vs ex 2026-06-15",
+      "observed": {
+        "settlement_field": "payment_date",
+        "settlement_date": "2026-07-03",
+        "ex_date": "2026-06-15"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_GROSS_POSITIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "gross = 0.4275000000",
+      "observed": {
+        "gross": "0.4275000000"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: net_amount_per_share",
+      "observed": {
+        "net_status": "not_applicable"
+      }
+    },
+    {
+      "rule_id": "REF_IDENTITY_RESOLVED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "identity ISIN_EXACT",
+      "observed": {
+        "identity_method": "ISIN_EXACT",
+        "identifiers_used": {
+          "isin": "BRTIETACNOR3"
+        },
+        "reason_code": null,
+        "conflicts": []
+      }
+    }
+  ],
+  "validation_summary": {
+    "PASS": 16,
+    "NOT_EVALUATED": 1
+  },
+  "rule_groups_not_applicable": [
+    "ratio"
+  ],
+  "semantic_need": {
+    "llm_required": false,
+    "llm_trigger_reasons": [],
+    "signals": []
+  },
+  "semantic": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "deterministic_patch",
+      "reasons": [
+        "SINGLE_TYPE"
+      ],
+      "qualifiers": [],
+      "interpretation": null
+    },
+    "fields": {
+      "record_date": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "ex_date": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "payment_date": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "approval_date": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "gross_amount_per_share": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "withholding_tax": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "INTERPRETED:THRESHOLD->EXCESS_OVER_THRESHOLD"
+        ],
+        "qualifiers": [
+          {
+            "type": "THRESHOLD",
+            "cue": "sobre a parcela que exceder",
+            "evidence": "Nos termos da legislação tributária vigente a partir de 1º de janeiro de 2026, os dividendos estarão sujeitos à retenção de Imposto de Renda na Fonte (IRRF) à alíquota de 10% sobre a parcela que exceder R$ 50.000,00 mensais por beneficiário pagos por esta Companhia"
+          }
+        ],
+        "interpretation": {
+          "base": "EXCESS_OVER_THRESHOLD"
+        }
+      }
+    },
+    "blocking": [],
+    "negated_signals": [],
+    "resolutions": [],
+    "material_qualifiers": [
+      {
+        "kind": "material_condition",
+        "affects": "tax_base",
+        "quote": "sobre a parcela que exceder",
+        "source": "deterministic_patch",
+        "blocks": false
+      }
+    ],
+    "semantic_notes": [],
+    "issuer_resolution": {
+      "groups": {
+        "energética vale do tietê s.a.": {
+          "roles": [
+            "CNPJ_ADJACENT",
+            "DEFINED_AS_COMPANY",
+            "LETTERHEAD"
+          ],
+          "third_party_only": false
+        }
+      },
+      "aliases": {},
+      "decision": "V1_RESOLUTION"
+    },
+    "tax_statements": [],
+    "revocation": [],
+    "contradictions": [],
+    "material_coverage": [
+      {
+        "category": "tax_treatment",
+        "source": "deterministic",
+        "evidence": "IRRF) à alíquota de 10%",
+        "expected_target": "tax_treatment",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "date_role",
+        "source": "deterministic",
+        "evidence": "Data de pagamento 03/07/2026",
+        "expected_target": "payment_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      }
+    ],
+    "event_status": "ACTIVE_OR_NOT_STATED"
+  },
+  "confidence_view": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "deterministic_patch",
+      "reasons": [
+        "SINGLE_TYPE"
+      ],
+      "qualifiers": [],
+      "interpretation": null
+    },
+    "fields": {
+      "issuer_name": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "cnpj": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "isin": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ticker": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "share_class": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "approval_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "record_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ex_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "payment_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "gross_amount_per_share": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "withholding_tax": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "UNVALIDATED"
+      },
+      "currency": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      },
+      "tax_treatment": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      }
+    }
+  },
+  "routing": {
+    "decision": "AUTO_APPROVE",
+    "reason_codes": [],
+    "explanations": [],
+    "gates": [
+      {
+        "gate": "EXTRACTION_POSSIBLE",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REQUIRED_INFORMATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "SEMANTIC_INTERPRETATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "DETERMINISTIC_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REFERENCE_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "BLOCKING_ERRORS",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      }
+    ]
+  },
+  "audit": {
+    "run_id": "e009-replay-original",
+    "pipeline_version": "baseline-a/0.1.0+candidate-pre-vision/0.1",
+    "started_at": "2026-09-30T03:29:03.253+00:00",
+    "finished_at": "2026-09-30T03:29:03.294+00:00",
+    "duration_us": 41869,
+    "stages": [
+      {
+        "stage": "ingest",
+        "started_at": "2026-09-30T03:29:03.253+00:00",
+        "status": "ok",
+        "duration_us": 194
+      },
+      {
+        "stage": "text_layer",
+        "started_at": "2026-09-30T03:29:03.253+00:00",
+        "status": "ok",
+        "duration_us": 9607
+      },
+      {
+        "stage": "extract_candidates",
+        "started_at": "2026-09-30T03:29:03.262+00:00",
+        "status": "ok",
+        "duration_us": 20248
+      },
+      {
+        "stage": "classify",
+        "started_at": "2026-09-30T03:29:03.283+00:00",
+        "status": "ok",
+        "duration_us": 1159
+      },
+      {
+        "stage": "normalize",
+        "started_at": "2026-09-30T03:29:03.284+00:00",
+        "status": "ok",
+        "duration_us": 668
+      },
+      {
+        "stage": "confidence",
+        "started_at": "2026-09-30T03:29:03.285+00:00",
+        "status": "ok",
+        "duration_us": 30
+      },
+      {
+        "stage": "semantic_patch",
+        "started_at": "2026-09-30T03:29:03.287+00:00",
+        "status": "ok",
+        "duration_us": 4747
+      },
+      {
+        "stage": "semantic_need",
+        "started_at": "2026-09-30T03:29:03.292+00:00",
+        "status": "ok",
+        "duration_us": 66,
+        "llm_required": false,
+        "triggers": []
+      },
+      {
+        "stage": "semantic_llm",
+        "started_at": "2026-09-30T03:29:03.292+00:00",
+        "status": "skipped",
+        "reason": "NOT_REQUIRED",
+        "duration_us": 0
+      },
+      {
+        "stage": "hardening_gates",
+        "started_at": "2026-09-30T03:29:03.292+00:00",
+        "status": "ok",
+        "duration_us": 1138
+      },
+      {
+        "stage": "validate",
+        "started_at": "2026-09-30T03:29:03.293+00:00",
+        "status": "ok",
+        "duration_us": 1433,
+        "rules_executed": 17
+      },
+      {
+        "stage": "route",
+        "started_at": "2026-09-30T03:29:03.294+00:00",
+        "status": "ok",
+        "duration_us": 40
+      }
+    ],
+    "errors": [],
+    "retries": 0,
+    "extraction_method": "native_text_layer+deterministic_rules",
+    "model": null,
+    "prompt_version": null,
+    "validators_executed": [
+      "REF_ISIN_FOUND",
+      "REF_TICKER_CONSISTENT",
+      "REF_CNPJ_CONSISTENT",
+      "REF_ISSUER_NAME_CONSISTENT",
+      "REF_SHARE_CLASS_CONSISTENT",
+      "REF_ISSUER_ACTIVE",
+      "REQUIRED_FIELDS_PRESENT",
+      "REQUIRED_FIELDS_NOT_PENDING",
+      "CLASSIFICATION_DETERMINED",
+      "CLASSIFICATION_TITLE_CONSISTENT",
+      "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "DATE_RECORD_BEFORE_EX",
+      "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "AMOUNT_GROSS_POSITIVE",
+      "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "REF_IDENTITY_RESOLVED"
+    ],
+    "final_decision": "AUTO_APPROVE",
+    "reason_codes": [],
+    "variant": "I"
+  }
+}

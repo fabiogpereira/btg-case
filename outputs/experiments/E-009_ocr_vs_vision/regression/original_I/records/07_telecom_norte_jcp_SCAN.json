@@ -1,0 +1,121 @@
+{
+  "schema_version": "semantic-record/0.6",
+  "document": {
+    "sha256": "cf4af08dd23f507ae72b852d86827bbee6c3fe2d0e31f96e70bc74ea4238c45f",
+    "file_name": "07_telecom_norte_jcp_SCAN.pdf",
+    "size_bytes": 213403,
+    "pages": 1,
+    "text_layer": {
+      "usable": false,
+      "alnum_chars": 0,
+      "min_alnum_chars_per_page": 100,
+      "reason": "NO_USABLE_TEXT_LAYER"
+    }
+  },
+  "extraction": {
+    "method": null,
+    "status": "NOT_POSSIBLE",
+    "failure_mode": "NO_USABLE_TEXT_LAYER",
+    "unsupported_fields": []
+  },
+  "classification": null,
+  "fields": {},
+  "event_specific_fields": {},
+  "reference_check": null,
+  "validations": [],
+  "rule_groups_not_applicable": [],
+  "routing": {
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "NO_USABLE_TEXT_LAYER"
+    ],
+    "explanations": [
+      "sem camada de texto utilizável"
+    ],
+    "gates": [
+      {
+        "gate": "EXTRACTION_POSSIBLE",
+        "status": "BLOCK",
+        "reason_codes": [
+          "NO_USABLE_TEXT_LAYER"
+        ],
+        "explanations": [
+          "sem camada de texto utilizável"
+        ]
+      }
+    ]
+  },
+  "audit": {
+    "run_id": "e009-replay-original",
+    "pipeline_version": "baseline-a/0.1.0+candidate-pre-vision/0.1",
+    "started_at": "2026-09-30T03:29:03.388+00:00",
+    "finished_at": "2026-09-30T03:29:03.390+00:00",
+    "duration_us": 1884,
+    "stages": [
+      {
+        "stage": "ingest",
+        "started_at": "2026-09-30T03:29:03.388+00:00",
+        "status": "ok",
+        "duration_us": 759
+      },
+      {
+        "stage": "text_layer",
+        "started_at": "2026-09-30T03:29:03.389+00:00",
+        "status": "ok",
+        "duration_us": 1036
+      },
+      {
+        "stage": "extract_candidates",
+        "started_at": "2026-09-30T03:29:03.390+00:00",
+        "status": "skipped",
+        "reason": "NO_USABLE_TEXT_LAYER",
+        "duration_us": 0
+      },
+      {
+        "stage": "classify",
+        "started_at": "2026-09-30T03:29:03.390+00:00",
+        "status": "skipped",
+        "reason": "NO_USABLE_TEXT_LAYER",
+        "duration_us": 0
+      },
+      {
+        "stage": "normalize",
+        "started_at": "2026-09-30T03:29:03.390+00:00",
+        "status": "skipped",
+        "reason": "NO_USABLE_TEXT_LAYER",
+        "duration_us": 0
+      },
+      {
+        "stage": "confidence",
+        "started_at": "2026-09-30T03:29:03.390+00:00",
+        "status": "skipped",
+        "reason": "NO_USABLE_TEXT_LAYER",
+        "duration_us": 0
+      },
+      {
+        "stage": "validate",
+        "started_at": "2026-09-30T03:29:03.390+00:00",
+        "status": "skipped",
+        "reason": "NO_USABLE_TEXT_LAYER",
+        "duration_us": 0
+      },
+      {
+        "stage": "route",
+        "started_at": "2026-09-30T03:29:03.390+00:00",
+        "status": "ok",
+        "duration_us": 10
+      }
+    ],
+    "errors": [],
+    "retries": 0,
+    "extraction_method": null,
+    "model": null,
+    "prompt_version": null,
+    "validators_executed": [],
+    "final_decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "NO_USABLE_TEXT_LAYER"
+    ],
+    "variant": "I"
+  }
+}

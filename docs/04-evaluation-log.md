@@ -1689,3 +1689,13 @@ python -m evaluation.e009 perceive --arm A --out outputs/experiments/E-009_ocr_v
 python -m evaluation.e009 perceive --arm B --out outputs/experiments/E-009_ocr_vs_vision/arm_B_vision
 python -m evaluation.e009 compare --out outputs/experiments/E-009_ocr_vs_vision/comparison
 ```
+
+**Resultado da regressão I × H (replay, 0 chamadas de API, 0 cache misses):** critérios 1–5 atendidos.
+- A I é **idêntica à H** nos quatro conjuntos: mesmos campos, roteamento, identidade e bindings (bound, preteridos, rejeitados).
+- Nenhum desses conjuntos tem pontilhado de tabela.
+- A rejeição do BT-03 ("…na data-base. Data-base:") continua, corretamente: ali é ponto final real.
+- O efeito da correção só pode aparecer no doc 07 lido por OCR (braço A).
+
+**Congelamento pré-vision:** tag `candidate-pre-vision` → `f8da5d5`.
+- `outputs/experiments/E-009_ocr_vs_vision/FREEZE_PRE_VISION.json` (88 arquivos, prompts semântico e de vision), verificado por `tests/test_e009_freeze.py`.
+- `case/`: 10/10 com o SHA-256 do mapa, sem mudança no git. `.env` ignorado e não versionado.

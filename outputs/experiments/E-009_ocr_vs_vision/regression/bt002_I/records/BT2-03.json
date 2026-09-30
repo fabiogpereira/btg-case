@@ -1,0 +1,1117 @@
+{
+  "schema_version": "semantic-record/0.6",
+  "document": {
+    "sha256": "8dfca2dcf7ba8b7ebf939b97e086fd4b1972373a80800edfec76628377b57aa0",
+    "file_name": "BT2-03.txt",
+    "size_bytes": 836,
+    "pages": 1,
+    "text_layer": {
+      "usable": true,
+      "alnum_chars": 627,
+      "min_alnum_chars_per_page": 100,
+      "reason": null
+    }
+  },
+  "binding": [],
+  "identity": {
+    "identity_method": "TICKER_AND_CNPJ_EXACT",
+    "identifiers_used": {
+      "ticker": "RBRA4",
+      "cnpj": "64.565.627/0001-27"
+    },
+    "matched_reference": {
+      "emissor": "Rio Bravo Energia S.A.",
+      "cnpj": "64.565.627/0001-27",
+      "isin": "BRRBRAACNPR4",
+      "ticker": "RBRA4",
+      "classe": "PN",
+      "segmento_listagem": "Nível 1",
+      "status": "ativo"
+    },
+    "status": "RESOLVED",
+    "reason_code": null,
+    "conflicts": []
+  },
+  "extraction": {
+    "method": "native_text_layer+deterministic_rules",
+    "status": "COMPLETED",
+    "failure_mode": null,
+    "unsupported_fields": [
+      "fraction_adjustment_period"
+    ],
+    "title": null
+  },
+  "classification": {
+    "event_type": "SPLIT",
+    "decision_rule": "single_type",
+    "signals": {
+      "SPLIT": [
+        {
+          "rule_id": "event.split_desdobramento",
+          "evidence": {
+            "text": "Desdobramento",
+            "start": 90,
+            "end": 103,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.split_desdobramento",
+          "evidence": {
+            "text": "desdobramento",
+            "start": 237,
+            "end": 250,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.split_desdobramento",
+          "evidence": {
+            "text": "desdobramento",
+            "start": 446,
+            "end": 459,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.split_desdobramento",
+          "evidence": {
+            "text": "desdobramento",
+            "start": 579,
+            "end": 592,
+            "page": 1
+          }
+        }
+      ]
+    },
+    "title": null,
+    "title_event_types": [],
+    "confidence": "HIGH",
+    "confidence_reasons": [
+      "SINGLE_TYPE_SIGNALS:SPLIT"
+    ]
+  },
+  "fields": {
+    "issuer_name": {
+      "status": "found",
+      "value": "Rio Bravo Energia S.A.",
+      "raw": "RIO BRAVO ENERGIA S.A.",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "RIO BRAVO ENERGIA S.A.",
+          "start": 0,
+          "end": 22,
+          "page": 1
+        },
+        {
+          "text": "Rio Bravo Energia S.A.",
+          "start": 115,
+          "end": 137,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "issuer_name.pattern_company_sa"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN",
+        "CORROBORATED:1"
+      ]
+    },
+    "cnpj": {
+      "status": "found",
+      "value": "64.565.627/0001-27",
+      "raw": "64.565.627/0001-27",
+      "source_label": "CNPJ nº",
+      "evidence": [
+        {
+          "text": "CNPJ nº 64.565.627/0001-27",
+          "start": 23,
+          "end": 49,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "cnpj.label_cnpj"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "isin": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "ticker": {
+      "status": "found",
+      "value": "RBRA4",
+      "raw": "RBRA4",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "RBRA4",
+          "start": 322,
+          "end": 327,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ticker.pattern"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN"
+      ]
+    },
+    "share_class": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "approval_date": {
+      "status": "found",
+      "value": "2024-06-18",
+      "raw": "18/06/2024",
+      "source_label": "em Assembleia Geral Extraordinária realizada em",
+      "evidence": [
+        {
+          "text": "em Assembleia Geral Extraordinária realizada em 18/06/2024, os acionistas aprovaram o desdobramento",
+          "start": 151,
+          "end": 250,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "llm.date_role_mapping"
+      ],
+      "anchor": "llm",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "value located by LLM role mapping; literal quote grounded"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LITERAL_GROUNDED_QUOTE",
+        "DETERMINISTIC_PARSE"
+      ]
+    },
+    "record_date": {
+      "status": "found",
+      "value": "2024-06-25",
+      "raw": "25/06/2024",
+      "source_label": "Terão direito ao desdobramento os acionistas detentores de ações em",
+      "evidence": [
+        {
+          "text": "Terão direito ao desdobramento os acionistas detentores de ações em 25/06/2024.",
+          "start": 429,
+          "end": 508,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "llm.date_role_mapping"
+      ],
+      "anchor": "llm",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "value located by LLM role mapping; literal quote grounded"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LITERAL_GROUNDED_QUOTE",
+        "DETERMINISTIC_PARSE"
+      ]
+    },
+    "ex_date": {
+      "status": "found",
+      "value": "2024-06-26",
+      "raw": "26/06/2024",
+      "source_label": "A partir de",
+      "evidence": [
+        {
+          "text": "A partir de 26/06/2024, as ações serão negociadas já desdobradas (\"ex-desdobramento\").",
+          "start": 509,
+          "end": 595,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "llm.date_role_mapping"
+      ],
+      "anchor": "llm",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "value located by LLM role mapping; literal quote grounded"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LITERAL_GROUNDED_QUOTE",
+        "DETERMINISTIC_PARSE"
+      ]
+    },
+    "payment_date": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "gross_amount_per_share": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "net_amount_per_share": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "withholding_tax": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "currency": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "ratio": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "tax_treatment": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "non-cash event"
+      ],
+      "confidence": null,
+      "confidence_reasons": []
+    }
+  },
+  "event_specific_fields": {
+    "share_credit_date": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    }
+  },
+  "reference_check": {
+    "found": false,
+    "matched_by": null,
+    "query": null,
+    "golden_row": null
+  },
+  "validations": [
+    {
+      "rule_id": "REF_ISIN_FOUND",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: isin",
+      "observed": {}
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_PRESENT",
+      "status": "FAIL",
+      "severity": "ERROR",
+      "message": "required fields not found: ['ratio']",
+      "observed": {
+        "required": [
+          "issuer_name",
+          "isin",
+          "ticker",
+          "record_date",
+          "ex_date",
+          "ratio"
+        ],
+        "not_found": [
+          "ratio"
+        ],
+        "isin_waived_by": "TICKER_AND_CNPJ_EXACT"
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "no required field pending",
+      "observed": {
+        "declared_pending": []
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_DETERMINED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "event type SPLIT by rule single_type",
+      "observed": {
+        "decision_rule": "single_type"
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: title_event_type",
+      "observed": {
+        "title": null
+      }
+    },
+    {
+      "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "approval 2024-06-18 vs record 2024-06-25",
+      "observed": {
+        "approval_date": "2024-06-18",
+        "record_date": "2024-06-25"
+      }
+    },
+    {
+      "rule_id": "DATE_RECORD_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "record 2024-06-25 vs ex 2024-06-26",
+      "observed": {
+        "record_date": "2024-06-25",
+        "ex_date": "2024-06-26"
+      }
+    },
+    {
+      "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "ex 2024-06-26; next weekday after record is 2024-06-26 (no holiday calendar, D-006)",
+      "observed": {
+        "record_date": "2024-06-25",
+        "ex_date": "2024-06-26",
+        "expected_ex_date": "2024-06-26"
+      }
+    },
+    {
+      "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: share_credit_date",
+      "observed": {
+        "settlement_field_status": "not_found"
+      }
+    },
+    {
+      "rule_id": "RATIO_POSITIVE",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: ratio",
+      "observed": {}
+    },
+    {
+      "rule_id": "REF_IDENTITY_RESOLVED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "identity TICKER_AND_CNPJ_EXACT",
+      "observed": {
+        "identity_method": "TICKER_AND_CNPJ_EXACT",
+        "identifiers_used": {
+          "ticker": "RBRA4",
+          "cnpj": "64.565.627/0001-27"
+        },
+        "reason_code": null,
+        "conflicts": []
+      }
+    },
+    {
+      "rule_id": "REF_TICKER_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ticker matches golden ticker",
+      "observed": {
+        "extracted": "RBRA4",
+        "golden": "RBRA4"
+      }
+    },
+    {
+      "rule_id": "REF_CNPJ_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "cnpj matches golden cnpj",
+      "observed": {
+        "extracted": "64.565.627/0001-27",
+        "golden": "64.565.627/0001-27"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "issuer_name matches golden emissor",
+      "observed": {
+        "extracted": "Rio Bravo Energia S.A.",
+        "golden": "Rio Bravo Energia S.A."
+      }
+    },
+    {
+      "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: share_class",
+      "observed": {
+        "golden": "PN"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_ACTIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "golden status = ativo",
+      "observed": {
+        "golden_status": "ativo"
+      }
+    }
+  ],
+  "validation_summary": {
+    "NOT_EVALUATED": 5,
+    "FAIL": 1,
+    "PASS": 10
+  },
+  "rule_groups_not_applicable": [
+    "amounts"
+  ],
+  "semantic_need": {
+    "llm_required": true,
+    "llm_trigger_reasons": [
+      "REQUIRED_DATE_ROLE_UNMAPPED"
+    ],
+    "signals": [
+      {
+        "signal": "REQUIRED_DATE_ROLE_UNMAPPED",
+        "stage": "extract_candidates",
+        "triggers_llm": true,
+        "detail": {
+          "missing_roles": [
+            "record_date",
+            "ex_date"
+          ],
+          "unassigned_date_mentions": [
+            "18/06/2024",
+            "25/06/2024",
+            "26/06/2024",
+            "18 de junho de 2024"
+          ]
+        }
+      },
+      {
+        "signal": "UNSUPPORTED_FIELD_NOT_REQUIRED",
+        "stage": "extract_candidates",
+        "triggers_llm": false,
+        "detail": "fraction_adjustment_period"
+      }
+    ]
+  },
+  "semantic": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "llm+deterministic",
+      "reasons": [
+        "AGREEMENT"
+      ],
+      "qualifiers": [],
+      "interpretation": {
+        "deterministic": "SPLIT",
+        "deterministic_status": "POSITIVE",
+        "llm": "SPLIT",
+        "rationale": "O texto declara expressamente a aprovação de desdobramento de ações na proporção 1:3, caracterizando SPLIT."
+      }
+    },
+    "fields": {
+      "approval_date": {
+        "confidence": "MEDIUM",
+        "source": "llm",
+        "reasons": [
+          "DETERMINISTIC_UNSUPPORTED",
+          "LLM_ONLY_GROUNDED"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "record_date": {
+        "confidence": "MEDIUM",
+        "source": "llm",
+        "reasons": [
+          "DETERMINISTIC_UNSUPPORTED",
+          "LLM_ONLY_GROUNDED"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "ex_date": {
+        "confidence": "MEDIUM",
+        "source": "llm",
+        "reasons": [
+          "DETERMINISTIC_UNSUPPORTED",
+          "LLM_ONLY_GROUNDED"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      }
+    },
+    "blocking": [],
+    "negated_signals": [],
+    "resolutions": [
+      {
+        "concept": "event_type",
+        "category": "AGREEMENT",
+        "deterministic": "SPLIT",
+        "deterministic_status": "POSITIVE",
+        "llm": "SPLIT",
+        "rationale": "O texto declara expressamente a aprovação de desdobramento de ações na proporção 1:3, caracterizando SPLIT."
+      },
+      {
+        "concept": "approval_date",
+        "category": "LLM_ONLY_GROUNDED",
+        "llm": "2024-06-18"
+      },
+      {
+        "concept": "record_date",
+        "category": "LLM_ONLY_GROUNDED",
+        "llm": "2024-06-25"
+      },
+      {
+        "concept": "ex_date",
+        "category": "LLM_ONLY_GROUNDED",
+        "llm": "2024-06-26"
+      },
+      {
+        "concept": "withholding_tax",
+        "category": "AGREEMENT",
+        "note": "not stated"
+      }
+    ],
+    "material_qualifiers": [],
+    "semantic_notes": [
+      {
+        "kind": "operational_instruction",
+        "note": "Frações resultantes serão agrupadas e vendidas em leilão na B3, com crédito do valor aos acionistas.",
+        "quote": "As frações de ações resultantes, se houver, serão agrupadas e alienadas em leilão na B3, com o crédito do valor correspondente aos acionistas titulares.",
+        "blocks": false,
+        "source": "llm"
+      },
+      {
+        "kind": "informational_context",
+        "note": "O desdobramento não altera o capital social da Companhia.",
+        "quote": "sem alteração do capital social",
+        "blocks": false,
+        "source": "llm"
+      }
+    ],
+    "issuer_resolution": {
+      "groups": {
+        "rio bravo energia s.a.": {
+          "roles": [
+            "ANNOUNCER",
+            "CNPJ_ADJACENT",
+            "LETTERHEAD"
+          ],
+          "third_party_only": false
+        }
+      },
+      "aliases": {},
+      "decision": "V1_RESOLUTION"
+    },
+    "tax_statements": [],
+    "revocation": [],
+    "contradictions": [],
+    "material_coverage": [
+      {
+        "category": "date_role",
+        "source": "llm",
+        "evidence": "Terão direito ao desdobramento os acionistas detentores de ações em 25/06/2024.",
+        "expected_target": "record_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "date_role",
+        "source": "llm",
+        "evidence": "A partir de 26/06/2024, as ações serão negociadas já desdobradas (\"ex-desdobramento\").",
+        "expected_target": "ex_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      }
+    ],
+    "event_status": "ACTIVE_OR_NOT_STATED"
+  },
+  "confidence_view": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "llm+deterministic",
+      "reasons": [
+        "AGREEMENT"
+      ],
+      "qualifiers": [],
+      "interpretation": {
+        "deterministic": "SPLIT",
+        "deterministic_status": "POSITIVE",
+        "llm": "SPLIT",
+        "rationale": "O texto declara expressamente a aprovação de desdobramento de ações na proporção 1:3, caracterizando SPLIT."
+      }
+    },
+    "fields": {
+      "issuer_name": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "cnpj": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ticker": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "approval_date": {
+        "extraction": "HIGH",
+        "semantic": "MEDIUM",
+        "validation": "CROSS_VALIDATED"
+      },
+      "record_date": {
+        "extraction": "HIGH",
+        "semantic": "MEDIUM",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ex_date": {
+        "extraction": "HIGH",
+        "semantic": "MEDIUM",
+        "validation": "CROSS_VALIDATED"
+      }
+    }
+  },
+  "llm": {
+    "provider": "anthropic",
+    "model": "claude-opus-5",
+    "effort": "medium",
+    "max_tokens": 8000,
+    "fallbacks": "off",
+    "prompt_version": "semantic-interpreter/v3",
+    "prompt_fingerprint": "e6bd3105dc7c8c84",
+    "served_models": [
+      "claude-opus-5"
+    ],
+    "attempts": 1,
+    "api_calls": 2,
+    "replayed": true,
+    "tool_calls": [
+      {
+        "name": "lookup_security",
+        "arguments": {
+          "identifier": "RBRA4",
+          "identifier_type": "TICKER"
+        },
+        "result": {
+          "found": true,
+          "issuer": "Rio Bravo Energia S.A.",
+          "isin": "BRRBRAACNPR4",
+          "ticker": "RBRA4",
+          "share_class": "PN",
+          "status": "ativo"
+        },
+        "latency_us": 30,
+        "error": null
+      }
+    ],
+    "usage": {
+      "input_tokens": 9534,
+      "output_tokens": 882,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "estimated_cost_usd": "0.06972",
+    "latency_ms": 11038,
+    "errors": [],
+    "refusals": [],
+    "served_model_mismatch": false,
+    "parse_or_schema_failures": 0,
+    "request_ids": [
+      "req_011CfYqqdxugxPEJbsp2GtxK",
+      "req_011CfYqqrSzZ6FBHG9ED6EBS"
+    ],
+    "interpretation": {
+      "event": {
+        "type": "SPLIT",
+        "evidence": [
+          "aprovaram o desdobramento (split) da totalidade das ações preferenciais de emissão da Companhia (RBRA4)",
+          "na proporção de 1 (uma) ação existente para 3 (três) ações novas"
+        ],
+        "misleading_mentions": [
+          {
+            "quote": "sem alteração do capital social",
+            "why_not_the_event": "Descreve o que o desdobramento não afeta (capital social), não é um evento distinto."
+          },
+          {
+            "quote": "serão agrupadas e alienadas em leilão na B3",
+            "why_not_the_event": "Agrupamento aqui se refere ao tratamento operacional de frações, não a um grupamento (reverse split) de ações."
+          }
+        ],
+        "rationale": "O texto declara expressamente a aprovação de desdobramento de ações na proporção 1:3, caracterizando SPLIT."
+      },
+      "dates": [
+        {
+          "role": "approval_date",
+          "status": "FOUND",
+          "value_as_written": "18/06/2024",
+          "evidence": "em Assembleia Geral Extraordinária realizada em 18/06/2024, os acionistas aprovaram o desdobramento"
+        },
+        {
+          "role": "record_date",
+          "status": "FOUND",
+          "value_as_written": "25/06/2024",
+          "evidence": "Terão direito ao desdobramento os acionistas detentores de ações em 25/06/2024."
+        },
+        {
+          "role": "ex_date",
+          "status": "FOUND",
+          "value_as_written": "26/06/2024",
+          "evidence": "A partir de 26/06/2024, as ações serão negociadas já desdobradas (\"ex-desdobramento\")."
+        }
+      ],
+      "withholding_tax": {
+        "status": "NOT_STATED",
+        "rate_as_written": "",
+        "base": "NOT_STATED",
+        "evidence": []
+      },
+      "material_qualifiers": [],
+      "semantic_notes": [
+        {
+          "kind": "operational_instruction",
+          "note": "Frações resultantes serão agrupadas e vendidas em leilão na B3, com crédito do valor aos acionistas.",
+          "quote": "As frações de ações resultantes, se houver, serão agrupadas e alienadas em leilão na B3, com o crédito do valor correspondente aos acionistas titulares."
+        },
+        {
+          "kind": "informational_context",
+          "note": "O desdobramento não altera o capital social da Companhia.",
+          "quote": "sem alteração do capital social"
+        }
+      ],
+      "security_reference": {
+        "identifier_checked": "RBRA4",
+        "found_in_reference": "YES"
+      }
+    },
+    "grounding": {
+      "event_grounded": true,
+      "total_quotes": 9,
+      "grounded_quotes": 9,
+      "ungrounded": []
+    },
+    "reference_divergence": {
+      "tool_called": true,
+      "tool_result_found": true,
+      "llm_reported": "YES",
+      "engine_REF_ISIN_FOUND": "NOT_EVALUATED",
+      "divergent": false,
+      "authority": "validation_engine"
+    }
+  },
+  "routing": {
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "REQUIRED_FIELD_MISSING"
+    ],
+    "explanations": [
+      "REQUIRED_FIELDS_PRESENT: required fields not found: ['ratio']"
+    ],
+    "gates": [
+      {
+        "gate": "EXTRACTION_POSSIBLE",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REQUIRED_INFORMATION",
+        "status": "BLOCK",
+        "reason_codes": [
+          "REQUIRED_FIELD_MISSING"
+        ],
+        "explanations": [
+          "REQUIRED_FIELDS_PRESENT: required fields not found: ['ratio']"
+        ]
+      },
+      {
+        "gate": "SEMANTIC_INTERPRETATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "DETERMINISTIC_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REFERENCE_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "BLOCKING_ERRORS",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      }
+    ]
+  },
+  "audit": {
+    "run_id": "e009-replay-bt002",
+    "pipeline_version": "baseline-a/0.1.0+candidate-pre-vision/0.1",
+    "started_at": "2026-09-30T03:29:03.654+00:00",
+    "finished_at": "2026-09-30T03:29:03.660+00:00",
+    "duration_us": 5850,
+    "stages": [
+      {
+        "stage": "ingest",
+        "started_at": "2026-09-30T03:29:03.654+00:00",
+        "status": "ok",
+        "duration_us": 160
+      },
+      {
+        "stage": "text_layer",
+        "started_at": "2026-09-30T03:29:03.654+00:00",
+        "status": "ok",
+        "duration_us": 120
+      },
+      {
+        "stage": "extract_candidates",
+        "started_at": "2026-09-30T03:29:03.655+00:00",
+        "status": "ok",
+        "duration_us": 1745
+      },
+      {
+        "stage": "classify",
+        "started_at": "2026-09-30T03:29:03.656+00:00",
+        "status": "ok",
+        "duration_us": 156
+      },
+      {
+        "stage": "normalize",
+        "started_at": "2026-09-30T03:29:03.657+00:00",
+        "status": "ok",
+        "duration_us": 74
+      },
+      {
+        "stage": "confidence",
+        "started_at": "2026-09-30T03:29:03.657+00:00",
+        "status": "ok",
+        "duration_us": 10
+      },
+      {
+        "stage": "semantic_patch",
+        "started_at": "2026-09-30T03:29:03.657+00:00",
+        "status": "ok",
+        "duration_us": 246
+      },
+      {
+        "stage": "semantic_need",
+        "started_at": "2026-09-30T03:29:03.657+00:00",
+        "status": "ok",
+        "duration_us": 30,
+        "llm_required": true,
+        "triggers": [
+          "REQUIRED_DATE_ROLE_UNMAPPED"
+        ]
+      },
+      {
+        "stage": "semantic_llm",
+        "started_at": "2026-09-30T03:29:03.657+00:00",
+        "status": "ok",
+        "duration_us": 2830,
+        "api_calls": 2,
+        "tool_calls": 1,
+        "replayed": true
+      },
+      {
+        "stage": "semantic_merge",
+        "started_at": "2026-09-30T03:29:03.660+00:00",
+        "status": "ok",
+        "duration_us": 53
+      },
+      {
+        "stage": "hardening_gates",
+        "started_at": "2026-09-30T03:29:03.660+00:00",
+        "status": "ok",
+        "duration_us": 91
+      },
+      {
+        "stage": "validate",
+        "started_at": "2026-09-30T03:29:03.660+00:00",
+        "status": "ok",
+        "duration_us": 78,
+        "rules_executed": 16
+      },
+      {
+        "stage": "route",
+        "started_at": "2026-09-30T03:29:03.660+00:00",
+        "status": "ok",
+        "duration_us": 26
+      }
+    ],
+    "errors": [],
+    "retries": 0,
+    "extraction_method": "native_text_layer+deterministic_rules",
+    "model": "claude-opus-5",
+    "prompt_version": "semantic-interpreter/v3",
+    "validators_executed": [
+      "REF_ISIN_FOUND",
+      "REQUIRED_FIELDS_PRESENT",
+      "REQUIRED_FIELDS_NOT_PENDING",
+      "CLASSIFICATION_DETERMINED",
+      "CLASSIFICATION_TITLE_CONSISTENT",
+      "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "DATE_RECORD_BEFORE_EX",
+      "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "RATIO_POSITIVE",
+      "REF_IDENTITY_RESOLVED",
+      "REF_TICKER_CONSISTENT",
+      "REF_CNPJ_CONSISTENT",
+      "REF_ISSUER_NAME_CONSISTENT",
+      "REF_SHARE_CLASS_CONSISTENT",
+      "REF_ISSUER_ACTIVE"
+    ],
+    "final_decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "REQUIRED_FIELD_MISSING"
+    ],
+    "variant": "I"
+  }
+}
