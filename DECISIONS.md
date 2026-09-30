@@ -266,6 +266,23 @@ Formato:
 - **Tipo:** processo
 - **Decisão:** código de A/B/C, avaliação, gabarito v2.1, challenge set v1.0 e prompt v1 (`cf27c1d6164099c5`) estão congelados por hash em `outputs/experiments/E-003_semantic/FREEZE.json`. `tests/test_e003_freeze.py` falha se qualquer arquivo congelado mudar. A única exceção pré-registrada é uma correção de compatibilidade de API no adaptador, antes de qualquer saída semântica; ela gera `freeze_version` 2 e é registrada no evaluation log.
 
+
+## D-020 — Congelamento do E-003 passa a ser comportamental (tag + regressão)
+
+- **Data:** 2026-09-30
+- **Status:** ACCEPTED
+- **Tipo:** processo
+- **Contexto:** O freeze por hash do E-003 travava `pipeline.py`, que precisa de um ramo aditivo para a variante D.
+- **Decisão:** O estado exato do E-003 fica na tag git `e003-final`. `tests/test_e003_regression.py` exige que A, B e C reproduzam exatamente os registros oficiais do E-003; a C por replay do cache, sem API, e qualquer cache miss falha. O hash continua valendo para tudo, exceto `pipeline.py` e `__main__.py`. Os artefatos do E-003 não são alterados.
+- **Evidência:** 57/57 registros reproduzidos antes e depois do ramo da D.
+
+## D-021 — E-004 congelado antes do run oficial da variante D
+
+- **Data:** 2026-09-30
+- **Status:** ACCEPTED
+- **Tipo:** processo
+- **Decisão:** O código da D (detector, política de qualificadores v2, fusão v2), o prompt v2 (`a1007b649ea5c243`), a avaliação (`evaluation/e004.py`, com o oráculo de necessidade pré-registrado), os gabaritos e o challenge set estão congelados por hash em `outputs/experiments/E-004_hybrid/FREEZE.json` (`tests/test_e004_freeze.py`). A configuração é fixa: `claude-opus-5`, effort medium, fallback off.
+
 ---
 
 ## Decisões deliberadamente adiadas (não são decisões)

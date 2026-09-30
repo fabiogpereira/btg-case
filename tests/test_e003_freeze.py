@@ -16,7 +16,13 @@ def text_sha(p: Path) -> str:
     return hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
 
-@pytest.mark.parametrize("path", sorted(FREEZE["files"]))
+# Arquivos que podem evoluir depois do E-003 (ramo aditivo da variante D no E-004). O comportamento
+# congelado deles é garantido por tests/test_e003_regression.py (A, B e C reproduzem os registros
+# oficiais; C por replay do cache). O estado exato do E-003 está na tag git `e003-final`.
+EVOLVABLE = {"src/corporate_actions/pipeline.py", "src/corporate_actions/__main__.py"}
+
+
+@pytest.mark.parametrize("path", sorted(set(FREEZE["files"]) - EVOLVABLE))
 def test_frozen_file_unchanged(path):
     assert text_sha(ROOT / path) == FREEZE["files"][path], f"{path} mudou depois do congelamento do E-003"
 

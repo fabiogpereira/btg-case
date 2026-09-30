@@ -390,3 +390,111 @@ python -m evaluation.variants --original A=$E/original_A B=$E/original_B C=$E/or
 - (b) política de fusão v2 para qualificadores (só bloquear quando alteram a base ou a taxa, ou a definição estreita de CONDITION no prompt v2);
 - (c) **LLM sob demanda**: chamar C só quando o determinístico indica necessidade (campo obrigatório ausente, classificação por precedência ou ambígua, qualificador detectado), medindo custo, latência e segurança contra C sempre ligado (H-25).
 
+## E-004 — LLM sob demanda (H-25) e fusão v2 (H-26): B × C × D (pré-registro; congelado)
+
+- **Checkpoint anterior:** tag `e003-final` → `c64fc61`.
+- **Congelamento:** `outputs/experiments/E-004_hybrid/FREEZE.json` (54 arquivos, prompt `semantic-interpreter/v2` fingerprint `a1007b649ea5c243`), verificado por `tests/test_e004_freeze.py`, antes de qualquer execução oficial da D.
+- **E-003 preservado:** os artefatos não foram tocados. A, B e C continuam reproduzindo exatamente os registros oficiais do E-003; a C por replay do cache, sem API (`tests/test_e003_regression.py`, 57 casos). Só `pipeline.py` e `__main__.py` evoluíram, com um ramo aditivo (D-020).
+- **Baselines de comparação:** B e C são os runs congelados do E-003 (não re-executados).
+
+### Variante D — `hybrid_on_demand` (`baseline-a/0.1.0+hybrid-on-demand/0.1`)
+
+```
+documento -> extração + classificação determinística (A + patch B: negação, adiamento, qualificadores conhecidos)
+          -> detector de necessidade (determinístico, com reason codes e etapa de origem)
+          -> [LLM v2 somente se llm_required]  (function calling lookup_security disponível)
+          -> grounding (toda citação literal; valor contido na citação; parse por código)
+          -> fusão v2 (sem score)  -> validações obrigatórias -> gates -> audit
+```
+
+**Detector de necessidade.** Gatilhos (aciona o LLM):
+
+| Código | Etapa | Quando |
+|---|---|---|
+| `EVENT_SIGNALS_CONFLICT` | classify | sinais de mais de um tipo (precedência ou ambíguo), sem explicação conhecida |
+| `CLASSIFICATION_UNSUPPORTED` | classify | o determinístico não classifica (sem sinais ou ambíguo) e o aviso não adia a natureza |
+| `NEGATION_DECIDED_CLASSIFICATION` | classify | sem a heurística de negação, o tipo seria outro: a decisão depende dela |
+| `REQUIRED_DATE_ROLE_UNMAPPED` | extract | papel de data obrigatório ausente **e** há datas no texto sem papel atribuído (exclui a data de fechamento "Cidade (UF), ...") |
+| `UNINTERPRETED_QUALIFIER` | semantic_patch | o patch B achou um qualificador que não sabe interpretar num campo emitido |
+
+Sinais registrados que **não** acionam o LLM, com o motivo:
+
+| Sinal | Por que não aciona |
+|---|---|
+| `EVENT_SIGNALS_CONFLICT_EXPLAINED` | menções a dividendo só no contexto "imputado ao dividendo obrigatório" de um JCP |
+| `EVENT_NATURE_DEFERRED` | o aviso adia a natureza: revisão garantida, o LLM não muda o desfecho |
+| `NEGATION_NOT_DECISIVE` | a negação não mudou a classificação |
+| `REQUIRED_DATE_MISSING_NO_TEXT_EVIDENCE` | não há texto a interpretar |
+| `DECLARED_PENDING` | pendência declarada no próprio aviso |
+| `EXTRACTION_CONFLICT_OUT_OF_LLM_SCOPE` | conflito em valores ou identificadores, que não são escopo do LLM |
+| `TAX_BASE_NOT_STATED` | base não literal; sem texto novo; a taxa é validada por bruto×líquido |
+| `UNSUPPORTED_FIELD_NOT_REQUIRED` | campo não suportado, mas não obrigatório para o tipo |
+
+**Qualificadores v2.** O LLM descreve cada qualificador: `qualifier_type`, `affects`, `effect` e citação literal. O código decide pela tabela `QUALIFIER_POLICY`:
+
+| Tipo | Materialidade | Bloqueia? |
+|---|---|---|
+| tax_base_condition | material | só se a base não estiver representada (`EXCESS_OVER_THRESHOLD`) |
+| tax_rate_condition | material | sim |
+| beneficiary_exception | material para aplicação tributária | não (vira nota) |
+| event_eligibility_condition | material | sim |
+| legal_context / timing_context / informational_context | não material | não |
+| other / unresolved | desconhecida | sim |
+
+Tipo não material que declara afetar algo material (base, taxa, elegibilidade, natureza, valores) é tratado como **inconsistente** e bloqueia: o LLM não consegue rebaixar um efeito material só pelo rótulo. Qualificador sem citação localizada é descartado. Os qualificadores do patch B são projetados no mesmo modelo.
+
+**Fusão v2** (por conceito, com categoria auditável em `semantic.resolutions`):
+
+| Categoria | Condição | Resultado |
+|---|---|---|
+| AGREEMENT | evidência positiva dos dois lados, concordante | HIGH |
+| DETERMINISTIC_UNSUPPORTED / LLM_ONLY_GROUNDED | o determinístico não tem suporte (tipo não classificado, papel de data sem rótulo, base não literal, qualificador não interpretado) e o LLM está grounded | valor aceito com semântica MEDIUM |
+| HEURISTIC_RESOLVED | a classificação do determinístico veio de heurística (precedência ou negação) e o LLM diverge | aceito **só se** todo sinal do tipo escolhido pela heurística foi explicado pelo LLM como menção enganosa, com citação que o cobre; senão, TRUE_DISAGREEMENT |
+| TRUE_DISAGREEMENT | evidências positivas incompatíveis | LOW → revisão |
+| LLM_UNRESOLVED | o LLM declara ambiguidade | UNRESOLVED → revisão (nunca aprovação silenciosa); data ambígua com rótulo determinístico positivo fica MEDIUM |
+| LLM_UNGROUNDED(_IGNORED) | citação não localizada | descartado; se o determinístico é positivo, mantém o determinístico |
+
+**Política LLM-only:** um valor sustentado só pelo LLM precisa, além do grounding e do parse, **passar em todas as regras que o cruzam, inclusive as de severidade WARNING**. Qualquer FAIL gera `LLM_ONLY_VALUE_NOT_CORROBORATED` e bloqueia.
+
+**Invariantes preservados:**
+- nada inventado;
+- grounding literal obrigatório;
+- lookup, cálculos e validações determinísticos;
+- roteamento em código;
+- nada crítico depende de tool call;
+- Decimal inalterado;
+- ambiguidade não resolvida nunca é aprovada.
+
+### Oráculo de necessidade (pré-registrado, sobre os artefatos congelados do B no E-003)
+
+Precisava de LLM: o B errou um alvo semântico, ou mandou para revisão por motivo semântico resolvível pelo LLM quando o esperado era AUTO_APPROVE.
+- **Original:** doc 03 (base do IR não literal) e doc 06 (`ex_date`).
+- **Challenge:** CH-03, CH-04, CH-06, CH-07, CH-08, CH-09, CH-10.
+
+**Falso negativo esperado por desenho:** o doc 03 conta como "precisava", mas `TAX_BASE_NOT_STATED` deliberadamente não aciona o LLM. A base do gabarito é inferida pela aritmética, não por texto, e a regra bruto×líquido já valida a alíquota. Será reportado como falso negativo.
+
+### Configuração congelada e protocolo
+
+- **Configuração:** `anthropic` / `claude-opus-5` / effort `medium` / `LLM_FALLBACKS=off` / 8000 max tokens.
+- **Protocolo:**
+
+```bash
+E=outputs/experiments/E-004_hybrid
+python -m corporate_actions --variant D --out $E/original_D --llm-cache $E/llm_cache_run1
+python -m corporate_actions --variant D --documents tests/challenge_set/cases --out $E/challenge_D --llm-cache $E/llm_cache_run1
+python -m corporate_actions --variant D --out $E/original_D_run2 --llm-cache $E/llm_cache_run2 --no-cache-read
+python -m corporate_actions --variant D --documents tests/challenge_set/cases --out $E/challenge_D_run2 --llm-cache $E/llm_cache_run2 --no-cache-read
+python -m evaluation.e004 --with-run2
+```
+
+Depois da primeira saída semântica oficial: nenhuma mudança em D, prompt, políticas, limiares ou challenge set. Falhas viram resultado ou hipótese futura.
+
+### Disclosure
+
+1. **Original é desenvolvimento.** A D foi desenvolvida olhando só os documentos originais (checagem sem LLM real, com provedor falso). O reconhecimento de "imputação ao dividendo obrigatório" foi motivado pelos docs 02 e 03.
+2. **Resultados do E-003 no challenge set eram conhecidos.** A fusão v2 e o detector foram desenhados sabendo os failure modes da C (C-1: CONDITION; C-2: desacordo em CH-01 e CH-10) e do B (CH-06), por pedido explícito desta etapa. Nenhum run da D, nem só do detector, foi feito sobre o challenge set antes do congelamento. Ainda assim, o challenge set **não é independente** da D. O holdout cego continua sendo o próximo passo.
+3. **Prompt v2:** exemplos só dos documentos originais: "sobre a parcela que exceder", "ressalvados os acionistas ... imunes ou isentos", "conforme legislação vigente", "no momento do pagamento ou crédito".
+
+### Resultado
+
+_Pendente da execução da D._

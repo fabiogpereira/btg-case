@@ -1,0 +1,99 @@
+{
+  "experiment": "E-004",
+  "freeze_version": 1,
+  "frozen_at": "2026-09-30",
+  "git_base_commit": "c64fc61",
+  "note": "Variante D (detector, qualificadores v2, fusão v2), prompt v2 e avaliação congelados antes de qualquer execução oficial da D.",
+  "prompt": {
+    "version": "semantic-interpreter/v2",
+    "fingerprint": "a1007b649ea5c243"
+  },
+  "required_llm_config": {
+    "LLM_PROVIDER": "anthropic",
+    "LLM_MODEL": "claude-opus-5",
+    "LLM_EFFORT": "medium",
+    "LLM_FALLBACKS": "off",
+    "LLM_MAX_TOKENS": "8000"
+  },
+  "comparison_baselines": {
+    "B": "E-003 original_B / challenge_B (congelados)",
+    "C": "E-003 original_C / challenge_C (congelados)"
+  },
+  "need_oracle_needed_documents": {
+    "original": [
+      "03_siderurgica_paranaense_proventos.pdf",
+      "06_petroquimica_litoral_grupamento.pdf"
+    ],
+    "challenge": [
+      "CH-03",
+      "CH-04",
+      "CH-06",
+      "CH-07",
+      "CH-08",
+      "CH-09",
+      "CH-10"
+    ]
+  },
+  "pending_runs": [
+    "original_D",
+    "challenge_D",
+    "original_D_run2",
+    "challenge_D_run2"
+  ],
+  "files": {
+    "src/corporate_actions/__init__.py": "a2b9c129128b813458c609d80102fb6a137c4a116d7ba25e9af9c952db3b0ea9",
+    "src/corporate_actions/__main__.py": "029eb3c7d96e862260c11ed73b82f6a3c7a52c1602756d74fa6dcb7f7ed3f2ae",
+    "src/corporate_actions/audit.py": "c23e9fe30581a5b6158eafaa239b74b0ab283e9d1a83188b723c3f4a23d9509d",
+    "src/corporate_actions/classification.py": "66c51d56610c45d9e854e452f6d412737598a3b85b05615c861897cc5ff1eea4",
+    "src/corporate_actions/confidence.py": "b8b017afccc23ac222bfda4979bcfe112c48b75f50ed4e8f803059790df1f286",
+    "src/corporate_actions/confidence_model.py": "f601f013c8f3ddc832b27203c4279112228fc13f213917ac51a30c77192bd64e",
+    "src/corporate_actions/extraction.py": "752a219bf139cac1077900e5723cce1641307d2f517dd5fe0c7a292ed3846665",
+    "src/corporate_actions/ingestion.py": "096d1ea3840ed5b0b3c73286de178d38a0c109bdd6119492b824a0c6e595bcd1",
+    "src/corporate_actions/llm/__init__.py": "bf2c14588fa77334702371140ebb5029475549efcde0651dc642850239f6b339",
+    "src/corporate_actions/llm/anthropic_provider.py": "b6ae8256f86a7d01533269564f496592fc2773b913f6ff33b86bcf33487020e3",
+    "src/corporate_actions/llm/base.py": "628beb876240315617b327047c4e4d88d07a8054c36da99c37075821c084afc6",
+    "src/corporate_actions/llm/cache.py": "a899e638e47537778f20e11830b85c8afa004db364d52a095b8f1d5c5ca2b4eb",
+    "src/corporate_actions/llm/config.py": "4a406780649527ce16d4095d70002e97ebd77774e046f170e67229a784706522",
+    "src/corporate_actions/llm/registry.py": "f92c29f5efa752a514b38e03d427866d6b8659be65fae9f00bc5ed09c07c0b90",
+    "src/corporate_actions/models.py": "dbbfecff48dbbc38cf1c540315ccf72ae1d2b6929aad133060e55633d3424f32",
+    "src/corporate_actions/normalization.py": "38522bcfe75318cf3f11635968f57f0be32e9ee9ed1064641ce8746363d304d4",
+    "src/corporate_actions/numeric.py": "bf4a1d18439b6a3047730715ff8254ebbce710eed3e4f7f6045612fe7038c329",
+    "src/corporate_actions/pipeline.py": "9833ecc00cf6c6b133a313c1386c4ea1b3bd42e49e907fb4f29b92861033ffb4",
+    "src/corporate_actions/reference.py": "bc010f682a04a6febc515ef0f066991a05ca1e3ad1821b2de85f76b10c0b2f23",
+    "src/corporate_actions/routing.py": "a1d7f172b9b4c0aee1d47318a331f28df46f14ddc9267727a14480b8f093a47e",
+    "src/corporate_actions/schema.py": "4d74ddc2148935cad34045b169cc69072eb984360d973dc5b05aef2bbb8a8599",
+    "src/corporate_actions/semantic_hybrid.py": "b1ea73a0eab2efad4e4450b26ae7abf0a02735cc55e94ea439788fee1bdcdb56",
+    "src/corporate_actions/semantic_llm.py": "97ae687741031584e13633e88defd9324b4bf6f6f11685d76480fd7fab309319",
+    "src/corporate_actions/semantic_llm_v2.py": "d48c479716e462390c378212cb604b070912a7a1b1a6f8e7645e0448f3303bbb",
+    "src/corporate_actions/semantic_patch.py": "8951f88bcb823f98a14d5940022351bb54836808230da99783b818d7bbfc51d3",
+    "src/corporate_actions/validation.py": "f9dd81e60e55c984813e849e4486b1e6d6451d0206baf33139df223fbfd76f74",
+    "src/evaluation/__init__.py": "9b4fc1f05e471c8ac35795aab238164750b31d8063b1e3d6b8a18bb59f2c0b2c",
+    "src/evaluation/__main__.py": "7946fe3a7369c327f85e945780160cde0279bb070bd87f79e015102f287f6759",
+    "src/evaluation/challenge.py": "4597c295e7d0a441f79239f5ae664188023e05d4d771a906f21ae663a36e5ad5",
+    "src/evaluation/compare.py": "a408c91cadf56feb91248c31bb5c8144b5d22f9b033b4ac324c4f362f3c74774",
+    "src/evaluation/e004.py": "fba282e443cecd0d574a854fa7fce7869eb8e6a9d892c69119891d584b6ce11e",
+    "src/evaluation/llm_metrics.py": "dcc7363d7150b32477648862712e1ca7e429fcaef7bf5242a9ca141916bcd6bb",
+    "src/evaluation/variants.py": "5e6e31509e8a1a0824b6e8dca5fd8700e8c6cd1191cdf25a264bbdd660c0a529",
+    "tests/challenge_set/cases/CH-01.txt": "0948936feb0be22f66357d17bbb3eb4c1442fffe81200e1357cb974a0a6ca67b",
+    "tests/challenge_set/cases/CH-02.txt": "2fd8dea09f15bc473647602d80456dcbf918e4c22dc83053857e5767e5e034af",
+    "tests/challenge_set/cases/CH-03.txt": "569820a4f53b4caf55393e18aefb7f8d8834de064acab07ce6d62e884cab58a1",
+    "tests/challenge_set/cases/CH-04.txt": "3485bf44e75fa1ffa73663a23f0f30ccb76f1c6bb266ccff85ba220e2f8a79a6",
+    "tests/challenge_set/cases/CH-05.txt": "fe970d2831da40ea9d373fcc60f1a2543a0850e27b6458bece6781b03ac2fa21",
+    "tests/challenge_set/cases/CH-06.txt": "add21102b91a8b5249aa3db35493aa3fee441f5275942a019b46ce672b55e0b4",
+    "tests/challenge_set/cases/CH-07.txt": "5331e6fe193e7d4d5f76a21479ca5805cf47462bd39b4cc17c5bd443c520bd54",
+    "tests/challenge_set/cases/CH-08.txt": "614a7e8f5ed961a556126662f5b19bc976f66d0b14e6602d86300d2aee4856b0",
+    "tests/challenge_set/cases/CH-09.txt": "410d545bb7d836135659e1bc487b02d2c2e89881d8ecc712f160fa5a21e4909c",
+    "tests/challenge_set/cases/CH-10.txt": "d66be6ca69d44c4ab79d85e26574fce37a3c16641e8f5c895a113bb71888d55f",
+    "tests/challenge_set/cases/CH-11.txt": "2d3f885861cb977d71b8455932f58c32295107c4eba531351b666ed893383f9d",
+    "tests/challenge_set/ground_truth.json": "84924c221c867e37fb0dad48111944faf8af3cf00eadbba67502984b222227b9",
+    "tests/ground_truth/doc01.json": "1da56ee34a76d6f1e8a303ab23b958a09c22ebdc3d50ba036632c889142e7748",
+    "tests/ground_truth/doc02.json": "b063855a15b69a066e746e32ddbdf16796ccbf4ef233d878d87f2b6196ccbfdf",
+    "tests/ground_truth/doc03.json": "9d8467fc2275f455d7bd2417180f33f96ff5a9f4735a757bbb4c74ef3d87939d",
+    "tests/ground_truth/doc04.json": "c455c55726383c83c07ef302555802e4d3380126320d381b6502403c96316d0f",
+    "tests/ground_truth/doc05.json": "db41dbdbbf69e30c3bff32f4448a54099d82db37f16caa465ae520736ed2d8a6",
+    "tests/ground_truth/doc06.json": "cc63212c4054d7b4c50dee8faffeede36e71626206c78004ea1d5c2608eda01b",
+    "tests/ground_truth/doc07.json": "1f86b2827252008e56d89c93929d85b2b8f7f5be31ed3c27d4c3239d70a99d16",
+    "tests/ground_truth/doc08.json": "cc6ff631c59a0a9f127fb591977c41ec60514bd241ff61f2925a919578bdf5cc",
+    "tests/ground_truth/index.json": "e669231a19e0bdc9a15a3f7bbfd1c73eaa9d59720e180897198ce3f298ed2df7"
+  }
+}

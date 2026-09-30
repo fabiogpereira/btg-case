@@ -4,6 +4,7 @@ A  Baseline A (inalterado):  ingest -> text layer -> candidates -> classify -> n
                               -> validate -> route
 B  + patch semântico determinístico: classificação com negação + qualificadores -> gates
 C  + intérprete semântico por LLM (grounded, com function calling) -> gates
+D  hybrid_on_demand (E-004): B + detector de necessidade -> [LLM v2 só se preciso] -> fusão v2 -> gates
 
 Em todas as variantes o orchestrator executa TODAS as validações obrigatórias; nada depende de
 o LLM chamar ou não uma tool (D-002).
@@ -35,8 +36,10 @@ from .validation import CandidateRecord, validate
 EXTRACTION_METHOD = "native_text_layer+deterministic_rules"
 RECORD_SCHEMA_VERSION = "baseline-a-record/0.1"
 VARIANT_VERSIONS = {"A": PIPELINE_VERSION, "B": PIPELINE_VERSION + "+semantic-patch/0.1",
-                    "C": PIPELINE_VERSION + "+semantic-llm/0.1"}
-VARIANT_SCHEMA = {"A": RECORD_SCHEMA_VERSION, "B": "semantic-record/0.1", "C": "semantic-record/0.1"}
+                    "C": PIPELINE_VERSION + "+semantic-llm/0.1",
+                    "D": PIPELINE_VERSION + "+hybrid-on-demand/0.1"}
+VARIANT_SCHEMA = {"A": RECORD_SCHEMA_VERSION, "B": "semantic-record/0.1", "C": "semantic-record/0.1",
+                  "D": "semantic-record/0.2"}
 
 
 @dataclass
@@ -77,7 +80,7 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
             extraction = extract_candidates(tl)
         negated, cls_semantic = [], None
         with audit.stage("classify"):
-            if variant == "B":
+            if variant in ("B", "D"):
                 from .semantic_patch import classification_semantics, classify_negation_aware
                 classification, negated = classify_negation_aware(extraction, tl)
                 cls_semantic = classification_semantics(classification, extraction, tl, negated)
@@ -107,8 +110,11 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
         with audit.stage("confidence"):
             score_all(fields, specific)
 
-        semantic = None
-        if variant == "B":
+        semantic = need = None
+        if variant == "D":
+            classification, fields, specific, semantic, llm_info, parsed, need = _semantic_d(
+                extraction, tl, classification, cls_semantic, negated, fields, specific, golden, semantic_ctx, audit)
+        elif variant == "B":
             from .semantic_patch import assess_fields
             with audit.stage("semantic_patch"):
                 semantic = {"classification": cls_semantic,
@@ -133,8 +139,11 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
             st["rules_executed"] = len(validations)
         required = REQUIRED.get(classification.event_type, ALWAYS_REQUIRED)
 
-        if variant == "C":
+        if variant in ("C", "D") and llm_info is not None:
             llm_info["reference_divergence"] = _reference_divergence(parsed, llm_info, validations)
+        if variant == "D":
+            from .semantic_hybrid import llm_only_corroboration_blocks
+            semantic["blocking"] += llm_only_corroboration_blocks(semantic["fields"], validations)
         with audit.stage("route"):
             if variant == "A":
                 routing = route(True, validations, {**fields, **specific}, required)
@@ -151,6 +160,8 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
         record["validations"] = validations
         record["validation_summary"] = dict(Counter(v.status for v in validations))
         record["rule_groups_not_applicable"] = not_applicable
+        if need is not None:
+            record["semantic_need"] = need
         if semantic is not None:
             record["semantic"] = semantic
             record["confidence_view"] = {"classification": semantic["classification"],
@@ -182,9 +193,62 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
             reason_codes=(record.get("routing") or {}).get("reason_codes"), **extra)
 
 
-def _llm_audit(ctx: SemanticContext, attempts, parsed, grounding) -> dict:
+def _semantic_d(extraction, tl, classification, cls_semantic, negated, fields, specific, golden, ctx, audit):
+    """Variante D: patch B, detector de necessidade e, só se preciso, LLM v2 + fusão v2."""
+    from . import semantic_hybrid as H
+    from .semantic_llm_v2 import ground_v2, interpret
+    from .semantic_patch import assess_fields
+    with audit.stage("semantic_patch"):
+        b_field_sem = assess_fields(fields, specific, tl)
+    with audit.stage("semantic_need") as st:
+        need = H.detect_need(extraction, tl, classification, cls_semantic, b_field_sem, negated, fields, specific)
+        st.update(llm_required=need["llm_required"], triggers=need["llm_trigger_reasons"])
+    b_quals = [q for a in b_field_sem.values() for q in H.project_b_qualifiers(a)]
+    semantic = {"classification": cls_semantic, "fields": b_field_sem, "blocking": [], "negated_signals": negated,
+                "resolutions": [], "qualifiers_v2": [H.evaluate_qualifier(q, (fields.get("withholding_tax").value or {}).get("base")
+                                                                          if fields.get("withholding_tax") and fields["withholding_tax"].status == "found" else None)
+                                                     for q in b_quals]}
+    if not need["llm_required"]:
+        audit.skip("semantic_llm", "NOT_REQUIRED")
+        return classification, fields, specific, semantic, None, None, need
+    with audit.stage("semantic_llm") as st:
+        parsed, attempts = interpret(ctx.provider, tl, golden, ctx.cache)
+        grounding = ground_v2(parsed, tl) if parsed else None
+        llm_info = _llm_audit(ctx, attempts, parsed, grounding, prompt="v2")
+        st.update(api_calls=llm_info["api_calls"], tool_calls=len(llm_info["tool_calls"]), replayed=llm_info["replayed"])
+    if parsed is None:
+        semantic["blocking"].append("SEMANTIC_INTERPRETER_FAILED")
+        return classification, fields, specific, semantic, llm_info, None, need
+    with audit.stage("semantic_merge"):
+        final_type, cls_sem, cls_res = H.merge_classification(classification, cls_semantic, need, parsed, grounding, tl)
+        if final_type != classification.event_type:
+            classification = dataclasses.replace(
+                classification, event_type=final_type,
+                decision_rule=f"semantic_hybrid({cls_res['category']};deterministic={classification.decision_rule}:{classification.event_type})")
+            fields, specific = resolve_all(extraction, final_type)
+            score_all(fields, specific)
+            b_field_sem = assess_fields(fields, specific, tl)
+        required = REQUIRED.get(final_type, ALWAYS_REQUIRED)
+        field_sem = dict(b_field_sem)
+        llm_quals = [q for q in grounding["qualifiers"]]
+        pre_quals = [H.evaluate_qualifier(q, None) | {"grounded": q["grounded"]} for q in llm_quals]
+        date_sem, date_res = H.merge_dates(fields, specific, b_field_sem, grounding, pre_quals, tl, required)
+        field_sem.update(date_sem)
+        tax_sem, tax_res = H.merge_tax(fields, b_field_sem, grounding, llm_quals, tl)
+        if tax_sem is not None:
+            field_sem["withholding_tax"] = tax_sem
+        evaluated, q_blocking = H.apply_qualifier_policy(llm_quals, field_sem, fields)
+        semantic.update(classification=cls_sem, fields=field_sem, blocking=q_blocking,
+                        resolutions=[cls_res] + date_res + [tax_res], qualifiers_v2=evaluated)
+    return classification, fields, specific, semantic, llm_info, parsed, need
+
+
+def _llm_audit(ctx: SemanticContext, attempts, parsed, grounding, prompt: str = "v1") -> dict:
     from .llm.registry import estimate_cost_usd
-    from .semantic_llm import PROMPT_VERSION, prompt_fingerprint
+    if prompt == "v2":
+        from .semantic_llm_v2 import PROMPT_VERSION, prompt_fingerprint
+    else:
+        from .semantic_llm import PROMPT_VERSION, prompt_fingerprint
     cfg = ctx.provider.config
     usage = Counter()
     for a in attempts:
@@ -268,8 +332,11 @@ def run_batch(documents_dir: Path, golden_path: Path, out_dir: Path, run_id: str
                "total_duration_us": sum(r["audit"]["duration_us"] or 0 for r in records)}
     if variant != "A":
         config["variant"] = variant
-    if variant == "C":
-        from .semantic_llm import PROMPT_VERSION, prompt_fingerprint
+    if variant in ("C", "D"):
+        if variant == "D":
+            from .semantic_llm_v2 import PROMPT_VERSION, prompt_fingerprint
+        else:
+            from .semantic_llm import PROMPT_VERSION, prompt_fingerprint
         config["llm"] = {**semantic_ctx.provider.config.public(), "prompt_version": PROMPT_VERSION,
                          "prompt_fingerprint": prompt_fingerprint()}
         llms = [r["llm"] for r in records if "llm" in r]
@@ -287,6 +354,11 @@ def run_batch(documents_dir: Path, golden_path: Path, out_dir: Path, run_id: str
             "reference_divergences": sum(bool((x.get("reference_divergence") or {}).get("divergent")) for x in llms),
             "served_models": sorted({m for x in llms for m in x["served_models"]}),
             "replayed_documents": sum(x["replayed"] for x in llms)}
+    if variant == "D":
+        needs = [r.get("semantic_need") for r in records if r.get("semantic_need")]
+        summary["semantic_need"] = {
+            "documents_assessed": len(needs), "llm_required": sum(n["llm_required"] for n in needs),
+            "trigger_counts": dict(Counter(t for n in needs for t in n["llm_trigger_reasons"]))}
     manifest = {
         "run_id": run_id, "pipeline_version": version, "record_schema_version": VARIANT_SCHEMA[variant],
         "started_at": started, "finished_at": utc_now(),
