@@ -1,0 +1,1320 @@
+{
+  "schema_version": "semantic-record/0.7",
+  "document": {
+    "sha256": "8929204d73ce6bee898bee332b396ac7f8f83b43f4548381976815a2680f68d2",
+    "file_name": "BT-01.txt",
+    "size_bytes": 969,
+    "pages": 1,
+    "text_layer": {
+      "usable": true,
+      "alnum_chars": 754,
+      "min_alnum_chars_per_page": 100,
+      "reason": null
+    }
+  },
+  "binding": [
+    {
+      "field": "record_date",
+      "rule_id": "record_date.label_data_base",
+      "raw": "30/09/2026",
+      "evidence": "Data-base (posição acionária): 30/09/2026",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 22,
+      "crosses_line": false
+    },
+    {
+      "field": "ex_date",
+      "rule_id": "ex_date.label_data_ex",
+      "raw": "01/10/2026",
+      "evidence": "Data ex-dividendo: 01/10/2026",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 2,
+      "crosses_line": false
+    },
+    {
+      "field": "payment_date",
+      "rule_id": "payment_date.label_data_pagamento",
+      "raw": "20/10/2026",
+      "evidence": "Data de pagamento: 20/10/2026",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 2,
+      "crosses_line": false
+    },
+    {
+      "field": "gross_amount_per_share",
+      "rule_id": "gross.label_valor_bruto",
+      "raw": "0,8500000000",
+      "evidence": "Valor bruto por ação: R$ 0,8500000000",
+      "decision": "BOUND",
+      "reason": null,
+      "gap_chars": 11,
+      "crosses_line": false
+    }
+  ],
+  "identity": {
+    "identity_method": "ISIN_EXACT",
+    "identifiers_used": {
+      "isin": "BRGRAOACNOR1"
+    },
+    "matched_reference": {
+      "emissor": "Grão Dourado Alimentos S.A.",
+      "cnpj": "12.345.678/0001-90",
+      "isin": "BRGRAOACNOR1",
+      "ticker": "GRAO3",
+      "classe": "ON",
+      "segmento_listagem": "Novo Mercado",
+      "status": "ativo"
+    },
+    "status": "RESOLVED",
+    "reason_code": null,
+    "conflicts": []
+  },
+  "extraction": {
+    "method": "native_text_layer+deterministic_rules",
+    "status": "COMPLETED",
+    "failure_mode": null,
+    "unsupported_fields": [
+      "fraction_adjustment_period"
+    ],
+    "title": "DISTRIBUIÇÃO DE DIVIDENDOS"
+  },
+  "classification": {
+    "event_type": "DIVIDEND",
+    "decision_rule": "semantic_hybrid(HEURISTIC_RESOLVED;deterministic=precedence:JCP_over_DIVIDEND:JCP)",
+    "signals": {
+      "JCP": [
+        {
+          "rule_id": "event.jcp_lei_9249",
+          "evidence": {
+            "text": "Lei nº 9.249",
+            "start": 676,
+            "end": 688,
+            "page": 1
+          }
+        }
+      ],
+      "DIVIDEND": [
+        {
+          "rule_id": "event.dividend_dividendo",
+          "evidence": {
+            "text": "DIVIDENDOS",
+            "start": 112,
+            "end": 122,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.dividend_dividendo",
+          "evidence": {
+            "text": "dividendos",
+            "start": 313,
+            "end": 323,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.dividend_dividendo",
+          "evidence": {
+            "text": "dividendo",
+            "start": 501,
+            "end": 510,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.dividend_dividendo",
+          "evidence": {
+            "text": "dividendos",
+            "start": 579,
+            "end": 589,
+            "page": 1
+          }
+        }
+      ]
+    },
+    "title": "DISTRIBUIÇÃO DE DIVIDENDOS",
+    "title_event_types": [
+      "DIVIDEND"
+    ],
+    "confidence": "MEDIUM",
+    "confidence_reasons": [
+      "MULTIPLE_TYPE_SIGNALS",
+      "PRECEDENCE_RULE_APPLIED"
+    ]
+  },
+  "fields": {
+    "issuer_name": {
+      "status": "found",
+      "value": "Grão Dourado Alimentos S.A.",
+      "raw": "GRÃO DOURADO ALIMENTOS S.A.",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "GRÃO DOURADO ALIMENTOS S.A.",
+          "start": 0,
+          "end": 27,
+          "page": 1
+        },
+        {
+          "text": "Grão Dourado Alimentos S.A.",
+          "start": 125,
+          "end": 152,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "issuer_name.pattern_company_sa"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN",
+        "CORROBORATED:1"
+      ]
+    },
+    "cnpj": {
+      "status": "found",
+      "value": "12.345.678/0001-90",
+      "raw": "12.345.678/0001-90",
+      "source_label": "CNPJ/ME nº",
+      "evidence": [
+        {
+          "text": "CNPJ/ME nº 12.345.678/0001-90",
+          "start": 28,
+          "end": 57,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "cnpj.label_cnpj"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "isin": {
+      "status": "found",
+      "value": "BRGRAOACNOR1",
+      "raw": "BRGRAOACNOR1",
+      "source_label": "ISIN",
+      "evidence": [
+        {
+          "text": "ISIN: BRGRAOACNOR1",
+          "start": 368,
+          "end": 386,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "isin.label_isin"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "ticker": {
+      "status": "found",
+      "value": "GRAO3",
+      "raw": "GRAO3",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "GRAO3",
+          "start": 362,
+          "end": 367,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ticker.pattern"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN"
+      ]
+    },
+    "share_class": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "approval_date": {
+      "status": "found",
+      "value": "2026-09-15",
+      "raw": "15/09/2026",
+      "source_label": "o Conselho de Administração, em reunião realizada em",
+      "evidence": [
+        {
+          "text": "o Conselho de Administração, em reunião realizada em 15/09/2026, aprovou a distribuição de dividendos",
+          "start": 222,
+          "end": 323,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "llm.date_role_mapping"
+      ],
+      "anchor": "llm",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "value located by LLM role mapping; literal quote grounded"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LITERAL_GROUNDED_QUOTE",
+        "DETERMINISTIC_PARSE"
+      ]
+    },
+    "record_date": {
+      "status": "found",
+      "value": "2026-09-30",
+      "raw": "30/09/2026",
+      "source_label": "Data-base (posição acionária)",
+      "evidence": [
+        {
+          "text": "Data-base (posição acionária): 30/09/2026",
+          "start": 451,
+          "end": 492,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "record_date.label_data_base"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "ex_date": {
+      "status": "found",
+      "value": "2026-10-01",
+      "raw": "01/10/2026",
+      "source_label": "Data ex-dividendo",
+      "evidence": [
+        {
+          "text": "Data ex-dividendo: 01/10/2026",
+          "start": 493,
+          "end": 522,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ex_date.label_data_ex"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "payment_date": {
+      "status": "found",
+      "value": "2026-10-20",
+      "raw": "20/10/2026",
+      "source_label": "Data de pagamento",
+      "evidence": [
+        {
+          "text": "Data de pagamento: 20/10/2026",
+          "start": 523,
+          "end": 552,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "payment_date.label_data_pagamento"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "gross_amount_per_share": {
+      "status": "found",
+      "value": "0.8500000000",
+      "raw": "0,8500000000",
+      "source_label": "Valor bruto por ação",
+      "evidence": [
+        {
+          "text": "Valor bruto por ação: R$ 0,8500000000",
+          "start": 413,
+          "end": 450,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "gross.label_valor_bruto"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "net_amount_per_share": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "withholding_tax": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "currency": {
+      "status": "found",
+      "value": "BRL",
+      "raw": "R$",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "Valor bruto por ação: R$ 0,8500000000",
+          "start": 413,
+          "end": 450,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "currency.derived_from_gross_symbol"
+      ],
+      "anchor": "derived",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "derived from gross_amount_per_share evidence"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "DERIVED_FROM_SOURCE_FIELD"
+      ]
+    },
+    "ratio": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "tax_treatment": {
+      "status": "found",
+      "value": {
+        "kind": "EXEMPT",
+        "rate": null,
+        "base": null,
+        "beneficiary_exceptions": [],
+        "conditions": []
+      },
+      "raw": "isentos",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "Data de pagamento: 20/10/2026 Tratamento tributário: Os dividendos ora distribuídos são isentos de Imposto de Renda na fonte, nos termos do artigo 10 da Lei nº 9.249/95",
+          "start": 523,
+          "end": 691,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "tax_treatment.v2_exempt"
+      ],
+      "anchor": "phrase",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "PHRASE_ANCHORED",
+        "DISTRIBUTION_LEVEL_STATEMENT"
+      ]
+    }
+  },
+  "event_specific_fields": {},
+  "reference_check": {
+    "found": true,
+    "matched_by": "isin",
+    "query": "BRGRAOACNOR1",
+    "golden_row": {
+      "emissor": "Grão Dourado Alimentos S.A.",
+      "cnpj": "12.345.678/0001-90",
+      "isin": "BRGRAOACNOR1",
+      "ticker": "GRAO3",
+      "classe": "ON",
+      "segmento_listagem": "Novo Mercado",
+      "status": "ativo"
+    }
+  },
+  "validations": [
+    {
+      "rule_id": "REF_ISIN_FOUND",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ISIN found in golden records",
+      "observed": {
+        "isin": "BRGRAOACNOR1"
+      }
+    },
+    {
+      "rule_id": "REF_TICKER_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ticker matches golden ticker",
+      "observed": {
+        "extracted": "GRAO3",
+        "golden": "GRAO3"
+      }
+    },
+    {
+      "rule_id": "REF_CNPJ_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "cnpj matches golden cnpj",
+      "observed": {
+        "extracted": "12.345.678/0001-90",
+        "golden": "12.345.678/0001-90"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "issuer_name matches golden emissor",
+      "observed": {
+        "extracted": "Grão Dourado Alimentos S.A.",
+        "golden": "Grão Dourado Alimentos S.A."
+      }
+    },
+    {
+      "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: share_class",
+      "observed": {
+        "golden": "ON"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_ACTIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "golden status = ativo",
+      "observed": {
+        "golden_status": "ativo"
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_PRESENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "all required fields present",
+      "observed": {
+        "required": [
+          "issuer_name",
+          "isin",
+          "ticker",
+          "record_date",
+          "ex_date",
+          "gross_amount_per_share",
+          "currency",
+          "payment_date"
+        ],
+        "not_found": []
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "no required field pending",
+      "observed": {
+        "declared_pending": []
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_DETERMINED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "event type DIVIDEND by rule semantic_hybrid(HEURISTIC_RESOLVED;deterministic=precedence:JCP_over_DIVIDEND:JCP)",
+      "observed": {
+        "decision_rule": "semantic_hybrid(HEURISTIC_RESOLVED;deterministic=precedence:JCP_over_DIVIDEND:JCP)"
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "title consistent with content",
+      "observed": {
+        "title": "DISTRIBUIÇÃO DE DIVIDENDOS",
+        "title_event_types": [
+          "DIVIDEND"
+        ],
+        "content_event_type": "DIVIDEND"
+      }
+    },
+    {
+      "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "approval 2026-09-15 vs record 2026-09-30",
+      "observed": {
+        "approval_date": "2026-09-15",
+        "record_date": "2026-09-30"
+      }
+    },
+    {
+      "rule_id": "DATE_RECORD_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "record 2026-09-30 vs ex 2026-10-01",
+      "observed": {
+        "record_date": "2026-09-30",
+        "ex_date": "2026-10-01"
+      }
+    },
+    {
+      "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "ex 2026-10-01; next weekday after record is 2026-10-01 (no holiday calendar, D-006)",
+      "observed": {
+        "record_date": "2026-09-30",
+        "ex_date": "2026-10-01",
+        "expected_ex_date": "2026-10-01"
+      }
+    },
+    {
+      "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "payment_date 2026-10-20 vs ex 2026-10-01",
+      "observed": {
+        "settlement_field": "payment_date",
+        "settlement_date": "2026-10-20",
+        "ex_date": "2026-10-01"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_GROSS_POSITIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "gross = 0.8500000000",
+      "observed": {
+        "gross": "0.8500000000"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: net_amount_per_share, withholding_tax",
+      "observed": {
+        "net_status": "not_applicable"
+      }
+    },
+    {
+      "rule_id": "REF_IDENTITY_RESOLVED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "identity ISIN_EXACT",
+      "observed": {
+        "identity_method": "ISIN_EXACT",
+        "identifiers_used": {
+          "isin": "BRGRAOACNOR1"
+        },
+        "reason_code": null,
+        "conflicts": []
+      }
+    }
+  ],
+  "validation_summary": {
+    "PASS": 15,
+    "NOT_EVALUATED": 2
+  },
+  "rule_groups_not_applicable": [
+    "ratio"
+  ],
+  "semantic_need": {
+    "llm_required": true,
+    "llm_trigger_reasons": [
+      "EVENT_SIGNALS_CONFLICT",
+      "SEMANTIC_CONTRADICTION"
+    ],
+    "signals": [
+      {
+        "signal": "EVENT_SIGNALS_CONFLICT",
+        "stage": "classify",
+        "triggers_llm": true,
+        "detail": {
+          "decision_rule": "precedence:JCP_over_DIVIDEND",
+          "types": [
+            "DIVIDEND",
+            "JCP"
+          ]
+        }
+      },
+      {
+        "signal": "SEMANTIC_CONTRADICTION",
+        "stage": "contradiction_detector",
+        "triggers_llm": true,
+        "detail": {
+          "code": "EVENT_TYPE_VS_TAX_TREATMENT",
+          "detail": "JCP declarado isento/sem retenção no nível da distribuição; isenção de JCP é por titular"
+        }
+      }
+    ]
+  },
+  "semantic": {
+    "classification": {
+      "confidence": "MEDIUM",
+      "source": "llm",
+      "reasons": [
+        "HEURISTIC_RESOLVED_BY_GROUNDED_LLM"
+      ],
+      "qualifiers": [],
+      "interpretation": {
+        "deterministic": "JCP",
+        "deterministic_status": "HEURISTIC",
+        "llm": "DIVIDEND",
+        "rationale": "O título e o corpo declaram expressamente a aprovação da distribuição de dividendos, com valor bruto por ação e datas correspondentes."
+      }
+    },
+    "fields": {
+      "record_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "AGREEMENT"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "ex_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "AGREEMENT"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "payment_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "AGREEMENT"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "gross_amount_per_share": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "approval_date": {
+        "confidence": "MEDIUM",
+        "source": "llm",
+        "reasons": [
+          "DETERMINISTIC_UNSUPPORTED",
+          "LLM_ONLY_GROUNDED"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      }
+    },
+    "blocking": [],
+    "negated_signals": [],
+    "resolutions": [
+      {
+        "concept": "event_type",
+        "category": "HEURISTIC_RESOLVED",
+        "deterministic": "JCP",
+        "deterministic_status": "HEURISTIC",
+        "llm": "DIVIDEND",
+        "rationale": "O título e o corpo declaram expressamente a aprovação da distribuição de dividendos, com valor bruto por ação e datas correspondentes.",
+        "losing_signals_explained": 1
+      },
+      {
+        "concept": "approval_date",
+        "category": "LLM_ONLY_GROUNDED",
+        "llm": "2026-09-15"
+      },
+      {
+        "concept": "record_date",
+        "category": "AGREEMENT"
+      },
+      {
+        "concept": "ex_date",
+        "category": "AGREEMENT"
+      },
+      {
+        "concept": "payment_date",
+        "category": "AGREEMENT"
+      },
+      {
+        "concept": "withholding_tax",
+        "category": "LLM_UNGROUNDED"
+      },
+      {
+        "category": "tax_treatment",
+        "result": "AGREEMENT"
+      }
+    ],
+    "material_qualifiers": [],
+    "semantic_notes": [
+      {
+        "kind": "legal_context",
+        "note": "Base legal invocada para a isenção de imposto de renda na fonte.",
+        "quote": "nos termos do artigo 10 da Lei nº 9.249/95",
+        "blocks": false,
+        "source": "llm"
+      },
+      {
+        "kind": "operational_instruction",
+        "note": "Pagamento aos titulares de ações escriturais custodiadas na B3 será feito via agentes de custódia, sem comparecimento pessoal.",
+        "quote": "receberão os valores por meio de seus agentes de custódia, sem necessidade de comparecimento pessoal",
+        "blocks": false,
+        "source": "llm"
+      }
+    ],
+    "issuer_resolution": {
+      "groups": {
+        "grão dourado alimentos s.a.": {
+          "roles": [
+            "ANNOUNCER",
+            "CNPJ_ADJACENT",
+            "DEFINED_AS_COMPANY",
+            "LETTERHEAD"
+          ],
+          "third_party_only": false
+        }
+      },
+      "aliases": {},
+      "decision": "V1_RESOLUTION"
+    },
+    "tax_statements": [
+      {
+        "kind": "EXEMPT",
+        "evidence": "Data de pagamento: 20/10/2026 Tratamento tributário: Os dividendos ora distribuídos são isentos de Imposto de Renda na fonte, nos termos do artigo 10 da Lei nº 9.249/95",
+        "cue": "isentos"
+      }
+    ],
+    "revocation": [],
+    "contradictions": [],
+    "material_coverage": [
+      {
+        "category": "tax_treatment",
+        "source": "deterministic",
+        "evidence": "Data de pagamento: 20/10/2026 Tratamento tributário: Os dividendos ora distribuídos são isentos de Imposto de Renda na fonte, nos termos do artigo 10 da Lei nº 9.249/95",
+        "expected_target": "tax_treatment",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "tax_treatment",
+        "source": "llm",
+        "evidence": "Os dividendos ora distribuídos são isentos de Imposto de Renda na fonte",
+        "expected_target": "tax_treatment",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "date_role",
+        "source": "llm",
+        "evidence": "Data-base (posição acionária): 30/09/2026",
+        "expected_target": "record_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "date_role",
+        "source": "llm",
+        "evidence": "Data ex-dividendo: 01/10/2026",
+        "expected_target": "ex_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "date_role",
+        "source": "llm",
+        "evidence": "Data de pagamento: 20/10/2026",
+        "expected_target": "payment_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "date_role",
+        "source": "deterministic",
+        "evidence": "Data de pagamento: 20/10/2026",
+        "expected_target": "payment_date",
+        "representation_status": "REPRESENTED",
+        "justification": null,
+        "blocks": false
+      }
+    ],
+    "event_status": "ACTIVE_OR_NOT_STATED"
+  },
+  "confidence_view": {
+    "classification": {
+      "confidence": "MEDIUM",
+      "source": "llm",
+      "reasons": [
+        "HEURISTIC_RESOLVED_BY_GROUNDED_LLM"
+      ],
+      "qualifiers": [],
+      "interpretation": {
+        "deterministic": "JCP",
+        "deterministic_status": "HEURISTIC",
+        "llm": "DIVIDEND",
+        "rationale": "O título e o corpo declaram expressamente a aprovação da distribuição de dividendos, com valor bruto por ação e datas correspondentes."
+      }
+    },
+    "fields": {
+      "issuer_name": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "cnpj": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "isin": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ticker": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "approval_date": {
+        "extraction": "HIGH",
+        "semantic": "MEDIUM",
+        "validation": "CROSS_VALIDATED"
+      },
+      "record_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ex_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "payment_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "gross_amount_per_share": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "currency": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      },
+      "tax_treatment": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      }
+    }
+  },
+  "llm": {
+    "provider": "anthropic",
+    "model": "claude-opus-5",
+    "effort": "medium",
+    "max_tokens": 8000,
+    "fallbacks": "off",
+    "prompt_version": "semantic-interpreter/v3",
+    "prompt_fingerprint": "e6bd3105dc7c8c84",
+    "served_models": [
+      "claude-opus-5"
+    ],
+    "attempts": 1,
+    "api_calls": 2,
+    "replayed": true,
+    "tool_calls": [
+      {
+        "name": "lookup_security",
+        "arguments": {
+          "identifier": "BRGRAOACNOR1",
+          "identifier_type": "ISIN"
+        },
+        "result": {
+          "found": true,
+          "issuer": "Grão Dourado Alimentos S.A.",
+          "isin": "BRGRAOACNOR1",
+          "ticker": "GRAO3",
+          "share_class": "ON",
+          "status": "ativo"
+        },
+        "latency_us": 17,
+        "error": null
+      }
+    ],
+    "usage": {
+      "input_tokens": 9766,
+      "output_tokens": 886,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "estimated_cost_usd": "0.07098",
+    "latency_ms": 10654,
+    "errors": [],
+    "refusals": [],
+    "served_model_mismatch": false,
+    "parse_or_schema_failures": 0,
+    "request_ids": [
+      "req_011CfYp3zN6NQaZVfTrMgTTk",
+      "req_011CfYp4Bw7fsRx1ka8Pd4tm"
+    ],
+    "interpretation": {
+      "event": {
+        "type": "DIVIDEND",
+        "evidence": [
+          "aprovou a distribuição de dividendos",
+          "DISTRIBUIÇÃO DE DIVIDENDOS"
+        ],
+        "misleading_mentions": [
+          {
+            "quote": "nos termos do artigo 10 da Lei nº 9.249/95",
+            "why_not_the_event": "Referência legal à isenção de IR sobre dividendos; não caracteriza JCP apesar de citar a Lei 9.249/95."
+          }
+        ],
+        "rationale": "O título e o corpo declaram expressamente a aprovação da distribuição de dividendos, com valor bruto por ação e datas correspondentes."
+      },
+      "dates": [
+        {
+          "role": "approval_date",
+          "status": "FOUND",
+          "value_as_written": "15/09/2026",
+          "evidence": "o Conselho de Administração, em reunião realizada em 15/09/2026, aprovou a distribuição de dividendos"
+        },
+        {
+          "role": "record_date",
+          "status": "FOUND",
+          "value_as_written": "30/09/2026",
+          "evidence": "Data-base (posição acionária): 30/09/2026"
+        },
+        {
+          "role": "ex_date",
+          "status": "FOUND",
+          "value_as_written": "01/10/2026",
+          "evidence": "Data ex-dividendo: 01/10/2026"
+        },
+        {
+          "role": "payment_date",
+          "status": "FOUND",
+          "value_as_written": "20/10/2026",
+          "evidence": "Data de pagamento: 20/10/2026"
+        }
+      ],
+      "withholding_tax": {
+        "status": "STATED",
+        "rate_as_written": "isentos de Imposto de Renda na fonte",
+        "base": "EXEMPT",
+        "evidence": [
+          "Os dividendos ora distribuídos são isentos de Imposto de Renda na fonte"
+        ]
+      },
+      "material_qualifiers": [],
+      "semantic_notes": [
+        {
+          "kind": "legal_context",
+          "note": "Base legal invocada para a isenção de imposto de renda na fonte.",
+          "quote": "nos termos do artigo 10 da Lei nº 9.249/95"
+        },
+        {
+          "kind": "operational_instruction",
+          "note": "Pagamento aos titulares de ações escriturais custodiadas na B3 será feito via agentes de custódia, sem comparecimento pessoal.",
+          "quote": "receberão os valores por meio de seus agentes de custódia, sem necessidade de comparecimento pessoal"
+        }
+      ],
+      "security_reference": {
+        "identifier_checked": "BRGRAOACNOR1",
+        "found_in_reference": "YES"
+      }
+    },
+    "grounding": {
+      "event_grounded": true,
+      "total_quotes": 10,
+      "grounded_quotes": 10,
+      "ungrounded": []
+    },
+    "reference_divergence": {
+      "tool_called": true,
+      "tool_result_found": true,
+      "llm_reported": "YES",
+      "engine_REF_ISIN_FOUND": "PASS",
+      "divergent": false,
+      "authority": "validation_engine"
+    }
+  },
+  "routing": {
+    "decision": "AUTO_APPROVE",
+    "reason_codes": [],
+    "explanations": [],
+    "gates": [
+      {
+        "gate": "EXTRACTION_POSSIBLE",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REQUIRED_INFORMATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "SEMANTIC_INTERPRETATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "DETERMINISTIC_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REFERENCE_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "BLOCKING_ERRORS",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      }
+    ]
+  },
+  "audit": {
+    "run_id": "e010-replay-blind_derived",
+    "pipeline_version": "baseline-a/0.1.0+candidate-pre-integration/0.1",
+    "started_at": "2026-09-30T03:41:42.104+00:00",
+    "finished_at": "2026-09-30T03:41:42.112+00:00",
+    "duration_us": 7636,
+    "stages": [
+      {
+        "stage": "ingest",
+        "started_at": "2026-09-30T03:41:42.104+00:00",
+        "status": "ok",
+        "duration_us": 197
+      },
+      {
+        "stage": "text_layer",
+        "started_at": "2026-09-30T03:41:42.105+00:00",
+        "status": "ok",
+        "duration_us": 147
+      },
+      {
+        "stage": "extract_candidates",
+        "started_at": "2026-09-30T03:41:42.105+00:00",
+        "status": "ok",
+        "duration_us": 1974
+      },
+      {
+        "stage": "classify",
+        "started_at": "2026-09-30T03:41:42.107+00:00",
+        "status": "ok",
+        "duration_us": 213
+      },
+      {
+        "stage": "normalize",
+        "started_at": "2026-09-30T03:41:42.107+00:00",
+        "status": "ok",
+        "duration_us": 165
+      },
+      {
+        "stage": "confidence",
+        "started_at": "2026-09-30T03:41:42.107+00:00",
+        "status": "ok",
+        "duration_us": 15
+      },
+      {
+        "stage": "semantic_patch",
+        "started_at": "2026-09-30T03:41:42.107+00:00",
+        "status": "ok",
+        "duration_us": 1174
+      },
+      {
+        "stage": "semantic_need",
+        "started_at": "2026-09-30T03:41:42.108+00:00",
+        "status": "ok",
+        "duration_us": 69,
+        "llm_required": true,
+        "triggers": [
+          "EVENT_SIGNALS_CONFLICT",
+          "SEMANTIC_CONTRADICTION"
+        ]
+      },
+      {
+        "stage": "semantic_llm",
+        "started_at": "2026-09-30T03:41:42.108+00:00",
+        "status": "ok",
+        "duration_us": 2245,
+        "api_calls": 2,
+        "tool_calls": 1,
+        "replayed": true
+      },
+      {
+        "stage": "semantic_merge",
+        "started_at": "2026-09-30T03:41:42.111+00:00",
+        "status": "ok",
+        "duration_us": 876
+      },
+      {
+        "stage": "hardening_gates",
+        "started_at": "2026-09-30T03:41:42.112+00:00",
+        "status": "ok",
+        "duration_us": 169
+      },
+      {
+        "stage": "validate",
+        "started_at": "2026-09-30T03:41:42.112+00:00",
+        "status": "ok",
+        "duration_us": 78,
+        "rules_executed": 17
+      },
+      {
+        "stage": "route",
+        "started_at": "2026-09-30T03:41:42.112+00:00",
+        "status": "ok",
+        "duration_us": 27
+      }
+    ],
+    "errors": [],
+    "retries": 0,
+    "extraction_method": "native_text_layer+deterministic_rules",
+    "model": "claude-opus-5",
+    "prompt_version": "semantic-interpreter/v3",
+    "validators_executed": [
+      "REF_ISIN_FOUND",
+      "REF_TICKER_CONSISTENT",
+      "REF_CNPJ_CONSISTENT",
+      "REF_ISSUER_NAME_CONSISTENT",
+      "REF_SHARE_CLASS_CONSISTENT",
+      "REF_ISSUER_ACTIVE",
+      "REQUIRED_FIELDS_PRESENT",
+      "REQUIRED_FIELDS_NOT_PENDING",
+      "CLASSIFICATION_DETERMINED",
+      "CLASSIFICATION_TITLE_CONSISTENT",
+      "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "DATE_RECORD_BEFORE_EX",
+      "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "AMOUNT_GROSS_POSITIVE",
+      "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "REF_IDENTITY_RESOLVED"
+    ],
+    "final_decision": "AUTO_APPROVE",
+    "reason_codes": [],
+    "variant": "J"
+  }
+}

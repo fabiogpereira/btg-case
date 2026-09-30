@@ -1784,3 +1784,9 @@ python -m evaluation.e009 compare --out outputs/experiments/E-009_ocr_vs_vision/
 - **Bug encontrado e corrigido antes do congelamento:** sinais da classificação são dicionários, não `Evidence`. O teste pegou o erro, que era fail-safe (`PROCESSING_ERROR` → revisão).
 - **Ordem do protocolo:** política implementada, testada, regressada e congelada **antes** da 2ª execução do vision, para não desenhá-la olhando o resultado.
 - **Avaliação e critério de prontidão:** docstring de `src/evaluation/e010.py` (R1–R5 e decisão).
+
+**Regressão J × I (replay, 0 chamadas de API, 0 cache misses):** critérios 1–5 atendidos. A J é **idêntica** à I nos quatro conjuntos: nenhuma mudança de roteamento, campo ou identidade. Texto nativo não declara incerteza.
+
+**Congelamento pré-integração:** tag `candidate-pre-integration` → `1aae016`.
+- `FREEZE_PRE_INTEGRATION.json` (93 arquivos, prompts semântico e de vision), verificado por `tests/test_e010_freeze.py`.
+- `case/`: 10/10 com o SHA-256 do mapa, sem mudança no git. `.env` fora do git.

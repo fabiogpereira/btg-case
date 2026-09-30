@@ -1,0 +1,145 @@
+{
+  "run_id": "e010-replay-blind_derived",
+  "pipeline_version": "baseline-a/0.1.0+candidate-pre-integration/0.1",
+  "record_schema_version": "semantic-record/0.7",
+  "started_at": "2026-09-30T03:41:42.102+00:00",
+  "finished_at": "2026-09-30T03:41:42.212+00:00",
+  "environment": {
+    "python": "3.13.1",
+    "pypdf": "6.16.1"
+  },
+  "config": {
+    "min_alnum_chars_per_page": 100,
+    "extraction_method": "native_text_layer+deterministic_rules",
+    "llm": {
+      "provider": "anthropic",
+      "model": "claude-opus-5",
+      "effort": "medium",
+      "max_tokens": 8000,
+      "fallbacks": "off",
+      "prompt_version": "semantic-interpreter/v3",
+      "prompt_fingerprint": "e6bd3105dc7c8c84"
+    },
+    "ocr": null,
+    "holiday_calendar": null,
+    "variant": "J"
+  },
+  "golden_records": {
+    "path": "C:/Users/Windows 11/Documents/Projetos Pessoais/btg-case/tests/blind_set/golden_records.csv",
+    "sha256": "24f77ec83eac947c93fcae397aae0535ff2ca573033e17e611f88b4bfd5648a2",
+    "rows": 17
+  },
+  "inputs": [
+    {
+      "file_name": "BT-01.txt",
+      "sha256": "8929204d73ce6bee898bee332b396ac7f8f83b43f4548381976815a2680f68d2"
+    },
+    {
+      "file_name": "BT-02.txt",
+      "sha256": "fc8d1bfa68e019da1f906a4262275dc5df93fd92e8dde57ced5cfdbf36f2cd81"
+    },
+    {
+      "file_name": "BT-03.txt",
+      "sha256": "ed7d54d3ef379d56d41e72dda45310b5c5d600904a54f0b79b9b75fd86a47334"
+    },
+    {
+      "file_name": "BT-04.txt",
+      "sha256": "dd10f4f7e4f1d01acbde5cb9f79681a1bb5b92f1f937928265562a645a63c93f"
+    },
+    {
+      "file_name": "BT-05.txt",
+      "sha256": "08b4ffa5921602b98c169d6ad778fa5f62378ce8737d6ce681eb4dc9de8bb01f"
+    },
+    {
+      "file_name": "BT-06.txt",
+      "sha256": "dbbb2415625920be09ccab0dd20d78752f2ccf07ee841543afde905c78e4c27a"
+    },
+    {
+      "file_name": "BT-07.txt",
+      "sha256": "044b043b3561327c2aca877275bbc58b6098464678851f433f30ea8da20c8692"
+    },
+    {
+      "file_name": "BT-08.txt",
+      "sha256": "e22a3b0c7afb65369825cbf6d353ac30447aca3fc8bf8bdfe832bea218232812"
+    },
+    {
+      "file_name": "BT-09.txt",
+      "sha256": "9e815e187522ede2fcc8593124814d71a4cbd4b0e74c383911fcc80a78aaa925"
+    },
+    {
+      "file_name": "BT-10.txt",
+      "sha256": "aee99640873c349b2b36599bcccfce50d7f4a49bc1dc155260de3600d7025ffe"
+    },
+    {
+      "file_name": "BT-11.txt",
+      "sha256": "eeb882f1b3de0503f3ecf3692d4bbcc0980e04fe334ffbaf84d0342a97149b93"
+    },
+    {
+      "file_name": "BT-12.txt",
+      "sha256": "81c8f5d0ced3d356d5acaa6e05f67decc0e4fc479881ba2594a3c06c24060089"
+    },
+    {
+      "file_name": "BT-13.txt",
+      "sha256": "1a02cc916077b0b5717812fa2ef244887b3c03e2ed74af1c906d7a2a788b8afc"
+    },
+    {
+      "file_name": "BT-14.txt",
+      "sha256": "2e9d0355ff91ea9b0d3b4d5b0f87cce6af63802a9ded797a1c33fbae74140405"
+    }
+  ],
+  "outputs": [
+    "records/BT-01.json",
+    "records/BT-02.json",
+    "records/BT-03.json",
+    "records/BT-04.json",
+    "records/BT-05.json",
+    "records/BT-06.json",
+    "records/BT-07.json",
+    "records/BT-08.json",
+    "records/BT-09.json",
+    "records/BT-10.json",
+    "records/BT-11.json",
+    "records/BT-12.json",
+    "records/BT-13.json",
+    "records/BT-14.json",
+    "exceptions_report.md"
+  ],
+  "summary": {
+    "documents": 14,
+    "decisions": {
+      "AUTO_APPROVE": 4,
+      "REVIEW_REQUIRED": 10
+    },
+    "without_usable_text_layer": 0,
+    "errors": 0,
+    "total_duration_us": 79073,
+    "llm": {
+      "documents_with_llm": 8,
+      "api_calls": 16,
+      "tool_calls": 8,
+      "input_tokens": 77521,
+      "output_tokens": 7506,
+      "estimated_cost_usd": "0.575255",
+      "llm_latency_ms": 92742,
+      "parse_or_schema_failures": 0,
+      "errors": 0,
+      "refusals": 0,
+      "served_model_mismatches": 0,
+      "reference_divergences": 0,
+      "served_models": [
+        "claude-opus-5"
+      ],
+      "replayed_documents": 8
+    },
+    "semantic_need": {
+      "documents_assessed": 14,
+      "llm_required": 8,
+      "trigger_counts": {
+        "EVENT_SIGNALS_CONFLICT": 1,
+        "SEMANTIC_CONTRADICTION": 2,
+        "UNINTERPRETED_QUALIFIER": 6,
+        "REQUIRED_DATE_ROLE_UNMAPPED": 4
+      }
+    }
+  }
+}
