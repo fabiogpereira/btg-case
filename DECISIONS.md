@@ -298,6 +298,22 @@ Formato:
 - **Tipo:** processo
 - **Decisão:** Prompt v3 (`e6bd3105dc7c8c84`), `qualifiers_v3.py`, o ramo `_semantic_e`, a avaliação `evaluation/e005.py` (com os critérios de sucesso pré-registrados), os gabaritos e o challenge set estão congelados em `outputs/experiments/E-005_qualifiers_v3/FREEZE.json` (`tests/test_e005_freeze.py`). A configuração é a mesma da D, com fallback off.
 
+
+## D-024 — Variante E é a arquitetura candidata (decisão de engenharia, não confirmação de hipótese)
+
+- **Data:** 2026-09-30
+- **Status:** ACCEPTED
+- **Tipo:** decisão de engenharia (tomada pelo usuário)
+- **Contexto:** No E-005, a E não atingiu o critério pré-registrado do doc 06, e H-27 ficou **MODIFIED, não CONFIRMED**.
+- **Decisão:** A variante E (`baseline-a/0.1.0+hybrid-qualifiers-v3/0.1`, prompt `semantic-interpreter/v3` `e6bd3105dc7c8c84`, estado da tag `e005-final`) substitui a D como arquitetura candidata. Motivos:
+  - mesma segurança da D, com 0 aprovações inseguras;
+  - menor taxa de revisão no challenge set (2/11 contra 5/11);
+  - maior estabilidade (10/10 contra 8/10);
+  - modelo de qualificadores mais explicável;
+  - custo 6–10% maior só nos documentos que chamam o LLM.
+- **Known limitation:** o doc 06 continua indo para revisão (período de ajuste de frações lido como "direito" numa execução; valor da data ex fora da citação na outra). Não será corrigido antes do blind test.
+- **Consequências:** A E é avaliada no blind test exatamente como congelada no E-005, sem nenhuma alteração de prompt, detector, qualificadores, fusão, validação, roteamento, modelo, effort, fallback ou function calling.
+
 ---
 
 ## Decisões deliberadamente adiadas (não são decisões)
