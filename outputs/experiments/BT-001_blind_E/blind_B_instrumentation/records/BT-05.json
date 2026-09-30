@@ -1,0 +1,668 @@
+{
+  "schema_version": "semantic-record/0.1",
+  "document": {
+    "sha256": "08b4ffa5921602b98c169d6ad778fa5f62378ce8737d6ce681eb4dc9de8bb01f",
+    "file_name": "BT-05.txt",
+    "size_bytes": 956,
+    "pages": 1,
+    "text_layer": {
+      "usable": true,
+      "alnum_chars": 753,
+      "min_alnum_chars_per_page": 100,
+      "reason": null
+    }
+  },
+  "extraction": {
+    "method": "native_text_layer+deterministic_rules",
+    "status": "COMPLETED",
+    "failure_mode": null,
+    "unsupported_fields": [
+      "fraction_adjustment_period"
+    ],
+    "title": null
+  },
+  "classification": {
+    "event_type": "SPLIT",
+    "decision_rule": "single_type",
+    "signals": {
+      "SPLIT": [
+        {
+          "rule_id": "event.split_desdobramento",
+          "evidence": {
+            "text": "desdobramento",
+            "start": 331,
+            "end": 344,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.split_desdobramento",
+          "evidence": {
+            "text": "desdobramento",
+            "start": 583,
+            "end": 596,
+            "page": 1
+          }
+        }
+      ]
+    },
+    "title": null,
+    "title_event_types": [],
+    "confidence": "HIGH",
+    "confidence_reasons": [
+      "SINGLE_TYPE_SIGNALS:SPLIT"
+    ]
+  },
+  "fields": {
+    "issuer_name": {
+      "status": "found",
+      "value": "COMPANHIA TÊXTIL NORTELÂNDIA S.A.",
+      "raw": "COMPANHIA TÊXTIL NORTELÂNDIA S.A.",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "COMPANHIA TÊXTIL NORTELÂNDIA S.A.",
+          "start": 0,
+          "end": 33,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "issuer_name.pattern_company_sa"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN"
+      ]
+    },
+    "cnpj": {
+      "status": "found",
+      "value": "56.789.012/0001-34",
+      "raw": "56.789.012/0001-34",
+      "source_label": "CNPJ nº",
+      "evidence": [
+        {
+          "text": "CNPJ nº 56.789.012/0001-34",
+          "start": 34,
+          "end": 60,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "cnpj.label_cnpj"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "isin": {
+      "status": "found",
+      "value": "BRCTNLACNOR1",
+      "raw": "BRCTNLACNOR1",
+      "source_label": "ISIN",
+      "evidence": [
+        {
+          "text": "ISIN BRCTNLACNOR1",
+          "start": 398,
+          "end": 415,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "isin.label_isin"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "ticker": {
+      "status": "found",
+      "value": "CTNL3",
+      "raw": "CTNL3",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "CTNL3",
+          "start": 391,
+          "end": 396,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ticker.pattern"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN"
+      ]
+    },
+    "share_class": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "approval_date": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "record_date": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "ex_date": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "payment_date": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "gross_amount_per_share": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "net_amount_per_share": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "withholding_tax": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "currency": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "ratio": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    }
+  },
+  "event_specific_fields": {},
+  "reference_check": {
+    "found": true,
+    "matched_by": "isin",
+    "query": "BRCTNLACNOR1",
+    "golden_row": {
+      "emissor": "Companhia Têxtil Nortelândia S.A.",
+      "cnpj": "56.789.012/0001-34",
+      "isin": "BRCTNLACNOR1",
+      "ticker": "CTNL3",
+      "classe": "ON",
+      "segmento_listagem": "Novo Mercado",
+      "status": "ativo"
+    }
+  },
+  "validations": [
+    {
+      "rule_id": "REF_ISIN_FOUND",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ISIN found in golden records",
+      "observed": {
+        "isin": "BRCTNLACNOR1"
+      }
+    },
+    {
+      "rule_id": "REF_TICKER_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ticker matches golden ticker",
+      "observed": {
+        "extracted": "CTNL3",
+        "golden": "CTNL3"
+      }
+    },
+    {
+      "rule_id": "REF_CNPJ_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "cnpj matches golden cnpj",
+      "observed": {
+        "extracted": "56.789.012/0001-34",
+        "golden": "56.789.012/0001-34"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "issuer_name matches golden emissor",
+      "observed": {
+        "extracted": "COMPANHIA TÊXTIL NORTELÂNDIA S.A.",
+        "golden": "Companhia Têxtil Nortelândia S.A."
+      }
+    },
+    {
+      "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: share_class",
+      "observed": {
+        "golden": "ON"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_ACTIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "golden status = ativo",
+      "observed": {
+        "golden_status": "ativo"
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_PRESENT",
+      "status": "FAIL",
+      "severity": "ERROR",
+      "message": "required fields not found: ['record_date', 'ex_date', 'ratio']",
+      "observed": {
+        "required": [
+          "issuer_name",
+          "isin",
+          "ticker",
+          "record_date",
+          "ex_date",
+          "ratio"
+        ],
+        "not_found": [
+          "record_date",
+          "ex_date",
+          "ratio"
+        ]
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "no required field pending",
+      "observed": {
+        "declared_pending": []
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_DETERMINED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "event type SPLIT by rule single_type",
+      "observed": {
+        "decision_rule": "single_type"
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: title_event_type",
+      "observed": {
+        "title": null
+      }
+    },
+    {
+      "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: approval_date, record_date",
+      "observed": {}
+    },
+    {
+      "rule_id": "DATE_RECORD_BEFORE_EX",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: record_date, ex_date",
+      "observed": {}
+    },
+    {
+      "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "status": "NOT_EVALUATED",
+      "severity": "WARNING",
+      "message": "missing dependency: record_date, ex_date",
+      "observed": {}
+    },
+    {
+      "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: payment_date, ex_date",
+      "observed": {
+        "settlement_field_status": "not_applicable"
+      }
+    },
+    {
+      "rule_id": "RATIO_POSITIVE",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: ratio",
+      "observed": {}
+    }
+  ],
+  "validation_summary": {
+    "PASS": 7,
+    "NOT_EVALUATED": 7,
+    "FAIL": 1
+  },
+  "rule_groups_not_applicable": [
+    "amounts"
+  ],
+  "semantic": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "deterministic_patch",
+      "reasons": [
+        "SINGLE_TYPE"
+      ],
+      "qualifiers": [],
+      "interpretation": null
+    },
+    "fields": {},
+    "blocking": [],
+    "negated_signals": []
+  },
+  "confidence_view": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "deterministic_patch",
+      "reasons": [
+        "SINGLE_TYPE"
+      ],
+      "qualifiers": [],
+      "interpretation": null
+    },
+    "fields": {
+      "issuer_name": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "cnpj": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "isin": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ticker": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      }
+    }
+  },
+  "routing": {
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "REQUIRED_FIELD_MISSING"
+    ],
+    "explanations": [
+      "REQUIRED_FIELDS_PRESENT: required fields not found: ['record_date', 'ex_date', 'ratio']"
+    ],
+    "gates": [
+      {
+        "gate": "EXTRACTION_POSSIBLE",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REQUIRED_INFORMATION",
+        "status": "BLOCK",
+        "reason_codes": [
+          "REQUIRED_FIELD_MISSING"
+        ],
+        "explanations": [
+          "REQUIRED_FIELDS_PRESENT: required fields not found: ['record_date', 'ex_date', 'ratio']"
+        ]
+      },
+      {
+        "gate": "SEMANTIC_INTERPRETATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "DETERMINISTIC_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REFERENCE_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "BLOCKING_ERRORS",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      }
+    ]
+  },
+  "audit": {
+    "run_id": "20260930T013131Z-5ca2ce01",
+    "pipeline_version": "baseline-a/0.1.0+semantic-patch/0.1",
+    "started_at": "2026-09-30T01:31:31.907+00:00",
+    "finished_at": "2026-09-30T01:31:31.909+00:00",
+    "duration_us": 1350,
+    "stages": [
+      {
+        "stage": "ingest",
+        "started_at": "2026-09-30T01:31:31.907+00:00",
+        "status": "ok",
+        "duration_us": 188
+      },
+      {
+        "stage": "text_layer",
+        "started_at": "2026-09-30T01:31:31.907+00:00",
+        "status": "ok",
+        "duration_us": 153
+      },
+      {
+        "stage": "extract_candidates",
+        "started_at": "2026-09-30T01:31:31.908+00:00",
+        "status": "ok",
+        "duration_us": 671
+      },
+      {
+        "stage": "classify",
+        "started_at": "2026-09-30T01:31:31.908+00:00",
+        "status": "ok",
+        "duration_us": 95
+      },
+      {
+        "stage": "normalize",
+        "started_at": "2026-09-30T01:31:31.908+00:00",
+        "status": "ok",
+        "duration_us": 60
+      },
+      {
+        "stage": "confidence",
+        "started_at": "2026-09-30T01:31:31.908+00:00",
+        "status": "ok",
+        "duration_us": 9
+      },
+      {
+        "stage": "semantic_patch",
+        "started_at": "2026-09-30T01:31:31.908+00:00",
+        "status": "ok",
+        "duration_us": 2
+      },
+      {
+        "stage": "validate",
+        "started_at": "2026-09-30T01:31:31.909+00:00",
+        "status": "ok",
+        "duration_us": 40,
+        "rules_executed": 15
+      },
+      {
+        "stage": "route",
+        "started_at": "2026-09-30T01:31:31.909+00:00",
+        "status": "ok",
+        "duration_us": 18
+      }
+    ],
+    "errors": [],
+    "retries": 0,
+    "extraction_method": "native_text_layer+deterministic_rules",
+    "model": null,
+    "prompt_version": null,
+    "validators_executed": [
+      "REF_ISIN_FOUND",
+      "REF_TICKER_CONSISTENT",
+      "REF_CNPJ_CONSISTENT",
+      "REF_ISSUER_NAME_CONSISTENT",
+      "REF_SHARE_CLASS_CONSISTENT",
+      "REF_ISSUER_ACTIVE",
+      "REQUIRED_FIELDS_PRESENT",
+      "REQUIRED_FIELDS_NOT_PENDING",
+      "CLASSIFICATION_DETERMINED",
+      "CLASSIFICATION_TITLE_CONSISTENT",
+      "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "DATE_RECORD_BEFORE_EX",
+      "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "RATIO_POSITIVE"
+    ],
+    "final_decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "REQUIRED_FIELD_MISSING"
+    ],
+    "variant": "B"
+  }
+}

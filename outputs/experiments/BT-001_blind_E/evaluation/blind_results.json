@@ -1,0 +1,1505 @@
+{
+  "cases": 14,
+  "safety": {
+    "unsafe_auto_approvals": [],
+    "unsafe_field_inventions": {
+      "BT-08": [
+        "gross_amount_per_share"
+      ]
+    },
+    "ambiguity_auto_approved": [],
+    "wrong_values_emitted": {
+      "BT-02": [
+        "withholding_tax"
+      ],
+      "BT-07": [
+        "withholding_tax"
+      ],
+      "BT-12": [
+        "withholding_tax"
+      ],
+      "BT-13": [
+        "withholding_tax"
+      ]
+    }
+  },
+  "semantic": {
+    "event_type": {
+      "correct": 12,
+      "total": 14
+    },
+    "semantic_targets_incl_event_type": {
+      "correct": 44,
+      "total": 57
+    },
+    "gt_material_qualifiers_captured": {
+      "correct": 2,
+      "total": 6
+    }
+  },
+  "deterministic": {
+    "values_and_ratios": {
+      "correct": 16,
+      "total": 18
+    },
+    "identifiers": {
+      "correct": 41,
+      "total": 41
+    },
+    "field_status": {
+      "correct": 89,
+      "total": 126
+    },
+    "objective_rules": {
+      "correct": 39,
+      "total": 54,
+      "false_negatives": 1,
+      "false_positives": 0
+    }
+  },
+  "routing": {
+    "correct_auto": 3,
+    "correct_review": 5,
+    "false_reviews": [
+      "BT-02",
+      "BT-05",
+      "BT-09",
+      "BT-10",
+      "BT-11",
+      "BT-12"
+    ],
+    "false_approvals": [],
+    "accuracy": {
+      "correct": 8,
+      "total": 14
+    },
+    "review_rate": {
+      "correct": 11,
+      "total": 14
+    }
+  },
+  "llm_usage": {
+    "invoked": [
+      "BT-01",
+      "BT-02",
+      "BT-05",
+      "BT-06",
+      "BT-08",
+      "BT-10",
+      "BT-11",
+      "BT-12"
+    ],
+    "invocation_rate": {
+      "correct": 8,
+      "total": 14
+    },
+    "api_calls": 11,
+    "calls_per_invoked_document": 1.38,
+    "tool_calls": 6,
+    "documents_with_correct_lookup": 6,
+    "grounding": {
+      "correct": 48,
+      "total": 48
+    },
+    "ungrounded": [],
+    "reference_divergences": 0,
+    "needed": [
+      "BT-01",
+      "BT-02",
+      "BT-03",
+      "BT-05",
+      "BT-06",
+      "BT-07",
+      "BT-08",
+      "BT-10",
+      "BT-11",
+      "BT-12",
+      "BT-13"
+    ],
+    "false_positive_invocations": [],
+    "false_negative_invocations": [
+      "BT-03",
+      "BT-07",
+      "BT-13"
+    ]
+  },
+  "operational": {
+    "estimated_cost_usd": "0.403625",
+    "input_tokens": 53400,
+    "output_tokens": 5465,
+    "latency_ms_median_all": 507.051,
+    "latency_ms_median_with_llm": 11983.439,
+    "latency_ms_median_without_llm": 6.44,
+    "errors": 0,
+    "llm_errors": 3,
+    "refusals": 0,
+    "parse_or_schema_failures": 3
+  },
+  "per_case": [
+    {
+      "case": "BT-01",
+      "categories": [
+        "clear"
+      ],
+      "expected_type": "DIVIDEND",
+      "got_type": "DIVIDEND",
+      "type_ok": true,
+      "fields": {
+        "approval_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "record_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "ex_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "payment_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "share_credit_date": {
+          "expected": "not_applicable",
+          "got": "ABSENT",
+          "value_ok": null
+        },
+        "gross_amount_per_share": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "net_amount_per_share": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        },
+        "withholding_tax": {
+          "expected": "present",
+          "got": "not_found",
+          "value_ok": false
+        },
+        "ratio": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        }
+      },
+      "expected_routing": "AUTO_APPROVE",
+      "got_routing": "AUTO_APPROVE",
+      "reasons": [],
+      "llm_invoked": true,
+      "triggers": [
+        "EVENT_SIGNALS_CONFLICT"
+      ],
+      "rules": {
+        "REF_ISIN_FOUND": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_APPROVAL_NOT_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_RECORD_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_SETTLEMENT_NOT_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS"
+        }
+      },
+      "wrong_emitted": [],
+      "invented": [],
+      "unsafe_auto_approval": false,
+      "ambiguity_auto_approved": false,
+      "routing_kind": "correct_auto",
+      "gt_material_qualifiers": [],
+      "e_material_qualifiers": [],
+      "e_semantic_notes": 2,
+      "llm_needed": true
+    },
+    {
+      "case": "BT-02",
+      "categories": [
+        "clear",
+        "tax_condition"
+      ],
+      "expected_type": "JCP",
+      "got_type": "JCP",
+      "type_ok": true,
+      "fields": {
+        "approval_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "record_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "ex_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "payment_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "share_credit_date": {
+          "expected": "not_applicable",
+          "got": "ABSENT",
+          "value_ok": null
+        },
+        "gross_amount_per_share": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "net_amount_per_share": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "withholding_tax": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": false
+        },
+        "ratio": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        }
+      },
+      "expected_routing": "AUTO_APPROVE",
+      "got_routing": "REVIEW_REQUIRED",
+      "reasons": [
+        "SEMANTIC_AMBIGUITY"
+      ],
+      "llm_invoked": true,
+      "triggers": [
+        "UNINTERPRETED_QUALIFIER",
+        "UNINTERPRETED_QUALIFIER"
+      ],
+      "rules": {
+        "REF_ISIN_FOUND": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_APPROVAL_NOT_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_RECORD_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_SETTLEMENT_NOT_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "AMOUNT_NET_MATCHES_GROSS_AND_TAX": {
+          "expected": "PASS",
+          "got": "PASS"
+        }
+      },
+      "wrong_emitted": [
+        "withholding_tax"
+      ],
+      "invented": [],
+      "unsafe_auto_approval": false,
+      "ambiguity_auto_approved": false,
+      "routing_kind": "false_review",
+      "gt_material_qualifiers": [
+        {
+          "affects": "beneficiary_tax_treatment",
+          "captured": true
+        }
+      ],
+      "e_material_qualifiers": [
+        {
+          "kind": "material_exception",
+          "affects": "beneficiary_tax_treatment",
+          "blocks": false,
+          "source": "llm",
+          "quote": "exceto para acionistas comprovadamente imunes ou isentos"
+        }
+      ],
+      "e_semantic_notes": 1,
+      "llm_needed": true
+    },
+    {
+      "case": "BT-03",
+      "categories": [
+        "clear",
+        "operational_context"
+      ],
+      "expected_type": "BONUS_SHARES",
+      "got_type": "BONUS_SHARES",
+      "type_ok": true,
+      "fields": {
+        "approval_date": {
+          "expected": "present",
+          "got": "not_found",
+          "value_ok": false
+        },
+        "record_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "ex_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "payment_date": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        },
+        "share_credit_date": {
+          "expected": "present",
+          "got": "not_found",
+          "value_ok": false
+        },
+        "gross_amount_per_share": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        },
+        "net_amount_per_share": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        },
+        "withholding_tax": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        },
+        "ratio": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        }
+      },
+      "expected_routing": "AUTO_APPROVE",
+      "got_routing": "AUTO_APPROVE",
+      "reasons": [],
+      "llm_invoked": false,
+      "triggers": [],
+      "rules": {
+        "REF_ISIN_FOUND": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_APPROVAL_NOT_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "NOT_EVALUATED"
+        },
+        "DATE_RECORD_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_SETTLEMENT_NOT_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "NOT_EVALUATED"
+        }
+      },
+      "wrong_emitted": [],
+      "invented": [],
+      "unsafe_auto_approval": false,
+      "ambiguity_auto_approved": false,
+      "routing_kind": "correct_auto",
+      "gt_material_qualifiers": [],
+      "e_material_qualifiers": [],
+      "e_semantic_notes": 0,
+      "llm_needed": true
+    },
+    {
+      "case": "BT-04",
+      "categories": [
+        "clear"
+      ],
+      "expected_type": "REVERSE_SPLIT",
+      "got_type": "REVERSE_SPLIT",
+      "type_ok": true,
+      "fields": {
+        "approval_date": {
+          "expected": "present",
+          "got": "not_found",
+          "value_ok": false
+        },
+        "record_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "ex_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "payment_date": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        },
+        "share_credit_date": {
+          "expected": "not_applicable",
+          "got": "ABSENT",
+          "value_ok": null
+        },
+        "gross_amount_per_share": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        },
+        "net_amount_per_share": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        },
+        "withholding_tax": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        },
+        "ratio": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        }
+      },
+      "expected_routing": "AUTO_APPROVE",
+      "got_routing": "AUTO_APPROVE",
+      "reasons": [],
+      "llm_invoked": false,
+      "triggers": [],
+      "rules": {
+        "REF_ISIN_FOUND": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_APPROVAL_NOT_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "NOT_EVALUATED"
+        },
+        "DATE_RECORD_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS"
+        }
+      },
+      "wrong_emitted": [],
+      "invented": [],
+      "unsafe_auto_approval": false,
+      "ambiguity_auto_approved": false,
+      "routing_kind": "correct_auto",
+      "gt_material_qualifiers": [],
+      "e_material_qualifiers": [],
+      "e_semantic_notes": 0,
+      "llm_needed": false
+    },
+    {
+      "case": "BT-05",
+      "categories": [
+        "clear",
+        "alternative_language"
+      ],
+      "expected_type": "SPLIT",
+      "got_type": "SPLIT",
+      "type_ok": true,
+      "fields": {
+        "approval_date": {
+          "expected": "present",
+          "got": "not_found",
+          "value_ok": false
+        },
+        "record_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "ex_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "payment_date": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        },
+        "share_credit_date": {
+          "expected": "present",
+          "got": "ABSENT",
+          "value_ok": false
+        },
+        "gross_amount_per_share": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        },
+        "net_amount_per_share": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        },
+        "withholding_tax": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        },
+        "ratio": {
+          "expected": "present",
+          "got": "not_found",
+          "value_ok": false
+        }
+      },
+      "expected_routing": "AUTO_APPROVE",
+      "got_routing": "REVIEW_REQUIRED",
+      "reasons": [
+        "REQUIRED_FIELD_MISSING"
+      ],
+      "llm_invoked": true,
+      "triggers": [
+        "REQUIRED_DATE_ROLE_UNMAPPED"
+      ],
+      "rules": {
+        "REF_ISIN_FOUND": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_APPROVAL_NOT_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "NOT_EVALUATED"
+        },
+        "DATE_RECORD_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_SETTLEMENT_NOT_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "NOT_EVALUATED"
+        }
+      },
+      "wrong_emitted": [],
+      "invented": [],
+      "unsafe_auto_approval": false,
+      "ambiguity_auto_approved": false,
+      "routing_kind": "false_review",
+      "gt_material_qualifiers": [],
+      "e_material_qualifiers": [],
+      "e_semantic_notes": 1,
+      "llm_needed": true
+    },
+    {
+      "case": "BT-06",
+      "categories": [
+        "missing_info"
+      ],
+      "expected_type": "DIVIDEND",
+      "got_type": "DIVIDEND",
+      "type_ok": true,
+      "fields": {
+        "approval_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "record_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "ex_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "payment_date": {
+          "expected": "absent",
+          "got": "not_found",
+          "value_ok": null
+        },
+        "share_credit_date": {
+          "expected": "not_applicable",
+          "got": "ABSENT",
+          "value_ok": null
+        },
+        "gross_amount_per_share": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "net_amount_per_share": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        },
+        "withholding_tax": {
+          "expected": "present",
+          "got": "not_found",
+          "value_ok": false
+        },
+        "ratio": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        }
+      },
+      "expected_routing": "REVIEW_REQUIRED",
+      "got_routing": "REVIEW_REQUIRED",
+      "reasons": [
+        "REQUIRED_FIELD_MISSING"
+      ],
+      "llm_invoked": true,
+      "triggers": [
+        "REQUIRED_DATE_ROLE_UNMAPPED"
+      ],
+      "rules": {
+        "REF_ISIN_FOUND": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_APPROVAL_NOT_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_RECORD_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS"
+        }
+      },
+      "wrong_emitted": [],
+      "invented": [],
+      "unsafe_auto_approval": false,
+      "ambiguity_auto_approved": false,
+      "routing_kind": "correct_review",
+      "gt_material_qualifiers": [],
+      "e_material_qualifiers": [],
+      "e_semantic_notes": 2,
+      "llm_needed": true
+    },
+    {
+      "case": "BT-07",
+      "categories": [
+        "pending_info"
+      ],
+      "expected_type": "JCP",
+      "got_type": "JCP",
+      "type_ok": true,
+      "fields": {
+        "approval_date": {
+          "expected": "present",
+          "got": "not_found",
+          "value_ok": false
+        },
+        "record_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "ex_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "payment_date": {
+          "expected": "pending",
+          "got": "declared_pending",
+          "value_ok": null
+        },
+        "share_credit_date": {
+          "expected": "not_applicable",
+          "got": "ABSENT",
+          "value_ok": null
+        },
+        "gross_amount_per_share": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "net_amount_per_share": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "withholding_tax": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": false
+        },
+        "ratio": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        }
+      },
+      "expected_routing": "REVIEW_REQUIRED",
+      "got_routing": "REVIEW_REQUIRED",
+      "reasons": [
+        "PAYMENT_DATE_PENDING"
+      ],
+      "llm_invoked": false,
+      "triggers": [],
+      "rules": {
+        "REF_ISIN_FOUND": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_APPROVAL_NOT_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "NOT_EVALUATED"
+        },
+        "DATE_RECORD_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "AMOUNT_NET_MATCHES_GROSS_AND_TAX": {
+          "expected": "PASS",
+          "got": "PASS"
+        }
+      },
+      "wrong_emitted": [
+        "withholding_tax"
+      ],
+      "invented": [],
+      "unsafe_auto_approval": false,
+      "ambiguity_auto_approved": false,
+      "routing_kind": "correct_review",
+      "gt_material_qualifiers": [],
+      "e_material_qualifiers": [],
+      "e_semantic_notes": 0,
+      "llm_needed": true
+    },
+    {
+      "case": "BT-08",
+      "categories": [
+        "negation"
+      ],
+      "expected_type": "OTHER",
+      "got_type": "DIVIDEND",
+      "type_ok": false,
+      "fields": {
+        "approval_date": {
+          "expected": "present",
+          "got": "not_found",
+          "value_ok": false
+        },
+        "record_date": {
+          "expected": "not_applicable",
+          "got": "not_found",
+          "value_ok": null
+        },
+        "ex_date": {
+          "expected": "not_applicable",
+          "got": "not_found",
+          "value_ok": null
+        },
+        "payment_date": {
+          "expected": "not_applicable",
+          "got": "not_found",
+          "value_ok": null
+        },
+        "share_credit_date": {
+          "expected": "not_applicable",
+          "got": "ABSENT",
+          "value_ok": null
+        },
+        "gross_amount_per_share": {
+          "expected": "not_applicable",
+          "got": "found",
+          "value_ok": null
+        },
+        "net_amount_per_share": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        },
+        "withholding_tax": {
+          "expected": "not_applicable",
+          "got": "not_found",
+          "value_ok": null
+        },
+        "ratio": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        }
+      },
+      "expected_routing": "REVIEW_REQUIRED",
+      "got_routing": "REVIEW_REQUIRED",
+      "reasons": [
+        "REQUIRED_FIELD_MISSING",
+        "MATERIAL_QUALIFIER_UNREPRESENTED:event_nature",
+        "SEMANTIC_AMBIGUITY"
+      ],
+      "llm_invoked": true,
+      "triggers": [
+        "REQUIRED_DATE_ROLE_UNMAPPED",
+        "UNINTERPRETED_QUALIFIER"
+      ],
+      "rules": {
+        "REF_ISIN_FOUND": {
+          "expected": "PASS",
+          "got": "PASS"
+        }
+      },
+      "wrong_emitted": [],
+      "invented": [
+        "gross_amount_per_share"
+      ],
+      "unsafe_auto_approval": false,
+      "ambiguity_auto_approved": false,
+      "routing_kind": "correct_review",
+      "gt_material_qualifiers": [
+        {
+          "affects": "event_nature",
+          "captured": true
+        }
+      ],
+      "e_material_qualifiers": [
+        {
+          "kind": "material_exception",
+          "affects": "event_nature",
+          "blocks": true,
+          "source": "llm",
+          "quote": "não será realizada, tendo a respectiva deliberação sido revogada pelo Conselho de Administração em reunião de 22/09/2026"
+        },
+        {
+          "kind": "material_exception",
+          "affects": "amount",
+          "blocks": true,
+          "source": "llm",
+          "quote": "nenhum valor será creditado aos acionistas em decorrência do aviso ora tornado sem efeito"
+        }
+      ],
+      "e_semantic_notes": 3,
+      "llm_needed": true
+    },
+    {
+      "case": "BT-09",
+      "categories": [
+        "clear",
+        "tax_condition"
+      ],
+      "expected_type": "JCP",
+      "got_type": "JCP",
+      "type_ok": true,
+      "fields": {
+        "approval_date": {
+          "expected": "present",
+          "got": "not_found",
+          "value_ok": false
+        },
+        "record_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "ex_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "payment_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "share_credit_date": {
+          "expected": "not_applicable",
+          "got": "ABSENT",
+          "value_ok": null
+        },
+        "gross_amount_per_share": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "net_amount_per_share": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "withholding_tax": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "ratio": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        }
+      },
+      "expected_routing": "AUTO_APPROVE",
+      "got_routing": "REVIEW_REQUIRED",
+      "reasons": [
+        "LOW_EXTRACTION_CONFIDENCE"
+      ],
+      "llm_invoked": false,
+      "triggers": [],
+      "rules": {
+        "REF_ISIN_FOUND": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_APPROVAL_NOT_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "NOT_EVALUATED"
+        },
+        "DATE_RECORD_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_SETTLEMENT_NOT_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "AMOUNT_NET_MATCHES_GROSS_AND_TAX": {
+          "expected": "PASS",
+          "got": "PASS"
+        }
+      },
+      "wrong_emitted": [],
+      "invented": [],
+      "unsafe_auto_approval": false,
+      "ambiguity_auto_approved": false,
+      "routing_kind": "false_review",
+      "gt_material_qualifiers": [
+        {
+          "affects": "tax_rate",
+          "captured": false
+        }
+      ],
+      "e_material_qualifiers": [],
+      "e_semantic_notes": 0,
+      "llm_needed": false
+    },
+    {
+      "case": "BT-10",
+      "categories": [
+        "clear",
+        "exception",
+        "operational_context"
+      ],
+      "expected_type": "BONUS_SHARES",
+      "got_type": "BONUS_SHARES",
+      "type_ok": true,
+      "fields": {
+        "approval_date": {
+          "expected": "present",
+          "got": "not_found",
+          "value_ok": false
+        },
+        "record_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "ex_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "payment_date": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        },
+        "share_credit_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "gross_amount_per_share": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        },
+        "net_amount_per_share": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        },
+        "withholding_tax": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        },
+        "ratio": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        }
+      },
+      "expected_routing": "AUTO_APPROVE",
+      "got_routing": "REVIEW_REQUIRED",
+      "reasons": [
+        "SEMANTIC_AMBIGUITY",
+        "SEMANTIC_INTERPRETER_FAILED"
+      ],
+      "llm_invoked": true,
+      "triggers": [
+        "UNINTERPRETED_QUALIFIER",
+        "UNINTERPRETED_QUALIFIER"
+      ],
+      "rules": {
+        "REF_ISIN_FOUND": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_APPROVAL_NOT_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "NOT_EVALUATED"
+        },
+        "DATE_RECORD_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_SETTLEMENT_NOT_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS"
+        }
+      },
+      "wrong_emitted": [],
+      "invented": [],
+      "unsafe_auto_approval": false,
+      "ambiguity_auto_approved": false,
+      "routing_kind": "false_review",
+      "gt_material_qualifiers": [],
+      "e_material_qualifiers": [
+        {
+          "kind": "unresolved",
+          "affects": null,
+          "blocks": true,
+          "source": "deterministic_patch",
+          "quote": "Não"
+        },
+        {
+          "kind": "unresolved",
+          "affects": null,
+          "blocks": true,
+          "source": "deterministic_patch",
+          "quote": "Não"
+        }
+      ],
+      "e_semantic_notes": 0,
+      "llm_needed": true
+    },
+    {
+      "case": "BT-11",
+      "categories": [
+        "clear",
+        "varied_dates"
+      ],
+      "expected_type": "DIVIDEND",
+      "got_type": "DIVIDEND",
+      "type_ok": true,
+      "fields": {
+        "approval_date": {
+          "expected": "present",
+          "got": "not_found",
+          "value_ok": false
+        },
+        "record_date": {
+          "expected": "present",
+          "got": "not_found",
+          "value_ok": false
+        },
+        "ex_date": {
+          "expected": "present",
+          "got": "not_found",
+          "value_ok": false
+        },
+        "payment_date": {
+          "expected": "present",
+          "got": "not_found",
+          "value_ok": false
+        },
+        "share_credit_date": {
+          "expected": "not_applicable",
+          "got": "ABSENT",
+          "value_ok": null
+        },
+        "gross_amount_per_share": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "net_amount_per_share": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        },
+        "withholding_tax": {
+          "expected": "not_applicable",
+          "got": "not_found",
+          "value_ok": null
+        },
+        "ratio": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        }
+      },
+      "expected_routing": "AUTO_APPROVE",
+      "got_routing": "REVIEW_REQUIRED",
+      "reasons": [
+        "REQUIRED_FIELD_MISSING",
+        "SEMANTIC_INTERPRETER_FAILED"
+      ],
+      "llm_invoked": true,
+      "triggers": [
+        "REQUIRED_DATE_ROLE_UNMAPPED"
+      ],
+      "rules": {
+        "REF_ISIN_FOUND": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_APPROVAL_NOT_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "NOT_EVALUATED"
+        },
+        "DATE_RECORD_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "NOT_EVALUATED"
+        },
+        "DATE_SETTLEMENT_NOT_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "NOT_EVALUATED"
+        }
+      },
+      "wrong_emitted": [],
+      "invented": [],
+      "unsafe_auto_approval": false,
+      "ambiguity_auto_approved": false,
+      "routing_kind": "false_review",
+      "gt_material_qualifiers": [],
+      "e_material_qualifiers": [],
+      "e_semantic_notes": 0,
+      "llm_needed": true
+    },
+    {
+      "case": "BT-12",
+      "categories": [
+        "clear",
+        "operational_context"
+      ],
+      "expected_type": "JCP",
+      "got_type": "JCP",
+      "type_ok": true,
+      "fields": {
+        "approval_date": {
+          "expected": "present",
+          "got": "not_found",
+          "value_ok": false
+        },
+        "record_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "ex_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "payment_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "share_credit_date": {
+          "expected": "not_applicable",
+          "got": "ABSENT",
+          "value_ok": null
+        },
+        "gross_amount_per_share": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "net_amount_per_share": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "withholding_tax": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": false
+        },
+        "ratio": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        }
+      },
+      "expected_routing": "AUTO_APPROVE",
+      "got_routing": "REVIEW_REQUIRED",
+      "reasons": [
+        "LOW_EXTRACTION_CONFIDENCE",
+        "SEMANTIC_AMBIGUITY",
+        "SEMANTIC_INTERPRETER_FAILED"
+      ],
+      "llm_invoked": true,
+      "triggers": [
+        "UNINTERPRETED_QUALIFIER"
+      ],
+      "rules": {
+        "REF_ISIN_FOUND": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_APPROVAL_NOT_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "NOT_EVALUATED"
+        },
+        "DATE_RECORD_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_SETTLEMENT_NOT_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "AMOUNT_NET_MATCHES_GROSS_AND_TAX": {
+          "expected": "PASS",
+          "got": "PASS"
+        }
+      },
+      "wrong_emitted": [
+        "withholding_tax"
+      ],
+      "invented": [],
+      "unsafe_auto_approval": false,
+      "ambiguity_auto_approved": false,
+      "routing_kind": "false_review",
+      "gt_material_qualifiers": [],
+      "e_material_qualifiers": [
+        {
+          "kind": "unresolved",
+          "affects": null,
+          "blocks": true,
+          "source": "deterministic_patch",
+          "quote": "não"
+        }
+      ],
+      "e_semantic_notes": 0,
+      "llm_needed": true
+    },
+    {
+      "case": "BT-13",
+      "categories": [
+        "ambiguous",
+        "missing_info"
+      ],
+      "expected_type": "UNRESOLVED",
+      "got_type": "DIVIDEND",
+      "type_ok": false,
+      "fields": {
+        "approval_date": {
+          "expected": "absent",
+          "got": "not_found",
+          "value_ok": null
+        },
+        "record_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "ex_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "payment_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "share_credit_date": {
+          "expected": "not_applicable",
+          "got": "ABSENT",
+          "value_ok": null
+        },
+        "gross_amount_per_share": {
+          "expected": "present",
+          "got": "not_found",
+          "value_ok": false
+        },
+        "net_amount_per_share": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "withholding_tax": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": false
+        },
+        "ratio": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        }
+      },
+      "expected_routing": "REVIEW_REQUIRED",
+      "got_routing": "REVIEW_REQUIRED",
+      "reasons": [
+        "REQUIRED_FIELD_MISSING"
+      ],
+      "llm_invoked": false,
+      "triggers": [],
+      "rules": {
+        "REF_ISIN_FOUND": {
+          "expected": "FAIL",
+          "got": "NOT_EVALUATED"
+        },
+        "DATE_RECORD_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_SETTLEMENT_NOT_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "AMOUNT_NET_MATCHES_GROSS_AND_TAX": {
+          "expected": "PASS",
+          "got": "NOT_EVALUATED"
+        }
+      },
+      "wrong_emitted": [
+        "withholding_tax"
+      ],
+      "invented": [],
+      "unsafe_auto_approval": false,
+      "ambiguity_auto_approved": false,
+      "routing_kind": "correct_review",
+      "gt_material_qualifiers": [
+        {
+          "affects": "event_nature",
+          "captured": false
+        },
+        {
+          "affects": "event_nature",
+          "captured": false
+        }
+      ],
+      "e_material_qualifiers": [],
+      "e_semantic_notes": 0,
+      "llm_needed": true
+    },
+    {
+      "case": "BT-14",
+      "categories": [
+        "internal_inconsistency"
+      ],
+      "expected_type": "DIVIDEND",
+      "got_type": "DIVIDEND",
+      "type_ok": true,
+      "fields": {
+        "approval_date": {
+          "expected": "present",
+          "got": "not_found",
+          "value_ok": false
+        },
+        "record_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "ex_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "payment_date": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "share_credit_date": {
+          "expected": "not_applicable",
+          "got": "ABSENT",
+          "value_ok": null
+        },
+        "gross_amount_per_share": {
+          "expected": "present",
+          "got": "found",
+          "value_ok": true
+        },
+        "net_amount_per_share": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        },
+        "withholding_tax": {
+          "expected": "not_applicable",
+          "got": "not_found",
+          "value_ok": null
+        },
+        "ratio": {
+          "expected": "not_applicable",
+          "got": "not_applicable",
+          "value_ok": null
+        }
+      },
+      "expected_routing": "REVIEW_REQUIRED",
+      "got_routing": "REVIEW_REQUIRED",
+      "reasons": [
+        "DATE_INCONSISTENCY"
+      ],
+      "llm_invoked": false,
+      "triggers": [],
+      "rules": {
+        "REF_ISIN_FOUND": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_APPROVAL_NOT_AFTER_RECORD": {
+          "expected": "PASS",
+          "got": "NOT_EVALUATED"
+        },
+        "DATE_RECORD_BEFORE_EX": {
+          "expected": "PASS",
+          "got": "PASS"
+        },
+        "DATE_SETTLEMENT_NOT_BEFORE_EX": {
+          "expected": "FAIL",
+          "got": "FAIL"
+        }
+      },
+      "wrong_emitted": [],
+      "invented": [],
+      "unsafe_auto_approval": false,
+      "ambiguity_auto_approved": false,
+      "routing_kind": "correct_review",
+      "gt_material_qualifiers": [
+        {
+          "affects": "dates",
+          "captured": false
+        }
+      ],
+      "e_material_qualifiers": [],
+      "e_semantic_notes": 0,
+      "llm_needed": false
+    }
+  ]
+}

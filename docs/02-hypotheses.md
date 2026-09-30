@@ -283,3 +283,14 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
 - **Decision:** Critério 2 (doc 06) não atendido, portanto a E não passa formalmente pela regra pré-registrada. É Pareto-superior à D nas demais métricas. A adoção como candidata depende de decisão do usuário.
 - **Status:** MODIFIED (confirmada para rótulos, frases que definem campos e contexto; não confirmada para procedimento de frações)
 
+## I. Blind test
+
+### H-28 — A arquitetura candidata (E) generaliza de forma segura e útil para avisos nunca vistos
+- **Hypothesis:** Num conjunto criado por um processo independente, a E mantém 0 aprovações inseguras, manda ambiguidades reais para revisão e aprova automaticamente uma parte útil dos casos completos.
+- **Why it matters:** O challenge set é ciente do autor; só um conjunto independente mede generalização.
+- **How to test:** BT-001 (blind set independente, 14 casos, E congelada, avaliador pré-registrado).
+- **Expected signal:** 0 inseguras; ambiguidades revisadas; roteamento correto na maioria.
+- **Observed result:** (BT-001, execução 1 incompleta por falta de crédito em 3/14) 0 aprovações inseguras, 0 ambiguidades aprovadas, 48/48 citações literais, identificadores 41/41. Roteamento 8/14, revisão 11/14 (3 revisões pela falta de crédito). Risco novo fora da métrica: BT-01 aprovado sem a isenção de IR (tratamento não numérico descartado). Ambiguidade dividendo × JCP (BT-13) não detectada, revisada por outro motivo.
+- **Decision:** Pendente da execução completa.
+- **Status:** TESTING (segurança pré-registrada mantida; utilidade baixa; omissão silenciosa identificada)
+

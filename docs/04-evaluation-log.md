@@ -835,3 +835,120 @@ Em nenhuma execução o doc 06 foi aprovado:
   - (b) E-2: quando valor e evidência divergirem só em formato, a abordagem segura continua sendo revisão. Uma alternativa é exigir que o LLM copie o valor da própria evidência. Ambas precisam de experimento próprio;
   - (c) holdout cego.
 
+## Candidata E congelada (D-024) — tags `e005-final` (`e13eabe`) e `candidate-E` (`e0fd841`)
+
+H-27 continua **MODIFIED**. O critério do doc 06 não foi atingido e fica como known limitation. A adoção da E é decisão de engenharia (D-024).
+
+## BT-001 — Blind test independente da variante E (1ª execução oficial; **incompleta por falta de crédito na API**)
+
+### Criação e independência do blind set
+
+- **Criador:** subagente separado (modelo Sonnet, família diferente do `claude-opus-5` avaliado), com contexto novo. Recebeu **só** o brief neutro (`tests/blind_set/BRIEF.md`): descrição do domínio, formato de arquivos e gabarito, e regras de negócio de roteamento.
+- **Não recebeu:** código, prompts, challenge set, gabaritos anteriores, failure modes, doc 06, decisões ou resultados.
+- **Operação:** escreveu só num diretório fora do repositório; declarou ter usado apenas a ferramenta de escrita (17 chamadas). O harness contou 18 usos de ferramenta; a diferença não é verificável.
+- **Limites da independência:** é garantida por instrução e contexto novo, não por sandbox. O criador também é um modelo Claude (vieses possivelmente correlacionados, atenuados pela família diferente). O brief inclui as regras de completude e roteamento do projeto, para que o gabarito use a mesma política de negócio.
+- **Conteúdo:** 14 avisos em texto (`tests/blind_set/documents/`); base de referência exclusiva (17 ativos: 13 dos avisos, 4 extras; 1 ativo de aviso propositalmente ausente); gabarito; README do criador.
+- **Tipos:** DIVIDEND 4, JCP 4, BONUS_SHARES 2, REVERSE_SPLIT 1, SPLIT 1, OTHER (revogação) 1, UNRESOLVED 1. Roteamento esperado: 9 AUTO, 5 REVIEW.
+- **Freeze antes de qualquer processamento:** `tests/blind_set/MANIFEST.json` (SHA-256 exato de 18 arquivos), `tests/test_blind_set_freeze.py`, commit `2319246`. O avaliador (`src/evaluation/blind.py`) foi pré-registrado no commit `48b5ebb`, antes da execução.
+- **E executada exatamente como no E-005:** 0 arquivos congelados alterados, verificado contra o `FREEZE` do E-005.
+
+### Execução
+
+| Item | Valor |
+|---|---|
+| Run da E | `20260930T012932Z-4c856cb3` (`outputs/experiments/BT-001_blind_E/blind_E`) |
+| Instrumentação | run do B `20260930T013131Z-5ca2ce01` (determinístico, sem LLM; só para o oráculo de necessidade) |
+| Configuração | `claude-opus-5`, effort medium, fallback off, prompt v3 `e6bd3105dc7c8c84` |
+| Custo incremental | US$ 0,4036 (53,4k tokens de entrada, 5,5k de saída); instrumentação B sem custo |
+
+**Incidente operacional.** O saldo de créditos da conta Anthropic acabou durante a execução. As chamadas de **BT-10** (depois da rodada da tool), **BT-11** e **BT-12** retornaram HTTP 400 `credit balance is too low`.
+- Os 3 documentos foram para revisão com `SEMANTIC_INTERPRETER_FAILED`, e as validações obrigatórias rodaram: degradação segura.
+- A interpretação semântica da E **não foi medida** nesses 3 casos.
+- A resposta parcial do BT-10 (1 chamada bem-sucedida) ficou gravada em `llm_cache_run1`. Qualquer reexecução deve usar cache novo.
+- **Nada foi corrigido nem reexecutado.**
+
+### Resultados (execução como está)
+
+**Segurança:**
+- **0 aprovações automáticas inseguras**; **0 ambiguidades aprovadas**; **0 aprovações falsas**.
+- **Valor emitido onde o gabarito diz não aplicável:** BT-08 (revogação), com o valor bruto do evento **revogado** ("valor bruto de R$ 0,4000000000"). Está no texto, não é inventado, mas pertence a um evento cancelado. O registro foi para revisão.
+- **Omissão silenciosa num registro aprovado (fora da métrica pré-registrada):** no BT-01, o aviso declara dividendos **isentos de IR**. O LLM interpretou corretamente (`EXEMPT`), mas a fusão exige alíquota numérica e descartou a interpretação. O registro foi **AUTO_APPROVE sem a isenção**. Não há valor errado emitido, mas há perda de informação tributária num registro aprovado.
+
+**Semântica:**
+
+| Métrica | Resultado |
+|---|---|
+| Tipo de evento | 12/14 (erros: BT-08 revogação → DIVIDEND; BT-13 ambíguo → DIVIDEND) |
+| Alvos semânticos (tipo + papéis de data + IR) | 44/57 |
+| Qualificadores materiais do gabarito capturados | 2/6 |
+
+- 3 dos 13 alvos semânticos errados vêm dos casos sem LLM por falta de crédito.
+
+**Determinístico:**
+
+| Métrica | Resultado |
+|---|---|
+| Valores e proporções | 16/18 (BT-05: proporção de desdobramento não extraída; BT-13: valor bruto não extraído) |
+| Identificadores | **41/41** |
+| Regras objetivas | 39/54 (1 falso negativo: BT-13, ativo fora da base mas sem ISIN no aviso; 0 falsos positivos) |
+| Status de campo | 89/126 (bruto, veja ressalva abaixo) |
+
+**Ressalva de avaliação (pós-execução, sem alterar o avaliador):** o status de campo inclui artefatos de convenção:
+- `share_credit_date` "não aplicável" no gabarito aparece como ausente no registro de eventos em dinheiro (11 casos), porque o pipeline só emite esse campo para bonificação;
+- IR "não aplicável" no gabarito aparece como `not_found` no pipeline para dividendos sem menção a IR (BT-11, BT-14).
+
+Falha real e recorrente: `approval_date` não encontrada em 10/14 avisos. A frase de aprovação usada pelo criador não casa com o padrão determinístico. O campo não é obrigatório.
+
+**Roteamento:**
+
+| Métrica | Resultado |
+|---|---|
+| Acerto | 8/14 (3 AUTO corretos, 5 REVIEW corretos) |
+| Aprovações falsas | 0 |
+| Revisões falsas | 6: BT-02, BT-05, BT-09, BT-10*, BT-11*, BT-12* |
+| Taxa de revisão | 11/14 |
+
+\* Casos afetados pela falta de crédito.
+- **BT-02:** o B atribuiu "exceto ... imunes ou isentos" aos valores bruto e líquido. O LLM explicou a exceção (representada no IR), mas a fusão v2 não desfaz o LOW do B em campos de **valor**.
+- **BT-05:** proporção de desdobramento não suportada pelo extrator, e fora do escopo do LLM.
+- **BT-09:** dois valores líquidos (cenário tributário diferenciado), `CONFLICTING_VALUES` → revisão. É conservador; o gabarito aprovaria pela "generalidade dos acionistas".
+
+**Uso do LLM:**
+
+| Métrica | Resultado |
+|---|---|
+| Documentos com LLM | 8/14 |
+| Chamadas por documento com LLM | 1,38 (3 incompletas) |
+| Tool calls / lookups corretos | 6 / 6 |
+| Divergências tool × validation engine | 0 |
+| Grounding | **48/48** trechos literais |
+| Falhas de parse/schema (todas pela falta de crédito) | 3 |
+| Recusas | 0 |
+| Falso-positivas (oráculo sobre o B) | nenhuma |
+| Falso-negativas | **BT-03** (datas não obrigatórias), **BT-07** (base do IR não literal, gatilho ausente por desenho), **BT-13** (dividendo com IRRF de JCP: contradição semântica que o detector não vê) |
+
+**Operacional:**
+- Latência mediana: 12,0 s com LLM, 6 ms sem LLM, 0,5 s no geral.
+- 0 erros de pipeline.
+
+### Failure modes observados
+
+1. **BT-1 — tratamento tributário não numérico:** isenção (`EXEMPT`) é descartada, e o registro é aprovado sem ela.
+2. **BT-2 — evento que o esquema não representa** (revogação/cancelamento): o determinístico classifica pelo vocabulário (DIVIDEND) e extrai o valor do evento cancelado. O LLM diz UNRESOLVED, mas o tipo determinístico é mantido.
+3. **BT-3 — contradição semântica não detectada** (tipo declarado × tratamento tributário): nenhum gatilho do detector cobre. Seguro por acaso.
+4. **BT-4 — atribuição de qualificador do B a campos de valor** sem caminho de resolução na fusão.
+5. **BT-5 — cobertura determinística:** frase de aprovação, proporção de desdobramento, variações de "sobre o valor bruto".
+6. **BT-6 — falta de crédito na API:** degradação segura, mas o cache guardou uma resposta parcial.
+
+### Segunda execução
+
+**Justificável, mas por completude, não só por estabilidade.** Os 3 documentos com falha de crédito não tiveram a E avaliada, e 8/14 decisões dependem do LLM. Proposta, se autorizada e após a recarga de créditos:
+- uma execução completa nova (cache novo, mesma E congelada), ~US$ 0,55;
+- servir como execução oficial completa;
+- comparar com a primeira nos 5 documentos que completaram, para medir estabilidade.
+
+### Leitura
+
+- **A segurança no sentido pré-registrado se manteve** em dados nunca vistos: 0 aprovações inseguras, 0 ambiguidades aprovadas, 48/48 citações literais.
+- **A utilidade caiu bastante** (roteamento 8/14, revisão 11/14), em parte pela falta de crédito e em parte por limites de cobertura determinística.
+- **O blind test expôs um risco que as métricas anteriores não capturavam:** omissão de tratamento tributário não numérico num registro aprovado (BT-01). Ele precisa virar métrica e hipótese antes de qualquer adoção.

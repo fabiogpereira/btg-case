@@ -1,0 +1,939 @@
+{
+  "schema_version": "semantic-record/0.1",
+  "document": {
+    "sha256": "fc8d1bfa68e019da1f906a4262275dc5df93fd92e8dde57ced5cfdbf36f2cd81",
+    "file_name": "BT-02.txt",
+    "size_bytes": 857,
+    "pages": 1,
+    "text_layer": {
+      "usable": true,
+      "alnum_chars": 647,
+      "min_alnum_chars_per_page": 100,
+      "reason": null
+    }
+  },
+  "extraction": {
+    "method": "native_text_layer+deterministic_rules",
+    "status": "COMPLETED",
+    "failure_mode": null,
+    "unsupported_fields": [
+      "fraction_adjustment_period"
+    ],
+    "title": "Juros sobre o Capital Próprio"
+  },
+  "classification": {
+    "event_type": "JCP",
+    "decision_rule": "precedence:JCP_over_DIVIDEND",
+    "signals": {
+      "JCP": [
+        {
+          "rule_id": "event.jcp_juros_capital_proprio",
+          "evidence": {
+            "text": "Juros sobre o Capital Próprio",
+            "start": 98,
+            "end": 127,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.jcp_juros_capital_proprio",
+          "evidence": {
+            "text": "Juros sobre o Capital Próprio",
+            "start": 262,
+            "end": 291,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.jcp_sigla",
+          "evidence": {
+            "text": "JCP",
+            "start": 293,
+            "end": 296,
+            "page": 1
+          }
+        }
+      ],
+      "DIVIDEND": [
+        {
+          "rule_id": "event.dividend_dividendo",
+          "evidence": {
+            "text": "dividendo",
+            "start": 683,
+            "end": 692,
+            "page": 1
+          }
+        }
+      ]
+    },
+    "title": "Juros sobre o Capital Próprio",
+    "title_event_types": [
+      "JCP"
+    ],
+    "confidence": "MEDIUM",
+    "confidence_reasons": [
+      "MULTIPLE_TYPE_SIGNALS",
+      "PRECEDENCE_RULE_APPLIED"
+    ]
+  },
+  "fields": {
+    "issuer_name": {
+      "status": "found",
+      "value": "Cerâmica Vale Azul S.A.",
+      "raw": "CERÂMICA VALE AZUL S.A.",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "CERÂMICA VALE AZUL S.A.",
+          "start": 0,
+          "end": 23,
+          "page": 1
+        },
+        {
+          "text": "Cerâmica Vale Azul S.A.",
+          "start": 130,
+          "end": 153,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "issuer_name.pattern_company_sa"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN",
+        "CORROBORATED:1"
+      ]
+    },
+    "cnpj": {
+      "status": "found",
+      "value": "23.456.789/0001-01",
+      "raw": "23.456.789/0001-01",
+      "source_label": "CNPJ nº",
+      "evidence": [
+        {
+          "text": "CNPJ nº 23.456.789/0001-01",
+          "start": 24,
+          "end": 50,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "cnpj.label_cnpj"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "isin": {
+      "status": "found",
+      "value": "BRCVAZACNPR1",
+      "raw": "BRCVAZACNPR1",
+      "source_label": "ISIN",
+      "evidence": [
+        {
+          "text": "ISIN: BRCVAZACNPR1",
+          "start": 357,
+          "end": 375,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "isin.label_isin"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "ticker": {
+      "status": "found",
+      "value": "CVAZ4",
+      "raw": "CVAZ4",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "CVAZ4",
+          "start": 349,
+          "end": 354,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ticker.pattern"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN"
+      ]
+    },
+    "share_class": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "approval_date": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "record_date": {
+      "status": "found",
+      "value": "2026-09-25",
+      "raw": "25/09/2026",
+      "source_label": "Data-base",
+      "evidence": [
+        {
+          "text": "Data-base: 25/09/2026",
+          "start": 577,
+          "end": 598,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "record_date.label_data_base"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "ex_date": {
+      "status": "found",
+      "value": "2026-09-28",
+      "raw": "28/09/2026",
+      "source_label": "Data ex",
+      "evidence": [
+        {
+          "text": "Data ex: 28/09/2026",
+          "start": 601,
+          "end": 620,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ex_date.label_data_ex"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "payment_date": {
+      "status": "found",
+      "value": "2026-10-09",
+      "raw": "09/10/2026",
+      "source_label": "Data de pagamento",
+      "evidence": [
+        {
+          "text": "Data de pagamento: 09/10/2026",
+          "start": 623,
+          "end": 652,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "payment_date.label_data_pagamento"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "gross_amount_per_share": {
+      "status": "found",
+      "value": "1.0000000000",
+      "raw": "1,0000000000",
+      "source_label": "Valor bruto por ação",
+      "evidence": [
+        {
+          "text": "Valor bruto por ação: R$ 1,0000000000",
+          "start": 378,
+          "end": 415,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "gross.label_valor_bruto"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "net_amount_per_share": {
+      "status": "found",
+      "value": "0.8500000000",
+      "raw": "0,8500000000",
+      "source_label": "Valor líquido por ação",
+      "evidence": [
+        {
+          "text": "Valor líquido por ação: R$ 0,8500000000",
+          "start": 535,
+          "end": 574,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "net.label_valor_liquido"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "withholding_tax": {
+      "status": "found",
+      "value": {
+        "rate": "0.15",
+        "base": null
+      },
+      "raw": "15",
+      "source_label": "Imposto de Renda Retido na Fonte",
+      "evidence": [
+        {
+          "text": "Imposto de Renda Retido na Fonte: 15%",
+          "start": 418,
+          "end": 455,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "withholding.label_imposto_renda"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "semantic_patch: base interpreted as None"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "currency": {
+      "status": "found",
+      "value": "BRL",
+      "raw": "R$",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "Valor bruto por ação: R$ 1,0000000000",
+          "start": 378,
+          "end": 415,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "currency.derived_from_gross_symbol"
+      ],
+      "anchor": "derived",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "derived from gross_amount_per_share evidence"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "DERIVED_FROM_SOURCE_FIELD"
+      ]
+    },
+    "ratio": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    }
+  },
+  "event_specific_fields": {},
+  "reference_check": {
+    "found": true,
+    "matched_by": "isin",
+    "query": "BRCVAZACNPR1",
+    "golden_row": {
+      "emissor": "Cerâmica Vale Azul S.A.",
+      "cnpj": "23.456.789/0001-01",
+      "isin": "BRCVAZACNPR1",
+      "ticker": "CVAZ4",
+      "classe": "PN",
+      "segmento_listagem": "Tradicional",
+      "status": "ativo"
+    }
+  },
+  "validations": [
+    {
+      "rule_id": "REF_ISIN_FOUND",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ISIN found in golden records",
+      "observed": {
+        "isin": "BRCVAZACNPR1"
+      }
+    },
+    {
+      "rule_id": "REF_TICKER_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ticker matches golden ticker",
+      "observed": {
+        "extracted": "CVAZ4",
+        "golden": "CVAZ4"
+      }
+    },
+    {
+      "rule_id": "REF_CNPJ_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "cnpj matches golden cnpj",
+      "observed": {
+        "extracted": "23.456.789/0001-01",
+        "golden": "23.456.789/0001-01"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "issuer_name matches golden emissor",
+      "observed": {
+        "extracted": "Cerâmica Vale Azul S.A.",
+        "golden": "Cerâmica Vale Azul S.A."
+      }
+    },
+    {
+      "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: share_class",
+      "observed": {
+        "golden": "PN"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_ACTIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "golden status = ativo",
+      "observed": {
+        "golden_status": "ativo"
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_PRESENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "all required fields present",
+      "observed": {
+        "required": [
+          "issuer_name",
+          "isin",
+          "ticker",
+          "record_date",
+          "ex_date",
+          "gross_amount_per_share",
+          "currency",
+          "payment_date",
+          "net_amount_per_share",
+          "withholding_tax"
+        ],
+        "not_found": []
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "no required field pending",
+      "observed": {
+        "declared_pending": []
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_DETERMINED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "event type JCP by rule precedence:JCP_over_DIVIDEND",
+      "observed": {
+        "decision_rule": "precedence:JCP_over_DIVIDEND"
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "title consistent with content",
+      "observed": {
+        "title": "Juros sobre o Capital Próprio",
+        "title_event_types": [
+          "JCP"
+        ],
+        "content_event_type": "JCP"
+      }
+    },
+    {
+      "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: approval_date",
+      "observed": {}
+    },
+    {
+      "rule_id": "DATE_RECORD_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "record 2026-09-25 vs ex 2026-09-28",
+      "observed": {
+        "record_date": "2026-09-25",
+        "ex_date": "2026-09-28"
+      }
+    },
+    {
+      "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "ex 2026-09-28; next weekday after record is 2026-09-28 (no holiday calendar, D-006)",
+      "observed": {
+        "record_date": "2026-09-25",
+        "ex_date": "2026-09-28",
+        "expected_ex_date": "2026-09-28"
+      }
+    },
+    {
+      "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "payment_date 2026-10-09 vs ex 2026-09-28",
+      "observed": {
+        "settlement_field": "payment_date",
+        "settlement_date": "2026-10-09",
+        "ex_date": "2026-09-28"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_GROSS_POSITIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "gross = 1.0000000000",
+      "observed": {
+        "gross": "1.0000000000"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "net = gross × (1 − rate), exact (tax base not stated; applied to gross)",
+      "observed": {
+        "gross": "1.0000000000",
+        "rate": "0.15",
+        "declared_value": "0.8500000000",
+        "calculated_value": "0.850000000000",
+        "comparison_precision": 10,
+        "rounding_rule": null,
+        "reason": null
+      }
+    }
+  ],
+  "validation_summary": {
+    "PASS": 14,
+    "NOT_EVALUATED": 2
+  },
+  "rule_groups_not_applicable": [
+    "ratio"
+  ],
+  "semantic": {
+    "classification": {
+      "confidence": "MEDIUM",
+      "source": "deterministic_patch",
+      "reasons": [
+        "PRECEDENCE:JCP_OVER_DIVIDEND"
+      ],
+      "qualifiers": [],
+      "interpretation": null
+    },
+    "fields": {
+      "record_date": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "ex_date": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "payment_date": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "gross_amount_per_share": {
+        "confidence": "LOW",
+        "source": "deterministic_patch",
+        "reasons": [
+          "UNINTERPRETED_QUALIFIER:EXCEPTION"
+        ],
+        "qualifiers": [
+          {
+            "type": "HOLDER_EXEMPTION",
+            "cue": "imunes",
+            "evidence": "informa que, em Reunião do Conselho de Administração realizada em 10/09/2026, foi deliberado o pagamento de Juros sobre o Capital Próprio (JCP) aos acionistas, nas seguintes condições: - Ticker: CVAZ4 - ISIN: BRCVAZACNPR1 - Valor bruto por ação: R$ 1,0000000000 - Imposto de Renda Retido na Fonte: 15% (quinze por cento), exceto para acionistas comprovadamente imunes ou isentos -"
+          },
+          {
+            "type": "EXCEPTION",
+            "cue": "exceto",
+            "evidence": "informa que, em Reunião do Conselho de Administração realizada em 10/09/2026, foi deliberado o pagamento de Juros sobre o Capital Próprio (JCP) aos acionistas, nas seguintes condições: - Ticker: CVAZ4 - ISIN: BRCVAZACNPR1 - Valor bruto por ação: R$ 1,0000000000 - Imposto de Renda Retido na Fonte: 15% (quinze por cento), exceto para acionistas comprovadamente imunes ou isentos -"
+          }
+        ],
+        "interpretation": null
+      },
+      "net_amount_per_share": {
+        "confidence": "LOW",
+        "source": "deterministic_patch",
+        "reasons": [
+          "UNINTERPRETED_QUALIFIER:EXCEPTION"
+        ],
+        "qualifiers": [
+          {
+            "type": "HOLDER_EXEMPTION",
+            "cue": "imunes",
+            "evidence": "Valor bruto por ação: R$ 1,0000000000 - Imposto de Renda Retido na Fonte: 15% (quinze por cento), exceto para acionistas comprovadamente imunes ou isentos - Valor líquido por ação: R$ 0,8500000000 -"
+          },
+          {
+            "type": "EXCEPTION",
+            "cue": "exceto",
+            "evidence": "Valor bruto por ação: R$ 1,0000000000 - Imposto de Renda Retido na Fonte: 15% (quinze por cento), exceto para acionistas comprovadamente imunes ou isentos - Valor líquido por ação: R$ 0,8500000000 -"
+          }
+        ],
+        "interpretation": null
+      },
+      "withholding_tax": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "INTERPRETED:HOLDER_LEVEL_EXEMPTION"
+        ],
+        "qualifiers": [
+          {
+            "type": "HOLDER_EXEMPTION",
+            "cue": "imunes",
+            "evidence": "Valor bruto por ação: R$ 1,0000000000 - Imposto de Renda Retido na Fonte: 15% (quinze por cento), exceto para acionistas comprovadamente imunes ou isentos -"
+          },
+          {
+            "type": "EXCEPTION",
+            "cue": "exceto",
+            "evidence": "Valor bruto por ação: R$ 1,0000000000 - Imposto de Renda Retido na Fonte: 15% (quinze por cento), exceto para acionistas comprovadamente imunes ou isentos -"
+          }
+        ],
+        "interpretation": {
+          "base": null
+        }
+      }
+    },
+    "blocking": [],
+    "negated_signals": []
+  },
+  "confidence_view": {
+    "classification": {
+      "confidence": "MEDIUM",
+      "source": "deterministic_patch",
+      "reasons": [
+        "PRECEDENCE:JCP_OVER_DIVIDEND"
+      ],
+      "qualifiers": [],
+      "interpretation": null
+    },
+    "fields": {
+      "issuer_name": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "cnpj": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "isin": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ticker": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "record_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ex_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "payment_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "gross_amount_per_share": {
+        "extraction": "HIGH",
+        "semantic": "LOW",
+        "validation": "CROSS_VALIDATED"
+      },
+      "net_amount_per_share": {
+        "extraction": "HIGH",
+        "semantic": "LOW",
+        "validation": "CROSS_VALIDATED"
+      },
+      "withholding_tax": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "currency": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      }
+    }
+  },
+  "routing": {
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "SEMANTIC_AMBIGUITY"
+    ],
+    "explanations": [
+      "gross_amount_per_share: UNINTERPRETED_QUALIFIER:EXCEPTION",
+      "net_amount_per_share: UNINTERPRETED_QUALIFIER:EXCEPTION"
+    ],
+    "gates": [
+      {
+        "gate": "EXTRACTION_POSSIBLE",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REQUIRED_INFORMATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "SEMANTIC_INTERPRETATION",
+        "status": "BLOCK",
+        "reason_codes": [
+          "SEMANTIC_AMBIGUITY"
+        ],
+        "explanations": [
+          "gross_amount_per_share: UNINTERPRETED_QUALIFIER:EXCEPTION",
+          "net_amount_per_share: UNINTERPRETED_QUALIFIER:EXCEPTION"
+        ]
+      },
+      {
+        "gate": "DETERMINISTIC_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REFERENCE_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "BLOCKING_ERRORS",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      }
+    ]
+  },
+  "audit": {
+    "run_id": "20260930T013131Z-5ca2ce01",
+    "pipeline_version": "baseline-a/0.1.0+semantic-patch/0.1",
+    "started_at": "2026-09-30T01:31:31.897+00:00",
+    "finished_at": "2026-09-30T01:31:31.899+00:00",
+    "duration_us": 2346,
+    "stages": [
+      {
+        "stage": "ingest",
+        "started_at": "2026-09-30T01:31:31.897+00:00",
+        "status": "ok",
+        "duration_us": 172
+      },
+      {
+        "stage": "text_layer",
+        "started_at": "2026-09-30T01:31:31.897+00:00",
+        "status": "ok",
+        "duration_us": 135
+      },
+      {
+        "stage": "extract_candidates",
+        "started_at": "2026-09-30T01:31:31.897+00:00",
+        "status": "ok",
+        "duration_us": 910
+      },
+      {
+        "stage": "classify",
+        "started_at": "2026-09-30T01:31:31.898+00:00",
+        "status": "ok",
+        "duration_us": 173
+      },
+      {
+        "stage": "normalize",
+        "started_at": "2026-09-30T01:31:31.898+00:00",
+        "status": "ok",
+        "duration_us": 174
+      },
+      {
+        "stage": "confidence",
+        "started_at": "2026-09-30T01:31:31.899+00:00",
+        "status": "ok",
+        "duration_us": 15
+      },
+      {
+        "stage": "semantic_patch",
+        "started_at": "2026-09-30T01:31:31.899+00:00",
+        "status": "ok",
+        "duration_us": 471
+      },
+      {
+        "stage": "validate",
+        "started_at": "2026-09-30T01:31:31.899+00:00",
+        "status": "ok",
+        "duration_us": 115,
+        "rules_executed": 16
+      },
+      {
+        "stage": "route",
+        "started_at": "2026-09-30T01:31:31.899+00:00",
+        "status": "ok",
+        "duration_us": 26
+      }
+    ],
+    "errors": [],
+    "retries": 0,
+    "extraction_method": "native_text_layer+deterministic_rules",
+    "model": null,
+    "prompt_version": null,
+    "validators_executed": [
+      "REF_ISIN_FOUND",
+      "REF_TICKER_CONSISTENT",
+      "REF_CNPJ_CONSISTENT",
+      "REF_ISSUER_NAME_CONSISTENT",
+      "REF_SHARE_CLASS_CONSISTENT",
+      "REF_ISSUER_ACTIVE",
+      "REQUIRED_FIELDS_PRESENT",
+      "REQUIRED_FIELDS_NOT_PENDING",
+      "CLASSIFICATION_DETERMINED",
+      "CLASSIFICATION_TITLE_CONSISTENT",
+      "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "DATE_RECORD_BEFORE_EX",
+      "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "AMOUNT_GROSS_POSITIVE",
+      "AMOUNT_NET_MATCHES_GROSS_AND_TAX"
+    ],
+    "final_decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "SEMANTIC_AMBIGUITY"
+    ],
+    "variant": "B"
+  }
+}
