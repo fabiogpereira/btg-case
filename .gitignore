@@ -37,3 +37,6 @@ outputs/tmp/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# --- OCR local (E-008): modelos Tesseract baixados (URL + SHA-256 no FREEZE do experimento) ---
+.ocr/

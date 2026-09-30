@@ -1568,3 +1568,31 @@ Depois da primeira saída da regressão, nada muda na G. Se houver cache miss re
 - **Candidata pré-OCR:** tag `candidate-pre-ocr`. Código em `af73747`; `outputs/experiments/E-008_pre_ocr_ocr/FREEZE_PRE_OCR.json` com 76 arquivos, verificado por `tests/test_e008_freeze.py`.
 - `case/`: 10/10 arquivos com o SHA-256 do mapa, sem mudança no git. `.env` ignorado e não versionado.
 - A partir daqui, a versão H não muda durante o experimento de OCR.
+
+### Parte 2 — OCR local no doc 07 (H1) (pré-registro)
+
+- **Pergunta:** uma solução local e barata de OCR recupera o doc 07 com qualidade suficiente para alimentar a mesma pipeline candidata sem criar novos riscos?
+- **Arquitetura:**
+  1. PDF → verificação da camada nativa.
+  2. Se utilizável: pipeline normal.
+  3. Se não (`NO_USABLE_TEXT_LAYER`, nunca pelo nome do arquivo): renderização PDFium a 300 DPI → Tesseract local → texto → **a mesma pipeline H congelada** (hook `text_fallback`).
+  4. Depois: validações → roteamento → auditoria. Não há caminho financeiro específico para OCR.
+  5. A identidade do documento é o SHA-256 do PDF.
+- **Motor:** Tesseract 5.4.0.20240606 (UB-Mannheim; `winget`), modelo `por` da tag 4.1.0 de `tesseract-ocr/tessdata` (SHA-256 no freeze), `--oem 1 --psm 3`.
+  - Escolhido por ser o OCR local mais conhecido e auditável, com confiança por palavra e sem serviço cloud.
+  - Sem deskew/denoise, sem dicionário, sem pós-correção, sem LLM ou vision.
+- **Dependências novas:**
+  - sistema: Tesseract;
+  - Python: `pypdfium2==5.13.0` (renderização, wheel sem dependência de sistema) e `pillow==12.3.0`, em `requirements-ocr.txt`;
+  - modelos em `.ocr/tessdata/` (fora do git).
+- **Código:** `src/perception/ocr_local.py`, fora de `src/corporate_actions` e da versão congelada.
+- **Auditoria no registro:** `extraction.method = OCR_LOCAL`; `document.text_fallback` (motor, versão, modelo, parâmetros, páginas, durações, confiança média, palavras e tokens numéricos de baixa confiança, SHA-256 da imagem renderizada, TXT/TSV brutos em `ocr_artifacts/`).
+- **Teste do hook:** `tests/test_text_fallback_hook.py`.
+- **Congelamento:** `outputs/experiments/E-008_pre_ocr_ocr/FREEZE_OCR_H1.json`.
+- **Avaliação e critérios:** ver docstring de `src/evaluation/e008_ocr.py`, pré-registrada. Gatilhos de vision fixados antes da execução.
+- **Protocolo:** uma execução. Nenhum ajuste após a primeira saída. Se o doc 07 exigir o LLM, o cache miss é registrado e o usuário é consultado antes de qualquer chamada.
+
+```bash
+python -m evaluation.e008_ocr run  --out outputs/experiments/E-008_pre_ocr_ocr/ocr_h1
+python -m evaluation.e008_ocr eval --out outputs/experiments/E-008_pre_ocr_ocr/ocr_h1/evaluation
+```

@@ -1,0 +1,4 @@
+# OCR local (E-008): renderização de PDF e imagens para o Tesseract (motor instalado à parte; ver src/perception/ocr_local.py).
+-r requirements.txt
+pypdfium2==5.13.0
+pillow==12.3.0

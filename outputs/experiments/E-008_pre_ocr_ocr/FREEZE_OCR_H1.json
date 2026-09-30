@@ -1,0 +1,54 @@
+{
+  "experiment": "E-008",
+  "stage": "OCR local H1 (doc 07)",
+  "freeze_version": 1,
+  "frozen_at": "2026-09-30",
+  "pipeline": {
+    "variant": "H",
+    "tag": "candidate-pre-ocr",
+    "code_commit": "af73747",
+    "freeze": "FREEZE_PRE_OCR.json"
+  },
+  "ocr_config": {
+    "extraction_method": "OCR_LOCAL",
+    "engine": "tesseract",
+    "engine_version": "v5.4.0.20240606",
+    "lang": "por",
+    "model_sha256": "016c6a371bb1e4c48fe521908cf3ba3d751fade0ab846ad5d4086b563f5c528c",
+    "oem": 1,
+    "psm": 3,
+    "dpi": 300,
+    "renderer": "pypdfium2 5.13.0",
+    "pillow": "12.3.0",
+    "preprocessing": null,
+    "post_correction": null
+  },
+  "setup": {
+    "tesseract": "winget install --id UB-Mannheim.TesseractOCR -e (5.4.0.20240606; installer SHA-256 c885fff6998e0608ba4bb8ab51436e1c6775c2bafc2559a19b423e18678b60c9)",
+    "models": {
+      "por.traineddata": {
+        "sha256": "016c6a371bb1e4c48fe521908cf3ba3d751fade0ab846ad5d4086b563f5c528c",
+        "source": "https://github.com/tesseract-ocr/tessdata/raw/4.1.0/por.traineddata"
+      },
+      "eng.traineddata": {
+        "sha256": "7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2",
+        "source": "copiado do instalador UB-Mannheim"
+      },
+      "osd.traineddata": {
+        "sha256": "9cf5d576fcc47564f11265841e5ca839001e7e6f38ff7f7aacf46d15a96b00ff",
+        "source": "copiado do instalador UB-Mannheim"
+      }
+    },
+    "python": "pip install -r requirements-ocr.txt (pypdfium2==5.13.0, pillow==12.3.0)"
+  },
+  "llm": "replay sem rede (cache E-006 llm_cache_run1); cache miss registrado; nenhuma chamada de API sem autorização",
+  "files": {
+    "src/perception/__init__.py": "f3f31d0713bae57ed462f6da5d59733ce6e5cf6cc38c0b0f6a7b3fdc40aefa9f",
+    "src/perception/ocr_local.py": "7220356c99b1a872d090453c56164f8ee4562ab31c9660e2f1c27a778dd44432",
+    "src/evaluation/e008_ocr.py": "9484da6a0f307cb40028e5263a3992872c1d2517d1af7e79f7f55cc25d42a14d",
+    "tests/test_text_fallback_hook.py": "04df4f6bca4857d1caab2706d7e92cda9e9c0e6c361288582cc2c60cfbf990a6",
+    "requirements-ocr.txt": "f64b80b3b46a53d797d83d643982cc0a241adddae6c630526765c2ca9a282d55",
+    "tests/ground_truth/doc07.json": "1f86b2827252008e56d89c93929d85b2b8f7f5be31ed3c27d4c3239d70a99d16",
+    "tests/ground_truth/transcriptions/doc07_visual_transcription.txt": "937045bcdfd9d9896320122ba1b79975926fef9c00590abbd252523b0e541cba"
+  }
+}

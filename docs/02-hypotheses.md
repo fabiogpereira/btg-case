@@ -396,3 +396,11 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
   - 0 bindings errados; identidade e original inalterados.
   - 16 pares `SUPERSEDED` (mesmo valor, rótulo mais distante).
 - **Status:** SUPPORTED (sintético expõe o invariante — D-030)
+
+### H-36 — OCR local recupera o doc 07 para a mesma pipeline sem novos riscos (H1)
+- **Hypothesis:** Tesseract local (baseline, sem otimização), acionado só por `NO_USABLE_TEXT_LAYER`, recupera o doc 07 com qualidade suficiente para a pipeline candidata congelada (H). Nenhum campo financeiro crítico é alterado silenciosamente, não há binding nem identidade errados, o roteamento é justificável e o custo marginal é ~0.
+- **Why it matters:** O doc 07 é o único documento do case sem camada de texto. Desde o E-002, vai para revisão por falta de extração, não por falta de confiança no conteúdo.
+- **How to test:** E-008 parte 2 (`evaluation/e008_ocr.py`, pré-registrado): comparação campo a campo com o gabarito v2.1 (transcrição visual humana) e tokens críticos como escritos.
+- **Expected signal:** Critérios 1–7 do avaliador; nenhum gatilho de vision.
+- **Observed result:** (pendente)
+- **Status:** OPEN
