@@ -1,0 +1,73 @@
+{
+  "schema_version": "semantic-record/0.6",
+  "document": {
+    "sha256": "cf4af08dd23f507ae72b852d86827bbee6c3fe2d0e31f96e70bc74ea4238c45f",
+    "file_name": "07_telecom_norte_jcp_SCAN.pdf",
+    "size_bytes": 213403,
+    "pages": 1,
+    "text_layer": {
+      "usable": false,
+      "alnum_chars": 0,
+      "min_alnum_chars_per_page": 100,
+      "reason": "NO_USABLE_TEXT_LAYER"
+    }
+  },
+  "routing": {
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "PROCESSING_ERROR"
+    ],
+    "explanations": [
+      "'outputs\\\\experiments\\\\E-008_pre_ocr_ocr\\\\ocr_h1\\\\ocr_artifacts\\\\cf4af08dd23f507ae72b852d86827bbee6c3fe2d0e31f96e70bc74ea4238c45f\\\\page-1.txt' is not in the subpath of 'C:\\\\Users\\\\Windows 11\\\\Documents\\\\Projetos Pessoais\\\\btg-case'"
+    ]
+  },
+  "audit": {
+    "run_id": "e008-ocr-h1",
+    "pipeline_version": "baseline-a/0.1.0+candidate-pre-ocr/0.1",
+    "started_at": "2026-09-30T03:14:13.051+00:00",
+    "finished_at": "2026-09-30T03:14:16.713+00:00",
+    "duration_us": 3661780,
+    "stages": [
+      {
+        "stage": "ingest",
+        "started_at": "2026-09-30T03:14:13.051+00:00",
+        "status": "ok",
+        "duration_us": 876
+      },
+      {
+        "stage": "text_layer",
+        "started_at": "2026-09-30T03:14:13.052+00:00",
+        "status": "ok",
+        "duration_us": 1245
+      },
+      {
+        "stage": "text_fallback",
+        "started_at": "2026-09-30T03:14:13.053+00:00",
+        "status": "error",
+        "duration_us": 3656653
+      }
+    ],
+    "errors": [
+      {
+        "stage": "text_fallback",
+        "type": "ValueError",
+        "message": "'outputs\\\\experiments\\\\E-008_pre_ocr_ocr\\\\ocr_h1\\\\ocr_artifacts\\\\cf4af08dd23f507ae72b852d86827bbee6c3fe2d0e31f96e70bc74ea4238c45f\\\\page-1.txt' is not in the subpath of 'C:\\\\Users\\\\Windows 11\\\\Documents\\\\Projetos Pessoais\\\\btg-case'",
+        "traceback_tail": [
+          "  File \"C:\\Users\\Windows 11\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\pathlib\\_local.py\", line 385, in relative_to",
+          "    raise ValueError(f\"{str(self)!r} is not in the subpath of {str(other)!r}\")",
+          "ValueError: 'outputs\\\\experiments\\\\E-008_pre_ocr_ocr\\\\ocr_h1\\\\ocr_artifacts\\\\cf4af08dd23f507ae72b852d86827bbee6c3fe2d0e31f96e70bc74ea4238c45f\\\\page-1.txt' is not in the subpath of 'C:\\\\Users\\\\Windows 11\\\\Documents\\\\Projetos Pessoais\\\\btg-case'"
+        ]
+      }
+    ],
+    "retries": 0,
+    "extraction_method": null,
+    "model": null,
+    "prompt_version": null,
+    "validators_executed": [],
+    "final_decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "PROCESSING_ERROR"
+    ],
+    "variant": "H"
+  }
+}

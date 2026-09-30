@@ -1,0 +1,409 @@
+{
+  "document": {
+    "file_name": "07_telecom_norte_jcp_SCAN.pdf",
+    "sha256": "cf4af08dd23f507ae72b852d86827bbee6c3fe2d0e31f96e70bc74ea4238c45f",
+    "identity_hash_is_pdf": true
+  },
+  "fallback": {
+    "trigger": null,
+    "extraction_method": null,
+    "engine": null,
+    "engine_version": null,
+    "lang": null,
+    "model_sha256": null,
+    "oem": null,
+    "psm": null,
+    "dpi": null,
+    "renderer": null,
+    "pages": null,
+    "duration_ms": null,
+    "usable": null,
+    "page_artifacts": null
+  },
+  "text": {
+    "chars": 0,
+    "lines": 0,
+    "words": 0,
+    "mean_word_confidence": null,
+    "low_confidence_words": null,
+    "low_confidence_numeric_tokens": null,
+    "unexpected_chars": [],
+    "char_similarity_vs_transcription": 0.0,
+    "transcription_words_found": {
+      "found": 0,
+      "total": 186
+    },
+    "transcription_chars": 1187
+  },
+  "critical_tokens_as_written": {
+    "issuer_name": {
+      "expected": "Telecom Norte Participações S.A.",
+      "exact": false,
+      "closest_ocr": null,
+      "digit_positions_changed": null
+    },
+    "cnpj": {
+      "expected": "33.222.111/0001-44",
+      "exact": false,
+      "closest_ocr": null,
+      "digit_positions_changed": null
+    },
+    "isin": {
+      "expected": "BRTLNRACNPR2",
+      "exact": false,
+      "closest_ocr": null,
+      "digit_positions_changed": null
+    },
+    "ticker": {
+      "expected": "TLNR4",
+      "exact": false,
+      "closest_ocr": null,
+      "digit_positions_changed": null
+    },
+    "approval_date": {
+      "expected": "06 de junho de 2026",
+      "exact": false,
+      "closest_ocr": null,
+      "digit_positions_changed": null
+    },
+    "record_date": {
+      "expected": "22/06/2026",
+      "exact": false,
+      "closest_ocr": null,
+      "digit_positions_changed": null
+    },
+    "ex_date": {
+      "expected": "23/06/2026",
+      "exact": false,
+      "closest_ocr": null,
+      "digit_positions_changed": null
+    },
+    "payment_date": {
+      "expected": "21/08/2026",
+      "exact": false,
+      "closest_ocr": null,
+      "digit_positions_changed": null
+    },
+    "gross_amount_per_share": {
+      "expected": "R$ 0,1124300000",
+      "exact": false,
+      "closest_ocr": null,
+      "digit_positions_changed": null
+    },
+    "net_amount_per_share": {
+      "expected": "R$ 0,0927547500",
+      "exact": false,
+      "closest_ocr": null,
+      "digit_positions_changed": null
+    },
+    "withholding_tax": {
+      "expected": "17,5%",
+      "exact": false,
+      "closest_ocr": null,
+      "digit_positions_changed": null
+    }
+  },
+  "evidence_recoverability": {
+    "found": 0,
+    "total": 24,
+    "missing": [
+      "A Telecom Norte Participações S.A. comunica",
+      "CNPJ/ME nº 33.222.111/0001-44",
+      "TLNR4 (ISIN BRTLNRACNPR2)",
+      "TLNR4 (ISIN BRTLNRACNPR2)",
+      "Valor bruto por ação PN",
+      "Conselho de Administração, em reunião realizada em 06 de junho de 2026",
+      "Data-base (data com)",
+      "22/06/2026",
+      "ao final do dia 22 de junho de 2026 (data com)",
+      "Data ex-JCP",
+      "23/06/2026",
+      "negociadas ex-JCP a partir de 23 de junho de 2026",
+      "Data de pagamento",
+      "21/08/2026",
+      "Valor bruto por ação PN",
+      "R$ 0,1124300000",
+      "Valor líquido por ação PN",
+      "R$ 0,0927547500",
+      "IRRF na fonte",
+      "17,5%",
+      "(IRRF) à alíquota de 17,5% sobre o valor bruto",
+      "R$ 0,1124300000",
+      "aprovou o crédito de Juros sobre o Capital Próprio (JCP), nos termos do art. 9º da Lei nº 9.249/95",
+      "à alíquota de 17,5% sobre o valor bruto"
+    ]
+  },
+  "fields": {
+    "issuer_name": {
+      "expected": "Telecom Norte Participações S.A.",
+      "got": null,
+      "status": "ABSENT",
+      "result": "MISSING",
+      "confidence": null,
+      "rules": null
+    },
+    "cnpj": {
+      "expected": "33.222.111/0001-44",
+      "got": null,
+      "status": "ABSENT",
+      "result": "MISSING",
+      "confidence": null,
+      "rules": null
+    },
+    "isin": {
+      "expected": "BRTLNRACNPR2",
+      "got": null,
+      "status": "ABSENT",
+      "result": "MISSING",
+      "confidence": null,
+      "rules": null
+    },
+    "ticker": {
+      "expected": "TLNR4",
+      "got": null,
+      "status": "ABSENT",
+      "result": "MISSING",
+      "confidence": null,
+      "rules": null
+    },
+    "approval_date": {
+      "expected": "2026-06-06",
+      "got": null,
+      "status": "ABSENT",
+      "result": "MISSING",
+      "confidence": null,
+      "rules": null
+    },
+    "record_date": {
+      "expected": "2026-06-22",
+      "got": null,
+      "status": "ABSENT",
+      "result": "MISSING",
+      "confidence": null,
+      "rules": null
+    },
+    "ex_date": {
+      "expected": "2026-06-23",
+      "got": null,
+      "status": "ABSENT",
+      "result": "MISSING",
+      "confidence": null,
+      "rules": null
+    },
+    "payment_date": {
+      "expected": "2026-08-21",
+      "got": null,
+      "status": "ABSENT",
+      "result": "MISSING",
+      "confidence": null,
+      "rules": null
+    },
+    "gross_amount_per_share": {
+      "expected": "0.1124300000",
+      "got": null,
+      "status": "ABSENT",
+      "result": "MISSING",
+      "confidence": null,
+      "rules": null
+    },
+    "net_amount_per_share": {
+      "expected": "0.0927547500",
+      "got": null,
+      "status": "ABSENT",
+      "result": "MISSING",
+      "confidence": null,
+      "rules": null
+    },
+    "withholding_tax": {
+      "expected": {
+        "rate": "0.175",
+        "base": "GROSS_AMOUNT"
+      },
+      "got": null,
+      "status": "ABSENT",
+      "result": "MISSING",
+      "confidence": null,
+      "rules": null
+    }
+  },
+  "safety": {
+    "unsafe_auto_approval_enhanced": false,
+    "components_if_approved": null,
+    "latent_components": {
+      "field_hallucination": [
+        "event_type"
+      ],
+      "material_information_omission": [
+        "record_date:ABSENT",
+        "ex_date:ABSENT",
+        "payment_date:ABSENT",
+        "gross_amount_per_share:ABSENT",
+        "net_amount_per_share:ABSENT",
+        "withholding_tax:ABSENT"
+      ]
+    },
+    "hallucinations": [
+      "event_type"
+    ],
+    "material_omissions": [
+      "record_date:ABSENT",
+      "ex_date:ABSENT",
+      "payment_date:ABSENT",
+      "gross_amount_per_share:ABSENT",
+      "net_amount_per_share:ABSENT",
+      "withholding_tax:ABSENT"
+    ],
+    "silently_altered_fields": [],
+    "wrong_bindings": [],
+    "wrong_identity": false
+  },
+  "binding": {
+    "bound": 0,
+    "rejected": [],
+    "superseded": 0,
+    "ambiguous_fields": []
+  },
+  "identity": {},
+  "pipeline": {
+    "extraction": null,
+    "event_type": null,
+    "validations": {},
+    "validation_mismatches": {
+      "REF_ISIN_FOUND": {
+        "expected": "PASS",
+        "got": "ABSENT"
+      },
+      "REF_TICKER_CONSISTENT": {
+        "expected": "PASS",
+        "got": "ABSENT"
+      },
+      "REF_CNPJ_CONSISTENT": {
+        "expected": "PASS",
+        "got": "ABSENT"
+      },
+      "REF_ISSUER_NAME_CONSISTENT": {
+        "expected": "PASS",
+        "got": "ABSENT"
+      },
+      "REF_SHARE_CLASS_CONSISTENT": {
+        "expected": "PASS",
+        "got": "ABSENT"
+      },
+      "REF_ISSUER_ACTIVE": {
+        "expected": "PASS",
+        "got": "ABSENT"
+      },
+      "REQUIRED_FIELDS_PRESENT": {
+        "expected": "PASS",
+        "got": "ABSENT"
+      },
+      "REQUIRED_FIELDS_NOT_PENDING": {
+        "expected": "PASS",
+        "got": "ABSENT"
+      },
+      "CLASSIFICATION_TITLE_CONSISTENT": {
+        "expected": "PASS",
+        "got": "ABSENT"
+      },
+      "DATE_APPROVAL_NOT_AFTER_RECORD": {
+        "expected": "PASS",
+        "got": "ABSENT"
+      },
+      "DATE_RECORD_BEFORE_EX": {
+        "expected": "PASS",
+        "got": "ABSENT"
+      },
+      "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD": {
+        "expected": "PASS",
+        "got": "ABSENT"
+      },
+      "DATE_SETTLEMENT_NOT_BEFORE_EX": {
+        "expected": "PASS",
+        "got": "ABSENT"
+      },
+      "AMOUNT_GROSS_POSITIVE": {
+        "expected": "PASS",
+        "got": "ABSENT"
+      },
+      "AMOUNT_NET_MATCHES_GROSS_AND_TAX": {
+        "expected": "PASS",
+        "got": "ABSENT"
+      }
+    },
+    "routing": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "PROCESSING_ERROR"
+    ],
+    "explanations": [
+      "'outputs\\\\experiments\\\\E-008_pre_ocr_ocr\\\\ocr_h1\\\\ocr_artifacts\\\\cf4af08dd23f507ae72b852d86827bbee6c3fe2d0e31f96e70bc74ea4238c45f\\\\page-1.txt' is not in the subpath of 'C:\\\\Users\\\\Windows 11\\\\Documents\\\\Projetos Pessoais\\\\btg-case'"
+    ],
+    "llm_invoked": false,
+    "llm_triggers": null,
+    "llm_errors": []
+  },
+  "operational": {
+    "ocr_duration_ms": null,
+    "pipeline_duration_ms": 3661,
+    "api_calls": 0,
+    "cache_miss": false,
+    "marginal_cost_usd": "0"
+  },
+  "native_documents_unchanged": {
+    "01_energetica_vale_tiete_dividendo.pdf": {
+      "fallback_used": false,
+      "same_as_pre_ocr_regression": true
+    },
+    "02_banco_meridional_jcp.pdf": {
+      "fallback_used": false,
+      "same_as_pre_ocr_regression": true
+    },
+    "03_siderurgica_paranaense_proventos.pdf": {
+      "fallback_used": false,
+      "same_as_pre_ocr_regression": true
+    },
+    "04_rede_varejo_jcp_sem_data.pdf": {
+      "fallback_used": false,
+      "same_as_pre_ocr_regression": true
+    },
+    "05_aurora_saneamento_dividendo_datas.pdf": {
+      "fallback_used": false,
+      "same_as_pre_ocr_regression": true
+    },
+    "06_petroquimica_litoral_grupamento.pdf": {
+      "fallback_used": false,
+      "same_as_pre_ocr_regression": true
+    },
+    "08_construtora_horizonte_bonificacao.pdf": {
+      "fallback_used": false,
+      "same_as_pre_ocr_regression": true
+    }
+  },
+  "success_criteria": {
+    "1_end_to_end": false,
+    "2_no_silent_critical_alteration": true,
+    "3_enhanced_unsafe_zero": true,
+    "4_wrong_bindings_zero": true,
+    "5_identity_correct_or_fail_safe": true,
+    "6_routing_justifiable": true,
+    "7_marginal_cost_zero": true,
+    "native_documents_unchanged": true
+  },
+  "vision_triggers": {
+    "digit_error_in_critical_token": {},
+    "critical_fields_lost_ge_2": [
+      "issuer_name",
+      "cnpj",
+      "isin",
+      "ticker",
+      "approval_date",
+      "record_date",
+      "ex_date",
+      "payment_date",
+      "gross_amount_per_share",
+      "net_amount_per_share",
+      "withholding_tax"
+    ],
+    "pipeline_cannot_operate": true,
+    "evidence_recoverability_below_80pct": true
+  }
+}

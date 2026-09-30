@@ -1,0 +1,73 @@
+{
+  "schema_version": "semantic-record/0.6",
+  "document": {
+    "sha256": "cf4af08dd23f507ae72b852d86827bbee6c3fe2d0e31f96e70bc74ea4238c45f",
+    "file_name": "07_telecom_norte_jcp_SCAN.pdf",
+    "size_bytes": 213403,
+    "pages": 1,
+    "text_layer": {
+      "usable": false,
+      "alnum_chars": 0,
+      "min_alnum_chars_per_page": 100,
+      "reason": "NO_USABLE_TEXT_LAYER"
+    }
+  },
+  "routing": {
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "PROCESSING_ERROR"
+    ],
+    "explanations": [
+      "[Errno 2] No such file or directory: 'C:\\\\Users\\\\WINDOW~1\\\\AppData\\\\Local\\\\Temp\\\\tmp16vdvbqa\\\\page-1.tsv'"
+    ]
+  },
+  "audit": {
+    "run_id": "e008-ocr-h1",
+    "pipeline_version": "baseline-a/0.1.0+candidate-pre-ocr/0.1",
+    "started_at": "2026-09-30T03:13:25.898+00:00",
+    "finished_at": "2026-09-30T03:13:29.446+00:00",
+    "duration_us": 3547806,
+    "stages": [
+      {
+        "stage": "ingest",
+        "started_at": "2026-09-30T03:13:25.898+00:00",
+        "status": "ok",
+        "duration_us": 763
+      },
+      {
+        "stage": "text_layer",
+        "started_at": "2026-09-30T03:13:25.899+00:00",
+        "status": "ok",
+        "duration_us": 1011
+      },
+      {
+        "stage": "text_fallback",
+        "started_at": "2026-09-30T03:13:25.900+00:00",
+        "status": "error",
+        "duration_us": 3541302
+      }
+    ],
+    "errors": [
+      {
+        "stage": "text_fallback",
+        "type": "FileNotFoundError",
+        "message": "[Errno 2] No such file or directory: 'C:\\\\Users\\\\WINDOW~1\\\\AppData\\\\Local\\\\Temp\\\\tmp16vdvbqa\\\\page-1.tsv'",
+        "traceback_tail": [
+          "    return io.open(self, mode, buffering, encoding, errors, newline)",
+          "           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "FileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\Users\\\\WINDOW~1\\\\AppData\\\\Local\\\\Temp\\\\tmp16vdvbqa\\\\page-1.tsv'"
+        ]
+      }
+    ],
+    "retries": 0,
+    "extraction_method": null,
+    "model": null,
+    "prompt_version": null,
+    "validators_executed": [],
+    "final_decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "PROCESSING_ERROR"
+    ],
+    "variant": "H"
+  }
+}

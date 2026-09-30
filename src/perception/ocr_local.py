@@ -79,7 +79,7 @@ class TesseractOCR:
                 artifact = {"page": i + 1, "image_px": list(image.size), "image_sha256": _sha(png.read_bytes()),
                             "text_sha256": _sha(txt.encode("utf-8")), "tsv_sha256": _sha(tsv.encode("utf-8"))}
                 if self.artifacts_dir is not None:
-                    out = self.artifacts_dir / doc.sha256
+                    out = Path(self.artifacts_dir).resolve() / doc.sha256
                     out.mkdir(parents=True, exist_ok=True)
                     (out / f"page-{i + 1}.txt").write_text(txt, encoding="utf-8")
                     (out / f"page-{i + 1}.tsv").write_text(tsv, encoding="utf-8")

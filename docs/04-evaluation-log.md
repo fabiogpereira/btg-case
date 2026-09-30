@@ -1596,3 +1596,9 @@ Depois da primeira saída da regressão, nada muda na G. Se houver cache miss re
 python -m evaluation.e008_ocr run  --out outputs/experiments/E-008_pre_ocr_ocr/ocr_h1
 python -m evaluation.e008_ocr eval --out outputs/experiments/E-008_pre_ocr_ocr/ocr_h1/evaluation
 ```
+
+**Falhas técnicas antes de qualquer saída de OCR ser avaliada (registradas, preservadas):**
+1. `ocr_h1_run1_setup_failure`: `--tessdata-dir` sem a pasta `configs/`, então o Tesseract não gerou o TSV e o adaptador falhou ao lê-lo. Correção de setup: copiar `configs/` e `tessconfigs/` do instalador. Nenhuma mudança de código.
+2. `ocr_h1_run2_path_failure`: `artifacts_dir` relativo com `relative_to` absoluto no adaptador. Correção: `resolve()`, uma linha, sem mudança de parâmetro de OCR. Freeze do experimento → versão 2.
+
+Nas duas falhas, a pipeline congelada registrou `PROCESSING_ERROR` → REVIEW_REQUIRED, sem campo inventado, e os 7 documentos nativos ficaram idênticos. O texto produzido pelo OCR não foi examinado antes da execução válida.
