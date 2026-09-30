@@ -175,7 +175,7 @@ def process_document(path: Path, golden: GoldenRecords, run_id: str, variant: st
             extra["variant"] = variant
         record["audit"] = audit.to_dict(
             extraction_method=(record.get("extraction") or {}).get("method"),
-            model=(llm_info or {}).get("served_models", [None])[0] if llm_info else None,
+            model=(llm_info["served_models"] or [None])[0] if llm_info else None,
             prompt_version=(llm_info or {}).get("prompt_version"),
             validators_executed=validators,
             final_decision=(record.get("routing") or {}).get("decision"),

@@ -246,6 +246,18 @@ python -m evaluation.variants --original A=$E/original_A B=$E/original_B C=$E/or
    - o challenge set mede, portanto, generalização **com conhecimento do autor**, não uma holdout cega. Um conjunto cego escrito por outra pessoa (ou por um agente sem acesso ao código) seria a medida mais forte; está proposto como próximo passo, não feito.
 4. **Amostra pequena.** 7 documentos originais com texto e 11 casos sintéticos (21 alvos). As diferenças entre variantes devem ser lidas caso a caso, não como taxas estáveis.
 
+### Incidente pré-execução → `freeze_version` 2 (2026-09-29)
+
+- **O que houve:** a primeira chamada da execução 1 (`original_C`) retornou HTTP 400 **antes de qualquer saída do modelo**. A chave de API não está associada a um workspace, e a API exige o header `anthropic-workspace-id`.
+- **Enquadramento:** exceção pré-registrada (incompatibilidade de API, sem nenhuma saída semântica observada).
+- **Correções** (hashes em `FREEZE.json`, `changes_from_previous`):
+  1. `llm/anthropic_provider.py` envia `anthropic-workspace-id` quando `ANTHROPIC_WORKSPACE_ID` está definido. O valor vem do `.env` e nunca é registrado.
+  2. `llm/cache.py` não grava resposta sem nenhuma chamada bem-sucedida. O erro tinha sido gravado e seria reproduzido em replay.
+  3. `pipeline.py`: o audit não quebra mais quando nenhum modelo respondeu. Antes, um `IndexError` derrubava o lote em vez de registrar a falha como resultado (`SEMANTIC_INTERPRETER_FAILED`).
+- **Teste de regressão:** `test_api_failure_is_recorded_without_crashing_or_caching`.
+- **Inalterados:** prompt (`cf27c1d6164099c5`), schema, B, avaliação, gabaritos e challenge set. A mudança no `pipeline.py` só afeta o caminho com LLM; os runs oficiais de A e B continuam válidos.
+- **Run descartado:** o `original_C` que falhou (0 respostas do modelo) foi apagado, junto com o cache.
+
 ### Resultado
 
 _Pendente da execução de C._

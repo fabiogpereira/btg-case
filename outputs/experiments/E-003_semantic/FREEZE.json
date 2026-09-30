@@ -1,8 +1,8 @@
 {
   "experiment": "E-003",
-  "freeze_version": 1,
+  "freeze_version": 2,
   "frozen_at": "2026-09-29",
-  "git_base_commit": "c5b241a",
+  "git_base_commit": "ea490b6",
   "note": "Código, gabaritos, challenge set e prompt congelados antes de qualquer execução do LLM. Hash com fins de linha normalizados (CRLF->LF).",
   "prompt": {
     "version": "semantic-interpreter/v1",
@@ -49,15 +49,15 @@
     "src/corporate_actions/extraction.py": "752a219bf139cac1077900e5723cce1641307d2f517dd5fe0c7a292ed3846665",
     "src/corporate_actions/ingestion.py": "096d1ea3840ed5b0b3c73286de178d38a0c109bdd6119492b824a0c6e595bcd1",
     "src/corporate_actions/llm/__init__.py": "bf2c14588fa77334702371140ebb5029475549efcde0651dc642850239f6b339",
-    "src/corporate_actions/llm/anthropic_provider.py": "6b8b4041f80e9631a024d039ddc94b7df24ca02675de2c215699f289f59f7567",
+    "src/corporate_actions/llm/anthropic_provider.py": "b6ae8256f86a7d01533269564f496592fc2773b913f6ff33b86bcf33487020e3",
     "src/corporate_actions/llm/base.py": "628beb876240315617b327047c4e4d88d07a8054c36da99c37075821c084afc6",
-    "src/corporate_actions/llm/cache.py": "664f58dde32420d17a6743bdfa31ee09ad9a03a1734b532891df180beb89e767",
+    "src/corporate_actions/llm/cache.py": "a899e638e47537778f20e11830b85c8afa004db364d52a095b8f1d5c5ca2b4eb",
     "src/corporate_actions/llm/config.py": "4a406780649527ce16d4095d70002e97ebd77774e046f170e67229a784706522",
     "src/corporate_actions/llm/registry.py": "f92c29f5efa752a514b38e03d427866d6b8659be65fae9f00bc5ed09c07c0b90",
     "src/corporate_actions/models.py": "dbbfecff48dbbc38cf1c540315ccf72ae1d2b6929aad133060e55633d3424f32",
     "src/corporate_actions/normalization.py": "38522bcfe75318cf3f11635968f57f0be32e9ee9ed1064641ce8746363d304d4",
     "src/corporate_actions/numeric.py": "bf4a1d18439b6a3047730715ff8254ebbce710eed3e4f7f6045612fe7038c329",
-    "src/corporate_actions/pipeline.py": "a3d8c45f3736b92a8cfd642f6f565ec998bc79d143e5c5ce9a8933ca91870453",
+    "src/corporate_actions/pipeline.py": "28feee2bd041f8cf023f2d70a10367a540b7c803d042241b334115f6e3cf5505",
     "src/corporate_actions/reference.py": "bc010f682a04a6febc515ef0f066991a05ca1e3ad1821b2de85f76b10c0b2f23",
     "src/corporate_actions/routing.py": "a1d7f172b9b4c0aee1d47318a331f28df46f14ddc9267727a14480b8f093a47e",
     "src/corporate_actions/schema.py": "4d74ddc2148935cad34045b169cc69072eb984360d973dc5b05aef2bbb8a8599",
@@ -91,5 +91,15 @@
     "tests/ground_truth/doc07.json": "1f86b2827252008e56d89c93929d85b2b8f7f5be31ed3c27d4c3239d70a99d16",
     "tests/ground_truth/doc08.json": "cc6ff631c59a0a9f127fb591977c41ec60514bd241ff61f2925a919578bdf5cc",
     "tests/ground_truth/index.json": "e669231a19e0bdc9a15a3f7bbfd1c73eaa9d59720e180897198ce3f298ed2df7"
+  },
+  "changes_from_previous": {
+    "previous_version": 1,
+    "files_changed": [
+      "src/corporate_actions/llm/anthropic_provider.py",
+      "src/corporate_actions/llm/cache.py",
+      "src/corporate_actions/pipeline.py"
+    ],
+    "reason": "Primeira chamada da execução 1 (original_C) falhou com HTTP 400 antes de qualquer saída do modelo: a chave não é associada a um workspace e exige o header anthropic-workspace-id. Correções técnicas, sem nenhum resultado semântico observado: (1) adaptador envia anthropic-workspace-id se ANTHROPIC_WORKSPACE_ID estiver definido; (2) cache não grava respostas sem chamada bem-sucedida (evita replay de erro); (3) audit do pipeline não quebra quando nenhum modelo respondeu (IndexError que derrubava o lote em vez de registrar a falha como resultado). Prompt, schema, B, avaliação, gabaritos e challenge set inalterados.",
+    "failed_run_discarded": "original_C (run 1, tentativa 1): 0 respostas do modelo; diretório e cache apagados"
   }
 }

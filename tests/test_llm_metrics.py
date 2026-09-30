@@ -39,6 +39,27 @@ def test_refusal_is_recorded_as_result_without_retry_or_fallback():
     assert rec["audit"]["validators_executed"]            # validações obrigatórias executadas mesmo assim
 
 
+class FailingApiProvider(FakeProvider):
+    """Erro de API antes de qualquer resposta do modelo (ex.: 400 por configuração de credencial)."""
+    def structured_call(self, system, user_text, tools, output_schema, max_tool_rounds=3):
+        self.calls += 1
+        resp = LLMResponse("fake", "fake-model", None, None, None, None, 0)
+        resp.errors = ["api_status_error:400:configuration"]
+        return resp
+
+
+def test_api_failure_is_recorded_without_crashing_or_caching(tmp_path):
+    from corporate_actions.llm.cache import ResponseCache
+    cache = ResponseCache(tmp_path / "cache")
+    out = tmp_path / "run"
+    manifest = run_batch(DOCS, GOLDEN, out, "t", "C", SemanticContext(FailingApiProvider(None), cache))
+    assert manifest["summary"]["documents"] == 8 and manifest["summary"]["errors"] == 0
+    rec = json.loads(next((out / "records").glob("02_*.json")).read_text(encoding="utf-8"))
+    assert "SEMANTIC_INTERPRETER_FAILED" in rec["routing"]["reason_codes"] and rec["audit"]["model"] is None
+    assert rec["llm"]["errors"] == ["api_status_error:400:configuration"]
+    assert not list((tmp_path / "cache").glob("*.json"))          # erro de API não vira replay
+
+
 def _fake_run(tmp_path, name, calls_by_doc):
     d = tmp_path / name / "records"
     d.mkdir(parents=True)

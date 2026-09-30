@@ -7,6 +7,7 @@
   O modelo que de fato respondeu é sempre registrado em `served_model`.
 """
 import json
+import os
 import time
 
 import anthropic
@@ -22,7 +23,10 @@ class AnthropicProvider:
 
     def __init__(self, config: LLMConfig):
         self.config = config
-        self.client = anthropic.Anthropic(timeout=config.timeout_s, max_retries=2)
+        # Chaves de API não associadas a um workspace exigem o header anthropic-workspace-id.
+        workspace = os.environ.get("ANTHROPIC_WORKSPACE_ID")
+        headers = {"anthropic-workspace-id": workspace} if workspace else None
+        self.client = anthropic.Anthropic(timeout=config.timeout_s, max_retries=2, default_headers=headers)
 
     def _create(self, **kwargs):
         if self.config.fallbacks == "default":

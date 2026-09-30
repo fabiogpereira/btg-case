@@ -38,6 +38,8 @@ class ResponseCache:
         return LLMResponse(**data)
 
     def put(self, key: str, resp: LLMResponse) -> None:
+        if resp.api_calls == 0:
+            return      # nenhuma resposta do modelo (erro de API/transporte): nada a reproduzir
         data = dataclasses.asdict(resp)
         data["replayed"] = False
         (self.directory / f"{key}.json").write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
