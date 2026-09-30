@@ -699,6 +699,139 @@ Depois da primeira saída oficial: nenhuma mudança em E, prompt, política ou c
 - **Challenge set conhecido.** Os resultados da D (E-003 e E-004) eram conhecidos e motivaram a regra de escopo (CH-03, CH-07, CH-08, CH-09). Nenhum run da E foi feito sobre o challenge set antes do congelamento; ainda assim, a métrica ali **não é independente**.
 - **Holdout cego** continua sendo a medida necessária antes de adotar.
 
-### Resultado
+### Resultado (execução da E em 2026-09-30, freeze v1, sem alterações após a primeira saída)
 
-_Pendente da execução da E._
+**Runs.**
+
+| Conjunto | Execução 1 | Execução 2 |
+|---|---|---|
+| Original | `20260930T010330Z-ed058fdb` | `20260930T010604Z-573ae4dc` |
+| Challenge | `20260930T010351Z-97489208` | `20260930T010619Z-dfc53744` |
+
+- **Execução:** 0 erros, 0 recusas, 0 falhas de parse. O modelo servido foi sempre `claude-opus-5`.
+- **Custo:** US$ 1,52 nas 4 execuções.
+- **Resultados completos:** `outputs/experiments/E-005_qualifiers_v3/comparison/e005_results.json`.
+
+**Original** (desenvolvimento; LLM só no doc 06, igual à D):
+
+| | D | E |
+|---|---|---|
+| Campos semânticos | 30/31 | 30/31 |
+| Regras de validação | 104/104 | 104/104 |
+| Roteamento DEFINED | 5/6 | 5/6 |
+| Taxa de revisão | 6/8 | 6/8 |
+| **Aprovações inseguras** | 0 | **0** |
+| Qualificadores do LLM (material / não material) | 2 / 2 | 1 / 3 |
+| Qualificadores que bloqueiam | 2 | 1 |
+| Bloqueios falsos por qualificador | doc 06 | doc 06 (só na execução 1) |
+
+Os documentos corretos na D (01, 02, 04, 05, 08) têm decisão idêntica na E: não chamam o LLM e são processados da mesma forma.
+
+**Challenge set** (ciente do autor):
+
+| | D | E |
+|---|---|---|
+| Acurácia semântica | 21/21 | 21/21 |
+| Qualificador / IR condicional | 6/6 | 6/6 |
+| Roteamento DEFINED | 7/7 | 7/7 |
+| Taxa de revisão | 5/11 | **2/11** |
+| **Aprovações inseguras** | 0 | **0** |
+| Falsamente confiantes | 0 | 0 |
+| Qualificadores do LLM (material / não material) | 8 / 12 | 2 / 7 |
+| Qualificadores que bloqueiam | 7 | 1 (CH-11, justificado) |
+| Bloqueios falsos por qualificador | CH-03, CH-07, CH-08, CH-09 | **nenhum** |
+
+- **Precisão do bloqueio por qualificador:** D 1/5, E 1/1.
+- **As 2 revisões da E no challenge set:**
+  - CH-11: natureza adiada, revisão esperada;
+  - CH-09: conflito no valor bruto do extrator determinístico, fora do escopo dos qualificadores.
+
+**Estabilidade (E1 × E2):**
+
+| | D challenge | E challenge | D doc 06 | E doc 06 |
+|---|---|---|---|---|
+| Semanticamente estável (mesmos qualificadores materiais e roteamento) | 8/10 | **10/10** | não | não |
+| Roteamento igual | 9/10 | **10/10** | sim | sim, mas por motivos diferentes |
+| Texto bruto dos qualificadores igual | 7/10 | 8/10 | — | — |
+
+- O CH-07 foi aprovado nas duas execuções da E.
+- Invocação idêntica à D (mesmo detector): falsos positivos CH-01, CH-02 e CH-11; falso negativo doc 03.
+
+**Custo e latência (execução 1):**
+
+| | D original | E original | D challenge | E challenge |
+|---|---|---|---|---|
+| Custo por documento com LLM | US$ 0,073 | US$ 0,080 (+10%) | US$ 0,064 | US$ 0,068 (+6%) |
+| Tokens de entrada por documento com LLM | 9,0k | 10,2k | 8,4k | 9,6k |
+| Tokens de saída por documento com LLM | 1,1k | 1,2k | 0,9k | 0,8k |
+| Latência média, documentos com LLM | 17,6 s | 18,8 s | 12,3 s | 13,1 s |
+
+O prompt v3 é mais longo, pelo teste de remoção e pela regra de escopo. Sem prompt caching, como pedido.
+
+### Doc 06 (critério 2): não atendido
+
+Em nenhuma execução o doc 06 foi aprovado:
+
+| Execução | O que aconteceu | Motivo da revisão |
+|---|---|---|
+| E1 | "As frações remanescentes ... alienadas em leilão" foi para `operational_instruction` ✅. Mas "Os acionistas que ... ficarem com frações ... terão o período ... para ajustar suas posições" foi marcado `material_condition`, `affects=entitlement`, `target=ratio` | `SEMANTIC_AMBIGUITY` (efeito material não representado). O LLM não aplicou o teste de remoção como pretendido: o período de ajuste não altera proporção, data com nem data ex |
+| E2 | Os dois trechos de frações foram para `operational_instruction` ✅ (nenhum qualificador bloqueante). Mas o LLM citou a data ex como "29/06/2026" com uma evidência escrita "29 de junho de 2026" | O grounding rejeitou (`VALUE_NOT_IN_EVIDENCE`, correto e seguro), a `ex_date` ficou ausente, e o documento foi para revisão por `REQUIRED_FIELD_MISSING` |
+
+- **Leitura:** o v3 resolveu o problema principal da D no doc 06 (a regra de leilão das frações deixou de ser `other` bloqueante nas duas execuções). O período de ajuste de frações continua no limite da definição de "direito" para o LLM, e o documento ainda falhou por um motivo novo e não relacionado (formato da data fora da citação).
+- Nenhum dos dois motivos é inseguro.
+
+### CH-07 (critério 3): atendido
+
+| | D1 | D2 | E1 | E2 |
+|---|---|---|---|---|
+| Decisão | REVIEW | AUTO | AUTO | AUTO |
+| O que o LLM fez | listou "Valor bruto por ação preferencial (PN) R$ 0,33" como qualificador (`informational_context`, `affects=amounts`) | não listou | não listou nenhum qualificador | idem |
+
+- A regra de escopo do prompt bastou. A guarda determinística **não precisou atuar** em nenhuma execução (0 rejeições), então sua eficácia em dados reais continua não demonstrada. Ela está coberta só por testes unitários.
+
+### Outros casos em que qualificador influenciou o roteamento
+
+| Caso | Na D | Na E |
+|---|---|---|
+| CH-03 | "sobre o valor bruto" bloqueava como condição de base; o limite TJLP bloqueava como informativo inconsistente | TJLP virou nota; AUTO nas duas execuções |
+| CH-08 | "Será considerada a posição acionária do dia ..." bloqueava como elegibilidade | Não é mais qualificador; AUTO nas duas |
+| CH-09 | Frase "Farão jus ..." e "resultando em valor líquido" bloqueavam | Nenhum qualificador; a revisão restante é o conflito real de valor |
+| CH-11 | Adiamento da natureza bloqueia | Idem, agora como `unresolved` / `event_nature` (justificado) |
+
+### Critérios de sucesso pré-registrados
+
+| # | Critério | Resultado |
+|---|---|---|
+| 1 | Aprovações inseguras = 0 | ✅ |
+| 2 | Doc 06 sem revisão por motivo operacional | ❌ E1: período de frações marcado como direito; E2: operacional ok, mas `ex_date` rejeitada pelo grounding |
+| 3 | CH-07 estável | ✅ |
+| 4 | Nenhum caso seguro passou a ser aprovado incorretamente | ✅ (CH-03, CH-07, CH-08 aprovados com todos os alvos corretos) |
+| 5 | Taxa de revisão cai ou fica igual | ✅ (11 → 8 no total; challenge 5 → 2; original igual) |
+| 6 | Lógica mais simples ou explicável | ✅ (qualitativo) — 6 tipos em vez de 9; bloqueio definido por "efeito material não representado"; notas nunca bloqueiam. Acrescentou a guarda de escopo e a tabela de representação (3 regras) |
+
+### Failure modes novos
+
+- **E-1:** o conceito "direito/entitlement" é amplo demais para procedimentos de frações. O teste de remoção não foi aplicado de forma consistente pelo LLM (doc 06, E1).
+- **E-2:** o LLM escreve o valor num formato diferente do da citação de evidência. O grounding rejeita corretamente e o registro vai para revisão por campo ausente. A instrução "valor exatamente como escrito" não é obedecida 100% das vezes. Esse modo existe desde a C, mas só apareceu aqui.
+- **E-3:** a guarda de escopo determinística não foi exercitada em dados reais. A melhora do CH-07 veio do prompt. A guarda é uma rede de segurança não testada em produção.
+- **E-4:** custo e latência por documento com LLM ~6–10% maiores (prompt mais longo).
+
+### H-27
+
+**MODIFIED.**
+- **Confirmado:**
+  - separar qualificador material de nota, somado à regra de escopo, eliminou os bloqueios falsos por rótulo, por frase que define campo e por contexto no challenge set (4 → 0);
+  - a taxa de revisão caiu (5/11 → 2/11);
+  - a estabilidade semântica subiu (8/10 → 10/10);
+  - a segurança foi mantida (0 inseguras).
+- **Não confirmado:** o critério pré-registrado para o doc 06 (procedimento de frações ainda lido como "direito" numa execução; na outra, falha por formato da data).
+- **Pela regra pré-registrada**, "E só é melhor que D se" todos os critérios forem atendidos, a E **não passa formalmente**, apesar de não ser pior que a D em nenhuma métrica de qualidade ou segurança.
+
+### Recomendação
+
+- A E é Pareto-superior à D em qualidade, segurança, estabilidade e taxa de revisão, e só é ~6–10% mais cara por chamada. Proponho que a E **substitua a D como candidata** se você aceitar que o critério 2 não foi atingido. A decisão fica com você, porque contraria a regra pré-registrada.
+- **Pendências** (não implementadas; exigem autorização):
+  - (a) definir de forma operacional que tratamento e prazo de frações não alteram direito nem proporção;
+  - (b) E-2: quando valor e evidência divergirem só em formato, a abordagem segura continua sendo revisão. Uma alternativa é exigir que o LLM copie o valor da própria evidência. Ambas precisam de experimento próprio;
+  - (c) holdout cego.
+

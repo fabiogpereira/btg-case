@@ -268,7 +268,18 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
 - **Why it matters:** C-1 é a principal razão de C ter ficado abaixo de A/B no roteamento DEFINED.
 - **How to test:** Prompt/política v2 congelados antes de rodar; avaliar no holdout cego além dos conjuntos atuais.
 - **Expected signal:** Roteamento DEFINED 6/6 no original, sem aprovação insegura.
-- **Observed result:** (E-004) A fusão v2 corrigiu os false reviews da C (CH-01, CH-10 → AUTO corretamente; docs 01 e 02 sem LLM e sem alarme) e levou o roteamento DEFINED do challenge set a 7/7. O modelo de qualificadores v2 introduziu novos false reviews: doc 06 (regras de frações rotuladas `other`/`event_eligibility`) e CH-07 na execução 1 (`affects` instável + salvaguarda de inconsistência), com 1/19 de instabilidade de roteamento. 0 aprovações inseguras.
+- **Observed result:** (E-004) A fusão v2 corrigiu os false reviews da C (CH-01, CH-10 → AUTO corretamente; docs 01 e 02 sem LLM e sem alarme) e levou o roteamento DEFINED do challenge set a 7/7. O modelo de qualificadores v2 introduziu novos false reviews: doc 06 (regras de frações rotuladas `other`/`event_eligibility`) e CH-07 na execução 1 (`affects` instável + salvaguarda de inconsistência), com 1/19 de instabilidade de roteamento. 0 aprovações inseguras. **Errata (E-005):** a D também mandou para revisão CH-03, CH-08 e CH-09 por qualificadores v2 (casos PROVISIONAL, fora do placar DEFINED); o problema era maior do que o reportado.
 - **Decision:** Manter a fusão v2; refinar a taxonomia e a extração de qualificadores (v3) antes de adotar.
 - **Status:** MODIFIED (fusão v2 confirmada; qualificadores v2 precisam de refinamento)
+
+## H. Hipóteses do E-005
+
+### H-27 — Qualificadores v3 reduzem revisões desnecessárias sem perder segurança
+- **Hypothesis:** Separar qualificador material (teste de remoção, efeito e justificativa obrigatórios) de nota semântica (operacional, legal, informativa, que nunca bloqueia), aplicar uma guarda de escopo determinística contra rótulo com valor, e bloquear só efeito material não representado no registro reduz as revisões desnecessárias causadas por qualificadores, mantendo 0 aprovações inseguras.
+- **Why it matters:** No E-004, a D mandou para revisão doc 06, CH-03, CH-07, CH-08 e CH-09 por qualificadores de contexto, com instabilidade no CH-07.
+- **How to test:** Variante E contra a D, 2 execuções, critérios pré-registrados (FREEZE do E-005).
+- **Expected signal:** doc 06 e CH-07 aprovados de forma estável; taxa de revisão menor ou igual; 0 inseguras.
+- **Observed result:** (E-005) Challenge set: bloqueios falsos por qualificador 4 → 0, taxa de revisão 5/11 → 2/11, estabilidade semântica 8/10 → 10/10, CH-07 AUTO nas duas execuções, 0 inseguras, 21/21 semântica. Original: igual à D (5/6 DEFINED); doc 06 **continua em revisão** (E1: período de ajuste de frações marcado como `entitlement`; E2: frações corretamente como notas, mas `ex_date` rejeitada pelo grounding porque o LLM escreveu o valor em formato diferente da citação). A guarda de escopo determinística não precisou atuar em nenhuma execução real (0 rejeições). Custo +6–10% por documento com LLM.
+- **Decision:** Critério 2 (doc 06) não atendido, portanto a E não passa formalmente pela regra pré-registrada. É Pareto-superior à D nas demais métricas. A adoção como candidata depende de decisão do usuário.
+- **Status:** MODIFIED (confirmada para rótulos, frases que definem campos e contexto; não confirmada para procedimento de frações)
 

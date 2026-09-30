@@ -1,0 +1,1184 @@
+{
+  "schema_version": "semantic-record/0.3",
+  "document": {
+    "sha256": "add21102b91a8b5249aa3db35493aa3fee441f5275942a019b46ce672b55e0b4",
+    "file_name": "CH-06.txt",
+    "size_bytes": 787,
+    "pages": 1,
+    "text_layer": {
+      "usable": true,
+      "alnum_chars": 586,
+      "min_alnum_chars_per_page": 100,
+      "reason": null
+    }
+  },
+  "extraction": {
+    "method": "native_text_layer+deterministic_rules",
+    "status": "COMPLETED",
+    "failure_mode": null,
+    "unsupported_fields": [
+      "fraction_adjustment_period"
+    ],
+    "title": "Juros sobre o Capital Próprio"
+  },
+  "classification": {
+    "event_type": "JCP",
+    "decision_rule": "single_type",
+    "signals": {
+      "JCP": [
+        {
+          "rule_id": "event.jcp_juros_capital_proprio",
+          "evidence": {
+            "text": "Juros sobre o Capital Próprio",
+            "start": 279,
+            "end": 308,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.jcp_juros_capital_proprio",
+          "evidence": {
+            "text": "Juros sobre o Capital Próprio",
+            "start": 462,
+            "end": 491,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.jcp_sigla",
+          "evidence": {
+            "text": "JCP",
+            "start": 310,
+            "end": 313,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.jcp_sigla",
+          "evidence": {
+            "text": "JCP",
+            "start": 493,
+            "end": 496,
+            "page": 1
+          }
+        },
+        {
+          "rule_id": "event.jcp_sigla",
+          "evidence": {
+            "text": "JCP",
+            "start": 623,
+            "end": 626,
+            "page": 1
+          }
+        }
+      ]
+    },
+    "title": "Juros sobre o Capital Próprio",
+    "title_event_types": [
+      "JCP"
+    ],
+    "confidence": "HIGH",
+    "confidence_reasons": [
+      "SINGLE_TYPE_SIGNALS:JCP"
+    ]
+  },
+  "fields": {
+    "issuer_name": {
+      "status": "found",
+      "value": "Telecom Norte Participações S.A.",
+      "raw": "TELECOM NORTE PARTICIPAÇÕES S.A.",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "TELECOM NORTE PARTICIPAÇÕES S.A.",
+          "start": 0,
+          "end": 32,
+          "page": 1
+        },
+        {
+          "text": "Telecom Norte Participações S.A.",
+          "start": 137,
+          "end": 169,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "issuer_name.pattern_company_sa"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN",
+        "CORROBORATED:1"
+      ]
+    },
+    "cnpj": {
+      "status": "found",
+      "value": "33.222.111/0001-44",
+      "raw": "33.222.111/0001-44",
+      "source_label": "CNPJ/ME nº",
+      "evidence": [
+        {
+          "text": "CNPJ/ME nº 33.222.111/0001-44",
+          "start": 52,
+          "end": 81,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "cnpj.label_cnpj"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "isin": {
+      "status": "found",
+      "value": "BRTLNRACNPR2",
+      "raw": "BRTLNRACNPR2",
+      "source_label": "ISIN",
+      "evidence": [
+        {
+          "text": "ISIN BRTLNRACNPR2",
+          "start": 696,
+          "end": 713,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "isin.label_isin"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "ticker": {
+      "status": "found",
+      "value": "TLNR4",
+      "raw": "TLNR4",
+      "source_label": "Código de negociação",
+      "evidence": [
+        {
+          "text": "Código de negociação TLNR4",
+          "start": 668,
+          "end": 694,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ticker.label_codigo_negociacao"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "share_class": {
+      "status": "found",
+      "value": "PN",
+      "raw": "PN",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "por ação PN",
+          "start": 510,
+          "end": 521,
+          "page": 1
+        },
+        {
+          "text": "por ação PN",
+          "start": 552,
+          "end": 563,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "share_class.phrase_por_acao"
+      ],
+      "anchor": "phrase",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "PHRASE_ANCHORED",
+        "CORROBORATED:1"
+      ]
+    },
+    "approval_date": {
+      "status": "found",
+      "value": "2026-08-11",
+      "raw": "11 de agosto de 2026",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "reunião realizada em 11 de agosto de 2026",
+          "start": 215,
+          "end": 256,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "approval_date.phrase_meeting"
+      ],
+      "anchor": "phrase",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "PHRASE_ANCHORED",
+        "CORROBORATED:1"
+      ]
+    },
+    "record_date": {
+      "status": "found",
+      "value": "2026-08-21",
+      "raw": "21/08/2026",
+      "source_label": "Data-base (“data com”)",
+      "evidence": [
+        {
+          "text": "Data-base (“data com”) 21/08/2026",
+          "start": 580,
+          "end": 613,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "record_date.label_data_base"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "ex_date": {
+      "status": "found",
+      "value": "2026-08-24",
+      "raw": "24/08/2026",
+      "source_label": "Data “ex-JCP”",
+      "evidence": [
+        {
+          "text": "Data “ex-JCP” 24/08/2026",
+          "start": 614,
+          "end": 638,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ex_date.label_data_ex"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "payment_date": {
+      "status": "found",
+      "value": "2026-09-30",
+      "raw": "30/09/2026",
+      "source_label": "Data de pagamento",
+      "evidence": [
+        {
+          "text": "Data de pagamento 30/09/2026",
+          "start": 639,
+          "end": 667,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "payment_date.label_data_pagamento"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "gross_amount_per_share": {
+      "status": "found",
+      "value": "0.0800000000",
+      "raw": "0,0800000000",
+      "source_label": "Valor bruto por ação PN",
+      "evidence": [
+        {
+          "text": "Valor bruto por ação PN R$ 0,0800000000",
+          "start": 498,
+          "end": 537,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "gross.label_valor_bruto"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "net_amount_per_share": {
+      "status": "found",
+      "value": "0.0660000000",
+      "raw": "0,0660000000",
+      "source_label": "Valor líquido por ação PN",
+      "evidence": [
+        {
+          "text": "Valor líquido por ação PN R$ 0,0660000000",
+          "start": 538,
+          "end": 579,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "net.label_valor_liquido"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "withholding_tax": {
+      "status": "found",
+      "value": {
+        "rate": "0.175",
+        "base": "GROSS_AMOUNT"
+      },
+      "raw": "17,5",
+      "source_label": "IRRF de",
+      "evidence": [
+        {
+          "text": "IRRF de 17,5%",
+          "start": 332,
+          "end": 345,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "withholding.label_irrf"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "semantic_patch: base interpreted as GROSS_AMOUNT",
+        "beneficiary exception: exceto para os acionistas que comprovarem ser imunes ou isentos até 20/08/2026"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "currency": {
+      "status": "found",
+      "value": "BRL",
+      "raw": "R$",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "Valor bruto por ação PN R$ 0,0800000000",
+          "start": 498,
+          "end": 537,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "currency.derived_from_gross_symbol"
+      ],
+      "anchor": "derived",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "derived from gross_amount_per_share evidence"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "DERIVED_FROM_SOURCE_FIELD"
+      ]
+    },
+    "ratio": {
+      "status": "not_applicable",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    }
+  },
+  "event_specific_fields": {},
+  "reference_check": {
+    "found": true,
+    "matched_by": "isin",
+    "query": "BRTLNRACNPR2",
+    "golden_row": {
+      "emissor": "Telecom Norte Participações S.A.",
+      "cnpj": "33.222.111/0001-44",
+      "isin": "BRTLNRACNPR2",
+      "ticker": "TLNR4",
+      "classe": "PN",
+      "segmento_listagem": "Tradicional",
+      "status": "ativo"
+    }
+  },
+  "validations": [
+    {
+      "rule_id": "REF_ISIN_FOUND",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ISIN found in golden records",
+      "observed": {
+        "isin": "BRTLNRACNPR2"
+      }
+    },
+    {
+      "rule_id": "REF_TICKER_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "ticker matches golden ticker",
+      "observed": {
+        "extracted": "TLNR4",
+        "golden": "TLNR4"
+      }
+    },
+    {
+      "rule_id": "REF_CNPJ_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "cnpj matches golden cnpj",
+      "observed": {
+        "extracted": "33.222.111/0001-44",
+        "golden": "33.222.111/0001-44"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "issuer_name matches golden emissor",
+      "observed": {
+        "extracted": "Telecom Norte Participações S.A.",
+        "golden": "Telecom Norte Participações S.A."
+      }
+    },
+    {
+      "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "share_class matches golden classe",
+      "observed": {
+        "extracted": "PN",
+        "golden": "PN"
+      }
+    },
+    {
+      "rule_id": "REF_ISSUER_ACTIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "golden status = ativo",
+      "observed": {
+        "golden_status": "ativo"
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_PRESENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "all required fields present",
+      "observed": {
+        "required": [
+          "issuer_name",
+          "isin",
+          "ticker",
+          "record_date",
+          "ex_date",
+          "gross_amount_per_share",
+          "currency",
+          "payment_date",
+          "net_amount_per_share",
+          "withholding_tax"
+        ],
+        "not_found": []
+      }
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "no required field pending",
+      "observed": {
+        "declared_pending": []
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_DETERMINED",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "event type JCP by rule single_type",
+      "observed": {
+        "decision_rule": "single_type"
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "title consistent with content",
+      "observed": {
+        "title": "Juros sobre o Capital Próprio",
+        "title_event_types": [
+          "JCP"
+        ],
+        "content_event_type": "JCP"
+      }
+    },
+    {
+      "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "approval 2026-08-11 vs record 2026-08-21",
+      "observed": {
+        "approval_date": "2026-08-11",
+        "record_date": "2026-08-21"
+      }
+    },
+    {
+      "rule_id": "DATE_RECORD_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "record 2026-08-21 vs ex 2026-08-24",
+      "observed": {
+        "record_date": "2026-08-21",
+        "ex_date": "2026-08-24"
+      }
+    },
+    {
+      "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "status": "PASS",
+      "severity": "WARNING",
+      "message": "ex 2026-08-24; next weekday after record is 2026-08-24 (no holiday calendar, D-006)",
+      "observed": {
+        "record_date": "2026-08-21",
+        "ex_date": "2026-08-24",
+        "expected_ex_date": "2026-08-24"
+      }
+    },
+    {
+      "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "payment_date 2026-09-30 vs ex 2026-08-24",
+      "observed": {
+        "settlement_field": "payment_date",
+        "settlement_date": "2026-09-30",
+        "ex_date": "2026-08-24"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_GROSS_POSITIVE",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "gross = 0.0800000000",
+      "observed": {
+        "gross": "0.0800000000"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "status": "PASS",
+      "severity": "ERROR",
+      "message": "net = gross × (1 − rate), exact",
+      "observed": {
+        "gross": "0.0800000000",
+        "rate": "0.175",
+        "declared_value": "0.0660000000",
+        "calculated_value": "0.0660000000000",
+        "comparison_precision": 10,
+        "rounding_rule": null,
+        "reason": null
+      }
+    }
+  ],
+  "validation_summary": {
+    "PASS": 16
+  },
+  "rule_groups_not_applicable": [
+    "ratio"
+  ],
+  "semantic_need": {
+    "llm_required": true,
+    "llm_trigger_reasons": [
+      "UNINTERPRETED_QUALIFIER"
+    ],
+    "signals": [
+      {
+        "signal": "UNINTERPRETED_QUALIFIER",
+        "stage": "semantic_patch",
+        "triggers_llm": true,
+        "detail": {
+          "field": "approval_date",
+          "reasons": [
+            "UNINTERPRETED_QUALIFIER:EXCEPTION"
+          ]
+        }
+      }
+    ]
+  },
+  "semantic": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "llm+deterministic",
+      "reasons": [
+        "AGREEMENT"
+      ],
+      "qualifiers": [],
+      "interpretation": {
+        "deterministic": "JCP",
+        "deterministic_status": "POSITIVE",
+        "llm": "JCP",
+        "rationale": "O título e o corpo coincidem: o Conselho de Administração aprovou o crédito de Juros sobre o Capital Próprio, com valores por ação e datas próprias do evento."
+      }
+    },
+    "fields": {
+      "record_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "AGREEMENT"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "ex_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "AGREEMENT"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "payment_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "AGREEMENT"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "approval_date": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "AGREEMENT",
+          "DETERMINISTIC_QUALIFIER_UNSUPPORTED_RESOLVED_BY_LLM"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "gross_amount_per_share": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "net_amount_per_share": {
+        "confidence": "HIGH",
+        "source": "deterministic_patch",
+        "reasons": [
+          "NO_QUALIFIERS"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "withholding_tax": {
+        "confidence": "HIGH",
+        "source": "llm+deterministic",
+        "reasons": [
+          "AGREEMENT"
+        ],
+        "qualifiers": [
+          {
+            "qualifier_type": "material_exception",
+            "affects": "tax_application",
+            "effect": "Acionistas que comprovarem ser imunes ou isentos até 20/08/2026 não sofrem a retenção de IRRF.",
+            "quote": "exceto para os acionistas que comprovarem ser imunes ou isentos até 20/08/2026",
+            "blocks": false
+          }
+        ],
+        "interpretation": null
+      }
+    },
+    "blocking": [],
+    "negated_signals": [],
+    "resolutions": [
+      {
+        "concept": "event_type",
+        "category": "AGREEMENT",
+        "deterministic": "JCP",
+        "deterministic_status": "POSITIVE",
+        "llm": "JCP",
+        "rationale": "O título e o corpo coincidem: o Conselho de Administração aprovou o crédito de Juros sobre o Capital Próprio, com valores por ação e datas próprias do evento."
+      },
+      {
+        "concept": "approval_date",
+        "category": "DETERMINISTIC_UNSUPPORTED",
+        "reason": "uninterpreted qualifier resolved"
+      },
+      {
+        "concept": "record_date",
+        "category": "AGREEMENT"
+      },
+      {
+        "concept": "ex_date",
+        "category": "AGREEMENT"
+      },
+      {
+        "concept": "payment_date",
+        "category": "AGREEMENT"
+      },
+      {
+        "concept": "withholding_tax",
+        "category": "AGREEMENT"
+      }
+    ],
+    "material_qualifiers": [
+      {
+        "kind": "material_exception",
+        "affects": "beneficiary_tax_treatment",
+        "target_field": "withholding_tax",
+        "effect": "Acionistas que comprovarem ser imunes ou isentos até 20/08/2026 não sofrem a retenção de IRRF.",
+        "materiality_reason": "Sem essa passagem, a retenção de 17,5% se aplicaria a todos os acionistas; ela altera o tratamento tributário de parte dos beneficiários e fixa prazo de comprovação.",
+        "quote": "exceto para os acionistas que comprovarem ser imunes ou isentos até 20/08/2026",
+        "represented": true,
+        "representation": "withholding_tax.notes (exceção por titular)",
+        "blocks": false,
+        "source": "llm"
+      }
+    ],
+    "semantic_notes": []
+  },
+  "confidence_view": {
+    "classification": {
+      "confidence": "HIGH",
+      "source": "llm+deterministic",
+      "reasons": [
+        "AGREEMENT"
+      ],
+      "qualifiers": [],
+      "interpretation": {
+        "deterministic": "JCP",
+        "deterministic_status": "POSITIVE",
+        "llm": "JCP",
+        "rationale": "O título e o corpo coincidem: o Conselho de Administração aprovou o crédito de Juros sobre o Capital Próprio, com valores por ação e datas próprias do evento."
+      }
+    },
+    "fields": {
+      "issuer_name": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "cnpj": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "isin": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ticker": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "share_class": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "CROSS_VALIDATED"
+      },
+      "approval_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "record_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "ex_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "payment_date": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "gross_amount_per_share": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "net_amount_per_share": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "withholding_tax": {
+        "extraction": "HIGH",
+        "semantic": "HIGH",
+        "validation": "CROSS_VALIDATED"
+      },
+      "currency": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      }
+    }
+  },
+  "llm": {
+    "provider": "anthropic",
+    "model": "claude-opus-5",
+    "effort": "medium",
+    "max_tokens": 8000,
+    "fallbacks": "off",
+    "prompt_version": "semantic-interpreter/v3",
+    "prompt_fingerprint": "e6bd3105dc7c8c84",
+    "served_models": [
+      "claude-opus-5"
+    ],
+    "attempts": 1,
+    "api_calls": 2,
+    "replayed": false,
+    "tool_calls": [
+      {
+        "name": "lookup_security",
+        "arguments": {
+          "identifier": "BRTLNRACNPR2",
+          "identifier_type": "ISIN"
+        },
+        "result": {
+          "found": true,
+          "issuer": "Telecom Norte Participações S.A.",
+          "isin": "BRTLNRACNPR2",
+          "ticker": "TLNR4",
+          "share_class": "PN",
+          "status": "ativo"
+        },
+        "latency_us": 33,
+        "error": null
+      }
+    ],
+    "usage": {
+      "input_tokens": 9630,
+      "output_tokens": 832,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "estimated_cost_usd": "0.06895",
+    "latency_ms": 31883,
+    "errors": [],
+    "refusals": [],
+    "served_model_mismatch": false,
+    "parse_or_schema_failures": 0,
+    "request_ids": [
+      "req_011CfYj1G8xa19c3PEz18o5r",
+      "req_011CfYj2P8vXaBLYiXs48s7B"
+    ],
+    "interpretation": {
+      "event": {
+        "type": "JCP",
+        "evidence": [
+          "aprovou o crédito de Juros sobre o Capital Próprio (JCP)",
+          "Tipo de evento Juros sobre o Capital Próprio (JCP)"
+        ],
+        "misleading_mentions": [],
+        "rationale": "O título e o corpo coincidem: o Conselho de Administração aprovou o crédito de Juros sobre o Capital Próprio, com valores por ação e datas próprias do evento."
+      },
+      "dates": [
+        {
+          "role": "approval_date",
+          "status": "FOUND",
+          "value_as_written": "11 de agosto de 2026",
+          "evidence": "em reunião realizada em 11 de agosto de 2026, aprovou o crédito"
+        },
+        {
+          "role": "record_date",
+          "status": "FOUND",
+          "value_as_written": "21/08/2026",
+          "evidence": "Data-base (“data com”) 21/08/2026"
+        },
+        {
+          "role": "ex_date",
+          "status": "FOUND",
+          "value_as_written": "24/08/2026",
+          "evidence": "Data “ex-JCP” 24/08/2026"
+        },
+        {
+          "role": "payment_date",
+          "status": "FOUND",
+          "value_as_written": "30/09/2026",
+          "evidence": "Data de pagamento 30/09/2026"
+        }
+      ],
+      "withholding_tax": {
+        "status": "STATED",
+        "rate_as_written": "17,5%",
+        "base": "GROSS_AMOUNT",
+        "evidence": [
+          "com retenção de IRRF de 17,5% sobre o valor bruto"
+        ]
+      },
+      "material_qualifiers": [
+        {
+          "kind": "material_exception",
+          "affects": "beneficiary_tax_treatment",
+          "target_field": "withholding_tax",
+          "effect": "Acionistas que comprovarem ser imunes ou isentos até 20/08/2026 não sofrem a retenção de IRRF.",
+          "materiality_reason": "Sem essa passagem, a retenção de 17,5% se aplicaria a todos os acionistas; ela altera o tratamento tributário de parte dos beneficiários e fixa prazo de comprovação.",
+          "quote": "exceto para os acionistas que comprovarem ser imunes ou isentos até 20/08/2026"
+        }
+      ],
+      "semantic_notes": [],
+      "security_reference": {
+        "identifier_checked": "BRTLNRACNPR2",
+        "found_in_reference": "YES"
+      }
+    },
+    "grounding": {
+      "event_grounded": true,
+      "total_quotes": 8,
+      "grounded_quotes": 8,
+      "ungrounded": []
+    },
+    "reference_divergence": {
+      "tool_called": true,
+      "tool_result_found": true,
+      "llm_reported": "YES",
+      "engine_REF_ISIN_FOUND": "PASS",
+      "divergent": false,
+      "authority": "validation_engine"
+    }
+  },
+  "routing": {
+    "decision": "AUTO_APPROVE",
+    "reason_codes": [],
+    "explanations": [],
+    "gates": [
+      {
+        "gate": "EXTRACTION_POSSIBLE",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REQUIRED_INFORMATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "SEMANTIC_INTERPRETATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "DETERMINISTIC_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REFERENCE_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "BLOCKING_ERRORS",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      }
+    ]
+  },
+  "audit": {
+    "run_id": "20260930T010351Z-97489208",
+    "pipeline_version": "baseline-a/0.1.0+hybrid-qualifiers-v3/0.1",
+    "started_at": "2026-09-30T01:04:40.344+00:00",
+    "finished_at": "2026-09-30T01:05:12.246+00:00",
+    "duration_us": 31901496,
+    "stages": [
+      {
+        "stage": "ingest",
+        "started_at": "2026-09-30T01:04:40.344+00:00",
+        "status": "ok",
+        "duration_us": 477
+      },
+      {
+        "stage": "text_layer",
+        "started_at": "2026-09-30T01:04:40.345+00:00",
+        "status": "ok",
+        "duration_us": 431
+      },
+      {
+        "stage": "extract_candidates",
+        "started_at": "2026-09-30T01:04:40.345+00:00",
+        "status": "ok",
+        "duration_us": 1768
+      },
+      {
+        "stage": "classify",
+        "started_at": "2026-09-30T01:04:40.347+00:00",
+        "status": "ok",
+        "duration_us": 375
+      },
+      {
+        "stage": "normalize",
+        "started_at": "2026-09-30T01:04:40.347+00:00",
+        "status": "ok",
+        "duration_us": 359
+      },
+      {
+        "stage": "confidence",
+        "started_at": "2026-09-30T01:04:40.348+00:00",
+        "status": "ok",
+        "duration_us": 36
+      },
+      {
+        "stage": "semantic_patch",
+        "started_at": "2026-09-30T01:04:40.348+00:00",
+        "status": "ok",
+        "duration_us": 958
+      },
+      {
+        "stage": "semantic_need",
+        "started_at": "2026-09-30T01:04:40.349+00:00",
+        "status": "ok",
+        "duration_us": 63,
+        "llm_required": true,
+        "triggers": [
+          "UNINTERPRETED_QUALIFIER"
+        ]
+      },
+      {
+        "stage": "semantic_llm",
+        "started_at": "2026-09-30T01:04:40.349+00:00",
+        "status": "ok",
+        "duration_us": 31894958,
+        "api_calls": 2,
+        "tool_calls": 1,
+        "replayed": false
+      },
+      {
+        "stage": "semantic_merge",
+        "started_at": "2026-09-30T01:05:12.244+00:00",
+        "status": "ok",
+        "duration_us": 1118
+      },
+      {
+        "stage": "validate",
+        "started_at": "2026-09-30T01:05:12.245+00:00",
+        "status": "ok",
+        "duration_us": 256,
+        "rules_executed": 16
+      },
+      {
+        "stage": "route",
+        "started_at": "2026-09-30T01:05:12.245+00:00",
+        "status": "ok",
+        "duration_us": 61
+      }
+    ],
+    "errors": [],
+    "retries": 0,
+    "extraction_method": "native_text_layer+deterministic_rules",
+    "model": "claude-opus-5",
+    "prompt_version": "semantic-interpreter/v3",
+    "validators_executed": [
+      "REF_ISIN_FOUND",
+      "REF_TICKER_CONSISTENT",
+      "REF_CNPJ_CONSISTENT",
+      "REF_ISSUER_NAME_CONSISTENT",
+      "REF_SHARE_CLASS_CONSISTENT",
+      "REF_ISSUER_ACTIVE",
+      "REQUIRED_FIELDS_PRESENT",
+      "REQUIRED_FIELDS_NOT_PENDING",
+      "CLASSIFICATION_DETERMINED",
+      "CLASSIFICATION_TITLE_CONSISTENT",
+      "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "DATE_RECORD_BEFORE_EX",
+      "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "AMOUNT_GROSS_POSITIVE",
+      "AMOUNT_NET_MATCHES_GROSS_AND_TAX"
+    ],
+    "final_decision": "AUTO_APPROVE",
+    "reason_codes": [],
+    "variant": "E"
+  }
+}

@@ -1,0 +1,2535 @@
+{
+  "quality": {
+    "original": {
+      "D": {
+        "event_type": {
+          "correct": 7,
+          "total": 7,
+          "pct": 100.0
+        },
+        "semantic_targets": {
+          "correct": 30,
+          "total": 31,
+          "pct": 96.8
+        },
+        "value_exact": {
+          "correct": 78,
+          "total": 80,
+          "pct": 97.5
+        },
+        "validation": {
+          "accuracy": {
+            "correct": 104,
+            "total": 104,
+            "pct": 100.0
+          },
+          "false_negatives": 0,
+          "false_positives": 0,
+          "other_mismatches": 0
+        },
+        "routing_defined": {
+          "correct": 5,
+          "total": 6,
+          "pct": 83.3
+        },
+        "review_rate": {
+          "correct": 6,
+          "total": 8,
+          "pct": 75.0
+        },
+        "unsafe_auto_approvals": [],
+        "invented_values": 0,
+        "routing_rows": [
+          {
+            "expectation_status": "DEFINED",
+            "expected": "AUTO_APPROVE",
+            "expected_reasons": [],
+            "got": "AUTO_APPROVE",
+            "got_reasons": [],
+            "match": true,
+            "document": "01_energetica_vale_tiete_dividendo.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "AUTO_APPROVE",
+            "expected_reasons": [],
+            "got": "AUTO_APPROVE",
+            "got_reasons": [],
+            "match": true,
+            "document": "02_banco_meridional_jcp.pdf"
+          },
+          {
+            "expectation_status": "PROVISIONAL",
+            "expected": "REVIEW_REQUIRED",
+            "expected_reasons": [
+              "CLASSIFICATION_TITLE_CONFLICT"
+            ],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "CLASSIFICATION_TITLE_CONFLICT"
+            ],
+            "match": true,
+            "document": "03_siderurgica_paranaense_proventos.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "REVIEW_REQUIRED",
+            "expected_reasons": [
+              "PAYMENT_DATE_PENDING"
+            ],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "PAYMENT_DATE_PENDING"
+            ],
+            "match": true,
+            "document": "04_rede_varejo_jcp_sem_data.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "REVIEW_REQUIRED",
+            "expected_reasons": [
+              "DATE_INCONSISTENCY"
+            ],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "DATE_INCONSISTENCY"
+            ],
+            "match": true,
+            "document": "05_aurora_saneamento_dividendo_datas.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "AUTO_APPROVE",
+            "expected_reasons": [],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "MATERIAL_QUALIFIER_UNRESOLVED:other"
+            ],
+            "match": false,
+            "document": "06_petroquimica_litoral_grupamento.pdf"
+          },
+          {
+            "expectation_status": "POLICY_DEPENDENT",
+            "expected": null,
+            "expected_reasons": [],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "NO_USABLE_TEXT_LAYER"
+            ],
+            "match": null,
+            "document": "07_telecom_norte_jcp_SCAN.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "REVIEW_REQUIRED",
+            "expected_reasons": [
+              "REFERENCE_NOT_FOUND"
+            ],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "REFERENCE_NOT_FOUND"
+            ],
+            "match": true,
+            "document": "08_construtora_horizonte_bonificacao.pdf"
+          }
+        ]
+      },
+      "E": {
+        "event_type": {
+          "correct": 7,
+          "total": 7,
+          "pct": 100.0
+        },
+        "semantic_targets": {
+          "correct": 30,
+          "total": 31,
+          "pct": 96.8
+        },
+        "value_exact": {
+          "correct": 78,
+          "total": 80,
+          "pct": 97.5
+        },
+        "validation": {
+          "accuracy": {
+            "correct": 104,
+            "total": 104,
+            "pct": 100.0
+          },
+          "false_negatives": 0,
+          "false_positives": 0,
+          "other_mismatches": 0
+        },
+        "routing_defined": {
+          "correct": 5,
+          "total": 6,
+          "pct": 83.3
+        },
+        "review_rate": {
+          "correct": 6,
+          "total": 8,
+          "pct": 75.0
+        },
+        "unsafe_auto_approvals": [],
+        "invented_values": 0,
+        "routing_rows": [
+          {
+            "expectation_status": "DEFINED",
+            "expected": "AUTO_APPROVE",
+            "expected_reasons": [],
+            "got": "AUTO_APPROVE",
+            "got_reasons": [],
+            "match": true,
+            "document": "01_energetica_vale_tiete_dividendo.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "AUTO_APPROVE",
+            "expected_reasons": [],
+            "got": "AUTO_APPROVE",
+            "got_reasons": [],
+            "match": true,
+            "document": "02_banco_meridional_jcp.pdf"
+          },
+          {
+            "expectation_status": "PROVISIONAL",
+            "expected": "REVIEW_REQUIRED",
+            "expected_reasons": [
+              "CLASSIFICATION_TITLE_CONFLICT"
+            ],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "CLASSIFICATION_TITLE_CONFLICT"
+            ],
+            "match": true,
+            "document": "03_siderurgica_paranaense_proventos.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "REVIEW_REQUIRED",
+            "expected_reasons": [
+              "PAYMENT_DATE_PENDING"
+            ],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "PAYMENT_DATE_PENDING"
+            ],
+            "match": true,
+            "document": "04_rede_varejo_jcp_sem_data.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "REVIEW_REQUIRED",
+            "expected_reasons": [
+              "DATE_INCONSISTENCY"
+            ],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "DATE_INCONSISTENCY"
+            ],
+            "match": true,
+            "document": "05_aurora_saneamento_dividendo_datas.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "AUTO_APPROVE",
+            "expected_reasons": [],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "SEMANTIC_AMBIGUITY"
+            ],
+            "match": false,
+            "document": "06_petroquimica_litoral_grupamento.pdf"
+          },
+          {
+            "expectation_status": "POLICY_DEPENDENT",
+            "expected": null,
+            "expected_reasons": [],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "NO_USABLE_TEXT_LAYER"
+            ],
+            "match": null,
+            "document": "07_telecom_norte_jcp_SCAN.pdf"
+          },
+          {
+            "expectation_status": "DEFINED",
+            "expected": "REVIEW_REQUIRED",
+            "expected_reasons": [
+              "REFERENCE_NOT_FOUND"
+            ],
+            "got": "REVIEW_REQUIRED",
+            "got_reasons": [
+              "REFERENCE_NOT_FOUND"
+            ],
+            "match": true,
+            "document": "08_construtora_horizonte_bonificacao.pdf"
+          }
+        ]
+      }
+    },
+    "challenge": {
+      "D": {
+        "semantic_accuracy": {
+          "correct": 21,
+          "total": 21,
+          "pct": 100.0
+        },
+        "negation_accuracy": {
+          "correct": 4,
+          "total": 4,
+          "pct": 100.0
+        },
+        "conditional_expression_accuracy": {
+          "correct": 6,
+          "total": 6,
+          "pct": 100.0
+        },
+        "date_role_mapping_accuracy": {
+          "correct": 8,
+          "total": 8,
+          "pct": 100.0
+        },
+        "misleading_keywords_accuracy": {
+          "correct": 8,
+          "total": 8,
+          "pct": 100.0
+        },
+        "event_description_accuracy": {
+          "correct": 3,
+          "total": 3,
+          "pct": 100.0
+        },
+        "false_confident_interpretations": 0,
+        "wrong_but_flagged": 0,
+        "unsafe_auto_approvals": [],
+        "routing_defined": {
+          "correct": 7,
+          "total": 7,
+          "pct": 100.0
+        },
+        "review_rate": {
+          "correct": 5,
+          "total": 11,
+          "pct": 45.5
+        },
+        "cases": [
+          {
+            "case": "CH-01",
+            "correct": [
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-02",
+            "correct": [
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-03",
+            "correct": [
+              true
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "MATERIAL_QUALIFIER_UNRESOLVED:informational_context",
+              "SEMANTIC_AMBIGUITY"
+            ]
+          },
+          {
+            "case": "CH-04",
+            "correct": [
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-05",
+            "correct": [
+              true,
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-06",
+            "correct": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-07",
+            "correct": [
+              true,
+              true,
+              true
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "MATERIAL_QUALIFIER_UNRESOLVED:informational_context"
+            ]
+          },
+          {
+            "case": "CH-08",
+            "correct": [
+              true,
+              true
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition"
+            ]
+          },
+          {
+            "case": "CH-09",
+            "correct": [
+              true,
+              true,
+              true
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "LOW_EXTRACTION_CONFIDENCE",
+              "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition",
+              "MATERIAL_QUALIFIER_UNRESOLVED:informational_context"
+            ]
+          },
+          {
+            "case": "CH-10",
+            "correct": [
+              true,
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-11",
+            "correct": [
+              true
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition",
+              "SEMANTIC_AMBIGUITY",
+              "CLASSIFICATION_UNDETERMINED"
+            ]
+          }
+        ]
+      },
+      "E": {
+        "semantic_accuracy": {
+          "correct": 21,
+          "total": 21,
+          "pct": 100.0
+        },
+        "negation_accuracy": {
+          "correct": 4,
+          "total": 4,
+          "pct": 100.0
+        },
+        "conditional_expression_accuracy": {
+          "correct": 6,
+          "total": 6,
+          "pct": 100.0
+        },
+        "date_role_mapping_accuracy": {
+          "correct": 8,
+          "total": 8,
+          "pct": 100.0
+        },
+        "misleading_keywords_accuracy": {
+          "correct": 8,
+          "total": 8,
+          "pct": 100.0
+        },
+        "event_description_accuracy": {
+          "correct": 3,
+          "total": 3,
+          "pct": 100.0
+        },
+        "false_confident_interpretations": 0,
+        "wrong_but_flagged": 0,
+        "unsafe_auto_approvals": [],
+        "routing_defined": {
+          "correct": 7,
+          "total": 7,
+          "pct": 100.0
+        },
+        "review_rate": {
+          "correct": 2,
+          "total": 11,
+          "pct": 18.2
+        },
+        "cases": [
+          {
+            "case": "CH-01",
+            "correct": [
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-02",
+            "correct": [
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-03",
+            "correct": [
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-04",
+            "correct": [
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-05",
+            "correct": [
+              true,
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-06",
+            "correct": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-07",
+            "correct": [
+              true,
+              true,
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-08",
+            "correct": [
+              true,
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-09",
+            "correct": [
+              true,
+              true,
+              true
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "LOW_EXTRACTION_CONFIDENCE"
+            ]
+          },
+          {
+            "case": "CH-10",
+            "correct": [
+              true,
+              true
+            ],
+            "decision": "AUTO_APPROVE",
+            "reasons": []
+          },
+          {
+            "case": "CH-11",
+            "correct": [
+              true
+            ],
+            "decision": "REVIEW_REQUIRED",
+            "reasons": [
+              "MATERIAL_QUALIFIER_UNREPRESENTED:event_nature",
+              "SEMANTIC_AMBIGUITY",
+              "CLASSIFICATION_UNDETERMINED"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "efficiency": {
+    "original": {
+      "D": {
+        "total_documents": 8,
+        "eligible_documents": 7,
+        "invoked_documents": 1,
+        "invocation_rate_eligible": "1/7",
+        "correctly_invoked": [
+          "06_petroquimica_litoral_grupamento.pdf"
+        ],
+        "correctly_skipped": [
+          "01_energetica_vale_tiete_dividendo.pdf",
+          "02_banco_meridional_jcp.pdf",
+          "04_rede_varejo_jcp_sem_data.pdf",
+          "05_aurora_saneamento_dividendo_datas.pdf",
+          "08_construtora_horizonte_bonificacao.pdf"
+        ],
+        "false_positive_invocations": [],
+        "false_negative_invocations": [
+          "03_siderurgica_paranaense_proventos.pdf"
+        ],
+        "trigger_reasons": {
+          "01_energetica_vale_tiete_dividendo.pdf": [],
+          "02_banco_meridional_jcp.pdf": [],
+          "03_siderurgica_paranaense_proventos.pdf": [],
+          "04_rede_varejo_jcp_sem_data.pdf": [],
+          "05_aurora_saneamento_dividendo_datas.pdf": [],
+          "06_petroquimica_litoral_grupamento.pdf": [
+            "REQUIRED_DATE_ROLE_UNMAPPED"
+          ],
+          "08_construtora_horizonte_bonificacao.pdf": []
+        },
+        "llm_api_calls": 2,
+        "tool_calls": 1,
+        "tool_calls_per_processed_document": 0.125,
+        "tool_calls_per_llm_document": 1.0,
+        "estimated_cost_usd": "0.073275",
+        "cost_per_input_document_usd": "0.009159375",
+        "cost_per_llm_document_usd": "0.073275",
+        "latency_end_to_end_all": {
+          "n": 8,
+          "mean_ms": 2205.9,
+          "p50_ms": 13.2,
+          "max_ms": 17552.9
+        },
+        "latency_end_to_end_with_llm": {
+          "n": 1,
+          "mean_ms": 17552.9,
+          "p50_ms": 17552.9,
+          "max_ms": 17552.9
+        },
+        "latency_end_to_end_without_llm": {
+          "n": 7,
+          "mean_ms": 13.4,
+          "p50_ms": 12.0,
+          "max_ms": 20.8
+        },
+        "function_calling_invoked_docs": {
+          "documents_expected": 1,
+          "total_tool_calls": 1,
+          "documents_with_tool_call": 1,
+          "correct_calls": 1,
+          "unnecessary_calls": 0,
+          "incorrect_arguments": 0,
+          "expected_calls_missing": 0,
+          "missing_in": [],
+          "details": []
+        }
+      },
+      "E": {
+        "total_documents": 8,
+        "eligible_documents": 7,
+        "invoked_documents": 1,
+        "invocation_rate_eligible": "1/7",
+        "correctly_invoked": [
+          "06_petroquimica_litoral_grupamento.pdf"
+        ],
+        "correctly_skipped": [
+          "01_energetica_vale_tiete_dividendo.pdf",
+          "02_banco_meridional_jcp.pdf",
+          "04_rede_varejo_jcp_sem_data.pdf",
+          "05_aurora_saneamento_dividendo_datas.pdf",
+          "08_construtora_horizonte_bonificacao.pdf"
+        ],
+        "false_positive_invocations": [],
+        "false_negative_invocations": [
+          "03_siderurgica_paranaense_proventos.pdf"
+        ],
+        "trigger_reasons": {
+          "01_energetica_vale_tiete_dividendo.pdf": [],
+          "02_banco_meridional_jcp.pdf": [],
+          "03_siderurgica_paranaense_proventos.pdf": [],
+          "04_rede_varejo_jcp_sem_data.pdf": [],
+          "05_aurora_saneamento_dividendo_datas.pdf": [],
+          "06_petroquimica_litoral_grupamento.pdf": [
+            "REQUIRED_DATE_ROLE_UNMAPPED"
+          ],
+          "08_construtora_horizonte_bonificacao.pdf": []
+        },
+        "llm_api_calls": 2,
+        "tool_calls": 1,
+        "tool_calls_per_processed_document": 0.125,
+        "tool_calls_per_llm_document": 1.0,
+        "estimated_cost_usd": "0.080345",
+        "cost_per_input_document_usd": "0.010043125",
+        "cost_per_llm_document_usd": "0.080345",
+        "latency_end_to_end_all": {
+          "n": 8,
+          "mean_ms": 2357.2,
+          "p50_ms": 13.2,
+          "max_ms": 18767.0
+        },
+        "latency_end_to_end_with_llm": {
+          "n": 1,
+          "mean_ms": 18767.0,
+          "p50_ms": 18767.0,
+          "max_ms": 18767.0
+        },
+        "latency_end_to_end_without_llm": {
+          "n": 7,
+          "mean_ms": 12.9,
+          "p50_ms": 11.9,
+          "max_ms": 24.2
+        },
+        "function_calling_invoked_docs": {
+          "documents_expected": 1,
+          "total_tool_calls": 1,
+          "documents_with_tool_call": 1,
+          "correct_calls": 1,
+          "unnecessary_calls": 0,
+          "incorrect_arguments": 0,
+          "expected_calls_missing": 0,
+          "missing_in": [],
+          "details": []
+        }
+      }
+    },
+    "challenge": {
+      "D": {
+        "total_documents": 11,
+        "eligible_documents": 11,
+        "invoked_documents": 10,
+        "invocation_rate_eligible": "10/11",
+        "correctly_invoked": [
+          "CH-03",
+          "CH-04",
+          "CH-06",
+          "CH-07",
+          "CH-08",
+          "CH-09",
+          "CH-10"
+        ],
+        "correctly_skipped": [
+          "CH-05"
+        ],
+        "false_positive_invocations": [
+          "CH-01",
+          "CH-02",
+          "CH-11"
+        ],
+        "false_negative_invocations": [],
+        "trigger_reasons": {
+          "CH-01": [
+            "NEGATION_DECIDED_CLASSIFICATION"
+          ],
+          "CH-02": [
+            "NEGATION_DECIDED_CLASSIFICATION"
+          ],
+          "CH-03": [
+            "CLASSIFICATION_UNSUPPORTED"
+          ],
+          "CH-04": [
+            "EVENT_SIGNALS_CONFLICT",
+            "CLASSIFICATION_UNSUPPORTED"
+          ],
+          "CH-05": [],
+          "CH-06": [
+            "UNINTERPRETED_QUALIFIER"
+          ],
+          "CH-07": [
+            "REQUIRED_DATE_ROLE_UNMAPPED"
+          ],
+          "CH-08": [
+            "REQUIRED_DATE_ROLE_UNMAPPED"
+          ],
+          "CH-09": [
+            "REQUIRED_DATE_ROLE_UNMAPPED"
+          ],
+          "CH-10": [
+            "EVENT_SIGNALS_CONFLICT"
+          ],
+          "CH-11": [
+            "UNINTERPRETED_QUALIFIER"
+          ]
+        },
+        "llm_api_calls": 20,
+        "tool_calls": 10,
+        "tool_calls_per_processed_document": 0.909,
+        "tool_calls_per_llm_document": 1.0,
+        "estimated_cost_usd": "0.641265",
+        "cost_per_input_document_usd": "0.05829681818181818181818181818",
+        "cost_per_llm_document_usd": "0.0641265",
+        "latency_end_to_end_all": {
+          "n": 11,
+          "mean_ms": 11214.6,
+          "p50_ms": 11734.5,
+          "max_ms": 16552.3
+        },
+        "latency_end_to_end_with_llm": {
+          "n": 10,
+          "mean_ms": 12335.8,
+          "p50_ms": 11815.6,
+          "max_ms": 16552.3
+        },
+        "latency_end_to_end_without_llm": {
+          "n": 1,
+          "mean_ms": 3.0,
+          "p50_ms": 3.0,
+          "max_ms": 3.0
+        },
+        "function_calling_invoked_docs": {
+          "documents_expected": 10,
+          "total_tool_calls": 10,
+          "documents_with_tool_call": 10,
+          "correct_calls": 10,
+          "unnecessary_calls": 0,
+          "incorrect_arguments": 0,
+          "expected_calls_missing": 0,
+          "missing_in": [],
+          "details": []
+        }
+      },
+      "E": {
+        "total_documents": 11,
+        "eligible_documents": 11,
+        "invoked_documents": 10,
+        "invocation_rate_eligible": "10/11",
+        "correctly_invoked": [
+          "CH-03",
+          "CH-04",
+          "CH-06",
+          "CH-07",
+          "CH-08",
+          "CH-09",
+          "CH-10"
+        ],
+        "correctly_skipped": [
+          "CH-05"
+        ],
+        "false_positive_invocations": [
+          "CH-01",
+          "CH-02",
+          "CH-11"
+        ],
+        "false_negative_invocations": [],
+        "trigger_reasons": {
+          "CH-01": [
+            "NEGATION_DECIDED_CLASSIFICATION"
+          ],
+          "CH-02": [
+            "NEGATION_DECIDED_CLASSIFICATION"
+          ],
+          "CH-03": [
+            "CLASSIFICATION_UNSUPPORTED"
+          ],
+          "CH-04": [
+            "EVENT_SIGNALS_CONFLICT",
+            "CLASSIFICATION_UNSUPPORTED"
+          ],
+          "CH-05": [],
+          "CH-06": [
+            "UNINTERPRETED_QUALIFIER"
+          ],
+          "CH-07": [
+            "REQUIRED_DATE_ROLE_UNMAPPED"
+          ],
+          "CH-08": [
+            "REQUIRED_DATE_ROLE_UNMAPPED"
+          ],
+          "CH-09": [
+            "REQUIRED_DATE_ROLE_UNMAPPED"
+          ],
+          "CH-10": [
+            "EVENT_SIGNALS_CONFLICT"
+          ],
+          "CH-11": [
+            "UNINTERPRETED_QUALIFIER"
+          ]
+        },
+        "llm_api_calls": 20,
+        "tool_calls": 10,
+        "tool_calls_per_processed_document": 0.909,
+        "tool_calls_per_llm_document": 1.0,
+        "estimated_cost_usd": "0.680930",
+        "cost_per_input_document_usd": "0.06190272727272727272727272727",
+        "cost_per_llm_document_usd": "0.068093",
+        "latency_end_to_end_all": {
+          "n": 11,
+          "mean_ms": 11892.8,
+          "p50_ms": 11560.9,
+          "max_ms": 31901.5
+        },
+        "latency_end_to_end_with_llm": {
+          "n": 10,
+          "mean_ms": 13081.4,
+          "p50_ms": 11606.2,
+          "max_ms": 31901.5
+        },
+        "latency_end_to_end_without_llm": {
+          "n": 1,
+          "mean_ms": 7.1,
+          "p50_ms": 7.1,
+          "max_ms": 7.1
+        },
+        "function_calling_invoked_docs": {
+          "documents_expected": 10,
+          "total_tool_calls": 10,
+          "documents_with_tool_call": 10,
+          "correct_calls": 10,
+          "unnecessary_calls": 0,
+          "incorrect_arguments": 0,
+          "expected_calls_missing": 0,
+          "missing_in": [],
+          "details": []
+        }
+      }
+    }
+  },
+  "qualifiers": {
+    "original": {
+      "D": {
+        "llm_documents": 1,
+        "qualifiers_total": 4,
+        "material": 2,
+        "non_material_or_notes": 2,
+        "blocking": 2,
+        "scope_guard_rejected": 0,
+        "documents_blocked_by_qualifier": [
+          {
+            "document": "06_petroquimica_litoral_grupamento.pdf",
+            "codes": [
+              "MATERIAL_QUALIFIER_UNRESOLVED:other",
+              "MATERIAL_QUALIFIER_UNRESOLVED:other"
+            ],
+            "expected": "AUTO_APPROVE",
+            "justified": false
+          }
+        ],
+        "false_qualifier_blocks": [
+          "06_petroquimica_litoral_grupamento.pdf"
+        ]
+      },
+      "E": {
+        "llm_documents": 1,
+        "qualifiers_total": 4,
+        "material": 1,
+        "non_material_or_notes": 3,
+        "blocking": 1,
+        "scope_guard_rejected": 0,
+        "documents_blocked_by_qualifier": [
+          {
+            "document": "06_petroquimica_litoral_grupamento.pdf",
+            "codes": [
+              "ratio:MATERIAL_QUALIFIER_UNREPRESENTED:entitlement"
+            ],
+            "expected": "AUTO_APPROVE",
+            "justified": false
+          }
+        ],
+        "false_qualifier_blocks": [
+          "06_petroquimica_litoral_grupamento.pdf"
+        ]
+      }
+    },
+    "challenge": {
+      "D": {
+        "llm_documents": 10,
+        "qualifiers_total": 20,
+        "material": 8,
+        "non_material_or_notes": 12,
+        "blocking": 7,
+        "scope_guard_rejected": 0,
+        "documents_blocked_by_qualifier": [
+          {
+            "document": "CH-03.txt",
+            "codes": [
+              "MATERIAL_QUALIFIER_UNRESOLVED:informational_context",
+              "withholding_tax:MATERIAL_QUALIFIER_UNRESOLVED:tax_base_condition"
+            ],
+            "expected": "AUTO_APPROVE",
+            "justified": false
+          },
+          {
+            "document": "CH-07.txt",
+            "codes": [
+              "MATERIAL_QUALIFIER_UNRESOLVED:informational_context"
+            ],
+            "expected": "AUTO_APPROVE",
+            "justified": false
+          },
+          {
+            "document": "CH-08.txt",
+            "codes": [
+              "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition"
+            ],
+            "expected": "AUTO_APPROVE",
+            "justified": false
+          },
+          {
+            "document": "CH-09.txt",
+            "codes": [
+              "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition",
+              "MATERIAL_QUALIFIER_UNRESOLVED:informational_context"
+            ],
+            "expected": "AUTO_APPROVE",
+            "justified": false
+          },
+          {
+            "document": "CH-11.txt",
+            "codes": [
+              "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition"
+            ],
+            "expected": "REVIEW_REQUIRED",
+            "justified": true
+          }
+        ],
+        "false_qualifier_blocks": [
+          "CH-03.txt",
+          "CH-07.txt",
+          "CH-08.txt",
+          "CH-09.txt"
+        ]
+      },
+      "E": {
+        "llm_documents": 10,
+        "qualifiers_total": 9,
+        "material": 2,
+        "non_material_or_notes": 7,
+        "blocking": 1,
+        "scope_guard_rejected": 0,
+        "documents_blocked_by_qualifier": [
+          {
+            "document": "CH-11.txt",
+            "codes": [
+              "MATERIAL_QUALIFIER_UNREPRESENTED:event_nature"
+            ],
+            "expected": "REVIEW_REQUIRED",
+            "justified": true
+          }
+        ],
+        "false_qualifier_blocks": []
+      }
+    }
+  },
+  "stability": {
+    "original": {
+      "D": {
+        "llm_documents": 1,
+        "semantically_stable": 0,
+        "routing_same": 1,
+        "raw_qualifier_text_same": 0,
+        "unstable": [
+          {
+            "document": "06_petroquimica_litoral_grupamento.pdf",
+            "run1": {
+              "material": [
+                [
+                  "other",
+                  "amounts",
+                  true
+                ],
+                [
+                  "other",
+                  "amounts",
+                  true
+                ]
+              ],
+              "decision": "REVIEW_REQUIRED"
+            },
+            "run2": {
+              "material": [
+                [
+                  "event_eligibility_condition",
+                  "event_eligibility",
+                  true
+                ],
+                [
+                  "other",
+                  "amounts",
+                  true
+                ]
+              ],
+              "decision": "REVIEW_REQUIRED"
+            }
+          }
+        ]
+      },
+      "E": {
+        "llm_documents": 1,
+        "semantically_stable": 0,
+        "routing_same": 1,
+        "raw_qualifier_text_same": 0,
+        "unstable": [
+          {
+            "document": "06_petroquimica_litoral_grupamento.pdf",
+            "run1": {
+              "material": [
+                [
+                  "material_condition",
+                  "entitlement",
+                  "ratio",
+                  true
+                ]
+              ],
+              "decision": "REVIEW_REQUIRED"
+            },
+            "run2": {
+              "material": [],
+              "decision": "REVIEW_REQUIRED"
+            }
+          }
+        ]
+      }
+    },
+    "challenge": {
+      "D": {
+        "llm_documents": 10,
+        "semantically_stable": 8,
+        "routing_same": 9,
+        "raw_qualifier_text_same": 7,
+        "unstable": [
+          {
+            "document": "CH-07.txt",
+            "run1": {
+              "material": [
+                [
+                  "informational_context",
+                  "amounts",
+                  true
+                ]
+              ],
+              "decision": "REVIEW_REQUIRED"
+            },
+            "run2": {
+              "material": [],
+              "decision": "AUTO_APPROVE"
+            }
+          },
+          {
+            "document": "CH-09.txt",
+            "run1": {
+              "material": [
+                [
+                  "event_eligibility_condition",
+                  "event_eligibility",
+                  true
+                ],
+                [
+                  "informational_context",
+                  "amounts",
+                  true
+                ]
+              ],
+              "decision": "REVIEW_REQUIRED"
+            },
+            "run2": {
+              "material": [
+                [
+                  "event_eligibility_condition",
+                  "event_eligibility",
+                  true
+                ]
+              ],
+              "decision": "REVIEW_REQUIRED"
+            }
+          }
+        ]
+      },
+      "E": {
+        "llm_documents": 10,
+        "semantically_stable": 10,
+        "routing_same": 10,
+        "raw_qualifier_text_same": 8,
+        "unstable": []
+      }
+    }
+  },
+  "cost": {
+    "original": {
+      "D": {
+        "llm_documents": 1,
+        "estimated_cost_usd": "0.073275",
+        "cost_per_llm_document_usd": "0.073275",
+        "cost_per_input_document_usd": "0.009159375",
+        "input_tokens_per_llm_document": 9020,
+        "output_tokens_per_llm_document": 1127,
+        "mean_latency_llm_documents_ms": 17552.9
+      },
+      "E": {
+        "llm_documents": 1,
+        "estimated_cost_usd": "0.080345",
+        "cost_per_llm_document_usd": "0.080345",
+        "cost_per_input_document_usd": "0.010043125",
+        "input_tokens_per_llm_document": 10154,
+        "output_tokens_per_llm_document": 1183,
+        "mean_latency_llm_documents_ms": 18767.0
+      }
+    },
+    "challenge": {
+      "D": {
+        "llm_documents": 10,
+        "estimated_cost_usd": "0.641265",
+        "cost_per_llm_document_usd": "0.0641265",
+        "cost_per_input_document_usd": "0.05829681818181818181818181818",
+        "input_tokens_per_llm_document": 8417,
+        "output_tokens_per_llm_document": 882,
+        "mean_latency_llm_documents_ms": 12335.8
+      },
+      "E": {
+        "llm_documents": 10,
+        "estimated_cost_usd": "0.680930",
+        "cost_per_llm_document_usd": "0.068093",
+        "cost_per_input_document_usd": "0.06190272727272727272727272727",
+        "input_tokens_per_llm_document": 9556,
+        "output_tokens_per_llm_document": 812,
+        "mean_latency_llm_documents_ms": 13081.4
+      }
+    }
+  },
+  "cases": {
+    "06_petroquimica_litoral_grupamento.pdf": {
+      "expected": "AUTO_APPROVE",
+      "D_run1": {
+        "decision": "REVIEW_REQUIRED",
+        "reasons": [
+          "MATERIAL_QUALIFIER_UNRESOLVED:other"
+        ],
+        "llm_invoked": true,
+        "material": [
+          {
+            "kind": null,
+            "qualifier_type": "other",
+            "affects": "amounts",
+            "target_field": null,
+            "blocks": true,
+            "representation": null,
+            "quote": "terão o período de 29 de junho de 2026 a 28 de julho de 2026 para, a seu critério, ajustar suas posições em lotes"
+          },
+          {
+            "kind": null,
+            "qualifier_type": "other",
+            "affects": "amounts",
+            "target_field": null,
+            "blocks": true,
+            "representation": null,
+            "quote": "As frações remanescentes após o período serão separadas, agrupadas em números inteiros e alienadas em leilão na B3, sendo o produto rateado proporcionalmente entre os titulares."
+          }
+        ],
+        "notes": [
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "O grupamento tem por objetivo o enquadramento da cotação da ação e a redução de custos operacionais."
+          },
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "sem modificação do valor do capital social"
+          }
+        ],
+        "ex_date": "2026-06-29",
+        "resolutions": [
+          [
+            "ex_date",
+            "LLM_ONLY_GROUNDED"
+          ]
+        ]
+      },
+      "D_run2": {
+        "decision": "REVIEW_REQUIRED",
+        "reasons": [
+          "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition",
+          "MATERIAL_QUALIFIER_UNRESOLVED:other"
+        ],
+        "llm_invoked": true,
+        "material": [
+          {
+            "kind": null,
+            "qualifier_type": "other",
+            "affects": "amounts",
+            "target_field": null,
+            "blocks": true,
+            "representation": null,
+            "quote": "As frações remanescentes após o período serão separadas, agrupadas em números inteiros e alienadas em leilão na B3, sendo o produto rateado proporcionalmente entre os titulares."
+          },
+          {
+            "kind": null,
+            "qualifier_type": "event_eligibility_condition",
+            "affects": "event_eligibility",
+            "target_field": null,
+            "blocks": true,
+            "representation": null,
+            "quote": "A posição acionária considerada para fins de grupamento será a do final do pregão de 26 de junho de 2026"
+          }
+        ],
+        "notes": [
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "O grupamento tem por objetivo o enquadramento da cotação da ação e a redução de custos operacionais."
+          },
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "sem modificação do valor do capital social"
+          },
+          {
+            "kind": null,
+            "qualifier_type": "timing_context",
+            "affects": "dates",
+            "quote": "terão o período de 29 de junho de 2026 a 28 de julho de 2026 para, a seu critério, ajustar suas posições em lotes"
+          }
+        ],
+        "ex_date": "2026-06-29",
+        "resolutions": [
+          [
+            "ex_date",
+            "LLM_ONLY_GROUNDED"
+          ]
+        ]
+      },
+      "E_run1": {
+        "decision": "REVIEW_REQUIRED",
+        "reasons": [
+          "SEMANTIC_AMBIGUITY"
+        ],
+        "llm_invoked": true,
+        "material": [
+          {
+            "kind": "material_condition",
+            "qualifier_type": null,
+            "affects": "entitlement",
+            "target_field": "ratio",
+            "blocks": true,
+            "representation": null,
+            "quote": "Os acionistas que, em decorrência do grupamento, ficarem com frações de ações terão o período de 29 de junho de 2026 a 28 de julho de 2026 para, a seu critério, ajustar suas posições em lotes."
+          }
+        ],
+        "notes": [
+          {
+            "kind": "operational_instruction",
+            "qualifier_type": null,
+            "affects": null,
+            "quote": "As frações remanescentes após o período serão separadas, agrupadas em números inteiros e alienadas em leilão na B3, sendo o produto rateado proporcionalmente entre os titulares."
+          },
+          {
+            "kind": "informational_context",
+            "qualifier_type": null,
+            "affects": null,
+            "quote": "O grupamento tem por objetivo o enquadramento da cotação da ação e a redução de custos operacionais."
+          },
+          {
+            "kind": "informational_context",
+            "qualifier_type": null,
+            "affects": null,
+            "quote": "sem modificação do valor do capital social"
+          }
+        ],
+        "ex_date": "2026-06-29",
+        "resolutions": [
+          [
+            "ex_date",
+            "LLM_ONLY_GROUNDED"
+          ]
+        ]
+      },
+      "E_run2": {
+        "decision": "REVIEW_REQUIRED",
+        "reasons": [
+          "REQUIRED_FIELD_MISSING"
+        ],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [
+          {
+            "kind": "operational_instruction",
+            "qualifier_type": null,
+            "affects": null,
+            "quote": "terão o período de 29 de junho de 2026 a 28 de julho de 2026 para, a seu critério, ajustar suas posições em lotes"
+          },
+          {
+            "kind": "operational_instruction",
+            "qualifier_type": null,
+            "affects": null,
+            "quote": "As frações remanescentes após o período serão separadas, agrupadas em números inteiros e alienadas em leilão na B3, sendo o produto rateado proporcionalmente entre os titulares"
+          },
+          {
+            "kind": "informational_context",
+            "qualifier_type": null,
+            "affects": null,
+            "quote": "O grupamento tem por objetivo o enquadramento da cotação da ação e a redução de custos operacionais"
+          }
+        ],
+        "ex_date": null,
+        "resolutions": [
+          [
+            "record_date",
+            "LLM_UNGROUNDED_IGNORED"
+          ],
+          [
+            "ex_date",
+            "LLM_UNGROUNDED"
+          ]
+        ]
+      }
+    },
+    "CH-01.txt": {
+      "expected": "AUTO_APPROVE",
+      "D_run1": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "à conta do resultado do exercício de 2025"
+          },
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "Não haverá crédito de juros sobre o capital próprio relativo ao exercício de 2026 nesta data."
+          },
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "Valor bruto por ação ON R$ 0,2500000000"
+          }
+        ],
+        "ex_date": "2026-08-17",
+        "resolutions": []
+      },
+      "D_run2": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "à conta do resultado do exercício de 2025"
+          },
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "Não haverá crédito de juros sobre o capital próprio relativo ao exercício de 2026 nesta data."
+          },
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "Valor bruto por ação ON R$ 0,2500000000"
+          }
+        ],
+        "ex_date": "2026-08-17",
+        "resolutions": []
+      },
+      "E_run1": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [
+          {
+            "kind": "informational_context",
+            "qualifier_type": null,
+            "affects": null,
+            "quote": "Não haverá crédito de juros sobre o capital próprio relativo ao exercício de 2026 nesta data."
+          }
+        ],
+        "ex_date": "2026-08-17",
+        "resolutions": []
+      },
+      "E_run2": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [
+          {
+            "kind": "informational_context",
+            "qualifier_type": null,
+            "affects": null,
+            "quote": "Não haverá crédito de juros sobre o capital próprio relativo ao exercício de 2026 nesta data."
+          },
+          {
+            "kind": "informational_context",
+            "qualifier_type": null,
+            "affects": null,
+            "quote": "à conta do resultado do exercício de 2025"
+          }
+        ],
+        "ex_date": "2026-08-17",
+        "resolutions": []
+      }
+    },
+    "CH-02.txt": {
+      "expected": "AUTO_APPROVE",
+      "D_run1": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "A bonificação não altera a política de dividendos da Companhia nem o dividendo mínimo obrigatório previsto no estatuto."
+          },
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "Custo atribuído (base fiscal) R$ 4,150000 por ação"
+          },
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "aumento do capital social mediante capitalização de reservas"
+          }
+        ],
+        "ex_date": "2026-07-20",
+        "resolutions": []
+      },
+      "D_run2": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "A bonificação não altera a política de dividendos da Companhia nem o dividendo mínimo obrigatório previsto no estatuto"
+          },
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "Custo atribuído (base fiscal) R$ 4,150000 por ação"
+          },
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "aumento do capital social mediante capitalização de reservas"
+          }
+        ],
+        "ex_date": "2026-07-20",
+        "resolutions": []
+      },
+      "E_run1": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [
+          {
+            "kind": "informational_context",
+            "qualifier_type": null,
+            "affects": null,
+            "quote": "A bonificação não altera a política de dividendos da Companhia nem o dividendo mínimo obrigatório previsto no estatuto."
+          },
+          {
+            "kind": "informational_context",
+            "qualifier_type": null,
+            "affects": null,
+            "quote": "Custo atribuído (base fiscal) R$ 4,150000 por ação"
+          }
+        ],
+        "ex_date": "2026-07-20",
+        "resolutions": []
+      },
+      "E_run2": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [
+          {
+            "kind": "informational_context",
+            "qualifier_type": null,
+            "affects": null,
+            "quote": "A bonificação não altera a política de dividendos da Companhia nem o dividendo mínimo obrigatório previsto no estatuto."
+          },
+          {
+            "kind": "informational_context",
+            "qualifier_type": null,
+            "affects": null,
+            "quote": "Custo atribuído (base fiscal) R$ 4,150000 por ação"
+          }
+        ],
+        "ex_date": "2026-07-20",
+        "resolutions": []
+      }
+    },
+    "CH-03.txt": {
+      "expected": "AUTO_APPROVE",
+      "D_run1": {
+        "decision": "REVIEW_REQUIRED",
+        "reasons": [
+          "MATERIAL_QUALIFIER_UNRESOLVED:informational_context",
+          "SEMANTIC_AMBIGUITY"
+        ],
+        "llm_invoked": true,
+        "material": [
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "amounts",
+            "target_field": null,
+            "blocks": true,
+            "representation": null,
+            "quote": "limitados à variação pro rata die da Taxa de Juros de Longo Prazo"
+          },
+          {
+            "kind": null,
+            "qualifier_type": "tax_base_condition",
+            "affects": "tax_base",
+            "target_field": null,
+            "blocks": true,
+            "representation": null,
+            "quote": "de 17,5% sobre o valor bruto"
+          }
+        ],
+        "notes": [],
+        "ex_date": "2026-08-24",
+        "resolutions": [
+          [
+            "event_type",
+            "DETERMINISTIC_UNSUPPORTED"
+          ]
+        ]
+      },
+      "D_run2": {
+        "decision": "REVIEW_REQUIRED",
+        "reasons": [
+          "MATERIAL_QUALIFIER_UNRESOLVED:informational_context",
+          "SEMANTIC_AMBIGUITY"
+        ],
+        "llm_invoked": true,
+        "material": [
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "amounts",
+            "target_field": null,
+            "blocks": true,
+            "representation": null,
+            "quote": "limitados à variação pro rata die da Taxa de Juros de Longo Prazo"
+          },
+          {
+            "kind": null,
+            "qualifier_type": "tax_base_condition",
+            "affects": "tax_base",
+            "target_field": null,
+            "blocks": true,
+            "representation": null,
+            "quote": "de 17,5% sobre o valor bruto"
+          }
+        ],
+        "notes": [],
+        "ex_date": "2026-08-24",
+        "resolutions": [
+          [
+            "event_type",
+            "DETERMINISTIC_UNSUPPORTED"
+          ]
+        ]
+      },
+      "E_run1": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [
+          {
+            "kind": "legal_context",
+            "qualifier_type": null,
+            "affects": null,
+            "quote": "limitados à variação pro rata die da Taxa de Juros de Longo Prazo"
+          }
+        ],
+        "ex_date": "2026-08-24",
+        "resolutions": [
+          [
+            "event_type",
+            "DETERMINISTIC_UNSUPPORTED"
+          ]
+        ]
+      },
+      "E_run2": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [
+          {
+            "kind": "informational_context",
+            "qualifier_type": null,
+            "affects": null,
+            "quote": "limitados à variação pro rata die da Taxa de Juros de Longo Prazo"
+          }
+        ],
+        "ex_date": "2026-08-24",
+        "resolutions": [
+          [
+            "event_type",
+            "DETERMINISTIC_UNSUPPORTED"
+          ]
+        ]
+      }
+    },
+    "CH-04.txt": {
+      "expected": "AUTO_APPROVE",
+      "D_run1": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "O grupamento reverte parcialmente o desdobramento aprovado em 2024"
+          },
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "não altera o valor do capital social"
+          }
+        ],
+        "ex_date": "2026-08-03",
+        "resolutions": [
+          [
+            "event_type",
+            "DETERMINISTIC_UNSUPPORTED"
+          ]
+        ]
+      },
+      "D_run2": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "O grupamento reverte parcialmente o desdobramento aprovado em 2024"
+          },
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "não altera o valor do capital social"
+          }
+        ],
+        "ex_date": "2026-08-03",
+        "resolutions": [
+          [
+            "event_type",
+            "DETERMINISTIC_UNSUPPORTED"
+          ]
+        ]
+      },
+      "E_run1": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [
+          {
+            "kind": "informational_context",
+            "qualifier_type": null,
+            "affects": null,
+            "quote": "não altera o valor do capital social"
+          },
+          {
+            "kind": "informational_context",
+            "qualifier_type": null,
+            "affects": null,
+            "quote": "O grupamento reverte parcialmente o desdobramento aprovado em 2024"
+          }
+        ],
+        "ex_date": "2026-08-03",
+        "resolutions": [
+          [
+            "event_type",
+            "DETERMINISTIC_UNSUPPORTED"
+          ]
+        ]
+      },
+      "E_run2": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [
+          {
+            "kind": "informational_context",
+            "qualifier_type": null,
+            "affects": null,
+            "quote": "O grupamento reverte parcialmente o desdobramento aprovado em 2024 e não altera o valor do capital social."
+          }
+        ],
+        "ex_date": "2026-08-03",
+        "resolutions": [
+          [
+            "event_type",
+            "DETERMINISTIC_UNSUPPORTED"
+          ]
+        ]
+      }
+    },
+    "CH-06.txt": {
+      "expected": "AUTO_APPROVE",
+      "D_run1": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [
+          {
+            "kind": null,
+            "qualifier_type": "beneficiary_exception",
+            "affects": "tax_application",
+            "target_field": null,
+            "blocks": false,
+            "representation": null,
+            "quote": "exceto para os acionistas que comprovarem ser imunes ou isentos até 20/08/2026"
+          }
+        ],
+        "notes": [],
+        "ex_date": "2026-08-24",
+        "resolutions": [
+          [
+            "approval_date",
+            "DETERMINISTIC_UNSUPPORTED"
+          ]
+        ]
+      },
+      "D_run2": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [
+          {
+            "kind": null,
+            "qualifier_type": "beneficiary_exception",
+            "affects": "tax_application",
+            "target_field": null,
+            "blocks": false,
+            "representation": null,
+            "quote": "exceto para os acionistas que comprovarem ser imunes ou isentos até 20/08/2026"
+          }
+        ],
+        "notes": [
+          {
+            "kind": null,
+            "qualifier_type": "timing_context",
+            "affects": "none",
+            "quote": "até 20/08/2026"
+          }
+        ],
+        "ex_date": "2026-08-24",
+        "resolutions": [
+          [
+            "approval_date",
+            "DETERMINISTIC_UNSUPPORTED"
+          ]
+        ]
+      },
+      "E_run1": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [
+          {
+            "kind": "material_exception",
+            "qualifier_type": null,
+            "affects": "beneficiary_tax_treatment",
+            "target_field": "withholding_tax",
+            "blocks": false,
+            "representation": "withholding_tax.notes (exceção por titular)",
+            "quote": "exceto para os acionistas que comprovarem ser imunes ou isentos até 20/08/2026"
+          }
+        ],
+        "notes": [],
+        "ex_date": "2026-08-24",
+        "resolutions": [
+          [
+            "approval_date",
+            "DETERMINISTIC_UNSUPPORTED"
+          ]
+        ]
+      },
+      "E_run2": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [
+          {
+            "kind": "material_exception",
+            "qualifier_type": null,
+            "affects": "beneficiary_tax_treatment",
+            "target_field": "withholding_tax",
+            "blocks": false,
+            "representation": "withholding_tax.notes (exceção por titular)",
+            "quote": "exceto para os acionistas que comprovarem ser imunes ou isentos até 20/08/2026"
+          }
+        ],
+        "notes": [],
+        "ex_date": "2026-08-24",
+        "resolutions": [
+          [
+            "approval_date",
+            "DETERMINISTIC_UNSUPPORTED"
+          ]
+        ]
+      }
+    },
+    "CH-07.txt": {
+      "expected": "AUTO_APPROVE",
+      "D_run1": {
+        "decision": "REVIEW_REQUIRED",
+        "reasons": [
+          "MATERIAL_QUALIFIER_UNRESOLVED:informational_context"
+        ],
+        "llm_invoked": true,
+        "material": [
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "amounts",
+            "target_field": null,
+            "blocks": true,
+            "representation": null,
+            "quote": "Valor bruto por ação preferencial (PN) R$ 0,3300000000"
+          }
+        ],
+        "notes": [],
+        "ex_date": "2026-08-21",
+        "resolutions": [
+          [
+            "record_date",
+            "LLM_ONLY_GROUNDED"
+          ],
+          [
+            "ex_date",
+            "LLM_ONLY_GROUNDED"
+          ],
+          [
+            "payment_date",
+            "LLM_ONLY_GROUNDED"
+          ]
+        ]
+      },
+      "D_run2": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "Valor bruto por ação preferencial (PN) R$ 0,3300000000"
+          }
+        ],
+        "ex_date": "2026-08-21",
+        "resolutions": [
+          [
+            "record_date",
+            "LLM_ONLY_GROUNDED"
+          ],
+          [
+            "ex_date",
+            "LLM_ONLY_GROUNDED"
+          ],
+          [
+            "payment_date",
+            "LLM_ONLY_GROUNDED"
+          ]
+        ]
+      },
+      "E_run1": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [],
+        "ex_date": "2026-08-21",
+        "resolutions": [
+          [
+            "record_date",
+            "LLM_ONLY_GROUNDED"
+          ],
+          [
+            "ex_date",
+            "LLM_ONLY_GROUNDED"
+          ],
+          [
+            "payment_date",
+            "LLM_ONLY_GROUNDED"
+          ]
+        ]
+      },
+      "E_run2": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [],
+        "ex_date": "2026-08-21",
+        "resolutions": [
+          [
+            "record_date",
+            "LLM_ONLY_GROUNDED"
+          ],
+          [
+            "ex_date",
+            "LLM_ONLY_GROUNDED"
+          ],
+          [
+            "payment_date",
+            "LLM_ONLY_GROUNDED"
+          ]
+        ]
+      }
+    },
+    "CH-08.txt": {
+      "expected": "AUTO_APPROVE",
+      "D_run1": {
+        "decision": "REVIEW_REQUIRED",
+        "reasons": [
+          "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition"
+        ],
+        "llm_invoked": true,
+        "material": [
+          {
+            "kind": null,
+            "qualifier_type": "event_eligibility_condition",
+            "affects": "event_eligibility",
+            "target_field": null,
+            "blocks": true,
+            "representation": null,
+            "quote": "Será considerada a posição acionária do dia 07/08/2026"
+          }
+        ],
+        "notes": [
+          {
+            "kind": null,
+            "qualifier_type": "timing_context",
+            "affects": "dates",
+            "quote": "as ações passarão a ser negociadas grupadas a partir de 10/08/2026"
+          }
+        ],
+        "ex_date": "2026-08-10",
+        "resolutions": [
+          [
+            "record_date",
+            "LLM_ONLY_GROUNDED"
+          ],
+          [
+            "ex_date",
+            "LLM_ONLY_GROUNDED"
+          ]
+        ]
+      },
+      "D_run2": {
+        "decision": "REVIEW_REQUIRED",
+        "reasons": [
+          "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition"
+        ],
+        "llm_invoked": true,
+        "material": [
+          {
+            "kind": null,
+            "qualifier_type": "event_eligibility_condition",
+            "affects": "event_eligibility",
+            "target_field": null,
+            "blocks": true,
+            "representation": null,
+            "quote": "Será considerada a posição acionária do dia 07/08/2026"
+          }
+        ],
+        "notes": [
+          {
+            "kind": null,
+            "qualifier_type": "timing_context",
+            "affects": "dates",
+            "quote": "as ações passarão a ser negociadas grupadas a partir de 10/08/2026"
+          }
+        ],
+        "ex_date": "2026-08-10",
+        "resolutions": [
+          [
+            "record_date",
+            "LLM_ONLY_GROUNDED"
+          ],
+          [
+            "ex_date",
+            "LLM_ONLY_GROUNDED"
+          ]
+        ]
+      },
+      "E_run1": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [],
+        "ex_date": "2026-08-10",
+        "resolutions": [
+          [
+            "record_date",
+            "LLM_ONLY_GROUNDED"
+          ],
+          [
+            "ex_date",
+            "LLM_ONLY_GROUNDED"
+          ]
+        ]
+      },
+      "E_run2": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [],
+        "ex_date": "2026-08-10",
+        "resolutions": [
+          [
+            "record_date",
+            "LLM_ONLY_GROUNDED"
+          ],
+          [
+            "ex_date",
+            "LLM_ONLY_GROUNDED"
+          ]
+        ]
+      }
+    },
+    "CH-09.txt": {
+      "expected": "AUTO_APPROVE",
+      "D_run1": {
+        "decision": "REVIEW_REQUIRED",
+        "reasons": [
+          "LOW_EXTRACTION_CONFIDENCE",
+          "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition",
+          "MATERIAL_QUALIFIER_UNRESOLVED:informational_context"
+        ],
+        "llm_invoked": true,
+        "material": [
+          {
+            "kind": null,
+            "qualifier_type": "event_eligibility_condition",
+            "affects": "event_eligibility",
+            "target_field": null,
+            "blocks": true,
+            "representation": null,
+            "quote": "Farão jus ao provento os acionistas titulares de ações ao final do dia 26 de agosto de 2026"
+          },
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "amounts",
+            "target_field": null,
+            "blocks": true,
+            "representation": null,
+            "quote": "resultando em valor líquido de R$ 0,1237500000 por ação"
+          }
+        ],
+        "notes": [],
+        "ex_date": "2026-08-27",
+        "resolutions": [
+          [
+            "record_date",
+            "LLM_ONLY_GROUNDED"
+          ],
+          [
+            "ex_date",
+            "LLM_ONLY_GROUNDED"
+          ],
+          [
+            "payment_date",
+            "LLM_ONLY_GROUNDED"
+          ]
+        ]
+      },
+      "D_run2": {
+        "decision": "REVIEW_REQUIRED",
+        "reasons": [
+          "LOW_EXTRACTION_CONFIDENCE",
+          "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition"
+        ],
+        "llm_invoked": true,
+        "material": [
+          {
+            "kind": null,
+            "qualifier_type": "event_eligibility_condition",
+            "affects": "event_eligibility",
+            "target_field": null,
+            "blocks": true,
+            "representation": null,
+            "quote": "Farão jus ao provento os acionistas titulares de ações ao final do dia 26 de agosto de 2026"
+          }
+        ],
+        "notes": [
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "resultando em valor líquido de R$ 0,1237500000 por ação"
+          }
+        ],
+        "ex_date": "2026-08-27",
+        "resolutions": [
+          [
+            "record_date",
+            "LLM_ONLY_GROUNDED"
+          ],
+          [
+            "ex_date",
+            "LLM_ONLY_GROUNDED"
+          ],
+          [
+            "payment_date",
+            "LLM_ONLY_GROUNDED"
+          ]
+        ]
+      },
+      "E_run1": {
+        "decision": "REVIEW_REQUIRED",
+        "reasons": [
+          "LOW_EXTRACTION_CONFIDENCE"
+        ],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [],
+        "ex_date": "2026-08-27",
+        "resolutions": [
+          [
+            "record_date",
+            "LLM_ONLY_GROUNDED"
+          ],
+          [
+            "ex_date",
+            "LLM_ONLY_GROUNDED"
+          ],
+          [
+            "payment_date",
+            "LLM_ONLY_GROUNDED"
+          ]
+        ]
+      },
+      "E_run2": {
+        "decision": "REVIEW_REQUIRED",
+        "reasons": [
+          "LOW_EXTRACTION_CONFIDENCE"
+        ],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [],
+        "ex_date": "2026-08-27",
+        "resolutions": [
+          [
+            "record_date",
+            "LLM_ONLY_GROUNDED"
+          ],
+          [
+            "ex_date",
+            "LLM_ONLY_GROUNDED"
+          ],
+          [
+            "payment_date",
+            "LLM_ONLY_GROUNDED"
+          ]
+        ]
+      }
+    },
+    "CH-10.txt": {
+      "expected": "AUTO_APPROVE",
+      "D_run1": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "já foram integralmente pagos em 15/05/2026 e não são objeto deste aviso"
+          },
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "dividendos complementares referentes ao exercício de 2025"
+          }
+        ],
+        "ex_date": "2026-08-24",
+        "resolutions": [
+          [
+            "event_type",
+            "HEURISTIC_RESOLVED"
+          ]
+        ]
+      },
+      "D_run2": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "Os juros sobre o capital próprio declarados em abril de 2026 já foram integralmente pagos em 15/05/2026 e não são objeto deste aviso."
+          },
+          {
+            "kind": null,
+            "qualifier_type": "informational_context",
+            "affects": "none",
+            "quote": "dividendos complementares referentes ao exercício de 2025"
+          }
+        ],
+        "ex_date": "2026-08-24",
+        "resolutions": [
+          [
+            "event_type",
+            "HEURISTIC_RESOLVED"
+          ]
+        ]
+      },
+      "E_run1": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [
+          {
+            "kind": "informational_context",
+            "qualifier_type": null,
+            "affects": null,
+            "quote": "já foram integralmente pagos em 15/05/2026 e não são objeto deste aviso"
+          }
+        ],
+        "ex_date": "2026-08-24",
+        "resolutions": [
+          [
+            "event_type",
+            "HEURISTIC_RESOLVED"
+          ]
+        ]
+      },
+      "E_run2": {
+        "decision": "AUTO_APPROVE",
+        "reasons": [],
+        "llm_invoked": true,
+        "material": [],
+        "notes": [
+          {
+            "kind": "informational_context",
+            "qualifier_type": null,
+            "affects": null,
+            "quote": "já foram integralmente pagos em 15/05/2026 e não são objeto deste aviso"
+          }
+        ],
+        "ex_date": "2026-08-24",
+        "resolutions": [
+          [
+            "event_type",
+            "HEURISTIC_RESOLVED"
+          ]
+        ]
+      }
+    },
+    "CH-11.txt": {
+      "expected": "REVIEW_REQUIRED",
+      "D_run1": {
+        "decision": "REVIEW_REQUIRED",
+        "reasons": [
+          "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition",
+          "SEMANTIC_AMBIGUITY",
+          "CLASSIFICATION_UNDETERMINED"
+        ],
+        "llm_invoked": true,
+        "material": [
+          {
+            "kind": null,
+            "qualifier_type": "event_eligibility_condition",
+            "affects": "event_nature",
+            "target_field": null,
+            "blocks": true,
+            "representation": null,
+            "quote": "cuja natureza — dividendos ou juros sobre o capital próprio — será definida em reunião do Conselho a ser realizada até 30 de setembro de 2026"
+          }
+        ],
+        "notes": [
+          {
+            "kind": null,
+            "qualifier_type": "timing_context",
+            "affects": "dates",
+            "quote": "Data de pagamento A definir"
+          }
+        ],
+        "ex_date": "2026-08-31",
+        "resolutions": [
+          [
+            "approval_date",
+            "DETERMINISTIC_UNSUPPORTED"
+          ]
+        ]
+      },
+      "D_run2": {
+        "decision": "REVIEW_REQUIRED",
+        "reasons": [
+          "MATERIAL_QUALIFIER_UNRESOLVED:event_eligibility_condition",
+          "SEMANTIC_AMBIGUITY",
+          "CLASSIFICATION_UNDETERMINED"
+        ],
+        "llm_invoked": true,
+        "material": [
+          {
+            "kind": null,
+            "qualifier_type": "event_eligibility_condition",
+            "affects": "event_nature",
+            "target_field": null,
+            "blocks": true,
+            "representation": null,
+            "quote": "cuja natureza — dividendos ou juros sobre o capital próprio — será definida em reunião do Conselho a ser realizada até 30 de setembro de 2026"
+          }
+        ],
+        "notes": [
+          {
+            "kind": null,
+            "qualifier_type": "timing_context",
+            "affects": "dates",
+            "quote": "Data de pagamento A definir"
+          }
+        ],
+        "ex_date": "2026-08-31",
+        "resolutions": [
+          [
+            "approval_date",
+            "DETERMINISTIC_UNSUPPORTED"
+          ]
+        ]
+      },
+      "E_run1": {
+        "decision": "REVIEW_REQUIRED",
+        "reasons": [
+          "MATERIAL_QUALIFIER_UNREPRESENTED:event_nature",
+          "SEMANTIC_AMBIGUITY",
+          "CLASSIFICATION_UNDETERMINED"
+        ],
+        "llm_invoked": true,
+        "material": [
+          {
+            "kind": "unresolved",
+            "qualifier_type": null,
+            "affects": "event_nature",
+            "target_field": "event",
+            "blocks": true,
+            "representation": null,
+            "quote": "cuja natureza — dividendos ou juros sobre o capital próprio — será definida em reunião do Conselho a ser realizada até 30 de setembro de 2026"
+          }
+        ],
+        "notes": [],
+        "ex_date": "2026-08-31",
+        "resolutions": [
+          [
+            "approval_date",
+            "DETERMINISTIC_UNSUPPORTED"
+          ]
+        ]
+      },
+      "E_run2": {
+        "decision": "REVIEW_REQUIRED",
+        "reasons": [
+          "MATERIAL_QUALIFIER_UNREPRESENTED:event_nature",
+          "SEMANTIC_AMBIGUITY",
+          "CLASSIFICATION_UNDETERMINED"
+        ],
+        "llm_invoked": true,
+        "material": [
+          {
+            "kind": "unresolved",
+            "qualifier_type": null,
+            "affects": "event_nature",
+            "target_field": "event",
+            "blocks": true,
+            "representation": null,
+            "quote": "cuja natureza — dividendos ou juros sobre o capital próprio — será definida em reunião do Conselho a ser realizada até 30 de setembro de 2026"
+          }
+        ],
+        "notes": [],
+        "ex_date": "2026-08-31",
+        "resolutions": [
+          [
+            "approval_date",
+            "DETERMINISTIC_UNSUPPORTED"
+          ]
+        ]
+      }
+    }
+  },
+  "success_criteria": {
+    "1_unsafe_auto_approvals_zero": true,
+    "2_doc06_not_reviewed_for_operational_reason": false,
+    "3_ch07_routing_stable": true,
+    "4_no_previously_safe_case_now_unsafe": true,
+    "5_review_rate_not_higher": {
+      "D": 11,
+      "E": 8,
+      "ok": true
+    },
+    "6_explainability": "qualitativo — ver evaluation log"
+  }
+}
