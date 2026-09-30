@@ -952,3 +952,60 @@ Falha real e recorrente: `approval_date` não encontrada em 10/14 avisos. A fras
 - **A segurança no sentido pré-registrado se manteve** em dados nunca vistos: 0 aprovações inseguras, 0 ambiguidades aprovadas, 48/48 citações literais.
 - **A utilidade caiu bastante** (roteamento 8/14, revisão 11/14), em parte pela falta de crédito e em parte por limites de cobertura determinística.
 - **O blind test expôs um risco que as métricas anteriores não capturavam:** omissão de tratamento tributário não numérico num registro aprovado (BT-01). Ele precisa virar métrica e hipótese antes de qualquer adoção.
+
+### BT-001 — Execução 2 (completa), após a recarga de créditos
+
+- **Run:** `20260930T013554Z-eeef7f71` (`outputs/experiments/BT-001_blind_E/blind_E_run2`). Mesma E congelada (freeze verificado), cache novo (`llm_cache_run2`, sem ler o da execução 1).
+- **Execução:** 0 erros, 0 recusas, 0 falhas de parse. 8 documentos com LLM, 16 chamadas (2 por documento), 8 tool calls, todas corretas. Custo US$ 0,5883.
+- **Custo incremental total do blind test:** US$ 0,99 (0,4036 + 0,5883). A instrumentação B não tem custo.
+- **Avaliação:** `evaluation_run2/blind_results.json`, com o avaliador pré-registrado, sem alterações.
+
+**Resultados da execução completa:**
+
+| Métrica | Resultado |
+|---|---|
+| **Aprovações inseguras** | **0** |
+| **Ambiguidades aprovadas** | **0** |
+| Aprovações falsas | 0 |
+| Roteamento | 8/14 (3 AUTO corretos, 5 REVIEW corretos) |
+| Taxa de revisão | 11/14 |
+| Tipo de evento | 12/14 |
+| Alvos semânticos | 46/57 |
+| Qualificadores do gabarito capturados | 2/6 |
+| Valores e proporções | 16/18 |
+| Identificadores | 41/41 |
+| Regras objetivas | 43/54 (1 falso negativo, 0 falsos positivos) |
+| Grounding | **76/76** |
+| Divergências tool × engine | 0 |
+| Chamada do LLM | 8/14 (falso-positivas: nenhuma; falso-negativas: BT-03, BT-07, BT-13) |
+| Latência mediana com LLM / sem LLM | 12,6 s / 4 ms |
+
+**Estabilidade (execução 1 × 2):**
+
+| Dimensão | Resultado |
+|---|---|
+| Decisão de chamar o LLM | **14/14** |
+| Roteamento | **14/14** |
+| Tipo de evento, nos documentos com LLM | 8/8 |
+| Qualificadores materiais (semanticamente estáveis) | 6/8 |
+
+- As diferenças de qualificadores: no **BT-10**, a execução 1 foi truncada pela falta de crédito; no **BT-08**, o conjunto de qualificadores materiais mudou (surgiu `entitlement` além de `event_nature`), com o mesmo roteamento (revisão).
+- A falta de crédito da execução 1 **não alterou nenhuma decisão final**: os 3 casos afetados também vão para revisão com o LLM completo.
+
+**Por que os casos antes afetados vão para revisão (com o LLM completo):**
+
+| Caso | Motivo |
+|---|---|
+| **BT-10** | "Não farão jus à bonificação as ações mantidas em tesouraria" marcado como `material_exception` / `eligibility`, e bloqueou. O gabarito o trata como contexto não material (exclusão legal padrão). |
+| **BT-11** | O LLM mapeou todas as datas; o pagamento "15.10.2026" (formato com pontos) não é aceito pelo parser determinístico (`UNPARSEABLE_DATE`), o grounding rejeita e o documento vai para revisão por campo ausente. |
+| **BT-12** | Duas razões sociais "... S.A." no aviso (conflito no nome do emissor → extração LOW) e uma negação atribuída pelo B ao valor líquido. |
+
+**Failure modes confirmados com o LLM completo:**
+- **Omissão da isenção (BT-01):** repetida na execução 2 (o LLM diz `EXEMPT`; a fusão descarta por falta de alíquota numérica; AUTO_APPROVE sem isenção). **Estável e determinístico**, causado pela fusão, não pelo LLM.
+- **Revogação (BT-08):** o LLM diz UNRESOLVED; o registro mantém DIVIDEND e o valor revogado; vai para revisão.
+- **Contradição dividendo × IRRF de JCP (BT-13):** não detectada, sem LLM; vai para revisão por outros motivos.
+
+**Failure modes novos na execução 2:**
+- **BT-7:** o parser de datas não aceita dd.mm.aaaa.
+- **BT-8:** exclusão legal padrão (ações em tesouraria) tratada como exceção material.
+- **BT-9:** outra entidade "S.A." no aviso gera conflito de razão social.

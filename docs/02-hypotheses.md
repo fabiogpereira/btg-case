@@ -290,7 +290,7 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
 - **Why it matters:** O challenge set é ciente do autor; só um conjunto independente mede generalização.
 - **How to test:** BT-001 (blind set independente, 14 casos, E congelada, avaliador pré-registrado).
 - **Expected signal:** 0 inseguras; ambiguidades revisadas; roteamento correto na maioria.
-- **Observed result:** (BT-001, execução 1 incompleta por falta de crédito em 3/14) 0 aprovações inseguras, 0 ambiguidades aprovadas, 48/48 citações literais, identificadores 41/41. Roteamento 8/14, revisão 11/14 (3 revisões pela falta de crédito). Risco novo fora da métrica: BT-01 aprovado sem a isenção de IR (tratamento não numérico descartado). Ambiguidade dividendo × JCP (BT-13) não detectada, revisada por outro motivo.
-- **Decision:** Pendente da execução completa.
-- **Status:** TESTING (segurança pré-registrada mantida; utilidade baixa; omissão silenciosa identificada)
+- **Observed result:** (BT-001, execução completa + execução 1) 0 aprovações inseguras, 0 ambiguidades aprovadas, 0 aprovações falsas, 76/76 citações literais, identificadores 41/41, roteamento e decisão de invocar o LLM estáveis 14/14 entre execuções. Utilidade baixa: roteamento 8/14, revisão 11/14; revisões desnecessárias por cobertura determinística (proporção de desdobramento, data dd.mm.aaaa, segunda razão social), por qualificador (exclusão de tesouraria; exceção atribuída a valores pelo B) e por conflito de valores. Risco fora da métrica pré-registrada, estável: BT-01 aprovado sem a isenção de IR declarada (a fusão descarta tratamento não numérico).
+- **Decision:** Segurança pré-registrada confirmada em dados independentes; utilidade insuficiente; a omissão de tratamento tributário não numérico precisa entrar na definição de aprovação insegura antes de qualquer adoção.
+- **Status:** MODIFIED (seguro pela métrica pré-registrada; pouco útil; omissão silenciosa estável identificada)
 
