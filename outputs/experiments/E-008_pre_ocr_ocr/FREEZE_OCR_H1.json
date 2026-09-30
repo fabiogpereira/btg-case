@@ -1,7 +1,7 @@
 {
   "experiment": "E-008",
   "stage": "OCR local H1 (doc 07)",
-  "freeze_version": 2,
+  "freeze_version": 3,
   "frozen_at": "2026-09-30",
   "pipeline": {
     "variant": "H",
@@ -48,12 +48,13 @@
   "llm": "replay sem rede (cache E-006 llm_cache_run1); cache miss registrado; nenhuma chamada de API sem autorização",
   "files": {
     "src/perception/__init__.py": "f3f31d0713bae57ed462f6da5d59733ce6e5cf6cc38c0b0f6a7b3fdc40aefa9f",
-    "src/perception/ocr_local.py": "d34eb1b0970906b3e545651868eafa789944b42100dad9e8942ec39bd28fde2a",
+    "src/perception/ocr_local.py": "4acbfff3a8367dc31aba352c73573ddd034d7a0135b6885c2c054d44cab22cca",
     "src/evaluation/e008_ocr.py": "9484da6a0f307cb40028e5263a3992872c1d2517d1af7e79f7f55cc25d42a14d",
     "tests/test_text_fallback_hook.py": "04df4f6bca4857d1caab2706d7e92cda9e9c0e6c361288582cc2c60cfbf990a6",
     "requirements-ocr.txt": "f64b80b3b46a53d797d83d643982cc0a241adddae6c630526765c2ca9a282d55",
     "tests/ground_truth/doc07.json": "1f86b2827252008e56d89c93929d85b2b8f7f5be31ed3c27d4c3239d70a99d16",
-    "tests/ground_truth/transcriptions/doc07_visual_transcription.txt": "937045bcdfd9d9896320122ba1b79975926fef9c00590abbd252523b0e541cba"
+    "tests/ground_truth/transcriptions/doc07_visual_transcription.txt": "937045bcdfd9d9896320122ba1b79975926fef9c00590abbd252523b0e541cba",
+    "tests/test_ocr_local_smoke.py": "4d494316b98f6ad24e03af2408dc666d90fa7181b254f65bdb5e1c8423bc2d62"
   },
   "technical_failures_before_any_ocr_output_was_evaluated": [
     {
@@ -67,6 +68,12 @@
       "cause": "artifacts_dir relativo + Path.relative_to(ROOT) absoluto -> ValueError no adaptador",
       "pipeline_behavior": "PROCESSING_ERROR -> REVIEW_REQUIRED (fail-safe)",
       "fix": "ocr_local.py: artifacts_dir.resolve() (sem mudança de parâmetro de OCR)"
+    },
+    {
+      "run": "ocr_h1_run3_float_failure",
+      "cause": "confiança do Tesseract como float na auditoria -> to_jsonable recusa float (D-007) -> lote interrompido no doc 07",
+      "pipeline_behavior": "lote abortado (6 registros gravados antes do doc 07); nenhum registro do doc 07",
+      "fix": "confiança como Decimal da string do TSV; caminho de artefato relativo quando possível; teste de fumaça do adaptador real com PDF sintético (tests/test_ocr_local_smoke.py)"
     }
   ]
 }

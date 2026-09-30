@@ -20,6 +20,7 @@ import re
 import subprocess
 import tempfile
 import time
+from decimal import Decimal
 from pathlib import Path
 
 from corporate_actions.ingestion import MIN_ALNUM_CHARS_PER_PAGE, TextLayer, normalize_whitespace
@@ -32,6 +33,14 @@ LOW_CONFIDENCE = 60          # confiança de palavra (0–100) abaixo da qual a 
 
 def _sha(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
+
+
+def _display(path: Path) -> str:
+    """Caminho relativo ao repositório quando possível (artefatos versionados), senão absoluto."""
+    try:
+        return path.relative_to(ROOT).as_posix()
+    except ValueError:
+        return path.as_posix()
 
 
 class TesseractOCR:
@@ -71,9 +80,10 @@ class TesseractOCR:
                 ocr_ms += int((time.perf_counter() - o0) * 1000)
                 txt = base.with_suffix(".txt").read_text(encoding="utf-8")
                 tsv = base.with_suffix(".tsv").read_text(encoding="utf-8")
-                page_words = [(row["text"], float(row["conf"])) for row in csv.DictReader(io.StringIO(tsv), delimiter="\t",
-                                                                                          quoting=csv.QUOTE_NONE)
-                              if row.get("text", "").strip() and float(row["conf"]) >= 0]
+                # confiança como Decimal da string do TSV (D-007: sem float em valores do registro)
+                page_words = [(row["text"], Decimal(row["conf"])) for row in csv.DictReader(io.StringIO(tsv), delimiter="\t",
+                                                                                            quoting=csv.QUOTE_NONE)
+                              if row.get("text", "").strip() and Decimal(row["conf"]) >= 0]
                 words += page_words
                 page_texts.append(txt)
                 artifact = {"page": i + 1, "image_px": list(image.size), "image_sha256": _sha(png.read_bytes()),
@@ -83,8 +93,8 @@ class TesseractOCR:
                     out.mkdir(parents=True, exist_ok=True)
                     (out / f"page-{i + 1}.txt").write_text(txt, encoding="utf-8")
                     (out / f"page-{i + 1}.tsv").write_text(tsv, encoding="utf-8")
-                    artifact["raw_text_path"] = (out / f"page-{i + 1}.txt").relative_to(ROOT).as_posix()
-                    artifact["raw_tsv_path"] = (out / f"page-{i + 1}.tsv").relative_to(ROOT).as_posix()
+                    artifact["raw_text_path"] = _display(out / f"page-{i + 1}.txt")
+                    artifact["raw_tsv_path"] = _display(out / f"page-{i + 1}.tsv")
                 pages_audit.append(artifact)
         offsets, parts, cursor = [], [], 0
         for text in page_texts:
@@ -102,7 +112,8 @@ class TesseractOCR:
         low = [(w, c) for w, c in words if c < LOW_CONFIDENCE]
         audit = {**info, "pages": len(page_texts), "duration_ms": {"render": render_ms, "ocr": ocr_ms,
                                                                     "total": int((time.perf_counter() - t0) * 1000)},
-                 "words": len(words), "mean_word_confidence": round(sum(confs) / len(confs), 1) if confs else None,
+                 "words": len(words),
+                 "mean_word_confidence": (sum(confs) / len(confs)).quantize(Decimal("0.1")) if confs else None,
                  "low_confidence_words": len(low),
                  "low_confidence_numeric_tokens": [{"token": w, "conf": c} for w, c in low if re.search(r"\d", w)],
                  "page_artifacts": pages_audit}

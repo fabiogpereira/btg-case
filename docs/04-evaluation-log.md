@@ -1602,3 +1602,7 @@ python -m evaluation.e008_ocr eval --out outputs/experiments/E-008_pre_ocr_ocr/o
 2. `ocr_h1_run2_path_failure`: `artifacts_dir` relativo com `relative_to` absoluto no adaptador. Correção: `resolve()`, uma linha, sem mudança de parâmetro de OCR. Freeze do experimento → versão 2.
 
 Nas duas falhas, a pipeline congelada registrou `PROCESSING_ERROR` → REVIEW_REQUIRED, sem campo inventado, e os 7 documentos nativos ficaram idênticos. O texto produzido pelo OCR não foi examinado antes da execução válida.
+3. `ocr_h1_run3_float_failure`: confiança do Tesseract como `float` na auditoria. `to_jsonable` recusa `float` (D-007) e o lote foi interrompido no doc 07. Correção: confiança como `Decimal` da string do TSV.
+   - **Lição registrada:** o adaptador real não tinha teste ponta a ponta antes da primeira execução no doc 07.
+   - Foi acrescentado `tests/test_ocr_local_smoke.py`: PDF sintético gerado no teste → PDFium → Tesseract → pipeline; verifica auditoria serializável e artefatos. Ele reproduzia a falha antes da correção.
+   - Freeze do experimento → versão 3.
