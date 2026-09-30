@@ -1,0 +1,1034 @@
+{
+  "schema_version": "semantic-record/0.4",
+  "document": {
+    "sha256": "9b9b889252fe824baba98e0664ee4feec39392e1b0123822c8953e24696a6878",
+    "file_name": "BT2-08.txt",
+    "size_bytes": 883,
+    "pages": 1,
+    "text_layer": {
+      "usable": true,
+      "alnum_chars": 686,
+      "min_alnum_chars_per_page": 100,
+      "reason": null
+    }
+  },
+  "extraction": {
+    "method": "native_text_layer+deterministic_rules",
+    "status": "COMPLETED",
+    "failure_mode": null,
+    "unsupported_fields": [
+      "fraction_adjustment_period"
+    ],
+    "title": null
+  },
+  "classification": {
+    "event_type": null,
+    "decision_rule": "no_signals",
+    "signals": {},
+    "title": null,
+    "title_event_types": [],
+    "confidence": "LOW",
+    "confidence_reasons": [
+      "NO_EVENT_SIGNALS"
+    ]
+  },
+  "fields": {
+    "issuer_name": {
+      "status": "found",
+      "value": "Serra Alta Papel e Celulose S.A.",
+      "raw": "Serra Alta Papel e Celulose S.A.",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "SERRA ALTA PAPEL E CELULOSE S.A.",
+          "start": 0,
+          "end": 32,
+          "page": 1
+        },
+        {
+          "text": "Serra Alta Papel e Celulose S.A.",
+          "start": 74,
+          "end": 106,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "issuer_name.v2_structural_role"
+      ],
+      "anchor": "phrase",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 1,
+      "notes": [
+        "other entities mentioned (not primary): ['serra alta embalagens s.a.']"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "STRUCTURAL_ROLE:ANNOUNCER+CNPJ_ADJACENT+LETTERHEAD"
+      ]
+    },
+    "cnpj": {
+      "status": "found",
+      "value": "01.912.615/0001-87",
+      "raw": "01.912.615/0001-87",
+      "source_label": "CNPJ",
+      "evidence": [
+        {
+          "text": "CNPJ 01.912.615/0001-87",
+          "start": 33,
+          "end": 56,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "cnpj.label_cnpj"
+      ],
+      "anchor": "label",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LABEL_ANCHORED"
+      ]
+    },
+    "isin": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "ticker": {
+      "status": "found",
+      "value": "SRAL4",
+      "raw": "SRAL4",
+      "source_label": null,
+      "evidence": [
+        {
+          "text": "SRAL4",
+          "start": 395,
+          "end": 400,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "ticker.pattern"
+      ],
+      "anchor": "pattern",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": "MEDIUM",
+      "confidence_reasons": [
+        "UNANCHORED_PATTERN"
+      ]
+    },
+    "share_class": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "approval_date": {
+      "status": "found",
+      "value": "2024-09-20",
+      "raw": "20/09/2024",
+      "source_label": "cisão parcial aprovada em Assembleia Geral Extraordinária realizada em",
+      "evidence": [
+        {
+          "text": "cisão parcial aprovada em Assembleia Geral Extraordinária realizada em 20/09/2024",
+          "start": 175,
+          "end": 256,
+          "page": 1
+        }
+      ],
+      "extraction_rules": [
+        "llm.date_role_mapping"
+      ],
+      "anchor": "llm",
+      "distinct_values": 1,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "value located by LLM role mapping; literal quote grounded"
+      ],
+      "confidence": "HIGH",
+      "confidence_reasons": [
+        "LITERAL_GROUNDED_QUOTE",
+        "DETERMINISTIC_PARSE"
+      ]
+    },
+    "record_date": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "ex_date": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "payment_date": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "gross_amount_per_share": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "net_amount_per_share": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "withholding_tax": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "currency": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "ratio": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [],
+      "confidence": null,
+      "confidence_reasons": []
+    },
+    "tax_treatment": {
+      "status": "not_found",
+      "value": null,
+      "raw": null,
+      "source_label": null,
+      "evidence": [],
+      "extraction_rules": [],
+      "anchor": null,
+      "distinct_values": 0,
+      "alternatives": [],
+      "corroborations": 0,
+      "notes": [
+        "no tax statement found"
+      ],
+      "confidence": null,
+      "confidence_reasons": []
+    }
+  },
+  "event_specific_fields": {},
+  "reference_check": {
+    "found": false,
+    "matched_by": null,
+    "query": null,
+    "golden_row": null
+  },
+  "validations": [
+    {
+      "rule_id": "REF_ISIN_FOUND",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: isin",
+      "observed": {}
+    },
+    {
+      "rule_id": "REF_TICKER_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: reference_row",
+      "observed": {}
+    },
+    {
+      "rule_id": "REF_CNPJ_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: reference_row",
+      "observed": {}
+    },
+    {
+      "rule_id": "REF_SHARE_CLASS_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: reference_row",
+      "observed": {}
+    },
+    {
+      "rule_id": "REF_ISSUER_ACTIVE",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: reference_row",
+      "observed": {}
+    },
+    {
+      "rule_id": "REF_ISSUER_NAME_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "WARNING",
+      "message": "missing dependency: reference_row",
+      "observed": {}
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_PRESENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: event_type",
+      "observed": {}
+    },
+    {
+      "rule_id": "REQUIRED_FIELDS_NOT_PENDING",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: event_type",
+      "observed": {}
+    },
+    {
+      "rule_id": "CLASSIFICATION_DETERMINED",
+      "status": "FAIL",
+      "severity": "ERROR",
+      "message": "event type None by rule no_signals",
+      "observed": {
+        "decision_rule": "no_signals"
+      }
+    },
+    {
+      "rule_id": "CLASSIFICATION_TITLE_CONSISTENT",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: event_type",
+      "observed": {}
+    },
+    {
+      "rule_id": "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: record_date",
+      "observed": {}
+    },
+    {
+      "rule_id": "DATE_RECORD_BEFORE_EX",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: record_date, ex_date",
+      "observed": {}
+    },
+    {
+      "rule_id": "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "status": "NOT_EVALUATED",
+      "severity": "WARNING",
+      "message": "missing dependency: record_date, ex_date",
+      "observed": {}
+    },
+    {
+      "rule_id": "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: payment_date, ex_date",
+      "observed": {
+        "settlement_field_status": "not_found"
+      }
+    },
+    {
+      "rule_id": "AMOUNT_GROSS_POSITIVE",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: gross_amount_per_share",
+      "observed": {}
+    },
+    {
+      "rule_id": "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: gross_amount_per_share, net_amount_per_share, withholding_tax",
+      "observed": {
+        "net_status": "not_found"
+      }
+    },
+    {
+      "rule_id": "RATIO_POSITIVE",
+      "status": "NOT_EVALUATED",
+      "severity": "ERROR",
+      "message": "missing dependency: ratio",
+      "observed": {}
+    }
+  ],
+  "validation_summary": {
+    "NOT_EVALUATED": 16,
+    "FAIL": 1
+  },
+  "rule_groups_not_applicable": [],
+  "semantic_need": {
+    "llm_required": true,
+    "llm_trigger_reasons": [
+      "CLASSIFICATION_UNSUPPORTED",
+      "REQUIRED_DATE_ROLE_UNMAPPED"
+    ],
+    "signals": [
+      {
+        "signal": "CLASSIFICATION_UNSUPPORTED",
+        "stage": "classify",
+        "triggers_llm": true,
+        "detail": {
+          "decision_rule": "no_signals"
+        }
+      },
+      {
+        "signal": "REQUIRED_DATE_ROLE_UNMAPPED",
+        "stage": "extract_candidates",
+        "triggers_llm": true,
+        "detail": {
+          "missing_roles": [
+            "record_date",
+            "ex_date"
+          ],
+          "unassigned_date_mentions": [
+            "20/09/2024",
+            "20 de setembro de 2024"
+          ]
+        }
+      }
+    ]
+  },
+  "semantic": {
+    "classification": {
+      "confidence": "UNRESOLVED",
+      "source": "llm",
+      "reasons": [
+        "LLM_EVENT_TYPE_UNRESOLVED"
+      ],
+      "qualifiers": [],
+      "interpretation": {
+        "deterministic": null,
+        "deterministic_status": "UNSUPPORTED",
+        "llm": "UNRESOLVED",
+        "rationale": "O comunicado trata de uma cisão parcial com atribuição de ações de nova sociedade, cuja proporção depende de laudo ainda em elaboração; não corresponde a dividendo, JCP, bonificação, grupamento ou desdobramento, e os efeitos permanecem indefinidos no próprio texto."
+      }
+    },
+    "fields": {
+      "approval_date": {
+        "confidence": "MEDIUM",
+        "source": "llm",
+        "reasons": [
+          "DETERMINISTIC_UNSUPPORTED",
+          "LLM_ONLY_GROUNDED"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "ratio": {
+        "confidence": "LOW",
+        "source": "llm",
+        "reasons": [
+          "MATERIAL_QUALIFIER_UNREPRESENTED:ratio"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      },
+      "withholding_tax": {
+        "confidence": "LOW",
+        "source": "llm",
+        "reasons": [
+          "MATERIAL_QUALIFIER_UNREPRESENTED:beneficiary_tax_treatment"
+        ],
+        "qualifiers": [],
+        "interpretation": null
+      }
+    },
+    "blocking": [
+      "MATERIAL_QUALIFIER_UNREPRESENTED:amount"
+    ],
+    "negated_signals": [],
+    "resolutions": [
+      {
+        "concept": "event_type",
+        "category": "LLM_UNRESOLVED",
+        "deterministic": null,
+        "deterministic_status": "UNSUPPORTED",
+        "llm": "UNRESOLVED",
+        "rationale": "O comunicado trata de uma cisão parcial com atribuição de ações de nova sociedade, cuja proporção depende de laudo ainda em elaboração; não corresponde a dividendo, JCP, bonificação, grupamento ou desdobramento, e os efeitos permanecem indefinidos no próprio texto."
+      },
+      {
+        "concept": "approval_date",
+        "category": "LLM_ONLY_GROUNDED",
+        "llm": "2024-09-20"
+      },
+      {
+        "concept": "withholding_tax",
+        "category": "AGREEMENT",
+        "note": "not stated"
+      }
+    ],
+    "material_qualifiers": [
+      {
+        "kind": "unresolved",
+        "affects": "ratio",
+        "target_field": "ratio",
+        "effect": "A proporção de ações da nova sociedade a ser recebida não está definida, dependendo de laudo de avaliação ainda em elaboração.",
+        "materiality_reason": "Sem essa passagem o registro sugeriria uma proporção conhecida; ela determina que a relação de troca é indeterminada.",
+        "quote": "na proporção a ser detalhada em laudo de avaliação ainda em elaboração",
+        "represented": false,
+        "representation": null,
+        "blocks": true,
+        "source": "llm"
+      },
+      {
+        "kind": "unresolved",
+        "affects": "beneficiary_tax_treatment",
+        "target_field": "withholding_tax",
+        "effect": "Os efeitos tributários da operação para os acionistas não estão definidos neste momento.",
+        "materiality_reason": "Removida a passagem, poderia presumir-se tratamento tributário definido; ela explicita que o tratamento fiscal permanece indeterminado.",
+        "quote": "tampouco sobre os efeitos tributários da operação para os acionistas",
+        "represented": false,
+        "representation": null,
+        "blocks": true,
+        "source": "llm"
+      },
+      {
+        "kind": "unresolved",
+        "affects": "amount",
+        "target_field": "other",
+        "effect": "Não há definição sobre eventual redução do valor patrimonial das ações remanescentes.",
+        "materiality_reason": "A indefinição impede afirmar se o valor patrimonial das ações da Companhia será alterado.",
+        "quote": "Não há, neste momento, definição sobre eventual redução proporcional do valor patrimonial das ações remanescentes da Companhia",
+        "represented": false,
+        "representation": null,
+        "blocks": true,
+        "source": "llm"
+      }
+    ],
+    "semantic_notes": [
+      {
+        "kind": "informational_context",
+        "note": "A Companhia informa que detalhes adicionais serão divulgados posteriormente em comunicado específico.",
+        "quote": "Novas informações serão divulgadas oportunamente por meio de fato relevante específico.",
+        "blocks": false,
+        "source": "llm"
+      },
+      {
+        "kind": "legal_context",
+        "note": "Contexto societário da operação: versão de parcela do patrimônio líquido para sociedade receptora.",
+        "quote": "com versão de parcela do patrimônio líquido para a sociedade Serra Alta Embalagens S.A.",
+        "blocks": false,
+        "source": "llm"
+      }
+    ],
+    "issuer_resolution": {
+      "groups": {
+        "serra alta papel e celulose s.a.": {
+          "roles": [
+            "ANNOUNCER",
+            "CNPJ_ADJACENT",
+            "LETTERHEAD"
+          ],
+          "third_party_only": false
+        },
+        "serra alta embalagens s.a.": {
+          "roles": [],
+          "third_party_only": false
+        }
+      },
+      "aliases": {},
+      "decision": "STRUCTURAL_PRIMARY"
+    },
+    "tax_statements": [],
+    "revocation": [],
+    "contradictions": [],
+    "material_coverage": [
+      {
+        "category": "qualifier:ratio",
+        "source": "llm",
+        "evidence": "na proporção a ser detalhada em laudo de avaliação ainda em elaboração",
+        "expected_target": "ratio",
+        "representation_status": "UNRESOLVED_EXPLICIT",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "qualifier:beneficiary_tax_treatment",
+        "source": "llm",
+        "evidence": "tampouco sobre os efeitos tributários da operação para os acionistas",
+        "expected_target": "withholding_tax",
+        "representation_status": "UNRESOLVED_EXPLICIT",
+        "justification": null,
+        "blocks": false
+      },
+      {
+        "category": "qualifier:amount",
+        "source": "llm",
+        "evidence": "Não há, neste momento, definição sobre eventual redução proporcional do valor patrimonial das ações remanescentes da Companhia",
+        "expected_target": "other",
+        "representation_status": "UNRESOLVED_EXPLICIT",
+        "justification": null,
+        "blocks": false
+      }
+    ],
+    "event_status": "ACTIVE_OR_NOT_STATED"
+  },
+  "confidence_view": {
+    "classification": {
+      "confidence": "UNRESOLVED",
+      "source": "llm",
+      "reasons": [
+        "LLM_EVENT_TYPE_UNRESOLVED"
+      ],
+      "qualifiers": [],
+      "interpretation": {
+        "deterministic": null,
+        "deterministic_status": "UNSUPPORTED",
+        "llm": "UNRESOLVED",
+        "rationale": "O comunicado trata de uma cisão parcial com atribuição de ações de nova sociedade, cuja proporção depende de laudo ainda em elaboração; não corresponde a dividendo, JCP, bonificação, grupamento ou desdobramento, e os efeitos permanecem indefinidos no próprio texto."
+      }
+    },
+    "fields": {
+      "issuer_name": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      },
+      "cnpj": {
+        "extraction": "HIGH",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      },
+      "ticker": {
+        "extraction": "MEDIUM",
+        "semantic": "NOT_ASSESSED",
+        "validation": "UNVALIDATED"
+      },
+      "approval_date": {
+        "extraction": "HIGH",
+        "semantic": "MEDIUM",
+        "validation": "UNVALIDATED"
+      }
+    }
+  },
+  "llm": {
+    "provider": "anthropic",
+    "model": "claude-opus-5",
+    "effort": "medium",
+    "max_tokens": 8000,
+    "fallbacks": "off",
+    "prompt_version": "semantic-interpreter/v3",
+    "prompt_fingerprint": "e6bd3105dc7c8c84",
+    "served_models": [
+      "claude-opus-5"
+    ],
+    "attempts": 1,
+    "api_calls": 2,
+    "replayed": false,
+    "tool_calls": [
+      {
+        "name": "lookup_security",
+        "arguments": {
+          "identifier": "SRAL4",
+          "identifier_type": "TICKER"
+        },
+        "result": {
+          "found": true,
+          "issuer": "Serra Alta Papel e Celulose S.A.",
+          "isin": "BRSRALACNPR9",
+          "ticker": "SRAL4",
+          "share_class": "PN",
+          "status": "ativo"
+        },
+        "latency_us": 29,
+        "error": null
+      }
+    ],
+    "usage": {
+      "input_tokens": 9732,
+      "output_tokens": 1596,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "estimated_cost_usd": "0.08856",
+    "latency_ms": 17446,
+    "errors": [],
+    "refusals": [],
+    "served_model_mismatch": false,
+    "parse_or_schema_failures": 0,
+    "request_ids": [
+      "req_011CfYquRtyvhXc7cHmiBbav",
+      "req_011CfYqumNWXa4mE8BkfVSMQ"
+    ],
+    "interpretation": {
+      "event": {
+        "type": "UNRESOLVED",
+        "evidence": [
+          "em razão da cisão parcial aprovada em Assembleia Geral Extraordinária realizada em 20/09/2024",
+          "os acionistas titulares de ações preferenciais (SRAL4) receberão ações da nova sociedade na proporção a ser detalhada em laudo de avaliação ainda em elaboração",
+          "Novas informações serão divulgadas oportunamente por meio de fato relevante específico."
+        ],
+        "misleading_mentions": [
+          {
+            "quote": "receberão ações da nova sociedade",
+            "why_not_the_event": "A entrega de ações decorre da cisão parcial com versão de patrimônio para outra sociedade, não de bonificação em ações por capitalização de reservas."
+          },
+          {
+            "quote": "eventual redução proporcional do valor patrimonial das ações remanescentes",
+            "why_not_the_event": "Redução de valor patrimonial cogitada e não definida; não configura grupamento/desdobramento nem qualquer distribuição."
+          }
+        ],
+        "rationale": "O comunicado trata de uma cisão parcial com atribuição de ações de nova sociedade, cuja proporção depende de laudo ainda em elaboração; não corresponde a dividendo, JCP, bonificação, grupamento ou desdobramento, e os efeitos permanecem indefinidos no próprio texto."
+      },
+      "dates": [
+        {
+          "role": "approval_date",
+          "status": "FOUND",
+          "value_as_written": "20/09/2024",
+          "evidence": "cisão parcial aprovada em Assembleia Geral Extraordinária realizada em 20/09/2024"
+        }
+      ],
+      "withholding_tax": {
+        "status": "NOT_STATED",
+        "rate_as_written": "",
+        "base": "NOT_STATED",
+        "evidence": [
+          "tampouco sobre os efeitos tributários da operação para os acionistas"
+        ]
+      },
+      "material_qualifiers": [
+        {
+          "kind": "unresolved",
+          "affects": "ratio",
+          "target_field": "ratio",
+          "effect": "A proporção de ações da nova sociedade a ser recebida não está definida, dependendo de laudo de avaliação ainda em elaboração.",
+          "materiality_reason": "Sem essa passagem o registro sugeriria uma proporção conhecida; ela determina que a relação de troca é indeterminada.",
+          "quote": "na proporção a ser detalhada em laudo de avaliação ainda em elaboração"
+        },
+        {
+          "kind": "unresolved",
+          "affects": "beneficiary_tax_treatment",
+          "target_field": "withholding_tax",
+          "effect": "Os efeitos tributários da operação para os acionistas não estão definidos neste momento.",
+          "materiality_reason": "Removida a passagem, poderia presumir-se tratamento tributário definido; ela explicita que o tratamento fiscal permanece indeterminado.",
+          "quote": "tampouco sobre os efeitos tributários da operação para os acionistas"
+        },
+        {
+          "kind": "unresolved",
+          "affects": "amount",
+          "target_field": "other",
+          "effect": "Não há definição sobre eventual redução do valor patrimonial das ações remanescentes.",
+          "materiality_reason": "A indefinição impede afirmar se o valor patrimonial das ações da Companhia será alterado.",
+          "quote": "Não há, neste momento, definição sobre eventual redução proporcional do valor patrimonial das ações remanescentes da Companhia"
+        }
+      ],
+      "semantic_notes": [
+        {
+          "kind": "informational_context",
+          "note": "A Companhia informa que detalhes adicionais serão divulgados posteriormente em comunicado específico.",
+          "quote": "Novas informações serão divulgadas oportunamente por meio de fato relevante específico."
+        },
+        {
+          "kind": "legal_context",
+          "note": "Contexto societário da operação: versão de parcela do patrimônio líquido para sociedade receptora.",
+          "quote": "com versão de parcela do patrimônio líquido para a sociedade Serra Alta Embalagens S.A."
+        }
+      ],
+      "security_reference": {
+        "identifier_checked": "SRAL4",
+        "found_in_reference": "YES"
+      }
+    },
+    "grounding": {
+      "event_grounded": true,
+      "total_quotes": 12,
+      "grounded_quotes": 12,
+      "ungrounded": []
+    },
+    "reference_divergence": {
+      "tool_called": true,
+      "tool_result_found": true,
+      "llm_reported": "YES",
+      "engine_REF_ISIN_FOUND": "NOT_EVALUATED",
+      "divergent": false,
+      "authority": "validation_engine"
+    }
+  },
+  "routing": {
+    "decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "MATERIAL_QUALIFIER_UNREPRESENTED:amount",
+      "SEMANTIC_AMBIGUITY",
+      "CLASSIFICATION_UNDETERMINED"
+    ],
+    "explanations": [
+      "classification: LLM_EVENT_TYPE_UNRESOLVED",
+      "MATERIAL_QUALIFIER_UNREPRESENTED:amount",
+      "CLASSIFICATION_DETERMINED: event type None by rule no_signals"
+    ],
+    "gates": [
+      {
+        "gate": "EXTRACTION_POSSIBLE",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "REQUIRED_INFORMATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "SEMANTIC_INTERPRETATION",
+        "status": "BLOCK",
+        "reason_codes": [
+          "MATERIAL_QUALIFIER_UNREPRESENTED:amount",
+          "SEMANTIC_AMBIGUITY"
+        ],
+        "explanations": [
+          "classification: LLM_EVENT_TYPE_UNRESOLVED",
+          "MATERIAL_QUALIFIER_UNREPRESENTED:amount"
+        ]
+      },
+      {
+        "gate": "DETERMINISTIC_VALIDATION",
+        "status": "BLOCK",
+        "reason_codes": [
+          "CLASSIFICATION_UNDETERMINED"
+        ],
+        "explanations": [
+          "CLASSIFICATION_DETERMINED: event type None by rule no_signals"
+        ]
+      },
+      {
+        "gate": "REFERENCE_VALIDATION",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      },
+      {
+        "gate": "BLOCKING_ERRORS",
+        "status": "PASS",
+        "reason_codes": [],
+        "explanations": []
+      }
+    ]
+  },
+  "audit": {
+    "run_id": "20260930T023351Z-a4b62a32",
+    "pipeline_version": "baseline-a/0.1.0+candidate-hardened/0.1",
+    "started_at": "2026-09-30T02:35:08.695+00:00",
+    "finished_at": "2026-09-30T02:35:26.163+00:00",
+    "duration_us": 17467592,
+    "stages": [
+      {
+        "stage": "ingest",
+        "started_at": "2026-09-30T02:35:08.695+00:00",
+        "status": "ok",
+        "duration_us": 358
+      },
+      {
+        "stage": "text_layer",
+        "started_at": "2026-09-30T02:35:08.696+00:00",
+        "status": "ok",
+        "duration_us": 258
+      },
+      {
+        "stage": "extract_candidates",
+        "started_at": "2026-09-30T02:35:08.696+00:00",
+        "status": "ok",
+        "duration_us": 1777
+      },
+      {
+        "stage": "classify",
+        "started_at": "2026-09-30T02:35:08.698+00:00",
+        "status": "ok",
+        "duration_us": 45
+      },
+      {
+        "stage": "normalize",
+        "started_at": "2026-09-30T02:35:08.698+00:00",
+        "status": "ok",
+        "duration_us": 177
+      },
+      {
+        "stage": "confidence",
+        "started_at": "2026-09-30T02:35:08.698+00:00",
+        "status": "ok",
+        "duration_us": 24
+      },
+      {
+        "stage": "semantic_patch",
+        "started_at": "2026-09-30T02:35:08.698+00:00",
+        "status": "ok",
+        "duration_us": 577
+      },
+      {
+        "stage": "semantic_need",
+        "started_at": "2026-09-30T02:35:08.699+00:00",
+        "status": "ok",
+        "duration_us": 49,
+        "llm_required": true,
+        "triggers": [
+          "CLASSIFICATION_UNSUPPORTED",
+          "REQUIRED_DATE_ROLE_UNMAPPED"
+        ]
+      },
+      {
+        "stage": "semantic_llm",
+        "started_at": "2026-09-30T02:35:08.699+00:00",
+        "status": "ok",
+        "duration_us": 17460836,
+        "api_calls": 2,
+        "tool_calls": 1,
+        "replayed": false
+      },
+      {
+        "stage": "semantic_merge",
+        "started_at": "2026-09-30T02:35:26.160+00:00",
+        "status": "ok",
+        "duration_us": 2247
+      },
+      {
+        "stage": "hardening_gates",
+        "started_at": "2026-09-30T02:35:26.162+00:00",
+        "status": "ok",
+        "duration_us": 279
+      },
+      {
+        "stage": "validate",
+        "started_at": "2026-09-30T02:35:26.162+00:00",
+        "status": "ok",
+        "duration_us": 136,
+        "rules_executed": 17
+      },
+      {
+        "stage": "route",
+        "started_at": "2026-09-30T02:35:26.163+00:00",
+        "status": "ok",
+        "duration_us": 116
+      }
+    ],
+    "errors": [],
+    "retries": 0,
+    "extraction_method": "native_text_layer+deterministic_rules",
+    "model": "claude-opus-5",
+    "prompt_version": "semantic-interpreter/v3",
+    "validators_executed": [
+      "REF_ISIN_FOUND",
+      "REF_TICKER_CONSISTENT",
+      "REF_CNPJ_CONSISTENT",
+      "REF_SHARE_CLASS_CONSISTENT",
+      "REF_ISSUER_ACTIVE",
+      "REF_ISSUER_NAME_CONSISTENT",
+      "REQUIRED_FIELDS_PRESENT",
+      "REQUIRED_FIELDS_NOT_PENDING",
+      "CLASSIFICATION_DETERMINED",
+      "CLASSIFICATION_TITLE_CONSISTENT",
+      "DATE_APPROVAL_NOT_AFTER_RECORD",
+      "DATE_RECORD_BEFORE_EX",
+      "DATE_EX_NEXT_WEEKDAY_AFTER_RECORD",
+      "DATE_SETTLEMENT_NOT_BEFORE_EX",
+      "AMOUNT_GROSS_POSITIVE",
+      "AMOUNT_NET_MATCHES_GROSS_AND_TAX",
+      "RATIO_POSITIVE"
+    ],
+    "final_decision": "REVIEW_REQUIRED",
+    "reason_codes": [
+      "MATERIAL_QUALIFIER_UNREPRESENTED:amount",
+      "SEMANTIC_AMBIGUITY",
+      "CLASSIFICATION_UNDETERMINED"
+    ],
+    "variant": "F"
+  }
+}

@@ -1269,3 +1269,127 @@ python -m evaluation.bt002 --run-dir $B/blind_F --out $B/evaluation
 ```
 
 Depois da primeira saída oficial: nenhuma mudança na F, no prompt, nas regras, no avaliador ou no conjunto. Falhas são registradas, não corrigidas. Segunda execução só se houver pergunta real de estabilidade.
+
+### Resultado (execução oficial única da F em 2026-09-30, conjunto congelado `bt002-freeze` → `c8ac1e1`, sem alterações após a primeira saída)
+
+- **Run:** `outputs/experiments/BT-002_blind_F/blind_F`, com cache novo (`llm_cache_run1`) e 0 documentos em replay.
+  - 0 erros, 0 recusas, 0 falhas de parse/schema, 0 divergências tool × engine.
+  - Modelo servido: `claude-opus-5` em todas as chamadas.
+- **Avaliação:** `evaluation/bt002_results.json` (avaliador pré-registrado, inalterado).
+- **Custo incremental do BT-002:** US$ 1,1016.
+  - Run da F: US$ 0,6740 (18 chamadas; 86.192 tokens de entrada e 9.723 de saída).
+  - Criador: US$ 0,4276 (`claude-sonnet-5`; 2.671 tokens de entrada e 42.223 de saída).
+
+**Segurança (definição enhanced, componentes separados)**
+
+| Componente | Resultado |
+|---|---|
+| **Aprovações inseguras (enhanced)** | **0** |
+| Omissões materiais em registros aprovados | 0 |
+| Alucinações aprovadas | 0 |
+| Ambiguidades não resolvidas aprovadas | 0 |
+| Falhas de validação aprovadas | 0 |
+| Contradições semânticas aprovadas | 0 |
+| Aprovações falsas | 0 |
+| Ambiguidades perigosas revisadas (OTHER/UNRESOLVED) | 2/2 |
+| Aprovações inseguras (definição histórica) | 0 |
+
+**Ressalva central:** a F **não aprovou nenhum documento**. O 0 de segurança é real, mas o caminho de aprovação não foi exercitado em dados independentes.
+
+**Componentes latentes** (o que estaria errado se o registro tivesse sido aprovado), com o gate que segurou cada caso:
+
+| Caso | Latente | Retido por |
+|---|---|---|
+| BT2-02 | data-base **errada** (13/05, é a data ex; correto 10/05); base do IR (ver abaixo) | ISIN obrigatório; `DATE_INCONSISTENCY` (data-base = data ex); desacordo com o LLM → `SEMANTIC_AMBIGUITY` |
+| BT2-03 | proporção não extraída; qualificador de frações | ISIN e proporção obrigatórios |
+| BT2-05 | data de crédito não extraída | ISIN obrigatório; **gate de cobertura** (`MATERIAL_INFORMATION_NOT_REPRESENTED`) |
+| BT2-06 / 07 / 04 | valor bruto não extraído / alíquota pendente / data ex pendente | campos obrigatórios; pendência |
+| BT2-08 / 09 | evento fora do schema / natureza ambígua | classificação indeterminada (tipo nulo, correto) |
+| BT2-10 | ativo fora da base; proporção não extraída | ISIN e proporção obrigatórios. A ausência na base **não foi detectada** como tal: sem ISIN, a consulta à base não roda |
+
+**Utilidade**
+
+| Métrica | Resultado |
+|---|---|
+| Roteamento | 6/10 |
+| Aprovações corretas | **0/4** |
+| Revisões corretas | 6/6 |
+| False reviews | BT2-01, BT2-02, BT2-03, BT2-05 |
+| Taxa de revisão | **10/10** |
+
+**Por que as 4 aprovações esperadas foram para revisão:**
+- **Causa comum:** nenhum aviso do conjunto traz ISIN. Na F, o ISIN é campo obrigatório e é a única chave de consulta à base de referência (`REF_ISIN_FOUND`). Isso bloqueia os 4 casos sozinho.
+- **BT2-01:** esse é o **único** motivo de revisão. O restante está correto, inclusive `tax_treatment` EXEMPT, sem alíquota.
+- **BT2-02:** data-base errada (acima).
+- **BT2-03:** a regra de proporção não reconhece "1 (uma) ação existente para 3 (três) ações novas".
+- **BT2-05:** a data de crédito em frase ("As novas ações serão creditadas … em 15/05/2024") não é extraída; o gate de cobertura bloqueia.
+
+**Semântica**
+
+| Métrica | Resultado |
+|---|---|
+| Tipo de evento | **10/10** (OTHER e UNRESOLVED corretamente sem tipo) |
+| Tratamento tributário | 9/10. A falha é o BT2-02: o aviso diz só "IRRF: 15%"; o criador marcou a base como GROSS_AMOUNT (inferida), a F deixou a base nula (não declarada). É divergência de convenção, e a F está fiel ao texto |
+| Cobertura de informação material (independe do roteamento) | 36/49 |
+| Qualificadores materiais do gabarito capturados | 6/7 (o não capturado é o de frações do BT2-03) |
+| Falsos alarmes de qualificador sobre contexto não material | 0 |
+| Papéis de data | 29/32 |
+
+**Determinístico**
+
+| Métrica | Resultado |
+|---|---|
+| Identificadores (ticker, CNPJ) | 20/20 |
+| Valores | 4/6 (BT2-06 e BT2-09: "no valor de R$ … por ação" sem o rótulo "bruto") |
+| Proporções | 2/4 (BT2-03 e BT2-10: "… ação(ões) nova(s)") |
+| Datas | 29/32 |
+| Status de campo | 68/90 |
+| Golden lookup | 0/10 (sem ISIN, a consulta não roda; `REF_ISIN_FOUND` NOT_EVALUATED) |
+| Regras objetivas | 20/33 (1 FP: data-base = ex no BT2-02, consequência da data errada; 1 FN: ausência na base do BT2-10 não detectada) |
+| Cobertura de extração determinística | **32/64 (50%)**, contra 92/115 (80%) no blind-derived set |
+
+**LLM**
+- **Invocação:** 9/10, todos com o gatilho `REQUIRED_DATE_ROLE_UNMAPPED`. Outros gatilhos: `UNINTERPRETED_QUALIFIER` 2, `CLASSIFICATION_UNSUPPORTED` 1, `EVENT_SIGNALS_CONFLICT` 1. Datas em prosa dependem do LLM.
+- **Chamadas:** 2,0 por documento invocado.
+- **Tool calls:** 9, com argumentos corretos 9/9.
+- **Grounding:** 85/86. A citação não localizada é a do BT2-04, que o LLM abreviou com "…"; foi ignorada.
+- **Falhas:** 0 de schema, 0 recusas.
+
+**Operacional:** latência p50 com LLM de 13,1 s (máx. 17,5 s); sem LLM, 5 ms. 0 erros.
+
+### Failure modes novos (registrados, **não corrigidos**)
+
+1. **Identidade só por ISIN (estrutural, fail-safe).** Avisos sem ISIN nunca são aprovados, e a presença do ativo na base nunca é confirmada, mesmo com ticker e CNPJ exatos. Foi a principal causa da utilidade zero neste conjunto. A tool `lookup_security` do LLM encontrou os ativos pelo ticker (9/9), mas a validação obrigatória do orchestrator exige ISIN. Efeito colateral: o BT2-10 (ativo fora da base) foi revisado por falta de ISIN, não por `REFERENCE_NOT_FOUND`.
+2. **Rótulo depois do valor → próxima data do texto (risco latente de segurança; não realizado).**
+   - "inscritos … em 10.05.2024 (data-base) - A partir de 13.05.2024" → data-base = 13/05.
+   - O mecanismo é do extrator base, comum a A–F: com barras, a v1 faz o mesmo (verificado em texto sintético). Na F, o perfil v2 o estende a datas com pontos.
+   - Aqui foi segurado por três camadas: ordem das datas, desacordo com o LLM e ISIN. Um valor errado com âncora de rótulo só não seria detectado se a data capturada ainda respeitasse a ordem de datas e o LLM não fosse invocado.
+3. **Frases com "ação(ões) nova(s)" não são reconhecidas como proporção** (desdobramento e grupamento). Fail-safe (campo obrigatório).
+4. **Valor por ação sem o rótulo "bruto"** ("no valor de R$ … por ação") não é extraído. Fail-safe.
+5. **Data de crédito e data de aprovação em frase** (bonificação) não são extraídas. O gate de cobertura funcionou como desenhado num caso nunca visto (BT2-05).
+6. **Queda de generalização da camada determinística** (50% contra 80%). As regras foram desenvolvidas sobre os layouts vistos; em redações novas, o sistema depende mais do LLM (9/10 invocações) e dos gates.
+
+### Segunda execução
+
+**Não justificada.**
+- Nos 8 documentos classificáveis, o ISIN ausente é bloqueio determinístico: nenhuma variação do LLM pode levá-los a AUTO_APPROVE.
+- Nos outros 2 (OTHER/UNRESOLVED), um tipo atribuído pelo LLM em outra amostra também cairia no ISIN obrigatório.
+- Não há decisão limítrofe nem possível problema de segurança probabilístico a confirmar.
+
+### Caso-limite pré-registrado
+
+O qualificador de frações do BT2-03 não decidiu nada, porque o caso foi para revisão por outros motivos.
+
+### Recomendação: **GO condicional**
+
+Pelos critérios pré-registrados, é GO:
+- enhanced unsafe = 0;
+- nenhuma omissão material aprovada;
+- nenhum failure mode novo produziu aprovação insegura;
+- todas as limitações observadas são fail-safe (revisão, nunca aprovação errada).
+
+Condições e ressalvas que acompanham o GO:
+- **A evidência de segurança do caminho de aprovação em dados independentes é fraca:** com 0 aprovações, o BT-002 confirma o comportamento fail-safe, não a correção dos registros aprovados.
+- **O failure mode 2** (valor com âncora de rótulo errada) é risco latente de segurança. Deve ser investigado antes de confiar em aprovações de documentos vindos de OCR, que tendem a quebrar a estrutura de linhas. Correção exige autorização e transformaria o BT-002 em regression set.
+- **A utilidade em avisos sem ISIN é nula:** a identidade por ticker + CNPJ exatos é uma decisão de desenho pendente, não uma correção.
+- **Se o critério for "evidência independente de que aprovações são corretas", o BT-002 não a fornece.** Nesse caso, a recomendação passa a ser investigar antes do OCR.

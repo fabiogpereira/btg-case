@@ -350,5 +350,11 @@ Algumas hipóteses têm **evidência exploratória** (E-000, sem experimento for
 - **Why it matters:** Todos os resultados da F até aqui são in-sample (E-006). Só um conjunto novo mede generalização.
 - **How to test:** BT-002 (10 avisos, criador independente, conjunto congelado, avaliador pré-registrado, uma execução).
 - **Expected signal:** enhanced unsafe = 0; 0 omissões aprovadas; ambiguidades revisadas.
-- **Observed result:** (pendente)
-- **Status:** OPEN
+- **Observed result:** (BT-002, execução única)
+  - Segurança: 0 aprovações inseguras pela definição enhanced, 0 omissões aprovadas, 2/2 ambiguidades perigosas revisadas, 0 aprovações falsas.
+  - Utilidade nula neste conjunto: 0/4 aprovações corretas, revisão 10/10. Causa comum: nenhum aviso traz ISIN, e na F o ISIN é obrigatório e é a única chave da base de referência.
+  - Semântica forte: tipo de evento 10/10, tratamento tributário 9/10, grounding 85/86.
+  - A camada determinística generaliza pouco (50% de cobertura, contra 80%).
+  - Risco latente registrado: rótulo depois do valor captura a data seguinte (data-base errada no BT2-02, segurada pela validação de ordem e pelo LLM).
+- **Decision:** GO condicional para a etapa de OCR (critérios pré-registrados atendidos; limitações fail-safe). O caminho de aprovação não foi exercitado em dados independentes.
+- **Status:** MODIFIED (segura e fail-safe em dados independentes; pouco útil; aprovação não validada de forma independente)
