@@ -1,0 +1,45 @@
+{
+  "blind_set_version": "1.0",
+  "frozen_at": "2026-09-30",
+  "git_base_commit": "e0fd841",
+  "creator": {
+    "kind": "subagent general-purpose",
+    "model": "sonnet",
+    "agent_id": "a84b2167da87968a6",
+    "fresh_context": true,
+    "brief": "tests/blind_set/BRIEF.md",
+    "declared_tools": "Write only (17 calls, all in the output directory)",
+    "harness_tool_use_count": 18,
+    "note": "O harness contou 18 usos de ferramenta; o criador declarou 17 escritas. Diferença não verificável (possível reescrita). Independência garantida por instrução + contexto novo, não por sandbox."
+  },
+  "consumption": {
+    "pipeline_reads": [
+      "documents/*.txt",
+      "golden_records.csv"
+    ],
+    "evaluation_only": [
+      "ground_truth.json"
+    ]
+  },
+  "cases": 14,
+  "files": {
+    "tests/blind_set/BRIEF.md": "2e5a321faa6d10a6825827002ec79c292199865087bb1b1ef511f7f73b0edc60",
+    "tests/blind_set/CREATOR_README.md": "9e406875f746313ecb58753c27459643e17eca659f3252aef6ef3cefbe34a1d1",
+    "tests/blind_set/documents/BT-01.txt": "8929204d73ce6bee898bee332b396ac7f8f83b43f4548381976815a2680f68d2",
+    "tests/blind_set/documents/BT-02.txt": "fc8d1bfa68e019da1f906a4262275dc5df93fd92e8dde57ced5cfdbf36f2cd81",
+    "tests/blind_set/documents/BT-03.txt": "ed7d54d3ef379d56d41e72dda45310b5c5d600904a54f0b79b9b75fd86a47334",
+    "tests/blind_set/documents/BT-04.txt": "dd10f4f7e4f1d01acbde5cb9f79681a1bb5b92f1f937928265562a645a63c93f",
+    "tests/blind_set/documents/BT-05.txt": "08b4ffa5921602b98c169d6ad778fa5f62378ce8737d6ce681eb4dc9de8bb01f",
+    "tests/blind_set/documents/BT-06.txt": "dbbb2415625920be09ccab0dd20d78752f2ccf07ee841543afde905c78e4c27a",
+    "tests/blind_set/documents/BT-07.txt": "044b043b3561327c2aca877275bbc58b6098464678851f433f30ea8da20c8692",
+    "tests/blind_set/documents/BT-08.txt": "e22a3b0c7afb65369825cbf6d353ac30447aca3fc8bf8bdfe832bea218232812",
+    "tests/blind_set/documents/BT-09.txt": "9e815e187522ede2fcc8593124814d71a4cbd4b0e74c383911fcc80a78aaa925",
+    "tests/blind_set/documents/BT-10.txt": "aee99640873c349b2b36599bcccfce50d7f4a49bc1dc155260de3600d7025ffe",
+    "tests/blind_set/documents/BT-11.txt": "eeb882f1b3de0503f3ecf3692d4bbcc0980e04fe334ffbaf84d0342a97149b93",
+    "tests/blind_set/documents/BT-12.txt": "81c8f5d0ced3d356d5acaa6e05f67decc0e4fc479881ba2594a3c06c24060089",
+    "tests/blind_set/documents/BT-13.txt": "1a02cc916077b0b5717812fa2ef244887b3c03e2ed74af1c906d7a2a788b8afc",
+    "tests/blind_set/documents/BT-14.txt": "2e9d0355ff91ea9b0d3b4d5b0f87cce6af63802a9ded797a1c33fbae74140405",
+    "tests/blind_set/golden_records.csv": "24f77ec83eac947c93fcae397aae0535ff2ca573033e17e611f88b4bfd5648a2",
+    "tests/blind_set/ground_truth.json": "0320875062de05c8f11dad46931651b823199002eee016f57c8bfd5e1709503b"
+  }
+}

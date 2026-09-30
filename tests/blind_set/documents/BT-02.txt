@@ -1,0 +1,22 @@
+CERÂMICA VALE AZUL S.A.
+CNPJ nº 23.456.789/0001-01
+Companhia Aberta – CVM nº 45678
+
+FATO RELEVANTE
+
+Juros sobre o Capital Próprio
+
+A Cerâmica Vale Azul S.A. informa que, em Reunião do Conselho de Administração realizada em 10/09/2026, foi deliberado o pagamento de Juros sobre o Capital Próprio (JCP) aos acionistas, nas seguintes condições:
+
+- Ticker: CVAZ4
+- ISIN: BRCVAZACNPR1
+- Valor bruto por ação: R$ 1,0000000000
+- Imposto de Renda Retido na Fonte: 15% (quinze por cento), exceto para acionistas comprovadamente imunes ou isentos
+- Valor líquido por ação: R$ 0,8500000000
+- Data-base: 25/09/2026
+- Data ex: 28/09/2026
+- Data de pagamento: 09/10/2026
+
+Os valores serão imputados ao dividendo mínimo obrigatório relativo ao exercício social de 2026, nos termos do Estatuto Social da Companhia.
+
+Vale Azul, 10 de setembro de 2026.

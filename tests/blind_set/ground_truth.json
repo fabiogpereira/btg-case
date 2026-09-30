@@ -1,0 +1,363 @@
+{
+  "created_by": "independent blind-set creator",
+  "cases": [
+    {
+      "case_id": "BT-01",
+      "document_file": "BT-01.txt",
+      "case_categories": ["clear"],
+      "event_type": "DIVIDEND",
+      "issuer": {"name": "Grão Dourado Alimentos S.A.", "cnpj": "12.345.678/0001-90", "isin": "BRGRAOACNOR1", "ticker": "GRAO3", "in_reference_base": true},
+      "fields": {
+        "approval_date": {"status": "present", "value": "2026-09-15", "evidence": "reunião realizada em 15/09/2026"},
+        "record_date": {"status": "present", "value": "2026-09-30", "evidence": "Data-base (posição acionária): 30/09/2026"},
+        "ex_date": {"status": "present", "value": "2026-10-01", "evidence": "Data ex-dividendo: 01/10/2026"},
+        "payment_date": {"status": "present", "value": "2026-10-20", "evidence": "Data de pagamento: 20/10/2026"},
+        "share_credit_date": {"status": "not_applicable", "value": null, "evidence": null},
+        "gross_amount_per_share": {"status": "present", "value": "0.8500000000", "currency": "BRL", "evidence": "Valor bruto por ação: R$ 0,8500000000"},
+        "net_amount_per_share": {"status": "not_applicable", "value": null, "evidence": null},
+        "withholding_tax": {"status": "present", "rate": "0.0", "base": "EXEMPT", "evidence": "Os dividendos ora distribuídos são isentos de Imposto de Renda na fonte, nos termos do artigo 10 da Lei nº 9.249/95."},
+        "ratio": {"status": "not_applicable", "value": null, "evidence": null}
+      },
+      "material_qualifiers": [],
+      "non_material_context": [
+        {"description": "Instruções sobre custódia e recebimento via B3", "evidence": "Os acionistas titulares de ações escriturais custodiadas na B3 receberão os valores por meio de seus agentes de custódia, sem necessidade de comparecimento pessoal."}
+      ],
+      "expected_validation_findings": [],
+      "expected_routing": "AUTO_APPROVE",
+      "routing_reason": "Aviso completo e internamente consistente para dividendos (valor bruto, data-base, data ex e data de pagamento presentes); ativo consta na base de referência."
+    },
+    {
+      "case_id": "BT-02",
+      "document_file": "BT-02.txt",
+      "case_categories": ["clear", "tax_condition"],
+      "event_type": "JCP",
+      "issuer": {"name": "Cerâmica Vale Azul S.A.", "cnpj": "23.456.789/0001-01", "isin": "BRCVAZACNPR1", "ticker": "CVAZ4", "in_reference_base": true},
+      "fields": {
+        "approval_date": {"status": "present", "value": "2026-09-10", "evidence": "Reunião do Conselho de Administração realizada em 10/09/2026"},
+        "record_date": {"status": "present", "value": "2026-09-25", "evidence": "Data-base: 25/09/2026"},
+        "ex_date": {"status": "present", "value": "2026-09-28", "evidence": "Data ex: 28/09/2026"},
+        "payment_date": {"status": "present", "value": "2026-10-09", "evidence": "Data de pagamento: 09/10/2026"},
+        "share_credit_date": {"status": "not_applicable", "value": null, "evidence": null},
+        "gross_amount_per_share": {"status": "present", "value": "1.0000000000", "currency": "BRL", "evidence": "Valor bruto por ação: R$ 1,0000000000"},
+        "net_amount_per_share": {"status": "present", "value": "0.8500000000", "evidence": "Valor líquido por ação: R$ 0,8500000000"},
+        "withholding_tax": {"status": "present", "rate": "0.15", "base": "GROSS_AMOUNT", "evidence": "Imposto de Renda Retido na Fonte: 15% (quinze por cento), exceto para acionistas comprovadamente imunes ou isentos"},
+        "ratio": {"status": "not_applicable", "value": null, "evidence": null}
+      },
+      "material_qualifiers": [
+        {"description": "Exceção de retenção para acionistas comprovadamente imunes ou isentos", "affects": "beneficiary_tax_treatment", "evidence": "exceto para acionistas comprovadamente imunes ou isentos"}
+      ],
+      "non_material_context": [
+        {"description": "Imputação ao dividendo mínimo obrigatório", "evidence": "Os valores serão imputados ao dividendo mínimo obrigatório relativo ao exercício social de 2026, nos termos do Estatuto Social da Companhia."}
+      ],
+      "expected_validation_findings": [],
+      "expected_routing": "AUTO_APPROVE",
+      "routing_reason": "JCP completo: valor bruto, líquido, alíquota de 15%, e datas de base, ex e pagamento presentes e consistentes (1,00 x (1-0,15) = 0,85); ativo na base de referência."
+    },
+    {
+      "case_id": "BT-03",
+      "document_file": "BT-03.txt",
+      "case_categories": ["clear", "operational_context"],
+      "event_type": "BONUS_SHARES",
+      "issuer": {"name": "Transportes Serra Verde S.A.", "cnpj": "34.567.890/0001-12", "isin": "BRTSVEACNOR1", "ticker": "TSVE3", "in_reference_base": true},
+      "fields": {
+        "approval_date": {"status": "present", "value": "2026-09-12", "evidence": "Assembleia Geral Extraordinária realizada em 12/09/2026"},
+        "record_date": {"status": "present", "value": "2026-09-22", "evidence": "Data-base: 22/09/2026"},
+        "ex_date": {"status": "present", "value": "2026-09-23", "evidence": "Data ex (ações já bonificadas): 23/09/2026"},
+        "payment_date": {"status": "not_applicable", "value": null, "evidence": null},
+        "share_credit_date": {"status": "present", "value": "2026-10-07", "evidence": "Data de crédito das novas ações: 07/10/2026"},
+        "gross_amount_per_share": {"status": "not_applicable", "value": null, "currency": null, "evidence": null},
+        "net_amount_per_share": {"status": "not_applicable", "value": null, "evidence": null},
+        "withholding_tax": {"status": "not_applicable", "rate": null, "base": null, "evidence": null},
+        "ratio": {"status": "present", "value": {"held": "10", "new": "1"}, "evidence": "na proporção de 1 (uma) ação nova para cada 10 (dez) ações ordinárias"}
+      },
+      "material_qualifiers": [],
+      "non_material_context": [
+        {"description": "Procedimento de leilão de frações", "evidence": "Eventuais frações de ações resultantes da bonificação serão agrupadas e vendidas em leilão na B3, sendo o produto líquido creditado aos respectivos acionistas na proporção de suas frações, em data a ser informada oportunamente pela Companhia."}
+      ],
+      "expected_validation_findings": [],
+      "expected_routing": "AUTO_APPROVE",
+      "routing_reason": "Evento de bonificação completo: proporção, data-base, data ex e data de crédito presentes e consistentes; o procedimento de frações é contexto operacional que não altera o evento principal; ativo na base de referência."
+    },
+    {
+      "case_id": "BT-04",
+      "document_file": "BT-04.txt",
+      "case_categories": ["clear"],
+      "event_type": "REVERSE_SPLIT",
+      "issuer": {"name": "Metalúrgica Rio Bonito S.A.", "cnpj": "45.678.901/0001-23", "isin": "BRMRBOACNPR1", "ticker": "MRBO4", "in_reference_base": true},
+      "fields": {
+        "approval_date": {"status": "present", "value": "2026-09-05", "evidence": "Assembleia Geral Extraordinária realizada em 05/09/2026"},
+        "record_date": {"status": "present", "value": "2026-09-18", "evidence": "Data-base: 18/09/2026"},
+        "ex_date": {"status": "present", "value": "2026-09-21", "evidence": "Data a partir da qual as ações passarão a ser negociadas já grupadas (data ex): 21/09/2026"},
+        "payment_date": {"status": "not_applicable", "value": null, "evidence": null},
+        "share_credit_date": {"status": "not_applicable", "value": null, "evidence": null},
+        "gross_amount_per_share": {"status": "not_applicable", "value": null, "currency": null, "evidence": null},
+        "net_amount_per_share": {"status": "not_applicable", "value": null, "evidence": null},
+        "withholding_tax": {"status": "not_applicable", "rate": null, "base": null, "evidence": null},
+        "ratio": {"status": "present", "value": {"from": "10", "to": "1"}, "evidence": "na proporção de 10 (dez) ações existentes para 1 (uma) ação nova"}
+      },
+      "material_qualifiers": [],
+      "non_material_context": [
+        {"description": "Tratamento de frações em leilão", "evidence": "As frações de ações resultantes do grupamento serão tratadas conforme deliberado em Assembleia, sendo agrupadas e alienadas em leilão na B3, com o crédito do valor apurado aos acionistas titulares das frações."}
+      ],
+      "expected_validation_findings": [],
+      "expected_routing": "AUTO_APPROVE",
+      "routing_reason": "Grupamento completo: proporção 10:1, data-base e data ex presentes e consistentes; ativo na base de referência."
+    },
+    {
+      "case_id": "BT-05",
+      "document_file": "BT-05.txt",
+      "case_categories": ["clear", "alternative_language"],
+      "event_type": "SPLIT",
+      "issuer": {"name": "Companhia Têxtil Nortelândia S.A.", "cnpj": "56.789.012/0001-34", "isin": "BRCTNLACNOR1", "ticker": "CTNL3", "in_reference_base": true},
+      "fields": {
+        "approval_date": {"status": "present", "value": "2026-08-28", "evidence": "reunido no vigésimo oitavo dia do mês de agosto de dois mil e vinte e seis"},
+        "record_date": {"status": "present", "value": "2026-09-15", "evidence": "titularidade estiver registrada em 15 de setembro de 2026"},
+        "ex_date": {"status": "present", "value": "2026-09-16", "evidence": "passando os papéis a ser negociados já desdobrados a partir de 16 de setembro de 2026"},
+        "payment_date": {"status": "not_applicable", "value": null, "evidence": null},
+        "share_credit_date": {"status": "present", "value": "2026-09-16", "evidence": "a partir de 16 de setembro de 2026, data em que as novas ações também serão creditadas aos titulares"},
+        "gross_amount_per_share": {"status": "not_applicable", "value": null, "currency": null, "evidence": null},
+        "net_amount_per_share": {"status": "not_applicable", "value": null, "evidence": null},
+        "withholding_tax": {"status": "not_applicable", "rate": null, "base": null, "evidence": null},
+        "ratio": {"status": "present", "value": {"from": "1", "to": "3"}, "evidence": "cada uma ação atualmente existente dará origem a 3 (três) novas ações da mesma espécie"}
+      },
+      "material_qualifiers": [],
+      "non_material_context": [
+        {"description": "Linguagem formal/arcaica não altera o conteúdo do evento", "evidence": "O que se comunica para os devidos fins e efeitos."}
+      ],
+      "expected_validation_findings": [],
+      "expected_routing": "AUTO_APPROVE",
+      "routing_reason": "Desdobramento completo apesar da linguagem formal/arcaica e das datas por extenso: proporção 1:3, data-base e data ex claramente identificáveis; ativo na base de referência."
+    },
+    {
+      "case_id": "BT-06",
+      "document_file": "BT-06.txt",
+      "case_categories": ["missing_info"],
+      "event_type": "DIVIDEND",
+      "issuer": {"name": "Papel e Celulose Araucária S.A.", "cnpj": "67.890.123/0001-45", "isin": "BRPCELACNOR1", "ticker": "PCEL3", "in_reference_base": true},
+      "fields": {
+        "approval_date": {"status": "present", "value": "2026-09-03", "evidence": "reunião de 03/09/2026"},
+        "record_date": {"status": "present", "value": "2026-09-17", "evidence": "Data-base: 17/09/2026"},
+        "ex_date": {"status": "present", "value": "2026-09-18", "evidence": "Data ex: 18/09/2026"},
+        "payment_date": {"status": "absent", "value": null, "evidence": null},
+        "share_credit_date": {"status": "not_applicable", "value": null, "evidence": null},
+        "gross_amount_per_share": {"status": "present", "value": "0.3200000000", "currency": "BRL", "evidence": "no valor bruto de R$ 0,3200000000 por ação"},
+        "net_amount_per_share": {"status": "not_applicable", "value": null, "evidence": null},
+        "withholding_tax": {"status": "present", "rate": "0.0", "base": "EXEMPT", "evidence": "Os dividendos ora aprovados são isentos de tributação, conforme legislação em vigor."},
+        "ratio": {"status": "not_applicable", "value": null, "evidence": null}
+      },
+      "material_qualifiers": [],
+      "non_material_context": [
+        {"description": "Referência a RI para informações adicionais", "evidence": "Informações adicionais podem ser obtidas junto à área de Relações com Investidores da Companhia."}
+      ],
+      "expected_validation_findings": ["data de pagamento não informada"],
+      "expected_routing": "REVIEW_REQUIRED",
+      "routing_reason": "Falta a data de pagamento, informação obrigatória para eventos de dividendo em dinheiro."
+    },
+    {
+      "case_id": "BT-07",
+      "document_file": "BT-07.txt",
+      "case_categories": ["pending_info"],
+      "event_type": "JCP",
+      "issuer": {"name": "Energia Solar Cerrado S.A.", "cnpj": "78.901.234/0001-56", "isin": "BRESOLACNOR1", "ticker": "ESOL3", "in_reference_base": true},
+      "fields": {
+        "approval_date": {"status": "present", "value": "2026-09-20", "evidence": "Reunião do Conselho de Administração realizada em 20/09/2026"},
+        "record_date": {"status": "present", "value": "2026-09-29", "evidence": "Data-base: 29/09/2026"},
+        "ex_date": {"status": "present", "value": "2026-09-30", "evidence": "Data ex: 30/09/2026"},
+        "payment_date": {"status": "pending", "value": null, "evidence": "a ser definida pela Diretoria e informada oportunamente ao mercado, em data futura ainda não fixada"},
+        "share_credit_date": {"status": "not_applicable", "value": null, "evidence": null},
+        "gross_amount_per_share": {"status": "present", "value": "0.6000000000", "currency": "BRL", "evidence": "Valor bruto por ação: R$ 0,6000000000"},
+        "net_amount_per_share": {"status": "present", "value": "0.5100000000", "evidence": "Valor líquido por ação: R$ 0,5100000000"},
+        "withholding_tax": {"status": "present", "rate": "0.15", "base": "GROSS_AMOUNT", "evidence": "Imposto de Renda Retido na Fonte: 15%"},
+        "ratio": {"status": "not_applicable", "value": null, "evidence": null}
+      },
+      "material_qualifiers": [],
+      "non_material_context": [],
+      "expected_validation_findings": ["data de pagamento declarada como pendente/a definir"],
+      "expected_routing": "REVIEW_REQUIRED",
+      "routing_reason": "Data de pagamento, informação obrigatória para JCP, está explicitamente pendente de definição."
+    },
+    {
+      "case_id": "BT-08",
+      "document_file": "BT-08.txt",
+      "case_categories": ["negation"],
+      "event_type": "OTHER",
+      "issuer": {"name": "Banco Nortecred S.A.", "cnpj": "89.012.345/0001-67", "isin": "BRBNCRACNPR1", "ticker": "BNCR4", "in_reference_base": true},
+      "fields": {
+        "approval_date": {"status": "present", "value": "2026-09-22", "evidence": "revogada pelo Conselho de Administração em reunião de 22/09/2026"},
+        "record_date": {"status": "not_applicable", "value": null, "evidence": null},
+        "ex_date": {"status": "not_applicable", "value": null, "evidence": null},
+        "payment_date": {"status": "not_applicable", "value": null, "evidence": null},
+        "share_credit_date": {"status": "not_applicable", "value": null, "evidence": null},
+        "gross_amount_per_share": {"status": "not_applicable", "value": null, "currency": null, "evidence": "anteriormente anunciada com valor bruto de R$ 0,4000000000 por ação, não será realizada"},
+        "net_amount_per_share": {"status": "not_applicable", "value": null, "evidence": null},
+        "withholding_tax": {"status": "not_applicable", "rate": null, "base": null, "evidence": null},
+        "ratio": {"status": "not_applicable", "value": null, "evidence": null}
+      },
+      "material_qualifiers": [
+        {"description": "Revogação de distribuição de dividendos anteriormente anunciada", "affects": "event_nature", "evidence": "não será realizada, tendo a respectiva deliberação sido revogada pelo Conselho de Administração em reunião de 22/09/2026, em razão de recálculo do resultado do exercício"}
+      ],
+      "non_material_context": [],
+      "expected_validation_findings": ["aviso revoga/nega distribuição anteriormente anunciada; requer reconciliação com o registro do aviso original"],
+      "expected_routing": "REVIEW_REQUIRED",
+      "routing_reason": "Aviso de negação/revogação de evento previamente comunicado exige revisão humana para reconciliar o registro financeiro anterior e confirmar que nenhum lançamento deve ser efetuado."
+    },
+    {
+      "case_id": "BT-09",
+      "document_file": "BT-09.txt",
+      "case_categories": ["clear", "tax_condition"],
+      "event_type": "JCP",
+      "issuer": {"name": "Mineração Serra Alta S.A.", "cnpj": "90.123.456/0001-78", "isin": "BRMSALACNOR1", "ticker": "MSAL3", "in_reference_base": true},
+      "fields": {
+        "approval_date": {"status": "present", "value": "2026-09-08", "evidence": "reunião de 08/09/2026"},
+        "record_date": {"status": "present", "value": "2026-09-21", "evidence": "Data-base: 21/09/2026"},
+        "ex_date": {"status": "present", "value": "2026-09-22", "evidence": "Data ex: 22/09/2026"},
+        "payment_date": {"status": "present", "value": "2026-10-06", "evidence": "Data de pagamento: 06/10/2026"},
+        "share_credit_date": {"status": "not_applicable", "value": null, "evidence": null},
+        "gross_amount_per_share": {"status": "present", "value": "1.0000000000", "currency": "BRL", "evidence": "com valor bruto de R$ 1,0000000000 por ação"},
+        "net_amount_per_share": {"status": "present", "value": "0.8500000000", "evidence": "resultando em valor líquido de R$ 0,8500000000 por ação"},
+        "withholding_tax": {"status": "present", "rate": "0.15", "base": "GROSS_AMOUNT", "evidence": "incidirá à alíquota de 15% (quinze por cento) sobre o valor bruto, aplicável à generalidade dos acionistas"},
+        "ratio": {"status": "not_applicable", "value": null, "evidence": null}
+      },
+      "material_qualifiers": [
+        {"description": "Alíquota diferenciada de 25% para acionistas domiciliados em países com tributação favorecida", "affects": "tax_rate", "evidence": "Para acionistas domiciliados em países ou dependências com tributação favorecida, nos termos da legislação tributária em vigor, a alíquota aplicável será de 25% (vinte e cinco por cento), resultando em valor líquido de R$ 0,7500000000 por ação."}
+      ],
+      "non_material_context": [],
+      "expected_validation_findings": [],
+      "expected_routing": "AUTO_APPROVE",
+      "routing_reason": "JCP completo e consistente para a generalidade dos acionistas (bruto, líquido, alíquota de 15%, todas as datas); a condição tributária diferenciada para um subconjunto de acionistas está claramente quantificada, não gerando ambiguidade quanto ao registro do evento padrão; ativo na base de referência."
+    },
+    {
+      "case_id": "BT-10",
+      "document_file": "BT-10.txt",
+      "case_categories": ["clear", "exception", "operational_context"],
+      "event_type": "BONUS_SHARES",
+      "issuer": {"name": "Construtora Horizonte Azul S.A.", "cnpj": "01.234.567/0001-89", "isin": "BRCHAZACNOR1", "ticker": "CHAZ3", "in_reference_base": true},
+      "fields": {
+        "approval_date": {"status": "present", "value": "2026-09-02", "evidence": "conforme deliberado em Assembleia Geral Extraordinária realizada em 02/09/2026"},
+        "record_date": {"status": "present", "value": "2026-09-14", "evidence": "Data-base: 14/09/2026"},
+        "ex_date": {"status": "present", "value": "2026-09-15", "evidence": "Data ex: 15/09/2026"},
+        "payment_date": {"status": "not_applicable", "value": null, "evidence": null},
+        "share_credit_date": {"status": "present", "value": "2026-09-29", "evidence": "Data de crédito das ações bonificadas: 29/09/2026"},
+        "gross_amount_per_share": {"status": "not_applicable", "value": null, "currency": null, "evidence": null},
+        "net_amount_per_share": {"status": "not_applicable", "value": null, "evidence": null},
+        "withholding_tax": {"status": "not_applicable", "rate": null, "base": null, "evidence": null},
+        "ratio": {"status": "present", "value": {"held": "25", "new": "1"}, "evidence": "na proporção de 1 (uma) ação nova para cada 25 (vinte e cinco) ações possuídas"}
+      },
+      "material_qualifiers": [],
+      "non_material_context": [
+        {"description": "Exclusão de ações em tesouraria e procedimentos padrão de frações", "evidence": "Não farão jus à bonificação as ações mantidas em tesouraria pela própria Companhia na data-base, conforme praxe em operações desta natureza."}
+      ],
+      "expected_validation_findings": [],
+      "expected_routing": "AUTO_APPROVE",
+      "routing_reason": "Bonificação completa: proporção, data-base, data ex e data de crédito presentes e consistentes; a exclusão de ações em tesouraria é prática padrão que não altera o evento para os demais acionistas; ativo na base de referência."
+    },
+    {
+      "case_id": "BT-11",
+      "document_file": "BT-11.txt",
+      "case_categories": ["clear", "varied_dates"],
+      "event_type": "DIVIDEND",
+      "issuer": {"name": "Laticínios Vale do Sol S.A.", "cnpj": "11.222.333/0001-44", "isin": "BRLVSOACNOR1", "ticker": "LVSO3", "in_reference_base": true},
+      "fields": {
+        "approval_date": {"status": "present", "value": "2026-09-29", "evidence": "reunião do Conselho de Administração realizada em 29 de setembro de 2026"},
+        "record_date": {"status": "present", "value": "2026-10-01", "evidence": "o dia 1º de outubro de 2026"},
+        "ex_date": {"status": "present", "value": "2026-10-02", "evidence": "a partir de 02/10/2026"},
+        "payment_date": {"status": "present", "value": "2026-10-15", "evidence": "será realizado em 15.10.2026"},
+        "share_credit_date": {"status": "not_applicable", "value": null, "evidence": null},
+        "gross_amount_per_share": {"status": "present", "value": "0.4500000000", "currency": "BRL", "evidence": "no valor bruto de R$ 0,4500000000 por ação"},
+        "net_amount_per_share": {"status": "not_applicable", "value": null, "evidence": null},
+        "withholding_tax": {"status": "not_applicable", "rate": null, "base": null, "evidence": null},
+        "ratio": {"status": "not_applicable", "value": null, "evidence": null}
+      },
+      "material_qualifiers": [],
+      "non_material_context": [],
+      "expected_validation_findings": [],
+      "expected_routing": "AUTO_APPROVE",
+      "routing_reason": "Dividendo completo apesar da variação nos formatos de data (por extenso, numérica com barra e com ponto); todas as datas obrigatórias e o valor bruto estão presentes e consistentes; ativo na base de referência."
+    },
+    {
+      "case_id": "BT-12",
+      "document_file": "BT-12.txt",
+      "case_categories": ["clear", "operational_context"],
+      "event_type": "JCP",
+      "issuer": {"name": "Farmacêutica Novavida S.A.", "cnpj": "22.333.444/0001-55", "isin": "BRFNVDACNPR1", "ticker": "FNVD4", "in_reference_base": true},
+      "fields": {
+        "approval_date": {"status": "present", "value": "2026-09-11", "evidence": "Reunião do Conselho de Administração realizada em 11/09/2026"},
+        "record_date": {"status": "present", "value": "2026-09-24", "evidence": "Data-base: 24/09/2026"},
+        "ex_date": {"status": "present", "value": "2026-09-25", "evidence": "Data ex: 25/09/2026"},
+        "payment_date": {"status": "present", "value": "2026-10-08", "evidence": "Data de pagamento: 08/10/2026"},
+        "share_credit_date": {"status": "not_applicable", "value": null, "evidence": null},
+        "gross_amount_per_share": {"status": "present", "value": "0.7000000000", "currency": "BRL", "evidence": "valor bruto de R$ 0,7000000000 por ação preferencial"},
+        "net_amount_per_share": {"status": "present", "value": "0.5950000000", "evidence": "Valor líquido por ação: R$ 0,5950000000"},
+        "withholding_tax": {"status": "present", "rate": "0.15", "base": "GROSS_AMOUNT", "evidence": "Alíquota do Imposto de Renda Retido na Fonte: 15%"},
+        "ratio": {"status": "not_applicable", "value": null, "evidence": null}
+      },
+      "material_qualifiers": [],
+      "non_material_context": [
+        {"description": "Instruções operacionais de custódia e atualização cadastral", "evidence": "Os acionistas que eventualmente possuam ações escrituradas diretamente junto ao Banco Escriturador deverão atualizar seus dados cadastrais (endereço, dados bancários e CPF/CNPJ) para viabilizar o crédito, podendo fazê-lo pelo telefone 0800-123-4567 ou pelo site www.novavidari.com.br/acionistas."}
+      ],
+      "expected_validation_findings": [],
+      "expected_routing": "AUTO_APPROVE",
+      "routing_reason": "JCP completo e consistente (0,70 x (1-0,15) = 0,595); instruções operacionais de custódia e contato não alteram o evento; ativo na base de referência."
+    },
+    {
+      "case_id": "BT-13",
+      "document_file": "BT-13.txt",
+      "case_categories": ["ambiguous", "missing_info"],
+      "event_type": "UNRESOLVED",
+      "issuer": {"name": "Agropecuária Campo Largo S.A.", "cnpj": "33.444.555/0001-66", "isin": null, "ticker": "ACLA4", "in_reference_base": false},
+      "fields": {
+        "approval_date": {"status": "absent", "value": null, "evidence": null},
+        "record_date": {"status": "present", "value": "2026-09-19", "evidence": "Data-base: 19/09/2026"},
+        "ex_date": {"status": "present", "value": "2026-09-20", "evidence": "Data ex: 20/09/2026"},
+        "payment_date": {"status": "present", "value": "2026-10-05", "evidence": "Data de pagamento: 05/10/2026"},
+        "share_credit_date": {"status": "not_applicable", "value": null, "evidence": null},
+        "gross_amount_per_share": {"status": "present", "value": "0.5000000000", "currency": "BRL", "evidence": "no valor de R$ 0,5000000000 por ação"},
+        "net_amount_per_share": {"status": "present", "value": "0.4250000000", "evidence": "resultando em valor líquido de R$ 0,4250000000 por ação"},
+        "withholding_tax": {"status": "present", "rate": "0.15", "base": "GROSS_AMOUNT", "evidence": "incidirá Imposto de Renda Retido na Fonte à alíquota de 15%"},
+        "ratio": {"status": "not_applicable", "value": null, "evidence": null}
+      },
+      "material_qualifiers": [
+        {"description": "Evento denominado 'dividendos', que no Brasil são isentos de Imposto de Renda", "affects": "event_nature", "evidence": "a título de dividendos."},
+        {"description": "Aviso aplica retenção de IR de 15% e calcula valor líquido, característica típica de Juros sobre Capital Próprio, contradizendo a denominação de dividendo dada no texto", "affects": "event_nature", "evidence": "incidirá Imposto de Renda Retido na Fonte à alíquota de 15%, resultando em valor líquido de R$ 0,4250000000 por ação, a ser imputado ao dividendo obrigatório do exercício."}
+      ],
+      "non_material_context": [],
+      "expected_validation_findings": [
+        "evento rotulado como dividendo, mas tributado com retenção de IR como JCP: natureza do evento ambígua",
+        "ISIN do ativo não informado no aviso",
+        "ativo (ACLA4) não consta na base de referência (golden records)"
+      ],
+      "expected_routing": "REVIEW_REQUIRED",
+      "routing_reason": "Há ambiguidade real quanto à natureza do evento (dividendo isento declarado no texto vs. tratamento tributário típico de JCP) e o ativo não consta na base de referência; ambos exigem revisão humana."
+    },
+    {
+      "case_id": "BT-14",
+      "document_file": "BT-14.txt",
+      "case_categories": ["internal_inconsistency"],
+      "event_type": "DIVIDEND",
+      "issuer": {"name": "Distribuidora Águas Claras S.A.", "cnpj": "44.555.666/0001-77", "isin": "BRDAGCACNOR1", "ticker": "DAGC3", "in_reference_base": true},
+      "fields": {
+        "approval_date": {"status": "present", "value": "2026-09-14", "evidence": "aprovada em Reunião do Conselho de Administração de 14/09/2026"},
+        "record_date": {"status": "present", "value": "2026-09-28", "evidence": "Data-base: 28/09/2026"},
+        "ex_date": {"status": "present", "value": "2026-10-03", "evidence": "Data ex: 03/10/2026"},
+        "payment_date": {"status": "present", "value": "2026-09-29", "evidence": "Data de pagamento: 29/09/2026"},
+        "share_credit_date": {"status": "not_applicable", "value": null, "evidence": null},
+        "gross_amount_per_share": {"status": "present", "value": "0.6000000000", "currency": "BRL", "evidence": "no valor bruto de R$ 0,6000000000 por ação"},
+        "net_amount_per_share": {"status": "not_applicable", "value": null, "evidence": null},
+        "withholding_tax": {"status": "not_applicable", "rate": null, "base": null, "evidence": null},
+        "ratio": {"status": "not_applicable", "value": null, "evidence": null}
+      },
+      "material_qualifiers": [
+        {"description": "Data de pagamento (29/09/2026) anterior à data ex (03/10/2026), sequência cronológica incompatível com a prática de mercado", "affects": "dates", "evidence": "Data de pagamento: 29/09/2026\nData ex: 03/10/2026"}
+      ],
+      "non_material_context": [
+        {"description": "Instrução sobre crédito via agentes de custódia", "evidence": "A Companhia informa que os valores serão creditados diretamente aos acionistas por meio de seus agentes de custódia."}
+      ],
+      "expected_validation_findings": [
+        "data de pagamento anterior à data ex-dividendo",
+        "sequência de datas internamente inconsistente"
+      ],
+      "expected_routing": "REVIEW_REQUIRED",
+      "routing_reason": "Inconsistência interna nas datas (pagamento antes da data ex) impede confirmação automática e exige revisão humana."
+    }
+  ]
+}

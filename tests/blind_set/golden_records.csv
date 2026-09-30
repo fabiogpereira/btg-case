@@ -1,0 +1,18 @@
+emissor,cnpj,isin,ticker,classe,segmento_listagem,status
+Grão Dourado Alimentos S.A.,12.345.678/0001-90,BRGRAOACNOR1,GRAO3,ON,Novo Mercado,ativo
+Cerâmica Vale Azul S.A.,23.456.789/0001-01,BRCVAZACNPR1,CVAZ4,PN,Tradicional,ativo
+Transportes Serra Verde S.A.,34.567.890/0001-12,BRTSVEACNOR1,TSVE3,ON,Novo Mercado,ativo
+Metalúrgica Rio Bonito S.A.,45.678.901/0001-23,BRMRBOACNPR1,MRBO4,PN,Nível 1,ativo
+Companhia Têxtil Nortelândia S.A.,56.789.012/0001-34,BRCTNLACNOR1,CTNL3,ON,Novo Mercado,ativo
+Papel e Celulose Araucária S.A.,67.890.123/0001-45,BRPCELACNOR1,PCEL3,ON,Nível 2,ativo
+Energia Solar Cerrado S.A.,78.901.234/0001-56,BRESOLACNOR1,ESOL3,ON,Novo Mercado,ativo
+Banco Nortecred S.A.,89.012.345/0001-67,BRBNCRACNPR1,BNCR4,PN,Tradicional,ativo
+Mineração Serra Alta S.A.,90.123.456/0001-78,BRMSALACNOR1,MSAL3,ON,Nível 1,ativo
+Construtora Horizonte Azul S.A.,01.234.567/0001-89,BRCHAZACNOR1,CHAZ3,ON,Novo Mercado,ativo
+Laticínios Vale do Sol S.A.,11.222.333/0001-44,BRLVSOACNOR1,LVSO3,ON,Nível 2,ativo
+Farmacêutica Novavida S.A.,22.333.444/0001-55,BRFNVDACNPR1,FNVD4,PN,Tradicional,ativo
+Distribuidora Águas Claras S.A.,44.555.666/0001-77,BRDAGCACNOR1,DAGC3,ON,Novo Mercado,ativo
+Siderúrgica Campo Novo S.A.,55.666.777/0001-88,BRSCNOACNOR1,SCNO3,ON,Nível 2,ativo
+Varejo Estrela do Sul S.A.,66.777.888/0001-99,BRVESTACNPR1,VEST4,PN,Tradicional,ativo
+Telecom Serra Azul S.A.,77.888.999/0001-00,BRTSAZACNOR1,TSAZ3,ON,Novo Mercado,ativo
+Logística Rota Norte S.A.,88.999.000/0001-11,BRLRNOACNPR1,LRNO4,PN,Nível 1,ativo
